@@ -18,7 +18,7 @@ storiesOf("CourseSlat", module)
   description="Despite general improvements in workplace health and safety over the past the risk of sourdough related injuries are still insurmountable for most"
   author="Bob Bobberson"
   duration="4"
-  actionRender={() => (
+  actionRenderer={() => (
       <View flexDirection="row">
       <Icon name="Import" marginRight={3} color="accent" />
       <Text color="accent">Import</Text>

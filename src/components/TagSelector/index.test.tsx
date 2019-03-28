@@ -174,9 +174,18 @@ it("renders the provided placeholder", () => {
 
 it("it renders status message", () => {
   const ref: React.RefObject<TagSelector> = React.createRef();
-  const statusRenderer = () => <View test-dataid="statusmuessage">TestStatus</View>;
+  const statusRenderer = () => (
+    <View test-dataid="statusmuessage">TestStatus</View>
+  );
   const { queryByText } = render(
-    <TagSelector options={["test"]} showStatus={true} statusRenderer={statusRenderer} value={["A TAG"]} name="TEST 1" ref={ref} />
+    <TagSelector
+      options={["test"]}
+      showStatus={true}
+      statusRenderer={statusRenderer}
+      value={["A TAG"]}
+      name="TEST 1"
+      ref={ref}
+    />
   );
 
   if (ref.current) {

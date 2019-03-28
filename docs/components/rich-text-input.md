@@ -16,6 +16,7 @@ lead:  Rich text input field.
     name="description"
     label="Description"
     placeholder="Description"
+    minHeight={200}
     />
     <ButtonFilled type="submit" color="accent">Submit</ButtonFilled>
 </Form>

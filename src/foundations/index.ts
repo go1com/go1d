@@ -248,6 +248,23 @@ const transitions = {
 };
 
 /**
+ * * Hover Style for Slats and Cards
+ */
+
+const hoverStyle = {
+  "&:hover, &:focus": {
+    boxShadow: shadows.strong,
+    cursor: "pointer",
+    transform: "translateY(-1px)",
+  },
+  "&:active": {
+    boxShadow: shadows.crisp,
+    transform: "translateY(1px)",
+  },
+};
+
+
+/**
  * Breakpoints
  */
 
@@ -266,6 +283,7 @@ export const generateTheme = ({
   type,
   spacing,
   shadows,
+  hoverStyle,
   transitions,
   breakpoints,
   mq: facepaint(Object.keys(breakpoints).map(k => breakpoints[k])),

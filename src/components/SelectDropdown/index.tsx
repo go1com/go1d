@@ -316,12 +316,16 @@ class SelectDropdown extends React.PureComponent<SelectDropdownProps, State> {
 
     const createAvailable = renderCreateOption && searchTerm.trim() !== "";
     const firstSelectableOptionIndex =
-      0 + (handleSearchChange ? 1 : 0) + (createAvailable ? 1 : 0) + (showStatus ? 1 :0);
+      0 +
+      (handleSearchChange ? 1 : 0) +
+      (createAvailable ? 1 : 0) +
+      (showStatus ? 1 : 0);
     return (
       <Downshift
         isOpen={
           dropdownOpen !== undefined
-            ? dropdownOpen && !!(options.length || createAvailable || showStatus)
+            ? dropdownOpen &&
+              !!(options.length || createAvailable || showStatus)
             : undefined
         }
         defaultHighlightedIndex={0}

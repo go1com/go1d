@@ -1,5 +1,6 @@
 import * as React from "react";
 import Icon from "../Icon";
+import Spinner from "../Spinner";
 import Text from "../Text";
 import View, { ViewProps } from "../View";
 
@@ -36,14 +37,17 @@ const Label: React.SFC<LabelProps> = ({
       </Text>
       {statusText && (
         <View flexDirection="row" alignItems="center">
-          {statusIcon && (
-            <Icon
-              size={1}
-              name={statusIcon}
-              color={statusColor}
-              marginRight={2}
-            />
-          )}
+          {statusIcon &&
+            (statusIcon === "Spinner" ? (
+              <Spinner borderColor="accent" size={1} marginRight={2} />
+            ) : (
+              <Icon
+                size={1}
+                name={statusIcon}
+                color={statusColor}
+                marginRight={2}
+              />
+            ))}
           <Text
             fontSize={1}
             color={statusColor}

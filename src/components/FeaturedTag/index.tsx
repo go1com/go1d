@@ -16,17 +16,9 @@ export interface FeaturedTagProps extends ViewProps {
 }
 
 const interactiveStyles = (colors, passive) => {
-  const styles = { background: `${colors.background}` };
+  let styles = { background: `${colors.background}` };
   if (!passive) {
-    styles["&:hover, &:focus"] = {
-      boxShadow: foundations.shadows.strong,
-      cursor: "pointer",
-      transform: "translateY(-1px)",
-    };
-    styles["&:active"] = {
-      boxShadow: foundations.shadows.crisp,
-      transform: "translateY(1px)",
-    };
+    styles = Object.assign(styles, foundations.hoverStyle);
   }
   return styles;
 };
