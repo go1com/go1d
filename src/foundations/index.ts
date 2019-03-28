@@ -147,7 +147,7 @@ export const colors: Colors = generateColors();
 export const zIndex: MappedKey<ZIndex, number> = {
   sticky: 1020,
   fixed: 1030,
-  dropdown: 1035,
+  dropdown: 1051,
   modalBackdrop: 1040,
   modal: 1050,
   popover: 1060,
