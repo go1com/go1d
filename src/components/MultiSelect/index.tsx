@@ -110,7 +110,10 @@ class MultiSelect extends React.PureComponent<MultiSelectProps, any> {
               },
             })}
           >
-            <Checkbox value={selectedOptions[Option.value] === true} />
+            <Checkbox
+              isStatic={true}
+              value={selectedOptions[Option.value] === true}
+            />
             <Text
               fontSize={Sizes[this.props.size].fontSize}
               css={{
