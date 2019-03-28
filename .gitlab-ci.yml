@@ -7,6 +7,7 @@ cache:
 stages:
   - build
   - test
+  - visual-test
   - release
   - npm-release
 
@@ -73,9 +74,11 @@ test:unit:
   except:
     - "tags"
 
-test:happo:
-  stage: test
+visual-test:happo:
+  stage: visual-test
   tags: ["aws"]
+  dependencies:
+  - test
   allow_failure: true
   before_script:
     - export PREVIOUS_SHA=`git rev-parse origin/master`
