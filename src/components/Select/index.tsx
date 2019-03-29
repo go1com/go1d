@@ -403,6 +403,7 @@ class Select extends React.PureComponent<SelectProps, any> {
 
   private calculateListWidth(Options) {
     const { searchable } = this.props;
+    const minWidth = searchable ? 275 : 200;
     const averageCharacterPX = 10;
     const longestString = Options.reduce((largest, Entry) => {
       if (Entry.label.length > largest) {
@@ -416,14 +417,8 @@ class Select extends React.PureComponent<SelectProps, any> {
       return 350;
     }
 
-    if (searchable) {
-      if (longestString * averageCharacterPX < 275) {
-        return 275;
-      }
-    }
-
-    if (longestString * averageCharacterPX < 200) {
-      return 200;
+    if (longestString * averageCharacterPX < minWidth) {
+      return minWidth;
     }
 
     return longestString * averageCharacterPX;
