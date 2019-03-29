@@ -418,19 +418,6 @@ class MultiSelect extends React.PureComponent<MultiSelectProps, any> {
     );
   }
 
-  private handleOnChange = event => {
-    const { onChange, name } = this.props;
-
-    if (onChange) {
-      safeInvoke(onChange, {
-        target: {
-          name,
-          value: event,
-        },
-      });
-    }
-  };
-
   public handleSelectionClear = clearFunction => {
     const { onChange } = this.props;
 
@@ -545,6 +532,19 @@ class MultiSelect extends React.PureComponent<MultiSelectProps, any> {
       return baseOptionHeight;
     };
   }
+
+  private handleOnChange = event => {
+    const { onChange, name } = this.props;
+
+    if (onChange) {
+      safeInvoke(onChange, {
+        target: {
+          name,
+          value: event,
+        },
+      });
+    }
+  };
 }
 
 export default MultiSelect;
