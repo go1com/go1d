@@ -64,3 +64,64 @@ it("handles default values", () => {
     />
   );
 });
+
+it("Calculates the Length of the dropdown correctly", () => {
+  const ref: React.RefObject<MultiSelect> = React.createRef();
+  const GroupOptions = [
+    {
+      label: "Derp",
+      optgroup: true,
+      values: [
+        { value: "test0", label: "Test0" },
+        { value: "test1", label: "Test1" },
+        { value: "test2", label: "Test2" },
+      ],
+    },
+  ];
+
+  render(<MultiSelect ref={ref} options={Options} />);
+
+  if (ref.current) {
+    expect(ref.current.calculateDropDownHeight(GroupOptions[0].values)).toBe(
+      165
+    );
+    expect(
+      ref.current.calculateDropDownHeight([
+        {
+          label: "Derp",
+          optgroup: true,
+        },
+        {
+          label: " ",
+          optgroup: true,
+        },
+        undefined,
+        ...GroupOptions[0].values,
+      ])
+    ).toBe(216);
+  } else {
+    fail("ref could not be set");
+  }
+});
+
+it("Calculates the Width of the dropdown correctly", () => {
+  const ref: React.RefObject<MultiSelect> = React.createRef();
+
+  render(<MultiSelect ref={ref} options={Options} />);
+
+  if (ref.current) {
+    expect(ref.current.calculateListWidth(Options)).toBe(200);
+    expect(
+      ref.current.calculateListWidth([
+        {
+          label:
+            "Derp Really Long Title Derp Derp Derp Derp Derp Derp Derp Derp",
+          value: "Should overflow",
+        },
+        ...Options,
+      ])
+    ).toBe(350);
+  } else {
+    fail("ref could not be set");
+  }
+});

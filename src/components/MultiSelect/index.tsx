@@ -418,20 +418,7 @@ class MultiSelect extends React.PureComponent<MultiSelectProps, any> {
     );
   }
 
-  private handleOnChange = event => {
-    const { onChange, name } = this.props;
-
-    if (onChange) {
-      safeInvoke(onChange, {
-        target: {
-          name,
-          value: event,
-        },
-      });
-    }
-  };
-
-  private handleSelectionClear = clearFunction => {
+  public handleSelectionClear = clearFunction => {
     const { onChange } = this.props;
 
     return () => {
@@ -446,7 +433,7 @@ class MultiSelect extends React.PureComponent<MultiSelectProps, any> {
     };
   };
 
-  private flattenOptions(Options = []) {
+  public flattenOptions(Options = []) {
     return Options.reduce((sum, Option) => {
       if (Option.optgroup) {
         return {
@@ -479,7 +466,7 @@ class MultiSelect extends React.PureComponent<MultiSelectProps, any> {
     }, {});
   }
 
-  private filterOptions(Options, searchValue) {
+  public filterOptions(Options, searchValue) {
     if (typeof searchValue === "string" && searchValue.trim() !== "") {
       return Options.filter(Entry => {
         return (
@@ -492,10 +479,10 @@ class MultiSelect extends React.PureComponent<MultiSelectProps, any> {
     return Options;
   }
 
-  private calculateListWidth(Options) {
+  public calculateListWidth(Options) {
     const { searchable } = this.props;
-
     const averageCharacterPX = 10;
+    const minWidth = searchable ? 275 : 200;
     const longestString = Options.reduce((largest, Entry) => {
       if (Entry.label.length > largest) {
         return Entry.label.length;
@@ -508,20 +495,14 @@ class MultiSelect extends React.PureComponent<MultiSelectProps, any> {
       return 350;
     }
 
-    if (searchable) {
-      if (longestString * averageCharacterPX < 275) {
-        return 275;
-      }
-    }
-
-    if (longestString * averageCharacterPX < 200) {
-      return 200;
+    if (longestString * averageCharacterPX < minWidth) {
+      return minWidth;
     }
 
     return longestString * averageCharacterPX;
   }
 
-  private calculateDropDownHeight(Options) {
+  public calculateDropDownHeight(Options) {
     const Height = Options.reduce((sum, Entry, index) => {
       return sum + this.calculateOptionHeight(Options)({ index });
     }, 0);
@@ -529,7 +510,7 @@ class MultiSelect extends React.PureComponent<MultiSelectProps, any> {
     return Height < 300 ? Height : 300;
   }
 
-  private calculateOptionHeight(Options) {
+  public calculateOptionHeight(Options) {
     // Calculate the options for VirtualisedList
     return ({ index: OptionIndex }) => {
       const Option = Options[OptionIndex];
@@ -551,6 +532,19 @@ class MultiSelect extends React.PureComponent<MultiSelectProps, any> {
       return baseOptionHeight;
     };
   }
+
+  private handleOnChange = event => {
+    const { onChange, name } = this.props;
+
+    if (onChange) {
+      safeInvoke(onChange, {
+        target: {
+          name,
+          value: event,
+        },
+      });
+    }
+  };
 }
 
 export default MultiSelect;
