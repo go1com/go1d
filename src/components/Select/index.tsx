@@ -147,6 +147,7 @@ class Select extends React.PureComponent<SelectProps, any> {
         {({ colors }) => (
           <Downshift
             stateReducer={this.stateReducer}
+            initialInputValue=""
             onChange={this.handleOnChange}
             itemToString={this.OptionToString}
             itemCount={selectableCount}
@@ -338,6 +339,11 @@ class Select extends React.PureComponent<SelectProps, any> {
   private stateReducer = (state, changes) => {
     switch (changes.type) {
       case Downshift.stateChangeTypes.keyDownEnter:
+      case Downshift.stateChangeTypes.clickButton:
+        return {
+          ...changes,
+          inputValue: "",
+        };
       case Downshift.stateChangeTypes.clickItem:
         return {
           ...changes,
@@ -396,6 +402,7 @@ class Select extends React.PureComponent<SelectProps, any> {
   }
 
   private calculateListWidth(Options) {
+    const { searchable } = this.props;
     const averageCharacterPX = 10;
     const longestString = Options.reduce((largest, Entry) => {
       if (Entry.label.length > largest) {
@@ -407,6 +414,12 @@ class Select extends React.PureComponent<SelectProps, any> {
 
     if (longestString * averageCharacterPX > 350) {
       return 350;
+    }
+
+    if (searchable) {
+      if (longestString * averageCharacterPX < 275) {
+        return 275;
+      }
     }
 
     if (longestString * averageCharacterPX < 200) {

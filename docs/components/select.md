@@ -60,7 +60,7 @@ releaseVersion: 0.0.24
 
 ### Controlled Value
 ```.tsx
-<Select options={[
+<Select searchable={true} options={[
   { "value": "chocolate", label: "Chocolate" },
   { "value": "stawberry", label: "Strawberry" },
   { "value": "vanilla", label: "Vanilla" }
