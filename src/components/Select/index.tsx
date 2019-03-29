@@ -124,6 +124,7 @@ class Select extends React.PureComponent<SelectProps, any> {
       disabled,
       size,
       defaultText = "Please Select", // Deprecated
+      name, // Do not pass to child
       placeholder,
       defaultValue,
       value,
@@ -316,11 +317,14 @@ class Select extends React.PureComponent<SelectProps, any> {
   }
 
   private handleOnChange = event => {
-    const { onChange } = this.props;
+    const { onChange, name } = this.props;
 
     if (onChange) {
       safeInvoke(onChange, {
-        target: event,
+        target: {
+          name,
+          ...event,
+        },
       });
     }
   };
