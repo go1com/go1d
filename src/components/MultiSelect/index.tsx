@@ -139,6 +139,7 @@ class MultiSelect extends React.PureComponent<MultiSelectProps, any> {
       label = "",
       defaultText = "Please Select", // Deprecated - use placeholder
       placeholder,
+      name, // Do not pass to child
       searchable,
       id,
       closeOnSelect,
@@ -418,11 +419,12 @@ class MultiSelect extends React.PureComponent<MultiSelectProps, any> {
   }
 
   private handleOnChange = event => {
-    const { onChange } = this.props;
+    const { onChange, name } = this.props;
 
     if (onChange) {
       safeInvoke(onChange, {
         target: {
+          name,
           value: event,
         },
       });
