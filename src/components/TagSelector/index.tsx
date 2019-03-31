@@ -51,6 +51,10 @@ export interface TagSelectorProps extends ViewProps {
    * Used to render status like loading or not found
    */
   statusRenderer?: () => React.ReactNode;
+  selectedValuesRenderer?: (
+    values: string[],
+    removeItemFn: (evt: React.SyntheticEvent<HTMLButtonElement>) => void
+  ) => React.ReactNode;
   placeholder?: string;
   createableText?: string;
 }
@@ -157,6 +161,49 @@ class TagSelector extends React.Component<TagSelectorProps, State> {
     return <Text>{item.label}</Text>;
   }
 
+  public selectedValuesRenderer = (
+    values: string[],
+    removeItemFn: (evt: React.SyntheticEvent<HTMLButtonElement>) => void
+  ) => {
+    const { selectedValuesRenderer, disabled, borderRadius = 2 } = this.props;
+
+    if (selectedValuesRenderer) {
+      return selectedValuesRenderer(values, removeItemFn);
+    }
+
+    return values.map((v, i) => (
+      <View
+        key={i}
+        flexDirection="row"
+        alignItems="center"
+        borderRadius={borderRadius}
+        borderColor={this.props.borderColor || "soft"}
+        backgroundColor="background"
+        paddingX={4}
+        paddingY={3}
+        marginRight={2}
+        border={1}
+        boxShadow="crisp"
+      >
+        <Text fontSize={1} color="inherit" marginRight={2}>
+          {v}
+        </Text>
+        <ButtonMinimal
+          marginLeft={2}
+          iconName="Close"
+          size="sm"
+          width={16}
+          height={16}
+          paddingY={0}
+          round={true}
+          data-value={v}
+          onClick={removeItemFn}
+          disabled={disabled}
+        />
+      </View>
+    ));
+  };
+
   public render() {
     const {
       value = this.props.value || this.state.value || [],
@@ -251,37 +298,7 @@ class TagSelector extends React.Component<TagSelectorProps, State> {
               opacity={disabled ? "disabled" : null}
             >
               {Array.isArray(value) &&
-                value.map((v, i) => (
-                  <View
-                    key={i}
-                    flexDirection="row"
-                    alignItems="center"
-                    borderRadius={borderRadius}
-                    borderColor={this.props.borderColor || "soft"}
-                    backgroundColor="background"
-                    paddingX={4}
-                    paddingY={3}
-                    marginRight={2}
-                    border={1}
-                    boxShadow="crisp"
-                  >
-                    <Text fontSize={1} color="inherit" marginRight={2}>
-                      {v}
-                    </Text>
-                    <ButtonMinimal
-                      marginLeft={2}
-                      iconName="Close"
-                      size="sm"
-                      width={16}
-                      height={16}
-                      paddingY={0}
-                      round={true}
-                      data-value={v}
-                      onClick={this.removeItem}
-                      disabled={disabled}
-                    />
-                  </View>
-                ))}
+                this.selectedValuesRenderer(value, this.removeItem)}
               <TextInput
                 {...getInputProps({
                   onFocus: openMenu,

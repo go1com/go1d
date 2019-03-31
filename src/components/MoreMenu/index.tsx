@@ -73,7 +73,7 @@ class MoreMenu extends React.Component<MoreMenuProps, State> {
             renderFunction={loading ? Loader : DropdownMenuItem}
             itemToString={itemToString}
             placement="bottom-end"
-            offset={isButtonFilled && `0, ${spacing[2]}, 0, 0`}
+            offset={`0, ${spacing[2]}, 0, 0`}
             onSelect={this.onSelect}
           >
             {({ ref, getToggleButtonProps }) => {
