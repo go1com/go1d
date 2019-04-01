@@ -149,21 +149,26 @@ class MultiSelect extends React.PureComponent<MultiSelectProps, any> {
 
     const { flattenedOptions, selectableCount } = this.flattenOptions(options);
 
-    const DefaultOption = defaultValue
-      ? defaultValue.map(Entry => flattenedOptions.find(x => x.value === Entry))
-      : null;
+    const DefaultOption =
+      defaultValue && Array.isArray(flattenedOptions)
+        ? defaultValue.map(Entry =>
+            flattenedOptions.find(x => x.value === Entry)
+          )
+        : null;
 
-    const selectedOption = Array.isArray(value)
-      ? value.map(Entry =>
-          flattenedOptions.find(x => {
-            if (typeof Entry !== "object") {
-              return x.value === Entry;
-            }
+    const selectedOption = Array.isArray(flattenedOptions)
+      ? Array.isArray(value)
+        ? value.map(Entry =>
+            flattenedOptions.find(x => {
+              if (typeof Entry !== "object") {
+                return x.value === Entry;
+              }
 
-            return x.value === Entry.value;
-          })
-        )
-      : value;
+              return x.value === Entry.value;
+            })
+          )
+        : value
+      : undefined;
 
     return (
       <Theme.Consumer>

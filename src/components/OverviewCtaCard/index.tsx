@@ -13,7 +13,7 @@ import View, { ViewProps } from "../View";
 export interface OverviewCtaCardProps extends ViewProps {
   actions?: Array<{
     title: string;
-    onClick: ((evt: React.SyntheticEvent) => void);
+    onClick: (evt: React.SyntheticEvent) => void;
   }>;
   author?: string;
   backgroundImage?: string;

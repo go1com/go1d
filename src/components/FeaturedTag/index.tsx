@@ -12,7 +12,7 @@ export interface FeaturedTagProps extends ViewProps {
   iconColor?: string;
   backgroundColor?: string;
   iconName?: string;
-  onClick?: ((evt: React.SyntheticEvent) => void);
+  onClick?: (evt: React.SyntheticEvent) => void;
 }
 
 const interactiveStyles = (colors, passive) => {

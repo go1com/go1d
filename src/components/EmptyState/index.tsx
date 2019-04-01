@@ -9,7 +9,7 @@ export interface EmptyStateProps extends ViewProps {
   title?: string;
   description?: string;
   actionText?: string;
-  action?: ((evt: React.SyntheticEvent) => void);
+  action?: (evt: React.SyntheticEvent) => void;
 }
 
 const EmptyState: React.SFC<EmptyStateProps> = ({

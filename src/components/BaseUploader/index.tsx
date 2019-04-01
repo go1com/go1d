@@ -11,7 +11,7 @@ export interface BaseUploadProps extends DropzoneProps {
   multiple?: boolean;
   onBlur?: (evt: any) => void;
   disabled?: boolean;
-  children: ((params: any) => JSX.Element);
+  children: (params: any) => JSX.Element;
 }
 
 class BaseUpload extends React.Component<BaseUploadProps, any> {

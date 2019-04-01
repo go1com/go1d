@@ -28,7 +28,7 @@ export interface DataTableProps extends ViewProps {
   rowRenderer: ListRowRenderer;
   /*
    * A header row. Rendered inside a TR component
-  */
+   */
   header?: React.ReactNodeArray;
   /** A string to display the total number of results */
   total?: React.ReactNode;

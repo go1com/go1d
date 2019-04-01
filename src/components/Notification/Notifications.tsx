@@ -3,7 +3,7 @@ import Notification from "./Notification";
 
 export interface Props {
   notifications: any[];
-  removeFromQueue?: ((evt: React.SyntheticEvent) => void);
+  removeFromQueue?: (evt: React.SyntheticEvent) => void;
 }
 
 class Notifications extends React.Component<Props, any> {

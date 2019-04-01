@@ -8,7 +8,7 @@ import View, { ViewProps } from "../View";
 
 export interface BannerProps extends ViewProps {
   type: "success" | "warning" | "danger";
-  close?: ((evt: React.SyntheticEvent) => void);
+  close?: (evt: React.SyntheticEvent) => void;
   floating?: boolean;
 }
 

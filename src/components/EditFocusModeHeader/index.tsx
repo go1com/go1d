@@ -12,7 +12,7 @@ import View from "../View";
 
 export interface EditFocusModeHeaderProps {
   returnHref?: any;
-  returnOnClick?: ((evt: React.SyntheticEvent) => void);
+  returnOnClick?: (evt: React.SyntheticEvent) => void;
   headerSuffixItems?: Array<SuffixItemProps | null>;
   returnIconName?: string;
   title: string;

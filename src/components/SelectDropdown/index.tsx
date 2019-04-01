@@ -70,7 +70,7 @@ export interface SelectDropdownProps extends ViewProps {
   statusRenderer?: () => React.ReactNode;
   handleCreate?: (option: string) => Promise<any> | void;
 
-  children: ((params: any) => React.ReactNode);
+  children: (params: any) => React.ReactNode;
 
   selectedColor?: string;
   name?: string;

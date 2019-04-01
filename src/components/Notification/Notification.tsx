@@ -10,8 +10,8 @@ export interface NotificationProps extends ViewProps {
   message?: React.ReactChild;
   lifetime: number;
   isOpen: boolean;
-  onClose?: ((evt: React.SyntheticEvent) => void);
-  onDie?: (() => void);
+  onClose?: (evt: React.SyntheticEvent) => void;
+  onDie?: () => void;
   offset: number;
 }
 

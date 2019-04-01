@@ -22,7 +22,10 @@ export interface Props {
   placeholder?: string;
   value?: Value;
   onChange?: (
-    change: { operations: Immutable.List<Operation>; value: Value }
+    change: {
+      operations: Immutable.List<Operation>;
+      value: Value;
+    }
   ) => any;
   name?: string;
   disabled?: boolean;
