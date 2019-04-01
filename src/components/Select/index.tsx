@@ -252,7 +252,7 @@ class Select extends React.PureComponent<SelectProps, any> {
                     {isOpen && (
                       <Portal>
                         <Popper placement="bottom-start">
-                          {({ ref, style }) => (
+                          {({ ref, style, scheduleUpdate }) => (
                             <View
                               {...getMenuProps({
                                 refKey: "innerRef",
@@ -277,7 +277,10 @@ class Select extends React.PureComponent<SelectProps, any> {
                                       clearable={false}
                                       size={size}
                                       data-testid="searchFilterInput"
-                                      {...getInputProps()}
+                                      {...getInputProps({
+                                        size,
+                                        onChange: scheduleUpdate,
+                                      }) as {}}
                                     />
                                   </View>
                                 )}
