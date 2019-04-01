@@ -44,6 +44,7 @@ const Sizes = {
 class Select extends React.PureComponent<SelectProps, any> {
   public static defaultProps = {
     size: "md",
+    options: [],
   };
 
   public OptionToString(Option) {
@@ -121,7 +122,7 @@ class Select extends React.PureComponent<SelectProps, any> {
     const {
       clearable,
       options,
-      disabled,
+      disabled = options.length === 0,
       size,
       defaultText = "Please Select", // Deprecated
       name, // Do not pass to child
