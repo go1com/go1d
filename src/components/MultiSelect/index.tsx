@@ -352,7 +352,7 @@ class MultiSelect extends React.PureComponent<MultiSelectProps, any> {
                       {isOpen && (
                         <Portal>
                           <Popper placement="bottom-start">
-                            {({ ref, style }) => (
+                            {({ ref, style, scheduleUpdate }) => (
                               <View
                                 {...getMenuProps({
                                   refKey: "innerRef",
@@ -373,11 +373,13 @@ class MultiSelect extends React.PureComponent<MultiSelectProps, any> {
                                     <View paddingX={4} paddingY={3}>
                                       <SearchInput
                                         id={`SearchInput__${id}`}
-                                        onSubmit={null}
                                         clearable={false}
-                                        size={size}
                                         data-testid="inputElement"
-                                        {...getInputProps()}
+                                        onSubmit={null}
+                                        {...getInputProps({
+                                          size,
+                                          onChange: scheduleUpdate,
+                                        }) as {}}
                                       />
                                     </View>
                                   )}
