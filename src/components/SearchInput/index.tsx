@@ -6,12 +6,9 @@ import TextInput, { TextInputProps } from "../TextInput";
 
 export interface SearchInputProps extends TextInputProps {
   element?: any;
-  onSubmit: ((
-    search: string,
-    event: React.SyntheticEvent<HTMLElement>
-  ) => void);
+  onSubmit: (search: string, event: React.SyntheticEvent<HTMLElement>) => void;
   clearable?: boolean;
-  onClear?: ((event: React.SyntheticEvent<HTMLElement>) => void);
+  onClear?: (event: React.SyntheticEvent<HTMLElement>) => void;
 }
 
 class SearchInput extends React.Component<SearchInputProps, any> {

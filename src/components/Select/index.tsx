@@ -136,13 +136,15 @@ class Select extends React.PureComponent<SelectProps, any> {
 
     const { flattenedOptions, selectableCount } = this.flattenOptions(options);
 
-    const DefaultOption = defaultValue
-      ? flattenedOptions.find(x => x.value === defaultValue)
-      : null;
+    const DefaultOption =
+      defaultValue && Array.isArray(flattenedOptions)
+        ? flattenedOptions.find(x => x.value === defaultValue)
+        : null;
 
-    const selectedOption = value
-      ? flattenedOptions.find(x => x.value === value)
-      : undefined;
+    const selectedOption =
+      value && Array.isArray(flattenedOptions)
+        ? flattenedOptions.find(x => x.value === value)
+        : undefined;
 
     return (
       <Theme.Consumer>

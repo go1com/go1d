@@ -18,7 +18,7 @@ export interface ButtonProps extends ViewProps {
   iconName?: string;
   iconMargin?: number;
   fontWeight?: FontWeight;
-  onClick?: ((evt: React.SyntheticEvent) => void);
+  onClick?: (evt: React.SyntheticEvent) => void;
   href?: any;
   active?: boolean;
 }
