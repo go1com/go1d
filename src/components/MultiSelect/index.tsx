@@ -47,6 +47,7 @@ const Sizes = {
 class MultiSelect extends React.PureComponent<MultiSelectProps, any> {
   public static defaultProps = {
     size: "md",
+    options: [],
   };
 
   public state = {
@@ -132,7 +133,7 @@ class MultiSelect extends React.PureComponent<MultiSelectProps, any> {
   public render() {
     const {
       options,
-      disabled,
+      disabled = options.length === 0,
       size,
       defaultValue,
       value,
