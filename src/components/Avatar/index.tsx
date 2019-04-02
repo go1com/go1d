@@ -11,6 +11,7 @@ export interface AvatarProps extends ViewProps {
   src?: string;
   iconName?: string;
   avatarType?: "circle" | "square";
+  skeleton?: boolean;
 }
 
 const Avatar: React.SFC<AvatarProps> = ({
@@ -20,6 +21,7 @@ const Avatar: React.SFC<AvatarProps> = ({
   scaleSize = 1,
   iconName = "User",
   avatarType = "circle",
+  skeleton = false,
   ...props
 }: AvatarProps) => {
   const names = `${fullName}`.split(" ");
@@ -67,56 +69,60 @@ const Avatar: React.SFC<AvatarProps> = ({
         <View
           css={{
             verticalAlign: "middle",
-            borderRadius: "50%",
+            borderRadius: `${avatarType === "square" ? 3 : "50%"}`,
             textAlign: "center",
             position: "relative",
             ...getBreakPointSizeStyles(breakpoints, type),
           }}
           position="relative"
           justifyContent="center"
-          backgroundColor="contrast"
+          backgroundColor={skeleton ? "muted" : "contrast"}
           {...props}
         >
-          {fullName ? (
-            <Text
-              color={props.color || "subtle"}
-              css={{ textTransform: "uppercase" }}
-              fontSize={
-                Array.isArray(size)
-                  ? size.map(constrainText)
-                  : constrainText(size)
-              }
-            >
-              {displayName}
-            </Text>
-          ) : (
-            <View alignItems="center">
-              <Icon
-                name={iconName}
-                size={
-                  Array.isArray(size)
-                    ? size.map(constrainIcon)
-                    : constrainIcon(size)
-                }
-                color="subtle"
-              />
-            </View>
-          )}
+          {!skeleton && (
+            <React.Fragment>
+              {fullName ? (
+                <Text
+                  color={props.color || "subtle"}
+                  css={{ textTransform: "uppercase" }}
+                  fontSize={
+                    Array.isArray(size)
+                      ? size.map(constrainText)
+                      : constrainText(size)
+                  }
+                >
+                  {displayName}
+                </Text>
+              ) : (
+                <View alignItems="center">
+                  <Icon
+                    name={iconName}
+                    size={
+                      Array.isArray(size)
+                        ? size.map(constrainIcon)
+                        : constrainIcon(size)
+                    }
+                    color="subtle"
+                  />
+                </View>
+              )}
 
-          {src && (
-            <View
-              position="absolute"
-              css={{
-                top: 0,
-                left: 0,
-                verticalAlign: "middle",
-                backgroundSize: "cover",
-                backgroundImage: `url('${src}')`,
-                backgroundPosition: "center",
-                borderRadius: `${avatarType === "square" ? 3 : "50%"}`,
-                ...getBreakPointSizeStyles(breakpoints, type),
-              }}
-            />
+              {src && (
+                <View
+                  position="absolute"
+                  css={{
+                    top: 0,
+                    left: 0,
+                    verticalAlign: "middle",
+                    backgroundSize: "cover",
+                    backgroundImage: `url('${src}')`,
+                    backgroundPosition: "center",
+                    borderRadius: `${avatarType === "square" ? 3 : "50%"}`,
+                    ...getBreakPointSizeStyles(breakpoints, type),
+                  }}
+                />
+              )}
+            </React.Fragment>
           )}
         </View>
       )}
