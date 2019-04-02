@@ -549,7 +549,7 @@ class MultiSelect extends React.PureComponent<MultiSelectProps, any> {
       safeInvoke(onChange, {
         target: {
           name,
-          value: event,
+          value: event.map(x => x.value),
         },
       });
     }
