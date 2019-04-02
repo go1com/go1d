@@ -96,7 +96,8 @@ visual-test:happo:
     - SUMMARY=$("$NPM_BIN"/happo compare "$PREVIOUS_SHA" "$CURRENT_SHA");
     - if [ "$EXIT_CODE" == "113" ]; then exit 1; fi; fi
   only:
-  - merge_requests
+  - master
+  - tags
 
 pages: # NEVER rename this. I must apparently be exactly this to work
   stage: release
