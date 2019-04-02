@@ -42,7 +42,7 @@ export interface AuthorSelectorProps extends ViewProps {
   /**
    * Optional function to call when a new option is created. Returns a promise to allow for asynchronous actions to finish before continuing
    */
-  onCreate?: (option: string) => Promise<any> | void;
+  onCreate?: (evt: React.SyntheticEvent<HTMLButtonElement>) => Promise<any> | void;
 
   /**
    * Whether new options may be created. Defaults to true
@@ -232,8 +232,10 @@ class AuthorSelector extends React.PureComponent<AuthorSelectorProps, State> {
       id,
       disabled,
       onChange,
+      onCreate,
       mapEmailToAuthor,
       placeholder,
+      createable,
       createableText,
       ...props
     } = this.props;
@@ -286,7 +288,6 @@ class AuthorSelector extends React.PureComponent<AuthorSelectorProps, State> {
         </View>
         <SelectDropdown
           {...props}
-          onInputChange={this.onInputChange}
           value={value}
           options={formattedOptions}
           onChange={this.onChange}

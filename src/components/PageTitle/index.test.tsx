@@ -18,7 +18,6 @@ it("renders without crashing with all props", () => {
       fontWeight="bold"
       fontFamily="Georgia, serif"
       fontStyle="italic"
-      lineHeight="ui"
       fontSize={3}
       color="subtle"
       css={styles}

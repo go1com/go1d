@@ -68,6 +68,7 @@ class ToggleSwitch extends React.Component<
       value: propValue,
       fontSize = 2,
       onChange,
+      defaultValue,
       disabled = false,
       size = "md",
       ...props

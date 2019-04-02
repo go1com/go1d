@@ -44,6 +44,5 @@ it("renders without crashing without any optional props", () => {
 });
 
 it("renders without crashing with all props", () => {
-  const testRenderer = jest.fn();
-  render(<Slat {...props} dropdownRenderFn={testRenderer} />);
+  render(<Slat {...props} />);
 });

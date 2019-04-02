@@ -333,6 +333,7 @@ class ImageUploadSlat extends React.Component<ImageUploadSlatProps, State> {
       dragDropText,
       uploadProgress,
       showUploadCompleted,
+      onUploadProgress,
       ...props
     } = this.props;
     const { disabledClick } = this.state;

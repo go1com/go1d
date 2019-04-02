@@ -68,7 +68,7 @@ export interface SelectDropdownProps extends ViewProps {
    * Used to render status like loading or not found
    */
   statusRenderer?: () => React.ReactNode;
-  handleCreate?: (option: string) => Promise<any> | void;
+  onCreate?: (evt: React.SyntheticEvent<HTMLButtonElement>) => Promise<any> | void;
 
   children: (params: any) => React.ReactNode;
 
@@ -210,6 +210,7 @@ class SelectDropdown extends React.PureComponent<SelectDropdownProps, State> {
             ? selectedColor
             : undefined
         }
+        key={item.value}
         data-value={item.value}
         justifyContent="flex-start"
         disabled={item.disabled}
