@@ -46,7 +46,7 @@ it("renders without crashing with optional props", () => {
       isMulti={true}
       closeOnSelection={true}
       renderCreateOption={jest.fn()}
-      handleCreate={jest.fn()}
+      onCreate={jest.fn()}
       selectedColor="subtle"
       name="select"
     >

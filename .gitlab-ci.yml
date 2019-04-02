@@ -97,6 +97,7 @@ visual-test:happo:
     - if [ "$EXIT_CODE" == "113" ]; then exit 1; fi; fi
   except:
   - master
+  - tags
 
 pages: # NEVER rename this. I must apparently be exactly this to work
   stage: release

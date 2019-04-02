@@ -62,9 +62,9 @@ storiesOf("Slat", module)
   />)
   .add('With implied link wrapper and active/hover states', () => <Slat
   id={123}
-  topMeta={["one", "two"]}
-  title="This is test title"
-  description="This is the test description"
+  topMeta={["one", "two try to get top meta Truncate String with Ellipsis with a very very very very very very very very very long text"]}
+  title="This is test title try to get title to Truncate String with Ellipsis with a very very very very very very very very very long text"
+  description="This is the test description try to get description to Truncate String with Ellipsis with a very very very very very very very very very long text"
   currency="AUD"
   price={100}
   bottomMeta={[

@@ -31,7 +31,6 @@ it("renders without crashing in use case 2", () => {
       title="Pay per use"
       backgroundColor="soft"
       description="Sell your courses through the GO1 course marketplace directly to consumers.<br/><br/>You receive 70% of the purchase price from all sales."
-      buttonText="Button"
       button={
         <ButtonFilled size="lg" justifyContent="center">
           Button

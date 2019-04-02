@@ -81,14 +81,13 @@ it("renders without crashing with default value", () => {
 });
 
 it("renders without crashing some optional props", () => {
-  render(<Select options={Options} activeOptions={["test 2"]} />);
+  render(<Select options={Options} />);
 });
 
 it("Clicking opens the dropdown", async () => {
   const ChangeMock = jest.fn();
   const { getByTestId } = render(
     <Select
-      showCheckboxes={true}
       searchable={true}
       options={Options}
       onChange={ChangeMock}
@@ -104,7 +103,6 @@ it("Clicking opens the dropdown - optgroup", async () => {
   const ChangeMock = jest.fn();
   const { getByTestId } = render(
     <Select
-      showCheckboxes={true}
       searchable={true}
       options={Optgroups}
       onChange={ChangeMock}

@@ -170,7 +170,6 @@ const Slat: React.SFC<SlatProps> = ({
                       ellipsis={true}
                       color="subtle"
                       fontSize={1}
-                      maxWidth={dropdownItems && "90%"}
                     >
                       {topMeta.join(" / ")}
                     </Text>

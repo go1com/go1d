@@ -222,6 +222,7 @@ class TagSelector extends React.Component<TagSelectorProps, State> {
       onInputChange,
       placeholder,
       createableText,
+      selectedValuesRenderer,
       ...props
     } = this.props;
 

@@ -17,7 +17,6 @@ it("renders without crashing with all props", () => {
   render(
     <ToggleButtonFeature
       backgroundColor="lightest"
-      iconMarginBottom={0}
       color="subtle"
       css={styles}
       padding={3}
