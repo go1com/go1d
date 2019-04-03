@@ -287,7 +287,7 @@ class TagSelector extends React.Component<TagSelectorProps, State> {
               backgroundColor="background"
               paddingX={4}
               minHeight={45}
-              paddingY={0}
+              paddingY={2}
               border={1}
               borderColor={this.getBorderColor()}
               boxShadow="inner"
