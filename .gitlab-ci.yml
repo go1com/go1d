@@ -78,7 +78,7 @@ visual-test:happo:
   stage: visual-test
   tags: ["aws"]
   dependencies:
-  - test:unit
+  - test:linting
   allow_failure: true
   before_script:
     - export PREVIOUS_SHA=`git rev-parse origin/master`

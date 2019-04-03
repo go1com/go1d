@@ -27,7 +27,7 @@ const DropdownMenu = (item: Item, index: number, getItemProps) => {
           e.stopPropagation();
         },
       })}
-      iconColor={item.iconColor || "subtle"}
+      iconColor={item.iconColor || "muted"}
       color={item.color || "default"}
       justifyContent="flex-start"
       paddingTop={3}
