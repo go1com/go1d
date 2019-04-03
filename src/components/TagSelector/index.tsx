@@ -182,6 +182,7 @@ class TagSelector extends React.Component<TagSelectorProps, State> {
         backgroundColor="background"
         paddingX={4}
         paddingY={3}
+        marginY={2}
         marginRight={2}
         border={1}
         boxShadow="crisp"
@@ -291,13 +292,12 @@ class TagSelector extends React.Component<TagSelectorProps, State> {
               backgroundColor="background"
               paddingX={4}
               minHeight={45}
-              paddingY={2}
+              paddingY={1}
               border={1}
               borderColor={this.getBorderColor()}
               boxShadow="inner"
               alignItems="center"
               width="100%"
-              padding={0}
               htmlFor={id || this.state.randomId}
               innerRef={ref}
               opacity={disabled ? "disabled" : null}
