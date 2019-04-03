@@ -27,6 +27,7 @@ export interface TagSelectorProps extends ViewProps {
    * Options could be an array of string or objects, provide a formatter to bring them into a uniform structure
    */
   optionFormatter?: (option: any) => { label: string; value: string };
+  optionsFilterFn?: (options: any) => [];
 
   onInputChange?: (evt: React.SyntheticEvent<HTMLInputElement>) => void;
 
@@ -211,6 +212,7 @@ class TagSelector extends React.Component<TagSelectorProps, State> {
       showStatus,
       statusRenderer,
       optionFormatter,
+      optionsFilterFn,
       options = [],
       id,
       disabled,
@@ -226,25 +228,27 @@ class TagSelector extends React.Component<TagSelectorProps, State> {
       ...props
     } = this.props;
 
-    const formattedOptions = options
-      .map(option => {
-        if (optionFormatter) {
-          return optionFormatter(option);
-        }
-        return {
-          label: option,
-          value: option.toString(),
-        };
-      })
-      // run option format first, options could be an array of string or objects, so filter will get uniform data structure
-      .filter(
-        option =>
-          !value.includes(option.value.toString()) &&
-          option.value
-            .toString()
-            .toLowerCase()
-            .includes(this.state.search.trim().toLowerCase())
-      );
+    // run option format first, options could be an array of string or objects, so filter will get uniform data structure
+    const formattedOptions = options.map(option => {
+      if (optionFormatter) {
+        return optionFormatter(option);
+      }
+      return {
+        label: option,
+        value: option.toString(),
+      };
+    });
+
+    const filteredOptions = optionsFilterFn
+      ? optionsFilterFn(formattedOptions) // Allow external filtering of options
+      : formattedOptions.filter(
+          option =>
+            !value.includes(option.value.toString()) &&
+            option.value
+              .toString()
+              .toLowerCase()
+              .includes(this.state.search.trim().toLowerCase())
+        );
 
     const renderCreate =
       createable &&
@@ -262,7 +266,7 @@ class TagSelector extends React.Component<TagSelectorProps, State> {
       <SelectDropdown
         {...props}
         value={value}
-        options={formattedOptions}
+        options={filteredOptions}
         isMulti={true}
         onChange={this.onChange}
         renderCreateOption={renderCreate ? this.renderCreate : null}
@@ -287,7 +291,7 @@ class TagSelector extends React.Component<TagSelectorProps, State> {
               backgroundColor="background"
               paddingX={4}
               minHeight={45}
-              paddingY={0}
+              paddingY={2}
               border={1}
               borderColor={this.getBorderColor()}
               boxShadow="inner"
