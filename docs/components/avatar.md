@@ -33,6 +33,20 @@ A component that displays an avatar.
 <Avatar fullName="Leslie Knope" backgroundColor="subtle" color="background" size={4} />
 ```
 
+### Avatar with skeleton
+```.jsx
+<Avatar skeleton={true} size={4} />
+```
+
+### Avatar with skeleton square
+```.jsx
+<Avatar skeleton={true} avatarType="square" size={4} />
+```
+
+### Avatar square without image
+```.jsx
+<Avatar fullName="Leslie Knope" avatarType="square" backgroundColor="subtle" color="background" size={4} />
+```
 
 ```!jsx
 <ComponentDoc component="AvatarProps" />

@@ -136,11 +136,11 @@ class MultiSelect extends React.PureComponent<MultiSelectProps, any> {
       disabled = options.length === 0,
       size,
       defaultValue,
-      value,
       label = "",
       defaultText = "Please Select", // Deprecated - use placeholder
       placeholder,
       name, // Do not pass to child
+      onChange, // Do not pass to child
       searchable,
       id,
       closeOnSelect,
@@ -155,7 +155,10 @@ class MultiSelect extends React.PureComponent<MultiSelectProps, any> {
             flattenedOptions.find(x => x.value === Entry)
           )
         : null;
-
+    let value = this.props.value;
+    if (value && !Array.isArray(value)) {
+      value = [value];
+    }
     const selectedOption = Array.isArray(flattenedOptions)
       ? Array.isArray(value)
         ? value.map(Entry =>
@@ -548,7 +551,7 @@ class MultiSelect extends React.PureComponent<MultiSelectProps, any> {
       safeInvoke(onChange, {
         target: {
           name,
-          value: event,
+          value: event.map(x => x.value),
         },
       });
     }

@@ -126,6 +126,7 @@ class Select extends React.PureComponent<SelectProps, any> {
       size,
       defaultText = "Please Select", // Deprecated
       name, // Do not pass to child
+      onChange, // Do not pass to child
       placeholder,
       defaultValue,
       value,
