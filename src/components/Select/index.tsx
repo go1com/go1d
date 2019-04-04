@@ -356,6 +356,7 @@ class Select extends React.PureComponent<SelectProps, any> {
           inputValue: "",
         };
       case Downshift.stateChangeTypes.clickItem:
+      case Downshift.stateChangeTypes.controlledPropUpdatedSelectedItem:
         return {
           ...changes,
           highlightedIndex: state.highlightedIndex,
