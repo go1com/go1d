@@ -68,7 +68,9 @@ export interface SelectDropdownProps extends ViewProps {
    * Used to render status like loading or not found
    */
   statusRenderer?: () => React.ReactNode;
-  onCreate?: (evt: React.SyntheticEvent<HTMLButtonElement>) => Promise<any> | void;
+  onCreate?: (
+    evt: React.SyntheticEvent<HTMLButtonElement>
+  ) => Promise<any> | void;
 
   children: (params: any) => React.ReactNode;
 

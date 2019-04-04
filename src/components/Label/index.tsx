@@ -11,59 +11,62 @@ export interface LabelProps extends ViewProps {
   statusIcon?: string;
 }
 
-const Label: React.SFC<LabelProps> = ({
-  htmlFor,
-  children,
-  statusText,
-  statusColor = "subtle",
-  statusIcon,
-  ...props
-}: any) => {
-  return (
-    <View
-      flexDirection="row"
-      justifyContent="space-between"
-      alignItems="flex-end"
-      paddingBottom={2}
-      {...props}
-    >
-      <Text
-        element="label"
-        fontWeight="semibold"
-        color="default"
-        htmlFor={htmlFor}
-      >
-        {children}
-      </Text>
-      {statusText && (
-        <View flexDirection="row" alignItems="center">
-          {statusIcon &&
-            (statusIcon === "Spinner" ? (
-              <Spinner borderColor="accent" size={1} marginRight={2} />
-            ) : (
-              <Icon
-                size={1}
-                name={statusIcon}
-                color={statusColor}
-                marginRight={2}
-              />
-            ))}
-          <Text
-            fontSize={1}
-            color={statusColor}
-            fontWeight="semibold"
-            css={{
-              textTransform: "uppercase",
-            }}
-          >
-            {statusText}
-          </Text>
-        </View>
-      )}
-    </View>
-  );
-};
+class Label extends React.PureComponent<LabelProps> {
+  public static displayName = "Label";
 
-Label.displayName = "Label";
+  public render() {
+    const {
+      htmlFor,
+      children,
+      statusText,
+      statusColor = "subtle",
+      statusIcon,
+      whiteSpace,
+      ...props
+    } = this.props;
+    return (
+      <View
+        flexDirection="row"
+        justifyContent="space-between"
+        alignItems="flex-end"
+        paddingBottom={2}
+        whiteSpace={whiteSpace}
+        {...props}
+      >
+        <Text
+          element="label"
+          fontWeight="semibold"
+          color="default"
+          htmlFor={htmlFor}
+        >
+          {children}
+        </Text>
+        {statusText && (
+          <View flexDirection="row" alignItems="center">
+            {statusIcon &&
+              (statusIcon === "Spinner" ? (
+                <Spinner borderColor="accent" size={1} marginRight={2} />
+              ) : (
+                <Icon
+                  size={1}
+                  name={statusIcon}
+                  color={statusColor}
+                  marginRight={2}
+                />
+              ))}
+            <Text
+              fontSize={1}
+              color={statusColor}
+              fontWeight="semibold"
+              textTransform="uppercase"
+            >
+              {statusText}
+            </Text>
+          </View>
+        )}
+      </View>
+    );
+  }
+}
 
 export default Label;

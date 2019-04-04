@@ -1,13 +1,26 @@
-import { Field as FormikField } from "formik";
-import * as React from "react";
-
+import { connect, FieldAttributes, FormikContext, getIn } from "formik";
 import { get } from "lodash";
+import { Values } from "popmotion/lib/animations/keyframes/types";
+import * as React from "react";
+import { autobind } from "../../utils/decorators";
 import firstDefined from "../../utils/firstDefined";
 import safeInvoke from "../../utils/safeInvoke";
 import Label from "../Label";
 import Text from "../Text";
 import View, { ViewProps } from "../View";
 
+function shallowCompare(newObj, prevObj) {
+  if (Object.keys(newObj).length !== Object.keys(prevObj).length) {
+    return true;
+  }
+
+  for (const key in newObj) {
+    if (newObj[key] !== prevObj[key]) {
+      return true;
+    }
+  }
+  return false;
+}
 export interface FieldProps extends ViewProps {
   label?: string;
   id?: string;
@@ -27,142 +40,199 @@ export interface FieldProps extends ViewProps {
   component?: string | React.ComponentType<any> | React.ComponentType<void>;
 }
 
-const Field: React.SFC<FieldProps> = ({
-  component,
-  children,
-  description,
-  label,
-  id,
-  required,
-  disabled,
-  name,
-  value,
-  inputRef,
-  statusText = !required && "Optional",
-  statusColor = "subtle",
-  invalidText = "Invalid",
-  requiredText = "Required",
-  statusIcon,
-  validate,
-  errorMessage,
-  errorFormat,
-  hideStatus,
-  hideLabel,
-  onChange,
-  suppressError,
-  ...props
-}: FieldProps) => {
-  const formikProps = {
-    name,
-    value,
-    validate,
-  };
-  return (
-    <FormikField {...formikProps}>
-      {({ field, form }) => {
-        let node = null;
-        let message = null;
+class Field extends React.Component<
+  FieldProps & {
+    formik: FormikContext<any>;
+  }
+> {
+  public componentDidMount() {
+    // Register the Field with the parent Formik. Parent will cycle through
+    // registered Field's validate fns right prior to submit
+    this.props.formik.registerField(this.props.name, this);
+  }
 
-        if (
-          form.errors &&
-          get(form.errors, field.name) &&
-          get(form.touched, field.name) && // Only show error for touched fields //
-          !suppressError
-        ) {
-          message = get(form.errors, field.name);
+  public componentDidUpdate(
+    prevProps: FieldAttributes<FieldProps> & { formik: FormikContext<Values> }
+  ) {
+    if (this.props.name !== prevProps.name) {
+      this.props.formik.unregisterField(prevProps.name);
+      this.props.formik.registerField(this.props.name, this);
+    }
+
+    if (this.props.validate !== prevProps.validate) {
+      this.props.formik.registerField(this.props.name, this);
+    }
+  }
+
+  public shouldComponentUpdate(prevProps) {
+    const { formik, ...props } = this.props;
+    const { formik: oldFormik, ...oldProps } = prevProps;
+
+    return (
+      shallowCompare(props, oldProps) ||
+      shallowCompare(
+        {
+          ...formik,
+          values: get(formik.values, props.name),
+          errors: get(formik.errors, props.name),
+          touched: get(formik.touched, props.name),
+        },
+        {
+          ...oldFormik,
+          values: get(oldFormik.values, props.name),
+          errors: get(oldFormik.errors, props.name),
+          touched: get(oldFormik.touched, props.name),
         }
-        if (errorMessage) {
-          message = errorMessage;
+      )
+    );
+  }
+
+  public componentWillUnmount() {
+    this.props.formik.unregisterField(this.props.name);
+  }
+
+  @autobind
+  public onChange(evt: any) {
+    safeInvoke(this.props.formik.handleChange, evt);
+    return safeInvoke(this.props.onChange, evt);
+  }
+
+  @autobind
+  public onBlur(evt: any) {
+    safeInvoke(this.props.formik.handleBlur, evt);
+    return safeInvoke(this.props.onBlur, evt);
+  }
+
+  public render() {
+    const {
+      component,
+      children,
+      description,
+      label,
+      id,
+      required,
+      disabled,
+      name,
+      inputRef,
+      invalidText = "Invalid",
+      requiredText = "Required",
+      validate,
+      errorMessage,
+      errorFormat,
+      hideStatus,
+      hideLabel,
+      value: suppliedValue,
+      onChange,
+      suppressError,
+      formik,
+      ...letProps
+    } = this.props;
+
+    let {
+      statusText = !required && "Optional",
+      statusIcon,
+      statusColor = "subtle",
+      // tslint:disable-next-line:prefer-const
+      ...props
+    } = letProps;
+
+    let message = null;
+
+    const value = getIn(formik.values, name) || "";
+
+    if (
+      formik.errors &&
+      get(formik.errors, name) &&
+      get(formik.touched, name) && // Only show error for touched fields //
+      !suppressError
+    ) {
+      message = get(formik.errors, name);
+    }
+    if (errorMessage) {
+      message = errorMessage;
+    }
+    message =
+      message && (errorFormat ? safeInvoke(errorFormat, message) : message);
+    // component can get into a recursive state where a previous error prevents the status from being updated, check for that here
+    if (
+      (statusText === invalidText || statusText === requiredText) &&
+      !get(formik.errors, name)
+    ) {
+      statusText = "";
+    }
+
+    // this is not an unnecessary check of touched. Otherwise the status text won't get updated. //
+    if (!statusText || get(formik.touched, name)) {
+      if (
+        (formik.errors &&
+          get(formik.errors, name) &&
+          get(formik.touched, name) &&
+          !suppressError) ||
+        errorMessage
+      ) {
+        statusIcon = statusIcon ? statusIcon : null;
+        statusColor = "danger";
+        // only redeclare statusText if not already provided
+        if (!statusText) {
+          statusText =
+            required && (value === "" || value.length === 0) // we should show Required only if it is empty, otherwise show invalid //
+              ? requiredText
+              : invalidText;
         }
-
-        message =
-          message && (errorFormat ? safeInvoke(errorFormat, message) : message);
-        if (component) {
-          const newOnChange = e => {
-            field.onChange(e);
-            return safeInvoke(onChange, e);
-          };
-
-          node = React.createElement(component as any, {
-            ref: inputRef,
-            ...field,
-            // use "initialValues" provided through Form, default to value attribute, if none is provided use empty string to avoid "A component is changing an uncontrolled input of type number to be controlled" errors //
-            value: firstDefined(field.value, value, ""),
-            disabled: disabled || form.status === "disabled",
-            id: id || field.name,
-            children,
-            error: !!message,
-            onChange: newOnChange,
-            ...props,
-          });
+      } else {
+        // only remove if not declared upscope
+        if (!statusText) {
+          statusColor = statusColor ? statusColor : "subtle";
+          statusText = !required ? "Optional" : ""; // Once error has been corrected for required fields, remove status text //
         }
+      }
+    }
 
-        // component can get into a recursive state where a previous error prevents the status from being updated, check for that here
-        if (
-          (statusText === invalidText || statusText === requiredText) &&
-          !get(form.errors, field.name)
-        ) {
-          statusText = "";
-        }
+    const Component: any = component;
 
-        // this is not an unnecessary check of touched. Otherwise the status text won't get updated. //
-        if (!statusText || get(form.touched, field.name)) {
-          if (
-            (form.errors &&
-              get(form.errors, field.name) &&
-              get(form.touched, field.name) &&
-              !suppressError) ||
-            errorMessage
-          ) {
-            statusIcon = statusIcon ? statusIcon : null;
-            statusColor = "danger";
-            // only redeclare statusText if not already provided
-            if (!statusText) {
-              statusText =
-                required && (field.value === "" || field.value.length === 0) // we should show Required only if it is empty, otherwise show invalid //
-                  ? requiredText
-                  : invalidText;
-            }
-          } else {
-            // only remove if not declared upscope
-            if (!statusText) {
-              statusColor = statusColor ? statusColor : "subtle";
-              statusText = !required ? "Optional" : ""; // Once error has been corrected for required fields, remove status text //
-            }
-          }
-        }
-
-        return (
+    return (
+      <View paddingBottom={2}>
+        {!hideLabel && (
+          <Label
+            htmlFor={id || name}
+            statusText={hideStatus ? null : statusText}
+            statusColor={statusColor}
+            statusIcon={statusIcon}
+            whiteSpace="pre-wrap"
+          >
+            {label}
+          </Label>
+        )}
+        <View paddingBottom={2}>
+          {component && (
+            <Component
+              ref={inputRef}
+              name={name}
+              // use "initialValues" provided through Form, default to value attribute, if none is provided use empty string to avoid "A component is changing an uncontrolled input of type number to be controlled" errors //
+              value={firstDefined(value, "")}
+              disabled={disabled || formik.status === "disabled"}
+              id={id || name}
+              children={children}
+              error={!!message}
+              onChange={this.onChange}
+              onBlur={this.onBlur}
+              {...props}
+            />
+          )}
+        </View>
+        {message && (
           <View paddingBottom={2}>
-            {!hideLabel && (
-              <Label
-                htmlFor={id || field.name}
-                statusText={hideStatus ? null : statusText}
-                statusColor={statusColor}
-                statusIcon={statusIcon}
-                css={{ whiteSpace: "pre-wrap" }}
-              >
-                {label}
-              </Label>
-            )}
-            <View paddingBottom={2}>{node}</View>
-            {message && (
-              <View paddingBottom={2}>
-                <Text color="danger">{message}</Text>
-              </View>
-            )}
-            {description && (
-              <View paddingBottom={2}>
-                <Text color="subtle">{description}</Text>
-              </View>
-            )}
+            <Text color="danger">{message}</Text>
           </View>
-        );
-      }}
-    </FormikField>
-  );
-};
+        )}
+        {description && (
+          <View paddingBottom={2}>
+            <Text color="subtle">{description}</Text>
+          </View>
+        )}
+      </View>
+    );
+  }
+}
 
-Field.displayName = "Field";
-
-export default Field;
+export default connect<FieldProps>(Field);
