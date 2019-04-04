@@ -70,106 +70,111 @@ function applySize(n) {
   return n;
 }
 
-const View: React.SFC<ViewProps> = ({
-  element = "div",
-  mode,
-  display = "flex",
-  flexDirection = "column",
-  flexWrap,
-  alignItems,
-  justifyContent,
-  flexGrow = 0,
-  flexShrink = 0,
-  flexBasis = "auto",
-  position,
-  overflow,
-  opacity,
-  borderColor,
-  border = 0,
-  borderTop = border,
-  borderRight = border,
-  borderBottom = border,
-  borderLeft = border,
-  color = mode ? "default" : "inherit",
-  backgroundColor = mode && "background",
-  backgroundOpacity,
-  borderRadius,
-  width,
-  // fix flexbox bugs
-  minHeight = 0,
-  minWidth = 0,
-  height,
-  maxWidth = "100%",
-  maxHeight = "none",
-  zIndex,
-  boxShadow,
-  textAlign = "inherit",
-  transition,
-  css,
-  ...props
-}: ViewProps) => {
-  return (
-    <Provider mode={mode}>
-      <Theme.Consumer>
-        {({
-          spacing: s,
-          colors,
-          shadows,
-          transitions,
-          opacities,
-          zIndex: zi,
-        }) => (
-          <Base
-            element={element}
-            css={[
-              {
-                display,
-                alignItems,
-                justifyContent,
-                flexDirection,
-                flexWrap,
-                flexGrow,
-                flexBasis: applySize(flexBasis),
-                flexShrink,
-                position,
-                overflow,
-                opacity: applyArray(opacity, opacities),
-                height: applySize(height),
-                width: applySize(width),
-                maxWidth: maxWidth ? applySize(maxWidth) : "100%",
-                maxHeight: maxHeight ? applySize(maxHeight) : "none",
-                minHeight: applySize(minHeight),
-                minWidth: applySize(minWidth),
-                zIndex: applyArray(zIndex, zi) || zIndex,
-                color: applyArray(color, colors) || color,
-                backgroundColor:
-                  opacities[backgroundOpacity] < 1
-                    ? opacify(
-                        applyArray(backgroundColor, colors),
-                        opacities[backgroundOpacity]
-                      )
-                    : applyArray(backgroundColor, colors),
-                borderRadius: applyArray(borderRadius, s),
-                borderStyle: "solid",
-                borderTopWidth: borderTop,
-                borderRightWidth: borderRight,
-                borderBottomWidth: borderBottom,
-                borderLeftWidth: borderLeft,
-                borderColor: applyArray(borderColor, colors),
-                boxShadow: applyArray(boxShadow, shadows),
-                transition: applyArray(transition, transitions),
-                textAlign,
-              },
-              css,
-            ]}
-            {...props}
-          />
-        )}
-      </Theme.Consumer>
-    </Provider>
-  );
-};
+class View extends React.Component<ViewProps> {
+  public static displayName = "View";
 
-View.displayName = "View";
+  public render() {
+    const {
+      element = "div",
+      mode,
+      display = "flex",
+      flexDirection = "column",
+      flexWrap,
+      alignItems,
+      justifyContent,
+      flexGrow = 0,
+      flexShrink = 0,
+      flexBasis = "auto",
+      position,
+      overflow,
+      opacity,
+      borderColor,
+      border = 0,
+      borderTop = border,
+      borderRight = border,
+      borderBottom = border,
+      borderLeft = border,
+      color = mode ? "default" : "inherit",
+      backgroundColor = mode && "background",
+      backgroundOpacity,
+      borderRadius,
+      whiteSpace,
+      width,
+      // fix flexbox bugs
+      minHeight = 0,
+      minWidth = 0,
+      height,
+      maxWidth = "100%",
+      maxHeight = "none",
+      zIndex,
+      boxShadow,
+      textAlign = "inherit",
+      transition,
+      css,
+      ...props
+    } = this.props;
+    return (
+      <Provider mode={mode}>
+        <Theme.Consumer>
+          {({
+            spacing: s,
+            colors,
+            shadows,
+            transitions,
+            opacities,
+            zIndex: zi,
+          }) => (
+            <Base
+              element={element}
+              css={[
+                {
+                  display,
+                  alignItems,
+                  justifyContent,
+                  flexDirection,
+                  flexWrap,
+                  flexGrow,
+                  flexBasis: applySize(flexBasis),
+                  flexShrink,
+                  position,
+                  overflow,
+                  opacity: applyArray(opacity, opacities),
+                  height: applySize(height),
+                  width: applySize(width),
+                  maxWidth: maxWidth ? applySize(maxWidth) : "100%",
+                  maxHeight: maxHeight ? applySize(maxHeight) : "none",
+                  minHeight: applySize(minHeight),
+                  minWidth: applySize(minWidth),
+                  zIndex: applyArray(zIndex, zi) || zIndex,
+                  color: applyArray(color, colors) || color,
+                  backgroundColor:
+                    opacities[backgroundOpacity] < 1
+                      ? opacify(
+                          applyArray(backgroundColor, colors),
+                          opacities[backgroundOpacity]
+                        )
+                      : applyArray(backgroundColor, colors),
+                  borderRadius: applyArray(borderRadius, s),
+                  borderStyle: "solid",
+                  borderTopWidth: borderTop,
+                  borderRightWidth: borderRight,
+                  borderBottomWidth: borderBottom,
+                  borderLeftWidth: borderLeft,
+                  borderColor: applyArray(borderColor, colors),
+                  boxShadow: applyArray(boxShadow, shadows),
+                  transition: applyArray(transition, transitions),
+                  textAlign,
+                  whiteSpace,
+                },
+                css,
+              ]}
+              {...props}
+            />
+          )}
+        </Theme.Consumer>
+      </Provider>
+    );
+  }
+}
 
 export default View;

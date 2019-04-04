@@ -166,11 +166,7 @@ const Slat: React.SFC<SlatProps> = ({
                       },
                     }}
                   >
-                    <Text
-                      ellipsis={true}
-                      color="subtle"
-                      fontSize={1}
-                    >
+                    <Text ellipsis={true} color="subtle" fontSize={1}>
                       {topMeta.join(" / ")}
                     </Text>
                   </View>

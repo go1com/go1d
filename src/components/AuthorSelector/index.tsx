@@ -42,7 +42,9 @@ export interface AuthorSelectorProps extends ViewProps {
   /**
    * Optional function to call when a new option is created. Returns a promise to allow for asynchronous actions to finish before continuing
    */
-  onCreate?: (evt: React.SyntheticEvent<HTMLButtonElement>) => Promise<any> | void;
+  onCreate?: (
+    evt: React.SyntheticEvent<HTMLButtonElement>
+  ) => Promise<any> | void;
 
   /**
    * Whether new options may be created. Defaults to true

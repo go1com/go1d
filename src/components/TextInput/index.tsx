@@ -53,7 +53,7 @@ const sizeStyles = {
   },
 };
 
-class TextInput extends React.Component<TextInputProps, any> {
+class TextInput extends React.PureComponent<TextInputProps, any> {
   public static displayName = "TextInput";
 
   public static defaultProps = {

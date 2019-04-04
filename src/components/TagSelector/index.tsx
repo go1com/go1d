@@ -60,7 +60,7 @@ export interface TagSelectorProps extends ViewProps {
   createableText?: string;
 }
 
-class TagSelector extends React.Component<TagSelectorProps, State> {
+class TagSelector extends React.PureComponent<TagSelectorProps, State> {
   public static defaultProps = {
     createable: true,
     placeholder: "Type to create a Tag",
@@ -75,6 +75,14 @@ class TagSelector extends React.Component<TagSelectorProps, State> {
   };
 
   private inputRef: React.RefObject<any> = React.createRef();
+  private previousGenerateInputProps: any = {};
+  private previousInputProps: any = {};
+  private viewCss = {
+    flexGrow: 1,
+    flexShrink: 1,
+    boxShadow: "none",
+    border: 0,
+  };
 
   @autobind
   public inputChange(evt: React.SyntheticEvent<HTMLInputElement>) {
@@ -206,6 +214,24 @@ class TagSelector extends React.Component<TagSelectorProps, State> {
     ));
   };
 
+  @autobind
+  public generateInputProps(getInputProps, openMenu) {
+    if (
+      getInputProps === this.previousGenerateInputProps.getInputProps &&
+      openMenu === this.previousGenerateInputProps.openMenu
+    ) {
+      return this.previousInputProps;
+    }
+    this.previousGenerateInputProps = {
+      getInputProps,
+      openMenu,
+    };
+    this.previousInputProps = getInputProps({
+      onFocus: openMenu,
+    });
+    return this.previousInputProps;
+  }
+
   public render() {
     const {
       value = this.props.value || this.state.value || [],
@@ -305,9 +331,7 @@ class TagSelector extends React.Component<TagSelectorProps, State> {
               {Array.isArray(value) &&
                 this.selectedValuesRenderer(value, this.removeItem)}
               <TextInput
-                {...getInputProps({
-                  onFocus: openMenu,
-                })}
+                {...this.generateInputProps(getInputProps, openMenu)}
                 id={id || this.state.randomId}
                 onFocus={this.handleFocus}
                 onBlur={this.handleBlur}
@@ -317,12 +341,7 @@ class TagSelector extends React.Component<TagSelectorProps, State> {
                 onChange={this.inputChange}
                 borderColor="transparent"
                 disabled={disabled}
-                viewCss={{
-                  flexGrow: 1,
-                  flexShrink: 1,
-                  boxShadow: "none",
-                  border: 0,
-                }}
+                viewCss={this.viewCss}
                 {...props}
               />
             </View>

@@ -10,32 +10,33 @@ export interface ProviderProps extends GenerateThemeInput {
 
 export const LinkContext = React.createContext(null);
 
-const Provider = ({
-  linkComponent,
-  mode,
-  accent,
-  theme,
-  children,
-}: ProviderProps) => (
-  <Theme.Consumer>
-    {({ colors, mode: currentMode }) => (
-      <Theme.Provider
-        value={generateTheme({
-          mode: mode || currentMode,
-          accent: accent || colors.accent,
-          theme,
-        })}
-      >
-        {linkComponent !== undefined ? (
-          <LinkContext.Provider value={linkComponent}>
-            {children}
-          </LinkContext.Provider>
-        ) : (
-          children
+class Provider extends React.PureComponent<ProviderProps> {
+  public render() {
+    const { linkComponent, mode, accent, theme, children } = this.props;
+    return !!mode || !!accent || !!theme || !!linkComponent ? (
+      <Theme.Consumer>
+        {({ colors, mode: currentMode }) => (
+          <Theme.Provider
+            value={generateTheme({
+              mode: mode || currentMode,
+              accent: accent || colors.accent,
+              theme,
+            })}
+          >
+            {linkComponent !== undefined ? (
+              <LinkContext.Provider value={linkComponent}>
+                {children}
+              </LinkContext.Provider>
+            ) : (
+              children
+            )}
+          </Theme.Provider>
         )}
-      </Theme.Provider>
-    )}
-  </Theme.Consumer>
-);
+      </Theme.Consumer>
+    ) : (
+      children
+    );
+  }
+}
 
 export default Provider;
