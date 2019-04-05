@@ -164,6 +164,11 @@ class DataTableSelectable extends React.Component<
   }
 
   @autobind
+  public resetTableData(reload = true) {
+    this.ref.current.resetTableData(reload);
+  }
+
+  @autobind
   public onAllSelectChange() {
     this.setState({
       allSelected: !this.state.allSelected,
