@@ -9,7 +9,11 @@
 function formatPrice(
   currency: string,
   price: number,
-  locale: string = "en-US"
+  tax?: {
+    amount?: number,
+    included?: boolean,
+  },
+  locale: string = "en-US",
 ): string {
   let output = new Intl.NumberFormat(locale, {
     style: "currency",
@@ -21,6 +25,14 @@ function formatPrice(
   // cut off trailing double zeroes
   if (output.slice(-3) === ".00" || output.slice(-3) === ",00") {
     output = output.slice(0, -3);
+  }
+
+  if (tax.amount > 0 && !tax.included && currency === "AUD") {
+    output = `${output} + GST`;
+  }
+
+  if (price === 0) {
+    output = 'FREE'
   }
 
   return output;
