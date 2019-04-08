@@ -203,6 +203,7 @@ export const type: ThemeType = {
     mono: monospace,
   },
   weight: {
+    light: 300,
     normal: 400,
     semibold: 600,
     bold: 700,
@@ -262,7 +263,6 @@ const hoverStyle = {
     transform: "translateY(1px)",
   },
 };
-
 
 /**
  * Breakpoints
