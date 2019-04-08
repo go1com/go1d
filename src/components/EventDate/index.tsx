@@ -31,9 +31,9 @@ const formatTime = timestamp => {
   const min = time.getMinutes();
   const hours = time.getHours();
   if (hours > 12) {
-    return `${hours - 12}:${min}PM`;
+    return `${hours - 12}:${min > 9 ? `${min}PM` : `0${min}PM`}`;
   }
-  return `${hours}:${min}AM`;
+  return `${hours}:${min > 9 ? `${min}AM` : `0${min}AM`}`;
 };
 
 const EventDate: React.SFC<SessionProps> = ({
@@ -55,22 +55,8 @@ const EventDate: React.SFC<SessionProps> = ({
     `${location.administrative_area}, `} ${location.country &&
     `${location.country}`}`;
   const date = new Date(start);
-  const monthAbrv = [
-    "Jan",
-    "Feb",
-    "Mar",
-    "Apr",
-    "May",
-    "Jun",
-    "Jul",
-    "Aug",
-    "Sept",
-    "Oct",
-    "Nov",
-    "Dec",
-  ];
   const day = date.getDate();
-  const month = monthAbrv[date.getMonth() + 1];
+  const month = date.toLocaleDateString("en-us",{month: "short"});
   const year = date.getFullYear();
   const startTime = formatTime(start);
   const endTime = formatTime(end);
@@ -86,12 +72,13 @@ const EventDate: React.SFC<SessionProps> = ({
             css={{
               fontSize: "13px",
               textAlign: "right",
+              display: "block",
+              marginBottom: foundations.spacing[3],
               color: foundations.colors.accent,
               "&:hover, &:active": {
                 textDecoration: "underline",
               },
             }}
-            marginBottom={3}
           >
             View map
           </Link>
