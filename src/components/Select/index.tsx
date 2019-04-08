@@ -1,9 +1,9 @@
 import Downshift from "downshift";
 import * as React from "react";
 import { Manager, Popper, Reference } from "react-popper";
-import { AutoSizer, List } from "react-virtualized";
+import { List } from "react-virtualized";
 import safeInvoke from "../../utils/safeInvoke";
-import ButtonMinimal from "../ButtonMinimal";
+import Icon from "../Icon";
 import Portal from "../Portal";
 import SearchInput from "../SearchInput";
 import Text from "../Text";
@@ -44,6 +44,7 @@ const Sizes = {
 class Select extends React.PureComponent<SelectProps, any> {
   public static defaultProps = {
     size: "md",
+    options: [],
   };
 
   public OptionToString(Option) {
@@ -121,31 +122,37 @@ class Select extends React.PureComponent<SelectProps, any> {
     const {
       clearable,
       options,
-      disabled,
+      disabled = options.length === 0,
       size,
       defaultText = "Please Select", // Deprecated
+      name, // Do not pass to child
+      onChange, // Do not pass to child
       placeholder,
       defaultValue,
       value,
       searchable,
       id,
+      ...remainingProps
     } = this.props;
 
     const { flattenedOptions, selectableCount } = this.flattenOptions(options);
 
-    const DefaultOption = defaultValue
-      ? flattenedOptions.find(x => x.value === defaultValue)
-      : null;
+    const DefaultOption =
+      defaultValue && Array.isArray(flattenedOptions)
+        ? flattenedOptions.find(x => x.value === defaultValue)
+        : null;
 
-    const selectedOption = value
-      ? flattenedOptions.find(x => x.value === value)
-      : undefined;
+    const selectedOption =
+      value && Array.isArray(flattenedOptions)
+        ? flattenedOptions.find(x => x.value === value)
+        : undefined;
 
     return (
       <Theme.Consumer>
         {({ colors }) => (
           <Downshift
             stateReducer={this.stateReducer}
+            initialInputValue=""
             onChange={this.handleOnChange}
             itemToString={this.OptionToString}
             itemCount={selectableCount}
@@ -168,7 +175,7 @@ class Select extends React.PureComponent<SelectProps, any> {
                 ? this.filterOptions(flattenedOptions, inputValue)
                 : flattenedOptions;
               return (
-                <View {...getRootProps({ refKey: "innerRef" })}>
+                <View flexGrow={1} {...getRootProps({ refKey: "innerRef" })}>
                   <Manager>
                     <Reference>
                       {({ ref }) => (
@@ -192,6 +199,7 @@ class Select extends React.PureComponent<SelectProps, any> {
                             position="relative"
                             backgroundColor="background"
                             boxShadow={isOpen ? "strong" : "soft"}
+                            {...remainingProps}
                           >
                             <View
                               paddingY={3}
@@ -213,8 +221,8 @@ class Select extends React.PureComponent<SelectProps, any> {
                             <View
                               css={{
                                 position: "absolute",
-                                right: 8,
-                                top: 1,
+                                right: 12,
+                                top: 3,
                                 alignItems: "center",
                                 justifyContent: "center",
                                 paddingRight: 0,
@@ -222,28 +230,22 @@ class Select extends React.PureComponent<SelectProps, any> {
                                   selectedItem && clearable ? "auto" : "none",
                               }}
                               height="calc(100% - 3px)"
-                              paddingX={3}
+                              paddingLeft={3}
                             >
                               {selectedItem && clearable ? (
-                                <ButtonMinimal
-                                  iconName="Cross"
-                                  css={{
-                                    backgroundColor: "transparent",
-                                  }}
-                                  iconColor="muted"
+                                <Icon
+                                  name="Cross"
+                                  color="muted"
+                                  size={2}
                                   onClick={this.handleSelectionClear(
                                     clearSelection
                                   )}
-                                  size="sm"
                                 />
                               ) : (
-                                <ButtonMinimal
-                                  iconName="ChevronDown"
-                                  css={{
-                                    backgroundColor: "transparent",
-                                  }}
-                                  iconColor="muted"
-                                  size="sm"
+                                <Icon
+                                  name="ChevronDown"
+                                  color="muted"
+                                  size={2}
                                 />
                               )}
                             </View>
@@ -254,7 +256,7 @@ class Select extends React.PureComponent<SelectProps, any> {
                     {isOpen && (
                       <Portal>
                         <Popper placement="bottom-start">
-                          {({ ref, style }) => (
+                          {({ ref, style, scheduleUpdate }) => (
                             <View
                               {...getMenuProps({
                                 refKey: "innerRef",
@@ -263,13 +265,12 @@ class Select extends React.PureComponent<SelectProps, any> {
                               <View
                                 backgroundColor="background"
                                 boxShadow="strong"
-                                borderRadius={3}
+                                borderRadius={2}
                                 overflow="hidden"
                                 style={style}
                                 innerRef={ref}
                                 transition="none"
                                 zIndex="dropdown"
-                                width={250}
                                 marginTop={2}
                               >
                                 {searchable && (
@@ -280,32 +281,33 @@ class Select extends React.PureComponent<SelectProps, any> {
                                       clearable={false}
                                       size={size}
                                       data-testid="searchFilterInput"
-                                      {...getInputProps()}
+                                      {...getInputProps({
+                                        size,
+                                        onChange: scheduleUpdate,
+                                      }) as {}}
                                     />
                                   </View>
                                 )}
-                                <AutoSizer disableHeight={true}>
-                                  {({ width }) => (
-                                    <List
-                                      data-testid="resultsList"
-                                      width={width}
-                                      height={this.calculateDropDownHeight(
-                                        filteredOptions
-                                      )}
-                                      rowCount={filteredOptions.length}
-                                      rowHeight={this.calculateOptionHeight(
-                                        filteredOptions
-                                      )}
-                                      rowRenderer={this.renderSelectRow({
-                                        options: filteredOptions,
-                                        colors,
-                                        getItemProps,
-                                        highlightedIndex,
-                                        selectedItem,
-                                      })}
-                                    />
+                                <List
+                                  data-testid="resultsList"
+                                  width={this.calculateListWidth(
+                                    filteredOptions
                                   )}
-                                </AutoSizer>
+                                  height={this.calculateDropDownHeight(
+                                    filteredOptions
+                                  )}
+                                  rowCount={filteredOptions.length}
+                                  rowHeight={this.calculateOptionHeight(
+                                    filteredOptions
+                                  )}
+                                  rowRenderer={this.renderSelectRow({
+                                    options: filteredOptions,
+                                    colors,
+                                    getItemProps,
+                                    highlightedIndex,
+                                    selectedItem,
+                                  })}
+                                />
                               </View>
                             </View>
                           )}
@@ -323,11 +325,14 @@ class Select extends React.PureComponent<SelectProps, any> {
   }
 
   private handleOnChange = event => {
-    const { onChange } = this.props;
+    const { onChange, name } = this.props;
 
     if (onChange) {
       safeInvoke(onChange, {
-        target: event,
+        target: {
+          name,
+          ...event,
+        },
       });
     }
   };
@@ -345,7 +350,13 @@ class Select extends React.PureComponent<SelectProps, any> {
   private stateReducer = (state, changes) => {
     switch (changes.type) {
       case Downshift.stateChangeTypes.keyDownEnter:
+      case Downshift.stateChangeTypes.clickButton:
+        return {
+          ...changes,
+          inputValue: "",
+        };
       case Downshift.stateChangeTypes.clickItem:
+      case Downshift.stateChangeTypes.controlledPropUpdatedSelectedItem:
         return {
           ...changes,
           highlightedIndex: state.highlightedIndex,
@@ -400,6 +411,29 @@ class Select extends React.PureComponent<SelectProps, any> {
       });
     }
     return Options;
+  }
+
+  private calculateListWidth(Options) {
+    const { searchable } = this.props;
+    const minWidth = searchable ? 275 : 200;
+    const averageCharacterPX = 10;
+    const longestString = Options.reduce((largest, Entry) => {
+      if (Entry.label.length > largest) {
+        return Entry.label.length;
+      }
+
+      return largest;
+    }, 0);
+
+    if (longestString * averageCharacterPX > 350) {
+      return 350;
+    }
+
+    if (longestString * averageCharacterPX < minWidth) {
+      return minWidth;
+    }
+
+    return longestString * averageCharacterPX;
   }
 
   private calculateDropDownHeight(Options) {

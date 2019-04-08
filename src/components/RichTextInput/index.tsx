@@ -1,4 +1,5 @@
 import * as Immutable from "immutable";
+import { isKeyHotkey } from "is-hotkey";
 import { get, isEqual } from "lodash";
 import * as React from "react";
 import { Operation, Value } from "slate";
@@ -21,7 +22,10 @@ export interface Props {
   placeholder?: string;
   value?: Value;
   onChange?: (
-    change: { operations: Immutable.List<Operation>; value: Value }
+    change: {
+      operations: Immutable.List<Operation>;
+      value: Value;
+    }
   ) => any;
   name?: string;
   disabled?: boolean;
@@ -30,9 +34,13 @@ export interface Props {
   borderColor?: string;
   size?: "lg" | "md" | "sm";
   autofocus?: boolean;
+  minHeight?: number;
 }
 
 const DEFAULT_NODE = "paragraph";
+const isBoldHotkey = isKeyHotkey("mod+b");
+const isItalicHotkey = isKeyHotkey("mod+i");
+const isUnderlinedHotkey = isKeyHotkey("mod+u");
 
 class RichTextInput extends React.Component<Props, State> {
   public static defaultProps = {
@@ -113,6 +121,24 @@ class RichTextInput extends React.Component<Props, State> {
         .wrapInline({ type: "link", data: { href } })
         .moveToEnd();
     }
+  }
+
+  @autobind
+  public onKeyDown(event: any, editor: any, next: any) {
+    let mark;
+
+    if (isBoldHotkey(event)) {
+      mark = "bold";
+    } else if (isItalicHotkey(event)) {
+      mark = "italic";
+    } else if (isUnderlinedHotkey(event)) {
+      mark = "underlined";
+    } else {
+      return next();
+    }
+
+    event.preventDefault();
+    editor.toggleMark(mark);
   }
 
   @autobind
@@ -305,7 +331,7 @@ class RichTextInput extends React.Component<Props, State> {
   }
 
   public render() {
-    const { id, disabled, size, autofocus } = this.props;
+    const { id, disabled, size, autofocus, minHeight } = this.props;
 
     return (
       <Theme.Consumer>
@@ -332,6 +358,10 @@ class RichTextInput extends React.Component<Props, State> {
                 onChange={this.onChange}
                 renderNode={this.renderNode}
                 renderMark={this.renderMark}
+                onKeyDown={this.onKeyDown}
+                style={{
+                  minHeight,
+                }}
               />
             </View>
             <FormatOptions

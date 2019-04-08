@@ -30,14 +30,14 @@ A generic slat component
   type="Event"
   typeBackground="background"
   dropdownItems={[{
-    icon: "Calendar",
-    text: "fake item",
-    action: () => console.log('foo'),
+    iconName: "Calendar",
+    title: "fake item",
+    onClick: () => console.log('foo'),
   },
   {
-    icon: "Calendar",
-    text: "fake item2",
-    action: () => console.log('foo2'),
+    iconName: "Calendar",
+    title: "fake item2",
+    onClick: () => console.log('foo2'),
   }]}
 />
 ```

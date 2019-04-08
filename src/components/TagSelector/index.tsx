@@ -22,7 +22,12 @@ export interface TagSelectorProps extends ViewProps {
    * The selected elements of the component.
    */
   value?: string[];
-  options: string[];
+  options: [];
+  /**
+   * Options could be an array of string or objects, provide a formatter to bring them into a uniform structure
+   */
+  optionFormatter?: (option: any) => { label: string; value: string };
+  optionsFilterFn?: (options: any) => [];
 
   onInputChange?: (evt: React.SyntheticEvent<HTMLInputElement>) => void;
 
@@ -38,11 +43,24 @@ export interface TagSelectorProps extends ViewProps {
    */
   createable?: boolean;
 
+  /**
+   * Whether showing status message defined by the statusRenderer. Defaults to false
+   */
+  showStatus?: boolean;
+
+  /**
+   * Used to render status like loading or not found
+   */
+  statusRenderer?: () => React.ReactNode;
+  selectedValuesRenderer?: (
+    values: string[],
+    removeItemFn: (evt: React.SyntheticEvent<HTMLButtonElement>) => void
+  ) => React.ReactNode;
   placeholder?: string;
   createableText?: string;
 }
 
-class TagSelector extends React.Component<TagSelectorProps, State> {
+class TagSelector extends React.PureComponent<TagSelectorProps, State> {
   public static defaultProps = {
     createable: true,
     placeholder: "Type to create a Tag",
@@ -57,11 +75,23 @@ class TagSelector extends React.Component<TagSelectorProps, State> {
   };
 
   private inputRef: React.RefObject<any> = React.createRef();
+  private previousGenerateInputProps: any = {};
+  private previousInputProps: any = {};
+  private viewCss = {
+    flexGrow: 1,
+    flexShrink: 1,
+    boxShadow: "none",
+    border: 0,
+  };
 
   @autobind
   public inputChange(evt: React.SyntheticEvent<HTMLInputElement>) {
+    const { onInputChange } = this.props;
     this.setState({
       search: evt.currentTarget.value || "",
+    });
+    safeInvoke(onInputChange, {
+      target: { value: evt.currentTarget.value || "" },
     });
   }
 
@@ -131,7 +161,8 @@ class TagSelector extends React.Component<TagSelectorProps, State> {
 
   @autobind
   public renderCreate() {
-    return <Text>{`${this.props.createableText} "${this.state.search}"`}</Text>;
+    const { createableText } = this.props;
+    return <Text>{`${createableText} "${this.state.search}"`}</Text>;
   }
 
   @autobind
@@ -139,10 +170,76 @@ class TagSelector extends React.Component<TagSelectorProps, State> {
     return <Text>{item.label}</Text>;
   }
 
+  public selectedValuesRenderer = (
+    values: string[],
+    removeItemFn: (evt: React.SyntheticEvent<HTMLButtonElement>) => void
+  ) => {
+    const { selectedValuesRenderer, disabled, borderRadius = 2 } = this.props;
+
+    if (selectedValuesRenderer) {
+      return selectedValuesRenderer(values, removeItemFn);
+    }
+
+    return values.map((v, i) => (
+      <View
+        key={i}
+        flexDirection="row"
+        alignItems="center"
+        borderRadius={borderRadius}
+        borderColor={this.props.borderColor || "soft"}
+        backgroundColor="background"
+        paddingX={4}
+        paddingY={3}
+        marginY={2}
+        marginRight={2}
+        border={1}
+        boxShadow="crisp"
+      >
+        <Text fontSize={1} color="inherit" marginRight={2}>
+          {v}
+        </Text>
+        <ButtonMinimal
+          marginLeft={2}
+          iconName="Close"
+          size="sm"
+          width={16}
+          height={16}
+          paddingY={0}
+          round={true}
+          data-value={v}
+          onClick={removeItemFn}
+          disabled={disabled}
+        />
+      </View>
+    ));
+  };
+
+  @autobind
+  public generateInputProps(getInputProps, openMenu) {
+    if (
+      getInputProps === this.previousGenerateInputProps.getInputProps &&
+      openMenu === this.previousGenerateInputProps.openMenu
+    ) {
+      return this.previousInputProps;
+    }
+    this.previousGenerateInputProps = {
+      getInputProps,
+      openMenu,
+    };
+    this.previousInputProps = getInputProps({
+      onFocus: openMenu,
+    });
+    return this.previousInputProps;
+  }
+
   public render() {
     const {
       value = this.props.value || this.state.value || [],
       optionRenderer = this.renderOption,
+      showStatus,
+      statusRenderer,
+      optionFormatter,
+      optionsFilterFn,
       options = [],
       id,
       disabled,
@@ -151,26 +248,34 @@ class TagSelector extends React.Component<TagSelectorProps, State> {
       borderRadius = 2,
       onFocus,
       onBlur,
+      onInputChange,
       placeholder,
       createableText,
+      selectedValuesRenderer,
       ...props
     } = this.props;
 
-    const formattedOptions = options
-      .filter(
-        option =>
-          !value.includes(option.toString()) &&
-          option
-            .toString()
-            .toLowerCase()
-            .includes(this.state.search.trim().toLowerCase())
-      )
-      .map(option => {
-        return {
-          label: option,
-          value: option.toString(),
-        };
-      });
+    // run option format first, options could be an array of string or objects, so filter will get uniform data structure
+    const formattedOptions = options.map(option => {
+      if (optionFormatter) {
+        return optionFormatter(option);
+      }
+      return {
+        label: option,
+        value: option.toString(),
+      };
+    });
+
+    const filteredOptions = optionsFilterFn
+      ? optionsFilterFn(formattedOptions) // Allow external filtering of options
+      : formattedOptions.filter(
+          option =>
+            !value.includes(option.value.toString()) &&
+            option.value
+              .toString()
+              .toLowerCase()
+              .includes(this.state.search.trim().toLowerCase())
+        );
 
     const renderCreate =
       createable &&
@@ -188,7 +293,7 @@ class TagSelector extends React.Component<TagSelectorProps, State> {
       <SelectDropdown
         {...props}
         value={value}
-        options={formattedOptions}
+        options={filteredOptions}
         isMulti={true}
         onChange={this.onChange}
         renderCreateOption={renderCreate ? this.renderCreate : null}
@@ -199,6 +304,8 @@ class TagSelector extends React.Component<TagSelectorProps, State> {
         searchTerm={this.state.search}
         onCreate={this.onCreate}
         isOpen={this.state.isFocused === true}
+        showStatus={showStatus}
+        statusRenderer={statusRenderer}
       >
         {({ ref, openMenu, getInputProps }) => (
           <View innerRef={this.inputRef}>
@@ -211,52 +318,20 @@ class TagSelector extends React.Component<TagSelectorProps, State> {
               backgroundColor="background"
               paddingX={4}
               minHeight={45}
-              paddingY={0}
+              paddingY={1}
               border={1}
               borderColor={this.getBorderColor()}
               boxShadow="inner"
               alignItems="center"
               width="100%"
-              padding={0}
               htmlFor={id || this.state.randomId}
               innerRef={ref}
               opacity={disabled ? "disabled" : null}
             >
-              {value.map((v, i) => (
-                <View
-                  key={i}
-                  flexDirection="row"
-                  alignItems="center"
-                  borderRadius={borderRadius}
-                  borderColor={this.props.borderColor || "soft"}
-                  backgroundColor="background"
-                  paddingX={4}
-                  paddingY={3}
-                  marginRight={2}
-                  border={1}
-                  boxShadow="crisp"
-                >
-                  <Text fontSize={1} color="inherit" marginRight={2}>
-                    {v}
-                  </Text>
-                  <ButtonMinimal
-                    marginLeft={2}
-                    iconName="Close"
-                    size="sm"
-                    width={16}
-                    height={16}
-                    paddingY={0}
-                    round={true}
-                    data-value={v}
-                    onClick={this.removeItem}
-                    disabled={disabled}
-                  />
-                </View>
-              ))}
+              {Array.isArray(value) &&
+                this.selectedValuesRenderer(value, this.removeItem)}
               <TextInput
-                {...getInputProps({
-                  onFocus: openMenu,
-                })}
+                {...this.generateInputProps(getInputProps, openMenu)}
                 id={id || this.state.randomId}
                 onFocus={this.handleFocus}
                 onBlur={this.handleBlur}
@@ -265,14 +340,8 @@ class TagSelector extends React.Component<TagSelectorProps, State> {
                 value={this.state.search}
                 onChange={this.inputChange}
                 borderColor="transparent"
-                boxShadow="none"
                 disabled={disabled}
-                viewCss={{
-                  flexGrow: 1,
-                  flexShrink: 1,
-                  boxShadow: "none",
-                  border: 0,
-                }}
+                viewCss={this.viewCss}
                 {...props}
               />
             </View>

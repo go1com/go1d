@@ -1,5 +1,6 @@
 import * as React from "react";
 import { cleanup, render } from "react-testing-library";
+import View from "../View";
 import TagSelector from "./";
 
 afterEach(cleanup);
@@ -168,5 +169,29 @@ it("renders the provided placeholder", () => {
     expect(tagEl.placeholder).toEqual("A placeholder");
   } else {
     fail("no placeholder");
+  }
+});
+
+it("it renders status message", () => {
+  const ref: React.RefObject<TagSelector> = React.createRef();
+  const statusRenderer = () => (
+    <View test-dataid="statusmuessage">TestStatus</View>
+  );
+  const { queryByText } = render(
+    <TagSelector
+      options={["test"]}
+      showStatus={true}
+      statusRenderer={statusRenderer}
+      value={["A TAG"]}
+      name="TEST 1"
+      ref={ref}
+    />
+  );
+
+  if (ref.current) {
+    ref.current.handleFocus({} as any);
+    expect(ref.current.state.isFocused).toBe(true);
+    const status = queryByText("TestStatus");
+    expect(status).toBeDefined();
   }
 });

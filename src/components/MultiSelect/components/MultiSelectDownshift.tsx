@@ -73,7 +73,11 @@ class MultiSelectDownshift extends React.PureComponent<
       }
     };
 
-    if (this.state.selectedItems.includes(selectedItem)) {
+    const itemExists = this.state.selectedItems.findIndex(item => 
+      item.value === selectedItem.value
+    ) > -1;
+
+    if (itemExists) {
       this.removeItem(selectedItem, callOnChange);
     } else {
       this.addSelectedItem(selectedItem, callOnChange);

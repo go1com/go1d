@@ -83,6 +83,7 @@ class TagToggle extends React.Component<
       marginX,
       marginY,
       marginTop,
+      defaultValue, // Do not pass
       marginBottom = 0,
       disabled = false,
       size = "md",

@@ -3,7 +3,6 @@ import safeInvoke from "../../utils/safeInvoke";
 import Base from "../Base";
 import Icon from "../Icon";
 import Text, { TextProps } from "../Text";
-import Theme from "../Theme";
 import View from "../View";
 
 export interface CheckboxProps extends TextProps {
@@ -13,6 +12,7 @@ export interface CheckboxProps extends TextProps {
   value?: boolean | string;
   disabled?: boolean;
   error?: boolean;
+  isStatic?: boolean; // If true onChange will stop working. It'll be just the markup of a Checkbox
 }
 
 class Checkbox extends React.Component<
@@ -76,6 +76,7 @@ class Checkbox extends React.Component<
       marginX,
       marginY,
       marginTop,
+      isStatic = false,
       marginBottom,
       disabled = false,
       color = "contrast",
@@ -87,70 +88,68 @@ class Checkbox extends React.Component<
       propValue === undefined || propValue === "" ? checkedState : propValue;
 
     return (
-      <Theme.Consumer>
-        {({ spacing }) => (
-          <React.Fragment>
-            <View
-              element="label"
-              htmlFor={id}
-              flexDirection="row"
-              marginX={marginX}
-              marginY={marginY}
-              marginTop={marginTop}
-              marginBottom={marginBottom}
-              css={{
-                cursor: "pointer",
-              }}
-              {...props}
-            >
-              <View
-                borderColor={this.getBorderColor(value)}
-                backgroundColor="background"
-                borderRadius={2}
-                alignItems="center"
-                justifyContent="center"
-                opacity={disabled ? "disabled" : null}
-                css={{
-                  height: 24,
-                  width: 24,
-                  borderWidth: 1,
-                }}
-              >
-                {value && <Icon color="accent" name="Check" />}
-              </View>
-              <Text
-                color={color}
-                fontWeight={fontWeight}
-                fontSize={fontSize}
-                title={label}
-                paddingLeft={3}
-                ellipsis={true}
-                css={{
-                  alignSelf: "center",
-                }}
-              >
-                {label}
-                {children}
-              </Text>
-            </View>
-            <Base
-              element="input"
-              id={id}
-              onChange={this.handleOnChange}
-              type="checkbox"
-              name={name}
-              disabled={disabled}
-              value={value}
-              checked={value}
-              css={{
-                position: "absolute",
-                left: -9999,
-              }}
-              {...props}
-            />
-          </React.Fragment>
+      <React.Fragment>
+        <View
+          element="label"
+          htmlFor={!isStatic ? id : undefined}
+          flexDirection="row"
+          marginX={marginX}
+          marginY={marginY}
+          marginTop={marginTop}
+          marginBottom={marginBottom}
+          css={{
+            cursor: "pointer",
+          }}
+          {...props}
+        >
+          <View
+            borderColor={this.getBorderColor(value)}
+            backgroundColor="background"
+            borderRadius={2}
+            alignItems="center"
+            justifyContent="center"
+            opacity={disabled ? "disabled" : null}
+            css={{
+              height: 24,
+              width: 24,
+              borderWidth: 1,
+            }}
+          >
+            {value && <Icon color="accent" name="Check" />}
+          </View>
+          <Text
+            color={color}
+            fontWeight={fontWeight}
+            fontSize={fontSize}
+            title={label}
+            paddingLeft={3}
+            ellipsis={true}
+            css={{
+              alignSelf: "center",
+            }}
+          >
+            {label}
+            {children}
+          </Text>
+        </View>
+        {!isStatic && (
+          <Base
+            element="input"
+            id={id}
+            onChange={this.handleOnChange}
+            type="checkbox"
+            name={name}
+            disabled={disabled}
+            value={value}
+            checked={value}
+            css={{
+              position: "absolute",
+              left: -9999,
+            }}
+            {...props}
+          />
         )}
-      </Theme.Consumer>
+      </React.Fragment>
     );
   }
 }

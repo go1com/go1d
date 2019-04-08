@@ -101,6 +101,7 @@ export interface Theme {
   transitions: MappedKey<Transitions, string>;
   breakpoints: MappedKey<Scale, string>;
   mq: any;
+  hoverStyle: any;
   opacities: MappedKey<Opacities, number>;
   animation: MappedKey<Animation, number>;
   zIndex: MappedKey<ZIndex, number>;

@@ -27,6 +27,15 @@ interface OptionProps {
     index: number,
     getItemProps: any
   ) => React.ReactNode;
+  /**
+   * Whether showing status message defined by the statusRenderer. Defaults to false
+   */
+  showStatus?: boolean;
+
+  /**
+   * Used to render status like loading or not found
+   */
+  statusRenderer: () => React.ReactNode;
   scheduleUpdate: () => void;
 }
 class Options extends React.PureComponent<OptionProps, {}> {
@@ -58,6 +67,8 @@ class Options extends React.PureComponent<OptionProps, {}> {
     const {
       options,
       optionRenderer,
+      showStatus,
+      statusRenderer,
       highlightedIndex,
       firstSelectableOptionIndex,
       getItemProps,
@@ -94,6 +105,7 @@ class Options extends React.PureComponent<OptionProps, {}> {
         }}
       >
         <React.Fragment>
+          {showStatus && statusRenderer && statusRenderer()}
           {createAvailable &&
             renderCreateOption(searchTerm.trim() || "create", 0, {
               ...getItemProps({

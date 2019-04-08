@@ -28,7 +28,7 @@ export interface DataTableProps extends ViewProps {
   rowRenderer: ListRowRenderer;
   /*
    * A header row. Rendered inside a TR component
-  */
+   */
   header?: React.ReactNodeArray;
   /** A string to display the total number of results */
   total?: React.ReactNode;
@@ -70,6 +70,7 @@ class DataTable extends React.Component<DataTableProps, {}> {
   public header: HTMLElement;
 
   public cache: CellMeasurerCache;
+  public loaderRef: React.RefObject<InfiniteLoader> = React.createRef();
 
   constructor(props) {
     super(props);
@@ -92,6 +93,13 @@ class DataTable extends React.Component<DataTableProps, {}> {
       });
       safeInvoke(onRowsRendered, args);
     };
+  }
+
+  @autobind
+  public resetTableData(reload = true) {
+    if (this.loaderRef.current) {
+      this.loaderRef.current.resetLoadMoreRowsCache(reload);
+    }
   }
 
   @autobind
@@ -177,7 +185,7 @@ class DataTable extends React.Component<DataTableProps, {}> {
                   {header}
                 </TR>
               )}
-              <Loader {...this.props}>
+              <Loader {...this.props} innerRef={this.loaderRef}>
                 {({ registerChild, onRowsRendered }) => (
                   <WindowScroller scrollElement={scrollElement || undefined}>
                     {({ height, isScrolling, onChildScroll, scrollTop }) => (
@@ -255,10 +263,19 @@ const Loader: React.SFC<{
   loadMoreRows?: (obj: any) => Promise<any>;
   rowCount: number;
   children: any;
-}> = ({ infiniteLoad, isRowLoaded, loadMoreRows, rowCount, children }) => {
+  innerRef?: React.RefObject<InfiniteLoader>;
+}> = ({
+  infiniteLoad,
+  isRowLoaded,
+  loadMoreRows,
+  rowCount,
+  children,
+  innerRef,
+}) => {
   if (infiniteLoad) {
     return (
       <InfiniteLoader
+        ref={innerRef}
         isRowLoaded={infiniteLoad && isRowLoaded}
         loadMoreRows={infiniteLoad && loadMoreRows}
         rowCount={rowCount}

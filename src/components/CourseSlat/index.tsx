@@ -15,10 +15,12 @@ interface EnrollmentProps {
 }
 
 export interface CourseSlatProps extends ViewProps {
-  actionRender?: () => React.ReactChild;
+  actionRender?: () => React.ReactChild; // Deprecated
+  actionRenderer?: () => React.ReactChild;
   author?: string | (() => React.ReactChild);
   authorAvatar?: string;
-  contentRender?: () => React.ReactChild;
+  contentRender?: () => React.ReactChild; // Deprecated
+  contentRenderer?: () => React.ReactChild;
   courseImage?: string;
   currency?: string;
   description?: string;
@@ -36,17 +38,9 @@ export interface CourseSlatProps extends ViewProps {
 }
 
 const interactiveStyle = (colors, passive) => {
-  const styles = { background: `${colors.background}` };
+  let styles = { background: `${colors.background}` };
   if (!passive) {
-    styles["&:hover, &:focus"] = {
-      boxShadow: foundations.shadows.strong,
-      cursor: "pointer",
-      transform: "translateY(-1px)",
-    };
-    styles["&:active"] = {
-      boxShadow: foundations.shadows.crisp,
-      transform: "translateY(1px)",
-    };
+    styles = Object.assign(styles, foundations.hoverStyle);
   }
   return styles;
 };
@@ -130,10 +124,12 @@ const enrollmentProgressRenderer = (enrolment: EnrollmentProps) => {
 };
 
 const CourseSlat: React.SFC<CourseSlatProps> = ({
-  actionRender,
+  actionRender, // Deprecated
+  actionRenderer,
   author,
   authorAvatar,
-  contentRender,
+  contentRender, // Deprecated
+  contentRenderer,
   courseImage,
   css,
   currency,
@@ -317,6 +313,7 @@ const CourseSlat: React.SFC<CourseSlatProps> = ({
                   )}
                 {enrollment && enrollmentProgressRenderer(enrollment)}
                 {contentRender && contentRender()}
+                {contentRenderer && contentRenderer()}
                 {description && (
                   <Text
                     color="subtle"
@@ -335,7 +332,7 @@ const CourseSlat: React.SFC<CourseSlatProps> = ({
                 )}
               </View>
             </View>
-            {actionRender && (
+            {(actionRender || actionRenderer) && (
               <View
                 css={{
                   padding: spacing[5],
@@ -345,7 +342,8 @@ const CourseSlat: React.SFC<CourseSlatProps> = ({
                   },
                 }}
               >
-                {actionRender()}
+                {actionRender && actionRender()}
+                {actionRenderer && actionRenderer()}
               </View>
             )}
           </View>

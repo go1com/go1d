@@ -1,10 +1,10 @@
 import * as React from "react";
 import { Manager, Popper, Reference } from "react-popper";
-import { AutoSizer, List } from "react-virtualized";
+import { List } from "react-virtualized";
 import safeInvoke from "../../utils/safeInvoke";
 import Button from "../Button";
-import ButtonMinimal from "../ButtonMinimal";
 import Checkbox from "../Checkbox";
+import Icon from "../Icon";
 import Portal from "../Portal";
 import SearchInput from "../SearchInput";
 import Text from "../Text";
@@ -47,6 +47,7 @@ const Sizes = {
 class MultiSelect extends React.PureComponent<MultiSelectProps, any> {
   public static defaultProps = {
     size: "md",
+    options: [],
   };
 
   public state = {
@@ -59,6 +60,7 @@ class MultiSelect extends React.PureComponent<MultiSelectProps, any> {
     }
   }
 
+  /* istanbul ignore next */
   public renderSelectRow({
     options,
     getItemProps,
@@ -109,7 +111,10 @@ class MultiSelect extends React.PureComponent<MultiSelectProps, any> {
               },
             })}
           >
-            <Checkbox value={selectedOptions[Option.value] === true} />
+            <Checkbox
+              isStatic={true}
+              value={selectedOptions[Option.value] === true}
+            />
             <Text
               fontSize={Sizes[this.props.size].fontSize}
               css={{
@@ -128,26 +133,44 @@ class MultiSelect extends React.PureComponent<MultiSelectProps, any> {
   public render() {
     const {
       options,
-      disabled,
+      disabled = options.length === 0,
       size,
       defaultValue,
-      value,
       label = "",
       defaultText = "Please Select", // Deprecated - use placeholder
       placeholder,
+      name, // Do not pass to child
+      onChange, // Do not pass to child
       searchable,
       id,
       closeOnSelect,
+      ...remainingProps
     } = this.props;
 
     const { flattenedOptions, selectableCount } = this.flattenOptions(options);
 
-    const DefaultOption = defaultValue
-      ? defaultValue.map(Entry => flattenedOptions.find(x => x.value === Entry))
-      : null;
+    const DefaultOption =
+      defaultValue && Array.isArray(flattenedOptions)
+        ? defaultValue.map(Entry =>
+            flattenedOptions.find(x => x.value === Entry)
+          )
+        : null;
+    let value = this.props.value;
+    if (value && !Array.isArray(value)) {
+      value = [value];
+    }
+    const selectedOption = Array.isArray(flattenedOptions)
+      ? Array.isArray(value)
+        ? value.map(Entry =>
+            flattenedOptions.find(x => {
+              if (typeof Entry !== "object") {
+                return x.value === Entry;
+              }
 
-    const selectedOption = value
-      ? value.map(Entry => flattenedOptions.find(x => x.value === Entry))
+              return x.value === Entry.value;
+            })
+          )
+        : value
       : undefined;
 
     return (
@@ -186,7 +209,10 @@ class MultiSelect extends React.PureComponent<MultiSelectProps, any> {
               );
 
               return (
-                <View {...getRootProps({ refKey: "innerRef" })}>
+                <View
+                  {...remainingProps}
+                  {...getRootProps({ refKey: "innerRef" })}
+                >
                   <View flexDirection="row">
                     {label && (
                       <View paddingRight={4} paddingBottom={3}>
@@ -305,8 +331,8 @@ class MultiSelect extends React.PureComponent<MultiSelectProps, any> {
                               <View
                                 css={{
                                   position: "absolute",
-                                  right: 8,
-                                  top: 1,
+                                  right: 12,
+                                  top: 3,
                                   alignItems: "center",
                                   justifyContent: "center",
                                   paddingRight: 0,
@@ -316,15 +342,12 @@ class MultiSelect extends React.PureComponent<MultiSelectProps, any> {
                                       : colors.background,
                                 }}
                                 height="calc(100% - 3px)"
-                                paddingX={3}
+                                paddingLeft={3}
                               >
-                                <ButtonMinimal
-                                  iconName="ChevronDown"
-                                  css={{
-                                    backgroundColor: "transparent",
-                                  }}
-                                  size="sm"
-                                  iconColor={
+                                <Icon
+                                  name="ChevronDown"
+                                  size={2}
+                                  color={
                                     selectedItems.length > 0
                                       ? "background"
                                       : "muted"
@@ -338,7 +361,7 @@ class MultiSelect extends React.PureComponent<MultiSelectProps, any> {
                       {isOpen && (
                         <Portal>
                           <Popper placement="bottom-start">
-                            {({ ref, style }) => (
+                            {({ ref, style, scheduleUpdate }) => (
                               <View
                                 {...getMenuProps({
                                   refKey: "innerRef",
@@ -347,52 +370,48 @@ class MultiSelect extends React.PureComponent<MultiSelectProps, any> {
                                 <View
                                   backgroundColor="background"
                                   boxShadow="strong"
-                                  borderRadius={3}
+                                  borderRadius={2}
                                   overflow="hidden"
                                   style={style}
                                   innerRef={ref}
                                   transition="none"
                                   zIndex="dropdown"
-                                  width={250}
                                   marginY={2}
                                 >
                                   {searchable && (
                                     <View paddingX={4} paddingY={3}>
                                       <SearchInput
                                         id={`SearchInput__${id}`}
-                                        onSubmit={null}
                                         clearable={false}
-                                        size={size}
                                         data-testid="inputElement"
-                                        {...getInputProps()}
+                                        onSubmit={null}
+                                        {...getInputProps({
+                                          size,
+                                          onChange: scheduleUpdate,
+                                        }) as {}}
                                       />
                                     </View>
                                   )}
-                                  <AutoSizer
-                                    disableHeight={true}
-                                    defaultWidth={200}
-                                  >
-                                    {({ width }) => (
-                                      <List
-                                        data-testid="resultsList"
-                                        width={width}
-                                        height={this.calculateDropDownHeight(
-                                          filteredOptions
-                                        )}
-                                        rowCount={filteredOptions.length}
-                                        rowHeight={this.calculateOptionHeight(
-                                          filteredOptions
-                                        )}
-                                        rowRenderer={this.renderSelectRow({
-                                          options: filteredOptions,
-                                          colors,
-                                          getItemProps,
-                                          highlightedIndex,
-                                          selectedOptions,
-                                        })}
-                                      />
+                                  <List
+                                    data-testid="resultsList"
+                                    width={this.calculateListWidth(
+                                      filteredOptions
                                     )}
-                                  </AutoSizer>
+                                    height={this.calculateDropDownHeight(
+                                      filteredOptions
+                                    )}
+                                    rowCount={filteredOptions.length}
+                                    rowHeight={this.calculateOptionHeight(
+                                      filteredOptions
+                                    )}
+                                    rowRenderer={this.renderSelectRow({
+                                      options: filteredOptions,
+                                      colors,
+                                      getItemProps,
+                                      highlightedIndex,
+                                      selectedOptions,
+                                    })}
+                                  />
                                 </View>
                               </View>
                             )}
@@ -410,30 +429,22 @@ class MultiSelect extends React.PureComponent<MultiSelectProps, any> {
     );
   }
 
-  private handleOnChange = event => {
-    const { onChange } = this.props;
-
-    if (onChange) {
-      safeInvoke(onChange, {
-        target: event,
-      });
-    }
-  };
-
-  private handleSelectionClear = clearFunction => {
+  public handleSelectionClear = clearFunction => {
     const { onChange } = this.props;
 
     return () => {
       clearFunction();
       if (onChange) {
         safeInvoke(onChange, {
-          target: {},
+          target: {
+            value: [],
+          },
         });
       }
     };
   };
 
-  private flattenOptions(Options = []) {
+  public flattenOptions(Options = []) {
     return Options.reduce((sum, Option) => {
       if (Option.optgroup) {
         return {
@@ -466,7 +477,7 @@ class MultiSelect extends React.PureComponent<MultiSelectProps, any> {
     }, {});
   }
 
-  private filterOptions(Options, searchValue) {
+  public filterOptions(Options, searchValue) {
     if (typeof searchValue === "string" && searchValue.trim() !== "") {
       return Options.filter(Entry => {
         return (
@@ -479,7 +490,30 @@ class MultiSelect extends React.PureComponent<MultiSelectProps, any> {
     return Options;
   }
 
-  private calculateDropDownHeight(Options) {
+  public calculateListWidth(Options) {
+    const { searchable } = this.props;
+    const averageCharacterPX = 10;
+    const minWidth = searchable ? 275 : 200;
+    const longestString = Options.reduce((largest, Entry) => {
+      if (Entry.label.length > largest) {
+        return Entry.label.length;
+      }
+
+      return largest;
+    }, 0);
+
+    if (longestString * averageCharacterPX > 350) {
+      return 350;
+    }
+
+    if (longestString * averageCharacterPX < minWidth) {
+      return minWidth;
+    }
+
+    return longestString * averageCharacterPX;
+  }
+
+  public calculateDropDownHeight(Options) {
     const Height = Options.reduce((sum, Entry, index) => {
       return sum + this.calculateOptionHeight(Options)({ index });
     }, 0);
@@ -487,7 +521,7 @@ class MultiSelect extends React.PureComponent<MultiSelectProps, any> {
     return Height < 300 ? Height : 300;
   }
 
-  private calculateOptionHeight(Options) {
+  public calculateOptionHeight(Options) {
     // Calculate the options for VirtualisedList
     return ({ index: OptionIndex }) => {
       const Option = Options[OptionIndex];
@@ -509,6 +543,19 @@ class MultiSelect extends React.PureComponent<MultiSelectProps, any> {
       return baseOptionHeight;
     };
   }
+
+  private handleOnChange = event => {
+    const { onChange, name } = this.props;
+
+    if (onChange) {
+      safeInvoke(onChange, {
+        target: {
+          name,
+          value: event.map(x => x.value),
+        },
+      });
+    }
+  };
 }
 
 export default MultiSelect;

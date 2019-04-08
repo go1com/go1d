@@ -13,7 +13,7 @@ export interface PageHeaderProps extends ViewProps {
   subtitle?: React.ReactNode;
   backgroundColor?: string;
   showMenuButton?: boolean;
-  onMenuButtonClick?: ((evt: React.SyntheticEvent) => void);
+  onMenuButtonClick?: (evt: React.SyntheticEvent) => void;
   breadcrumbHref?: string;
   breadcrumbTitle?: string;
 }

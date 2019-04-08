@@ -147,7 +147,7 @@ export const colors: Colors = generateColors();
 export const zIndex: MappedKey<ZIndex, number> = {
   sticky: 1020,
   fixed: 1030,
-  dropdown: 1035,
+  dropdown: 1051,
   modalBackdrop: 1040,
   modal: 1050,
   popover: 1060,
@@ -248,6 +248,23 @@ const transitions = {
 };
 
 /**
+ * * Hover Style for Slats and Cards
+ */
+
+const hoverStyle = {
+  "&:hover, &:focus": {
+    boxShadow: shadows.strong,
+    cursor: "pointer",
+    transform: "translateY(-1px)",
+  },
+  "&:active": {
+    boxShadow: shadows.crisp,
+    transform: "translateY(1px)",
+  },
+};
+
+
+/**
  * Breakpoints
  */
 
@@ -266,6 +283,7 @@ export const generateTheme = ({
   type,
   spacing,
   shadows,
+  hoverStyle,
   transitions,
   breakpoints,
   mq: facepaint(Object.keys(breakpoints).map(k => breakpoints[k])),

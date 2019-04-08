@@ -6,14 +6,14 @@ import View, { ViewProps } from "../View";
 import DropdownItem from "./DropdownItem";
 
 export interface DropdownProps extends ViewProps {
-  children: ((params: any) => React.ReactNode);
+  children: (params: any) => React.ReactNode;
   itemList: any;
-  renderFunction?: ((
+  renderFunction?: (
     item: any,
     index: number,
     getItemProps: (options: any) => any
-  ) => any);
-  itemToString: ((item: any) => string);
+  ) => any;
+  itemToString: (item: any) => string;
   placement?:
     | "auto-start"
     | "auto"
