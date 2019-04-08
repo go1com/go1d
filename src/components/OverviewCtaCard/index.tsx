@@ -28,6 +28,10 @@ export interface OverviewCtaCardProps extends ViewProps {
   price?: number;
   subtitle?: React.ReactNode;
   title?: string;
+  tax?: {
+    amount?: number;
+    included?: boolean;
+  };
 }
 
 const MobileDisplayBreak = "@media(max-width: 1023px)";
@@ -203,12 +207,7 @@ class OverviewCtaCard extends React.Component<OverviewCtaCardProps, any> {
       enrolled,
       likes,
       metaData,
-      price,
     } = this.props;
-
-    // the top margin above the price and enrolments information depends on previous elements
-    const desktopPriceTopMargin =
-      actions || children || likes || dislikes || enrolled || metaData ? 6 : 0;
 
     const desktopEnrolmentsTopMargin =
       likes > 0 || dislikes > 0 || (actions && actions.length > 0) ? 5 : 0;
@@ -250,9 +249,10 @@ class OverviewCtaCard extends React.Component<OverviewCtaCardProps, any> {
 
         {metaData}
 
+        {currency && this.renderPrice()}
+
         {children && <View marginTop={3}>{children}</View>}
 
-        {price > 0 && currency && this.renderPrice(desktopPriceTopMargin)}
       </View>
     );
   }
@@ -416,14 +416,12 @@ class OverviewCtaCard extends React.Component<OverviewCtaCardProps, any> {
     );
   }
 
-  private renderPrice(desktopTopMargin: number = 0) {
-    const { currency, price } = this.props;
-
+  private renderPrice() {
+    const { currency, price, tax } = this.props;
     return (
       <View
         flexDirection="row"
-        alignItems="baseline"
-        marginTop={desktopTopMargin}
+        alignItems="baseline"s
         css={{
           [MobileDisplayBreak]: {
             marginTop: foundations.spacing[6],
@@ -432,18 +430,20 @@ class OverviewCtaCard extends React.Component<OverviewCtaCardProps, any> {
       >
         <Text
           fontSize={5}
-          fontWeight="semibold"
+          fontWeight="bold"
           css={{
             [MobileDisplayBreak]: {
               fontSize: foundations.type.scale.sm[4],
             },
           }}
-        >
-          {formatPrice(currency, price)}
+        > 
+          {formatPrice(currency, price, tax)}
         </Text>
-        <Text marginLeft={3} fontSize={1}>
-          <abbr title="per person">pp</abbr>
-        </Text>
+        {price > 0 && (
+          <Text marginLeft={3} fontSize={1}>
+            per person
+          </Text>
+        )}
       </View>
     );
   }

@@ -31,6 +31,10 @@ export interface CourseSlatProps extends ViewProps {
   title?: string;
   type?: string;
   typeIcon?: string;
+  tax?: {
+    amount?: number;
+    included?: boolean;
+  };
 }
 
 const interactiveStyle = (colors, passive) => {
@@ -137,6 +141,7 @@ const CourseSlat: React.SFC<CourseSlatProps> = ({
   title,
   type,
   typeIcon,
+  tax,
   skeleton = false,
   ...props
 }: CourseSlatProps) => {
@@ -302,7 +307,7 @@ const CourseSlat: React.SFC<CourseSlatProps> = ({
                   price > 0 && (
                     <View flexDirection="row">
                       <Text color="accent" fontWeight="semibold">
-                        {formatPrice(currency, price)}
+                        {formatPrice(currency, price, tax)}
                       </Text>
                     </View>
                   )}
