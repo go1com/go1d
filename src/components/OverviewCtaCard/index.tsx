@@ -207,7 +207,6 @@ class OverviewCtaCard extends React.Component<OverviewCtaCardProps, any> {
       enrolled,
       likes,
       metaData,
-      price,
     } = this.props;
 
     const desktopEnrolmentsTopMargin =

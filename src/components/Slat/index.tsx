@@ -25,6 +25,10 @@ export interface SlatProps extends ViewProps {
   typeBackground?: string;
   actionRenderer?: () => React.ReactChild;
   dropdownItems?: DropdownItem[];
+  tax?: {
+    amount?: number;
+    included?: boolean;
+  };
 }
 
 const Slat: React.SFC<SlatProps> = ({
@@ -34,6 +38,7 @@ const Slat: React.SFC<SlatProps> = ({
   description,
   currency,
   price,
+  tax,
   bottomMeta,
   image,
   type,
@@ -280,7 +285,7 @@ const Slat: React.SFC<SlatProps> = ({
                   price > 0 && (
                     <View flexDirection="row">
                       <Text color="accent" fontWeight="semibold">
-                        {formatPrice(currency, price)}
+                        {formatPrice(currency, price, tax)}
                       </Text>
                     </View>
                   )}

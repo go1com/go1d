@@ -27,7 +27,7 @@ function formatPrice(
     output = output.slice(0, -3);
   }
 
-  if (tax.amount > 0 && !tax.included && currency === "AUD") {
+  if (tax && tax.amount > 0 && !tax.included && currency === "AUD") {
     output = `${output} + GST`;
   }
 
