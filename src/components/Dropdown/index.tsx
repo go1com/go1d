@@ -11,9 +11,11 @@ export interface DropdownProps extends ViewProps {
   renderFunction?: (
     item: any,
     index: number,
-    getItemProps: (options: any) => any
+    getItemProps: (options: any) => any,
+    downshiftParams?: any,
   ) => any;
   itemToString: (item: any) => string;
+  initialIsOpen?: boolean;
   placement?:
     | "auto-start"
     | "auto"
@@ -56,9 +58,14 @@ const Dropdown: React.SFC<DropdownProps> = ({
   placement,
   offset,
   onSelect,
+  initialIsOpen,
   ...props
 }: DropdownProps) => (
-  <Downshift itemToString={itemToString} onSelect={onSelect}>
+  <Downshift
+    itemToString={itemToString}
+    onSelect={onSelect}
+    initialIsOpen={initialIsOpen}
+  >
     {({
       getItemProps,
       getMenuProps,
@@ -100,7 +107,7 @@ const Dropdown: React.SFC<DropdownProps> = ({
                       {...props}
                     >
                       {itemList.map((item, i) =>
-                        renderFunction(item, i, getItemProps)
+                        renderFunction(item, i, getItemProps, downshiftParams)
                       )}
                     </View>
                   </View>
