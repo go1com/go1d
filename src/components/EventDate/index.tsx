@@ -56,7 +56,7 @@ const EventDate: React.SFC<SessionProps> = ({
     `${location.country}`}`;
   const date = new Date(start);
   const day = date.getDate();
-  const month = date.toLocaleDateString("en-us",{month: "short"});
+  const month = date.toLocaleDateString("en-us", { month: "short" });
   const year = date.getFullYear();
   const startTime = formatTime(start);
   const endTime = formatTime(end);

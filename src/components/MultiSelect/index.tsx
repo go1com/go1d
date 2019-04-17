@@ -200,13 +200,15 @@ class MultiSelect extends React.PureComponent<MultiSelectProps, any> {
                 ? this.filterOptions(flattenedOptions, inputValue)
                 : flattenedOptions;
 
-              const selectedOptions = selectedItems.reduce(
-                (sum, entry) => ({
-                  ...sum,
-                  [entry.value]: true,
-                }),
-                {}
-              );
+              const selectedOptions = selectedItems.reduce((sum, entry) => {
+                if (entry && entry.value) {
+                  return {
+                    ...sum,
+                    [entry.value]: true,
+                  };
+                }
+                return sum;
+              }, {});
 
               return (
                 <View

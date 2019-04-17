@@ -252,7 +252,6 @@ class OverviewCtaCard extends React.Component<OverviewCtaCardProps, any> {
         {currency && this.renderPrice()}
 
         {children && <View marginTop={3}>{children}</View>}
-
       </View>
     );
   }
@@ -421,7 +420,8 @@ class OverviewCtaCard extends React.Component<OverviewCtaCardProps, any> {
     return (
       <View
         flexDirection="row"
-        alignItems="baseline"s
+        alignItems="baseline"
+        s={true}
         css={{
           [MobileDisplayBreak]: {
             marginTop: foundations.spacing[6],
@@ -436,7 +436,7 @@ class OverviewCtaCard extends React.Component<OverviewCtaCardProps, any> {
               fontSize: foundations.type.scale.sm[4],
             },
           }}
-        > 
+        >
           {formatPrice(currency, price, tax)}
         </Text>
         {price > 0 && (
