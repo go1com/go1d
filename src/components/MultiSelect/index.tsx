@@ -147,7 +147,7 @@ class MultiSelect extends React.PureComponent<MultiSelectProps, any> {
       ...remainingProps
     } = this.props;
 
-    const { flattenedOptions, selectableCount } = this.flattenOptions(options);
+    const { flattenedOptions = [], selectableCount } = this.flattenOptions(options);
 
     const DefaultOption =
       defaultValue && Array.isArray(flattenedOptions)
@@ -161,17 +161,19 @@ class MultiSelect extends React.PureComponent<MultiSelectProps, any> {
     }
     const selectedOption = Array.isArray(flattenedOptions)
       ? Array.isArray(value)
-        ? value.map(Entry =>
-            flattenedOptions.find(x => {
-              if (typeof Entry !== "object") {
-                return x.value === Entry;
-              }
+        ? value.map(Entry => 
+            flattenedOptions
+              .find(x => {
+                if (typeof Entry !== "object") {
+                  return String(x.value) === String(Entry);
+                }
 
-              return x.value === Entry.value;
-            })
+                return String(x.value) === String(Entry.value);
+              })
           )
+          .filter(x => !!x)
         : value
-      : undefined;
+      : null;
 
     return (
       <Theme.Consumer>
@@ -200,15 +202,19 @@ class MultiSelect extends React.PureComponent<MultiSelectProps, any> {
                 ? this.filterOptions(flattenedOptions, inputValue)
                 : flattenedOptions;
 
-              const selectedOptions = selectedItems.reduce((sum, entry) => {
-                if (entry && entry.value) {
-                  return {
-                    ...sum,
-                    [entry.value]: true,
-                  };
-                }
-                return sum;
-              }, {});
+              const selectedOptions = selectedItems.reduce(
+                (sum, entry) => {
+                  if (entry && entry.value) {
+                    return {
+                      ...sum,
+                      [entry.value]: true,
+                    };
+                  }
+                  
+                  return sum;
+                },
+                {}
+              );
 
               return (
                 <View
@@ -326,7 +332,9 @@ class MultiSelect extends React.PureComponent<MultiSelectProps, any> {
                                   }
                                 >
                                   {selectedItems.length > 0
-                                    ? selectedItems.map(x => x.label).join(", ")
+                                    ? selectedItems
+                                        .map(x => x.label)
+                                        .join(", ")
                                     : placeholder || defaultText}
                                 </Text>
                               </View>
