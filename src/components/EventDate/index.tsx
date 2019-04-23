@@ -18,6 +18,7 @@ export interface SessionProps extends ViewProps {
     country?: string;
     latitude?: number;
     longitude?: number;
+    is_online?: string;
   };
   bigDate?: boolean;
   showAttendees?: boolean;
@@ -32,6 +33,8 @@ const formatTime = timestamp => {
   const hours = time.getHours();
   if (hours > 12) {
     return `${hours - 12}:${min > 9 ? `${min}PM` : `0${min}PM`}`;
+  } else if (hours === 12) {
+    return `${hours}:${min > 9 ? `${min}PM` : `0${min}PM`}`;
   }
   return `${hours}:${min > 9 ? `${min}AM` : `0${min}AM`}`;
 };
@@ -49,17 +52,30 @@ const EventDate: React.SFC<SessionProps> = ({
   mapLink,
   ...props
 }: SessionProps) => {
-  const locationString = `${location.thoroughfare &&
-    `${location.thoroughfare}, `} ${location.locality &&
-    `${location.locality}, `} ${location.administrative_area &&
-    `${location.administrative_area}, `} ${location.country &&
-    `${location.country}`}`;
+  let locationString;
+  if (location.is_online === "1") {
+    locationString = "Online";
+  } else {
+    if (location.thoroughfare) {
+      locationString = `${location.thoroughfare}`;
+    }
+    if (location.locality) {
+      locationString = `${locationString}, ${location.locality}`;
+    }
+    if (location.administrative_area) {
+      locationString = `${locationString}, ${location.administrative_area}`;
+    }
+    if (location.country) {
+      locationString = `${locationString}, ${location.country}`;
+    }
+  }
   const date = new Date(start);
   const day = date.getDate();
-  const month = date.toLocaleDateString("en-us",{month: "short"});
+  const month = date.toLocaleDateString("en-us", { month: "short" });
   const year = date.getFullYear();
   const startTime = formatTime(start);
   const endTime = formatTime(end);
+
   return (
     <React.Fragment>
       {mapLink &&

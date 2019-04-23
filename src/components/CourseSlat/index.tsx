@@ -148,7 +148,6 @@ const CourseSlat: React.SFC<CourseSlatProps> = ({
   if (skeleton) {
     return <Skeleton />;
   }
-
   return (
     <Theme.Consumer>
       {({ spacing, breakpoints, colors }) => {
