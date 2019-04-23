@@ -1,18 +1,38 @@
-import Downshift from "downshift";
+import Downshift, * as DownshiftType from "downshift";
 import * as React from "react";
-import { Manager, Popper, Reference } from "react-popper";
+import { Manager, Popper, Reference, RefHandler } from "react-popper";
 import Portal from "../Portal";
 import View, { ViewProps } from "../View";
 import DropdownItem from "./DropdownItem";
 
+interface GetItemProps<T> {
+  (options: DownshiftType.GetItemPropsOptions<T>): any;
+}
+
+interface OnInputValueChange {
+  (inputValue: string, stateAndHelpers: object): void;
+}
+
+type RenderMenu<T> = (
+  ref: RefHandler,
+  style: React.CSSProperties,
+  getItemProps: GetItemProps<T>,
+  downshiftParams: any,
+) => React.ReactNode;
+
+type RenderItem<T> = (
+  item: T,
+  index: number,
+  getItemProps: GetItemProps<T>,
+  downshiftParams: any,
+) => React.ReactNode;
+
 export interface DropdownProps extends ViewProps {
   children: (params: any) => React.ReactNode;
-  itemList: any;
-  renderFunction?: (
-    item: any,
-    index: number,
-    getItemProps: (options: any) => any
-  ) => any;
+  itemList?: any[];
+  renderMenu?: RenderMenu<any>;
+  renderFunction?: RenderItem<any>;
+  onInputValueChange?: OnInputValueChange;
   itemToString: (item: any) => string;
   placement?:
     | "auto-start"
@@ -50,7 +70,9 @@ function defaultRenderFunction(
 const Dropdown: React.SFC<DropdownProps> = ({
   children,
   itemList,
+  renderMenu,
   renderFunction = defaultRenderFunction,
+  onInputValueChange,
   css,
   itemToString,
   placement,
@@ -58,7 +80,11 @@ const Dropdown: React.SFC<DropdownProps> = ({
   onSelect,
   ...props
 }: DropdownProps) => (
-  <Downshift itemToString={itemToString} onSelect={onSelect}>
+  <Downshift
+    itemToString={itemToString}
+    onSelect={onSelect}
+    onInputValueChange={onInputValueChange}
+  >
     {({
       getItemProps,
       getMenuProps,
@@ -88,21 +114,25 @@ const Dropdown: React.SFC<DropdownProps> = ({
                       refKey: "innerRef",
                     })}
                   >
-                    <View
-                      backgroundColor="background"
-                      boxShadow="strong"
-                      borderRadius={3}
-                      style={style}
-                      innerRef={ref}
-                      transition="none"
-                      paddingY={3}
-                      zIndex="dropdown"
-                      {...props}
-                    >
-                      {itemList.map((item, i) =>
-                        renderFunction(item, i, getItemProps)
-                      )}
-                    </View>
+                    {renderMenu &&
+                      renderMenu(ref, style, getItemProps, downshiftParams)}
+                    {!renderMenu && (
+                      <View
+                        backgroundColor="background"
+                        boxShadow="strong"
+                        borderRadius={3}
+                        style={style}
+                        innerRef={ref}
+                        transition="none"
+                        paddingY={3}
+                        zIndex="dropdown"
+                        {...props}
+                      >
+                        {itemList.map((item, i) =>
+                          renderFunction(item, i, getItemProps, downshiftParams)
+                        )}
+                      </View>
+                    )}
                   </View>
                 )}
               </Popper>

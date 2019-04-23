@@ -90,7 +90,7 @@ const resolveGo1dPropTypes = (name, propInfo, defaultValue) => {
     return createSelect(name,['accent', 'background', 'contrast', 'danger', 'default', 'faded', 'faint', 'highlight', 'muted', 'note', 'soft', 'subtle', 'success', 'warning'], defaultValue);
   }
   if(name === "fontWeight") {
-    return createSelect('fontWeight',['normal', 'semibold', 'bold'], defaultValue);
+    return createSelect('fontWeight',['light', 'normal', 'semibold', 'bold'], defaultValue);
   }
   if(name === "css") {
     return object('css', defaultValue);

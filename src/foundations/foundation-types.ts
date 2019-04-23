@@ -3,7 +3,7 @@
  */
 export type FontFamily = "sansSerif" | "title" | "paragraph" | "ui" | "mono";
 
-export type FontWeight = "normal" | "semibold" | "bold";
+export type FontWeight = "light" | "normal" | "semibold" | "bold";
 
 export type Gradients = "warmOverlay" | "lightWarmOverlay" | "darkWarmOverlay";
 export type Opacities =
