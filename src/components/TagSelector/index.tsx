@@ -22,7 +22,7 @@ export interface TagSelectorProps extends ViewProps {
    * The selected elements of the component.
    */
   value?: string[];
-  options: [];
+  options: any[];
   /**
    * Options could be an array of string or objects, provide a formatter to bring them into a uniform structure
    */
