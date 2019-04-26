@@ -88,7 +88,7 @@ it("handles single select changes well", () => {
   );
 
   if (ref.current) {
-    ref.current.handleOptionClick({ value: "test1", label: "test1" });
+    ref.current.handleOptionClick({ value: "test1", label: "test1" }, null);
     expect(fn).toBeCalledWith({
       target: { name: "select", value: "test1" },
     });
@@ -128,7 +128,7 @@ it("handles multi select changes well", () => {
   );
 
   if (ref.current) {
-    ref.current.handleOptionClick({ value: "test2", label: "test2" });
+    ref.current.handleOptionClick({ value: "test2", label: "test2" }, null);
     expect(fn).toBeCalledWith({
       target: { name: "select", value: ["test0", "test2"] },
     });
@@ -167,7 +167,7 @@ it("handles multi select deletions well", () => {
   );
 
   if (ref.current) {
-    ref.current.handleOptionClick({ value: "test0", label: "test2" });
+    ref.current.handleOptionClick({ value: "test0", label: "test2" }, null);
     expect(fn).toBeCalledWith({
       target: { name: "select", value: [] },
     });
@@ -205,7 +205,7 @@ it("handles multi select creations well", () => {
   );
 
   if (ref.current) {
-    ref.current.handleOptionClick("test1");
+    ref.current.handleOptionClick("test1", jest.fn());
     expect(fn).toBeCalledWith({
       target: { name: "select", value: "test1", id: undefined },
       currentTarget: { name: "select", value: "test1", id: undefined },

@@ -28,12 +28,12 @@ const props = {
   dropdownItems: [
     {
       icon: "Cross",
-      text: "fake item",
+      title: "fake item",
       action: jest.fn(),
     },
     {
       icon: "Cross",
-      text: "fake item2",
+      title: "fake item2",
       action: jest.fn(),
     },
   ],

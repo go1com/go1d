@@ -5,26 +5,22 @@ import Portal from "../Portal";
 import View, { ViewProps } from "../View";
 import DropdownItem from "./DropdownItem";
 
-interface GetItemProps<T> {
-  (options: DownshiftType.GetItemPropsOptions<T>): any;
-}
+type GetItemProps<T> = (options: DownshiftType.GetItemPropsOptions<T>) => any;
 
-interface OnInputValueChange {
-  (inputValue: string, stateAndHelpers: object): void;
-}
+type OnInputValueChange = (inputValue: string, stateAndHelpers: object) => void;
 
 type RenderMenu<T> = (
   ref: RefHandler,
   style: React.CSSProperties,
   getItemProps: GetItemProps<T>,
-  downshiftParams: any,
+  downshiftParams: any
 ) => React.ReactNode;
 
 type RenderItem<T> = (
   item: T,
   index: number,
   getItemProps: GetItemProps<T>,
-  downshiftParams: any,
+  downshiftParams: any
 ) => React.ReactNode;
 
 export interface DropdownProps extends ViewProps {

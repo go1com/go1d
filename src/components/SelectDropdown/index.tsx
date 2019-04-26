@@ -150,7 +150,7 @@ class SelectDropdown extends React.PureComponent<SelectDropdownProps, State> {
     option: SelectDropdownItem | string,
     selectActions: any
   ) {
-    if (!this.props.closeOnSelection) {
+    if (!this.props.closeOnSelection && selectActions.openMenu) {
       selectActions.openMenu();
     }
     if (typeof option === "string") {
