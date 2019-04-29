@@ -25,9 +25,7 @@ export default class ContainerDimensions extends React.Component<
   any
 > {
   public static getDomNodeDimensions(node) {
-    const {
-      width,
-    } = node.getBoundingClientRect();
+    const { width } = node.getBoundingClientRect();
     return { width };
   }
 
@@ -73,7 +71,11 @@ export default class ContainerDimensions extends React.Component<
   public render() {
     const { initiated } = this.state;
     // do not perform this optimization on server side or during testing
-    if (!initiated && typeof window !== 'undefined' && process.env.NODE_ENV !== "test") {
+    if (
+      !initiated &&
+      typeof window !== "undefined" &&
+      process.env.NODE_ENV !== "test"
+    ) {
       return <Base />;
     }
     invariant(
