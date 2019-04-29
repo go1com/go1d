@@ -2,6 +2,7 @@ import * as elementResizeDetectorMaker from "element-resize-detector";
 import * as invariant from "invariant";
 import * as React from "react";
 import * as ReactDOM from "react-dom";
+import Base from "../../Base";
 
 // Fork of https://github.com/okonet/react-container-dimensions with modifications for server side rendering
 
@@ -24,18 +25,12 @@ export default class ContainerDimensions extends React.Component<
   any
 > {
   public static getDomNodeDimensions(node) {
-    const {
-      top,
-      right,
-      bottom,
-      left,
-      width,
-      height,
-    } = node.getBoundingClientRect();
-    return { top, right, bottom, left, width, height };
+    const { width } = node.getBoundingClientRect();
+    return { width };
   }
 
   public state = {
+    width: 0,
     initiated: false,
   };
 
@@ -60,18 +55,29 @@ export default class ContainerDimensions extends React.Component<
   }
 
   public onResize = () => {
+    const { width } = this.state;
     const clientRect = ContainerDimensions.getDomNodeDimensions(
       this.parentNode
     );
-    if (this.componentIsMounted) {
+    // only trigger rerender if width changed
+    if (this.componentIsMounted && width !== clientRect.width) {
       this.setState({
         initiated: true,
-        ...clientRect,
+        width: clientRect.width,
       });
     }
   };
 
   public render() {
+    const { initiated } = this.state;
+    // do not perform this optimization on server side or during testing
+    if (
+      !initiated &&
+      typeof window !== "undefined" &&
+      process.env.NODE_ENV !== "test"
+    ) {
+      return <Base />;
+    }
     invariant(
       this.props.children,
       "Expected children to be one of function or React.Element"

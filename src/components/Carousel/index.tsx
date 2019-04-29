@@ -39,7 +39,7 @@ class Carousel extends React.Component<CarouselProps, any> {
 
   public state = {
     currentSlide: 0,
-    finishedScrolling: true,
+    finishedScrolling: false,
   };
   private slideTween;
   private ignoreScroll = false;
@@ -52,6 +52,12 @@ class Carousel extends React.Component<CarouselProps, any> {
       const Element: any = this.sliderContainerRef.current;
       Element.addEventListener("scroll", this.handleScrollTimer, false);
       Element.addEventListener("touchmove", this.handleScrollTimer, false);
+    }
+    // changed default to true, so after mounting check who many children are in there and set to true if only one or none
+    if (this.slideRefs.length <= 1) {
+      this.setState({
+        finishedScrolling: true,
+      });
     }
   }
 
