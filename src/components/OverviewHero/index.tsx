@@ -211,7 +211,7 @@ const OverviewHero: React.SFC<OverviewHeroProps> = ({
         >
           <View
             maxWidth={700}
-            width="calc(100% - 360px)"
+            width="calc(100% - 440px)"
             css={{
               [MobileDisplayBreak]: {
                 width: "100%",
@@ -219,7 +219,6 @@ const OverviewHero: React.SFC<OverviewHeroProps> = ({
             }}
           >
             <View
-              maxWidth="calc(75vw - 360px)"
               css={{
                 [MobileDisplayBreak]: {
                   width: "100%",
