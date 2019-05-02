@@ -1,14 +1,13 @@
 import * as TWEEN from "@tweenjs/tween.js";
+import memoize = require("lodash/memoize");
 import * as React from "react";
 import * as smoothscroll from "smoothscroll-polyfill";
-
-import ContainerDimensions from "./internals/ContainerDimensions";
-
 import View, { ViewProps } from "../View";
+import ContainerDimensions from "./internals/ContainerDimensions";
+import PureWrapper from "./internals/PureWrapper";
 
 import foundations from "../../foundations";
 import ButtonFilled from "../ButtonFilled";
-
 interface StandardProps extends ViewProps {
   children?: React.ReactNode;
   slidesToShow?: number;
@@ -44,6 +43,46 @@ class Carousel extends React.Component<CarouselProps, any> {
   private slideTween;
   private ignoreScroll = false;
   private initialSliderOffset = null;
+  private slideItems = memoize((children, slidesToShow, gutter) =>
+    React.Children.map(children, (Slide, Index) => {
+      const SlideRef = React.createRef();
+      this.slideRefs[Index] = SlideRef;
+      return (
+        <View
+          innerRef={SlideRef}
+          maxWidth={`${100 / slidesToShow}%`}
+          marginY={1}
+          css={{
+            paddingLeft: foundations.spacing[gutter] / 2,
+            paddingRight: foundations.spacing[gutter] / 2,
+            ":first-child": {
+              paddingLeft: 0,
+            },
+            ":last-child": {
+              paddingRight: 0,
+            },
+          }}
+        >
+          {Slide}
+        </View>
+      );
+    })
+  );
+  private wrapperCSS = memoize(css => {
+    return {
+      WebkitOverflowScrolling: "touch",
+      overflowX: "auto",
+      [foundations.breakpoints.lg]: {
+        overflowX: "hidden",
+      },
+      "::-webkit-scrollbar": {
+        width: 0,
+        height: 0,
+        background: "transparent",
+      },
+      ...(css as object),
+    };
+  });
 
   public componentDidMount() {
     smoothscroll.polyfill();
@@ -237,13 +276,15 @@ class Carousel extends React.Component<CarouselProps, any> {
       gutter,
       css,
       clickScrollAmount,
+      slideAnimationDuration,
       ...props
     } = this.props;
     const { currentSlide, finishedScrolling } = this.state;
-
+    const slideItems = this.slideItems(children, slidesToShow, gutter);
+    const wrapperCSS = this.wrapperCSS(css);
     return (
       <View position="relative" {...props}>
-        <View
+        <PureWrapper
           innerRef={this.sliderContainerRef}
           flexDirection="row"
           width="100%"
@@ -252,45 +293,10 @@ class Carousel extends React.Component<CarouselProps, any> {
           paddingRight={2}
           marginLeft={-2}
           marginRight={-2}
-          css={{
-            WebkitOverflowScrolling: "touch",
-            overflowX: "auto",
-            [foundations.breakpoints.lg]: {
-              overflowX: "hidden",
-            },
-            "::-webkit-scrollbar": {
-              width: 0,
-              height: 0,
-              background: "transparent",
-            },
-            ...(css as object),
-          }}
+          css={wrapperCSS}
         >
-          {React.Children.map(children, (Slide, Index) => {
-            const SlideRef = React.createRef();
-            this.slideRefs[Index] = SlideRef;
-
-            return (
-              <View
-                innerRef={SlideRef}
-                maxWidth={`${100 / slidesToShow}%`}
-                marginY={1}
-                css={{
-                  paddingLeft: foundations.spacing[gutter] / 2,
-                  paddingRight: foundations.spacing[gutter] / 2,
-                  ":first-child": {
-                    paddingLeft: 0,
-                  },
-                  ":last-child": {
-                    paddingRight: 0,
-                  },
-                }}
-              >
-                {Slide}
-              </View>
-            );
-          })}
-        </View>
+          {slideItems}
+        </PureWrapper>
         {currentSlide > 0 && (
           <ButtonFilled
             onClick={this.scrollToIndex(
