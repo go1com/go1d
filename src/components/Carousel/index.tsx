@@ -69,19 +69,21 @@ class Carousel extends React.Component<CarouselProps, any> {
     })
   );
   private wrapperCSS = memoize(css => {
-    return {
-      WebkitOverflowScrolling: "touch",
-      overflowX: "auto",
-      [foundations.breakpoints.lg]: {
-        overflowX: "hidden",
+    return [
+      {
+        WebkitOverflowScrolling: "touch",
+        overflowX: "auto",
+        [foundations.breakpoints.lg]: {
+          overflowX: "hidden",
+        },
+        "::-webkit-scrollbar": {
+          width: 0,
+          height: 0,
+          background: "transparent",
+        },
       },
-      "::-webkit-scrollbar": {
-        width: 0,
-        height: 0,
-        background: "transparent",
-      },
-      ...(css as object),
-    };
+      css,
+    ];
   });
 
   public componentDidMount() {
