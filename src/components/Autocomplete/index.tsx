@@ -15,16 +15,21 @@ interface AutocompleteProps extends ViewProps {
   lookupMethod: (evt: any) => void;
   options: Options[];
   onSelectOption: (evt: any) => void;
+  defaultText?: string;
+  defaultSelected?: boolean;
 }
 
 class Autocomplete extends React.Component<AutocompleteProps, any> {
-  public state = {
-    text: "",
-    value: null,
-    options: [],
-    showDropdown: true,
-    selected: false,
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      text: props.defaultText || "",
+      value: null,
+      options: [],
+      showDropdown: true,
+      selected: props.defaultSelected || false,
+    };
+  }
 
   public handleOnChange = event =>
     this.setState(
@@ -37,7 +42,7 @@ class Autocomplete extends React.Component<AutocompleteProps, any> {
       }
     );
 
-  public handleOnClick = event =>
+  public handleOnClick = () =>
     this.setState({
       selected: false,
     });
@@ -56,7 +61,7 @@ class Autocomplete extends React.Component<AutocompleteProps, any> {
     );
   };
 
-  public clear = event => {
+  public clear = () => {
     this.setState(
       {
         text: "",
