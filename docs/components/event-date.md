@@ -4,7 +4,7 @@ status: ready
 releaseVersion: 0.5.68
 ---
 
-### Event Session/Date\
+### Event Session/Date
 
 ```.jsx
 <EventDate
