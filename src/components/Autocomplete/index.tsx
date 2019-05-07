@@ -85,6 +85,8 @@ class Autocomplete extends React.Component<AutocompleteProps, any> {
       labelProps,
       onSelectOption, // Do not pass down
       lookupMethod, // Do not pass down
+      defaultSelected, // Do not pass down
+      defaultText, // Do not pass down
       ...props
     } = this.props;
 
