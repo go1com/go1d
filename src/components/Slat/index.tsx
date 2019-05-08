@@ -8,7 +8,6 @@ import Skeleton from "../SlatSkeleton";
 import Text from "../Text";
 import Theme from "../Theme";
 import View, { ViewProps } from "../View";
-import { isAbsolute } from "path";
 
 export interface SlatProps extends ViewProps {
   id?: number;
