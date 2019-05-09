@@ -168,6 +168,7 @@ const Slat: React.SFC<SlatProps> = ({
                     css={{
                       [breakpoints.sm]: {
                         marginBottom: spacing[2],
+                        maxWidth: "90%",
                       },
                     }}
                   >
@@ -218,6 +219,7 @@ const Slat: React.SFC<SlatProps> = ({
                       fontSize: foundations.type.scale.sm[2],
                       marginBottom: spacing[1],
                       order: -1,
+                      maxWidth: "90%",
                     },
                   }}
                 >
@@ -243,6 +245,12 @@ const Slat: React.SFC<SlatProps> = ({
                 flexDirection="row"
                 justifyContent="space-between"
                 alignItems="flex-end"
+                css={{
+                  [breakpoints.sm]: {
+                    flexDirection: "column",
+                    alignItems: "flex-start",
+                  },
+                }}
               >
                 {bottomMeta && (
                   <View
@@ -266,6 +274,7 @@ const Slat: React.SFC<SlatProps> = ({
                         css={{
                           [breakpoints.sm]: {
                             marginTop: spacing[3],
+                            marginBottom: spacing[3],
                           },
                         }}
                       >
@@ -283,10 +292,16 @@ const Slat: React.SFC<SlatProps> = ({
                 )}
                 {currency &&
                   price > 0 && (
-                    <View flexDirection="row">
-                      <Text color="accent" fontWeight="semibold">
-                        {formatPrice(currency, price, tax)}
-                      </Text>
+                    <View
+                      flexDirection="row"
+                      css={{             
+                        [breakpoints.sm]: {
+                          alignSelf: "flex-start",
+                        },
+                      }}>
+                        <Text color="accent" fontWeight="semibold">
+                          {formatPrice(currency, price, tax)}
+                        </Text>
                     </View>
                   )}
               </View>
