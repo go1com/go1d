@@ -296,10 +296,7 @@ const Slat: React.SFC<SlatProps> = ({
                       flexDirection="row"
                       css={{             
                         [breakpoints.sm]: {
-                          position: "absolute",
-                          padding: spacing[5],
-                          paddingLeft: spacing[10],
-                          marginTop: spacing[4],
+                          alignSelf: "flex-start",
                         },
                       }}>
                         <Text color="accent" fontWeight="semibold">
