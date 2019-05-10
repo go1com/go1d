@@ -143,8 +143,10 @@ class Select extends React.PureComponent<SelectProps, any> {
         : null;
 
     const selectedOption =
-      value && Array.isArray(flattenedOptions)
-        ? flattenedOptions.find(x => x.value === value)
+      typeof value !== "undefined" && Array.isArray(flattenedOptions)
+        ? value !== null
+          ? flattenedOptions.find(x => x.value === value)
+          : null
         : undefined;
 
     return (
