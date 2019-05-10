@@ -11,13 +11,18 @@ import "../DatePicker/css";
 class DateRange extends React.Component<any, any> {
   public static defaultProps = {
     borderRadius: 2,
+    value: {},
+    defaultValue: {},
   };
 
-  public state = {
-    startDate: null,
-    endDate: null,
-    focusedInput: "startDate",
-  };
+  public constructor(props) {
+    super(props);
+    this.state = {
+      startDate: props.defaultValue.startDate || null,
+      endDate: props.defaultValue.endDate || null,
+      focusedInput: "startDate",
+    };
+  }
 
   public handleDateChange = ({ startDate, endDate }) => {
     this.setState({
@@ -51,6 +56,8 @@ class DateRange extends React.Component<any, any> {
       onChange, // Do not pass
       onClear, // Do not pass
       disabled,
+      value: { startDate, endDate },
+      defaultValue, // Do not pass
       ...remainingProps
     } = this.props;
 
@@ -202,9 +209,9 @@ class DateRange extends React.Component<any, any> {
                   <Icon name="ChevronDown" size={3} color="muted" />
                 )
               }
-              startDate={this.state.startDate}
+              startDate={startDate || this.state.startDate}
               startDateId="start_date_ID"
-              endDate={this.state.endDate}
+              endDate={endDate || this.state.endDate}
               endDateId="end_date_ID"
               onDatesChange={this.handleDateChange}
               focusedInput={this.state.focusedInput}

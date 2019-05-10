@@ -52,6 +52,7 @@
     "libreact": "^2.1.0",
     "lodash": "^4.17.11",
     "lodash-decorators": "^6.0.0",
+    "moment": "^2.24.0",
     "react": "16.6.3",
     "react-dates": "^19.0.3",
     "react-docgen": "^2.21.0",

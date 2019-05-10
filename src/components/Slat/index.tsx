@@ -294,14 +294,15 @@ const Slat: React.SFC<SlatProps> = ({
                   price > 0 && (
                     <View
                       flexDirection="row"
-                      css={{             
+                      css={{
                         [breakpoints.sm]: {
                           alignSelf: "flex-start",
                         },
-                      }}>
-                        <Text color="accent" fontWeight="semibold">
-                          {formatPrice(currency, price, tax)}
-                        </Text>
+                      }}
+                    >
+                      <Text color="accent" fontWeight="semibold">
+                        {formatPrice(currency, price, tax)}
+                      </Text>
                     </View>
                   )}
               </View>
