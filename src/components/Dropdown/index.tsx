@@ -74,18 +74,20 @@ const Dropdown: React.SFC<DropdownProps> = ({
   placement,
   offset,
   onSelect,
+  isOpen,
   ...props
 }: DropdownProps) => (
   <Downshift
     itemToString={itemToString}
     onSelect={onSelect}
     onInputValueChange={onInputValueChange}
+    isOpen={isOpen}
   >
     {({
       getItemProps,
       getMenuProps,
       getRootProps,
-      isOpen,
+      isOpen: isOpenInternal,
       ...downshiftParams
     }) => (
       <View {...getRootProps({ refKey: "innerRef" })}>
@@ -98,7 +100,7 @@ const Dropdown: React.SFC<DropdownProps> = ({
               })
             }
           </Reference>
-          {isOpen && (
+          {isOpenInternal && (
             <Portal>
               <Popper
                 placement={placement}
