@@ -58,7 +58,7 @@ build-dev:
 test:linting:
   stage: test
   tags: ["aws"]
-  script: yarn tslint
+  script: yarn run tslint
 
 test:unit:
   stage: test

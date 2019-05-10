@@ -1,6 +1,6 @@
 {
   "name": "@go1d/go1d",
-  "version": "0.7.18",
+  "version": "0.7.21",
   "description": "GO1 Design System",
   "main": "build/index.js",
   "homepage": "https://apps.pages.go1.co/GO1D",
@@ -22,7 +22,7 @@
     "size": "bundlesize",
     "test": "yarn lint && jest",
     "test:debug": "yarn lint && node --inspect-brk ./node_modules/.bin/jest --runInBand",
-    "tslint": "tslint -c tslint.json --fix ./src/**/**/*.{ts,tsx}"
+    "tslint": "tslint -c tslint.json ./src/**/**/*.{ts,tsx}"
   },
   "lint-staged": {
     "./src/**/*.{ts,tsx}": [
@@ -52,6 +52,7 @@
     "libreact": "^2.1.0",
     "lodash": "^4.17.11",
     "lodash-decorators": "^6.0.0",
+    "moment": "^2.24.0",
     "react": "16.6.3",
     "react-dates": "^19.0.3",
     "react-docgen": "^2.21.0",
