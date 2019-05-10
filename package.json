@@ -22,7 +22,7 @@
     "size": "bundlesize",
     "test": "yarn lint && jest",
     "test:debug": "yarn lint && node --inspect-brk ./node_modules/.bin/jest --runInBand",
-    "tslint": "tslint -c tslint.json --fix ./src/**/**/*.{ts,tsx}"
+    "tslint": "tslint -c tslint.json ./src/**/**/*.{ts,tsx}"
   },
   "lint-staged": {
     "./src/**/*.{ts,tsx}": [

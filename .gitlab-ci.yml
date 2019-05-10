@@ -58,7 +58,7 @@ build-dev:
 test:linting:
   stage: test
   tags: ["aws"]
-  script: tslint -c tslint.json --fix ./src/**/**/*.{ts,tsx}
+  script: yarn run tslint
 
 test:unit:
   stage: test
