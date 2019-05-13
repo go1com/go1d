@@ -178,3 +178,4 @@ export {
 
 /* Utils */
 export { default as priceFormatterUtil } from "./utils/priceFormatter";
+export { default as durationFormatterUtil } from "./utils/durationFormatter";
