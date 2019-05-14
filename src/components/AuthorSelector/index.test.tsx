@@ -275,3 +275,88 @@ it("renders the provided placeholder", () => {
     fail("no placeholder");
   }
 });
+
+it("Creates well with no promise and no value prop", () => {
+  const ref: React.RefObject<AuthorSelector> = React.createRef();
+  const fn = jest.fn();
+  render(
+    <AuthorSelector
+      options={[]}
+      mapEmailToAuthor={email => ({
+        firstName: "Hi",
+        lastName: "Franc",
+        mail: email,
+      })}
+      name="test"
+      ref={ref}
+      onChange={fn}
+    />
+  );
+
+  const { current } = ref;
+
+  current!.createNewValue({
+    currentTarget: { value: "test@test.test" },
+    target: { value: "test@test.test" },
+  } as any);
+  expect(fn).toBeCalledWith({
+    target: {
+      name: "test",
+      value: ["test@test.test"],
+    },
+  });
+
+  current!.handleDelete({
+    currentTarget: { dataset: { value: "test@test.test" } },
+    target: { value: "test@test.test" },
+  } as any);
+  expect(fn).toBeCalledWith({
+    target: {
+      name: "test",
+      value: [],
+    },
+  });
+});
+
+it("Creates and deletes well with a promise and no value prop", async () => {
+  const ref: React.RefObject<AuthorSelector> = React.createRef();
+  const fn = jest.fn();
+  render(
+    <AuthorSelector
+      options={[]}
+      mapEmailToAuthor={email => ({
+        firstName: "Hi",
+        lastName: "Franc",
+        mail: email,
+      })}
+      onCreate={jest.fn(() => new Promise(res => res("hifranc@test.com")))}
+      name="test"
+      ref={ref}
+      onChange={fn}
+    />
+  );
+
+  const { current } = ref;
+
+  await current!.createNewValue({
+    currentTarget: { value: "test@test.test" },
+    target: { value: "test@test.test" },
+  } as any);
+  expect(fn).toBeCalledWith({
+    target: {
+      name: "test",
+      value: ["hifranc@test.com"],
+    },
+  });
+
+  await current!.handleDelete({
+    currentTarget: { dataset: { value: "hifranc@test.com" } },
+    target: { value: "hifranc@test.com" },
+  } as any);
+  expect(fn).toBeCalledWith({
+    target: {
+      name: "test",
+      value: [],
+    },
+  });
+});

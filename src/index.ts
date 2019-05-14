@@ -180,6 +180,10 @@ export {
   default as TagToggleGroup,
   TagTogggleGroupProps,
 } from "./components/TagToggleGroup";
+export {
+  default as DurationInput,
+  DurationInputProps,
+} from "./components/DurationInput";
 
 /* Utils */
 export { default as priceFormatterUtil } from "./utils/priceFormatter";

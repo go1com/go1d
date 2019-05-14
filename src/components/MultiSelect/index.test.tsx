@@ -1,5 +1,10 @@
 import * as React from "react";
-import { cleanup, render } from "react-testing-library";
+import {
+  cleanup,
+  fireEvent,
+  render,
+  waitForElement,
+} from "react-testing-library";
 import Text from "../Text/index";
 import MultiSelect from "./index";
 
@@ -56,11 +61,44 @@ it("handles default values", () => {
     <MultiSelect
       options={Options}
       label="Test"
-      disabled={false}
+      disabled={true}
       onChange={onChangeMock}
       name="Test"
       searchable={true}
       defaultValue={["test 1", "test"]}
+    />
+  );
+});
+
+it("Opens on click", async () => {
+  const onChangeMock = jest.fn();
+  const { getByTestId, container } = render(
+    <MultiSelect
+      options={Options}
+      label="Test"
+      onChange={onChangeMock}
+      name="Test"
+      searchable={true}
+      value={["test 1", "test"]}
+    />
+  );
+
+  fireEvent.click(container.querySelector("button"));
+  fireEvent.click(getByTestId("select-dropdown-trigger"));
+
+  // Ensure the Dropdown is open by finding the searchbox in the dropdown
+  await waitForElement(() => getByTestId("inputElement"));
+});
+
+it("Hanndles null options", async () => {
+  const onChangeMock = jest.fn();
+  render(
+    <MultiSelect
+      label="Test"
+      onChange={onChangeMock}
+      name="Test"
+      searchable={true}
+      value={["test 1", "test"]}
     />
   );
 });

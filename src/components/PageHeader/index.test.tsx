@@ -16,9 +16,11 @@ it("renders without crashing with all props", () => {
   render(
     <PageHeader
       title="Test"
-      showMenuButton={false}
+      showMenuButton={true}
       onMenuButtonClick={mock}
       background="dark"
+      breadcrumbHref="/test/"
+      breadcrumbTitle="why"
     >
       <div>header</div>
     </PageHeader>
