@@ -18,6 +18,10 @@ export {
   default as ButtonFilled,
   ButtonFilledProps,
 } from "./components/ButtonFilled";
+export {
+  default as ContentType,
+  ContentTypeProps,
+} from "./components/ContentType";
 export { default as TagToggle, TagToggleProps } from "./components/TagToggle";
 export {
   default as ToggleSwitch,
@@ -70,6 +74,7 @@ export {
   CourseSlatProps,
 } from "./components/CourseSlat";
 export { default as Slat, SlatProps } from "./components/Slat";
+export { default as SlatMini, SlatMiniProps } from "./components/SlatMini";
 export { default as Banner, BannerProps } from "./components/Banner";
 export { default as Field, FieldProps } from "./components/Field";
 export { default as Form, FormProps } from "./components/Form";

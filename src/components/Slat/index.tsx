@@ -1,6 +1,7 @@
 import * as React from "react";
 import foundations from "../../foundations";
 import formatPrice from "../../utils/priceFormatter";
+import ContentType from "../ContentType";
 import Icon from "../Icon";
 import MoreMenu from "../MoreMenu";
 import { Item as DropdownItem } from "../MoreMenu/DropdownMenuItem";
@@ -41,7 +42,7 @@ const Slat: React.SFC<SlatProps> = ({
   tax,
   bottomMeta,
   image,
-  type,
+  type = "Course",
   typeBackground = "background",
   actionRenderer,
   dropdownItems,
@@ -50,18 +51,6 @@ const Slat: React.SFC<SlatProps> = ({
 }: SlatProps) => {
   if (skeleton) {
     return <Skeleton />;
-  }
-
-  let icon;
-  switch (type) {
-    case "event":
-      icon = "Calendar";
-      break;
-    case "course":
-      icon = "Course";
-      break;
-    default:
-      icon = "Course";
   }
 
   return (
@@ -96,6 +85,7 @@ const Slat: React.SFC<SlatProps> = ({
                 overflow: "hidden",
                 backgroundImage: image ? `url(${image})` : undefined,
                 backgroundSize: "cover",
+                backgroundPosition: "center",
                 position: "relative",
                 height: 142,
                 width: 221,
@@ -117,34 +107,16 @@ const Slat: React.SFC<SlatProps> = ({
                 </View>
               )}
               {type && (
-                <View
-                  flexDirection="row"
-                  padding={2}
-                  borderRadius={1}
-                  color={
-                    typeBackground === "background" ? "contrast" : "background"
-                  }
-                  backgroundColor={typeBackground}
+                <ContentType
+                  type={type}
+                  text={type}
+                  background={typeBackground}
                   css={{
                     position: "absolute",
                     bottom: 10,
                     left: 10,
                   }}
-                >
-                  <View paddingRight={2}>
-                    <Icon name={icon} />
-                  </View>
-                  <Text
-                    color={
-                      typeBackground === "background"
-                        ? "contrast"
-                        : "background"
-                    }
-                    fontSize={1}
-                  >
-                    {type && type.toUpperCase()}
-                  </Text>
-                </View>
+                />
               )}
             </View>
             <View
