@@ -9,7 +9,7 @@ A generic slat component
 ## Examples
 ### With dropdown actions
 ```.jsx
-<Slat 
+<Slat
   id={123}
   topMeta={["one", "two"]}
   title="This is test title"
@@ -44,7 +44,7 @@ A generic slat component
 
 ### With actionRender
 ```.jsx
-<Slat 
+<Slat
   id={123}
   topMeta={["one", "two"]}
   title="This is test title"
@@ -63,8 +63,8 @@ A generic slat component
   ]}
   image="https://res.cloudinary.com/go1vn/image/upload/v1537851944/ckvawokvc4k70fd9t1oj.jpg"
   type="Event"
-  typeBackground="background"  
-  actionRender={() => (
+  typeBackground="background"
+  actionRenderer={() => (
       <View flexDirection="row">
       <Icon name="Import" marginRight={3} color="accent" />
       <Text color="accent">Import</Text>
@@ -76,7 +76,7 @@ A generic slat component
 ## Examples
 ### With implied link wrapper and active/hover states
 ```.jsx
-<Slat 
+<Slat
   id={123}
   topMeta={["one", "two"]}
   title="This is test title"
@@ -101,7 +101,7 @@ A generic slat component
 
 ### Skeleton
 ```.jsx
-<Slat 
+<Slat
   skeleton={true}
 />
 ```

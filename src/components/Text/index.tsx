@@ -20,6 +20,7 @@ export interface TextProps extends BaseProps {
   textTransform?: TextTransformProperty | TextTransformProperty[];
   letterSpacing?: Tracking | Tracking[];
   ellipsis?: boolean;
+  lineClamp?: number;
   transition?: string | string[];
   textDecoration?: string | string[];
 }
@@ -38,6 +39,7 @@ const Text: React.SFC<TextProps> = ({
   textTransform,
   transition = "subtle",
   ellipsis = false,
+  lineClamp,
   textDecoration,
   css,
   ...props
@@ -72,6 +74,28 @@ const Text: React.SFC<TextProps> = ({
             whiteSpace: "nowrap",
             textOverflow: "ellipsis",
             overflow: "hidden",
+          },
+          lineClamp && {
+            display: "-webkit-box",
+            overflow: "hidden",
+            WebkitBoxOrient: "vertical",
+            WebkitLineClamp: lineClamp,
+            maxHeight:
+              lineClamp *
+              type.scale.sm[fontSize[0] || fontSize] *
+              applyArray(lineHeight, type.leading),
+            [breakpoints.md]: {
+              maxHeight:
+                lineClamp *
+                type.scale.md[fontSize[0] || fontSize] *
+                applyArray(lineHeight, type.leading),
+            },
+            [breakpoints.lg]: {
+              maxHeight:
+                lineClamp *
+                type.scale.lg[fontSize[0] || fontSize] *
+                applyArray(lineHeight, type.leading),
+            },
           },
           css,
         ]}

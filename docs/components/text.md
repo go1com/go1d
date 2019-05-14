@@ -22,6 +22,36 @@ Try out the props below.
 </Text>
 ```
 
+### With ellipsis
+```.jsx
+<View flexShrink={0}>
+  <Text
+    color='subtle'
+    fontSize={4}
+    fontWeight="semibold"
+    lineHeight="paragraph"
+    ellipsis={true}
+  >
+    This is a very long semibold text that should be displayed in one line with an ellipsis at the end of line
+  </Text>
+</View>
+```
+
+### With lineClamp
+```.jsx
+<View flexShrink={0}>
+  <Text
+    color='subtle'
+    fontSize={4}
+    fontWeight="semibold"
+    lineHeight="paragraph"
+    lineClamp={2}
+  >
+    This is a very long semibold text that should be displayed in two lines with an ellipsis at the end of the second line. If there is no ellipsis then try to add more text in below supposed code
+  </Text>
+</View>
+```
+
 ```!jsx
 <ComponentDoc component="TextProps" />
 ```
