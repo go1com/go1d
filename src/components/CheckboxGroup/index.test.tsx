@@ -18,7 +18,7 @@ it("renders without crashing without any optional props", () => {
   );
 });
 
-it("Can select", () => {
+it("Can select and unselect", () => {
   const MockCall = jest.fn();
   const ChangeMock = event => MockCall(event.target.value);
   const Element = render(
@@ -47,4 +47,9 @@ it("Can select", () => {
 
   expect(MockCall.mock.calls.length).toBe(1);
   expect(MockCall.mock.calls[0][0][0]).toBe("testValue");
+
+  fireEvent.click(Label);
+
+  expect(MockCall.mock.calls.length).toBe(2);
+  expect(MockCall.mock.calls[1][0]).toEqual([]);
 });

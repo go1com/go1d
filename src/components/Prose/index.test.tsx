@@ -8,6 +8,10 @@ it("renders without crashing without any optional props", () => {
   render(<Prose />);
 });
 
+it("renders without crashing with array based fontSize", () => {
+  render(<Prose fontSize={[1, 2, 3, 4]} />);
+});
+
 it("renders without crashing without any optional props", () => {
   render(<Prose HTML="<b>Hello World!</b>" />);
 });
