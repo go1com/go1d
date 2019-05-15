@@ -1,6 +1,7 @@
 import * as React from "react";
 import ContentType from "../ContentType";
 import Icon from "../Icon";
+import Link from "../Link";
 import MoreMenu from "../MoreMenu";
 import { Item as DropdownItem } from "../MoreMenu/DropdownMenuItem";
 import SlatMiniSkeleton from "../SlatMiniSkeleton";
@@ -14,6 +15,7 @@ export interface SlatMiniProps extends ViewProps {
   bottomMeta?: string[];
   image?: string;
   type?: string;
+  href?: string;
   typeBackground?: string;
   actionRenderer?: () => React.ReactChild;
   dropdownItems?: DropdownItem[];
@@ -25,6 +27,7 @@ const SlatMini: React.SFC<SlatMiniProps> = ({
   bottomMeta,
   image,
   type = "Course",
+  href,
   typeBackground = "contrast",
   actionRenderer,
   dropdownItems,
@@ -37,18 +40,19 @@ const SlatMini: React.SFC<SlatMiniProps> = ({
 
   return (
     <Theme.Consumer>
-      {({ breakpoints, colors, spacing, hoverStyle }) => {
+      {({ breakpoints, colors, spacing }) => {
         return (
           <View
             flexDirection="row"
             marginBottom={4}
             color="default"
             overflow="hidden"
-            css={[!dropdownItems && !actionRenderer && hoverStyle]}
             {...props}
           >
             {/* Render slat image */}
             <View
+              element={href ? Link : "div"}
+              to={href}
               borderRadius={2}
               padding={3}
               alignItems="start"
@@ -90,7 +94,7 @@ const SlatMini: React.SFC<SlatMiniProps> = ({
             </View>
 
             <View
-              paddingX={4}
+              paddingLeft={4}
               flexShrink={1}
               flexGrow={1}
               width="100%"
@@ -99,13 +103,27 @@ const SlatMini: React.SFC<SlatMiniProps> = ({
               alignItems="center"
             >
               {/* Render slat content */}
-              <View flexGrow={1} flexShrink={1} paddingRight={4}>
+              <View
+                flexGrow={1}
+                flexShrink={1}
+                paddingRight={actionRenderer || dropdownItems ? 4 : 0}
+              >
                 {title && (
                   <Text
+                    element={href ? Link : "div"}
+                    to={href}
                     fontSize={2}
                     marginBottom={2}
                     fontWeight="semibold"
                     lineClamp={2}
+                    css={{
+                      /* Only set hover color once `href` is valid */
+                      ...(href && {
+                        "&:hover, &:focus": {
+                          color: colors.accent,
+                        },
+                      }),
+                    }}
                   >
                     {title}
                   </Text>
@@ -125,7 +143,7 @@ const SlatMini: React.SFC<SlatMiniProps> = ({
 
               {/* Render slat actions */}
               {(actionRenderer || dropdownItems) && (
-                <View flexDirection="row" alignSelf="center">
+                <View flexDirection="row" alignSelf="center" marginRight={4}>
                   {actionRenderer && actionRenderer()}
                   {dropdownItems &&
                     dropdownItems.length > 0 && (

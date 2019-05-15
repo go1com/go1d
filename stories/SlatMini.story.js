@@ -29,12 +29,13 @@ storiesOf("SlatMini", module)
     <Icon color="muted" name="PlusCircle" marginRight={3} />
   )}
 />)
-.add('With implied link wrapper and active/hover states', () => <SlatMini
+.add('With link', () => <SlatMini
   id={123}
   title="This is an offline content"
   bottomMeta={["Provider", "29 mins"]}
   image="https://res.cloudinary.com/go1vn/image/upload/v1537851944/ckvawokvc4k70fd9t1oj.jpg"
   type="Event"
+  href="/"
   typeBackground="accent"
 />)
 .add('Skeleton', () => <SlatMini
