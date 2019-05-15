@@ -43,8 +43,7 @@ A generic mini slat component
 />
 ```
 
-## Examples
-### With implied link wrapper and active/hover states
+### With link
 ```.jsx
 <SlatMini
   id={123}
@@ -52,6 +51,7 @@ A generic mini slat component
   bottomMeta={["Provider", "29 mins"]}
   image="https://res.cloudinary.com/go1vn/image/upload/v1537851944/ckvawokvc4k70fd9t1oj.jpg"
   type="Event"
+  href="/"
   typeBackground="accent"
 />
 ```
