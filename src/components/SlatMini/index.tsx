@@ -1,7 +1,6 @@
 import * as React from "react";
 import ContentType from "../ContentType";
 import Icon from "../Icon";
-import Link from "../Link";
 import MoreMenu from "../MoreMenu";
 import { Item as DropdownItem } from "../MoreMenu/DropdownMenuItem";
 import SlatMiniSkeleton from "../SlatMiniSkeleton";
@@ -51,8 +50,8 @@ const SlatMini: React.SFC<SlatMiniProps> = ({
           >
             {/* Render slat image */}
             <View
-              element={href ? Link : "div"}
-              to={href}
+              element={href ? "a" : "div"}
+              href={href}
               borderRadius={2}
               padding={3}
               alignItems="start"
@@ -110,8 +109,8 @@ const SlatMini: React.SFC<SlatMiniProps> = ({
               >
                 {title && (
                   <Text
-                    element={href ? Link : "div"}
-                    to={href}
+                    element={href ? "a" : "div"}
+                    href={href}
                     fontSize={2}
                     marginBottom={2}
                     fontWeight="semibold"
