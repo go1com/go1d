@@ -1,3 +1,4 @@
+import isFunction = require("lodash/isFunction");
 import * as React from "react";
 import ButtonMinimal from "../ButtonMinimal";
 import Icon from "../Icon";
@@ -9,6 +10,7 @@ import View, { ViewProps } from "../View";
 interface Options {
   label: string;
   value: any;
+  [key: string]: any;
 }
 
 interface AutocompleteProps extends ViewProps {
@@ -17,6 +19,8 @@ interface AutocompleteProps extends ViewProps {
   onSelectOption: (evt: any) => void;
   defaultText?: string;
   defaultSelected?: boolean;
+  optionRenderer?: (option: Options) => React.ReactNode;
+  optionFormatter?: (option: any) => Options;
 }
 
 class Autocomplete extends React.Component<AutocompleteProps, any> {
@@ -83,6 +87,8 @@ class Autocomplete extends React.Component<AutocompleteProps, any> {
       dropdownProps,
       size = "md",
       labelProps,
+      optionRenderer,
+      optionFormatter,
       onSelectOption, // Do not pass down
       lookupMethod, // Do not pass down
       defaultSelected, // Do not pass down
@@ -91,6 +97,13 @@ class Autocomplete extends React.Component<AutocompleteProps, any> {
     } = this.props;
 
     const { text, showDropdown, selected } = this.state;
+
+    const formattedOptions = options.map(option => {
+      if (isFunction(optionFormatter)) {
+        return optionFormatter(option);
+      }
+      return option;
+    });
 
     return (
       <Theme.Consumer>
@@ -154,26 +167,42 @@ class Autocomplete extends React.Component<AutocompleteProps, any> {
                     marginTop={2}
                     {...dropdownProps}
                   >
-                    {options.map(o => (
-                      <Text
-                        ellipsis={true}
-                        onClick={this.selectOption(o)}
-                        paddingY={4}
-                        paddingX={4}
-                        data-testid="locationElement"
-                        key={`${o.label}_option`}
-                        color="default"
-                        {...labelProps}
-                        css={{
-                          "&:hover, &:active": {
-                            backgroundColor: colors.highlight,
-                          },
-                          cursor: "pointer",
-                        }}
-                      >
-                        {o.label}
-                      </Text>
-                    ))}
+                    {formattedOptions.map(o => {
+                      const key = `${o.label}_option`;
+                      const wrappingStyles = {
+                        cursor: "pointer",
+                        "&:hover, &:active": {
+                          backgroundColor: colors.highlight,
+                        },
+                      };
+                      if (optionRenderer) {
+                        return (
+                          <View
+                            css={wrappingStyles}
+                            key={key}
+                            onClick={this.selectOption(o)}
+                            padding={4}
+                          >
+                            {optionRenderer(o)}
+                          </View>
+                        );
+                      }
+                      return (
+                        <Text
+                          ellipsis={true}
+                          onClick={this.selectOption(o)}
+                          paddingY={4}
+                          paddingX={4}
+                          data-testid="locationElement"
+                          key={key}
+                          color="default"
+                          {...labelProps}
+                          css={wrappingStyles}
+                        >
+                          {o.label}
+                        </Text>
+                      );
+                    })}
                   </View>
                 </View>
               )}

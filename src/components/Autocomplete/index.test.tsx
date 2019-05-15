@@ -38,6 +38,17 @@ it("renders without crashing without any optional props", () => {
   );
 });
 
+it("renders without crashing with optionRenderer prop", () => {
+  render(
+    <Autocomplete
+      options={options}
+      lookupMethod={jest.fn()}
+      onSelectOption={jest.fn()}
+      optionRenderer={jest.fn()}
+    />
+  );
+});
+
 it("handles change and fires lookup events", () => {
   const mock = jest.fn();
 
