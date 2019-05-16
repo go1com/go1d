@@ -133,7 +133,6 @@ class MultiSelect extends React.PureComponent<MultiSelectProps, any> {
   public render() {
     const {
       options,
-      disabled = options.length === 0,
       size,
       defaultValue,
       label = "",
@@ -146,6 +145,11 @@ class MultiSelect extends React.PureComponent<MultiSelectProps, any> {
       closeOnSelect,
       ...remainingProps
     } = this.props;
+    let { disabled } = this.props;
+
+    if (!options || options.length === 0) {
+      disabled = true;
+    }
 
     const { flattenedOptions = [], selectableCount } = this.flattenOptions(
       options

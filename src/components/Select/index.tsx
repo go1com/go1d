@@ -122,7 +122,6 @@ class Select extends React.PureComponent<SelectProps, any> {
     const {
       clearable,
       options,
-      disabled = options.length === 0,
       size,
       defaultText = "Please Select", // Deprecated
       name, // Do not pass to child
@@ -134,6 +133,11 @@ class Select extends React.PureComponent<SelectProps, any> {
       id,
       ...remainingProps
     } = this.props;
+    let { disabled } = this.props;
+
+    if (!options || options.length === 0) {
+      disabled = true;
+    }
 
     const { flattenedOptions, selectableCount } = this.flattenOptions(options);
 
