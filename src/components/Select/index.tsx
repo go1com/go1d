@@ -98,8 +98,8 @@ class Select extends React.PureComponent<SelectProps, any> {
                   selectedItem === Option
                     ? colors.accent
                     : highlightedIndex === Option.selectableIndex
-                      ? colors.highlight
-                      : colors.background,
+                    ? colors.highlight
+                    : colors.background,
               },
             })}
           >
