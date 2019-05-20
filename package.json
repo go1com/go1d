@@ -49,6 +49,7 @@
     "formik": "^1.5.4",
     "invariant": "^2.2.4",
     "is-hotkey": "^0.1.4",
+    "libreact": "^2.1.0",
     "lodash": "^4.17.11",
     "lodash-decorators": "^6.0.0",
     "moment": "^2.24.0",
