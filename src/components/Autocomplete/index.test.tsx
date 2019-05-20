@@ -107,3 +107,23 @@ it("handles clear button clicks", () => {
 
   expect(mock.mock.calls[1]).toEqual([null]);
 });
+
+it("should show status and call statusRenderer", () => {
+  const mockStatusRenderer = jest.fn();
+
+  const { getByTestId } = render(
+    <Autocomplete
+      options={options}
+      lookupMethod={jest.fn()}
+      onSelectOption={jest.fn()}
+      showStatus={true}
+      statusRenderer={mockStatusRenderer}
+    />
+  );
+
+  fireEvent.change(getByTestId("inputElement"), {
+    target: { value: "Bris" },
+  });
+
+  expect(mockStatusRenderer.mock.calls.length).toBe(1);
+});
