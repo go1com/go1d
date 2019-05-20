@@ -1,6 +1,5 @@
 import { connect, FieldAttributes, FormikContext, getIn } from "formik";
 import { get } from "lodash";
-import { Values } from "popmotion/lib/animations/keyframes/types";
 import * as React from "react";
 import { autobind } from "../../utils/decorators";
 import firstDefined from "../../utils/firstDefined";
@@ -52,7 +51,7 @@ class Field extends React.Component<
   }
 
   public componentDidUpdate(
-    prevProps: FieldAttributes<FieldProps> & { formik: FormikContext<Values> }
+    prevProps: FieldAttributes<FieldProps> & { formik: FormikContext<any[]> }
   ) {
     if (this.props.name !== prevProps.name) {
       this.props.formik.unregisterField(prevProps.name);
