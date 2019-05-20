@@ -226,7 +226,7 @@ class MultiSelect extends React.PureComponent<MultiSelectProps, any> {
                 >
                   <View flexDirection="row">
                     {label && (
-                      <View paddingRight={4} paddingBottom={3}>
+                      <View paddingRight={4} paddingBottom={2}>
                         {typeof label === "string" ? (
                           <Text element="label" htmlFor={id}>
                             {label}
