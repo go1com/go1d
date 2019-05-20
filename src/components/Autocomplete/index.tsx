@@ -21,6 +21,8 @@ interface AutocompleteProps extends ViewProps {
   defaultSelected?: boolean;
   optionRenderer?: (option: Options) => React.ReactNode;
   optionFormatter?: (option: any) => Options;
+  showStatus?: boolean;
+  statusRenderer?: () => React.ReactNode;
 }
 
 class Autocomplete extends React.Component<AutocompleteProps, any> {
@@ -35,16 +37,22 @@ class Autocomplete extends React.Component<AutocompleteProps, any> {
     };
   }
 
-  public handleOnChange = event =>
-    this.setState(
-      {
-        text: (event.target as any).value,
-        showDropdown: true,
-      },
-      () => {
-        this.props.lookupMethod(this.state.text);
+  public handleOnChange = event => {
+    const text = (event.target as any).value;
+    let newState: any = {
+      text,
+      showDropdown: true,
+    };
+    if (!text.length) {
+      newState = { ...newState, value: null };
+    }
+    this.setState(newState, () => {
+      this.props.lookupMethod(this.state.text);
+      if (!text.length) {
+        this.props.onSelectOption(null);
       }
-    );
+    });
+  };
 
   public handleOnClick = () =>
     this.setState({
@@ -79,6 +87,19 @@ class Autocomplete extends React.Component<AutocompleteProps, any> {
     );
   };
 
+  public getBorderColor(colors) {
+    const { selected } = this.state;
+    const { error, inputProps } = this.props;
+    const borderColor =
+      inputProps && inputProps.css ? inputProps.css.borderColor : null;
+
+    if (error) {
+      return colors.danger;
+    }
+
+    return selected ? colors.accent : borderColor ? borderColor : colors.soft;
+  }
+
   public render() {
     const {
       id,
@@ -89,6 +110,8 @@ class Autocomplete extends React.Component<AutocompleteProps, any> {
       labelProps,
       optionRenderer,
       optionFormatter,
+      showStatus,
+      statusRenderer,
       onSelectOption, // Do not pass down
       lookupMethod, // Do not pass down
       defaultSelected, // Do not pass down
@@ -98,12 +121,14 @@ class Autocomplete extends React.Component<AutocompleteProps, any> {
 
     const { text, showDropdown, selected } = this.state;
 
-    const formattedOptions = options.map(option => {
-      if (isFunction(optionFormatter)) {
-        return optionFormatter(option);
-      }
-      return option;
-    });
+    const formattedOptions = options
+      ? options.map(option => {
+          if (isFunction(optionFormatter)) {
+            return optionFormatter(option);
+          }
+          return option;
+        })
+      : [];
 
     return (
       <Theme.Consumer>
@@ -121,7 +146,7 @@ class Autocomplete extends React.Component<AutocompleteProps, any> {
               ellipsis={true}
               viewCss={{
                 backgroundColor: selected ? colors.accent : colors.background,
-                borderColor: selected ? colors.accent : colors.soft,
+                borderColor: this.getBorderColor(colors),
                 boxShadow: selected ? "none" : shadows.inner,
                 ...(inputProps && inputProps.css),
               }}
@@ -167,42 +192,46 @@ class Autocomplete extends React.Component<AutocompleteProps, any> {
                     marginTop={2}
                     {...dropdownProps}
                   >
-                    {formattedOptions.map(o => {
-                      const key = `${o.label}_option`;
-                      const wrappingStyles = {
-                        cursor: "pointer",
-                        "&:hover, &:active": {
-                          backgroundColor: colors.highlight,
-                        },
-                      };
-                      if (optionRenderer) {
+                    {showStatus &&
+                      isFunction(statusRenderer) &&
+                      statusRenderer()}
+                    {!showStatus &&
+                      formattedOptions.map(o => {
+                        const key = `${Math.random()}_${o.label}_option`;
+                        const wrappingStyles = {
+                          cursor: "pointer",
+                          "&:hover, &:active": {
+                            backgroundColor: colors.highlight,
+                          },
+                        };
+                        if (optionRenderer) {
+                          return (
+                            <View
+                              css={wrappingStyles}
+                              key={key}
+                              onClick={this.selectOption(o)}
+                              padding={4}
+                            >
+                              {optionRenderer(o)}
+                            </View>
+                          );
+                        }
                         return (
-                          <View
-                            css={wrappingStyles}
-                            key={key}
+                          <Text
+                            ellipsis={true}
                             onClick={this.selectOption(o)}
-                            padding={4}
+                            paddingY={4}
+                            paddingX={4}
+                            data-testid="locationElement"
+                            key={key}
+                            color="default"
+                            {...labelProps}
+                            css={wrappingStyles}
                           >
-                            {optionRenderer(o)}
-                          </View>
+                            {o.label}
+                          </Text>
                         );
-                      }
-                      return (
-                        <Text
-                          ellipsis={true}
-                          onClick={this.selectOption(o)}
-                          paddingY={4}
-                          paddingX={4}
-                          data-testid="locationElement"
-                          key={key}
-                          color="default"
-                          {...labelProps}
-                          css={wrappingStyles}
-                        >
-                          {o.label}
-                        </Text>
-                      );
-                    })}
+                      })}
                   </View>
                 </View>
               )}
