@@ -50,7 +50,12 @@ it("renders without crashing with disabled null", () => {
 
 it("renders without crashing with internalForm", () => {
   const { container } = render(
-    <Formik onReset={onReset} initialValues={{ name: "jared" }} onSubmit={test}>
+    <Formik
+      disabled={false}
+      onReset={onReset}
+      initialValues={{ name: "jared" }}
+      onSubmit={test}
+    >
       {({ handleSubmit, handleReset, status, setStatus }) => (
         <InternalForm
           status={status}
@@ -71,7 +76,12 @@ it("renders without crashing with internalForm", () => {
 
 it("renders without crashing with internalForm onSubmit null", () => {
   const { container } = render(
-    <Formik onReset={onReset} initialValues={{ name: "jared" }} onSubmit={null}>
+    <Formik
+      disabled={true}
+      onReset={onReset}
+      initialValues={{ name: "jared" }}
+      onSubmit={null}
+    >
       {({ handleSubmit, handleReset, status, setStatus }) => (
         <InternalForm
           status={status}
@@ -92,7 +102,12 @@ it("renders without crashing with internalForm onSubmit null", () => {
 
 it("renders without crashing with internalForm onreset", () => {
   const { container } = render(
-    <Formik onReset={onReset} initialValues={{ name: "jared" }} onSubmit={null}>
+    <Formik
+      disabled={true}
+      onReset={onReset}
+      initialValues={{ name: "jared" }}
+      onSubmit={null}
+    >
       {({ handleSubmit, handleReset, status, setStatus }) => (
         <InternalForm
           status={status}
