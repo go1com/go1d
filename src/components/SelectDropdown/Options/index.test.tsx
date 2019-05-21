@@ -5,13 +5,13 @@ import Options from "./";
 afterEach(cleanup);
 
 it("renders with minimal props", () => {
-  const ref = React.createRef();
+  const container = React.createRef();
   render(
     <Options
       options={[]}
       getItemProps={jest.fn()}
       searchTerm="test"
-      innerRef={ref}
+      innerRef={{} as any}
       firstSelectableOptionIndex={0}
       highlightedIndex={0}
       container={{} as any}
@@ -36,13 +36,13 @@ it("renders with minimal props", () => {
 });
 
 it("renders with different props", () => {
-  const ref = React.createRef();
+  const container = React.createRef();
   render(
     <Options
       options={[]}
       getItemProps={jest.fn()}
       searchTerm=""
-      innerRef={ref}
+      innerRef={{} as any}
       firstSelectableOptionIndex={0}
       highlightedIndex={0}
       container={{} as any}

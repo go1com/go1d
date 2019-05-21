@@ -1,7 +1,8 @@
 import * as React from "react";
+import posed from "react-pose";
 
 import Banner from "../Banner";
-import View, { ViewProps } from "../View";
+import { ViewProps } from "../View";
 
 export interface NotificationProps extends ViewProps {
   id: string;
@@ -14,15 +15,16 @@ export interface NotificationProps extends ViewProps {
   offset: number;
 }
 
+const Trans = posed.div({
+  dead: { opacity: 0, marginTop: "-58px", transition: { duration: 300 } },
+  alive: { opacity: 1, marginTop: "10px", transition: { duration: 300 } },
+});
+
 class Notification extends React.Component<NotificationProps, any> {
   public static defaultProps = {
     lifetime: 3000,
     offset: 0,
   };
-
-  private closeTimer = null;
-  private openTimer = null;
-
   constructor(props) {
     super(props);
 
@@ -34,26 +36,23 @@ class Notification extends React.Component<NotificationProps, any> {
     this.close = this.close.bind(this);
   }
 
-  public componentDidMount = () => {
-    // wait before opening it, otherwise css transition won't work
-    this.openTimer = setTimeout(() => {
-      this.setState({ alive: true }, () => {
-        this.closeTimer = setTimeout(() => {
-          this.setState({ alive: false }, () => {
-            if (this.props.onDie) {
-              setTimeout(() => {
-                this.props.onDie();
-              }, 300);
-            }
-          });
-        }, this.props.lifetime);
-      });
-    }, 50);
-  };
+  public componentDidMount() {
+    this.setState({ alive: true }, () => {
+      const timerId = setTimeout(() => {
+        this.setState({ alive: false }, () => {
+          if (this.props.onDie) {
+            setTimeout(() => {
+              this.props.onDie();
+            }, 300);
+          }
+        });
+      }, this.props.lifetime);
+      this.setState({ timerId });
+    });
+  }
 
   public componentWillUnmount() {
-    clearTimeout(this.closeTimer);
-    clearTimeout(this.openTimer);
+    clearTimeout(this.state.timerId);
   }
 
   public close = e => {
@@ -66,21 +65,14 @@ class Notification extends React.Component<NotificationProps, any> {
   };
 
   public render() {
-    const { message, type, offset } = this.props;
+    const { message, type } = this.props;
+
     return (
-      <View
-        css={{
-          marginTop: this.state.alive
-            ? `${10 + parseInt(offset as any, 10)}px`
-            : "-58px",
-          opacity: this.state.alive ? 1 : 0,
-          transition: "all 300ms",
-        }}
-      >
+      <Trans pose={this.state.alive ? "alive" : "dead"}>
         <Banner type={type} close={this.close} floating={true}>
           {message}
         </Banner>
-      </View>
+      </Trans>
     );
   }
 }

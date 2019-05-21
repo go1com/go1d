@@ -14,6 +14,7 @@ it("renders without crashing with all props", () => {
 
   render(
     <PageTitle
+      element="h2"
       fontWeight="bold"
       fontFamily="Georgia, serif"
       fontStyle="italic"
