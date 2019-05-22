@@ -33,6 +33,8 @@ export { default as Discover } from "./Discover";
 export { default as Document } from "./Document";
 export { default as Download } from "./Download";
 export { default as Drag } from "./Drag";
+export { default as DrawerClose } from "./DrawerClose";
+export { default as DrawerOpen } from "./DrawerOpen";
 export { default as Edit } from "./Edit";
 export { default as Ellipsis } from "./Ellipsis";
 export { default as Empty } from "./Empty";
