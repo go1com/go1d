@@ -33,6 +33,7 @@ export interface BaseProps {
 
 const Base: React.SFC<BaseProps> = ({
   element = "div",
+  tid,
   children,
   innerRef,
   padding,
@@ -58,6 +59,7 @@ const Base: React.SFC<BaseProps> = ({
     <Theme.Consumer>
       {({ spacing: s, mq }) => (
         <Element
+          data-tid={tid}
           className={emotion(
             mq([
               {
