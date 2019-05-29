@@ -9,6 +9,7 @@ type MarginProperty = Globals | "auto" | number | null;
 
 export interface BaseProps {
   element?: string | React.ComponentType;
+  tid?: string;
   children?: React.ReactNode;
   innerRef?: any;
   padding?: PaddingProperty | PaddingProperty[];

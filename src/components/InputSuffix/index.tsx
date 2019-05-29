@@ -9,11 +9,7 @@ export interface InputSuffixProps extends TextInputProps {
   suffixValue: React.ReactNode;
 }
 
-class InputSuffix extends React.Component<InputSuffixProps, any> {
-  constructor(props) {
-    super(props);
-  }
-
+class InputSuffix extends React.PureComponent<InputSuffixProps, any> {
   public render() {
     const { value, size = "md", suffixValue, ...props } = this.props;
 
