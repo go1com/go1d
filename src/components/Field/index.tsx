@@ -216,6 +216,7 @@ class Field extends React.Component<
               error={!!message}
               onChange={this.onChange}
               onBlur={this.onBlur}
+              label={hideLabel && label}
               {...props}
             />
           )}
