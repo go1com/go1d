@@ -5,5 +5,5 @@ import { IFrame } from "./index";
 afterEach(cleanup);
 
 it("renders basic mode without crashing", () => {
-  render(<IFrame url="https://go1.com"/>);
+  render(<IFrame url="https://go1.com" />);
 });

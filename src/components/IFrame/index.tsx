@@ -1,5 +1,5 @@
 import * as React from "react";
-import Iframe from 'react-iframe';
+import Iframe from "react-iframe";
 import { IIframe } from "react-iframe/types";
 
 export type IFrameProps = IIframe;

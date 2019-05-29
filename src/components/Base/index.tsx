@@ -9,6 +9,7 @@ type MarginProperty = Globals | "auto" | number | null;
 
 export interface BaseProps {
   element?: string | React.ComponentType;
+  tid?: string;
   children?: React.ReactNode;
   innerRef?: any;
   padding?: PaddingProperty | PaddingProperty[];
@@ -32,6 +33,7 @@ export interface BaseProps {
 
 const Base: React.SFC<BaseProps> = ({
   element = "div",
+  tid,
   children,
   innerRef,
   padding,
@@ -57,6 +59,7 @@ const Base: React.SFC<BaseProps> = ({
     <Theme.Consumer>
       {({ spacing: s, mq }) => (
         <Element
+          data-tid={tid}
           className={emotion(
             mq([
               {

@@ -52,6 +52,7 @@ export interface ViewProps extends BaseProps {
   borderBottom?: number | number[];
   borderLeft?: number | number[];
   transition?: string | string[];
+  tid?: string;
 }
 
 function applySize(n) {

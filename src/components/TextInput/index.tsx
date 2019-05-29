@@ -30,6 +30,7 @@ export interface TextInputProps extends TextProps {
   borderRadius?: number;
   viewCss?: any;
   borderColor?: string;
+  tid?: string;
 }
 
 const sizeStyles = {
