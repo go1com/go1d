@@ -50,7 +50,7 @@ const getIconMargin = (flexDirection, iconMargin) => {
 const Button: React.SFC<ButtonProps> = ({
   size = "md",
   color = "subtle",
-  backgroundColor = "background",
+  backgroundColor,
   sizeStyles,
   iconName,
   children,
