@@ -21,44 +21,46 @@ const Link = ({
   hoverFocusColor = "accent",
   activeColor,
   ...props
-}: LinkProps) => (
-  <Theme.Consumer>
-    {({ colors }) => (
-      <LinkContext.Consumer>
-        {LinkComponent => {
-          const defaultCss = {
-            textDecoration: "none",
-            display: "inline-flex",
-            ":hover, :focus": {
-              "svg, span": {
-                color: colors[hoverFocusColor],
+}: LinkProps) => {
+  return (
+    <Theme.Consumer>
+      {({ colors }) => (
+        <LinkContext.Consumer>
+          {LinkComponent => {
+            const defaultCss = {
+              textDecoration: "none",
+              display: "inline-flex",
+              ":hover, :focus": {
+                "svg, span": {
+                  color: colors[hoverFocusColor],
+                },
               },
-            },
-            ":active": {
-              "svg, span": {
-                color: activeColor
-                  ? colors[activeColor]
-                  : darken(colors.accent, 0.4),
+              ":active": {
+                "svg, span": {
+                  color: activeColor
+                    ? colors[activeColor]
+                    : darken(colors.accent, 0.4),
+                },
               },
-            },
-          };
-          if (LinkComponent) {
-            return (
-              <LinkComponent className={emotion(defaultCss, css)} {...props}>
-                {children}
-              </LinkComponent>
-            );
-          } else {
-            return (
-              <View element="a" css={{ ...defaultCss, ...css }} {...props}>
-                {children}
-              </View>
-            );
-          }
-        }}
-      </LinkContext.Consumer>
-    )}
-  </Theme.Consumer>
-);
+            };
+            if (LinkComponent) {
+              return (
+                <LinkComponent className={emotion(defaultCss, css)} {...props}>
+                  {children}
+                </LinkComponent>
+              );
+            } else {
+              return (
+                <View element="a" css={{ ...defaultCss, ...css }} {...props}>
+                  {children}
+                </View>
+              );
+            }
+          }}
+        </LinkContext.Consumer>
+      )}
+    </Theme.Consumer>
+  );
+};
 
 export default Link;

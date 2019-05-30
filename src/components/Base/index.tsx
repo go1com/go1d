@@ -55,11 +55,17 @@ const Base: React.SFC<BaseProps> = ({
   ...props
 }: BaseProps) => {
   const Element: any = element;
+  const spreadTID =
+    typeof Element === "string" // Continue passing down if not a DOM Node
+      ? {
+          "data-tid": tid,
+        }
+      : { tid };
+
   return (
     <Theme.Consumer>
       {({ spacing: s, mq }) => (
         <Element
-          data-tid={tid}
           className={emotion(
             mq([
               {
@@ -77,6 +83,7 @@ const Base: React.SFC<BaseProps> = ({
           )}
           children={children}
           ref={innerRef}
+          {...(tid ? spreadTID : {})}
           {...props}
         />
       )}
