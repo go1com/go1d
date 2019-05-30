@@ -63,7 +63,9 @@ class SearchInput extends React.Component<SearchInputProps, any> {
               restoreValue: value,
             },
             () => {
-              Ref.current.blur();
+              if (Ref.current) {
+                Ref.current.blur();
+              }
               safeInvoke(onSubmit, value, event);
             }
           );
@@ -83,7 +85,9 @@ class SearchInput extends React.Component<SearchInputProps, any> {
     });
 
     const Ref = innerRef ? innerRef : this.ref;
-    Ref.current.focus();
+    if (Ref.current) {
+      Ref.current.focus();
+    }
 
     if (onClear) {
       safeInvoke(onClear, "", event);
