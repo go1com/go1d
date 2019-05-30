@@ -26,7 +26,7 @@ const ButtonMinimal: React.SFC<ButtonMinimalProps> = ({
         color={color}
         iconColor={iconColor}
         css={[
-          active ? { backgroundColor: activeCss(colors, color) } : {},
+          active && { backgroundColor: activeCss(colors, color) },
           {
             "&:hover, &:focus": {
               backgroundColor: opacify(colors[color], 0.08),

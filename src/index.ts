@@ -185,8 +185,14 @@ export {
   DurationInputProps,
 } from "./components/DurationInput";
 
-export { default as VideoPlayer, Props as VideoPlayerProps } from "./components/VideoPlayer";
-export * from './components/IFrame';
+export { default as Option, OptionProps } from "./components/Option";
+export { default as OptionList } from "./components/OptionList";
+export { default as SpotIcon } from "./components/SpotIcon";
+export {
+  default as VideoPlayer,
+  Props as VideoPlayerProps,
+} from "./components/VideoPlayer";
+export * from "./components/IFrame";
 
 /* Utils */
 export { default as priceFormatterUtil } from "./utils/priceFormatter";
