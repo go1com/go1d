@@ -105,6 +105,7 @@ const SlatMini: React.SFC<SlatMiniProps> = ({
               <View
                 flexGrow={1}
                 flexShrink={1}
+                flexBasis="100%"
                 paddingRight={actionRenderer || dropdownItems ? 4 : 0}
               >
                 {title && (
