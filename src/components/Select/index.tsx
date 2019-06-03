@@ -276,7 +276,6 @@ class Select extends React.PureComponent<SelectProps, any> {
                                 boxShadow="strong"
                                 borderRadius={2}
                                 overflow="hidden"
-                                textOverflow="ellipsis"
                                 style={style}
                                 innerRef={ref}
                                 transition="none"
