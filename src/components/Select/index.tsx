@@ -11,7 +11,6 @@ import Text from "../Text";
 import Theme from "../Theme";
 
 import View, { ViewProps } from "../View";
-import { foundations } from "../..";
 
 export interface SelectProps extends ViewProps {
   options?: Array<{
