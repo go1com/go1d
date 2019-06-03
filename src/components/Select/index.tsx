@@ -2,6 +2,7 @@ import Downshift from "downshift";
 import * as React from "react";
 import { Manager, Popper, Reference } from "react-popper";
 import { List } from "react-virtualized";
+import { FontWeight } from "../../foundations/foundation-types";
 import safeInvoke from "../../utils/safeInvoke";
 import Icon from "../Icon";
 import Portal from "../Portal";
@@ -25,6 +26,7 @@ export interface SelectProps extends ViewProps {
   onChange?: ({ target }) => void;
   name?: string;
   size?: "sm" | "md";
+  fontWeight?: FontWeight,
   clearable?: boolean;
   onClear?: () => void;
 }
@@ -129,6 +131,7 @@ class Select extends React.PureComponent<SelectProps, any> {
       placeholder,
       defaultValue,
       value,
+      fontWeight,
       searchable,
       id,
       ...remainingProps
@@ -205,16 +208,20 @@ class Select extends React.PureComponent<SelectProps, any> {
                             position="relative"
                             backgroundColor="background"
                             boxShadow={isOpen ? "strong" : "soft"}
+                            flexDirection="row"
+                            justifyContent="space-between"
                             {...remainingProps}
                           >
                             <View
+                              flexGrow={1}
+                              flexShrink={1}
                               paddingY={3}
-                              css={{
-                                overflow: "hidden",
-                              }}
+                              overflow="hidden"
                             >
                               <Text
-                                fontSize={Sizes[size].fontSize}
+                                ellipsis={true}
+                                fontSize={Sizes[size].fontSize}    
+                                fontWeight={fontWeight ? fontWeight : "normal"}                           
                                 css={{
                                   whiteSpace: "nowrap",
                                 }}
@@ -222,21 +229,17 @@ class Select extends React.PureComponent<SelectProps, any> {
                                 {selectedItem
                                   ? selectedItem.label
                                   : placeholder || defaultText}
+                                
                               </Text>
                             </View>
                             <View
+                              alignItems="center"
+                              justifyContent="center"
+                              paddingLeft={3}
                               css={{
-                                position: "absolute",
-                                right: 12,
-                                top: 3,
-                                alignItems: "center",
-                                justifyContent: "center",
-                                paddingRight: 0,
                                 pointerEvents:
                                   selectedItem && clearable ? "auto" : "none",
                               }}
-                              height="calc(100% - 3px)"
-                              paddingLeft={3}
                             >
                               {selectedItem && clearable ? (
                                 <Icon
