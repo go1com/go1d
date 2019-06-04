@@ -193,6 +193,7 @@ export {
   Props as VideoPlayerProps,
 } from "./components/VideoPlayer";
 export * from "./components/IFrame";
+export * from "./components/CircleProgress";
 
 /* Utils */
 export { default as priceFormatterUtil } from "./utils/priceFormatter";
