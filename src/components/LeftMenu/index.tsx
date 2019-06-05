@@ -10,6 +10,7 @@ export interface LeftMenuProps extends ViewProps {
   showMenuButton?: boolean;
   onMenuButtonClick?: () => void;
   title: string;
+  allowCollapsable?: boolean;
 }
 
 /**
@@ -22,6 +23,7 @@ const menuTransition = {
 
 const LeftMenu: React.SFC<LeftMenuProps> = ({
   showMenuButton = false,
+  allowCollapsable = true,
   onMenuButtonClick,
   children,
   title,
@@ -68,7 +70,7 @@ const LeftMenu: React.SFC<LeftMenuProps> = ({
             </View>
           </Transition>
           <Transition
-            in={showMenuButton}
+            in={showMenuButton && allowCollapsable}
             timeout={animation.subtle}
             unmountOnExit={true}
             mountOnEnter={true}

@@ -37,6 +37,7 @@ const MenuItem: React.SFC<MenuItemProps> = ({
           color={active ? "faded" : "subtle"}
           paddingY={4}
           paddingLeft={4}
+          flexGrow={1}
           css={{
             "svg, span, div": {
               transition: "none",
@@ -64,7 +65,7 @@ const MenuItem: React.SFC<MenuItemProps> = ({
             unmountOnExit={true}
             mountOnEnter={true}
           >
-            <View marginLeft={1} alignItems="center">
+            <View marginLeft={1} flexGrow={1}>
               <Text
                 fontWeight="normal"
                 fontSize={2}
