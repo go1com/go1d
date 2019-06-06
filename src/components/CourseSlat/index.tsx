@@ -4,6 +4,7 @@ import formatDuration from "../../utils/durationFormatter";
 import formatPrice from "../../utils/priceFormatter";
 import Avatar from "../Avatar";
 import Icon from "../Icon";
+import Pill from "../Pill";
 import Skeleton from "../SlatSkeleton";
 import Text from "../Text";
 import Theme from "../Theme";
@@ -35,6 +36,7 @@ export interface CourseSlatProps extends ViewProps {
     amount?: number;
     included?: boolean;
   };
+  premium?: boolean;
 }
 
 const interactiveStyle = (colors, passive) => {
@@ -94,8 +96,8 @@ const enrollmentProgressRenderer = (enrolment: EnrollmentProps) => {
           status === "enrolled"
             ? "Enrolled"
             : status === "in_progress"
-              ? "InProgress"
-              : "Passed"
+            ? "InProgress"
+            : "Passed"
         }
         size={1}
         color={
@@ -112,12 +114,12 @@ const enrollmentProgressRenderer = (enrolment: EnrollmentProps) => {
         {status === "enrolled"
           ? "Enrolled"
           : status === "in_progress"
+          ? dueDateText
             ? dueDateText
-              ? dueDateText
-              : "In progress"
-            : status === "completed"
-              ? "Completed"
-              : ""}
+            : "In progress"
+          : status === "completed"
+          ? "Completed"
+          : ""}
       </Text>
     </View>
   );
@@ -143,6 +145,7 @@ const CourseSlat: React.SFC<CourseSlatProps> = ({
   typeIcon,
   tax,
   skeleton = false,
+  premium = false,
   ...props
 }: CourseSlatProps) => {
   if (skeleton) {
@@ -301,15 +304,31 @@ const CourseSlat: React.SFC<CourseSlatProps> = ({
                 )}
               </View>
               <View>
-                {currency &&
-                  !enrollment &&
-                  price > 0 && (
-                    <View flexDirection="row">
+                <View flexDirection="row" alignItems="center">
+                  {currency && !enrollment && price > 0 && (
+                    <React.Fragment>
                       <Text color="accent" fontWeight="semibold">
                         {formatPrice(currency, price, tax)}
                       </Text>
-                    </View>
+                      {premium && (
+                        <Text
+                          fontSize={1}
+                          marginLeft={3}
+                          marginRight={3}
+                          color="subtle"
+                        >
+                          or
+                        </Text>
+                      )}
+                    </React.Fragment>
                   )}
+                  {premium && !enrollment && (
+                    <Pill fontSize={1} paddingY={1} color="accent">
+                      Premium
+                    </Pill>
+                  )}
+                </View>
+
                 {enrollment && enrollmentProgressRenderer(enrollment)}
                 {contentRender && contentRender()}
                 {contentRenderer && contentRenderer()}

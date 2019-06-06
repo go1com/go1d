@@ -54,6 +54,39 @@ As used on the website
 />
 ```
 
+### With premium
+As used on the website
+```.jsx
+<CourseSlat 
+  courseImage="https://images.pexels.com/photos/814499/pexels-photo-814499.jpeg?h=400" 
+  title="Master sourdough in a week" 
+  description="Despite general improvements in workplace health and safety over the past the risk of sourdough related injuries are still insurmountable for most"
+  author="Hon. Bob Bobberson Jr."
+  duration="75"
+  premium={true}
+  type="Course"
+  typeIcon="Course"
+/>
+```
+### With price and premium
+As used on the website
+```.jsx
+<CourseSlat 
+  courseImage="https://images.pexels.com/photos/814499/pexels-photo-814499.jpeg?h=400" 
+  title="Master sourdough in a week" 
+  description="Despite general improvements in workplace health and safety over the past the risk of sourdough related injuries are still insurmountable for most"
+  author="Hon. Bob Bobberson Jr."
+  duration="75"
+  price="12345"
+  currency="INR"
+  premium={true}
+  type="Course"
+  typeIcon="Course"
+/>
+```
+
+
+
 ### Skeleton
 ```.jsx
 <CourseSlat 

@@ -31,6 +31,46 @@ releaseVersion: 0.2.15
 />
 ```
 
+### Almost all the Props (with Price and Premium)
+```.jsx
+<CourseCard
+  typeIcon="Course"
+  type="Course"
+  duration={74}
+  author="GO1"
+  title="Test Title"
+  price="123"
+  currency="AUD"
+  premium={true}
+  courseImage="https://res.cloudinary.com/go1/image/fetch/w_1024,h_300,c_thumb,g_auto/https://udemy-images.udemy.com/course/750x422/435262_c617.jpg" 
+  itemList={[
+    {
+      title: "Test"
+    }
+  ]} 
+  passive={false}
+/>
+```
+
+### Almost all the Props (with Premium)
+```.jsx
+<CourseCard
+  typeIcon="Course"
+  type="Course"
+  duration={74}
+  author="GO1"
+  title="Test Title"
+  premium={true}
+  courseImage="https://res.cloudinary.com/go1/image/fetch/w_1024,h_300,c_thumb,g_auto/https://udemy-images.udemy.com/course/750x422/435262_c617.jpg" 
+  itemList={[
+    {
+      title: "Test"
+    }
+  ]} 
+  passive={false}
+/>
+```
+
 ### Almost all the Props (with Status)
 ```.jsx
 <CourseCard
