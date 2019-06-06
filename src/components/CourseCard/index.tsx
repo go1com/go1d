@@ -1,4 +1,5 @@
 import * as React from "react";
+import { Pill } from "../..";
 import foundations from "../../foundations";
 import formatDuration from "../../utils/durationFormatter";
 import formatPrice from "../../utils/priceFormatter";
@@ -29,6 +30,7 @@ export interface CourseCardProps extends ViewProps {
   price?: number;
   currency?: string;
   status?: EnrolmentStatusProps | null;
+  premium?: boolean;
 }
 
 const interactiveStyle = (colors, passive) => {
@@ -55,6 +57,8 @@ const CourseCard: React.SFC<CourseCardProps> = ({
   currency,
   status,
   skeleton = false,
+  premium = false,
+  tax,
   ...props
 }: CourseCardProps) => {
   if (skeleton) {
@@ -156,26 +160,25 @@ const CourseCard: React.SFC<CourseCardProps> = ({
                     {title}
                   </Text>
                 )}
-                {itemList &&
-                  itemList.length > 0 && (
-                    <MoreMenu
-                      itemList={itemList}
-                      isButtonFilled={false}
-                      width={20}
-                      height={20}
-                      paddingY={0}
-                      backgroundColor="transparent"
-                      css={{
-                        ":hover, :focus": {
-                          background: "none",
-                          svg: {
-                            color: colors.subtle,
-                          },
+                {itemList && itemList.length > 0 && (
+                  <MoreMenu
+                    itemList={itemList}
+                    isButtonFilled={false}
+                    width={20}
+                    height={20}
+                    paddingY={0}
+                    backgroundColor="transparent"
+                    css={{
+                      ":hover, :focus": {
+                        background: "none",
+                        svg: {
+                          color: colors.subtle,
                         },
-                        paddingRight: 0,
-                      }}
-                    />
-                  )}
+                      },
+                      paddingRight: 0,
+                    }}
+                  />
+                )}
               </View>
               {author && (
                 <View paddingBottom={2}>
@@ -205,12 +208,37 @@ const CourseCard: React.SFC<CourseCardProps> = ({
                 </View>
               ))}
               {children && <Text>{children}</Text>}
-              {currency &&
-                price > 0 && (
-                  <View flexDirection="row" marginTop="auto" paddingTop={3}>
-                    <Text color="accent">{formatPrice(currency, price)}</Text>
-                  </View>
-                )}
+              {((currency && price > 0) || premium) && (
+                <View
+                  flexDirection="row"
+                  alignItems="center"
+                  marginTop="auto"
+                  paddingTop={3}
+                >
+                  {currency && price > 0 && (
+                    <React.Fragment>
+                      <Text color="accent" fontWeight="semibold">
+                        {formatPrice(currency, price, tax)}
+                      </Text>
+                      {premium && (
+                        <Text
+                          fontSize={1}
+                          marginLeft={3}
+                          marginRight={3}
+                          color="subtle"
+                        >
+                          or
+                        </Text>
+                      )}
+                    </React.Fragment>
+                  )}
+                  {premium && (
+                    <Pill fontSize={1} paddingY={1} color="accent">
+                      Premium
+                    </Pill>
+                  )}
+                </View>
+              )}
               <EnrolmentStatus
                 status={status}
                 marginTop="auto"

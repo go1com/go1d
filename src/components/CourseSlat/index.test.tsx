@@ -114,3 +114,24 @@ it("renders due text correctly", () => {
   }`;
   expect(dueDateFormat.dueDateText).toBe("Due " + dateString);
 });
+
+it("renders with premium", () => {
+  const testRenderer = () => <p>Hello</p>;
+  const author = () => <div>Foo</div>;
+  render(
+    <CourseSlat
+      courseImage="#"
+      title="Master sourdough in a week"
+      description="Despite general improvements in workplace health and safety"
+      author={author}
+      authorAvatar="#"
+      duration={4}
+      actionRender={testRenderer}
+      contentRender={testRenderer}
+      type="Course"
+      typeIcon="Course"
+      passive={true}
+      premium={true}
+    />
+  );
+});
