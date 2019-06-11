@@ -96,6 +96,7 @@ const Dropdown: React.SFC<DropdownProps> = ({
             {({ ref }) =>
               children({
                 ref,
+                isOpen: isOpenInternal,
                 ...downshiftParams,
               })
             }
