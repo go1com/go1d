@@ -5,7 +5,7 @@ import Option from "./index";
 afterEach(cleanup);
 
 it("renders without crashing with title as mandatory", () => {
-  render(<Option title="course 1" />);
+  render(<Option title="course 1" onClick={jest.fn()} />);
 });
 
 it("renders without crashing with full options", () => {
@@ -15,6 +15,7 @@ it("renders without crashing with full options", () => {
       spotIcon="PlusCircle"
       actionIcon="ChevronRight"
       lines={2}
+      onClick={jest.fn()}
       checked={true}
       disabled={true}
       meta="Child level test 1, Child level test 2, Child level test 3, Child level test 4, Child level test 5"

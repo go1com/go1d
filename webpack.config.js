@@ -1,4 +1,3 @@
-const path = require('path');
 /**
  * It is necessary to add the ts-loader for .tsx files
  */
