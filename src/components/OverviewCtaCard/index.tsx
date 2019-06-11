@@ -8,6 +8,7 @@ import ButtonMinimal from "../ButtonMinimal";
 import Dropdown from "../Dropdown";
 import Icon from "../Icon";
 import Text from "../Text";
+import Theme from "../Theme";
 import View, { ViewProps } from "../View";
 
 export interface OverviewCtaCardProps extends ViewProps {
@@ -32,6 +33,8 @@ export interface OverviewCtaCardProps extends ViewProps {
     amount?: number;
     included?: boolean;
   };
+  ctaAlt?: React.ReactNode;
+  orText?: string;
 }
 
 const MobileDisplayBreak = "@media(max-width: 1023px)";
@@ -67,6 +70,8 @@ class OverviewCtaCard extends React.Component<OverviewCtaCardProps, any> {
     dislikes: 0,
     enrolled: 0,
     likes: 0,
+    position: "absolute",
+    orText: "OR",
   };
 
   public render() {
@@ -85,6 +90,8 @@ class OverviewCtaCard extends React.Component<OverviewCtaCardProps, any> {
       price,
       subtitle,
       title,
+      ctaAlt,
+      orText,
       ...props
     } = this.props;
 
@@ -124,7 +131,7 @@ class OverviewCtaCard extends React.Component<OverviewCtaCardProps, any> {
         flexGrow={1}
         zIndex={1}
         css={{
-          position: "absolute",
+          position: props.position,
           right: `${foundations.spacing[0]}px`,
           [MobileDisplayBreak]: {
             position: "relative",
@@ -144,13 +151,52 @@ class OverviewCtaCard extends React.Component<OverviewCtaCardProps, any> {
         >
           {sections.mobile.top && this.renderMobileTopSection()}
 
+          {sections.mobile.bottom && this.renderMobileBottomSection()}
+
           {ctaButton && (
             <View borderTop={1} borderColor="soft" padding={5}>
               {ctaButton}
             </View>
           )}
-
-          {sections.mobile.bottom && this.renderMobileBottomSection()}
+          {ctaAlt && (
+            <Theme.Consumer>
+              {({ colors }) => (
+                <View
+                  paddingTop={2}
+                  paddingLeft={5}
+                  paddingRight={5}
+                  paddingBottom={5}
+                >
+                  {ctaButton && (
+                    <View
+                      flexDirection="row"
+                      borderColor={sections.mobile.top ? "soft" : "none"}
+                      css={{
+                        ":before, :after": {
+                          content: "''",
+                          margin: "auto",
+                          flex: "1 1",
+                          borderBottom: sections.mobile.top
+                            ? `1px solid ${colors.soft}`
+                            : 0,
+                        },
+                      }}
+                    >
+                      <Text
+                        fontWeight="semibold"
+                        marginLeft={6}
+                        marginRight={6}
+                        color="subtle"
+                      >
+                        OR
+                      </Text>
+                    </View>
+                  )}
+                  <View marginTop={sections.mobile.top ? 5 : 0}>{ctaAlt}</View>
+                </View>
+              )}
+            </Theme.Consumer>
+          )}
         </View>
 
         {/* desktop */}
@@ -191,6 +237,42 @@ class OverviewCtaCard extends React.Component<OverviewCtaCardProps, any> {
               >
                 {ctaButton}
               </View>
+            )}
+            {ctaAlt && (
+              <Theme.Consumer>
+                {({ colors }) => (
+                  <React.Fragment>
+                    {ctaButton && (
+                      <View
+                        marginTop={5}
+                        paddingTop={3}
+                        flexDirection="row"
+                        borderColor={"soft"}
+                        css={{
+                          ":before, :after": {
+                            content: "''",
+                            margin: "auto",
+                            flex: "1 1",
+                            borderBottom: `1px solid ${colors.soft}`,
+                          },
+                        }}
+                      >
+                        <Text
+                          fontWeight="semibold"
+                          marginLeft={6}
+                          marginRight={6}
+                          color="subtle"
+                        >
+                          {orText}
+                        </Text>
+                      </View>
+                    )}
+                    <View marginTop={5} paddingTop={3}>
+                      {ctaAlt}
+                    </View>
+                  </React.Fragment>
+                )}
+              </Theme.Consumer>
             )}
           </View>
         </View>
@@ -422,6 +504,7 @@ class OverviewCtaCard extends React.Component<OverviewCtaCardProps, any> {
         flexDirection="row"
         alignItems="baseline"
         s={true}
+        marginTop={4}
         css={{
           [MobileDisplayBreak]: {
             marginTop: foundations.spacing[6],
@@ -430,7 +513,7 @@ class OverviewCtaCard extends React.Component<OverviewCtaCardProps, any> {
       >
         <Text
           fontSize={5}
-          fontWeight="bold"
+          fontWeight="semibold"
           css={{
             [MobileDisplayBreak]: {
               fontSize: foundations.type.scale.sm[4],
