@@ -76,7 +76,7 @@ it("should display value is blank when value props is empty and allow blank", ()
 it("should maintain value in props over value in state", () => {
   const date = new Date("2018-12-17T20:10:00");
   const ref: React.RefObject<DatePicker> = React.createRef();
-  const { container } = render(
+  render(
     <DatePicker
       ref={ref}
       id="dp"
@@ -92,9 +92,7 @@ it("should maintain value in props over value in state", () => {
 });
 
 it("should render with disabled state", () => {
-  const { container } = render(
-    <DatePicker id="dp" allowBlank={true} disabled={true} />
-  );
+  render(<DatePicker id="dp" allowBlank={true} disabled={true} />);
 });
 
 it("listens to keys", () => {

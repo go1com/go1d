@@ -1,4 +1,3 @@
-import * as moment from "moment";
 import * as React from "react";
 import { cleanup, fireEvent, render } from "react-testing-library";
 import DateRange from "./";
