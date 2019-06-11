@@ -40,13 +40,13 @@ class BaseUpload extends React.Component<BaseUploadProps, any> {
       <Dropzone
         accept={fileType}
         onDrop={this.onDrop}
-        disableClick={!!value || disabled}
+        disabled={disabled}
         {...props}
       >
         {({ getInputProps, ...dropzoneProps }) => (
           <React.Fragment>
             {children(dropzoneProps)}
-            <input {...getInputProps()} name={name} />
+            <input {...getInputProps()} disabled={disabled} name={name} />
           </React.Fragment>
         )}
       </Dropzone>
