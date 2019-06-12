@@ -1,5 +1,4 @@
 import * as React from "react";
-import { Pill } from "../..";
 import foundations from "../../foundations";
 import formatDuration from "../../utils/durationFormatter";
 import formatPrice from "../../utils/priceFormatter";
@@ -7,6 +6,7 @@ import EnrolmentStatus, { EnrolmentStatusProps } from "../EnrolmentStatus";
 import Icon from "../Icon";
 import MoreMenu from "../MoreMenu";
 import { Item as DropdownItem } from "../MoreMenu/DropdownMenuItem";
+import Pill from "../Pill";
 import Text from "../Text";
 import Theme from "../Theme";
 import View, { ViewProps } from "../View";
