@@ -26,7 +26,7 @@ export interface SelectProps extends ViewProps {
   onChange?: ({ target }) => void;
   name?: string;
   size?: "sm" | "md";
-  fontWeight?: FontWeight,
+  fontWeight?: FontWeight;
   clearable?: boolean;
   onClear?: () => void;
 }
@@ -220,8 +220,8 @@ class Select extends React.PureComponent<SelectProps, any> {
                             >
                               <Text
                                 ellipsis={true}
-                                fontSize={Sizes[size].fontSize}    
-                                fontWeight={fontWeight ? fontWeight : "normal"}                           
+                                fontSize={Sizes[size].fontSize}
+                                fontWeight={fontWeight ? fontWeight : "normal"}
                                 css={{
                                   whiteSpace: "nowrap",
                                 }}
@@ -229,7 +229,6 @@ class Select extends React.PureComponent<SelectProps, any> {
                                 {selectedItem
                                   ? selectedItem.label
                                   : placeholder || defaultText}
-                                
                               </Text>
                             </View>
                             <View

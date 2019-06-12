@@ -6,11 +6,12 @@ export type CollapseProps = {
   reverseCollapse?: boolean;
   headerProps?: ViewProps;
   iconProps?: IconProps;
+  contentProps?: ViewProps;
   header?: () => React.ReactNode | string;
   onCollapse?: () => void;
 } & ViewProps;
 
-export interface CollapseState {
+interface CollapseState {
   heightContent: number | "auto";
   heightHeader: number | "auto";
 }
@@ -20,8 +21,9 @@ export class Collapse extends React.Component<CollapseProps, CollapseState> {
     isOpen: false,
     reverseCollapse: false,
   };
-  public refContent: any;
-  public refHeader: any;
+
+  public refHeader: HTMLElement;
+  public refContent: HTMLElement;
 
   constructor(props: CollapseProps) {
     super(props);
@@ -32,15 +34,17 @@ export class Collapse extends React.Component<CollapseProps, CollapseState> {
   }
 
   public componentDidMount() {
-    if (this.refContent) {
-      this.setState({
-        heightContent: this.refContent.clientHeight,
-      });
-    } else {
-      this.setState({
-        heightContent: "auto",
-      });
-    }
+    setTimeout(() => {
+      if (this.refContent) {
+        this.setState({
+          heightContent: this.refContent.clientHeight,
+        });
+      } else {
+        this.setState({
+          heightContent: "auto",
+        });
+      }
+    }, 1000);
     if (this.refHeader) {
       this.setState({
         heightHeader: this.refHeader.clientHeight,
@@ -61,11 +65,12 @@ export class Collapse extends React.Component<CollapseProps, CollapseState> {
       reverseCollapse,
       headerProps,
       iconProps,
+      contentProps,
       ...containerProps
     } = this.props;
-    const { heightContent, heightHeader } = this.state;
+    const { heightContent } = this.state;
     const height = isOpen ? this.getHeight(heightContent) : `0px`;
-    const overflow = isOpen ? "visible" : "hidden";
+    const overflow = isOpen ? "auto" : "hidden";
     const iconClose = reverseCollapse ? "ChevronUp" : "ChevronDown";
     const icon = iconClose;
     const cssRotate = isOpen
@@ -73,12 +78,7 @@ export class Collapse extends React.Component<CollapseProps, CollapseState> {
           transform: "rotate(180deg)",
         }
       : {};
-    const stylesContainer = reverseCollapse
-      ? {
-          justifyContent: "flex-end",
-          height: this.getHeight(heightHeader),
-        }
-      : {};
+    const stylesContainer = {};
     return (
       <View {...stylesContainer} {...containerProps}>
         {header && (
@@ -108,7 +108,11 @@ export class Collapse extends React.Component<CollapseProps, CollapseState> {
                   {header}
                 </Text>
               )}
-              {typeof header !== "string" && header()}
+              {typeof header !== "string" && (
+                <View flexShrink={1} flexGrow={1} paddingRight={1}>
+                  {header()}
+                </View>
+              )}
               <Icon
                 name={icon}
                 color="subtle"
@@ -122,7 +126,12 @@ export class Collapse extends React.Component<CollapseProps, CollapseState> {
             </View>
           </View>
         )}
-        <View height={height} overflow={overflow} transition="subtle">
+        <View
+          height={height}
+          overflow={overflow}
+          transition="subtle"
+          {...contentProps}
+        >
           <View
             // tslint:disable-next-line:jsx-no-lambda
             innerRef={e => (this.refContent = e)}
