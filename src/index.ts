@@ -195,6 +195,8 @@ export {
 export * from "./components/IFrame";
 export * from "./components/CircleProgress";
 
+export * from "./components/Collapse";
+
 /* Utils */
 export { default as priceFormatterUtil } from "./utils/priceFormatter";
 export { default as durationFormatterUtil } from "./utils/durationFormatter";
