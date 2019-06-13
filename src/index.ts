@@ -194,6 +194,7 @@ export {
 } from "./components/VideoPlayer";
 export * from "./components/IFrame";
 export * from "./components/CircleProgress";
+export * from "./components/LineProgress";
 
 /* Utils */
 export { default as priceFormatterUtil } from "./utils/priceFormatter";
