@@ -86,7 +86,7 @@ const Option: React.SFC<OptionProps> = ({
         </View>
         {checked && !disabled ? (
           <ButtonMinimal
-            onClick={!checked && onClick}
+            onClick={checked && onClick}
             size="sm"
             round={true}
             iconName="Cross"
