@@ -119,7 +119,7 @@ const Dropdown: React.SFC<DropdownProps> = ({
                       <View
                         backgroundColor="background"
                         boxShadow="strong"
-                        borderRadius={3}
+                        borderRadius={2}
                         style={style}
                         innerRef={ref}
                         transition="none"
