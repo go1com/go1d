@@ -26,7 +26,7 @@ export interface SelectProps extends ViewProps {
   onChange?: ({ target }) => void;
   name?: string;
   size?: "sm" | "md";
-  fontWeight?: FontWeight,
+  fontWeight?: FontWeight;
   clearable?: boolean;
   onClear?: () => void;
 }
@@ -48,7 +48,7 @@ class Select extends React.PureComponent<SelectProps, any> {
     size: "md",
     options: [],
   };
-
+  public static displayName = "Select";
   public OptionToString(Option) {
     if (Option) {
       return Option.value;
@@ -100,8 +100,8 @@ class Select extends React.PureComponent<SelectProps, any> {
                   selectedItem === Option
                     ? colors.accent
                     : highlightedIndex === Option.selectableIndex
-                      ? colors.highlight
-                      : colors.background,
+                    ? colors.highlight
+                    : colors.background,
               },
             })}
           >
@@ -128,6 +128,7 @@ class Select extends React.PureComponent<SelectProps, any> {
       defaultText = "Please Select", // Deprecated
       name, // Do not pass to child
       onChange, // Do not pass to child
+      onClear, // Do not pass to child
       placeholder,
       defaultValue,
       value,
@@ -220,8 +221,8 @@ class Select extends React.PureComponent<SelectProps, any> {
                             >
                               <Text
                                 ellipsis={true}
-                                fontSize={Sizes[size].fontSize}    
-                                fontWeight={fontWeight ? fontWeight : "normal"}                           
+                                fontSize={Sizes[size].fontSize}
+                                fontWeight={fontWeight ? fontWeight : "normal"}
                                 css={{
                                   whiteSpace: "nowrap",
                                 }}
@@ -229,7 +230,6 @@ class Select extends React.PureComponent<SelectProps, any> {
                                 {selectedItem
                                   ? selectedItem.label
                                   : placeholder || defaultText}
-                                
                               </Text>
                             </View>
                             <View
@@ -290,10 +290,10 @@ class Select extends React.PureComponent<SelectProps, any> {
                                       clearable={false}
                                       size={size}
                                       data-testid="searchFilterInput"
-                                      {...getInputProps({
+                                      {...(getInputProps({
                                         size,
                                         onChange: scheduleUpdate,
-                                      }) as {}}
+                                      }) as {})}
                                     />
                                   </View>
                                 )}

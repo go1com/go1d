@@ -169,10 +169,10 @@ class SelectDropdown extends React.PureComponent<SelectDropdownProps, State> {
       forceClose: this.props.closeOnSelection,
     });
 
-    let returnValue: any = option.value;
+    let returnValue: any = option ? option.value : "";
 
     if (this.props.isMulti) {
-      returnValue = this.handleMultiValueChange(option.value);
+      returnValue = this.handleMultiValueChange(returnValue);
     }
     safeInvoke(this.props.onChange, {
       target: { name: this.props.name, value: returnValue },
