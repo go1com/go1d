@@ -48,6 +48,10 @@ export {
   default as EmptyState,
   EmptyStateProps,
 } from "./components/EmptyState";
+export {
+  default as ErrorState,
+  ErrorStateProps,
+} from "./components/ErrorState";
 export { default as Lesson, LessonProps } from "./components/Lesson";
 export {
   default as SearchInput,
