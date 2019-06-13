@@ -300,6 +300,7 @@ class SelectDropdown extends React.PureComponent<SelectDropdownProps, State> {
       optionRenderer,
       onChange,
       onCreate,
+      error,
       closeOnSelection,
       showStatus,
       statusRenderer,
