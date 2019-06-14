@@ -14,7 +14,7 @@ class OptionList extends React.Component<any, any> {
       <View>
         {React.Children.map(children, (child: React.ReactElement<any>) => {
           return React.cloneElement(child as React.ReactElement<any>, {
-            marginBottom: 4,
+            marginBottom: 3,
           });
         })}
       </View>

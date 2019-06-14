@@ -73,11 +73,7 @@ const Option: React.SFC<OptionProps> = ({
           </View>
         )}
         <View flexShrink={1} marginRight="auto">
-          {title && (
-            <Text element="h4" fontWeight="semibold">
-              {title}
-            </Text>
-          )}
+          {title && <Text fontWeight="semibold">{title}</Text>}
           {meta && (
             <Text marginTop={2} element="p" color="subtle" ellipsis={true}>
               {meta}
