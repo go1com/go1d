@@ -34,6 +34,7 @@ export interface OverviewCtaCardProps extends ViewProps {
     included?: boolean;
   };
   ctaAlt?: React.ReactNode;
+  childrenBottom?: React.ReactNode;
   orText?: string;
 }
 
@@ -91,6 +92,7 @@ class OverviewCtaCard extends React.Component<OverviewCtaCardProps, any> {
       subtitle,
       title,
       ctaAlt,
+      childrenBottom,
       orText,
       ...props
     } = this.props;
@@ -150,9 +152,7 @@ class OverviewCtaCard extends React.Component<OverviewCtaCardProps, any> {
           }}
         >
           {sections.mobile.top && this.renderMobileTopSection()}
-
           {sections.mobile.bottom && this.renderMobileBottomSection()}
-
           {ctaButton && (
             <View borderTop={1} borderColor="soft" padding={5}>
               {ctaButton}
@@ -197,6 +197,11 @@ class OverviewCtaCard extends React.Component<OverviewCtaCardProps, any> {
               )}
             </Theme.Consumer>
           )}
+          {childrenBottom && (
+            <View paddingX={5} paddingBottom={5}>
+              {childrenBottom}
+            </View>
+          )}
         </View>
 
         {/* desktop */}
@@ -213,9 +218,7 @@ class OverviewCtaCard extends React.Component<OverviewCtaCardProps, any> {
               backgroundColor="soft"
               height={230}
               css={{
-                borderRadius: `${foundations.spacing[2]}px ${
-                  foundations.spacing[2]
-                }px 0 0`,
+                borderRadius: `${foundations.spacing[2]}px ${foundations.spacing[2]}px 0 0`,
                 backgroundImage: backgroundImage
                   ? `url(${backgroundImage})`
                   : undefined,
@@ -274,6 +277,8 @@ class OverviewCtaCard extends React.Component<OverviewCtaCardProps, any> {
                 )}
               </Theme.Consumer>
             )}
+
+            {childrenBottom && <View marginTop={4}>{childrenBottom}</View>}
           </View>
         </View>
       </View>
@@ -300,30 +305,29 @@ class OverviewCtaCard extends React.Component<OverviewCtaCardProps, any> {
           <View flexDirection="row" justifyContent="space-between">
             {(likes > 0 || dislikes > 0) && this.renderLikes()}
 
-            {actions &&
-              actions.length > 0 && (
-                <View marginLeft="auto">
-                  <Dropdown
-                    itemToString={itemToString}
-                    borderRadius={2}
-                    renderFunction={renderFunction}
-                    itemList={actions}
-                    placement="bottom-end"
-                  >
-                    {({ ref, getToggleButtonProps }) => (
-                      <View width="32">
-                        <ButtonMinimal
-                          {...getToggleButtonProps()}
-                          innerRef={ref}
-                          size="md"
-                        >
-                          <Icon name="Ellipsis" />
-                        </ButtonMinimal>
-                      </View>
-                    )}
-                  </Dropdown>
-                </View>
-              )}
+            {actions && actions.length > 0 && (
+              <View marginLeft="auto">
+                <Dropdown
+                  itemToString={itemToString}
+                  borderRadius={2}
+                  renderFunction={renderFunction}
+                  itemList={actions}
+                  placement="bottom-end"
+                >
+                  {({ ref, getToggleButtonProps }) => (
+                    <View width="32">
+                      <ButtonMinimal
+                        {...getToggleButtonProps()}
+                        innerRef={ref}
+                        size="md"
+                      >
+                        <Icon name="Ellipsis" />
+                      </ButtonMinimal>
+                    </View>
+                  )}
+                </Dropdown>
+              </View>
+            )}
           </View>
         )}
 
@@ -430,30 +434,29 @@ class OverviewCtaCard extends React.Component<OverviewCtaCardProps, any> {
       >
         {(likes > 0 || dislikes > 0) && this.renderLikes()}
 
-        {actions &&
-          actions.length > 0 && (
-            <View marginLeft="auto">
-              <Dropdown
-                itemToString={itemToString}
-                borderRadius={2}
-                renderFunction={renderFunction}
-                itemList={actions}
-                placement="bottom-end"
-              >
-                {({ ref, getToggleButtonProps }) => (
-                  <View width="32">
-                    <ButtonMinimal
-                      {...getToggleButtonProps()}
-                      innerRef={ref}
-                      size="md"
-                    >
-                      <Icon name="Ellipsis" />
-                    </ButtonMinimal>
-                  </View>
-                )}
-              </Dropdown>
-            </View>
-          )}
+        {actions && actions.length > 0 && (
+          <View marginLeft="auto">
+            <Dropdown
+              itemToString={itemToString}
+              borderRadius={2}
+              renderFunction={renderFunction}
+              itemList={actions}
+              placement="bottom-end"
+            >
+              {({ ref, getToggleButtonProps }) => (
+                <View width="32">
+                  <ButtonMinimal
+                    {...getToggleButtonProps()}
+                    innerRef={ref}
+                    size="md"
+                  >
+                    <Icon name="Ellipsis" />
+                  </ButtonMinimal>
+                </View>
+              )}
+            </Dropdown>
+          </View>
+        )}
       </View>
     );
   }
