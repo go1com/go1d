@@ -10,7 +10,7 @@ import View, { ViewProps } from "../View";
 
 export interface SlatMiniProps extends ViewProps {
   id?: number;
-  title?: string;
+  title?: string | React.ReactNode;
   bottomMeta?: string[];
   image?: string;
   type?: string;
@@ -25,7 +25,7 @@ const SlatMini: React.SFC<SlatMiniProps> = ({
   title,
   bottomMeta,
   image,
-  type = "Course",
+  type,
   href,
   typeBackground = "contrast",
   actionRenderer,
@@ -78,6 +78,7 @@ const SlatMini: React.SFC<SlatMiniProps> = ({
                   <Icon size={7} name="Empty" color="default" />
                 </View>
               )}
+
               {type && (
                 <ContentType
                   type={type}
@@ -145,17 +146,16 @@ const SlatMini: React.SFC<SlatMiniProps> = ({
               {(actionRenderer || dropdownItems) && (
                 <View flexDirection="row" alignSelf="center" marginRight={4}>
                   {actionRenderer && actionRenderer()}
-                  {dropdownItems &&
-                    dropdownItems.length > 0 && (
-                      <MoreMenu
-                        size="sm"
-                        iconColor="muted"
-                        marginTop={-2}
-                        paddingY={2}
-                        isButtonFilled={false}
-                        itemList={dropdownItems}
-                      />
-                    )}
+                  {dropdownItems && dropdownItems.length > 0 && (
+                    <MoreMenu
+                      size="sm"
+                      iconColor="muted"
+                      marginTop={-2}
+                      paddingY={2}
+                      isButtonFilled={false}
+                      itemList={dropdownItems}
+                    />
+                  )}
                 </View>
               )}
             </View>
