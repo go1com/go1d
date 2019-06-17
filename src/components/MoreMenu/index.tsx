@@ -38,8 +38,10 @@ class MoreMenu extends React.Component<MoreMenuProps, State> {
     selectedItem: any,
     stateAndHelpers: ControllerStateAndHelpers<any>
   ) {
-    safeInvoke(selectedItem.onClick, selectedItem);
-    safeInvoke(this.props.onSelect, selectedItem, stateAndHelpers);
+    if (selectedItem) {
+      safeInvoke(selectedItem.onClick, selectedItem);
+      safeInvoke(this.props.onSelect, selectedItem, stateAndHelpers);
+    }
   }
 
   public render() {
