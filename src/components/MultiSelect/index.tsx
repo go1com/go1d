@@ -396,10 +396,10 @@ class MultiSelect extends React.PureComponent<MultiSelectProps, any> {
                                         clearable={false}
                                         data-testid="inputElement"
                                         onSubmit={null}
-                                        {...getInputProps({
+                                        {...(getInputProps({
                                           size,
                                           onChange: scheduleUpdate,
-                                        }) as {}}
+                                        }) as {})}
                                       />
                                     </View>
                                   )}

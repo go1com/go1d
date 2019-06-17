@@ -25,8 +25,8 @@ const ButtonFilled: React.SFC<ButtonFilledProps> = ({
       const mode = customModes[color]
         ? customModes[color]
         : isDark(colors[color])
-          ? "dark"
-          : "light";
+        ? "dark"
+        : "light";
       return (
         <Button
           mode={mode}
@@ -40,16 +40,12 @@ const ButtonFilled: React.SFC<ButtonFilledProps> = ({
               boxShadow: shadows.soft,
               textShadow: mode === "dark" && shadows.text,
               "&:hover, &:focus": {
-                background: `${colors.gradients.lightWarmOverlay}, ${
-                  colors[color]
-                }`,
+                background: `${colors.gradients.lightWarmOverlay}, ${colors[color]}`,
                 boxShadow: shadows.strong,
                 transform: "translateY(-1px)",
               },
               "&:active": {
-                background: `${colors.gradients.darkWarmOverlay}, ${
-                  colors[color]
-                }`,
+                background: `${colors.gradients.darkWarmOverlay}, ${colors[color]}`,
                 boxShadow: shadows.crisp,
                 transform: "translateY(1px)",
               },

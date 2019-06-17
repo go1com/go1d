@@ -14,14 +14,12 @@ interface RowRendererProps extends ListRowProps {
 export interface DataTableSelectableProps
   extends Pick<DataTableProps, Exclude<keyof DataTableProps, "rowRenderer">> {
   /** Action to take when the button is clicked */
-  mainAction?: (
-    evt: {
-      allSelected: boolean;
-      invertSelection: boolean;
-      selectedItems: number[];
-      unselectedItems: number[];
-    }
-  ) => void;
+  mainAction?: (evt: {
+    allSelected: boolean;
+    invertSelection: boolean;
+    selectedItems: number[];
+    unselectedItems: number[];
+  }) => void;
 
   /** Text to go on the main action button */
   mainActionText?: string;

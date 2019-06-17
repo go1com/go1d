@@ -161,16 +161,15 @@ const Slat: React.SFC<SlatProps> = ({
                     }}
                   >
                     {actionRenderer && actionRenderer()}
-                    {dropdownItems &&
-                      dropdownItems.length > 0 && (
-                        <MoreMenu
-                          itemList={dropdownItems}
-                          isButtonFilled={false}
-                          height="30px"
-                          marginTop={-2}
-                          paddingY={2}
-                        />
-                      )}
+                    {dropdownItems && dropdownItems.length > 0 && (
+                      <MoreMenu
+                        itemList={dropdownItems}
+                        isButtonFilled={false}
+                        height="30px"
+                        marginTop={-2}
+                        paddingY={2}
+                      />
+                    )}
                   </View>
                 )}
               </View>
@@ -262,21 +261,20 @@ const Slat: React.SFC<SlatProps> = ({
                     ))}
                   </View>
                 )}
-                {currency &&
-                  price > 0 && (
-                    <View
-                      flexDirection="row"
-                      css={{
-                        [breakpoints.sm]: {
-                          alignSelf: "flex-start",
-                        },
-                      }}
-                    >
-                      <Text color="accent" fontWeight="semibold">
-                        {formatPrice(currency, price, tax)}
-                      </Text>
-                    </View>
-                  )}
+                {currency && price > 0 && (
+                  <View
+                    flexDirection="row"
+                    css={{
+                      [breakpoints.sm]: {
+                        alignSelf: "flex-start",
+                      },
+                    }}
+                  >
+                    <Text color="accent" fontWeight="semibold">
+                      {formatPrice(currency, price, tax)}
+                    </Text>
+                  </View>
+                )}
               </View>
             </View>
           </View>

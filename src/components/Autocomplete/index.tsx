@@ -176,65 +176,61 @@ class Autocomplete extends React.Component<AutocompleteProps, any> {
               }
               {...inputProps}
             />
-            {options &&
-              text &&
-              showDropdown && (
-                <View position="relative">
-                  <View
-                    backgroundColor="background"
-                    borderRadius={1}
-                    boxShadow="strong"
-                    top="40px"
-                    position="absolute"
-                    zIndex={1001}
-                    maxWidth={["none", "none", "320px"]}
-                    paddingY={3}
-                    marginTop={2}
-                    {...dropdownProps}
-                  >
-                    {showStatus &&
-                      isFunction(statusRenderer) &&
-                      statusRenderer()}
-                    {!showStatus &&
-                      formattedOptions.map(o => {
-                        const key = `${Math.random()}_${o.label}_option`;
-                        const wrappingStyles = {
-                          cursor: "pointer",
-                          "&:hover, &:active": {
-                            backgroundColor: colors.highlight,
-                          },
-                        };
-                        if (optionRenderer) {
-                          return (
-                            <View
-                              css={wrappingStyles}
-                              key={key}
-                              onClick={this.selectOption(o)}
-                              padding={4}
-                            >
-                              {optionRenderer(o)}
-                            </View>
-                          );
-                        }
+            {options && text && showDropdown && (
+              <View position="relative">
+                <View
+                  backgroundColor="background"
+                  borderRadius={1}
+                  boxShadow="strong"
+                  top="40px"
+                  position="absolute"
+                  zIndex={1001}
+                  maxWidth={["none", "none", "320px"]}
+                  paddingY={3}
+                  marginTop={2}
+                  {...dropdownProps}
+                >
+                  {showStatus && isFunction(statusRenderer) && statusRenderer()}
+                  {!showStatus &&
+                    formattedOptions.map(o => {
+                      const key = `${Math.random()}_${o.label}_option`;
+                      const wrappingStyles = {
+                        cursor: "pointer",
+                        "&:hover, &:active": {
+                          backgroundColor: colors.highlight,
+                        },
+                      };
+                      if (optionRenderer) {
                         return (
-                          <Text
-                            ellipsis={true}
-                            onClick={this.selectOption(o)}
-                            paddingY={4}
-                            paddingX={4}
-                            data-testid="locationElement"
-                            key={key}
-                            color="default"
-                            {...labelProps}
+                          <View
                             css={wrappingStyles}
+                            key={key}
+                            onClick={this.selectOption(o)}
+                            padding={4}
                           >
-                            {o.label}
-                          </Text>
+                            {optionRenderer(o)}
+                          </View>
                         );
-                      })}
-                  </View>
+                      }
+                      return (
+                        <Text
+                          ellipsis={true}
+                          onClick={this.selectOption(o)}
+                          paddingY={4}
+                          paddingX={4}
+                          data-testid="locationElement"
+                          key={key}
+                          color="default"
+                          {...labelProps}
+                          css={wrappingStyles}
+                        >
+                          {o.label}
+                        </Text>
+                      );
+                    })}
                 </View>
-              )}
+              </View>
+            )}
           </View>
         )}
       </Theme.Consumer>

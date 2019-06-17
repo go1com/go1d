@@ -8,7 +8,7 @@ export interface Item extends ButtonMinimalProps {
   iconName?: string;
   color?: string;
   iconColor?: string;
-  onClick?: ((evt: React.SyntheticEvent) => void);
+  onClick?: (evt: React.SyntheticEvent) => void;
 }
 
 const DropdownMenu = (item: Item, index: number, getItemProps) => {

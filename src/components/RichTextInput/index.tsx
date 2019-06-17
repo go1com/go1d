@@ -21,12 +21,10 @@ interface State {
 export interface Props {
   placeholder?: string;
   value?: Value;
-  onChange?: (
-    change: {
-      operations: Immutable.List<Operation>;
-      value: Value;
-    }
-  ) => any;
+  onChange?: (change: {
+    operations: Immutable.List<Operation>;
+    value: Value;
+  }) => any;
   name?: string;
   disabled?: boolean;
   id?: string;

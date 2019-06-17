@@ -34,19 +34,18 @@ const EmptyState: React.SFC<EmptyStateProps> = ({
       <View textAlign="center" marginY={6}>
         <Text color="subtle">{children || description}</Text>
       </View>
-      {actionText &&
-        action && (
-          <ButtonFilled
-            maxWidth={380}
-            width="100%"
-            justifyContent="center"
-            onClick={action}
-            size="lg"
-            color="accent"
-          >
-            {actionText}
-          </ButtonFilled>
-        )}
+      {actionText && action && (
+        <ButtonFilled
+          maxWidth={380}
+          width="100%"
+          justifyContent="center"
+          onClick={action}
+          size="lg"
+          color="accent"
+        >
+          {actionText}
+        </ButtonFilled>
+      )}
     </View>
   </Container>
 );

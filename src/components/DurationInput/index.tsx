@@ -17,14 +17,12 @@ export interface DurationInputProps {
   defaultValue?: number;
   name: string;
   onBlur?: (evt: any) => void;
-  onChange?: (
-    evt: {
-      target: {
-        name: string;
-        value: number;
-      };
-    }
-  ) => void;
+  onChange?: (evt: {
+    target: {
+      name: string;
+      value: number;
+    };
+  }) => void;
   error?: string;
   dayText?: string;
   hourText?: string;

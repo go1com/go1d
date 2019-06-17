@@ -14,15 +14,13 @@ export interface ImageUploadSlatProps extends ViewProps {
   value?: File | string;
   name?: string;
   uploadProgress: number;
-  onUploadProgress: (
-    {
-      loaded,
-      total,
-    }: {
-      loaded: number;
-      total: number;
-    }
-  ) => void;
+  onUploadProgress: ({
+    loaded,
+    total,
+  }: {
+    loaded: number;
+    total: number;
+  }) => void;
   showUploadCompleted: boolean;
   fileName?: string;
   dragDropText?: string;

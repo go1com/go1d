@@ -78,27 +78,24 @@ const EventDate: React.SFC<SessionProps> = ({
 
   return (
     <React.Fragment>
-      {mapLink &&
-        location.latitude && (
-          <Link
-            target="_blank"
-            href={`https://www.google.com/maps/?q=${location.latitude},${
-              location.longitude
-            }`}
-            css={{
-              fontSize: "13px",
-              textAlign: "right",
-              display: "block",
-              marginBottom: foundations.spacing[3],
-              color: foundations.colors.accent,
-              "&:hover, &:active": {
-                textDecoration: "underline",
-              },
-            }}
-          >
-            View map
-          </Link>
-        )}
+      {mapLink && location.latitude && (
+        <Link
+          target="_blank"
+          href={`https://www.google.com/maps/?q=${location.latitude},${location.longitude}`}
+          css={{
+            fontSize: "13px",
+            textAlign: "right",
+            display: "block",
+            marginBottom: foundations.spacing[3],
+            color: foundations.colors.accent,
+            "&:hover, &:active": {
+              textDecoration: "underline",
+            },
+          }}
+        >
+          View map
+        </Link>
+      )}
       <View
         backgroundColor="background"
         overflow="hidden"
@@ -180,35 +177,33 @@ const EventDate: React.SFC<SessionProps> = ({
               </Text>
             </View>
           </View>
-          {showAttendees &&
-            availableSeats !== null && (
+          {showAttendees && availableSeats !== null && (
+            <View
+              borderTop={1}
+              borderColor="soft"
+              marginTop={3}
+              paddingY={3}
+              paddingX={4}
+              flexDirection="row"
+              alignItems="center"
+            >
               <View
-                borderTop={1}
-                borderColor="soft"
-                marginTop={3}
-                paddingY={3}
-                paddingX={4}
-                flexDirection="row"
-                alignItems="center"
+                backgroundColor="soft"
+                borderRadius={10}
+                padding={2}
+                marginRight={3}
               >
-                <View
-                  backgroundColor="soft"
-                  borderRadius={10}
-                  padding={2}
-                  marginRight={3}
-                >
-                  <Icon name="AddUser" color="muted" />
-                </View>
-                {availableSeats > 0 &&
-                  limit && (
-                    <Text fontSize={1} color="subtle">
-                      {limit - availableSeats}
-                      {limit && `/${limit}`} attendees
-                    </Text>
-                  )}
-                {availableSeats === 0 && <Text>SOLD OUT</Text>}
+                <Icon name="AddUser" color="muted" />
               </View>
-            )}
+              {availableSeats > 0 && limit && (
+                <Text fontSize={1} color="subtle">
+                  {limit - availableSeats}
+                  {limit && `/${limit}`} attendees
+                </Text>
+              )}
+              {availableSeats === 0 && <Text>SOLD OUT</Text>}
+            </View>
+          )}
         </View>
       </View>
     </React.Fragment>

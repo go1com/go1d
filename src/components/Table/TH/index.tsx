@@ -54,14 +54,13 @@ const TableHeaderCell: React.SFC<TableHeaderCellProps> = ({
           <Text textTransform="uppercase" color="subtle">
             {text}
           </Text>
-          {sort &&
-            sort === currentSort && (
-              <Icon
-                name={direction === "ASC" ? "ChevronUp" : "ChevronDown"}
-                marginLeft={2}
-                color="subtle"
-              />
-            )}
+          {sort && sort === currentSort && (
+            <Icon
+              name={direction === "ASC" ? "ChevronUp" : "ChevronDown"}
+              marginLeft={2}
+              color="subtle"
+            />
+          )}
         </View>
       </HeaderWrapper>
     </View>
