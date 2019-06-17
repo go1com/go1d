@@ -59,6 +59,9 @@ test:linting:
   stage: test
   tags: ["aws"]
   script: yarn run tslint
+  except:
+    - master
+    - tags
 
 test:unit:
   stage: test

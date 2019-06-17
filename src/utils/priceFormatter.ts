@@ -10,10 +10,10 @@ function formatPrice(
   currency: string,
   price: number,
   tax?: {
-    amount?: number,
-    included?: boolean,
+    amount?: number;
+    included?: boolean;
   },
-  locale: string = "en-US",
+  locale: string = "en-US"
 ): string {
   let output = new Intl.NumberFormat(locale, {
     style: "currency",
@@ -32,7 +32,7 @@ function formatPrice(
   }
 
   if (price === 0) {
-    output = 'FREE'
+    output = "FREE";
   }
 
   return output;

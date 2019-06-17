@@ -160,26 +160,25 @@ const CourseCard: React.SFC<CourseCardProps> = ({
                     {title}
                   </Text>
                 )}
-                {itemList &&
-                  itemList.length > 0 && (
-                    <MoreMenu
-                      itemList={itemList}
-                      isButtonFilled={false}
-                      width={20}
-                      height={20}
-                      paddingY={0}
-                      backgroundColor="transparent"
-                      css={{
-                        ":hover, :focus": {
-                          background: "none",
-                          svg: {
-                            color: colors.subtle,
-                          },
+                {itemList && itemList.length > 0 && (
+                  <MoreMenu
+                    itemList={itemList}
+                    isButtonFilled={false}
+                    width={20}
+                    height={20}
+                    paddingY={0}
+                    backgroundColor="transparent"
+                    css={{
+                      ":hover, :focus": {
+                        background: "none",
+                        svg: {
+                          color: colors.subtle,
                         },
-                        paddingRight: 0,
-                      }}
-                    />
-                  )}
+                      },
+                      paddingRight: 0,
+                    }}
+                  />
+                )}
               </View>
               {author && (
                 <View paddingBottom={2}>
@@ -216,24 +215,23 @@ const CourseCard: React.SFC<CourseCardProps> = ({
                   marginTop="auto"
                   paddingTop={3}
                 >
-                  {currency &&
-                    price > 0 && (
-                      <React.Fragment>
-                        <Text color="accent" fontWeight="semibold">
-                          {formatPrice(currency, price, tax)}
+                  {currency && price > 0 && (
+                    <React.Fragment>
+                      <Text color="accent" fontWeight="semibold">
+                        {formatPrice(currency, price, tax)}
+                      </Text>
+                      {premium && (
+                        <Text
+                          fontSize={1}
+                          marginLeft={3}
+                          marginRight={3}
+                          color="subtle"
+                        >
+                          or
                         </Text>
-                        {premium && (
-                          <Text
-                            fontSize={1}
-                            marginLeft={3}
-                            marginRight={3}
-                            color="subtle"
-                          >
-                            or
-                          </Text>
-                        )}
-                      </React.Fragment>
-                    )}
+                      )}
+                    </React.Fragment>
+                  )}
                   {premium && (
                     <Pill fontSize={1} paddingY={1} color="accent">
                       Premium

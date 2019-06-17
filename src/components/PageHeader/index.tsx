@@ -81,20 +81,19 @@ const PageHeader: React.SFC<PageHeaderProps> = ({
           </Transition>
         </View>
         <View maxWidth="75%">
-          {breadcrumbTitle &&
-            breadcrumbHref && (
-              <Link href={breadcrumbHref}>
-                <View flexDirection="row" alignItems="center">
-                  <Icon
-                    name="ChevronLeft"
-                    color="subtle"
-                    size={1}
-                    marginRight={2}
-                  />
-                  <Text color="subtle">{breadcrumbTitle}</Text>
-                </View>
-              </Link>
-            )}
+          {breadcrumbTitle && breadcrumbHref && (
+            <Link href={breadcrumbHref}>
+              <View flexDirection="row" alignItems="center">
+                <Icon
+                  name="ChevronLeft"
+                  color="subtle"
+                  size={1}
+                  marginRight={2}
+                />
+                <Text color="subtle">{breadcrumbTitle}</Text>
+              </View>
+            </Link>
+          )}
           <Text
             element="h1"
             fontWeight="semibold"

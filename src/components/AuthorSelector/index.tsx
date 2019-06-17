@@ -266,9 +266,9 @@ class AuthorSelector extends React.PureComponent<AuthorSelectorProps, State> {
                   size={4}
                 />
                 <View>
-                  <Text fontSize={2}>{`${author.firstName} ${
-                    author.lastName
-                  }`}</Text>
+                  <Text
+                    fontSize={2}
+                  >{`${author.firstName} ${author.lastName}`}</Text>
                   <Text fontSize={1}>{author.mail}</Text>
                 </View>
                 <ButtonMinimal

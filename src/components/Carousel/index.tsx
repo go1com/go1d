@@ -317,25 +317,24 @@ class Carousel extends React.Component<CarouselProps, any> {
             }}
           />
         )}
-        {!finishedScrolling &&
-          currentSlide < this.slideRefs.length - 1 && (
-            <ButtonFilled
-              onClick={this.scrollToIndex(
-                this.state.currentSlide + clickScrollAmount
-              )}
-              aria-label="Navigate Carousel Right"
-              data-testid="rightNavigationButton"
-              iconName="ChevronRight"
-              position="absolute"
-              justifyContent="center"
-              round={true}
-              css={{
-                borderRadius: "50%",
-                top: "calc(50% - 20px)",
-                right: -20,
-              }}
-            />
-          )}
+        {!finishedScrolling && currentSlide < this.slideRefs.length - 1 && (
+          <ButtonFilled
+            onClick={this.scrollToIndex(
+              this.state.currentSlide + clickScrollAmount
+            )}
+            aria-label="Navigate Carousel Right"
+            data-testid="rightNavigationButton"
+            iconName="ChevronRight"
+            position="absolute"
+            justifyContent="center"
+            round={true}
+            css={{
+              borderRadius: "50%",
+              top: "calc(50% - 20px)",
+              right: -20,
+            }}
+          />
+        )}
       </View>
     );
   }

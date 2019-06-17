@@ -229,19 +229,18 @@ class DataTable extends React.Component<DataTableProps, {}> {
                             rowCount <= 0 &&
                             emptyState}
                         </View>
-                        {!hideScrollButton &&
-                          scrollTop > 0 && (
-                            <ButtonFilled
-                              color="contrast"
-                              onClick={this.scrollToTop}
-                              position="sticky"
-                              marginTop={4}
-                              marginLeft="auto"
-                              css={{ bottom: spacing[4] }}
-                            >
-                              <Icon name="ChevronUp" color="background" />
-                            </ButtonFilled>
-                          )}
+                        {!hideScrollButton && scrollTop > 0 && (
+                          <ButtonFilled
+                            color="contrast"
+                            onClick={this.scrollToTop}
+                            position="sticky"
+                            marginTop={4}
+                            marginLeft="auto"
+                            css={{ bottom: spacing[4] }}
+                          >
+                            <Icon name="ChevronUp" color="background" />
+                          </ButtonFilled>
+                        )}
                       </React.Fragment>
                     )}
                   </WindowScroller>
