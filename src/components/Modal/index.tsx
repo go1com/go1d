@@ -192,12 +192,13 @@ class Modal extends React.Component<ModalProps, any> {
                   marginLeft={4}
                 />
               )}
-              <View flexGrow={1} flexShrink={1}>
+              <View css={{ flex: 1 }}>
                 <Text
                   element="h1"
                   textAlign="center"
                   fontSize={3}
                   paddingX={5}
+                  ellipsis={true}
                   css={{
                     wordWrap: "break-word",
                     maxWidth: onRequestClose
