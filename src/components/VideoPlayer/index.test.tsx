@@ -1,6 +1,6 @@
 import * as React from "react";
 import { cleanup, render } from "react-testing-library";
-import VideoPlayer from "./index";
+import { VideoPlayer } from ".";
 
 afterEach(cleanup);
 
