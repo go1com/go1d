@@ -31,9 +31,9 @@ export interface DatePickerState {
   minute: string;
   hour: string;
 }
-
-Moment.updateLocale("en", { weekdaysMin: "S_M_T_W_T_F_S".split("_") });
-
+safeInvoke(Moment.updateLocale, "en", {
+  weekdaysMin: "S_M_T_W_T_F_S".split("_"),
+});
 class DatePicker extends React.Component<DatePickerProps, DatePickerState> {
   public static defaultProps = {
     size: "md",
