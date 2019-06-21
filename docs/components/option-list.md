@@ -18,7 +18,7 @@ status: ready
   <Option title="This is a test title" meta="Test meta" spotIcon="SafetyAndCompliance" actionIcon="ChevronRight" checked={true}/>
   <Option title="This is a test title" spotIcon="SafetyAndCompliance" actionIcon="ChevronRight" checked={true} disabled={true}/>
   <Option title="This is a test title" actionIcon="ChevronRight" />
-  <Option title="This is a test title" lines={1}/>
+  <Option title="This is a test title" height={48}/>
 </OptionList>
 ```
 

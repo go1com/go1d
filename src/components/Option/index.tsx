@@ -23,8 +23,8 @@ const Option: React.SFC<OptionProps> = ({
   meta,
   checked = false,
   disabled = false,
-  lines = 2,
   actionIcon,
+  height = 77,
   spotIcon,
   css,
   ...props
@@ -35,9 +35,9 @@ const Option: React.SFC<OptionProps> = ({
         flexDirection="row"
         alignItems="center"
         justifyContent="stretch"
-        height={40 * lines}
         width="100%"
         paddingX={4}
+        height={height}
         backgroundColor={
           checked && disabled ? "background" : checked ? "soft" : "background"
         }
@@ -82,10 +82,13 @@ const Option: React.SFC<OptionProps> = ({
         </View>
         {checked && !disabled ? (
           <ButtonMinimal
+            data-value={props["data-value"]}
+            data-name={props["data-name"]}
             onClick={checked && onClick}
-            size="sm"
+            size="md"
             round={true}
             iconName="Cross"
+            type="button"
           />
         ) : (
           <Icon

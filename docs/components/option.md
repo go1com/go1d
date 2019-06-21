@@ -52,7 +52,7 @@ status: ready
   <Option title="Title test" 
    spotIcon="SafetyAndCompliance"
    actionIcon="Cross" 
-   lines={1} />
+   height={48} />
 ```
 
 ```!jsx
