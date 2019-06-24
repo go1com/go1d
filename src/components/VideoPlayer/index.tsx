@@ -81,24 +81,26 @@ export class VideoPlayer extends React.Component<VideoPlayerProps> {
     return null;
   }
 
-  private async getDimensions(video: VideoType): Promise<Dimensions> {
+  private getDimensions(video: VideoType): Promise<Dimensions> {
     switch (video.type) {
       case "vimeo":
-        return {
-          width: await video.player.getVideoWidth(),
-          height: await video.player.getVideoHeight(),
-        };
-
+        return Promise.all([
+          video.player.getVideoWidth(),
+          video.player.getVideoHeight(),
+        ]).then(([width, height]) => ({
+          width,
+          height,
+        }));
       case "video":
       default:
-        return {
+        return Promise.resolve({
           width: video.player.videoWidth,
           height: video.player.videoHeight,
-        };
+        });
     }
   }
 
-  private onReady = async () => {
+  private onReady = () => {
     const player = this.videoRef.current.getInternalPlayer();
     const vendor = this.getVendorPlayer(this.props.url as string, player);
 
@@ -107,8 +109,11 @@ export class VideoPlayer extends React.Component<VideoPlayerProps> {
     }
 
     if (vendor && vendor.player) {
-      const dimensions = await this.getDimensions(vendor);
-      safeInvoke(this.props.onVideoDimensions, dimensions);
+      this.getDimensions(vendor).then(dimensions => {
+        safeInvoke(this.props.onVideoDimensions, dimensions);
+        safeInvoke(this.props.onReady);
+      });
+      return;
     }
 
     safeInvoke(this.props.onReady);
