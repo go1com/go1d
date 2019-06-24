@@ -269,8 +269,8 @@ const hoverStyle = {
  */
 
 export const breakpoints = {
-  sm: "@media(max-width: 599px)",
-  md: "@media(min-width: 600px)",
+  sm: "@media(max-width: 768px)",
+  md: "@media(min-width: 769px)",
   lg: "@media(min-width: 1100px)",
 };
 
