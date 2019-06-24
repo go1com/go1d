@@ -11,9 +11,14 @@ export type CollapseProps = {
   onCollapse?: () => void;
 } & ViewProps;
 
+enum Status {
+  IDLING = "IDLING",
+  RESIZING = "RESIZING",
+}
+
 interface CollapseState {
-  heightContent: number | "auto";
-  heightHeader: number | "auto";
+  heightWrapper: number;
+  currentState: Status;
 }
 
 export class Collapse extends React.Component<CollapseProps, CollapseState> {
@@ -28,30 +33,36 @@ export class Collapse extends React.Component<CollapseProps, CollapseState> {
   constructor(props: CollapseProps) {
     super(props);
     this.state = {
-      heightContent: -1,
-      heightHeader: -1,
+      heightWrapper: 0,
+      currentState: Status.IDLING,
     };
   }
 
   public componentDidMount() {
-    setTimeout(() => {
-      if (this.refContent) {
-        this.setState({
-          heightContent: this.refContent.clientHeight,
-        });
-      } else {
-        this.setState({
-          heightContent: "auto",
-        });
-      }
-    }, 1000);
-    if (this.refHeader) {
+    const { isOpen } = this.props;
+
+    this.setState({
+      heightWrapper: isOpen ? this.getHeightContent() : 0,
+    });
+  }
+
+  public componentDidUpdate(_, prevState) {
+    const { isOpen } = this.props;
+
+    const heightWrapper = isOpen ? this.getHeightContent() : 0;
+
+    if (prevState.heightWrapper !== heightWrapper) {
       this.setState({
-        heightHeader: this.refHeader.clientHeight,
+        currentState: Status.RESIZING,
+        heightWrapper,
       });
-    } else {
+
+      return;
+    }
+
+    if (prevState.currentState === Status.RESIZING) {
       this.setState({
-        heightHeader: "auto",
+        currentState: Status.IDLING,
       });
     }
   }
@@ -68,8 +79,7 @@ export class Collapse extends React.Component<CollapseProps, CollapseState> {
       contentProps,
       ...containerProps
     } = this.props;
-    const { heightContent } = this.state;
-    const height = isOpen ? this.getHeight(heightContent) : `0px`;
+    const { heightWrapper } = this.state;
     const overflow = isOpen ? "auto" : "hidden";
     const iconClose = reverseCollapse ? "ChevronUp" : "ChevronDown";
     const icon = iconClose;
@@ -127,7 +137,7 @@ export class Collapse extends React.Component<CollapseProps, CollapseState> {
           </View>
         )}
         <View
-          height={height}
+          height={heightWrapper}
           overflow={overflow}
           transition="subtle"
           {...contentProps}
@@ -143,13 +153,7 @@ export class Collapse extends React.Component<CollapseProps, CollapseState> {
     );
   }
 
-  private getHeight(heightContent: number | string) {
-    if (heightContent === "auto") {
-      return heightContent;
-    }
-    if (heightContent === -1) {
-      return "auto";
-    }
-    return `${heightContent}px`;
-  }
+  private getHeightContent = () => {
+    return this.refContent.clientHeight;
+  };
 }
