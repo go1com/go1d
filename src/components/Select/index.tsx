@@ -87,7 +87,6 @@ class Select extends React.PureComponent<SelectProps, any> {
       return (
         <View key={key} css={virtualisedStyles}>
           <View
-            height={50}
             width="100%"
             paddingY={4}
             paddingX={Option.childOption ? 6 : 4}
@@ -111,6 +110,8 @@ class Select extends React.PureComponent<SelectProps, any> {
                 transition: "none",
               }}
               color={selectedItem === Option ? "background" : "default"}
+              ellipsis={true}
+              title={Option.label}
             >
               {Option.label}
             </Text>
@@ -457,7 +458,7 @@ class Select extends React.PureComponent<SelectProps, any> {
     // Calculate the options for VirtualisedList
     return ({ index: OptionIndex }) => {
       const Option = Options[OptionIndex];
-      const baseOptionHeight = 50;
+      const baseOptionHeight = 55;
 
       if (typeof Option === "undefined") {
         return 0;
@@ -469,7 +470,7 @@ class Select extends React.PureComponent<SelectProps, any> {
           return 1;
         }
 
-        return 50;
+        return 55;
       }
 
       return baseOptionHeight;
