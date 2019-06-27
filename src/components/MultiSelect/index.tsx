@@ -121,6 +121,8 @@ class MultiSelect extends React.PureComponent<MultiSelectProps, any> {
                 transition: "none",
               }}
               color={"default"}
+              ellipsis={true}
+              title={Option.label}
             >
               {Option.label}
             </Text>
@@ -503,7 +505,7 @@ class MultiSelect extends React.PureComponent<MultiSelectProps, any> {
 
   public calculateListWidth(Options) {
     const { searchable } = this.props;
-    const averageCharacterPX = 10;
+    const averageCharacterPX = 12;
     const minWidth = searchable ? 275 : 200;
     const longestString = Options.reduce((largest, Entry) => {
       if (Entry.label.length > largest) {
