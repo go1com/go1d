@@ -174,7 +174,7 @@ class AuthorSelector extends React.PureComponent<AuthorSelectorProps, State> {
     const author = this.props.mapEmailToAuthor(String(item.value));
 
     return (
-      <View flexDirection="row" key={item.value}>
+      <View paddingY={3} paddingX={4} flexDirection="row" key={item.value}>
         <Avatar
           marginY="auto"
           fullName={author ? `${author.label}` : "Full Name"}
