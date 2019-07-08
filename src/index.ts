@@ -198,6 +198,7 @@ export * from "./components/CircleProgress";
 export * from "./components/LineProgress";
 
 export * from "./components/Collapse";
+export * from "./components/PDFViewer";
 
 /* Utils */
 export { default as priceFormatterUtil } from "./utils/priceFormatter";
