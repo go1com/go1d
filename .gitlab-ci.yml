@@ -1,4 +1,4 @@
-image: go1com/ci-nodejs:node8
+image: go1com/ci-nodejs:node10
 
 cache:
   paths:
@@ -20,9 +20,12 @@ build:
   script:
     - yarn config set no-progress
     - yarn install --silent
-    - yarn "npm:build"
-    - yarn "docs:build"
-    - yarn "storybook:build"
+    - yarn "react:docs"
+    # Use concurrently to run job, also yarn react:docs was duplicated
+    - yarn "ci:build"
+    # - yarn "npm:build"
+    # - yarn "docs:build"
+    # - yarn "storybook:build"
   artifacts:
     paths:
       - node_modules
