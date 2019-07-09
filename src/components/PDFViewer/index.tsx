@@ -16,6 +16,8 @@ const MAX_IMAGE_SIZE = 1024 * 1024;
 const CMAP_PACKED = true;
 const DEFAULT_SCALE_DELTA = 1.1;
 const DEFAULT_SCALE_VALUE = 1;
+const PAGE_INIT_EVENT = "pagesinit";
+const PAGE_CHANGE_EVENT = "pagechange";
 
 export interface PDFViewerProps {
   url: string;
@@ -108,6 +110,10 @@ export class PDFViewer extends React.Component<PDFViewerProps, State> {
   }
 
   public componentWillUnmount() {
+    const container = this.container.current;
+    container.removeEventListener(PAGE_INIT_EVENT, this.pagesInitEvent);
+    container.removeEventListener(PAGE_CHANGE_EVENT, this.pageChangeEvent);
+
     this.pdfLoadingTask = null;
     this.pdfDocument = null;
     this.pdfViewer = null;
@@ -339,7 +345,6 @@ export class PDFViewer extends React.Component<PDFViewerProps, State> {
 
   private initUI() {
     const linkService = new pdfjsViewer.PDFLinkService();
-    const { scale, onDocumentComplete } = this.props;
     this.pdfLinkService = linkService;
 
     this.l10n = pdfjsViewer.NullL10n;
@@ -358,16 +363,22 @@ export class PDFViewer extends React.Component<PDFViewerProps, State> {
       linkService,
     });
     linkService.setHistory(this.pdfHistory);
-    container.addEventListener("pagesinit", () => {
-      this.pdfViewer.currentScaleValue = scale;
-      this.setState({ totalPage: this.pdfDocument.numPages });
-      safeInvoke(onDocumentComplete, this.pdfDocument.numPages);
-    });
+    container.addEventListener(PAGE_INIT_EVENT, this.pagesInitEvent);
 
-    container.addEventListener("pagechange", evt => {
-      this.setState({ currentPageNumber: evt.pageNumber });
-    });
+    container.addEventListener(PAGE_CHANGE_EVENT, this.pageChangeEvent);
   }
+
+  private pagesInitEvent = () => {
+    const { scale, onDocumentComplete } = this.props;
+
+    this.pdfViewer.currentScaleValue = scale;
+    this.setState({ totalPage: this.pdfDocument.numPages });
+    safeInvoke(onDocumentComplete, this.pdfDocument.numPages);
+  };
+
+  private pageChangeEvent = evt => {
+    this.setState({ currentPageNumber: evt.pageNumber });
+  };
 
   private zoomIn = ticks => {
     const { maxScale } = this.props;
