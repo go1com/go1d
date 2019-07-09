@@ -1,8 +1,12 @@
 import * as pdfjsLib from "pdfjs-dist";
-import * as pdfjsViewer from "pdfjs-dist/web/pdf_viewer";
 import * as React from "react";
+import * as screenfull from "screenfull";
 import { ButtonMinimal, Select, Text, View } from "../..";
 import safeInvoke from "../../utils/safeInvoke";
+
+const pdfjsViewer =
+  // tslint:disable-next-line: no-var-requires
+  typeof document !== "undefined" ? require("pdfjs-dist/web/pdf_viewer") : null;
 
 // The workerSrc property shall be specified.
 pdfjsLib.GlobalWorkerOptions.workerSrc =
@@ -26,7 +30,6 @@ export interface PDFViewerProps {
   maxScale?: number;
 
   onDocumentComplete?: (pagesNumber: number) => void;
-  onExpand?: () => void;
 }
 interface State {
   currentPageNumber: number;
@@ -74,11 +77,13 @@ export class PDFViewer extends React.Component<PDFViewerProps, State> {
   public pdfDocument: any;
   public pdfHistory: any;
   public pdfLinkService: any;
-  public container: any;
+  public container: React.RefObject<HTMLElement>;
   public l10n: any;
   public error: any;
   public documentInfo: any;
   public metadata: any;
+  public wrapper: React.RefObject<HTMLElement>;
+  public sf = screenfull as screenfull.Screenfull;
 
   public constructor(props: PDFViewerProps) {
     super(props);
@@ -91,6 +96,7 @@ export class PDFViewer extends React.Component<PDFViewerProps, State> {
     this.pdfHistory = null;
     this.pdfLinkService = null;
     this.container = React.createRef();
+    this.wrapper = React.createRef();
   }
 
   public componentDidMount() {
@@ -130,6 +136,9 @@ export class PDFViewer extends React.Component<PDFViewerProps, State> {
         flexGrow={1}
         overflow="hidden"
         position="relative"
+        innerRef={this.wrapper}
+        backgroundColor="soft"
+        backgroundOpacity="feedback"
       >
         <View
           height={48}
@@ -166,7 +175,7 @@ export class PDFViewer extends React.Component<PDFViewerProps, State> {
               href={this.props.url}
               download={this.state.title}
             />
-            <ButtonMinimal iconName="Expand" onClick={this.props.onExpand} />
+            <ButtonMinimal iconName="Expand" onClick={this.onExpand} />
           </View>
         </View>
         <View
@@ -426,5 +435,11 @@ export class PDFViewer extends React.Component<PDFViewerProps, State> {
     this.setState({
       currentScaleValue: Math.floor(scale * 100),
     });
+  };
+
+  private onExpand = () => {
+    if (this.sf.enabled) {
+      this.sf.toggle(this.wrapper.current);
+    }
   };
 }
