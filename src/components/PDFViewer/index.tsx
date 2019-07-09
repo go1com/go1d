@@ -1,28 +1,24 @@
 import * as pdfjsLib from "pdfjs-dist";
+import * as pdfjsViewer from "pdfjs-dist/web/pdf_viewer";
 import * as React from "react";
-import pdfjsViewer = require("../../../node_modules/pdfjs-dist/web/pdf_viewer.js");
-import { ButtonMinimal, Select, Text, View } from "../../index";
+import { ButtonMinimal, Select, Text, View } from "../..";
 import safeInvoke from "../../utils/safeInvoke";
 
 // The workerSrc property shall be specified.
 pdfjsLib.GlobalWorkerOptions.workerSrc =
-  "../../node_modules/pdfjs-dist/build/pdf.worker.js";
-// default scale
+  "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.0.943/pdf.worker.js";
 
 const DEFAULT_MIN_SCALE = 0.25;
 const DEFAULT_MAX_SCALE = 10.0;
 const USE_ONLY_CSS_ZOOM = true;
-const TEXT_LAYER_MODE = 0; // DISABLE
+const TEXT_LAYER_MODE = 0;
 const MAX_IMAGE_SIZE = 1024 * 1024;
 const CMAP_PACKED = true;
 const DEFAULT_SCALE_DELTA = 1.1;
-let MIN_SCALE = DEFAULT_MIN_SCALE;
-let MAX_SCALE = DEFAULT_MAX_SCALE;
-let DEFAULT_SCALE_VALUE: string | number = 1;
+const DEFAULT_SCALE_VALUE = 1;
 
 export interface PDFViewerProps {
-  url: string | object;
-  page?: number | string;
+  url: string;
   scale?: number | string;
   minScale?: number;
   maxScale?: number;
@@ -45,6 +41,12 @@ const pdfViewer = {
 };
 
 export class PDFViewer extends React.Component<PDFViewerProps, State> {
+  public static defaultProps: Partial<PDFViewerProps> = {
+    scale: DEFAULT_SCALE_VALUE,
+    minScale: DEFAULT_MIN_SCALE,
+    maxScale: DEFAULT_MAX_SCALE,
+  };
+
   get pagesCount() {
     return this.pdfDocument.numPages;
   }
@@ -75,31 +77,42 @@ export class PDFViewer extends React.Component<PDFViewerProps, State> {
   public error: any;
   public documentInfo: any;
   public metadata: any;
+
   public constructor(props: PDFViewerProps) {
     super(props);
+
     this.pdfLoadingTask = null;
     this.pdfDocument = null;
-    (this.pdfViewer = {
+    this.pdfViewer = {
       currentScaleValue: null,
-    }),
-      (this.pdfHistory = null);
+    };
+    this.pdfHistory = null;
     this.pdfLinkService = null;
     this.container = React.createRef();
   }
 
   public componentDidMount() {
-    const { url, minScale, maxScale } = this.props;
-    // deal with the props if include minScale or maxScale
-    if (minScale) {
-      MIN_SCALE = minScale;
-    }
-    if (maxScale) {
-      MAX_SCALE = maxScale;
-    }
+    const { url } = this.props;
     this.initUI();
     this.open({
       url,
     });
+  }
+
+  public componentDidUpdate(prevProps) {
+    if (prevProps.url !== this.props.url) {
+      this.open({
+        url: this.props.url,
+      });
+    }
+  }
+
+  public componentWillUnmount() {
+    this.pdfLoadingTask = null;
+    this.pdfDocument = null;
+    this.pdfViewer = null;
+    this.pdfHistory = null;
+    this.pdfLinkService = null;
   }
 
   public render() {
@@ -142,7 +155,11 @@ export class PDFViewer extends React.Component<PDFViewerProps, State> {
             <ButtonMinimal iconName="ChevronUp" onClick={this.pageDelete} />
           </View>
           <View flexDirection="row" alignItems="center">
-            <ButtonMinimal iconName="Download" onClick={this.download} />
+            <ButtonMinimal
+              iconName="Download"
+              href={this.props.url}
+              download={this.state.title}
+            />
             <ButtonMinimal iconName="Expand" onClick={this.props.onExpand} />
           </View>
         </View>
@@ -152,7 +169,11 @@ export class PDFViewer extends React.Component<PDFViewerProps, State> {
           justifyContent={"Flex-end"}
           display={["flex", "none"]}
         >
-          <ButtonMinimal iconName="Download" onClick={this.download} />
+          <ButtonMinimal
+            iconName="Download"
+            href={this.props.url}
+            download={this.state.title}
+          />
         </View>
         <View
           id="viewerContainer"
@@ -179,7 +200,7 @@ export class PDFViewer extends React.Component<PDFViewerProps, State> {
     );
   }
 
-  private open(params) {
+  private open(params: Record<"url", string>): Promise<void> {
     const url = params.url;
     this.setTitleUsingUrl(url);
     // Loading document.
@@ -189,6 +210,7 @@ export class PDFViewer extends React.Component<PDFViewerProps, State> {
       maxImageSize: MAX_IMAGE_SIZE,
       cMapPacked: CMAP_PACKED,
     });
+
     this.pdfLoadingTask = loadingTask;
 
     loadingTask.onProgress = progressData => {
@@ -317,7 +339,7 @@ export class PDFViewer extends React.Component<PDFViewerProps, State> {
 
   private initUI() {
     const linkService = new pdfjsViewer.PDFLinkService();
-    const { scale, page, onDocumentComplete } = this.props;
+    const { scale, onDocumentComplete } = this.props;
     this.pdfLinkService = linkService;
 
     this.l10n = pdfjsViewer.NullL10n;
@@ -337,15 +359,7 @@ export class PDFViewer extends React.Component<PDFViewerProps, State> {
     });
     linkService.setHistory(this.pdfHistory);
     container.addEventListener("pagesinit", () => {
-      // We can use pdfViewer now, e.g. let's change default scale.
-      // deal with the init page in the props
-      if (scale) {
-        DEFAULT_SCALE_VALUE = scale;
-      }
-      if (page) {
-        this.pdfViewer.currentPageNumber = page;
-      }
-      this.pdfViewer.currentScaleValue = DEFAULT_SCALE_VALUE;
+      this.pdfViewer.currentScaleValue = scale;
       this.setState({ totalPage: this.pdfDocument.numPages });
       safeInvoke(onDocumentComplete, this.pdfDocument.numPages);
     });
@@ -356,22 +370,24 @@ export class PDFViewer extends React.Component<PDFViewerProps, State> {
   }
 
   private zoomIn = ticks => {
+    const { maxScale } = this.props;
     let newScale = this.pdfViewer.currentScale;
     do {
       newScale = (newScale * DEFAULT_SCALE_DELTA).toFixed(2);
       newScale = Math.ceil(newScale * 10) / 10;
-      newScale = Math.min(MAX_SCALE, newScale);
-    } while (--ticks && newScale < MAX_SCALE);
+      newScale = Math.min(maxScale, newScale);
+    } while (--ticks && newScale < maxScale);
     this.scalePDFViewer(newScale);
   };
 
   private zoomOut = ticks => {
+    const { minScale } = this.props;
     let newScale = this.pdfViewer.currentScale;
     do {
       newScale = (newScale / DEFAULT_SCALE_DELTA).toFixed(2);
       newScale = Math.floor(newScale * 10) / 10;
-      newScale = Math.max(MIN_SCALE, newScale);
-    } while (--ticks && newScale > MIN_SCALE);
+      newScale = Math.max(minScale, newScale);
+    } while (--ticks && newScale > minScale);
     this.scalePDFViewer(newScale);
   };
 
@@ -399,17 +415,5 @@ export class PDFViewer extends React.Component<PDFViewerProps, State> {
     this.setState({
       currentScaleValue: Math.floor(scale * 100),
     });
-  };
-
-  private download = () => {
-    const { url } = this.props;
-    const link = document.createElement("a");
-    if (typeof url === "string") {
-      link.href = url;
-    }
-    link.setAttribute("download", this.state.title);
-    document.body.appendChild(link);
-    link.click();
-    link.parentNode.removeChild(link);
   };
 }
