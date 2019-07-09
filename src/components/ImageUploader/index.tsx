@@ -115,7 +115,6 @@ class ImageUploader extends React.Component<ImageUploaderProps, State> {
   }
 
   public render() {
-    const { disabledClick } = this.state;
     const {
       value,
       onChange,
@@ -138,13 +137,16 @@ class ImageUploader extends React.Component<ImageUploaderProps, State> {
         >
           <BaseUploader
             fileType="image/*"
-            disabled={!!(disabled || value || disabledClick)}
+            disabled={!!disabled}
             multiple={false}
             onBlur={this.props.onBlur}
             onChange={this.onChange}
           >
             {({ open, getRootProps, isDragActive }) => {
               const { ref, ...rootProps } = getRootProps();
+              const change = this.state.disabledClick
+                ? null
+                : rootProps.onClick;
               return (
                 <Theme.Consumer>
                   {({ colors }) => (
@@ -160,6 +162,7 @@ class ImageUploader extends React.Component<ImageUploaderProps, State> {
                         },
                       }}
                       {...rootProps}
+                      onClick={change}
                       innerRef={ref}
                     >
                       {this.renderImage(open, isDragActive)}

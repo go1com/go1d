@@ -350,7 +350,7 @@ class ImageUploadSlat extends React.Component<ImageUploadSlatProps, State> {
       <View {...props} width="100%" height={height}>
         <BaseUploader
           fileType="image/*"
-          disabled={!!(disabled || value || disabledClick)}
+          disabled={!!disabled}
           multiple={false}
           onBlur={this.props.onBlur}
           onChange={this.onChange}
@@ -401,7 +401,7 @@ class ImageUploadSlat extends React.Component<ImageUploadSlatProps, State> {
               <View
                 {...rootProps}
                 height={this.height}
-                onClick={allowOpen ? open : null}
+                onClick={allowOpen && !disabledClick ? open : null}
                 innerRef={ref}
               >
                 {fileUploadInner}
