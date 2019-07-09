@@ -106,10 +106,12 @@ export interface Theme {
   animation: MappedKey<Animation, number>;
   zIndex: MappedKey<ZIndex, number>;
   mode?: string;
+  logo?: string;
 }
 
 export interface GenerateThemeInput {
   accent?: string;
   mode?: string;
   theme?: Theme;
+  logo?: string;
 }

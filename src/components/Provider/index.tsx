@@ -12,15 +12,16 @@ export const LinkContext = React.createContext(null);
 
 class Provider extends React.PureComponent<ProviderProps> {
   public render() {
-    const { linkComponent, mode, accent, theme, children } = this.props;
-    return !!mode || !!accent || !!theme || !!linkComponent ? (
+    const { linkComponent, mode, accent, theme, children, logo } = this.props;
+    return !!mode || !!accent || !!theme || !!linkComponent || !!logo ? (
       <Theme.Consumer>
-        {({ colors, mode: currentMode }) => (
+        {({ colors, mode: currentMode, logo: currentLogo }) => (
           <Theme.Provider
             value={generateTheme({
               mode: mode || currentMode,
               accent: accent || colors.accent,
               theme,
+              logo: logo || currentLogo,
             })}
           >
             {linkComponent !== undefined ? (

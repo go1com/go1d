@@ -278,6 +278,7 @@ export const generateTheme = ({
   accent = brandAccent,
   mode,
   theme,
+  logo
 }: GenerateThemeInput = {}): Theme => ({
   colors: generateColors({ accent, mode }),
   type,
@@ -291,6 +292,7 @@ export const generateTheme = ({
   animation,
   zIndex,
   mode,
+  logo,
   ...theme,
 });
 
