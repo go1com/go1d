@@ -13,6 +13,14 @@ This component is used to select images only. Actual uploading is left to the di
 <ImageUploader name="uploader" onChange={console.log} height="400px"/>
 ```
 
+
+## with value
+
+```.jsx
+<ImageUploader name="uploader" onChange={console.log} uploaded={true} value="https://images.pexels.com/photos/257360/pexels-photo-257360.jpeg?h=400" height="400px"/>
+```
+
+
 ## Inside a form
 
 The component will fire onChange when an image is selected or deleted with the following object:
