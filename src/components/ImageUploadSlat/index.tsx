@@ -332,6 +332,7 @@ class ImageUploadSlat extends React.Component<ImageUploadSlatProps, State> {
       uploadProgress,
       showUploadCompleted,
       onUploadProgress,
+      height = 110,
       ...props
     } = this.props;
     const { disabledClick } = this.state;
@@ -346,7 +347,7 @@ class ImageUploadSlat extends React.Component<ImageUploadSlatProps, State> {
     }
 
     return (
-      <View {...props} width="100%" height={110}>
+      <View {...props} width="100%" height={height}>
         <BaseUploader
           fileType="image/*"
           disabled={!!(disabled || value || disabledClick)}
