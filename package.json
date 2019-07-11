@@ -10,8 +10,8 @@
   "scripts": {
     "happo": "happo",
     "docs:build": "yarn react:docs && x0 build docs -d ./dist && cp -r docs/static/ dist",
-    "docs:build:ci": "x0 build docs -d ./dist --quiet && cp -r docs/static/ dist",
-    "npm:build": "rm -rf ./build && tsc --jsx react --outDir ./build",
+    "docs:build:ci": "node --max_old_space_size=4096 node_modules/.bin/x0 build docs -d ./dist --quiet && cp -r docs/static/ dist",
+    "npm:build": "rm -rf ./build && node --max_old_space_size=4096 node_modules/.bin/tsc --jsx react --outDir ./build",
     "npm:dev": "rm -rf ./build && mkdir build && cp package.json build/ && tsc -w --jsx react --outDir ./build",
     "docs:dev": "yarn react:docs && x0 docs -p 8008 -o",
     "react:docs": "documentalist \"src/components/**/index.tsx\" --no-md > docs/react-docs.json",
