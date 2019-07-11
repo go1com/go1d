@@ -1,7 +1,7 @@
 ---
 title: List item actions
 lead: List item actions are actions that users can execute on a particular list item. List item actions are most relevant to resource lists where the main job is to to help users find and manage a particular type of item as well as to interact with the item and navigate to a full page representation of it.
-status: not-currently-planned
+status: not-ready
 ---
 
 List item actions are typically executed through an icon or in-line link.

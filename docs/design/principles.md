@@ -1,7 +1,7 @@
 ---
 title: GO1D Principles
 menuTitle: Principles
-status: in-development
+status: in-progress
 lead: We base all GO1D design decisions on these principles. They keep our user experience easy, lean and digestible.
 ---
 

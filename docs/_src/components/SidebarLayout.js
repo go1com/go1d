@@ -53,7 +53,7 @@ const Sidebar = props => (
   </Theme.Consumer>
 );
 
-const Link = props => (
+const Link = ({ children, ...props }) => (
   <Theme.Consumer>
     {({ colors, spacing }) => (
       <View
@@ -91,7 +91,9 @@ const Link = props => (
             },
           },
         }}
-      />
+      >
+        <Text fontSize={3}>{children}</Text>
+      </View>
     )}
   </Theme.Consumer>
 );
@@ -99,6 +101,9 @@ const Link = props => (
 const Nav = ({ routes = [], handleMenuToggle, menuOpen, ...props }) => (
   <View element="ul" {...props}>
     {routes
+      .filter(route => {
+        return true;
+      })
       .filter(
         route =>
           route.dirname !== "/components" ||
@@ -138,22 +143,17 @@ const Main = props => (
 );
 
 export const statuses = {
-  "in-development": {
-    title: "In development",
+  "in-progress": {
+    title: "In progress",
     color: "note",
   },
-  "not-currently-planned": {
-    title: "Not Currently Planned",
+  "not-ready": {
+    title: "Not ready",
     color: "danger",
   },
 };
 
-const Hero = ({
-  title = "",
-  lead = "",
-  status = "not-currently-planned",
-  ...props
-}) => (
+const Hero = ({ title = "", lead = "", status = "not-ready", ...props }) => (
   <View backgroundColor="soft">
     <View
       paddingTop={9}
@@ -192,6 +192,8 @@ const Hero = ({
 const MaxWidth = props => (
   <View
     {...props}
+    element={RouterLink}
+    to="/"
     width="100%"
     marginX="auto"
     paddingX={5}
@@ -203,14 +205,21 @@ const MaxWidth = props => (
 );
 
 const SidebarTitles = props => (
-  <View {...props} paddingX={6} paddingTop={4} paddingBottom={6} />
+  <View
+    {...props}
+    element={RouterLink}
+    to="/"
+    paddingX={6}
+    paddingTop={4}
+    paddingBottom={6}
+  />
 );
 
 const SidebarTitle = props => (
   <View marginBottom={3}>
     <Text
       element="h2"
-      fontSize={3}
+      fontSize={5}
       fontWeight="semibold"
       color="contrast"
       lineHeight="ui"
@@ -269,30 +278,32 @@ const SidebarLayout = ({
   logo,
   menuOpen = false,
   handleMenuToggle,
+  location = {},
 }) => {
   const opts = route ? route.props : {};
   if (opts.layout === false) return children;
   const Wrapper = opts.fullWidth ? React.Fragment : MaxWidth;
-
   const index = routes.findIndex(r => r.path === route.path);
   const pagination = {
     previous: routes[index - 1],
     next: routes[index + 1],
   };
+  const navRoutes = routes.filter(r => r.exact || r.dirname === route.dirname);
 
   return (
     <Layout>
       <Sidebar open={menuOpen} onClick={handleMenuToggle}>
         <SidebarTitles>
           <SidebarTitle>GO1D</SidebarTitle>
-          <Text element="p" fontSize={1} color="subtle">
-            GO1 Design System
+          <Text element="p" fontSize={2} color="subtle">
+            Guidelines to create a<br />
+            great customer experience
           </Text>
         </SidebarTitles>
         <Nav
           title={title}
           logo={logo}
-          routes={routes}
+          routes={navRoutes}
           handleMenuToggle={handleMenuToggle}
           menuOpen={menuOpen}
         />

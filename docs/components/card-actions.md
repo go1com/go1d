@@ -1,7 +1,7 @@
 ---
 title: Card actions
 lead: Cards are typically an entryway to more detailed information. Card actions refer to actions that can be done from the card display UI before entering the card. This pattern is a guideline to achieve a consistent user experience for GO1's card UI.
-status: not-currently-planned
+status: not-ready
 ---
 
 ## Examples
