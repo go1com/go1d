@@ -17,14 +17,14 @@
     "react:docs": "documentalist \"src/components/**/index.tsx\" --no-md > docs/react-docs.json",
     "ci:build": "concurrently --raw \"yarn:npm:build\" \"yarn:docs:build:ci\" \"yarn:storybook:build:ci\"",
     "storybook:build": "rm -rf ./dist_storybook && yarn react:docs && node ./.storybook/generate-props-file.js && build-storybook -c ./.storybook -o ./dist_storybook",
-    "storybook:build:ci": "rm -rf ./dist_storybook && node ./.storybook/generate-props-file.js && build-storybook --quiet -c ./.storybook -o ./dist_storybook",
-    "storybook": "yarn react:docs && node ./.storybook/generate-props-file.js && start-storybook -p 9001 -c ./.storybook",
-    "icons": "rm -rf src/components/Icons && svgr --config-file svgr.config.js --ext tsx -d src/components/Icons src/icons/svgs && node scripts/build-Icons.index.js",
+    "storybook:build:ci": "rm -rf ./dist_storybook && node --max_old_space_size=4096 ./.storybook/generate-props-file.js && build-storybook --quiet -c ./.storybook -o ./dist_storybook",
+    "storybook": "yarn react:docs && node --max_old_space_size=4096 ./.storybook/generate-props-file.js && start-storybook -p 9001 -c ./.storybook",
+    "icons": "rm -rf src/components/Icons && svgr --config-file svgr.config.js --ext tsx -d src/components/Icons src/icons/svgs && node --max_old_space_size=4096 scripts/build-Icons.index.js",
     "lint": "prettier --write ./docs/**/*.js",
     "precommit": "lint-staged",
     "size": "bundlesize",
     "test": "yarn lint && jest",
-    "test:debug": "yarn lint && node --inspect-brk ./node_modules/.bin/jest --runInBand",
+    "test:debug": "yarn lint && node --max_old_space_size=4096 --inspect-brk ./node_modules/.bin/jest --runInBand",
     "tslint": "tslint -c tslint.json ./src/**/**/*.{ts,tsx}"
   },
   "lint-staged": {
