@@ -101,9 +101,6 @@ const Link = ({ children, ...props }) => (
 const Nav = ({ routes = [], handleMenuToggle, menuOpen, ...props }) => (
   <View element="ul" {...props}>
     {routes
-      .filter(route => {
-        return true;
-      })
       .filter(
         route =>
           route.dirname !== "/components" ||
