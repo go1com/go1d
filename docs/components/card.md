@@ -1,7 +1,7 @@
 ---
 title: Card
 lead: Cards are entry points to more detailed information. They're primarily used as a means to display short scannable information to users to help them decide if the card's content is suited to their needs.
-status: not-currently-planned
+status: not-ready
 ---
 
 The contents of a card are inputted by users on the platform. Guidelines for users to make the most of GO1's cards UI could be defined to assist content authors and portal admins with their content.

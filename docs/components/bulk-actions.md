@@ -1,7 +1,7 @@
 ---
 title: Bulk actions
 lead: Bulk actions help users complete a single action on multiple items in a list. This pattern is a guideline on how to build a resource list of bulk actions with related components.
-status: not-currently-planned
+status: not-ready
 ---
 
 The standard bulk action on resource list contains:

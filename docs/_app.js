@@ -20,7 +20,7 @@ import Theme from "../src/components/Theme";
 
 globalCSS();
 
-const navOrder = ["", "/foundations", "/components", "/patterns"];
+const navOrder = ["/brand", "/design", "/writing", "/components"];
 
 const scope = {
   Flipflop,

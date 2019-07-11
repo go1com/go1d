@@ -1,7 +1,7 @@
 ---
 title: Page actions
 lead: Page actions are the actions users can execute on the page or header. They live within page headers. They are signified by buttons and action menus.  This guideline sets out a pattern for page actions to create a consistent user experience across the product.
-status: not-currently-planned
+status: not-ready
 ---
 
 ## Examples
