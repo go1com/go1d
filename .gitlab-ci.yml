@@ -45,9 +45,9 @@ build-dev:
     paths: [node_modules]
     key: "$CI_PROJECT_ID"
   script:
+    - yarn config set no-progress
     - yarn install --silent
-    - yarn "react:docs"
-    - yarn "ci:build"
+    - yarn "npm:build"
   artifacts:
     paths:
       - node_modules
