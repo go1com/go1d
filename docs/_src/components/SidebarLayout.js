@@ -189,8 +189,6 @@ const Hero = ({ title = "", lead = "", status = "not-ready", ...props }) => (
 const MaxWidth = props => (
   <View
     {...props}
-    element={RouterLink}
-    to="/"
     width="100%"
     marginX="auto"
     paddingX={5}
