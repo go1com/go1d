@@ -145,7 +145,7 @@
   },
   "x0": {
     "title": "GO1D - GO1 Design System",
-    "basename": "/",
+    "basename": "",
     "outDir": "./dist",
     "meta": [
       {
