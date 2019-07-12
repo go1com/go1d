@@ -8,8 +8,8 @@ npm install @go1d/go1d
 ```
 
 ## Documentation
-- Can be found at [https://go1d.pages.go1.co/GO1D/](https://go1d.pages.go1.co/GO1D/)
-- (WIP) Developer documentation can be found at [https://go1d.pages.go1.co/GO1D/storybook](https://go1d.pages.go1.co/GO1D/storybook)
+- Can be found at [https://go1d.go1.com/](https://go1d.go1.com/)
+- (WIP) Developer documentation can be found at [https://go1d.go1.com/storybook](https://go1d.go1.com/storybook)
 
 ## Build / Run
 ```sh
