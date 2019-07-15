@@ -1,8 +1,9 @@
 import * as pdfjsLib from "pdfjs-dist";
 import * as React from "react";
 import * as screenfull from "screenfull";
-import { ButtonMinimal, Select, Text, View } from "../..";
+import { ButtonFilled, ButtonMinimal, SelectDropdown, Text, View } from "../..";
 import safeInvoke from "../../utils/safeInvoke";
+import { SelectDropdownItem } from "../SelectDropdown";
 
 const pdfjsViewer =
   // tslint:disable-next-line: no-var-requires
@@ -28,6 +29,7 @@ export interface PDFViewerProps {
   scale?: number | string;
   minScale?: number;
   maxScale?: number;
+  footer?: React.ReactElement;
 
   onDocumentComplete?: (pagesNumber: number) => void;
 }
@@ -40,8 +42,6 @@ interface State {
 const pdfViewer = {
   display: "flex",
   flexDirection: "column",
-  flexShrink: 1,
-  flexGrow: 1,
   alignItems: "center",
 };
 
@@ -128,6 +128,8 @@ export class PDFViewer extends React.Component<PDFViewerProps, State> {
   }
 
   public render() {
+    const container = this.container.current;
+    const heightContainer = container ? container.clientHeight : 0;
     return (
       <View
         width={1}
@@ -148,18 +150,37 @@ export class PDFViewer extends React.Component<PDFViewerProps, State> {
         >
           <View flexDirection="row" alignItems="center">
             <ButtonMinimal iconName="Plus" onClick={this.zoomIn} />
-            <Select
-              defaultValue={"100"}
+            <SelectDropdown
               options={[50, 75, 100, 125, 150, 200, 300, 400].map(scale => ({
                 value: `${scale}`,
                 label: `${scale} %`,
               }))}
               onChange={this.onZoomChange}
-            />
+              closeOnSelection={true}
+              optionRenderer={this.renderItemSelect}
+            >
+              {({ ref, getToggleButtonProps }) => (
+                <View>
+                  <ButtonFilled
+                    {...getToggleButtonProps()}
+                    innerRef={ref}
+                    iconName="ChevronDown"
+                    iconColor="Subtle"
+                    flexDirection="row-reverse"
+                  >
+                    {this.state.currentScaleValue} %
+                  </ButtonFilled>
+                </View>
+              )}
+            </SelectDropdown>
             <ButtonMinimal iconName="Minus" onClick={this.zoomOut} />
           </View>
           <View flexDirection="row" alignItems="center">
-            <ButtonMinimal iconName="ChevronDown" onClick={this.pageAdd} />
+            <ButtonMinimal
+              iconName="ChevronUp"
+              onClick={this.pageDelete}
+              marginRight={5}
+            />
             <Text fontWeight="semibold">{this.state.currentPageNumber}</Text>
             <Text fontWeight="semibold" color="subtle">
               &nbsp;/&nbsp;
@@ -167,7 +188,11 @@ export class PDFViewer extends React.Component<PDFViewerProps, State> {
             <Text fontWeight="semibold" color="subtle">
               {this.state.totalPage}
             </Text>
-            <ButtonMinimal iconName="ChevronUp" onClick={this.pageDelete} />
+            <ButtonMinimal
+              iconName="ChevronDown"
+              onClick={this.pageAdd}
+              marginLeft={5}
+            />
           </View>
           <View flexDirection="row" alignItems="center">
             <ButtonMinimal
@@ -175,13 +200,17 @@ export class PDFViewer extends React.Component<PDFViewerProps, State> {
               href={this.props.url}
               download={this.state.title}
             />
-            <ButtonMinimal iconName="Expand" onClick={this.onExpand} />
+            <ButtonMinimal
+              iconName="Expand"
+              onClick={this.onExpand}
+              marginLeft={6}
+            />
           </View>
         </View>
         <View
           height={48}
           flexDirection="row"
-          justifyContent={"Flex-end"}
+          justifyContent="flex-end"
           display={["flex", "none"]}
         >
           <ButtonMinimal
@@ -191,7 +220,6 @@ export class PDFViewer extends React.Component<PDFViewerProps, State> {
           />
         </View>
         <View
-          id="viewerContainer"
           innerRef={this.container}
           width={1}
           flexGrow={1}
@@ -203,9 +231,11 @@ export class PDFViewer extends React.Component<PDFViewerProps, State> {
             position: "absolute",
             top: 0,
             bottom: 0,
+            paddingBottom: heightContainer / 2,
           }}
         >
           <View id="viewer" style={pdfViewer} />
+          {this.props.footer}
         </View>
         <View id="loadingBar">
           <View className="progress" />
@@ -442,4 +472,10 @@ export class PDFViewer extends React.Component<PDFViewerProps, State> {
       this.sf.toggle(this.wrapper.current);
     }
   };
+
+  private renderItemSelect = (item: SelectDropdownItem) => (
+    <View paddingX={3}>
+      <Text color="Default">{item.label}</Text>
+    </View>
+  );
 }
