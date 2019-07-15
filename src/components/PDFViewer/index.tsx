@@ -156,13 +156,8 @@ export class PDFViewer extends React.Component<PDFViewerProps, State> {
                 label: `${scale} %`,
               }))}
               onChange={this.onZoomChange}
-              closeOnSelection={false}
-              // tslint:disable-next-line: jsx-no-lambda
-              optionRenderer={(item: SelectDropdownItem) => (
-                <View paddingX={3}>
-                  <Text color="Default">{item.label}</Text>
-                </View>
-              )}
+              closeOnSelection={true}
+              optionRenderer={this.renderItemSelect}
             >
               {({ ref, getToggleButtonProps }) => (
                 <View>
@@ -225,7 +220,6 @@ export class PDFViewer extends React.Component<PDFViewerProps, State> {
           />
         </View>
         <View
-          // id="viewerContainer"
           innerRef={this.container}
           width={1}
           flexGrow={1}
@@ -478,4 +472,10 @@ export class PDFViewer extends React.Component<PDFViewerProps, State> {
       this.sf.toggle(this.wrapper.current);
     }
   };
+
+  private renderItemSelect = (item: SelectDropdownItem) => (
+    <View paddingX={3}>
+      <Text color="Default">{item.label}</Text>
+    </View>
+  );
 }
