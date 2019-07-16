@@ -26,8 +26,6 @@ releaseVersion: 0.0.32
 ```
 
 ### TextInput with Small Size and floating label
-If there is no label, the placeholder will be used as floating label
-
 ```.jsx
 <TextInput
   id="Small"
@@ -48,13 +46,12 @@ If there is no label, the placeholder will be used as floating label
 ```
 
 ### TextInput with Medium Size and floating label
-If there is no label, the placeholder will be used as floating label
 ```.jsx
 <TextInput
   id="Medium"
   size="md"
   floating={true}
-  placeholder="Medium"
+  label="Medium"
   value="Medium Size"
 />
 ```
@@ -69,7 +66,6 @@ If there is no label, the placeholder will be used as floating label
 ```
 
 ### TextInput with Large Size and floating label
-If there is no label, the placeholder will be used as floating label
 ```.jsx
 <TextInput
   id="Large"
@@ -99,6 +95,17 @@ If there is no label, the placeholder will be used as floating label
   floating={true}
   label="Medium"
   value="Medium Size"
+/>
+```
+
+### TextInput with floating label and placeholder
+```.jsx
+<TextInput
+  id="Medium"
+  size="md"
+  floating={true}
+  label="Medium"
+  placeholder="Medium"
 />
 ```
 

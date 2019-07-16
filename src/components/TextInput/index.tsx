@@ -38,10 +38,9 @@ export interface TextInputProps extends TextProps {
 
 interface TextInputState {
   isFocused: boolean;
-  stateValue: string | null;
 }
 
-class TextInput extends React.PureComponent<TextInputProps, any> {
+class TextInput extends React.PureComponent<TextInputProps, TextInputState> {
   public static displayName = "TextInput";
 
   public static defaultProps = {
@@ -50,25 +49,11 @@ class TextInput extends React.PureComponent<TextInputProps, any> {
     inputType: "text",
   };
 
-  public static getDerivedStateFromProps(
-    nextProps: TextInputProps,
-    prevState: TextInputState
-  ) {
-    const { value } = nextProps;
-    const { stateValue } = prevState;
-
-    const inputValue = !!value && stateValue === null ? value : stateValue;
-    return {
-      stateValue: inputValue,
-    };
-  }
-
   constructor(props) {
     super(props);
 
     this.state = {
       isFocused: false,
-      stateValue: null,
     };
   }
 
@@ -83,11 +68,6 @@ class TextInput extends React.PureComponent<TextInputProps, any> {
 
   @autobind
   public handleChange(evt: React.ChangeEvent<any>) {
-    const { value } = evt.target;
-    this.setState({
-      stateValue: value,
-    });
-
     safeInvoke(this.props.onChange, evt);
   }
 
@@ -185,10 +165,10 @@ class TextInput extends React.PureComponent<TextInputProps, any> {
       floatingPaddingBottom,
     } = sizeStyles[size];
 
-    const { stateValue, isFocused } = this.state;
-    const floatingLabel = label || placeholder;
-    const isFloatingEnabled = floating && floatingLabel;
-    const isFloating = isFloatingEnabled && (!!stateValue || isFocused);
+    const { isFocused } = this.state;
+    const isFloatingEnabled = floating && label;
+    const isFloating = isFloatingEnabled && (!!value || isFocused);
+    const isShowPlaceholder = isFloating || !isFloatingEnabled;
 
     return (
       <Theme.Consumer>
@@ -231,7 +211,7 @@ class TextInput extends React.PureComponent<TextInputProps, any> {
                 type={inputType}
                 rows={multiline}
                 lineHeight="ui"
-                placeholder={!isFloatingEnabled ? placeholder : null}
+                placeholder={isShowPlaceholder ? placeholder : null}
                 fontSize={typeScale}
                 paddingX={paddingX}
                 paddingY={paddingY}
@@ -270,7 +250,7 @@ class TextInput extends React.PureComponent<TextInputProps, any> {
               <Transition in={isFloating} timeout={animation.subtle}>
                 <Text
                   element="label"
-                  color="inherit"
+                  color={error ? "danger" : "inherit"}
                   lineHeight="ui"
                   htmlFor={id}
                   paddingX={!iconName ? paddingX : 0}
@@ -289,7 +269,7 @@ class TextInput extends React.PureComponent<TextInputProps, any> {
                     },
                   ]}
                 >
-                  {floatingLabel}
+                  {label}
                 </Text>
               </Transition>
             )}
