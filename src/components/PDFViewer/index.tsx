@@ -10,8 +10,7 @@ const pdfjsViewer =
   typeof document !== "undefined" ? require("pdfjs-dist/web/pdf_viewer") : null;
 
 // The workerSrc property shall be specified.
-pdfjsLib.GlobalWorkerOptions.workerSrc =
-  "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.0.943/pdf.worker.js";
+pdfjsLib.GlobalWorkerOptions.workerSrc = `https://cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjsLib.version}/pdf.worker.js`;
 
 const DEFAULT_MIN_SCALE = 0.25;
 const DEFAULT_MAX_SCALE = 10.0;

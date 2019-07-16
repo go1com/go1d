@@ -4,7 +4,7 @@ lead: View pdf file
 status: ready
 ---
 
-### PDF Viewer 123
+### PDF Viewer
 
 ```.jsx
 <View height={600}>
