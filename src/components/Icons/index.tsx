@@ -12,6 +12,8 @@ export { default as Briefcase } from "./Briefcase";
 export { default as Calendar } from "./Calendar";
 export { default as Camera } from "./Camera";
 export { default as Check } from "./Check";
+export { default as CheckOutline } from "./CheckOutline";
+export { default as CheckSquare } from "./CheckSquare";
 export { default as Checkbox } from "./Checkbox";
 export { default as ChevronDown } from "./ChevronDown";
 export { default as ChevronLeft } from "./ChevronLeft";
