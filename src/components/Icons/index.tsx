@@ -58,6 +58,7 @@ export { default as HeadingTwo } from "./HeadingTwo";
 export { default as Home } from "./Home";
 export { default as Import } from "./Import";
 export { default as InProgress } from "./InProgress";
+export { default as InProgressCircle } from "./InProgressCircle";
 export { default as Incomplete } from "./Incomplete";
 export { default as Info } from "./Info";
 export { default as Interactive } from "./Interactive";
