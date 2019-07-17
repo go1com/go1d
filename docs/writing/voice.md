@@ -1,6 +1,6 @@
 ---
 title: Writing in the GO1 voice
-
+menuOrder: 1
 ---
 
 While the GO1 team is made up of many different voices, we like to communicate with our audience in one clear, consistent tone. 
