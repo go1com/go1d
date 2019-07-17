@@ -116,10 +116,9 @@ const OverviewHero: React.SFC<OverviewHeroProps> = ({
         flexDirection="row"
       >
         <View
-          flexGrow={1}
-          flexShrink={2}
           paddingRight={6}
           css={{
+            flex: 1, // IE word warp fix
             [MobileDisplayBreak]: {
               display: "none",
             },

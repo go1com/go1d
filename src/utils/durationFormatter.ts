@@ -19,7 +19,7 @@ function formatDuration(minutes: number): string {
       minutes %= 60;
     }
     unit = minutes > 1 ? "mins" : "min";
-    output += minutes > 0 ? `${minutes} ${unit}` : "";
+    output += minutes > 0 ? `${Math.ceil(minutes)} ${unit}` : "";
   }
   return output.trim();
 }
