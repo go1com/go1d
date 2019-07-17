@@ -36,6 +36,7 @@ export interface FieldProps extends ViewProps {
   statusIcon?: string;
   errorFormat?: (errorMessage: string) => React.ReactNode | string;
   suppressError?: boolean;
+  errorForLabel?: boolean;
   component?: string | React.ComponentType<any> | React.ComponentType<void>;
 }
 
@@ -123,6 +124,7 @@ class Field extends React.Component<
       value: suppliedValue,
       onChange,
       suppressError,
+      errorForLabel,
       formik,
       ...letProps
     } = this.props;
@@ -197,6 +199,7 @@ class Field extends React.Component<
             statusText={hideStatus ? null : statusText}
             statusColor={statusColor}
             statusIcon={statusIcon}
+            errorForLabel={errorForLabel}
             whiteSpace="pre-wrap"
           >
             {label}
