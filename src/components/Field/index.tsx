@@ -199,7 +199,7 @@ class Field extends React.Component<
             statusText={hideStatus ? null : statusText}
             statusColor={statusColor}
             statusIcon={statusIcon}
-            errorForLabel={errorForLabel}
+            color={errorForLabel && !!message ? "danger" : null}
             whiteSpace="pre-wrap"
           >
             {label}
