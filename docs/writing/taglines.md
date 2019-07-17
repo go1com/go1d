@@ -1,6 +1,6 @@
 ---
 title: Taglines
-
+menuOrder: 2
 ---
 
 Taglines are used to clearly communicate a company’s brand personality, message and market position. 
