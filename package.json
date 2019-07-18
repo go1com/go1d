@@ -54,7 +54,7 @@
     "lodash": "^4.17.11",
     "lodash-decorators": "^6.0.0",
     "moment": "^2.24.0",
-    "pdfjs-dist": "^2.1.266",
+    "pdfjs-dist": "2.0.943",
     "react-dates": "^19.0.3",
     "react-dropzone": "^8.2.0",
     "react-iframe": "^1.8.0",
