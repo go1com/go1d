@@ -77,7 +77,7 @@ export class PDFViewer extends React.Component<PDFViewerProps, State> {
   }
   public state: State = {
     currentPageNumber: 1,
-    currentScaleValue: 1,
+    currentScaleValue: this.props.scale,
     totalPage: null,
     title: "",
   };
@@ -279,9 +279,11 @@ export class PDFViewer extends React.Component<PDFViewerProps, State> {
                   marginRight={4}
                 />
               </View>
-              <View height={heightContainer / 2} width={1}>
-                {this.props.footer}
-              </View>
+              {this.props.footer && (
+                <View height={heightContainer / 2} width={1}>
+                  {this.props.footer}
+                </View>
+              )}
             </View>
             <View id="loadingBar">
               <View className="progress" />
