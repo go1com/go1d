@@ -150,6 +150,7 @@ export {
 
 export {
   SelectDropdownProps,
+  SelectDropdownItem,
   default as SelectDropdown,
 } from "./components/SelectDropdown";
 

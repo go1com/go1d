@@ -14,7 +14,7 @@ import Text from "../Text";
 import View, { ViewProps } from "../View";
 import Options from "./Options";
 
-export interface SelectDropdownItem {
+export interface SelectDropdownItemProps {
   value: string | number;
   label: string;
   disabled?: boolean;
@@ -25,7 +25,7 @@ export interface SelectDropdownProps extends ViewProps {
   /**
    * The selected elements of the component. If an object is supplied as options, this will be the value key.
    */
-  options: SelectDropdownItem[];
+  options: SelectDropdownItemProps[];
 
   /**
    * value is used to process the update and return to the parent
@@ -35,7 +35,7 @@ export interface SelectDropdownProps extends ViewProps {
   /**
    * Option rendered. Createable = true means the option is not in the list currently.
    */
-  optionRenderer: (item: SelectDropdownItem) => React.ReactNode;
+  optionRenderer: (item: SelectDropdownItemProps) => React.ReactNode;
 
   /**
    * Searchbar renderer, search bar is shown if handleSearchChange is defined
@@ -147,7 +147,7 @@ class SelectDropdown extends React.PureComponent<SelectDropdownProps, State> {
 
   @autobind
   public handleOptionClick(
-    option: SelectDropdownItem | string,
+    option: SelectDropdownItemProps | string,
     selectActions: any
   ) {
     if (!this.props.closeOnSelection && selectActions.openMenu) {
@@ -189,7 +189,7 @@ class SelectDropdown extends React.PureComponent<SelectDropdownProps, State> {
 
   @autobind
   public optionRenderer(
-    item: SelectDropdownItem,
+    item: SelectDropdownItemProps,
     index: number,
     getItemProps: any
   ) {

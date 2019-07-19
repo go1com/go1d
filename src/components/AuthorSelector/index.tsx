@@ -4,13 +4,13 @@ import safeInvoke from "../../utils/safeInvoke";
 import Avatar from "../Avatar";
 import ButtonMinimal from "../ButtonMinimal";
 import Icon from "../Icon";
-import SelectDropdown, { SelectDropdownItem } from "../SelectDropdown";
+import SelectDropdown, { SelectDropdownItemProps } from "../SelectDropdown";
 import Text from "../Text";
 import TextInput from "../TextInput";
 import View, { ViewProps } from "../View";
 
 export interface AuthorSelectorProps extends ViewProps {
-  optionRenderer?: (item: SelectDropdownItem) => React.ReactNode;
+  optionRenderer?: (item: SelectDropdownItemProps) => React.ReactNode;
 
   /**
    * The selected elements of the component. These will be the email addresses of the users.
@@ -170,7 +170,7 @@ class AuthorSelector extends React.PureComponent<AuthorSelectorProps, State> {
   }
 
   @autobind
-  public renderOption(item: SelectDropdownItem) {
+  public renderOption(item: SelectDropdownItemProps) {
     const author = this.props.mapEmailToAuthor(String(item.value));
 
     return (
