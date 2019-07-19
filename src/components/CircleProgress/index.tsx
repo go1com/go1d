@@ -18,7 +18,9 @@ const diameter = Math.round(Math.PI * radius * 2);
 const getOffset = (val = 0) =>
   Math.round(((100 - Math.min(val, 100)) / 100) * diameter);
 
-export class CircleProgress extends React.Component<CircleProgressProps> {
+class CircleProgress extends React.Component<CircleProgressProps> {
+  public static displayName = "CircleProgress";
+
   public static defaultProps: CircleProgressProps = {
     progress: 0,
     showProgress: true,
@@ -97,3 +99,5 @@ export class CircleProgress extends React.Component<CircleProgressProps> {
     );
   };
 }
+
+export default CircleProgress;

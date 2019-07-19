@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Theme } from "../..";
+import Theme from "../Theme";
 
 export interface LineProgressProps {
   percent: number;
@@ -10,11 +10,11 @@ export interface LineProgressProps {
   trailColor?: string;
   trailWidth?: number;
   transition?: string;
-
   [k: string]: any;
 }
 
-export class LineProgress extends React.Component<LineProgressProps> {
+class LineProgress extends React.Component<LineProgressProps> {
+  public static displayName = "LineProgress";
   public static defaultProps: LineProgressProps = {
     percent: 0,
     strokeColor: "success",
@@ -86,3 +86,5 @@ export class LineProgress extends React.Component<LineProgressProps> {
     );
   }
 }
+
+export default LineProgress;

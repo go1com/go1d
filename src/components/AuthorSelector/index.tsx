@@ -1,5 +1,4 @@
 import * as React from "react";
-import { TextInput } from "../..";
 import { autobind } from "../../utils/decorators";
 import safeInvoke from "../../utils/safeInvoke";
 import Avatar from "../Avatar";
@@ -7,6 +6,7 @@ import ButtonMinimal from "../ButtonMinimal";
 import Icon from "../Icon";
 import SelectDropdown, { SelectDropdownItem } from "../SelectDropdown";
 import Text from "../Text";
+import TextInput from "../TextInput";
 import View, { ViewProps } from "../View";
 
 export interface AuthorSelectorProps extends ViewProps {

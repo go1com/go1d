@@ -3,9 +3,9 @@ import { autobind } from "../../utils/decorators";
 import ButtonMinimal from "../ButtonMinimal";
 import SelectDropdown, { SelectDropdownItem } from "../SelectDropdown";
 
-import { TextInput } from "../..";
 import safeInvoke from "../../utils/safeInvoke";
 import Text from "../Text";
+import TextInput from "../TextInput";
 import View, { ViewProps } from "../View";
 
 interface State {
