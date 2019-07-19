@@ -214,19 +214,11 @@ const OverviewHero: React.SFC<OverviewHeroProps> = ({
             css={{
               [MobileDisplayBreak]: {
                 width: "100%",
+                maxWidth: "100%",
               },
             }}
           >
-            <View
-              css={{
-                [MobileDisplayBreak]: {
-                  width: "100%",
-                  maxWidth: "100%",
-                },
-              }}
-            >
-              {children}
-            </View>
+            {children}
           </View>
         </Container>
       ) : (
