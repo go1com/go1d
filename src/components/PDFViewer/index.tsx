@@ -1,7 +1,14 @@
 import * as pdfjsLib from "pdfjs-dist";
 import * as React from "react";
 import * as screenfull from "screenfull";
-import { ButtonFilled, ButtonMinimal, SelectDropdown, Text, View } from "../..";
+import {
+  ButtonFilled,
+  ButtonMinimal,
+  SelectDropdown,
+  Text,
+  Theme,
+  View,
+} from "../..";
 import safeInvoke from "../../utils/safeInvoke";
 import { SelectDropdownItem } from "../SelectDropdown";
 
@@ -16,7 +23,7 @@ const DEFAULT_MIN_SCALE = 0.25;
 const DEFAULT_MAX_SCALE = 10.0;
 const USE_ONLY_CSS_ZOOM = true;
 const TEXT_LAYER_MODE = 0;
-const MAX_IMAGE_SIZE = 1024 * 1024;
+const MAX_IMAGE_SIZE = -1;
 const CMAP_PACKED = true;
 const DEFAULT_SCALE_DELTA = 1.1;
 const DEFAULT_SCALE_VALUE = 1;
@@ -34,15 +41,18 @@ export interface PDFViewerProps {
 }
 interface State {
   currentPageNumber: number;
-  currentScaleValue: number;
+  currentScaleValue: number | string;
   totalPage: number | null;
   title: string;
 }
-const pdfViewer = {
-  display: "flex",
-  flexDirection: "column",
-  alignItems: "center",
-};
+
+const optionsScale = [
+  { value: "auto", label: "Auto" },
+  ...[50, 75, 100, 125, 150, 200, 300, 400].map(scale => ({
+    value: `${scale / 100}`,
+    label: `${scale} %`,
+  })),
+];
 
 export class PDFViewer extends React.Component<PDFViewerProps, State> {
   public static defaultProps: Partial<PDFViewerProps> = {
@@ -67,7 +77,7 @@ export class PDFViewer extends React.Component<PDFViewerProps, State> {
   }
   public state: State = {
     currentPageNumber: 1,
-    currentScaleValue: 100,
+    currentScaleValue: this.props.scale,
     totalPage: null,
     title: "",
   };
@@ -130,117 +140,158 @@ export class PDFViewer extends React.Component<PDFViewerProps, State> {
     const container = this.container.current;
     const heightContainer = container ? container.clientHeight : 0;
     return (
-      <View
-        width={1}
-        height={1}
-        flexShrink={1}
-        flexGrow={1}
-        overflow="hidden"
-        position="relative"
-        innerRef={this.wrapper}
-        backgroundColor="soft"
-        backgroundOpacity="feedback"
-      >
-        <View
-          height={48}
-          flexDirection="row"
-          justifyContent={"space-between"}
-          display={["none", "flex"]}
-        >
-          <View flexDirection="row" alignItems="center">
-            <ButtonMinimal iconName="Plus" onClick={this.zoomIn} />
-            <SelectDropdown
-              options={[50, 75, 100, 125, 150, 200, 300, 400].map(scale => ({
-                value: `${scale}`,
-                label: `${scale} %`,
-              }))}
-              onChange={this.onZoomChange}
-              closeOnSelection={true}
-              optionRenderer={this.renderItemSelect}
+      <Theme.Consumer>
+        {({ colors }) => (
+          <View
+            width={1}
+            height={1}
+            flexShrink={1}
+            flexGrow={1}
+            overflow="hidden"
+            position="relative"
+            innerRef={this.wrapper}
+            backgroundColor="soft"
+            backgroundOpacity="feedback"
+          >
+            <View
+              height={48}
+              flexDirection="row"
+              justifyContent={"space-between"}
+              display={["none", "flex"]}
             >
-              {({ ref, getToggleButtonProps }) => (
-                <View>
-                  <ButtonFilled
-                    {...getToggleButtonProps()}
-                    innerRef={ref}
-                    iconName="ChevronDown"
-                    iconColor="Subtle"
-                    flexDirection="row-reverse"
-                  >
-                    {this.state.currentScaleValue} %
-                  </ButtonFilled>
+              <View
+                flexDirection="row"
+                width={200}
+                alignItems="center"
+                flexShrink={1}
+              >
+                <ButtonMinimal iconName="Plus" onClick={this.zoomIn} />
+                <SelectDropdown
+                  options={optionsScale}
+                  onChange={this.onZoomChange}
+                  closeOnSelection={true}
+                  optionRenderer={this.renderItemSelect}
+                >
+                  {({ ref, getToggleButtonProps }) => (
+                    <View>
+                      <ButtonFilled
+                        {...getToggleButtonProps()}
+                        innerRef={ref}
+                        iconName="ChevronDown"
+                        iconColor="Subtle"
+                        flexDirection="row-reverse"
+                      >
+                        <Text textTransform="capitalize">
+                          {this.showScaleLabel(this.state.currentScaleValue)}
+                        </Text>
+                      </ButtonFilled>
+                    </View>
+                  )}
+                </SelectDropdown>
+                <ButtonMinimal iconName="Minus" onClick={this.zoomOut} />
+              </View>
+              <View
+                flexDirection="row"
+                width={200}
+                alignItems="center"
+                justifyContent="center"
+                flexShrink={1}
+              >
+                <ButtonMinimal
+                  iconName="ChevronUp"
+                  onClick={this.pageDelete}
+                  marginRight={[0, 0, 5]}
+                />
+                <Text fontWeight="semibold">
+                  {this.state.currentPageNumber}
+                </Text>
+                <Text fontWeight="semibold" color="subtle">
+                  &nbsp;/&nbsp;
+                </Text>
+                <Text fontWeight="semibold" color="subtle">
+                  {this.state.totalPage}
+                </Text>
+                <ButtonMinimal
+                  iconName="ChevronDown"
+                  onClick={this.pageAdd}
+                  marginLeft={[0, 0, 5]}
+                />
+              </View>
+              <View
+                flexDirection="row"
+                width={200}
+                alignItems="center"
+                justifyContent="flex-end"
+                flexShrink={4}
+              >
+                <ButtonMinimal
+                  iconName="Download"
+                  href={this.props.url}
+                  download={this.state.title}
+                />
+                <ButtonMinimal
+                  iconName="Expand"
+                  onClick={this.onExpand}
+                  marginLeft={[0, 0, 5]}
+                />
+              </View>
+            </View>
+
+            <View
+              innerRef={this.container}
+              width={1}
+              flexGrow={1}
+              flexShrink={1}
+              alignItems="center"
+              overflow="auto"
+              marginTop={[3, 8]}
+              paddingTop={[7, 0]}
+              css={{
+                position: "absolute",
+                top: 0,
+                bottom: 0,
+              }}
+            >
+              <View
+                id="viewer"
+                css={{
+                  "& .page": {
+                    marginBottom: "48px",
+                    backgroundColor: colors.background,
+                  },
+                }}
+              />
+              <View
+                height={48}
+                flexDirection="row"
+                justifyContent="flex-end"
+                display={["flex", "none"]}
+                position="absolute"
+                width={1}
+                css={{
+                  top: 0,
+                }}
+              >
+                <ButtonMinimal
+                  iconName="Download"
+                  href={this.props.url}
+                  download={this.state.title}
+                  marginRight={4}
+                />
+              </View>
+              {this.props.footer && (
+                <View height={heightContainer / 2} width={1}>
+                  {this.props.footer}
                 </View>
               )}
-            </SelectDropdown>
-            <ButtonMinimal iconName="Minus" onClick={this.zoomOut} />
+            </View>
+            <View id="loadingBar">
+              <View className="progress" />
+              <View className="glimmer" />
+            </View>
           </View>
-          <View flexDirection="row" alignItems="center">
-            <ButtonMinimal
-              iconName="ChevronUp"
-              onClick={this.pageDelete}
-              marginRight={5}
-            />
-            <Text fontWeight="semibold">{this.state.currentPageNumber}</Text>
-            <Text fontWeight="semibold" color="subtle">
-              &nbsp;/&nbsp;
-            </Text>
-            <Text fontWeight="semibold" color="subtle">
-              {this.state.totalPage}
-            </Text>
-            <ButtonMinimal
-              iconName="ChevronDown"
-              onClick={this.pageAdd}
-              marginLeft={5}
-            />
-          </View>
-          <View flexDirection="row" alignItems="center">
-            <ButtonMinimal
-              iconName="Download"
-              href={this.props.url}
-              download={this.state.title}
-            />
-            <ButtonMinimal
-              iconName="Expand"
-              onClick={this.onExpand}
-              marginLeft={6}
-            />
-          </View>
-        </View>
-        <View
-          height={48}
-          flexDirection="row"
-          justifyContent="flex-end"
-          display={["flex", "none"]}
-        >
-          <ButtonMinimal
-            iconName="Download"
-            href={this.props.url}
-            download={this.state.title}
-          />
-        </View>
-        <View
-          innerRef={this.container}
-          width={1}
-          flexGrow={1}
-          flexShrink={1}
-          alignItems="center"
-          overflow="auto"
-          marginTop={8}
-          css={{
-            position: "absolute",
-            top: 0,
-            bottom: 0,
-            paddingBottom: heightContainer / 2,
-          }}
-        >
-          <View id="viewer" style={pdfViewer} />
-          {this.props.footer}
-        </View>
-        <View id="loadingBar">
-          <View className="progress" />
-          <View className="glimmer" />
-        </View>
-      </View>
+        )}
+      </Theme.Consumer>
     );
   }
 
@@ -395,14 +446,13 @@ export class PDFViewer extends React.Component<PDFViewerProps, State> {
       useOnlyCssZoom: USE_ONLY_CSS_ZOOM,
       textLayerMode: TEXT_LAYER_MODE,
     });
-    linkService.setViewer(pdfViewer);
+    linkService.setViewer(this.pdfViewer);
 
     this.pdfHistory = new pdfjsViewer.PDFHistory({
       linkService,
     });
     linkService.setHistory(this.pdfHistory);
     container.addEventListener(PAGE_INIT_EVENT, this.pagesInitEvent);
-
     container.addEventListener(PAGE_CHANGE_EVENT, this.pageChangeEvent);
   }
 
@@ -455,14 +505,13 @@ export class PDFViewer extends React.Component<PDFViewerProps, State> {
   };
 
   private onZoomChange = ({ target }) => {
-    const scale = target.value / 100;
-    this.scalePDFViewer(scale);
+    this.scalePDFViewer(target.value);
   };
 
-  private scalePDFViewer = (scale: number) => {
+  private scalePDFViewer = (scale: number | string) => {
     this.pdfViewer.currentScaleValue = scale;
     this.setState({
-      currentScaleValue: Math.floor(scale * 100),
+      currentScaleValue: scale,
     });
   };
 
@@ -477,4 +526,8 @@ export class PDFViewer extends React.Component<PDFViewerProps, State> {
       <Text color="Default">{item.label}</Text>
     </View>
   );
+
+  private showScaleLabel = (value: number | string) => {
+    return isNaN(value as any) ? value : `${Math.floor(+value * 100)} %`;
+  };
 }
