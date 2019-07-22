@@ -24,7 +24,7 @@ interface CollapseState {
 }
 
 class Collapse extends React.Component<CollapseProps, CollapseState> {
-  public static displayName =  "Collapse";
+  public static displayName = "Collapse";
   public static defaultProps: CollapseProps = {
     isOpen: false,
     reverseCollapse: false,
