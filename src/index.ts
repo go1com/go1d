@@ -150,7 +150,8 @@ export {
 
 export {
   SelectDropdownProps,
-  SelectDropdownItem,
+  SelectDropdownItemProps,
+  SelectDropdownItemProps as SelectDropdownItem, // deprecated
   default as SelectDropdown,
 } from "./components/SelectDropdown";
 
