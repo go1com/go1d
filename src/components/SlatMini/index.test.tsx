@@ -7,7 +7,7 @@ afterEach(cleanup);
 const props = {
   id: 123,
   title: "This is test title",
-  bottomMeta: ["Provider", "29 mins"],
+  bottomMeta: [["Provider", "29 mins"]],
   image: "https://fake-image.jpg",
   type: "Event",
   typeBackground: "background",

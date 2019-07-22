@@ -11,7 +11,7 @@ import View, { ViewProps } from "../View";
 export interface SlatMiniProps extends ViewProps {
   id?: number;
   title?: string | React.ReactNode;
-  bottomMeta?: string[];
+  bottomMeta?: string[] | string[][];
   image?: string;
   type?: string;
   href?: string;
@@ -36,6 +36,34 @@ const SlatMini: React.SFC<SlatMiniProps> = ({
   if (skeleton) {
     return <SlatMiniSkeleton />;
   }
+
+  const bottomMetaRender = () => {
+    if (bottomMeta && Array.isArray(bottomMeta)) {
+      let renderContent: string[] = [];
+      bottomMeta.forEach(metaGroup => {
+        if (Array.isArray(metaGroup)) {
+          renderContent.push(metaGroup.join(" ⋅ "));
+        }
+      });
+      if (!renderContent.length) {
+        renderContent = [bottomMeta.join(" ⋅ ")];
+      }
+      return renderContent.map((content, i) => {
+        return (
+          <Text
+            key={i}
+            color="subtle"
+            display="flex"
+            ellipsis={true}
+            fontSize={1}
+          >
+            {content}
+          </Text>
+        );
+      });
+    }
+    return null;
+  };
 
   return (
     <Theme.Consumer>
@@ -130,16 +158,7 @@ const SlatMini: React.SFC<SlatMiniProps> = ({
                   </Text>
                 )}
 
-                {bottomMeta && (
-                  <Text
-                    color="subtle"
-                    display="flex"
-                    ellipsis={true}
-                    fontSize={1}
-                  >
-                    {bottomMeta.join(" ⋅ ")}
-                  </Text>
-                )}
+                {bottomMetaRender()}
               </View>
 
               {/* Render slat actions */}
