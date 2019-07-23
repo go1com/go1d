@@ -4,8 +4,10 @@ import { IIframe } from "react-iframe/types";
 
 export type IFrameProps = IIframe;
 
-export const IFrame: React.SFC<IFrameProps> = props => {
+const IFrame: React.SFC<IFrameProps> = props => {
   return <Iframe height="100%" width="100%" {...props} />;
 };
 
 IFrame.displayName = "IFrame";
+
+export default IFrame;

@@ -1,6 +1,6 @@
 import * as React from "react";
 import { cleanup, render } from "react-testing-library";
-import { LineProgress } from "./index";
+import LineProgress from "./index";
 
 afterEach(cleanup);
 

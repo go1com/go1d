@@ -55,7 +55,18 @@ Components should be documented in docs/components with at least:
 
 Component should have at least one story with all props in the "stories" folder. You can find a tutorial on how to add stories for storybook [here](https://storybook.js.org/docs/guides/guide-react/). 
 
-
+## Developer Guide
+### Dos
+- Add a `displayName` to your Component
+- Export your component as `default`
+- Check if there are similar libs already included before adding other 3rd party libs, keep our dependency list short!
+- ALWAYS check the Happo Visual Regression Report before merging changes.
+- Remember to use shorthands like: `marginY={[6, 7, 8]}` instead of `marginTop={6} marginBottom={6} css={{[breakpoints.md]: {margin: ......};[breakpoints.lg]: {margin: ......}}}` 
+### Don'ts
+- Avoid imports of other GO1D components into your component through the /components/index.ts file. 
+    - Avoid `import {View} from "../index"` or `import {View} from "../"`   or `import {View} from "../../"`
+    - Instad use `import View, {ViewProps} from "../View"`
+- Do not add icon's with opacity if they are not intended. Double check if the Icon Path is included twice in the SVG file.
 
 ## Adding Icons
 Add the svg to src/icons and then run `yarn icons`. Make sure to include any created files in the commit.

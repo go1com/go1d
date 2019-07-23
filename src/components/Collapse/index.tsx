@@ -1,5 +1,7 @@
 import * as React from "react";
-import { Icon, IconProps, Text, View, ViewProps } from "../..";
+import Icon, { IconProps } from "../Icon";
+import Text from "../Text";
+import View, { ViewProps } from "../View";
 
 export type CollapseProps = {
   isOpen: boolean;
@@ -21,7 +23,8 @@ interface CollapseState {
   currentState: Status;
 }
 
-export class Collapse extends React.Component<CollapseProps, CollapseState> {
+class Collapse extends React.Component<CollapseProps, CollapseState> {
+  public static displayName = "Collapse";
   public static defaultProps: CollapseProps = {
     isOpen: false,
     reverseCollapse: false,
@@ -157,3 +160,5 @@ export class Collapse extends React.Component<CollapseProps, CollapseState> {
     return this.refContent.clientHeight;
   };
 }
+
+export default Collapse;

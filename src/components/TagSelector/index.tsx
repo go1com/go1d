@@ -1,11 +1,11 @@
 import * as React from "react";
 import { autobind } from "../../utils/decorators";
 import ButtonMinimal from "../ButtonMinimal";
-import SelectDropdown, { SelectDropdownItem } from "../SelectDropdown";
+import SelectDropdown, { SelectDropdownItemProps } from "../SelectDropdown";
 
-import { TextInput } from "../..";
 import safeInvoke from "../../utils/safeInvoke";
 import Text from "../Text";
+import TextInput from "../TextInput";
 import View, { ViewProps } from "../View";
 
 interface State {
@@ -16,7 +16,7 @@ interface State {
 }
 
 export interface TagSelectorProps extends ViewProps {
-  optionRenderer?: (option: SelectDropdownItem) => React.ReactNode;
+  optionRenderer?: (option: SelectDropdownItemProps) => React.ReactNode;
 
   /**
    * The selected elements of the component.
@@ -166,7 +166,7 @@ class TagSelector extends React.PureComponent<TagSelectorProps, State> {
   }
 
   @autobind
-  public renderOption(item: SelectDropdownItem) {
+  public renderOption(item: SelectDropdownItemProps) {
     return <Text>{item.label}</Text>;
   }
 

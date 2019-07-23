@@ -150,6 +150,8 @@ export {
 
 export {
   SelectDropdownProps,
+  SelectDropdownItemProps,
+  SelectDropdownItemProps as SelectDropdownItem, // deprecated
   default as SelectDropdown,
 } from "./components/SelectDropdown";
 
@@ -192,13 +194,16 @@ export {
 export { default as Option, OptionProps } from "./components/Option";
 export { default as OptionList } from "./components/OptionList";
 export { default as SpotIcon } from "./components/SpotIcon";
-export * from "./components/VideoPlayer";
-export * from "./components/IFrame";
-export * from "./components/CircleProgress";
-export * from "./components/LineProgress";
-
-export * from "./components/Collapse";
-export * from "./components/PDFViewer";
+export { default as IFrame, IFrameProps } from "./components/IFrame";
+export {
+  default as CircleProgress,
+  CircleProgressProps,
+} from "./components/CircleProgress";
+export {
+  default as LineProgress,
+  LineProgressProps,
+} from "./components/LineProgress";
+export { default as Collapse, CollapseProps } from "./components/Collapse";
 
 /* Utils */
 export { default as priceFormatterUtil } from "./utils/priceFormatter";

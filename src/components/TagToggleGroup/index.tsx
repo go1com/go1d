@@ -1,8 +1,7 @@
 import * as React from "react";
-import { TagToggle } from "../..";
 import { autobind } from "../../utils/decorators";
 import safeInvoke from "../../utils/safeInvoke";
-import { TagToggleProps } from "../TagToggle";
+import TagToggle, { TagToggleProps } from "../TagToggle";
 import View, { ViewProps } from "../View";
 
 export interface TagTogggleGroupProps extends ViewProps {

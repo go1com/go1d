@@ -2,7 +2,7 @@ import { GetItemPropsOptions } from "downshift";
 import * as elementResizeDetectorMaker from "element-resize-detector";
 import * as React from "react";
 import * as ReactDOM from "react-dom";
-import { SelectDropdownItem } from "..";
+import { SelectDropdownItemProps } from "..";
 import { ZIndex } from "../../../foundations/foundation-types";
 import { autobind } from "../../../utils/decorators";
 import safeInvoke from "../../../utils/safeInvoke";
@@ -23,7 +23,7 @@ interface OptionProps {
   handleSearchChange: any;
   renderSearch: any;
   optionRenderer: (
-    item: SelectDropdownItem,
+    item: SelectDropdownItemProps,
     index: number,
     getItemProps: any
   ) => React.ReactNode;
