@@ -12,7 +12,10 @@ A generic mini slat component
 <SlatMini
   id={123}
   title="This is an online content"
-  bottomMeta={["Provider", "29 mins"]}
+  bottomMeta={[
+   ["Provider", "29 mins"],
+   ["Due date", "01/01/2020"]
+  ]}
   image="http://res.cloudinary.com/go1/image/upload/v1557388417/l7jhug2k9n1s4qzw3ai8.png"
   type="Course"
   dropdownItems={[{
