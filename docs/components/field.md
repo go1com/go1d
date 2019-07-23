@@ -32,8 +32,19 @@ Field is an extension of Formik's Field component https://jaredpalmer.com/formik
 ### Example Required Field
 
 ```.jsx
-<Form initialValues={{ portalName: "A portal" }} onSubmit={(values, actions) => actions.submit()}>
+<Form 
+    validate={values => {      
+      const errs = {};      
+      if (!values.portalName) {
+        errs.portalName = "Required";
+      }
+      return errs;
+    }} 
+    onSubmit={(values, actions) => actions.submit()}
+    initialValues={{portalName: ""}}      
+>
     <Field
+    errorForLabel={true}
     required={true}
     component={TextInput}
     name="portalName"

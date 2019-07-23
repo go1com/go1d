@@ -9,6 +9,7 @@ export interface LabelProps extends ViewProps {
   statusText?: string;
   statusColor?: string;
   statusIcon?: string;
+  color?: string;
 }
 
 class Label extends React.PureComponent<LabelProps> {
@@ -22,6 +23,7 @@ class Label extends React.PureComponent<LabelProps> {
       statusColor = "subtle",
       statusIcon,
       whiteSpace,
+      color = "default",
       ...props
     } = this.props;
     return (
@@ -36,7 +38,7 @@ class Label extends React.PureComponent<LabelProps> {
         <Text
           element="label"
           fontWeight="semibold"
-          color="default"
+          color={color}
           htmlFor={htmlFor}
         >
           {children}
