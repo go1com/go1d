@@ -28,6 +28,7 @@ export interface DropdownProps extends ViewProps {
   itemList?: any[];
   renderMenu?: RenderMenu<any>;
   renderFunction?: RenderItem<any>;
+  initialInputValue?: string;
   onInputValueChange?: OnInputValueChange;
   itemToString: (item: any) => string;
   placement?:
@@ -68,6 +69,7 @@ const Dropdown: React.SFC<DropdownProps> = ({
   itemList,
   renderMenu,
   renderFunction = defaultRenderFunction,
+  initialInputValue,
   onInputValueChange,
   css,
   itemToString,
@@ -80,6 +82,7 @@ const Dropdown: React.SFC<DropdownProps> = ({
   <Downshift
     itemToString={itemToString}
     onSelect={onSelect}
+    initialInputValue={initialInputValue}
     onInputValueChange={onInputValueChange}
     isOpen={isOpen}
   >
