@@ -259,12 +259,13 @@ class TextInput extends React.PureComponent<TextInputProps, TextInputState> {
                     {
                       position: "absolute",
                       top: "50%",
-                      left: iconName && height,
+                      left: iconName ? height : 0,
                       transform: "translate(0, -50%)",
                     },
                     isFloating && {
                       fontSize: floatingLabelSize,
                       top: floatingLabelTop,
+                      left: iconName ? height : 0,
                       transform: "none",
                     },
                   ]}
