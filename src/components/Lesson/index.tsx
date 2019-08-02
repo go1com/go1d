@@ -18,11 +18,12 @@ export const typeIconDic = {
   assignment: "Assignment",
   document: "Document",
   h5p: "Videoplay",
-  iframe: "Weblink",
+  iframe: "Link",
   interactive: "Interactive",
   question: "Checkbox",
   quiz: "Quiz",
-  resource: "Content",
+  resource: "Text",
+  link: "Link",
   text: "Text",
   video: "Video",
   workshop: "Course",
@@ -53,7 +54,13 @@ const Lesson: React.SFC<LessonProps> = ({
     >
       <View paddingBottom={5} paddingTop={6} justifyContent="flex-start">
         {type && (
-          <Icon name={typeIconDic[type] ? typeIconDic[type] : "Course"} />
+          <Icon
+            name={
+              typeIconDic[type.toLowerCase()]
+                ? typeIconDic[type.toLowerCase()]
+                : "Course"
+            }
+          />
         )}
       </View>
       <View paddingY={5} paddingX={4} flexGrow={1}>
