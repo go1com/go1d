@@ -7,3 +7,11 @@ afterEach(cleanup);
 it("renders with minimum props without crashing", () => {
   render(<Collapse isOpen={true} />);
 });
+
+it("renders with preview", () => {
+  render(
+    <Collapse isOpen={true} preview={10}>
+      Children
+    </Collapse>
+  );
+});
