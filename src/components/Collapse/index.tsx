@@ -11,6 +11,7 @@ export type CollapseProps = {
   contentProps?: ViewProps;
   header?: () => React.ReactNode | string;
   onCollapse?: () => void;
+  preview?: number;
 } & ViewProps;
 
 enum Status {
@@ -36,7 +37,7 @@ class Collapse extends React.Component<CollapseProps, CollapseState> {
   constructor(props: CollapseProps) {
     super(props);
     this.state = {
-      heightWrapper: 0,
+      heightWrapper: this.getPreview(),
       currentState: Status.IDLING,
     };
   }
@@ -45,14 +46,14 @@ class Collapse extends React.Component<CollapseProps, CollapseState> {
     const { isOpen } = this.props;
 
     this.setState({
-      heightWrapper: isOpen ? this.getHeightContent() : 0,
+      heightWrapper: isOpen ? this.getHeightContent() : this.getPreview(),
     });
   }
 
   public componentDidUpdate(_, prevState) {
     const { isOpen } = this.props;
 
-    const heightWrapper = isOpen ? this.getHeightContent() : 0;
+    const heightWrapper = isOpen ? this.getHeightContent() : this.getPreview();
 
     if (prevState.heightWrapper !== heightWrapper) {
       this.setState({
@@ -68,6 +69,10 @@ class Collapse extends React.Component<CollapseProps, CollapseState> {
         currentState: Status.IDLING,
       });
     }
+  }
+  public getPreview() {
+    const { preview } = this.props;
+    return preview ? preview : 0;
   }
 
   public render() {
