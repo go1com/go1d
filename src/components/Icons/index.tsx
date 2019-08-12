@@ -27,6 +27,7 @@ export { default as Comments } from "./Comments";
 export { default as Compass } from "./Compass";
 export { default as Content } from "./Content";
 export { default as Copy } from "./Copy";
+export { default as Copyright } from "./Copyright";
 export { default as Course } from "./Course";
 export { default as CreditCard } from "./CreditCard";
 export { default as Cross } from "./Cross";
