@@ -3,6 +3,7 @@ import foundations from "../../foundations";
 import formatDuration from "../../utils/durationFormatter";
 import formatPrice from "../../utils/priceFormatter";
 import Avatar from "../Avatar";
+import EnrolmentStatus from "../EnrolmentStatus";
 import Icon from "../Icon";
 import Pill from "../Pill";
 import Skeleton from "../SlatSkeleton";
@@ -12,6 +13,7 @@ import View, { ViewProps } from "../View";
 
 interface EnrollmentProps {
   status?: string;
+  pass?: number;
   dueDate?: string;
 }
 
@@ -87,42 +89,46 @@ export function dueDateFormatter(dueDateStr: string) {
 }
 
 const enrollmentProgressRenderer = (enrolment: EnrollmentProps) => {
-  const { status, dueDate } = enrolment;
+  const { dueDate } = enrolment;
   const { overDue, dueDateText } = dueDateFormatter(dueDate);
-  return (
-    <View flexDirection="row">
-      <Icon
-        name={
-          status === "enrolled"
-            ? "Enrolled"
-            : status === "in_progress"
-            ? "InProgress"
-            : "Passed"
-        }
-        size={1}
-        color={
-          status === "completed" ? "success" : overDue ? "danger" : "accent"
-        }
-        marginRight={2}
-        marginTop={1}
-      />
-      <Text
-        color={overDue ? "danger" : "default"}
-        fontSize={1}
-        fontWeight="semibold"
-      >
-        {status === "enrolled"
-          ? "Enrolled"
-          : status === "in_progress"
-          ? dueDateText
-            ? dueDateText
-            : "In progress"
-          : status === "completed"
-          ? "Completed"
-          : ""}
-      </Text>
-    </View>
-  );
+  const mappedStatus = getStatus(enrolment) as any;
+  const statusProps = {
+    overDue,
+    type: mappedStatus,
+    text: getStatusText(mappedStatus, dueDateText),
+  };
+
+  return <EnrolmentStatus status={statusProps} />;
+};
+
+const getStatus = (enrolment: EnrollmentProps): string => {
+  const { status, pass } = enrolment;
+
+  if (status === "in_progress" || status === "in-progress") {
+    return "inProgress";
+  }
+
+  if (status === "completed" && pass === 0) {
+    return "failed";
+  }
+
+  return status;
+};
+
+const getStatusText = (status: string, dueDateText?: string): string => {
+  if (status === "completed" || status === "failed") {
+    return "Completed";
+  }
+
+  if (status === "enrolled") {
+    return dueDateText || "Enrolled";
+  }
+
+  if (status === "inProgress" || status === "in-progress") {
+    return dueDateText || "In progress";
+  }
+
+  return "";
 };
 
 const CourseSlat: React.SFC<CourseSlatProps> = ({

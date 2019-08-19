@@ -23,7 +23,7 @@ export interface SlatMiniProps extends ViewProps {
 const SlatMini: React.SFC<SlatMiniProps> = ({
   id,
   title,
-  bottomMeta,
+  bottomMeta = [],
   image,
   type,
   href,
@@ -40,14 +40,16 @@ const SlatMini: React.SFC<SlatMiniProps> = ({
   const bottomMetaRender = () => {
     if (bottomMeta && Array.isArray(bottomMeta)) {
       let renderContent: string[] = [];
-      bottomMeta.forEach(metaGroup => {
+      (bottomMeta as any[]).forEach(metaGroup => {
         if (Array.isArray(metaGroup)) {
           renderContent.push(metaGroup.join(" ⋅ "));
         }
       });
+
       if (!renderContent.length) {
         renderContent = [bottomMeta.join(" ⋅ ")];
       }
+
       return renderContent.map((content, i) => {
         return (
           <Text
@@ -62,12 +64,13 @@ const SlatMini: React.SFC<SlatMiniProps> = ({
         );
       });
     }
+
     return null;
   };
 
   return (
     <Theme.Consumer>
-      {({ breakpoints, colors, spacing }) => {
+      {({ colors, spacing }) => {
         return (
           <View
             flexDirection="row"
