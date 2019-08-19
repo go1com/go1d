@@ -44,6 +44,7 @@
     "@types/slate-react": "^0.21.0",
     "@types/webfontloader": "^1.6.29",
     "color": "^3.1.2",
+    "core-js": "^2.6.9",
     "downshift": "^3.2.7",
     "element-resize-detector": "^1.2.0",
     "emotion": "^9.2.4",
