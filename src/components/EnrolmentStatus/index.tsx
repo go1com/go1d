@@ -5,7 +5,7 @@ import Text from "../Text";
 import View, { ViewProps } from "../View";
 
 export interface EnrolmentStatusProps {
-  type: "unpublished" | "inProgress" | "completed";
+  type: "unpublished" | "enrolled" | "inProgress" | "completed" | "failed";
   text?: string;
   overDue?: boolean;
 }
@@ -31,11 +31,15 @@ const EnrolmentStatus: React.SFC<EnrolmentStatusComponentProps> = ({
   const { type, text, overDue } = status;
 
   const defaultStatusStyleMapping = {
-    textColor: overDue ? "danger" : "default",
+    textColor: overDue || type === "failed" ? "danger" : "default",
   };
   const statusStyleMapping: { [key: string]: StatusStyle } = {
     unpublished: {
       iconName: "Lock",
+    },
+    enrolled: {
+      iconName: "Enrolled",
+      iconColor: overDue ? "danger" : "accent",
     },
     inProgress: {
       iconName: "InProgress",
@@ -44,6 +48,10 @@ const EnrolmentStatus: React.SFC<EnrolmentStatusComponentProps> = ({
     completed: {
       iconName: "Passed",
       iconColor: "success",
+    },
+    failed: {
+      iconName: "NotPassed",
+      iconColor: "danger",
     },
   };
   const statusStyle: StatusStyle = {

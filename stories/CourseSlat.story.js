@@ -19,13 +19,31 @@ storiesOf("CourseSlat", module)
   author="Bob Bobberson"
   duration="4"
   actionRenderer={() => (
-      <View flexDirection="row">
+    <View flexDirection="row">
       <Icon name="Import" marginRight={3} color="accent" />
       <Text color="accent">Import</Text>
-      </View>
+    </View>
   )}
   type="Course"
   typeIcon="Course"
+/>)
+.add('With enrollment status', () => <CourseSlat
+  courseImage="https://images.pexels.com/photos/257360/pexels-photo-257360.jpeg?h=400"
+  title="Master sourdough in a week"
+  description="Despite general improvements in workplace health and safety over the past the risk of sourdough related injuries are still insurmountable for most"
+  author="Bob Bobberson"
+  duration="4"
+  actionRenderer={() => (
+    <View flexDirection="row">
+      <Icon name="Import" marginRight={3} color="accent" />
+      <Text color="accent">Import</Text>
+    </View>
+  )}
+  type="Course"
+  typeIcon="Course"
+  enrollment={{
+    status: "completed",
+  }}
 />)
 .add('With price and duration', () => <CourseSlat
   courseImage="https://images.pexels.com/photos/814499/pexels-photo-814499.jpeg?h=400"
