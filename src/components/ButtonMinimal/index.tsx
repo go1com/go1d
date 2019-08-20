@@ -16,6 +16,7 @@ const ButtonMinimal: React.SFC<ButtonMinimalProps> = ({
   color = "subtle",
   children,
   iconColor = children && color === "subtle" ? "muted" : color,
+  backgroundColor = "transparent",
   css,
   active,
   ...props
@@ -25,6 +26,7 @@ const ButtonMinimal: React.SFC<ButtonMinimalProps> = ({
       <Button
         color={color}
         iconColor={iconColor}
+        backgroundColor={backgroundColor}
         css={[
           active && { backgroundColor: activeCss(colors, color) },
           {
