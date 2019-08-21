@@ -9,7 +9,7 @@ Having a clear ‘GO1 voice’ across all our marketing materials helps us to cr
 
 Whether they’re reading a sales brochure, browsing the GO1 website, or reading articles on the blog, we want people to feel supported, informed, and engaged - not confused by a lot of complex terminology or jargon. 
 
-**Some tips for writing in the GO1 voice:
+## Some tips
 
 * The GO1 voice is genuine, direct and approachable.
 * We keep our language and grammar plain and simple, as we believe jargon is a barrier.
