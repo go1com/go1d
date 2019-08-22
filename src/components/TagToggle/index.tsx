@@ -1,6 +1,7 @@
 import * as React from "react";
 import safeInvoke from "../../utils/safeInvoke";
 import Base from "../Base";
+import Icon from "../Icon";
 import Provider from "../Provider";
 import Text, { TextProps } from "../Text";
 import Theme from "../Theme";
@@ -35,6 +36,8 @@ export interface TagToggleProps extends TextProps {
   defaultValue?: boolean | string;
   disabled?: boolean;
   size?: "lg" | "md" | "sm";
+  activeIconName?: string;
+  inactiveIconName?: string;
 }
 
 class TagToggle extends React.Component<
@@ -87,6 +90,8 @@ class TagToggle extends React.Component<
       marginBottom = 0,
       disabled = false,
       size = "md",
+      activeIconName = "Check",
+      inactiveIconName = "Plus",
       ...props
     } = this.props;
 
@@ -161,6 +166,11 @@ class TagToggle extends React.Component<
                   {label}
                   {children}
                 </Text>
+                <Icon
+                  size={typeScale}
+                  marginLeft={size === "lg" ? 4 : 3}
+                  name={value ? activeIconName : inactiveIconName}
+                />
               </View>
             </React.Fragment>
           )}
