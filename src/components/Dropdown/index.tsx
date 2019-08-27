@@ -30,6 +30,7 @@ export interface DropdownProps extends ViewProps {
   renderFunction?: RenderItem<any>;
   initialInputValue?: string;
   onInputValueChange?: OnInputValueChange;
+  onOuterClick?: () => void;
   itemToString: (item: any) => string;
   placement?:
     | "auto-start"
@@ -71,6 +72,7 @@ const Dropdown: React.SFC<DropdownProps> = ({
   renderFunction = defaultRenderFunction,
   initialInputValue,
   onInputValueChange,
+  onOuterClick,
   css,
   itemToString,
   placement,
@@ -84,6 +86,7 @@ const Dropdown: React.SFC<DropdownProps> = ({
     onSelect={onSelect}
     initialInputValue={initialInputValue}
     onInputValueChange={onInputValueChange}
+    onOuterClick={onOuterClick}
     isOpen={isOpen}
   >
     {({
