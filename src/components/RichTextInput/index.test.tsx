@@ -237,7 +237,29 @@ beforeEach(() => {
 });
 
 it("renders without crashing without any optional props", () => {
-  render(<RichTextInput />);
+  const { getByTestId } = render(<RichTextInput />);
+
+  // check that each of the format buttons are rendered by default
+  const h2FormatOption = getByTestId("blockHeadingTwo");
+  expect(h2FormatOption).toBeDefined();
+  const h3FormatOption = getByTestId("blockHeadingThree");
+  expect(h3FormatOption).toBeDefined();
+  const boldFormatOption = getByTestId("markBold");
+  expect(boldFormatOption).toBeDefined();
+  const italicFormatOption = getByTestId("markItalic");
+  expect(italicFormatOption).toBeDefined();
+  const underlineFormatOption = getByTestId("markUnderline");
+  expect(underlineFormatOption).toBeDefined();
+  const strikethroughFormatOption = getByTestId("markStrikethrough");
+  expect(strikethroughFormatOption).toBeDefined();
+  const blockquoteFormatOption = getByTestId("blockBlockquote");
+  expect(blockquoteFormatOption).toBeDefined();
+  const linkFormatOption = getByTestId("inlineLink");
+  expect(linkFormatOption).toBeDefined();
+  const numberedListFormatOption = getByTestId("blockNumberedList");
+  expect(numberedListFormatOption).toBeDefined();
+  const bulletListFormatOption = getByTestId("blockBulletedList");
+  expect(bulletListFormatOption).toBeDefined();
 });
 
 it("shows all format options", () => {
