@@ -33,12 +33,12 @@ This is the default set of fields you get when including a RichTextInput field.
 
 Each of these fields can be turned off with a prop:
 
+* H2 = h2FormatOption -> default true (show)
+* H3 = h3FormatOption -> default true (show)
 * Bold = boldFormatOption -> default true (shows)
 * Italic = italicFormatOption -> default true (shows) 
 * Underline = underlineFormatOption -> default true (shows)
 * Strikethrough = strikethroughFormatOption -> default true (shows)
-* H2 = h2FormatOption -> default true (show)
-* H3 = h3FormatOption -> default true (show)
 * BlockQuote = blockquoteFormatOption -> default true (show)
 * Link = linkFormatOption -> default true (show)
 * Numbered List = numberedListFormatOption -> default true (show)

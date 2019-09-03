@@ -96,6 +96,26 @@ const FormatOptions: React.SFC<Props> = ({
   <Theme.Consumer>
     {({ colors }) => (
       <View flexDirection="row">
+        {h2FormatOption && (
+          <FormatButton
+            data-testid="blockHeadingTwo"
+            onClick={onClickBlock}
+            type="heading-two"
+            iconName="HeadingTwo"
+            active={blockActive("heading-two")}
+            colors={colors}
+          />
+        )}
+        {h3FormatOption && (
+          <FormatButton
+            data-testid="blockHeadingThree"
+            onClick={onClickBlock}
+            type="heading-three"
+            iconName="HeadingThree"
+            active={blockActive("heading-three")}
+            colors={colors}
+          />
+        )}
         {boldFormatOption && (
           <FormatButton
             data-testid="markBold"
@@ -133,26 +153,6 @@ const FormatOptions: React.SFC<Props> = ({
             type="strikethrough"
             iconName="Strikethrough"
             active={markActive("strikethrough")}
-            colors={colors}
-          />
-        )}
-        {h2FormatOption && (
-          <FormatButton
-            data-testid="blockHeadingTwo"
-            onClick={onClickBlock}
-            type="heading-two"
-            iconName="HeadingTwo"
-            active={blockActive("heading-two")}
-            colors={colors}
-          />
-        )}
-        {h3FormatOption && (
-          <FormatButton
-            data-testid="blockHeadingThree"
-            onClick={onClickBlock}
-            type="heading-three"
-            iconName="HeadingThree"
-            active={blockActive("heading-three")}
             colors={colors}
           />
         )}
