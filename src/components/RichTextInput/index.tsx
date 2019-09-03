@@ -33,6 +33,7 @@ export interface Props {
   size?: "lg" | "md" | "sm";
   autofocus?: boolean;
   minHeight?: number;
+  boldFormatOption?: boolean;
 }
 
 const DEFAULT_NODE = "paragraph";
@@ -44,6 +45,7 @@ class RichTextInput extends React.Component<Props, State> {
   public static defaultProps = {
     size: "md",
     value: Plain.deserialize(""),
+    boldFormatOption: true, // if not supplied, we want Bold to show
   };
 
   public static getDerivedStateFromProps(props: Props, state: State) {
@@ -329,7 +331,14 @@ class RichTextInput extends React.Component<Props, State> {
   }
 
   public render() {
-    const { id, disabled, size, autofocus, minHeight } = this.props;
+    const {
+      id,
+      disabled,
+      size,
+      autofocus,
+      minHeight,
+      boldFormatOption,
+    } = this.props;
 
     return (
       <Theme.Consumer>
@@ -369,6 +378,7 @@ class RichTextInput extends React.Component<Props, State> {
               blockActive={this.hasBlockCheck}
               markActive={this.hasMark}
               linkActive={this.hasLinks}
+              boldFormatOption={boldFormatOption}
             />
           </View>
         )}

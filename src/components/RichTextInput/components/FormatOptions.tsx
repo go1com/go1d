@@ -11,6 +11,7 @@ export interface Props {
   blockActive: (type: string) => boolean;
   markActive: (type: string) => boolean;
   linkActive: () => boolean;
+  boldFormatOption: boolean;
 }
 
 const FormatButton: React.SFC<any> = ({
@@ -72,18 +73,21 @@ const FormatOptions: React.SFC<Props> = ({
   markActive,
   linkActive,
   onClickLink,
+  boldFormatOption,
 }: Props) => (
   <Theme.Consumer>
     {({ colors }) => (
       <View flexDirection="row">
-        <FormatButton
-          data-testid="markBold"
-          onClick={onClickMarked}
-          type="bold"
-          iconName="Bold"
-          active={markActive("bold")}
-          colors={colors}
-        />
+        {boldFormatOption && (
+          <FormatButton
+            data-testid="markBold"
+            onClick={onClickMarked}
+            type="bold"
+            iconName="Bold"
+            active={markActive("bold")}
+            colors={colors}
+          />
+        )}
         <FormatButton
           data-testid="markItalic"
           onClick={onClickMarked}
