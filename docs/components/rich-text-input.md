@@ -32,7 +32,17 @@ This is the default set of fields you get when including a RichTextInput field.
 ## Rich Text Input in Field with control over formatOptions
 
 Each of these fields can be turned off with a prop:
-* Bold = boldFormatOption
+
+* Bold = boldFormatOption -> default true (shows)
+* Italic = italicFormatOption -> default true (shows) 
+* Underline = underlineFormatOption -> default true (shows)
+* Strikethrough = strikethroughFormatOption -> default true (shows)
+* H2 = h2FormatOption -> default true (show)
+* H3 = h3FormatOption -> default true (show)
+* BlockQuote = blockquoteFormatOption -> default true (show)
+* Link = linkFormatOption -> default true (show)
+* Numbered List = numberedListFormatOption -> default true (show)
+* Bullet List = bulletListFormatOption -> default true (show)
 
 ```.jsx
 
@@ -45,6 +55,15 @@ Each of these fields can be turned off with a prop:
     placeholder="Description"
     minHeight={200}
     boldFormatOption={false}
+    italicFormatOption={true}
+    underlineFormatOption={false}
+    strikethroughFormatOption={false}
+    h2FormatOption={true}
+    h3FormatOption={false}
+    blockquoteFormatOption={false}
+    linkFormatOption={true}
+    numberedListFormatOption={false}
+    bulletListFormatOption={true}
     />
     <ButtonFilled type="submit" color="accent">Submit</ButtonFilled>
 </Form>

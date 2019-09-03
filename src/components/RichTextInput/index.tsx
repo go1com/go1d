@@ -34,6 +34,15 @@ export interface Props {
   autofocus?: boolean;
   minHeight?: number;
   boldFormatOption?: boolean;
+  italicFormatOption?: boolean;
+  underlineFormatOption?: boolean;
+  strikethroughFormatOption?: boolean;
+  h2FormatOption?: boolean;
+  h3FormatOption?: boolean;
+  blockquoteFormatOption?: boolean;
+  linkFormatOption?: boolean;
+  numberedListFormatOption?: boolean;
+  bulletListFormatOption?: boolean;
 }
 
 const DEFAULT_NODE = "paragraph";
@@ -46,6 +55,15 @@ class RichTextInput extends React.Component<Props, State> {
     size: "md",
     value: Plain.deserialize(""),
     boldFormatOption: true, // if not supplied, we want Bold to show
+    italicFormatOption: true, // if not supplied, we want Italic to show
+    underlineFormatOption: true, // if not supplied, we want Underline to show
+    strikethroughFormatOption: true, // if not supplied, we want Strikethrough to show
+    h2FormatOption: true, // if not supplied, we want h2 to show
+    h3FormatOption: true, // if not supplied, we want h3 to show
+    blockquoteFormatOption: true, // if not supplied, we want blockquote to show
+    linkFormatOption: true, // if not supplied, we want link to show
+    numberedListFormatOption: true, // if not supplied, we want numbered list to show
+    bulletListFormatOption: true, // if not supplied, we want the bullet list to show
   };
 
   public static getDerivedStateFromProps(props: Props, state: State) {
@@ -338,6 +356,15 @@ class RichTextInput extends React.Component<Props, State> {
       autofocus,
       minHeight,
       boldFormatOption,
+      italicFormatOption,
+      underlineFormatOption,
+      strikethroughFormatOption,
+      h2FormatOption,
+      h3FormatOption,
+      blockquoteFormatOption,
+      linkFormatOption,
+      numberedListFormatOption,
+      bulletListFormatOption,
     } = this.props;
 
     return (
@@ -379,6 +406,15 @@ class RichTextInput extends React.Component<Props, State> {
               markActive={this.hasMark}
               linkActive={this.hasLinks}
               boldFormatOption={boldFormatOption}
+              italicFormatOption={italicFormatOption}
+              underlineFormatOption={underlineFormatOption}
+              strikethroughFormatOption={strikethroughFormatOption}
+              h2FormatOption={h2FormatOption}
+              h3FormatOption={h3FormatOption}
+              blockquoteFormatOption={blockquoteFormatOption}
+              linkFormatOption={linkFormatOption}
+              numberedListFormatOption={numberedListFormatOption}
+              bulletListFormatOption={bulletListFormatOption}
             />
           </View>
         )}
