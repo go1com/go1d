@@ -17,6 +17,7 @@ export interface SlatProps extends ViewProps {
   description?: string;
   currency?: string;
   price?: number;
+  priceSuffix?: string;
   bottomMeta?: Array<{
     icon?: string;
     text: string;
@@ -39,6 +40,7 @@ const Slat: React.SFC<SlatProps> = ({
   description,
   currency,
   price,
+  priceSuffix = "",
   tax,
   bottomMeta,
   image,
@@ -271,7 +273,7 @@ const Slat: React.SFC<SlatProps> = ({
                     }}
                   >
                     <Text color="accent" fontWeight="semibold">
-                      {formatPrice(currency, price, tax)}
+                      {formatPrice(currency, price, tax)} {priceSuffix}
                     </Text>
                   </View>
                 )}
