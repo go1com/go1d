@@ -237,7 +237,97 @@ beforeEach(() => {
 });
 
 it("renders without crashing without any optional props", () => {
-  render(<RichTextInput />);
+  const { getByTestId } = render(<RichTextInput />);
+
+  // check that each of the format buttons are rendered by default
+  const h2FormatOption = getByTestId("blockHeadingTwo");
+  expect(h2FormatOption).toBeDefined();
+  const h3FormatOption = getByTestId("blockHeadingThree");
+  expect(h3FormatOption).toBeDefined();
+  const boldFormatOption = getByTestId("markBold");
+  expect(boldFormatOption).toBeDefined();
+  const italicFormatOption = getByTestId("markItalic");
+  expect(italicFormatOption).toBeDefined();
+  const underlineFormatOption = getByTestId("markUnderline");
+  expect(underlineFormatOption).toBeDefined();
+  const strikethroughFormatOption = getByTestId("markStrikethrough");
+  expect(strikethroughFormatOption).toBeDefined();
+  const blockquoteFormatOption = getByTestId("blockBlockquote");
+  expect(blockquoteFormatOption).toBeDefined();
+  const linkFormatOption = getByTestId("inlineLink");
+  expect(linkFormatOption).toBeDefined();
+  const numberedListFormatOption = getByTestId("blockNumberedList");
+  expect(numberedListFormatOption).toBeDefined();
+  const bulletListFormatOption = getByTestId("blockBulletedList");
+  expect(bulletListFormatOption).toBeDefined();
+});
+
+it("shows all format options", () => {
+  const { getByTestId } = render(
+    <RichTextInput
+      h2FormatOption={true}
+      h3FormatOption={true}
+      boldFormatOption={true}
+      italicFormatOption={true}
+      underlineFormatOption={true}
+      strikethroughFormatOption={true}
+      blockquoteFormatOption={true}
+      linkFormatOption={true}
+      numberedListFormatOption={true}
+      bulletListFormatOption={true}
+    />
+  );
+
+  // check that each of the format buttons are rendered
+  const h2FormatOption = getByTestId("blockHeadingTwo");
+  expect(h2FormatOption).toBeDefined();
+  const h3FormatOption = getByTestId("blockHeadingThree");
+  expect(h3FormatOption).toBeDefined();
+  const boldFormatOption = getByTestId("markBold");
+  expect(boldFormatOption).toBeDefined();
+  const italicFormatOption = getByTestId("markItalic");
+  expect(italicFormatOption).toBeDefined();
+  const underlineFormatOption = getByTestId("markUnderline");
+  expect(underlineFormatOption).toBeDefined();
+  const strikethroughFormatOption = getByTestId("markStrikethrough");
+  expect(strikethroughFormatOption).toBeDefined();
+  const blockquoteFormatOption = getByTestId("blockBlockquote");
+  expect(blockquoteFormatOption).toBeDefined();
+  const linkFormatOption = getByTestId("inlineLink");
+  expect(linkFormatOption).toBeDefined();
+  const numberedListFormatOption = getByTestId("blockNumberedList");
+  expect(numberedListFormatOption).toBeDefined();
+  const bulletListFormatOption = getByTestId("blockBulletedList");
+  expect(bulletListFormatOption).toBeDefined();
+});
+
+it("hides all format options", () => {
+  const { queryByTestId } = render(
+    <RichTextInput
+      h2FormatOption={false}
+      h3FormatOption={false}
+      boldFormatOption={false}
+      italicFormatOption={false}
+      underlineFormatOption={false}
+      strikethroughFormatOption={false}
+      blockquoteFormatOption={false}
+      linkFormatOption={false}
+      numberedListFormatOption={false}
+      bulletListFormatOption={false}
+    />
+  );
+
+  // check that each of the format buttons is not rendered
+  expect(queryByTestId("blockHeadingTwo")).toBeNull();
+  expect(queryByTestId("blockHeadingThree")).toBeNull();
+  expect(queryByTestId("boldFormatOption")).toBeNull();
+  expect(queryByTestId("markItalic")).toBeNull();
+  expect(queryByTestId("markUnderline")).toBeNull();
+  expect(queryByTestId("markStrikethrough")).toBeNull();
+  expect(queryByTestId("blockBlockquote")).toBeNull();
+  expect(queryByTestId("inlineLink")).toBeNull();
+  expect(queryByTestId("blockNumberedList")).toBeNull();
+  expect(queryByTestId("blockBulletedList")).toBeNull();
 });
 
 it("clicks heading two", () => {
