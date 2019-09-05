@@ -191,9 +191,9 @@ const monospace: string = "'Source Code Pro', 'Menlo', monospace";
 
 export const type: ThemeType = {
   scale: {
-    sm: [0, 14, 16, 18, 21, 24, 28, 32, 37],
-    md: [0, 13, 16, 19, 23, 28, 33, 40, 48],
-    lg: [0, 13, 16, 20, 25, 31, 39, 49, 61],
+    sm: [0, 14, 16, 18, 21, 24, 28, 32, 37, 43, 49],
+    md: [0, 13, 16, 19, 23, 28, 33, 40, 48, 57, 69],
+    lg: [0, 13, 16, 20, 25, 31, 39, 49, 61, 76, 95],
   },
   family: {
     sansSerif,
