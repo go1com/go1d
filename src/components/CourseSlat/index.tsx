@@ -66,7 +66,7 @@ export function dueDateFormatter(dueDateStr: string) {
       readingDay = overDue ? "yesterday" : "tomorrow";
     } else if (diffDays > 13) {
       readingDay = `${dueDate.toLocaleDateString(
-        window
+        typeof window !== "undefined"
           ? (window.navigator as any).userLanguage || window.navigator.language
           : "en-us",
         {
