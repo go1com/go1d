@@ -216,6 +216,8 @@ class RichTextInput extends React.Component<Props, State> {
         return <ol {...attributes}>{children}</ol>;
       case "bulleted-list":
         return <ul {...attributes}>{children}</ul>;
+      case "linebreak":
+        return <br />;
 
       default:
         return next();
