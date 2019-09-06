@@ -204,6 +204,10 @@ export {
   LineProgressProps,
 } from "./components/LineProgress";
 export { default as Collapse, CollapseProps } from "./components/Collapse";
+export {
+  default as PackagePlan,
+  PackagePlanProps,
+} from "./components/PackagePlan";
 
 /* Utils */
 export { default as priceFormatterUtil } from "./utils/priceFormatter";
