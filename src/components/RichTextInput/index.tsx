@@ -43,6 +43,7 @@ export interface Props {
   linkFormatOption?: boolean;
   numberedListFormatOption?: boolean;
   bulletListFormatOption?: boolean;
+  onPaste?: any;
 }
 
 const DEFAULT_NODE = "paragraph";
@@ -367,7 +368,12 @@ class RichTextInput extends React.Component<Props, State> {
       linkFormatOption,
       numberedListFormatOption,
       bulletListFormatOption,
+      onPaste,
     } = this.props;
+
+    const pasteProps = {
+      ...(onPaste && { onPaste }),
+    };
 
     return (
       <Theme.Consumer>
@@ -395,6 +401,7 @@ class RichTextInput extends React.Component<Props, State> {
                 renderNode={this.renderNode}
                 renderMark={this.renderMark}
                 onKeyDown={this.onKeyDown}
+                {...pasteProps}
                 style={{
                   minHeight,
                 }}
