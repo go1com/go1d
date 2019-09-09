@@ -66,6 +66,7 @@ export { default as InProgressCircle } from "./InProgressCircle";
 export { default as Incomplete } from "./Incomplete";
 export { default as Info } from "./Info";
 export { default as Interactive } from "./Interactive";
+export { default as InverseClock } from "./InverseClock";
 export { default as Irrelevant } from "./Irrelevant";
 export { default as Italic } from "./Italic";
 export { default as Learning } from "./Learning";
