@@ -21,12 +21,12 @@ releaseVersion: 0.2.15
   title="Test Title"
   price="123"
   currency="AUD"
-  courseImage="https://res.cloudinary.com/go1/image/fetch/w_1024,h_300,c_thumb,g_auto/https://udemy-images.udemy.com/course/750x422/435262_c617.jpg" 
+  courseImage="https://res.cloudinary.com/go1/image/fetch/w_1024,h_300,c_thumb,g_auto/https://udemy-images.udemy.com/course/750x422/435262_c617.jpg"
   itemList={[
     {
       title: "Test"
     }
-  ]} 
+  ]}
   passive={false}
 />
 ```
@@ -42,12 +42,12 @@ releaseVersion: 0.2.15
   price="123"
   currency="AUD"
   premium={true}
-  courseImage="https://res.cloudinary.com/go1/image/fetch/w_1024,h_300,c_thumb,g_auto/https://udemy-images.udemy.com/course/750x422/435262_c617.jpg" 
+  courseImage="https://res.cloudinary.com/go1/image/fetch/w_1024,h_300,c_thumb,g_auto/https://udemy-images.udemy.com/course/750x422/435262_c617.jpg"
   itemList={[
     {
       title: "Test"
     }
-  ]} 
+  ]}
   passive={false}
 />
 ```
@@ -61,12 +61,12 @@ releaseVersion: 0.2.15
   author="GO1"
   title="Test Title"
   premium={true}
-  courseImage="https://res.cloudinary.com/go1/image/fetch/w_1024,h_300,c_thumb,g_auto/https://udemy-images.udemy.com/course/750x422/435262_c617.jpg" 
+  courseImage="https://res.cloudinary.com/go1/image/fetch/w_1024,h_300,c_thumb,g_auto/https://udemy-images.udemy.com/course/750x422/435262_c617.jpg"
   itemList={[
     {
       title: "Test"
     }
-  ]} 
+  ]}
   passive={false}
 />
 ```
@@ -79,7 +79,7 @@ releaseVersion: 0.2.15
   duration={74}
   author="GO1"
   title="Test Title"
-  courseImage="https://res.cloudinary.com/go1/image/fetch/w_1024,h_300,c_thumb,g_auto/https://udemy-images.udemy.com/course/750x422/435262_c617.jpg" 
+  courseImage="https://res.cloudinary.com/go1/image/fetch/w_1024,h_300,c_thumb,g_auto/https://udemy-images.udemy.com/course/750x422/435262_c617.jpg"
   itemList={[
     {
       title: "Test"
@@ -105,7 +105,7 @@ releaseVersion: 0.2.15
     <CourseCard type="Course" typeIcon="Course">
       Hello World!
     </CourseCard>
-    <CourseCard type="Course" title="This is a test title">
+    <CourseCard type="Course" title="This is a test title" status={{ type: "enrolled", text: "Enrolled" }}>
     </CourseCard>
     <CourseCard type="Course" title="This is a test title" itemList={[
       {
@@ -142,7 +142,7 @@ releaseVersion: 0.2.15
 
 ### Skeleton
 ```.jsx
-<CourseCard 
+<CourseCard
   skeleton={true}
 />
 ```

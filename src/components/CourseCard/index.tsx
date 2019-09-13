@@ -118,27 +118,19 @@ const CourseCard: React.SFC<CourseCardProps> = ({
                   <Icon size={7} name="Empty" color="default" />
                 </View>
               )}
-              {(type || typeIcon) && (
-                <View
-                  flexDirection="row"
-                  padding={2}
-                  borderRadius={1}
-                  color="background"
-                  backgroundColor="contrast"
-                  css={{
-                    position: "absolute",
-                    bottom: 10,
-                    left: 10,
-                  }}
-                >
-                  {typeIcon && <Icon paddingRight={1} name={typeIcon} />}
-                  {type && (
-                    <Text color="background" fontSize={1}>
-                      {type.toUpperCase()}
-                    </Text>
-                  )}
-                </View>
-              )}
+              {status &&
+                (status.type === "enrolled" ||
+                  status.type === "inProgress") && (
+                  <View
+                    flexDirection="row"
+                    padding={2}
+                    borderRadius={1}
+                    color="background"
+                    css={{ position: "absolute", bottom: 8, left: 10 }}
+                  >
+                    <Icon name="Play" size={[7, 6, 5]} />
+                  </View>
+                )}
             </View>
             <View padding={4} flexGrow={1}>
               <View
@@ -146,19 +138,12 @@ const CourseCard: React.SFC<CourseCardProps> = ({
                 justifyContent="space-between"
                 paddingBottom={2}
               >
-                {title && (
-                  <Text
-                    fontWeight="semibold"
-                    css={{
-                      paddingRight: spacing[3],
-                      display: "-webkit-box",
-                      WebkitLineClamp: 2,
-                      "-webkit-box-orient": "vertical",
-                      overflow: "hidden",
-                    }}
-                  >
-                    {title}
-                  </Text>
+                {author && (
+                  <View paddingBottom={2}>
+                    <Text fontSize={1} color="subtle" lineClamp={1}>
+                      {author}
+                    </Text>
+                  </View>
                 )}
                 {itemList && itemList.length > 0 && (
                   <MoreMenu
@@ -180,12 +165,10 @@ const CourseCard: React.SFC<CourseCardProps> = ({
                   />
                 )}
               </View>
-              {author && (
-                <View paddingBottom={2}>
-                  <Text fontSize={1} color="subtle">
-                    {author}
-                  </Text>
-                </View>
+              {title && (
+                <Text fontWeight="semibold" paddingRight={3} lineClamp={2}>
+                  {title}
+                </Text>
               )}
               {lineList.map((item, index) => (
                 <View
@@ -202,12 +185,19 @@ const CourseCard: React.SFC<CourseCardProps> = ({
                       marginRight={2}
                     />
                   )}
-                  <Text color="subtle" fontSize={1}>
-                    {item.text}
-                  </Text>
+                  {type && index === 0 && (
+                    <Text color="subtle" fontSize={1} lineClamp={1}>
+                      {item.text} ･ {type}
+                    </Text>
+                  )}
+                  {index > 0 && (
+                    <Text color="subtle" fontSize={1} lineClamp={1}>
+                      {item.text}
+                    </Text>
+                  )}
                 </View>
               ))}
-              {children && <Text>{children}</Text>}
+              {children && <Text lineClamp={1}>{children}</Text>}
               {((currency && price > 0) || premium) && (
                 <View
                   flexDirection="row"
@@ -217,7 +207,7 @@ const CourseCard: React.SFC<CourseCardProps> = ({
                 >
                   {currency && price > 0 && (
                     <React.Fragment>
-                      <Text color="accent" fontWeight="semibold">
+                      <Text color="accent" fontWeight="semibold" lineClamp={1}>
                         {formatPrice(currency, price, tax)}
                       </Text>
                       {premium && (
@@ -226,6 +216,7 @@ const CourseCard: React.SFC<CourseCardProps> = ({
                           marginLeft={3}
                           marginRight={3}
                           color="subtle"
+                          lineClamp={1}
                         >
                           or
                         </Text>
