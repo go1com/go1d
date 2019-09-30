@@ -1,8 +1,8 @@
 import * as React from "react";
-
-import * as SpotIcons from "../SpotIcons";
 import Theme from "../Theme";
 import View, { ViewProps } from "../View";
+
+import * as SpotIcons from "../SpotIcons";
 
 export interface SpotIconProps extends ViewProps {
   name: string;
@@ -12,6 +12,7 @@ export interface SpotIconProps extends ViewProps {
 const SpotIcon: React.SFC<SpotIconProps> = ({
   name,
   size = 4,
+  ...props
 }: SpotIconProps) => {
   const SpotIconComponent = SpotIcons[name];
   if (!SpotIconComponent) {
@@ -23,6 +24,8 @@ const SpotIcon: React.SFC<SpotIconProps> = ({
       {({ type, breakpoints }) => (
         <View
           element={SpotIconComponent}
+          color="#31B8DA"
+          {...props}
           css={[
             {
               ...Object.keys(breakpoints).reduce(

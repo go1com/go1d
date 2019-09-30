@@ -208,6 +208,10 @@ export {
   default as PackagePlan,
   PackagePlanProps,
 } from "./components/PackagePlan";
+export {
+  default as PatternIcon,
+  PatternIconProps,
+} from "./components/PatternIcon";
 
 /* Utils */
 export { default as priceFormatterUtil } from "./utils/priceFormatter";
