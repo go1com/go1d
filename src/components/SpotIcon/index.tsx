@@ -1,8 +1,9 @@
 import * as React from "react";
+
+import { colors } from "../../foundations";
+import * as SpotIcons from "../SpotIcons";
 import Theme from "../Theme";
 import View, { ViewProps } from "../View";
-
-import * as SpotIcons from "../SpotIcons";
 
 export interface SpotIconProps extends ViewProps {
   name: string;
@@ -24,7 +25,7 @@ const SpotIcon: React.SFC<SpotIconProps> = ({
       {({ type, breakpoints }) => (
         <View
           element={SpotIconComponent}
-          color="#31B8DA"
+          color={colors.accent}
           {...props}
           css={[
             {
