@@ -10,7 +10,7 @@ export interface PatternIconProps extends ViewProps {
 
 const PatternIcon: React.SFC<PatternIconProps> = ({
   name,
-  size = 50,
+  size = 49,
   children,
   ...props
 }: PatternIconProps) => {

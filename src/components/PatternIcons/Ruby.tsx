@@ -4,7 +4,7 @@ const Ruby: React.SFC<React.SVGProps<SVGSVGElement>> = (
   props: React.SVGProps<SVGSVGElement>
 ) => (
   <svg
-    viewBox="0 0 50 50"
+    viewBox="0 0 49 49"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
     {...props}
@@ -15,39 +15,39 @@ const Ruby: React.SFC<React.SVGProps<SVGSVGElement>> = (
       maskUnits="userSpaceOnUse"
       x="0"
       y="0"
-      width="48"
-      height="50"
+      width="49"
+      height="49"
     >
-      <ellipse cx="24" cy="25.3483" rx="24" ry="24.3669" fill="#C4C4C4" />
+      <circle cx="24.5" cy="24.5" r="24" fill="#C4C4C4" />
     </mask>
     <g mask="url(#mask0)">
       <path
-        d="M-33.5579 2.04338C-33.5579 1.45688 -33.0824 0.98143 -32.4959 0.98143H55.0085C55.595 0.98143 56.0705 1.45688 56.0705 2.04338V54.0279H-33.5579V2.04338Z"
+        d="M-33.0578 1.56195C-33.0578 0.975448 -32.5824 0.5 -31.9959 0.5H55.5086C56.0951 0.5 56.5705 0.97545 56.5705 1.56195V52.7478H-33.0578V1.56195Z"
         fill="#EF535F"
       />
       <mask
         id="mask1"
         mask-type="alpha"
         maskUnits="userSpaceOnUse"
-        x="-34"
-        y="0"
-        width="91"
-        height="55"
+        x="-33"
+        y="-1"
+        width="89"
+        height="54"
       >
         <path
-          d="M-33.5579 2.04338C-33.5579 1.45688 -33.0824 0.98143 -32.4959 0.98143H55.0085C55.595 0.98143 56.0705 1.45688 56.0705 2.04338V54.0279H-33.5579V2.04338Z"
+          d="M-33 0.0619456C-33 -0.524551 -32.5246 -1 -31.9381 -1H54.9381C55.5245 -1 56 -0.52455 56 0.0619469V53H-33V0.0619456Z"
           fill="#F9BD23"
         />
       </mask>
       <g mask="url(#mask1)">
         <path
           opacity="0.45"
-          d="M55.5032 0.98143H-31.7042C-32.728 0.98143 -33.5579 1.81132 -33.5579 2.83505V53.4636L55.5032 0.98143Z"
+          d="M55.4359 0H-31.2042C-32.2279 0 -33.0578 0.829894 -33.0578 1.85362V52.1893L55.4359 0Z"
           fill="#D80011"
         />
         <path
           opacity="0.75"
-          d="M2.74788 0.98143H56.071V53.7457L2.74788 0.98143Z"
+          d="M3.01653 0H56V52.4698L3.01653 0Z"
           fill="#BC0C1A"
           fill-opacity="0.4"
         />

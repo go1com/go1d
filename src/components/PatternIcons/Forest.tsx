@@ -4,13 +4,13 @@ const Forest: React.SFC<React.SVGProps<SVGSVGElement>> = (
   props: React.SVGProps<SVGSVGElement>
 ) => (
   <svg
-    viewBox="0 0 50 50"
+    viewBox="0 0 49 49"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
     {...props}
   >
     <mask id="mask0" mask-type="alpha" maskUnits="userSpaceOnUse" x="0" y="0">
-      <ellipse cx="24" cy="25.3483" rx="24" ry="24.3669" fill="#C4C4C4" />
+      <circle cx="24.5" cy="24.5" r="24" fill="#C4C4C4" />
     </mask>
     <g mask="url(#mask0)">
       <path
