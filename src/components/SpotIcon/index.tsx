@@ -8,7 +8,7 @@ import * as SpotIconBackgrounds from "./SpotIconBackgrounds";
 export interface SpotIconProps extends ViewProps {
   name: string;
   size?: number | number[];
-  background?: string;
+  background?: string | "red" | "blue" | "yellow" | "lime" | "green";
   backgroundType?: "circle" | "square";
 }
 
