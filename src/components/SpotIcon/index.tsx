@@ -24,6 +24,8 @@ const SpotIcon: React.SFC<SpotIconProps> = ({
     return null;
   }
 
+  const ratio = 2;
+
   let SpotIconBackground;
   let iconStyle = {};
   let spotIconStyle = {};
@@ -34,8 +36,8 @@ const SpotIcon: React.SFC<SpotIconProps> = ({
         (acc, bpKey, Index) => ({
           ...acc,
           [breakpoints[bpKey]]: {
-            width: 2 * type.scale[bpKey][size[Index] || size] || "1em",
-            height: 2 * type.scale[bpKey][size[Index] || size] || "1em",
+            width: ratio * type.scale[bpKey][size[Index] || size] || "1em",
+            height: ratio * type.scale[bpKey][size[Index] || size] || "1em",
           },
         }),
         {}
@@ -68,34 +70,32 @@ const SpotIcon: React.SFC<SpotIconProps> = ({
   }
 
   return (
-    <View>
-      <View css={iconStyle}>
-        {background && (
-          <View element={SpotIconBackground} mask={backgroundType} />
-        )}
+    <View css={iconStyle}>
+      {background && (
+        <View element={SpotIconBackground} mask={backgroundType} />
+      )}
 
-        <View
-          element={SpotIconComponent}
-          color={colors.accent}
-          {...spotIconStyle}
-          {...props}
-          css={[
-            {
-              ...Object.keys(breakpoints).reduce(
-                (acc, bpKey, Index) => ({
-                  ...acc,
-                  [breakpoints[bpKey]]: {
-                    width: type.scale[bpKey][size[Index] || size] || "1em",
-                    height: type.scale[bpKey][size[Index] || size] || "1em",
-                  },
-                }),
-                {}
-              ),
-              fill: "none",
-            },
-          ]}
-        />
-      </View>
+      <View
+        element={SpotIconComponent}
+        color={colors.accent}
+        {...spotIconStyle}
+        {...props}
+        css={[
+          {
+            ...Object.keys(breakpoints).reduce(
+              (acc, bpKey, Index) => ({
+                ...acc,
+                [breakpoints[bpKey]]: {
+                  width: type.scale[bpKey][size[Index] || size] || "1em",
+                  height: type.scale[bpKey][size[Index] || size] || "1em",
+                },
+              }),
+              {}
+            ),
+            fill: "none",
+          },
+        ]}
+      />
     </View>
   );
 };

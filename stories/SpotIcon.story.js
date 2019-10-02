@@ -1,17 +1,22 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import { SpotIcon } from '../src';
+import { SpotIcon, View } from '../src';
 storiesOf("SpotIcon", module)
-  .add('SpotIcons', () =>
-    <React.Fragment>
-      <SpotIcon name="SafetyAndCompliance" size={8} background="red" backgroundType="square" /> <br/>
-      <SpotIcon name="SafetyAndCompliance"  background="red" /> <br/>
-      <SpotIcon name="SafetyAndCompliance" background="green" /> <br/>
-      <SpotIcon name="SafetyAndCompliance" background="lime" /> <br/>
-      <SpotIcon name="SafetyAndCompliance" background="warning" /> <br/>
-    </React.Fragment>
-  )
   .add('Business', () => <SpotIcon name="BusinessSkills" />)
   .add('PersonalDevelopment', () => <SpotIcon name="PersonalDevelopment" />)
   .add('SectorSpecific', () => <SpotIcon name="SectorSpecific" />)
   .add('Technology', () => <SpotIcon name="TechnologySkills" />)
+  .add('SpotIcons', () =>
+    <View flexDirection="row">
+      <SpotIcon name="SafetyAndCompliance" background="red" size={10} />
+      <SpotIcon name="SafetyAndCompliance" background="red" backgroundType="square" size={8} />
+      <SpotIcon name="SafetyAndCompliance" background="contrast" backgroundType="square" />
+      <SpotIcon name="SafetyAndCompliance" background="warning" backgroundType="square" />
+      <SpotIcon name="SafetyAndCompliance" background="success" />
+      <SpotIcon name="SafetyAndCompliance" background="red" />
+      <SpotIcon name="TechnologySkills" background="green" />
+      <SpotIcon name="BusinessSkills" background="blue" />
+      <SpotIcon name="PersonalDevelopment" background="yellow" />
+      <SpotIcon name="SectorSpecific" background="lime" />
+    </View>
+  )
