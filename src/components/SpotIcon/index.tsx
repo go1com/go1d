@@ -1,18 +1,22 @@
 import * as React from "react";
 
-import { colors } from "../../foundations";
+import { breakpoints, colors, type } from "../../foundations";
 import * as SpotIcons from "../SpotIcons";
-import Theme from "../Theme";
 import View, { ViewProps } from "../View";
+import * as SpotIconBackgrounds from "./SpotIconBackgrounds";
 
 export interface SpotIconProps extends ViewProps {
   name: string;
   size?: number | number[];
+  background?: string;
+  backgroundType?: "circle" | "square";
 }
 
 const SpotIcon: React.SFC<SpotIconProps> = ({
   name,
   size = 4,
+  background,
+  backgroundType = "circle",
   ...props
 }: SpotIconProps) => {
   const SpotIconComponent = SpotIcons[name];
@@ -20,12 +24,60 @@ const SpotIcon: React.SFC<SpotIconProps> = ({
     return null;
   }
 
+  let SpotIconBackground;
+  let iconStyle = {};
+  let spotIconStyle = {};
+
+  if (background) {
+    const style = {
+      ...Object.keys(breakpoints).reduce(
+        (acc, bpKey, Index) => ({
+          ...acc,
+          [breakpoints[bpKey]]: {
+            width: 2 * type.scale[bpKey][size[Index] || size] || "1em",
+            height: 2 * type.scale[bpKey][size[Index] || size] || "1em",
+          },
+        }),
+        {}
+      ),
+    };
+    iconStyle = {
+      position: "relative",
+      alignItems: "center",
+      justifyContent: "center",
+      ...style,
+    };
+    spotIconStyle = {
+      color: "background",
+      position: "absolute",
+    };
+
+    if (background in SpotIconBackgrounds) {
+      SpotIconBackground = SpotIconBackgrounds[background];
+    } else {
+      SpotIconBackground = () => (
+        <View
+          css={{
+            borderRadius: `${backgroundType === "square" ? 0 : "50%"}`,
+            ...style,
+          }}
+          backgroundColor={background}
+        />
+      );
+    }
+  }
+
   return (
-    <Theme.Consumer>
-      {({ type, breakpoints }) => (
+    <View>
+      <View css={iconStyle}>
+        {background && (
+          <View element={SpotIconBackground} mask={backgroundType} />
+        )}
+
         <View
           element={SpotIconComponent}
           color={colors.accent}
+          {...spotIconStyle}
           {...props}
           css={[
             {
@@ -43,11 +95,11 @@ const SpotIcon: React.SFC<SpotIconProps> = ({
             },
           ]}
         />
-      )}
-    </Theme.Consumer>
+      </View>
+    </View>
   );
 };
 
-SpotIcon.displayName = "Icon";
+SpotIcon.displayName = "SpotIcon";
 
 export default SpotIcon;
