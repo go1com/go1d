@@ -10,13 +10,27 @@ export interface SpotIconProps extends ViewProps {
   size?: number | number[];
   background?: string | "red" | "blue" | "yellow" | "lime" | "green";
   backgroundType?: "circle" | "square";
+  backgroundSize?: number | number[];
 }
+
+const getSize = (bpKey, Index, backgroundSize, ratio, size) => {
+  if (!backgroundSize && !size) {
+    return "1em";
+  }
+  const sizeChosen = backgroundSize || size;
+  const sizePx = type.scale[bpKey][sizeChosen[Index] || sizeChosen];
+  if (backgroundSize) {
+    return sizePx;
+  }
+  return ratio * sizePx;
+};
 
 const SpotIcon: React.SFC<SpotIconProps> = ({
   name,
   size = 4,
   background,
   backgroundType = "circle",
+  backgroundSize,
   ...props
 }: SpotIconProps) => {
   const SpotIconComponent = SpotIcons[name];
@@ -36,8 +50,8 @@ const SpotIcon: React.SFC<SpotIconProps> = ({
         (acc, bpKey, Index) => ({
           ...acc,
           [breakpoints[bpKey]]: {
-            width: ratio * type.scale[bpKey][size[Index] || size] || "1em",
-            height: ratio * type.scale[bpKey][size[Index] || size] || "1em",
+            width: getSize(bpKey, Index, backgroundSize, ratio, size),
+            height: getSize(bpKey, Index, backgroundSize, ratio, size),
           },
         }),
         {}

@@ -8,8 +8,9 @@ storiesOf("SpotIcon", module)
   .add('Technology', () => <SpotIcon name="TechnologySkills" />)
   .add('SpotIcons', () =>
     <View flexDirection="row">
+      <SpotIcon name="SafetyAndCompliance" background="red" size={5} backgroundSize={10} />
       <SpotIcon name="SafetyAndCompliance" background="red" size={10} />
-      <SpotIcon name="SafetyAndCompliance" background="red" backgroundType="square" size={8} />
+      <SpotIcon name="SafetyAndCompliance" background="blue" backgroundType="square" size={8} />
       <SpotIcon name="SafetyAndCompliance" background="contrast" backgroundType="square" />
       <SpotIcon name="SafetyAndCompliance" background="warning" backgroundType="square" />
       <SpotIcon name="SafetyAndCompliance" background="success" />
