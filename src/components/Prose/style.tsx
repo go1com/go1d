@@ -97,5 +97,31 @@ export function getStyles(foundations: FoundationTheme) {
         content: "close-quote",
       },
     },
+    ["code, kbd, pre, samp"]: {
+      padding: "2px 4px",
+      fontSize: "90%",
+      color: "#c7254e",
+      backgroundColor: "#f9f2f4",
+      borderRadius: "4px",
+    },
+    pre: {
+      display: "block",
+      padding: "9.5px",
+      margin: "0 0 10px",
+      color: "#333",
+      wordBreak: "break-all",
+      wordWrap: "break-word",
+      backgroundColor: "#f5f5f5",
+      border: "1px solid #ccc",
+      borderRadius: "4px",
+
+      code: {
+        fontSize: "inherit",
+        color: "inherit",
+        whiteSpace: "pre-wrap",
+        backgroundColor: "transparent",
+        borderRadius: 0,
+      },
+    },
   };
 }
