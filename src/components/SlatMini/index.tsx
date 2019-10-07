@@ -55,7 +55,7 @@ const SlatMini: React.SFC<SlatMiniProps> = ({
           <Text
             key={i}
             color="subtle"
-            display="flex"
+            display="block"
             ellipsis={true}
             fontSize={1}
           >
