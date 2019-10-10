@@ -16,6 +16,7 @@ export interface PackagePlanProps extends ViewProps {
   price: number;
   showYearCalc?: boolean;
   onClick?: (id: number) => void;
+  tax?: { amount: number; included: boolean };
 }
 
 class PackagePlan extends React.Component<PackagePlanProps, any> {
@@ -31,6 +32,7 @@ class PackagePlan extends React.Component<PackagePlanProps, any> {
       currency,
       price,
       showYearCalc = true,
+      tax = {},
       ...props
     } = this.props;
     const yearToMonth =
@@ -93,11 +95,15 @@ class PackagePlan extends React.Component<PackagePlanProps, any> {
                   marginRight={4}
                 >
                   <Text fontWeight="semibold">
-                    {priceFormatterUtil(currency, price)} pp / {interval}
+                    {priceFormatterUtil(currency, price, tax)} pp / {interval}
                   </Text>
                   {yearToMonth && yearToMonth > 0 && (
                     <Text fontSize={1} color="subtle">
-                      {priceFormatterUtil(currency, yearToMonth)} pp / month
+                      {`${priceFormatterUtil(
+                        currency,
+                        yearToMonth,
+                        tax
+                      )} pp / month`}
                     </Text>
                   )}
                 </View>
