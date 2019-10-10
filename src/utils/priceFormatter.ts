@@ -15,6 +15,9 @@ function formatPrice(
   },
   locale: string = "en-US"
 ): string {
+  if (tax && tax.amount > 0 && tax.included) {
+    price += (price * tax.amount) / 100;
+  }
   let output = new Intl.NumberFormat(locale, {
     style: "currency",
     currency,
@@ -27,7 +30,7 @@ function formatPrice(
     output = output.slice(0, -3);
   }
 
-  if (tax && tax.amount > 0 && !tax.included && currency === "AUD") {
+  if (tax && !tax.included && tax.amount === 10 && currency === "AUD") {
     output = `${output} + GST`;
   }
 
