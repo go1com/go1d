@@ -113,7 +113,9 @@ class Carousel extends React.Component<CarouselProps, any> {
     if (typeof children !== "undefined" && children !== null) {
       const Slider: any = this.sliderContainerRef.current;
       const SliderScroll = Slider.scrollLeft + foundations.spacing[gutter];
-      const LastSlideCurrent = this.slideRefs.slice(-1)[0].current;
+      const LastSlideCurrent = this.slideRefs.length
+        ? this.slideRefs.slice(-1)[0].current
+        : null;
 
       if (LastSlideCurrent) {
         const LastSlideRightEdge =

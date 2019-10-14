@@ -72,6 +72,11 @@ it("does not crash", () => {
   jest.runOnlyPendingTimers();
 });
 
+it("does not crash when updating with empty array as children", () => {
+  const { container } = render(<Carousel>{[]}</Carousel>);
+  render(<Carousel>{[]}</Carousel>, { container });
+});
+
 it("Can click next", async () => {
   const { rerender, getByTestId } = render(
     <Carousel size="md">
