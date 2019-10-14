@@ -17,6 +17,7 @@ export interface PackagePlanProps extends ViewProps {
   showYearCalc?: boolean;
   onClick?: (id: number) => void;
   tax?: { amount: number; included: boolean };
+  disabled?: boolean;
 }
 
 class PackagePlan extends React.Component<PackagePlanProps, any> {
@@ -33,6 +34,7 @@ class PackagePlan extends React.Component<PackagePlanProps, any> {
       price,
       showYearCalc = true,
       tax = {},
+      disabled,
       ...props
     } = this.props;
     const yearToMonth =
@@ -51,9 +53,16 @@ class PackagePlan extends React.Component<PackagePlanProps, any> {
               borderRadius={2}
               backgroundColor={selected ? "soft" : "background"}
               padding={spacing[1]}
-              css={{
-                cursor: "pointer",
-              }}
+              disabled={disabled}
+              css={[
+                {
+                  cursor: "pointer",
+                },
+                disabled && {
+                  opacity: 0.5,
+                  pointerEvents: "none",
+                },
+              ]}
               {...props}
               onClick={this.onClick}
             >
