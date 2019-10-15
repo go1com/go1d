@@ -43,6 +43,7 @@ const SpotIcon: React.SFC<SpotIconProps> = ({
   let SpotIconBackground;
   let iconStyle = {};
   let spotIconStyle = {};
+  let spotIconCss = {};
 
   if (background) {
     const style = {
@@ -59,13 +60,18 @@ const SpotIcon: React.SFC<SpotIconProps> = ({
     };
     iconStyle = {
       position: "relative",
-      alignItems: "center",
-      justifyContent: "center",
       ...style,
     };
     spotIconStyle = {
       color: "background",
       position: "absolute",
+    };
+    spotIconCss = {
+      top: 0,
+      bottom: 0,
+      right: 0,
+      left: 0,
+      margin: "auto",
     };
 
     if (background in SpotIconBackgrounds) {
@@ -107,6 +113,7 @@ const SpotIcon: React.SFC<SpotIconProps> = ({
               {}
             ),
             fill: "none",
+            ...spotIconCss,
           },
         ]}
       />
