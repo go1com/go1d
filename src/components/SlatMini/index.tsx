@@ -1,3 +1,4 @@
+import get = require("lodash/get");
 import * as React from "react";
 import ContentType from "../ContentType";
 import Icon from "../Icon";
@@ -18,6 +19,7 @@ export interface SlatMiniProps extends ViewProps {
   typeBackground?: string;
   actionRenderer?: () => React.ReactChild;
   dropdownItems?: DropdownItem[];
+  size?: "lg" | "md" | "sm";
 }
 
 const SlatMini: React.SFC<SlatMiniProps> = ({
@@ -31,6 +33,7 @@ const SlatMini: React.SFC<SlatMiniProps> = ({
   actionRenderer,
   dropdownItems,
   skeleton = false,
+  size = "md",
   ...props
 }: SlatMiniProps) => {
   if (skeleton) {
@@ -68,6 +71,9 @@ const SlatMini: React.SFC<SlatMiniProps> = ({
     return null;
   };
 
+  const imageSize = get({ lg: 9, md: 8, sm: 7 }, size);
+  const iconSize = imageSize - 1;
+
   return (
     <Theme.Consumer>
       {({ colors, spacing }) => {
@@ -88,8 +94,8 @@ const SlatMini: React.SFC<SlatMiniProps> = ({
               alignItems="start"
               backgroundColor="default"
               backgroundOpacity={image ? "none" : "emptyBackground"}
-              height={spacing[8]}
-              width={spacing[8]}
+              height={spacing[imageSize]}
+              width={spacing[imageSize]}
               overflow="hidden"
               position="relative"
               css={{
@@ -106,7 +112,7 @@ const SlatMini: React.SFC<SlatMiniProps> = ({
                   width="100%"
                   opacity="emptyIcon"
                 >
-                  <Icon size={7} name="Empty" color="default" />
+                  <Icon size={iconSize} name="Empty" color="default" />
                 </View>
               )}
 
