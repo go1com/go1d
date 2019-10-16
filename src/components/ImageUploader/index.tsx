@@ -3,7 +3,7 @@ import * as React from "react";
 import { autobind } from "../../utils/decorators";
 import safeInvoke from "../../utils/safeInvoke";
 import BaseUploader from "../BaseUploader";
-import ButtonMinimal from "../ButtonMinimal";
+import ButtonFilled from "../ButtonFilled";
 import Icon from "../Icon";
 import Text from "../Text";
 import Theme from "../Theme";
@@ -220,8 +220,9 @@ class ImageUploader extends React.Component<ImageUploaderProps, State> {
             overflow="hidden"
             height="100%"
           >
-            <ButtonMinimal
+            <ButtonFilled
               iconName="Trash"
+              iconColor="subtle"
               onClick={this.removeImage}
               disabled={disabled}
               mode="light"
@@ -230,8 +231,9 @@ class ImageUploader extends React.Component<ImageUploaderProps, State> {
                 borderBottomRightRadius: 0,
               }}
             />
-            <ButtonMinimal
+            <ButtonFilled
               iconName="Camera"
+              iconColor="subtle"
               onClick={open}
               disabled={disabled}
               mode="light"

@@ -21,6 +21,7 @@ export interface EditFocusModeHeaderProps {
   avatarType?: "square" | "circle";
   tabs?: React.ReactNode;
 }
+const hideOnMobile = ["none", "flex", "flex"];
 
 const EditFocusModeHeader = ({
   returnHref,
@@ -41,9 +42,9 @@ const EditFocusModeHeader = ({
         onClick={returnOnClick}
         paddingY={0}
         paddingX={0}
-        borderRight={1}
+        borderRight={[0, 1, 1]}
         borderColor="soft"
-        width={64}
+        width={[50, 64, 64]}
         height="auto"
       >
         <Icon name={returnIconName} size={3} />
@@ -51,12 +52,12 @@ const EditFocusModeHeader = ({
       <View
         flexGrow={1}
         alignItems="center"
-        paddingX={6}
+        paddingX={[1, 6, 6]}
         flexDirection="row"
         flexShrink={1}
       >
         {avatar && (
-          <View justifyContent="center" marginRight={4}>
+          <View justifyContent="center" marginRight={4} display={hideOnMobile}>
             <Avatar
               iconName="Document"
               src={avatar}
@@ -80,26 +81,56 @@ const EditFocusModeHeader = ({
         </View>
       </View>
       {headerSuffixItems && (
-        <View marginLeft="auto" flexDirection="row-reverse" alignItems="center">
-          <FirstHeaderSuffixNode {...headerSuffixItems[0]} />
-          {headerSuffixItems[1] && (
-            <SecondHeaderSuffixNode {...headerSuffixItems[1]} />
-          )}
-          {headerSuffixItems[2] && (
-            <MoreMenu
-              isButtonFilled={false}
-              itemList={takeRight(
-                headerSuffixItems,
-                headerSuffixItems.length - 2
-              )}
-            />
-          )}
-        </View>
+        <React.Fragment>
+          <View
+            marginLeft="auto"
+            flexDirection="row-reverse"
+            alignItems="center"
+            display={hideOnMobile}
+          >
+            <FirstHeaderSuffixNode {...headerSuffixItems[0]} />
+            {headerSuffixItems[1] && (
+              <SecondHeaderSuffixNode {...headerSuffixItems[1]} />
+            )}
+            {headerSuffixItems[2] && (
+              <MoreMenu
+                isButtonFilled={false}
+                itemList={takeRight(
+                  headerSuffixItems,
+                  headerSuffixItems.length - 2
+                )}
+              />
+            )}
+          </View>
+
+          {/* Mobile view */}
+          <View
+            marginLeft="auto"
+            flexDirection="row-reverse"
+            alignItems="center"
+            display={["flex", "none", "none"]}
+          >
+            <FirstHeaderSuffixNode {...headerSuffixItems[0]} />
+            {headerSuffixItems[1] && (
+              <MoreMenu
+                isButtonFilled={false}
+                itemList={takeRight(
+                  headerSuffixItems,
+                  headerSuffixItems.length - 1
+                )}
+              />
+            )}
+          </View>
+        </React.Fragment>
       )}
     </View>
     {tabs && (
-      <TabNavigation borderTop={0}>
-        <View paddingLeft={6} flexDirection="row">
+      <TabNavigation
+        borderTop={0}
+        paddingLeft={[0, 8, 8]}
+        paddingRight={[0, 8, 8]}
+      >
+        <View paddingLeft={[4, 6, 6]} flexDirection="row">
           {tabs}
         </View>
       </TabNavigation>
@@ -119,6 +150,8 @@ const FirstHeaderSuffixNode: React.SFC<ButtonFilledProps> = ({
     height={65}
     color="accent"
     marginLeft={2}
+    iconMargin={[0, 3, 3]}
+    paddingX={[5, 4, 4]}
     {...props}
     css={[
       {
@@ -132,7 +165,7 @@ const FirstHeaderSuffixNode: React.SFC<ButtonFilledProps> = ({
       css,
     ]}
   >
-    {title}
+    <Text display={hideOnMobile}>{title}</Text>
   </ButtonFilled>
 );
 

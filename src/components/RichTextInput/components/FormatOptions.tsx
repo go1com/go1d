@@ -95,7 +95,7 @@ const FormatOptions: React.SFC<Props> = ({
 }: Props) => (
   <Theme.Consumer>
     {({ colors }) => (
-      <View flexDirection="row">
+      <View flexDirection="row" flexWrap="wrap">
         {h2FormatOption && (
           <FormatButton
             data-testid="blockHeadingTwo"
