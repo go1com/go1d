@@ -174,9 +174,10 @@ class ImageUploadSlat extends React.Component<ImageUploadSlatProps, State> {
         css={{
           cursor: "pointer",
         }}
+        justifyContent={["center", null, null]}
       >
         <View
-          display="flex"
+          display={["none", "flex", "flex"]}
           borderColor="faded"
           borderRight={1}
           alignItems="center"
