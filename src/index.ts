@@ -209,6 +209,8 @@ export {
   PackagePlanProps,
 } from "./components/PackagePlan";
 
+export { default as Stepper, StepperProps } from "./components/Stepper";
+
 /* Utils */
 export { default as priceFormatterUtil } from "./utils/priceFormatter";
 export { default as durationFormatterUtil } from "./utils/durationFormatter";
