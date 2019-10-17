@@ -44,7 +44,7 @@ class TextInput extends React.PureComponent<StepperProps, StepperState> {
 
     let value = props.value;
     if (value === undefined) {
-      value = props.defaultValue || 0;
+      value = props.defaultValue || this.getResetValue();
     }
 
     this.state = {
@@ -54,17 +54,33 @@ class TextInput extends React.PureComponent<StepperProps, StepperState> {
   }
 
   @autobind
+  public getResetValue() {
+    return Math.max(this.props.minNumber, Math.min(this.props.maxNumber, 0));
+  }
+
+  @autobind
   public handleBlur(evt: React.FocusEvent<any>) {
-    if (!evt.target.value || evt.target.value === "-") {
-      this.setState({
-        value: 0,
-      });
-    }
+    const { name } = this.props;
+
     this.setState({
       isFocused: false,
     });
 
-    safeInvoke(this.props.onBlur, evt);
+    let newValue = evt.target.value;
+
+    if (!evt.target.value || evt.target.value === "-") {
+      newValue = this.getResetValue();
+      this.setState({
+        value: newValue,
+      });
+    }
+
+    safeInvoke(this.props.onBlur, {
+      target: {
+        name,
+        value: newValue,
+      },
+    });
   }
 
   @autobind

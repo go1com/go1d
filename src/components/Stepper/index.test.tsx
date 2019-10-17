@@ -29,3 +29,21 @@ it("test blur", () => {
   fireEvent.blur(getByTestId("inputElement"));
   expect(onBlur.mock.calls.length).toBe(1);
 });
+
+it("min max reset value less than 0 max", () => {
+  const { getByTestId } = render(
+    <Stepper id="stepper" minNumber={-5} maxNumber={-3} />
+  );
+
+  const el = getByTestId("inputElement") as any;
+  expect(el.value).toBe("-3");
+});
+
+it("min max reset value greater than 0 max", () => {
+  const { getByTestId } = render(
+    <Stepper id="stepper" minNumber={-5} maxNumber={23} />
+  );
+
+  const el = getByTestId("inputElement") as any;
+  expect(el.value).toBe("0");
+});
