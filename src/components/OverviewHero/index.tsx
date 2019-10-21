@@ -116,7 +116,7 @@ const OverviewHero: React.SFC<OverviewHeroProps> = ({
         flexDirection="row"
       >
         <View
-          paddingRight={6}
+          paddingRight={ctaCard ? 6 : 0}
           css={{
             flex: 1, // IE word warp fix
             [MobileDisplayBreak]: {
@@ -160,33 +160,35 @@ const OverviewHero: React.SFC<OverviewHeroProps> = ({
             )}
           </View>
         </View>
-        <View
-          flexGrow={1}
-          mode="light"
-          justifyContent="flex-start"
-          alignItems="flex-end"
-          css={{
-            position: "relative",
-            background: "transparent",
-            [foundations.breakpoints.sm]: {
-              width: "100%",
-              minWidth: "100%",
-            },
-            [MobileDisplayBreak]: {
-              // When the page goes to single column
-              alignItems: "center",
-            },
-            [foundations.breakpoints.md]: {
-              minWidth: 300,
-            },
-            [foundations.breakpoints.lg]: {
-              minWidth: 360,
-              maxWidth: 400,
-            },
-          }}
-        >
-          {ctaCard}
-        </View>
+        {ctaCard && (
+          <View
+            flexGrow={1}
+            mode="light"
+            justifyContent="flex-start"
+            alignItems="flex-end"
+            css={{
+              position: "relative",
+              background: "transparent",
+              [foundations.breakpoints.sm]: {
+                width: "100%",
+                minWidth: "100%",
+              },
+              [MobileDisplayBreak]: {
+                // When the page goes to single column
+                alignItems: "center",
+              },
+              [foundations.breakpoints.md]: {
+                minWidth: 300,
+              },
+              [foundations.breakpoints.lg]: {
+                minWidth: 360,
+                maxWidth: 400,
+              },
+            }}
+          >
+            {ctaCard}
+          </View>
+        )}
       </Container>
     </View>
     <View
@@ -209,8 +211,8 @@ const OverviewHero: React.SFC<OverviewHeroProps> = ({
           alignItems="flex-start"
         >
           <View
-            maxWidth={700}
-            width="calc(100% - 440px)"
+            maxWidth={ctaCard ? 700 : "100%"}
+            width={ctaCard ? "calc(100% - 440px)" : "100%"}
             css={{
               [MobileDisplayBreak]: {
                 width: "100%",
