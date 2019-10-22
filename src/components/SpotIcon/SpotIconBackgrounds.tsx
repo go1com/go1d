@@ -203,7 +203,7 @@ export const red: React.SFC<React.SVGProps<SVGSVGElement>> = (
           opacity="0.75"
           d="M3.01653 0H56V52.4698L3.01653 0Z"
           fill="#BC0C1A"
-          fill-opacity="0.4"
+          fillOpacity="0.4"
         />
       </g>
     </g>
