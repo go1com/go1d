@@ -96,7 +96,7 @@ class Rating extends React.PureComponent<RatingProps> {
               value={val}
               disabled={disabled}
               width="auto"
-              marginRight={1}
+              paddingRight={1}
               data-testid={`rating-btn-${index}`}
               onMouseOver={
                 !selected || !disabled ? this.onMouseOver : undefined
