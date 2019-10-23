@@ -211,6 +211,8 @@ export {
 
 export { default as Stepper, StepperProps } from "./components/Stepper";
 
+export { default as Rating, RatingProps } from "./components/Rating";
+
 /* Utils */
 export { default as priceFormatterUtil } from "./utils/priceFormatter";
 export { default as durationFormatterUtil } from "./utils/durationFormatter";
