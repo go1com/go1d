@@ -28,6 +28,7 @@ export interface SelectProps extends ViewProps {
   size?: "sm" | "md";
   fontWeight?: FontWeight;
   clearable?: boolean;
+  popperModifiers?: any;
   onClear?: () => void;
 }
 
@@ -136,6 +137,7 @@ class Select extends React.PureComponent<SelectProps, any> {
       fontWeight,
       searchable,
       id,
+      popperModifiers,
       ...remainingProps
     } = this.props;
     let { disabled } = this.props;
@@ -265,7 +267,10 @@ class Select extends React.PureComponent<SelectProps, any> {
                     </Reference>
                     {isOpen && (
                       <Portal>
-                        <Popper placement="bottom-start">
+                        <Popper
+                          placement="bottom-start"
+                          modifiers={popperModifiers}
+                        >
                           {({ ref, style, scheduleUpdate }) => (
                             <View
                               {...getMenuProps({
