@@ -267,9 +267,9 @@ class Select extends React.PureComponent<SelectProps, any> {
                     </Reference>
                     {isOpen && (
                       <Portal>
-                        <Popper 
-                        placement="bottom-start"
-                        modifiers={popperModifiers}
+                        <Popper
+                          placement="bottom-start"
+                          modifiers={popperModifiers}
                         >
                           {({ ref, style, scheduleUpdate }) => (
                             <View
