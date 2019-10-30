@@ -58,6 +58,7 @@ export { default as Go1Logo } from "./Go1Logo";
 export { default as Grid } from "./Grid";
 export { default as HeadingThree } from "./HeadingThree";
 export { default as HeadingTwo } from "./HeadingTwo";
+export { default as HeartOutline } from "./HeartOutline";
 export { default as Help } from "./Help";
 export { default as Home } from "./Home";
 export { default as Import } from "./Import";

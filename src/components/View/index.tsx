@@ -114,6 +114,7 @@ class View extends React.Component<ViewProps> {
       css,
       ...props
     } = this.props;
+
     return (
       <Provider mode={mode}>
         <Theme.Consumer>

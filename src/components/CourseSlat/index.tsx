@@ -39,6 +39,8 @@ export interface CourseSlatProps extends ViewProps {
     included?: boolean;
   };
   premium?: boolean;
+  rating?: number;
+  ratingRenderer?: (rating: number) => React.ReactNode;
 }
 
 const interactiveStyle = (colors, passive) => {
@@ -152,11 +154,14 @@ const CourseSlat: React.SFC<CourseSlatProps> = ({
   tax,
   skeleton = false,
   premium = false,
+  rating,
+  ratingRenderer,
   ...props
 }: CourseSlatProps) => {
   if (skeleton) {
     return <Skeleton />;
   }
+
   return (
     <Theme.Consumer>
       {({ spacing, breakpoints, colors }) => {
@@ -313,26 +318,31 @@ const CourseSlat: React.SFC<CourseSlatProps> = ({
                 <View flexDirection="row" alignItems="center">
                   {currency && !enrollment && price > 0 && (
                     <React.Fragment>
-                      <Text color="accent" fontWeight="semibold">
+                      <Text
+                        color="accent"
+                        fontWeight="semibold"
+                        marginRight={3}
+                      >
                         {formatPrice(currency, price, tax)}
                       </Text>
                       {premium && (
-                        <Text
-                          fontSize={1}
-                          marginLeft={3}
-                          marginRight={3}
-                          color="subtle"
-                        >
+                        <Text fontSize={1} marginRight={3} color="subtle">
                           or
                         </Text>
                       )}
                     </React.Fragment>
                   )}
                   {premium && !enrollment && (
-                    <Pill fontSize={1} paddingY={1} color="accent">
+                    <Pill
+                      fontSize={1}
+                      marginRight={2}
+                      paddingY={1}
+                      color="accent"
+                    >
                       Premium
                     </Pill>
                   )}
+                  {ratingRenderer && ratingRenderer(rating)}
                 </View>
 
                 {enrollment && enrollmentProgressRenderer(enrollment)}
