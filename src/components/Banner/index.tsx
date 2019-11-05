@@ -7,7 +7,7 @@ import Theme from "../Theme";
 import View, { ViewProps } from "../View";
 
 export interface BannerProps extends ViewProps {
-  type: "success" | "warning" | "danger";
+  type: "success" | "warning" | "danger" | "note";
   close?: (evt: React.SyntheticEvent) => void;
   floating?: boolean;
 }
@@ -19,8 +19,9 @@ const Banner: React.SFC<BannerProps> = ({
   floating,
   ...props
 }: BannerProps) => {
-  const iconType = type.charAt(0).toUpperCase() + type.slice(1);
-  const tintLevel = type === "success" ? 0.1 : type === "warning" ? 0.2 : 0.2;
+  const iconType =
+    type === "note" ? `Danger` : type.charAt(0).toUpperCase() + type.slice(1);
+  const tintLevel = type === "success" ? 0.1 : type === "note" ? 0.1 : 0.2;
   return (
     <Theme.Consumer>
       {({ colors }) => (
