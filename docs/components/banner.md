@@ -42,6 +42,18 @@ releaseVersion: 0.0.36
   </Text>
 </Banner>
 ```
+## Type note
+```.jsx
+<Banner
+  type="note"
+  close={() => alert('close event')}
+>
+  <Text fontWeight="semibold">Please note: </Text>
+  <Text>
+    This is a message <Link css={{ display: 'inline', fontWeight: '600', textDecoration: 'underline' }} href="https://foo.com">read more</Link>.
+  </Text>
+</Banner>
+```
 
 
 ```!jsx
