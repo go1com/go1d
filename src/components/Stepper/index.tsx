@@ -44,7 +44,7 @@ class TextInput extends React.PureComponent<StepperProps, StepperState> {
 
     let value = props.value;
     if (value === undefined) {
-      value = props.defaultValue || this.getResetValue();
+      value = props.defaultValue || this.getResetValue(value);
     }
 
     this.state = {
@@ -54,26 +54,48 @@ class TextInput extends React.PureComponent<StepperProps, StepperState> {
   }
 
   @autobind
-  public getResetValue() {
-    return Math.max(this.props.minNumber, Math.min(this.props.maxNumber, 0));
+  public getResetValue(value?: string | number) {
+    value = Number(value);
+    if (isNaN(value)) {
+      value = 0;
+    }
+
+    return (
+      this.props.defaultValue ||
+      Math.max(this.props.minNumber, Math.min(this.props.maxNumber, value))
+    );
   }
 
   @autobind
-  public handleBlur(evt: React.FocusEvent<any>) {
-    const { name } = this.props;
+  public handleBlur() {
+    const { name, maxNumber, minNumber } = this.props;
+    const { value } = this.state;
 
     this.setState({
       isFocused: false,
     });
 
-    let newValue = evt.target.value;
+    let newValue = value;
 
-    if (!evt.target.value || evt.target.value === "-") {
-      newValue = this.getResetValue();
-      this.setState({
-        value: newValue,
-      });
+    if (
+      newValue > maxNumber ||
+      newValue < minNumber ||
+      !value ||
+      value === "-"
+    ) {
+      newValue = this.getResetValue(this.state.value);
     }
+
+    this.setState({
+      value: newValue,
+    });
+
+    safeInvoke(this.props.onChange, {
+      target: {
+        name,
+        value: newValue === 0 ? String(newValue) : newValue,
+      },
+    });
 
     safeInvoke(this.props.onBlur, {
       target: {
@@ -85,7 +107,7 @@ class TextInput extends React.PureComponent<StepperProps, StepperState> {
 
   @autobind
   public handleChange(evt: React.ChangeEvent<any>) {
-    const { maxNumber, minNumber, name } = this.props;
+    const { name } = this.props;
     if (evt.target.value === "-") {
       this.setState({
         value: evt.target.value,
@@ -101,23 +123,14 @@ class TextInput extends React.PureComponent<StepperProps, StepperState> {
 
     const reg = new RegExp("^-?[0-9]+$");
     if (reg.test(evt.target.value)) {
-      let newValue: number | string = Number(evt.target.value);
-      if (!this.props.value) {
-        if (newValue > maxNumber || newValue < minNumber) {
-          newValue = this.state.value;
-        }
-        this.setState({
-          value: newValue,
-        });
-      } else {
-        if (newValue > maxNumber || newValue < minNumber) {
-          newValue = this.props.value;
-        }
-      }
+      const newValue: number | string = Number(evt.target.value);
+      this.setState({
+        value: newValue,
+      });
       safeInvoke(this.props.onChange, {
         target: {
           name,
-          value: newValue,
+          value: newValue === 0 ? String(newValue) : newValue,
         },
       });
     } else if (!evt.target.value) {
@@ -221,11 +234,16 @@ class TextInput extends React.PureComponent<StepperProps, StepperState> {
       ...props
     } = this.props;
 
-    let value: number | string =
-      propValue === undefined ? this.state.value : propValue;
+    let value: string | number = propValue;
 
-    if (value === 0 && (this.state.value === "" || this.state.value === "-")) {
+    if (value === undefined) {
       value = this.state.value;
+    }
+
+    if (this.state.value === "" || this.state.value === "-") {
+      value = this.state.value;
+    } else {
+      value = Number(value);
     }
 
     return (
