@@ -55,6 +55,10 @@ class TextInput extends React.PureComponent<StepperProps, StepperState> {
 
   @autobind
   public getResetValue(value?: string | number) {
+    if (!value && this.props.defaultValue === undefined) {
+      return null;
+    }
+
     value = Number(value);
     if (isNaN(value)) {
       value = 0;
@@ -134,15 +138,13 @@ class TextInput extends React.PureComponent<StepperProps, StepperState> {
         },
       });
     } else if (!evt.target.value) {
-      if (!this.props.value) {
-        this.setState({
-          value: "",
-        });
-      }
+      this.setState({
+        value: null,
+      });
       safeInvoke(this.props.onChange, {
         target: {
           name,
-          value: 0,
+          value: null,
         },
       });
     }
@@ -238,12 +240,6 @@ class TextInput extends React.PureComponent<StepperProps, StepperState> {
 
     if (value === undefined) {
       value = this.state.value;
-    }
-
-    if (this.state.value === "" || this.state.value === "-") {
-      value = this.state.value;
-    } else {
-      value = Number(value);
     }
 
     return (
