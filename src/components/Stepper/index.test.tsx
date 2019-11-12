@@ -36,7 +36,7 @@ it("min max reset value less than 0 max", () => {
   );
 
   const el = getByTestId("inputElement") as any;
-  expect(el.value).toBe("-3");
+  expect(el.value).toBe("");
 });
 
 it("min max reset value greater than 0 max", () => {
@@ -45,5 +45,5 @@ it("min max reset value greater than 0 max", () => {
   );
 
   const el = getByTestId("inputElement") as any;
-  expect(el.value).toBe("0");
+  expect(el.value).toBe("");
 });
