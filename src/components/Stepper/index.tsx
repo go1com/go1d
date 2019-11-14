@@ -3,13 +3,14 @@ import { autobind } from "../../utils/decorators";
 import safeInvoke from "../../utils/safeInvoke";
 import ButtonMinimal from "../ButtonMinimal";
 import Text, { TextProps } from "../Text";
+import Theme from "../Theme";
 import View from "../View";
 
 export interface StepperProps extends TextProps {
   id: string;
   name?: string;
   value?: number;
-  label?: string;
+  unitLabel?: string;
   stepIncrement?: number;
   maxNumber?: number;
   minNumber?: number;
@@ -233,6 +234,8 @@ class TextInput extends React.PureComponent<StepperProps, StepperState> {
       onFocus,
       maxNumber,
       minNumber,
+      unitLabel,
+      boxShadow = "inner",
       ...props
     } = this.props;
 
@@ -243,66 +246,85 @@ class TextInput extends React.PureComponent<StepperProps, StepperState> {
     }
 
     return (
-      <View
-        borderRadius={borderRadius}
-        backgroundColor="background"
-        border={1}
-        borderColor={this.getBorderColor()}
-        boxShadow="inner"
-        flexDirection="row"
-        alignItems="center"
-        htmlFor={id}
-        opacity={disabled ? "disabled" : null}
-      >
-        <View backgroundColor="transparent">
-          <ButtonMinimal
-            size="md"
-            iconName="Minus"
-            color="default"
-            onClick={this.decrement}
-            disabled={
-              disabled ||
-              (minNumber !== undefined &&
-                typeof value === "number" &&
-                value - Math.abs(stepIncrement) < minNumber)
-            }
-          />
-        </View>
-        <View flexBasis="100%" flexShrink={1}>
-          <Text
-            id={id}
-            value={value}
-            element="input"
-            type="text"
-            lineHeight="ui"
-            paddingX={3}
-            paddingY={3}
-            color="inherit"
-            onChange={this.handleChange}
-            onFocus={this.handleFocus}
-            disabled={disabled}
-            onBlur={this.handleBlur}
-            data-testid="inputElement"
-            textAlign="center"
-            {...props}
-          />
-        </View>
-        <View backgroundColor="transparent">
-          <ButtonMinimal
-            size="md"
-            iconName="Plus"
-            color="default"
-            onClick={this.increment}
-            data-testid="increment"
-            disabled={
-              disabled ||
-              (maxNumber !== undefined &&
-                typeof value === "number" &&
-                value + Math.abs(stepIncrement) > maxNumber)
-            }
-          />
-        </View>
-      </View>
+      <Theme.Consumer>
+        {({ spacing }) => (
+          <View
+            flexDirection="row"
+            border={1}
+            borderColor={this.getBorderColor()}
+            borderRadius={borderRadius}
+            backgroundColor="background"
+            boxShadow={boxShadow}
+            alignItems="center"
+            htmlFor={id}
+            opacity={disabled ? "disabled" : null}
+          >
+            <View backgroundColor="transparent">
+              <ButtonMinimal
+                size="md"
+                iconName="Minus"
+                color="default"
+                onClick={this.decrement}
+                disabled={
+                  disabled ||
+                  (minNumber !== undefined &&
+                    typeof value === "number" &&
+                    value - Math.abs(stepIncrement) < minNumber)
+                }
+              />
+            </View>
+            <View flexBasis="100%" flexShrink={1}>
+              <Text
+                id={id}
+                value={value}
+                element="input"
+                type="text"
+                lineHeight="ui"
+                paddingX={3}
+                paddingY={3}
+                color="inherit"
+                onChange={this.handleChange}
+                onFocus={this.handleFocus}
+                disabled={disabled}
+                onBlur={this.handleBlur}
+                data-testid="inputElement"
+                textAlign="center"
+                {...props}
+              />
+            </View>
+            <View backgroundColor="transparent">
+              <ButtonMinimal
+                size="md"
+                iconName="Plus"
+                color="default"
+                onClick={this.increment}
+                data-testid="increment"
+                disabled={
+                  disabled ||
+                  (maxNumber !== undefined &&
+                    typeof value === "number" &&
+                    value + Math.abs(stepIncrement) > maxNumber)
+                }
+              />
+            </View>
+            {unitLabel && (
+              <View
+                backgroundColor="soft"
+                justifyContent="center"
+                paddingX={4}
+                borderLeft={1}
+                borderColor={this.getBorderColor()}
+                css={{
+                  borderRadius: `0 ${spacing[2]}px ${spacing[2]}px 0`,
+                  alignSelf: "stretch",
+                }}
+              >
+                {unitLabel}
+              </View>
+            )}
+          </View>
+        )}
+      </Theme.Consumer>
     );
   }
 }

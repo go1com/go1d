@@ -1,15 +1,15 @@
 ---
 title: Stepper
-lead: 
+lead:
 status: ready
 ---
 
 ## Examples
 
-### Value supplied 
+### Value supplied
 ```.jsx
-<View width={150}>
-    <Stepper id="stepper" value={0} />
+<View width={200}>
+    <Stepper id="stepper" value={0} unitLabel="Hours" borderColor="muted" boxShadow="none" />
 </View>
 ```
 
