@@ -200,7 +200,7 @@ class TextInput extends React.PureComponent<StepperProps, StepperState> {
       return typeof this.state.value === "number" ? this.state.value : 0;
     }
 
-    return nextValue;
+    return Number(nextValue);
   }
 
   @autobind
@@ -293,6 +293,7 @@ class TextInput extends React.PureComponent<StepperProps, StepperState> {
             iconName="Plus"
             color="default"
             onClick={this.increment}
+            data-testid="increment"
             disabled={
               disabled ||
               (maxNumber !== undefined &&

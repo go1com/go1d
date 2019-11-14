@@ -1,5 +1,7 @@
 import * as React from "react";
 import { cleanup, fireEvent, render } from "react-testing-library";
+import Field from "../Field";
+import Form from "../Form";
 import Stepper from "./index";
 
 afterEach(cleanup);
@@ -46,4 +48,30 @@ it("min max reset value greater than 0 max", () => {
 
   const el = getByTestId("inputElement") as any;
   expect(el.value).toBe("");
+});
+
+it("handles strings increment decrement", () => {
+  const { getByTestId } = render(
+    <Form initialValues={{ num: "1" }} onSubmit={jest.fn()}>
+      <Field component={Stepper} name="num" />
+    </Form>
+  );
+
+  const inc = getByTestId("increment") as any;
+  fireEvent.click(inc);
+  const el = getByTestId("inputElement") as any;
+  expect(el.value).toBe("2");
+});
+
+it("handles null", () => {
+  const { getByTestId } = render(
+    <Form initialValues={{ num: null }} onSubmit={jest.fn()}>
+      <Field component={Stepper} name="num" />
+    </Form>
+  );
+
+  const inc = getByTestId("increment") as any;
+  fireEvent.click(inc);
+  const el = getByTestId("inputElement") as any;
+  expect(el.value).toBe("1");
 });
