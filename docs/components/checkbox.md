@@ -12,6 +12,16 @@ releaseVersion: 0.0.71
 <Checkbox name="Test" label="Test" />
 ```
 
+### Label small
+```.jsx
+<Checkbox size="sm" name="Test" label="Test" />
+```
+
+### Label large
+```.jsx
+<Checkbox size="lg" name="Test" label="Test" />
+```
+
 ## Child label
 ```.jsx
 <Checkbox name="Test">

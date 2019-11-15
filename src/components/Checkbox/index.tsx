@@ -1,3 +1,4 @@
+import get = require("lodash/get");
 import * as React from "react";
 import safeInvoke from "../../utils/safeInvoke";
 import Base from "../Base";
@@ -13,7 +14,26 @@ export interface CheckboxProps extends TextProps {
   disabled?: boolean;
   error?: boolean;
   isStatic?: boolean; // If true onChange will stop working. It'll be just the markup of a Checkbox
+  size?: "lg" | "md" | "sm";
 }
+
+const checkboxSizes = {
+  lg: 32,
+  md: 24,
+  sm: 16,
+};
+
+const iconSizes = {
+  lg: 4,
+  md: 2,
+  sm: 1,
+};
+
+const fontSizes = {
+  lg: 3,
+  md: 2,
+  sm: 1,
+};
 
 class Checkbox extends React.Component<
   CheckboxProps,
@@ -71,7 +91,7 @@ class Checkbox extends React.Component<
       children,
       label,
       error, // Do not pass
-      fontSize = 2,
+      fontSize,
       onChange, // Do not pass
       marginX,
       marginY,
@@ -80,12 +100,18 @@ class Checkbox extends React.Component<
       marginBottom,
       disabled = false,
       color = "contrast",
+      size = "md",
       fontWeight,
       ...props
     } = this.props;
 
     const value =
       propValue === undefined || propValue === "" ? checkedState : propValue;
+
+    const checkboxSize = get(checkboxSizes, size);
+    const iconSize = get(iconSizes, size);
+    const scaledFontSize =
+      fontSize !== undefined ? fontSize : get(fontSizes, size);
 
     return (
       <React.Fragment>
@@ -109,18 +135,18 @@ class Checkbox extends React.Component<
             alignItems="center"
             justifyContent="center"
             opacity={disabled ? "disabled" : null}
+            width={checkboxSize}
+            height={checkboxSize}
             css={{
-              height: 24,
-              width: 24,
               borderWidth: 1,
             }}
           >
-            {value && <Icon color="accent" name="Check" />}
+            {value && <Icon size={iconSize} color="accent" name="Check" />}
           </View>
           <Text
             color={color}
             fontWeight={fontWeight}
-            fontSize={fontSize}
+            fontSize={scaledFontSize}
             title={label}
             paddingLeft={3}
             ellipsis={true}
