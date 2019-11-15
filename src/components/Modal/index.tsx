@@ -4,6 +4,7 @@ import { css } from "emotion";
 import foundations from "../../foundations";
 import { autobind } from "../../utils/decorators";
 import ButtonMinimal from "../ButtonMinimal";
+import MoreMenu from "../MoreMenu";
 import Portal from "../Portal";
 import Text from "../Text";
 import View, { ViewProps } from "../View";
@@ -17,6 +18,7 @@ export interface ModalProps extends ViewProps {
   disableBackgroundClose?: boolean;
   headerIcon?: string;
   headerAction?: () => void;
+  moreMenu?: MoreMenu;
 }
 
 const modalOpenClassName = css`
@@ -118,6 +120,7 @@ class Modal extends React.Component<ModalProps, any> {
       children,
       headerIcon = "Cross",
       headerAction,
+      moreMenu,
       ...viewProps
     } = this.props;
 
@@ -209,6 +212,7 @@ class Modal extends React.Component<ModalProps, any> {
                   {title}
                 </Text>
               </View>
+              <View marginRight={4}>{moreMenu}</View>
             </View>
             <View padding={5} flexGrow={1}>
               {children}
