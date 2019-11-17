@@ -13,6 +13,24 @@ releaseVersion: 0.0.23
     isOpen={on}
     onRequestClose={flop}
     title="It's A Modal!"
+    moreMenu={
+      <MoreMenu
+        itemList={[
+            {
+              title: "Add",
+              iconName: "Plus",
+              iconColor: "muted"
+            },
+            {
+              title: "Delete",
+              color: "danger",
+              iconName: "Trash",
+              iconColor: "danger",
+            },
+          ]}
+        isButtonFilled={false}
+      />
+    }
   >
   <Text>Are you sure you want to close the modal?</Text>
   <View flexDirection="row" justifyContent="space-between" marginTop={5}>
