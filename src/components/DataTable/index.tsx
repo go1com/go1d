@@ -8,6 +8,7 @@ import {
   ListRowRenderer,
   WindowScroller,
 } from "react-virtualized";
+import { TH } from "../..";
 import { autobind } from "../../utils/decorators";
 import safeInvoke from "../../utils/safeInvoke";
 import ButtonFilled from "../ButtonFilled";
@@ -27,7 +28,7 @@ export interface DataTableProps extends ViewProps {
   /** Function to render a row */
   rowRenderer: ListRowRenderer;
   /*
-   * A header row. Rendered inside a TR component
+   * A header row. Rendered inside a TR component. This is ignored if you supply a columns array.
    */
   header?: React.ReactNodeArray;
   /** A string to display the total number of results */
@@ -63,6 +64,11 @@ export interface DataTableProps extends ViewProps {
   hideScrollButton?: boolean;
   scrollElement?: any;
   isListLoading?: boolean;
+
+  /**
+   * an array representing the columns that should be represented in this table.
+   */
+  columns?: any[];
 }
 
 class DataTable extends React.Component<DataTableProps, {}> {
@@ -119,6 +125,7 @@ class DataTable extends React.Component<DataTableProps, {}> {
       rowHeight,
       rowRenderer,
       rowCount,
+      columns,
       header,
       total,
       css,
@@ -136,6 +143,31 @@ class DataTable extends React.Component<DataTableProps, {}> {
     } = this.props;
 
     let renderFunction = rowRenderer;
+
+    // if no render function has been supplied, but we do have a columns array, then we can iterate through each column rendering a cell
+    if (!renderFunction && columns) {
+      renderFunction = ({
+        index,
+        isScrolling,
+        isVisible,
+        key,
+        parent,
+        style,
+      }) => (
+        <TR key={key} style={style}>
+          {columns.map(column =>
+            column.cellRenderer(
+              index,
+              isScrolling,
+              isVisible,
+              key,
+              parent,
+              style
+            )
+          )}
+        </TR>
+      );
+    }
 
     if (this.props.autoRowHeight) {
       const oldRenderFunction = renderFunction;
@@ -174,7 +206,7 @@ class DataTable extends React.Component<DataTableProps, {}> {
                 css,
               ]}
             >
-              {header && (
+              {(header || columns) && (
                 <TR
                   position="sticky"
                   backgroundColor={viewProps.backgroundColor || "background"}
@@ -182,7 +214,9 @@ class DataTable extends React.Component<DataTableProps, {}> {
                   zIndex={zIndex.sticky}
                   innerRef={this.setHeader}
                 >
-                  {header}
+                  {columns &&
+                    columns.map((column, key) => column.headerRenderer(key))}
+                  {header && header}
                 </TR>
               )}
               <Loader {...this.props} innerRef={this.loaderRef}>

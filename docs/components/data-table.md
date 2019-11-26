@@ -4,11 +4,14 @@ status: ready
 releaseVersion: 0.0.40
 ---
 
-This component renders a table. It can do this in one of two ways. Either by supplying the rows to the table, or by supplying a function to render each row out. This uses the TR and TH components from the Table component.
+This component renders a table. It can do this in one of two ways. Either by supplying columns (which each include a header and cell renderer), or by supplying a function to render each row out and an array of headers. This uses the TR and TH components from the Table component.
 
 ## Examples
 
-### Basic Table using a row renderer
+### Basic Table using a row renderer and header array
+
+Supply a header array and it will be put at the top of the table. Supply a row renderer and it will be used to render out the rows for the table. 
+
 ```.jsx
 <DataTable
   rowHeight={55}
@@ -22,6 +25,32 @@ This component renders a table. It can do this in one of two ways. Either by sup
     <TH key="0" text="Index Number" />,
     <TH key="1" text="Key" />,
   ]}
+/>
+```
+
+### Basic Table using a column array
+
+Supply an array of columns and the header and cell renderer will be used to create the table
+
+```.jsx
+<DataTable
+  rowHeight={55}
+  total="10 Items"
+  columns={[
+    { 
+      headerRenderer: (key) => <TH key={key} text="First Column" flexBasis="100%" />,
+      cellRenderer: (key) => <TD flexBasis="100%">First Cell {key}</TD>,
+    },
+    {
+      headerRenderer: (key) => <TH key={key} text="Second Column" width="100px" />,
+      cellRenderer: (key) => <TD width="100px">Second Cell {key}</TD>,
+    },
+    {
+      headerRenderer: (key) =>  <TH key={key} text="Third Column" />,
+      cellRenderer: (key) => <TD>Third Cell {key}</TD>,
+    },
+  ]}
+  rowCount={2}
 />
 ```
 
