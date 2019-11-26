@@ -12,11 +12,22 @@ npm install @go1d/go1d
 - (WIP) Developer documentation can be found at [https://go1d.go1.com/storybook](https://go1d.go1.com/storybook)
 
 ## Build / Run
+
+To install dependency libraries:
+```sh
+npm install
+```
+
+To run locally, choose which method you want to use:
+
 ```sh
 npm run docs:dev
 npm run storybook
 npm run npm:dev
+```
 
+To create a deployment build, choose which method you want to use:
+```sh
 npm run docs:build
 npm run storybook:build
 npm run npm:build

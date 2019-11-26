@@ -8,7 +8,6 @@ import {
   ListRowRenderer,
   WindowScroller,
 } from "react-virtualized";
-import { TH } from "../..";
 import { autobind } from "../../utils/decorators";
 import safeInvoke from "../../utils/safeInvoke";
 import ButtonFilled from "../ButtonFilled";
@@ -26,7 +25,7 @@ export interface DataTableProps extends ViewProps {
   /** The total number of rows that can be loaded. Used for autoloading. */
   rowCount: number;
   /** Function to render a row */
-  rowRenderer: ListRowRenderer;
+  rowRenderer?: ListRowRenderer;
   /*
    * A header row. Rendered inside a TR component. This is ignored if you supply a columns array.
    */
@@ -66,7 +65,8 @@ export interface DataTableProps extends ViewProps {
   isListLoading?: boolean;
 
   /**
-   * an array representing the columns that should be represented in this table.
+   * an array representing the columns that should be rendered in this table. each entry in the array contains a header renderer and a cell renderer.
+   * eg. { headerRenderer: () => <TH text="Column Heading" />, cellRenderer: () => <TD>Row cell</TD> }
    */
   columns?: any[];
 }
@@ -216,7 +216,7 @@ class DataTable extends React.Component<DataTableProps, {}> {
                 >
                   {columns &&
                     columns.map((column, key) => column.headerRenderer(key))}
-                  {header && header}
+                  {!columns && header && header}
                 </TR>
               )}
               <Loader {...this.props} innerRef={this.loaderRef}>
@@ -265,14 +265,13 @@ class DataTable extends React.Component<DataTableProps, {}> {
                         </View>
                         {!hideScrollButton && scrollTop > 0 && (
                           <ButtonFilled
-                            color="contrast"
                             onClick={this.scrollToTop}
                             position="sticky"
                             marginTop={4}
                             marginLeft="auto"
                             css={{ bottom: spacing[4] }}
                           >
-                            <Icon name="ChevronUp" color="background" />
+                            <Icon name="ChevronUp" />
                           </ButtonFilled>
                         )}
                       </React.Fragment>
