@@ -216,7 +216,7 @@ class DataTable extends React.Component<DataTableProps, {}> {
                 >
                   {columns &&
                     columns.map((column, key) => column.headerRenderer(key))}
-                  {!columns && header && header}
+                  {!columns && header}
                 </TR>
               )}
               <Loader {...this.props} innerRef={this.loaderRef}>
