@@ -41,6 +41,7 @@ export interface CourseSlatProps extends ViewProps {
   premium?: boolean;
   rating?: number;
   ratingRenderer?: (rating: number) => React.ReactNode;
+  imageOverlayRenderer?: () => React.ReactNode;
 }
 
 const interactiveStyle = (colors, passive) => {
@@ -156,6 +157,7 @@ const CourseSlat: React.SFC<CourseSlatProps> = ({
   premium = false,
   rating,
   ratingRenderer,
+  imageOverlayRenderer,
   ...props
 }: CourseSlatProps) => {
   if (skeleton) {
@@ -238,6 +240,7 @@ const CourseSlat: React.SFC<CourseSlatProps> = ({
                   )}
                 </View>
               )}
+              {imageOverlayRenderer && imageOverlayRenderer()}
             </View>
             <View
               paddingY={4}

@@ -20,6 +20,7 @@ it("renders without crashing with all props", () => {
       duration={4}
       actionRender={testRenderer}
       contentRender={testRenderer}
+      imageOverlayRenderer={testRenderer}
       enrollment={{ status: "completed", dueDate: "" }}
       type="Course"
       typeIcon="Course"
