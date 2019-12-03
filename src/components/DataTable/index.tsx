@@ -68,7 +68,12 @@ export interface DataTableProps extends ViewProps {
    * an array representing the columns that should be rendered in this table. each entry in the array contains a header renderer and a cell renderer.
    * eg. { headerRenderer: () => <TH text="Column Heading" />, cellRenderer: () => <TD>Row cell</TD> }
    */
-  columns?: any[];
+  columns?: DataTableColumn[];
+}
+
+interface DataTableColumn {
+  cellRenderer: ({}) => void;
+  headerRenderer: ({}) => void;
 }
 
 class DataTable extends React.Component<DataTableProps, {}> {
@@ -146,25 +151,9 @@ class DataTable extends React.Component<DataTableProps, {}> {
 
     // if no render function has been supplied, but we do have a columns array, then we can iterate through each column rendering a cell
     if (!renderFunction && columns) {
-      renderFunction = ({
-        index,
-        isScrolling,
-        isVisible,
-        key,
-        parent,
-        style,
-      }) => (
-        <TR key={key} style={style}>
-          {columns.map(column =>
-            column.cellRenderer(
-              index,
-              isScrolling,
-              isVisible,
-              key,
-              parent,
-              style
-            )
-          )}
+      renderFunction = ({ ...args }) => (
+        <TR key={args.key} style={args.style}>
+          {columns.map(column => column.cellRenderer({ ...args }))}
         </TR>
       );
     }
@@ -215,7 +204,7 @@ class DataTable extends React.Component<DataTableProps, {}> {
                   innerRef={this.setHeader}
                 >
                   {columns &&
-                    columns.map((column, key) => column.headerRenderer(key))}
+                    columns.map(column => column.headerRenderer(this.props))}
                   {!columns && header}
                 </TR>
               )}
