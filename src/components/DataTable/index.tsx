@@ -71,9 +71,9 @@ export interface DataTableProps extends ViewProps {
   columns?: DataTableColumn[];
 }
 
-interface DataTableColumn {
-  cellRenderer: ({}) => void;
-  headerRenderer: ({}) => void;
+export interface DataTableColumn {
+  cellRenderer: any;
+  headerRenderer: any;
 }
 
 class DataTable extends React.Component<DataTableProps, {}> {

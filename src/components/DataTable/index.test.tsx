@@ -43,16 +43,16 @@ it("renders without crashing using the columns approach", () => {
       total="Many things"
       columns={[
         {
-          headerRenderer: key => (
+          headerRenderer: ({ key }) => (
             <TH key={key} text="First Column" flexBasis="100%" />
           ),
-          cellRenderer: key => <TD flexBasis="100%">First Cell {key}</TD>,
+          cellRenderer: ({ key }) => <TD flexBasis="100%">First Cell {key}</TD>,
         },
         {
-          headerRenderer: key => (
+          headerRenderer: ({ key }) => (
             <TH key={key} text="Second Column" width="100px" />
           ),
-          cellRenderer: key => <TD width="100px">Second Cell {key}</TD>,
+          cellRenderer: ({ key }) => <TD width="100px">Second Cell {key}</TD>,
         },
       ]}
     />

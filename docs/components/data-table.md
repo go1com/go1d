@@ -38,16 +38,16 @@ Supply an array of columns and the header and cell renderer will be used to crea
   total="10 Items"
   columns={[
     { 
-      headerRenderer: (key) => <TH key={key} text="First Column" flexBasis="100%" />,
-      cellRenderer: (key) => <TD flexBasis="100%">First Cell {key}</TD>,
+      headerRenderer: ({key}) => <TH key={key} text="First Column" flexBasis="100%" />,
+      cellRenderer: ({key}) => <TD flexBasis="100%">First Cell {key}</TD>,
     },
     {
-      headerRenderer: (key) => <TH key={key} text="Second Column" width="100px" />,
-      cellRenderer: (key) => <TD width="100px">Second Cell {key}</TD>,
+      headerRenderer: ({key}) => <TH key={key} text="Second Column" width="100px" />,
+      cellRenderer: ({key}) => <TD width="100px">Second Cell {key}</TD>,
     },
     {
-      headerRenderer: (key) =>  <TH key={key} text="Third Column" />,
-      cellRenderer: (key) => <TD>Third Cell {key}</TD>,
+      headerRenderer: ({key}) =>  <TH key={key} text="Third Column" />,
+      cellRenderer: ({key}) => <TD>Third Cell {key}</TD>,
     },
   ]}
   rowCount={2}
