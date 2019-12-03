@@ -4,6 +4,7 @@ export { default as AddUser } from "./AddUser";
 export { default as Amex } from "./Amex";
 export { default as ArrowUp } from "./ArrowUp";
 export { default as Assignment } from "./Assignment";
+export { default as Audio } from "./Audio";
 export { default as Award } from "./Award";
 export { default as Billing } from "./Billing";
 export { default as BlockQuote } from "./BlockQuote";
