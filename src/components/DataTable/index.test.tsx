@@ -2,6 +2,7 @@ import * as React from "react";
 import { cleanup, render } from "react-testing-library";
 import TD from "../Table/TD";
 import TR from "../Table/TR";
+import TH from "../Table/TR";
 import View from "../View";
 import DataTable from "./";
 
@@ -12,7 +13,7 @@ it("renders without crashing without any optional props", () => {
   render(<DataTable rowHeight={10} rowCount={2} rowRenderer={createRows} />);
 });
 
-it("renders without crashing with optional props", () => {
+it("renders without crashing using the headers and rowRenderer approach", () => {
   render(
     <DataTable
       autoRowHeight={true}
@@ -27,6 +28,32 @@ it("renders without crashing with optional props", () => {
             <span>yo</span>
           </TD>
         </TR>,
+      ]}
+    />
+  );
+});
+
+it("renders without crashing using the columns approach", () => {
+  render(
+    <DataTable
+      autoRowHeight={true}
+      rowCount={10}
+      scrollToIndex={4}
+      hideScrollButton={true}
+      total="Many things"
+      columns={[
+        {
+          headerRenderer: ({ key }) => (
+            <TH key={key} text="First Column" flexBasis="100%" />
+          ),
+          cellRenderer: ({ key }) => <TD flexBasis="100%">First Cell {key}</TD>,
+        },
+        {
+          headerRenderer: ({ key }) => (
+            <TH key={key} text="Second Column" width="100px" />
+          ),
+          cellRenderer: ({ key }) => <TD width="100px">Second Cell {key}</TD>,
+        },
       ]}
     />
   );

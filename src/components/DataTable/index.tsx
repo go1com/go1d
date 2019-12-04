@@ -25,9 +25,9 @@ export interface DataTableProps extends ViewProps {
   /** The total number of rows that can be loaded. Used for autoloading. */
   rowCount: number;
   /** Function to render a row */
-  rowRenderer: ListRowRenderer;
+  rowRenderer?: ListRowRenderer;
   /*
-   * A header row. Rendered inside a TR component
+   * A header row. Rendered inside a TR component. This is ignored if you supply a columns array.
    */
   header?: React.ReactNodeArray;
   /** A string to display the total number of results */
@@ -63,6 +63,17 @@ export interface DataTableProps extends ViewProps {
   hideScrollButton?: boolean;
   scrollElement?: any;
   isListLoading?: boolean;
+
+  /**
+   * an array representing the columns that should be rendered in this table. each entry in the array contains a header renderer and a cell renderer.
+   * eg. { headerRenderer: () => <TH text="Column Heading" />, cellRenderer: () => <TD>Row cell</TD> }
+   */
+  columns?: DataTableColumn[];
+}
+
+export interface DataTableColumn {
+  cellRenderer: any;
+  headerRenderer: any;
 }
 
 class DataTable extends React.Component<DataTableProps, {}> {
@@ -119,6 +130,7 @@ class DataTable extends React.Component<DataTableProps, {}> {
       rowHeight,
       rowRenderer,
       rowCount,
+      columns,
       header,
       total,
       css,
@@ -136,6 +148,15 @@ class DataTable extends React.Component<DataTableProps, {}> {
     } = this.props;
 
     let renderFunction = rowRenderer;
+
+    // if no render function has been supplied, but we do have a columns array, then we can iterate through each column rendering a cell
+    if (!renderFunction && columns) {
+      renderFunction = ({ ...args }) => (
+        <TR key={args.key} style={args.style}>
+          {columns.map(column => column.cellRenderer({ ...args }))}
+        </TR>
+      );
+    }
 
     if (this.props.autoRowHeight) {
       const oldRenderFunction = renderFunction;
@@ -174,7 +195,7 @@ class DataTable extends React.Component<DataTableProps, {}> {
                 css,
               ]}
             >
-              {header && (
+              {(header || columns) && (
                 <TR
                   position="sticky"
                   backgroundColor={viewProps.backgroundColor || "background"}
@@ -182,7 +203,9 @@ class DataTable extends React.Component<DataTableProps, {}> {
                   zIndex={zIndex.sticky}
                   innerRef={this.setHeader}
                 >
-                  {header}
+                  {columns &&
+                    columns.map(column => column.headerRenderer(this.props))}
+                  {!columns && header}
                 </TR>
               )}
               <Loader {...this.props} innerRef={this.loaderRef}>
@@ -231,14 +254,13 @@ class DataTable extends React.Component<DataTableProps, {}> {
                         </View>
                         {!hideScrollButton && scrollTop > 0 && (
                           <ButtonFilled
-                            color="contrast"
                             onClick={this.scrollToTop}
                             position="sticky"
                             marginTop={4}
                             marginLeft="auto"
                             css={{ bottom: spacing[4] }}
                           >
-                            <Icon name="ChevronUp" color="background" />
+                            <Icon name="ChevronUp" />
                           </ButtonFilled>
                         )}
                       </React.Fragment>
