@@ -32,6 +32,28 @@ it("test blur", () => {
   expect(onBlur.mock.calls.length).toBe(1);
 });
 
+it("test no blur", () => {
+  const onBlur = jest.fn();
+
+  const { getByTestId } = render(
+    <Stepper id="crashing" onBlur={onBlur} disableResetOnBlur={true} />
+  );
+
+  fireEvent.blur(getByTestId("inputElement"));
+  expect(onBlur.mock.calls.length).toBe(0);
+});
+
+it("handles hide buttons", () => {
+  const { queryByTestId } = render(
+    <Stepper id="crashing" hideButtons={true} />
+  );
+
+  const inc = queryByTestId("increment") as any;
+  expect(inc).toBeNull();
+  const dec = queryByTestId("decrement") as any;
+  expect(dec).toBeNull();
+});
+
 it("min max reset value less than 0 max", () => {
   const { getByTestId } = render(
     <Stepper id="stepper" minNumber={-5} maxNumber={-3} />

@@ -23,6 +23,8 @@ export interface StepperProps extends TextProps {
   borderColor?: string;
   borderRadius?: number;
   defaultValue?: number;
+  hideButtons?: boolean;
+  disableResetOnBlur?: boolean;
 }
 
 interface StepperState {
@@ -38,6 +40,7 @@ class TextInput extends React.PureComponent<StepperProps, StepperState> {
     stepIncrement: 1,
     maxNumber: Number.MAX_SAFE_INTEGER,
     minNumber: Number.MIN_SAFE_INTEGER,
+    disableResetOnBlur: false,
   };
 
   constructor(props) {
@@ -236,6 +239,8 @@ class TextInput extends React.PureComponent<StepperProps, StepperState> {
       minNumber,
       unitLabel,
       boxShadow = "inner",
+      hideButtons,
+      disableResetOnBlur,
       ...props
     } = this.props;
 
@@ -259,20 +264,22 @@ class TextInput extends React.PureComponent<StepperProps, StepperState> {
             htmlFor={id}
             opacity={disabled ? "disabled" : null}
           >
-            <View backgroundColor="transparent">
-              <ButtonMinimal
-                size="md"
-                iconName="Minus"
-                color="default"
-                onClick={this.decrement}
-                disabled={
-                  disabled ||
-                  (minNumber !== undefined &&
-                    typeof value === "number" &&
-                    value - Math.abs(stepIncrement) < minNumber)
-                }
-              />
-            </View>
+            {!hideButtons && (
+              <View backgroundColor="transparent">
+                <ButtonMinimal
+                  size="md"
+                  iconName="Minus"
+                  color="default"
+                  onClick={this.decrement}
+                  disabled={
+                    disabled ||
+                    (minNumber !== undefined &&
+                      typeof value === "number" &&
+                      value - Math.abs(stepIncrement) < minNumber)
+                  }
+                />
+              </View>
+            )}
             <View flexBasis="100%" flexShrink={1}>
               <Text
                 id={id}
@@ -286,27 +293,29 @@ class TextInput extends React.PureComponent<StepperProps, StepperState> {
                 onChange={this.handleChange}
                 onFocus={this.handleFocus}
                 disabled={disabled}
-                onBlur={this.handleBlur}
+                onBlur={disableResetOnBlur ? undefined : this.handleBlur}
                 data-testid="inputElement"
                 textAlign="center"
                 {...props}
               />
             </View>
-            <View backgroundColor="transparent">
-              <ButtonMinimal
-                size="md"
-                iconName="Plus"
-                color="default"
-                onClick={this.increment}
-                data-testid="increment"
-                disabled={
-                  disabled ||
-                  (maxNumber !== undefined &&
-                    typeof value === "number" &&
-                    value + Math.abs(stepIncrement) > maxNumber)
-                }
-              />
-            </View>
+            {!hideButtons && (
+              <View backgroundColor="transparent">
+                <ButtonMinimal
+                  size="md"
+                  iconName="Plus"
+                  color="default"
+                  onClick={this.increment}
+                  data-testid="increment"
+                  disabled={
+                    disabled ||
+                    (maxNumber !== undefined &&
+                      typeof value === "number" &&
+                      value + Math.abs(stepIncrement) > maxNumber)
+                  }
+                />
+              </View>
+            )}
             {unitLabel && (
               <View
                 backgroundColor="soft"
