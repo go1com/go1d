@@ -20,7 +20,7 @@ it("renders without crashing without any optional props", () => {
   );
 });
 
-it("renders without crashing with optional props", () => {
+it("renders without crashing using a row renderer approach", () => {
   const ref: React.RefObject<DataTableSelectable> = React.createRef();
   const mapRowToId = row => row * 100;
 
@@ -44,6 +44,61 @@ it("renders without crashing with optional props", () => {
           </TD>
         </TR>,
       ]}
+    />
+  );
+
+  const button: HTMLInputElement = wrapper.container.querySelector(
+    "input[name=SelectAll]"
+  );
+  if (button) {
+    button.click();
+    button.click();
+  } else {
+    expect(button).toBeDefined();
+  }
+
+  ref.current.updateRows({ target: { name: "0", checked: true } });
+  expect(Array.from(ref.current.state.selectedItems)).toEqual([0]);
+
+  ref.current.updateRows({ target: { name: "0", checked: false } });
+  expect(Array.from(ref.current.state.selectedItems)).toEqual([]);
+
+  ref.current.onAllSelectChange();
+  expect(ref.current.state.allSelected).toBe(true);
+  expect(ref.current.state.invertSelection).toBe(true);
+
+  ref.current.updateRows({ target: { name: "1", checked: false } });
+  expect(ref.current.state.allSelected).toBe(false);
+  expect(ref.current.state.invertSelection).toBe(true);
+  expect(Array.from(ref.current.state.selectedItems)).toEqual([]);
+  expect(Array.from(ref.current.state.unselectedItems)).toEqual([1]);
+
+  ref.current.updateRows({ target: { name: "1", checked: true } });
+  expect(ref.current.state.allSelected).toBe(false);
+  expect(ref.current.state.invertSelection).toBe(true);
+  expect(Array.from(ref.current.state.selectedItems)).toEqual([]);
+  expect(Array.from(ref.current.state.unselectedItems)).toEqual([]);
+
+  expect(mainAction).toBeCalledTimes(0);
+});
+
+it("renders without crashing using a columns approach", () => {
+  const ref: React.RefObject<DataTableSelectable> = React.createRef();
+  const mapRowToId = row => row * 100;
+
+  const wrapper = render(
+    <DataTableSelectable
+      ref={ref}
+      mapRowToId={mapRowToId}
+      mainAction={mainAction}
+      mainActionText="ACTION"
+      disabled={true}
+      autoRowHeight={true}
+      rowCount={10}
+      scrollToIndex={4}
+      hideScrollButton={true}
+      columns={[]}
+      total="Many things"
     />
   );
 
