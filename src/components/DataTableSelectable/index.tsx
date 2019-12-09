@@ -24,9 +24,15 @@ export interface DataTableSelectableProps
   /** Text to go on the main action button */
   mainActionText?: string;
 
+  /**
+   * an array representing the columns that should be rendered in this table. each entry in the array contains a header renderer and a cell renderer.
+   * eg. { headerRenderer: () => <TH text="Column Heading" />, cellRenderer: () => <TD>Row cell</TD> }
+   */
+  columns?: DataTableColumn[];
+
   /** A mapping of row numbers to id. Usually this takes the form of the function row => data[row].id */
   mapRowToId?: (row: number) => number;
-  rowRenderer: (props: RowRendererProps) => React.ReactNode;
+  rowRenderer?: (props: RowRendererProps) => React.ReactNode;
   disabled?: boolean;
   mainIconName?: string;
   prefixRow?: (
@@ -40,6 +46,11 @@ export interface DataTableSelectableProps
     },
     clearSelection: () => void
   ) => React.ReactNode;
+}
+
+export interface DataTableColumn {
+  cellRenderer: any;
+  headerRenderer: any;
 }
 
 interface State {
@@ -74,30 +85,124 @@ class DataTableSelectable extends React.Component<
     };
 
     this.ref = React.createRef();
+
+    // add an extra column for the check boxes to the start of the array
+    const { columns } = props;
+    if (columns) {
+      columns.unshift({
+        headerRenderer: this.getSelectAllHeader,
+        cellRenderer: this.getCheckboxTD,
+      });
+    }
+  }
+
+  @autobind
+  public getSelectAllHeader() {
+    const { invertSelection, unselectedItems, selectedItems } = this.state;
+    const { rowCount, disabled } = this.props;
+
+    const selected = invertSelection
+      ? rowCount - unselectedItems.size
+      : selectedItems.size;
+
+    return (
+      <TH
+        key={-1}
+        width="30px"
+        flexGrow={0}
+        flexShrink={0}
+        css={{ "box-sizing": "content-box" }}
+        text={
+          !!selected ? (
+            <Checkbox
+              name="SelectAll"
+              value={this.state.allSelected}
+              onChange={this.onAllSelectChange}
+              disabled={disabled}
+            />
+          ) : (
+            ""
+          )
+        }
+      />
+    );
+  }
+
+  @autobind
+  public getCheckboxTD(props: any) {
+    const selected = this.isThisRowSelected(props.index);
+
+    return (
+      <TD
+        key={-1}
+        width="30px"
+        flexShrink={0}
+        flexGrow={0}
+        css={{
+          "box-sizing": "content-box",
+          backgroundColor: props.style.backgroundColor,
+        }}
+      >
+        <Checkbox
+          name={String(props.index)}
+          value={selected}
+          onChange={this.updateRows}
+        />
+      </TD>
+    );
+  }
+
+  @autobind
+  public isThisRowSelected(index: number) {
+    if (index === undefined) {
+      return false;
+    }
+
+    return this.state.invertSelection
+      ? !this.state.unselectedItems.has(index)
+      : this.state.selectedItems.has(index);
+  }
+
+  @autobind
+  public enhanceColumns(highlight: string) {
+    const { columns } = this.props;
+    if (columns) {
+      // iterate through the cell renderer methods and add in the style prop so that the row highlights properly
+      columns.forEach(column => {
+        if (column.cellRenderer) {
+          column.cellRenderer = this.enhancedCellRender(
+            column.cellRenderer,
+            highlight
+          );
+        }
+      });
+
+      return columns;
+    }
+
+    return [];
+  }
+
+  @autobind
+  public enhancedCellRender(cellRenderer, highlight: string) {
+    return (props: any) => {
+      const selected = this.isThisRowSelected(props.index);
+
+      // the props.style attribute here refers to styles for a row. if we apply them to each cell, they end up absolutely
+      // positioned on the left. not pretty. for a cell renderer, we just want to pass in the backgroundColor as needed.
+      const style: any = {};
+      if (selected) {
+        style.backgroundColor = highlight;
+      }
+
+      return cellRenderer({ ...props, style });
+    };
   }
 
   @autobind
   public rowRenderer(highlight: string) {
     return (props: ListRowProps) => {
-      const selected = this.state.invertSelection
-        ? !this.state.unselectedItems.has(props.index)
-        : this.state.selectedItems.has(props.index);
-
-      const checkboxTD = (
-        <TD
-          key={-1}
-          width="30px"
-          flexShrink={0}
-          flexGrow={0}
-          css={{ "box-sizing": "content-box" }}
-        >
-          <Checkbox
-            name={String(props.index)}
-            value={selected}
-            onChange={this.updateRows}
-          />
-        </TD>
-      );
+      const selected = this.isThisRowSelected(props.index);
 
       const style = { ...props.style };
       if (selected) {
@@ -105,7 +210,7 @@ class DataTableSelectable extends React.Component<
       }
 
       return this.props.rowRenderer({
-        checkBox: checkboxTD,
+        checkBox: this.getCheckboxTD(props),
         ...props,
         style,
       });
@@ -182,6 +287,7 @@ class DataTableSelectable extends React.Component<
       mapRowToId,
       children,
       rowRenderer,
+      columns,
       total,
       disabled,
       header,
@@ -189,6 +295,7 @@ class DataTableSelectable extends React.Component<
       mainIconName,
       rowCount,
       prefixRow,
+      index,
       ...props
     } = this.props;
 
@@ -203,28 +310,7 @@ class DataTableSelectable extends React.Component<
       ? rowCount - unselectedItems.size
       : selectedItems.size;
 
-    const headerWithSelectAll = [
-      <TH
-        key={-1}
-        width="30px"
-        flexGrow={0}
-        flexShrink={0}
-        css={{ "box-sizing": "content-box" }}
-        text={
-          !!selected ? (
-            <Checkbox
-              name="SelectAll"
-              value={this.state.allSelected}
-              onChange={this.onAllSelectChange}
-              disabled={disabled}
-            />
-          ) : (
-            ""
-          )
-        }
-      />,
-      ...(header || []),
-    ];
+    const headerWithSelectAll = [this.getSelectAllHeader(), ...(header || [])];
 
     return (
       <Theme.Consumer>
@@ -233,7 +319,8 @@ class DataTableSelectable extends React.Component<
             {...props}
             ref={this.ref}
             rowCount={rowCount}
-            rowRenderer={this.rowRenderer(colors.highlight)}
+            rowRenderer={rowRenderer && this.rowRenderer(colors.highlight)}
+            columns={columns && this.enhanceColumns(colors.highlight)}
             header={headerWithSelectAll}
             total={
               typeof prefixRow === "function" &&
