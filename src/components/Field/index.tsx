@@ -44,7 +44,7 @@ class Field extends React.Component<
   FieldProps & {
     formik: FormikContext<any>;
   }
-  > {
+> {
   public componentDidMount() {
     // Register the Field with the parent Formik. Parent will cycle through
     // registered Field's validate fns right prior to submit
