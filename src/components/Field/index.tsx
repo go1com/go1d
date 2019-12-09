@@ -205,7 +205,7 @@ class Field extends React.Component<
             {label}
           </Label>
         )}
-        <View paddingBottom={2}>
+        <View paddingBottom={2} flexGrow={1}>
           {component && (
             <Component
               ref={inputRef}
