@@ -24,9 +24,6 @@ const Website: React.SFC<React.SVGProps<SVGSVGElement>> = (
         strokeLinejoin="round"
       />
     </g>
-    <defs>
-      <clipPath id="clip0" />
-    </defs>
   </svg>
 );
 
