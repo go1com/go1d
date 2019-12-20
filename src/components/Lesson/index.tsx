@@ -31,6 +31,7 @@ export const typeIconDic = {
   award: "Award",
   lti: "Lti",
   event: "Calendar",
+  audio: "Audio",
 };
 
 const Lesson: React.SFC<LessonProps> = ({
