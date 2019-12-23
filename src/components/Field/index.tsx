@@ -139,7 +139,10 @@ class Field extends React.Component<
 
     let message = null;
 
-    const value = getIn(formik.values, name) || "";
+    let value = getIn(formik.values, name);
+    if (typeof value === "undefined") {
+      value = "";
+    }
 
     if (
       formik.errors &&
