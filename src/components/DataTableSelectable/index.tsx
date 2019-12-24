@@ -85,15 +85,6 @@ class DataTableSelectable extends React.Component<
     };
 
     this.ref = React.createRef();
-
-    // add an extra column for the check boxes to the start of the array
-    const { columns } = props;
-    if (columns) {
-      columns.unshift({
-        headerRenderer: this.getSelectAllHeader,
-        cellRenderer: this.getCheckboxTD,
-      });
-    }
   }
 
   @autobind
@@ -164,8 +155,7 @@ class DataTableSelectable extends React.Component<
   }
 
   @autobind
-  public enhanceColumns(highlight: string) {
-    const { columns } = this.props;
+  public enhanceColumns(columns, highlight: string) {
     if (columns) {
       // iterate through the cell renderer methods and add in the style prop so that the row highlights properly
       columns.forEach(column => {
@@ -185,8 +175,8 @@ class DataTableSelectable extends React.Component<
 
   @autobind
   public enhancedCellRender(cellRenderer, highlight: string) {
-    return (props: any) => {
-      const selected = this.isThisRowSelected(props.index);
+    return (args: any) => {
+      const selected = this.isThisRowSelected(args.index);
 
       // the props.style attribute here refers to styles for a row. if we apply them to each cell, they end up absolutely
       // positioned on the left. not pretty. for a cell renderer, we just want to pass in the backgroundColor as needed.
@@ -195,7 +185,7 @@ class DataTableSelectable extends React.Component<
         style.backgroundColor = highlight;
       }
 
-      return cellRenderer({ ...props, style });
+      return cellRenderer({ ...args, style });
     };
   }
 
@@ -287,7 +277,6 @@ class DataTableSelectable extends React.Component<
       mapRowToId,
       children,
       rowRenderer,
-      columns,
       total,
       disabled,
       header,
@@ -312,6 +301,16 @@ class DataTableSelectable extends React.Component<
 
     const headerWithSelectAll = [this.getSelectAllHeader(), ...(header || [])];
 
+    let { columns } = this.props;
+    if (columns) {
+      columns = [
+        {
+          headerRenderer: this.getSelectAllHeader,
+          cellRenderer: this.getCheckboxTD,
+        },
+      ].concat(columns);
+    }
+
     return (
       <Theme.Consumer>
         {({ colors }) => (
@@ -320,7 +319,7 @@ class DataTableSelectable extends React.Component<
             ref={this.ref}
             rowCount={rowCount}
             rowRenderer={rowRenderer && this.rowRenderer(colors.highlight)}
-            columns={columns && this.enhanceColumns(colors.highlight)}
+            columns={columns && this.enhanceColumns(columns, colors.highlight)}
             header={headerWithSelectAll}
             total={
               typeof prefixRow === "function" &&
