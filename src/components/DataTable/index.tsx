@@ -125,6 +125,20 @@ class DataTable extends React.Component<DataTableProps, {}> {
     }
   }
 
+  @autobind
+  public columnsRenderer(args: any) {
+    // when calling to renderer columns, pass in all props which have been collected together by implementing components,
+    // aswell as the args which come from the react row renderer callback.
+    const { columns } = this.props;
+    return (
+      <TR style={args.style} key={args.key}>
+        {columns.map(column => {
+          return column.cellRenderer({ ...this.props, ...args });
+        })}
+      </TR>
+    );
+  }
+
   public render() {
     const {
       rowHeight,
@@ -149,13 +163,9 @@ class DataTable extends React.Component<DataTableProps, {}> {
 
     let renderFunction = rowRenderer;
 
-    // if no render function has been supplied, but we do have a columns array, then we can iterate through each column rendering a cell
-    if (!renderFunction && columns) {
-      renderFunction = ({ ...args }) => (
-        <TR key={args.key} style={args.style}>
-          {columns.map(column => column.cellRenderer({ ...args }))}
-        </TR>
-      );
+    // if we have a columns array, then we can iterate through each column rendering a cell
+    if (columns) {
+      renderFunction = this.columnsRenderer;
     }
 
     if (this.props.autoRowHeight) {
