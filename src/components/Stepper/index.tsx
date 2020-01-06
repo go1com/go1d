@@ -25,6 +25,7 @@ export interface StepperProps extends TextProps {
   defaultValue?: number;
   hideButtons?: boolean;
   disableResetOnBlur?: boolean;
+  allowDecimal?: boolean;
 }
 
 interface StepperState {
@@ -42,6 +43,21 @@ class TextInput extends React.PureComponent<StepperProps, StepperState> {
     minNumber: Number.MIN_SAFE_INTEGER,
     disableResetOnBlur: false,
   };
+
+  public static getDerivedStateFromProps(
+    props: StepperProps,
+    state: StepperState
+  ) {
+    if (props.value !== undefined) {
+      const stateValue = Number(state.value) || 0;
+      if (props.value !== stateValue) {
+        return {
+          value: props.value,
+        };
+      }
+    }
+    return null;
+  }
 
   constructor(props) {
     super(props);
@@ -83,15 +99,12 @@ class TextInput extends React.PureComponent<StepperProps, StepperState> {
       isFocused: false,
     });
 
-    let newValue = value;
+    let newValue;
 
-    if (
-      newValue > maxNumber ||
-      newValue < minNumber ||
-      !value ||
-      value === "-"
-    ) {
-      newValue = this.getResetValue(this.state.value);
+    if (value > maxNumber || value < minNumber || !value || value === "-") {
+      newValue = this.getResetValue(value);
+    } else {
+      newValue = Number(value) || 0;
     }
 
     this.setState({
@@ -114,43 +127,32 @@ class TextInput extends React.PureComponent<StepperProps, StepperState> {
   }
 
   @autobind
-  public handleChange(evt: React.ChangeEvent<any>) {
-    const { name } = this.props;
-    if (evt.target.value === "-") {
+  public handleChange({ target: { value } }: React.ChangeEvent<any>) {
+    const { name, allowDecimal = false } = this.props;
+    const reg = new RegExp(`^-?[0-9]*${allowDecimal ? ".?" : ""}[0-9]*$`);
+    if (reg.test(value)) {
+      const newValue: number = Number(value) || 0;
       this.setState({
-        value: evt.target.value,
+        value,
       });
       safeInvoke(this.props.onChange, {
         target: {
           name,
-          value: 0,
+          value: newValue,
         },
       });
-      return;
-    }
-
-    const reg = new RegExp("^-?[0-9]+$");
-    if (reg.test(evt.target.value)) {
-      const newValue: number | string = Number(evt.target.value);
-      this.setState({
-        value: newValue,
-      });
-      safeInvoke(this.props.onChange, {
-        target: {
-          name,
-          value: newValue === 0 ? String(newValue) : newValue,
-        },
-      });
-    } else if (!evt.target.value) {
-      this.setState({
-        value: null,
-      });
-      safeInvoke(this.props.onChange, {
-        target: {
-          name,
+    } else {
+      if (value === "") {
+        this.setState({
           value: null,
-        },
-      });
+        });
+        safeInvoke(this.props.onChange, {
+          target: {
+            name,
+            value: null,
+          },
+        });
+      }
     }
   }
 
@@ -201,7 +203,7 @@ class TextInput extends React.PureComponent<StepperProps, StepperState> {
     const nextValue = this.props.value;
 
     if (nextValue === undefined) {
-      return typeof this.state.value === "number" ? this.state.value : 0;
+      return Number(this.state.value) || 0;
     }
 
     return Number(nextValue);
@@ -283,7 +285,7 @@ class TextInput extends React.PureComponent<StepperProps, StepperState> {
             <View flexBasis="100%" flexShrink={1}>
               <Text
                 id={id}
-                value={value}
+                value={this.state.value === null ? "" : this.state.value}
                 element="input"
                 type="text"
                 lineHeight="ui"
