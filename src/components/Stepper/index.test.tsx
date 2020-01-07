@@ -85,15 +85,46 @@ it("handles strings increment decrement", () => {
   expect(el.value).toBe("2");
 });
 
-it("handles null", () => {
+it("should render empty string if value is null", () => {
   const { getByTestId } = render(
     <Form initialValues={{ num: null }} onSubmit={jest.fn()}>
       <Field component={Stepper} name="num" />
     </Form>
   );
 
+  const el = getByTestId("inputElement") as any;
+  expect(el.value).toBe("");
+
   const inc = getByTestId("increment") as any;
   fireEvent.click(inc);
-  const el = getByTestId("inputElement") as any;
+
   expect(el.value).toBe("1");
+});
+
+it("should not allow decimal values", () => {
+  const { getByTestId } = render(<Stepper id="stepper" defaultValue={1} />);
+
+  const el = getByTestId("inputElement") as any;
+  fireEvent.change(el, {
+    target: {
+      name: "stepper",
+      value: "1.5",
+    },
+  });
+  expect(el.value).toBe("1");
+});
+
+it("should allow decimal values", () => {
+  const { getByTestId } = render(
+    <Stepper id="stepper" defaultValue={1} allowDecimal={true} />
+  );
+
+  const el = getByTestId("inputElement") as any;
+  fireEvent.change(el, {
+    target: {
+      name: "stepper",
+      value: "1.5",
+    },
+  });
+  expect(el.value).toBe("1.5");
 });

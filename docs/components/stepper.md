@@ -55,6 +55,13 @@ status: ready
 </View>
 ```
 
+### with decimal allowed
+```.jsx
+<View width={150}>
+    <Stepper id="stepper" defaultValue={0.5} stepIncrement={0.25} allowDecimal={true} />
+</View>
+```
+
 ## Stepper
 ```!jsx
 <ComponentDoc component="StepperProps" />
