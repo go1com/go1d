@@ -145,6 +145,8 @@ class MultiSelect extends React.PureComponent<MultiSelectProps, any> {
       searchable,
       id,
       closeOnSelect,
+      initialIsOpen,
+      onOuterClick,
       ...remainingProps
     } = this.props;
     let { disabled } = this.props;
@@ -191,8 +193,10 @@ class MultiSelect extends React.PureComponent<MultiSelectProps, any> {
             itemToString={this.OptionToString}
             itemCount={selectableCount}
             closeOnSelect={closeOnSelect}
+            initialIsOpen={initialIsOpen}
             initialSelectedItems={DefaultOption}
             selectedItems={selectedOption}
+            onOuterClick={onOuterClick}
           >
             {({
               getToggleButtonProps,
