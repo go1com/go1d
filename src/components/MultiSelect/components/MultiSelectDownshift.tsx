@@ -25,6 +25,8 @@ interface MultiSelectDownshiftProps {
   itemCount?: number;
   itemToString?: (item: Option) => string;
   closeOnSelect?: boolean;
+  initialIsOpen?: boolean;
+  onOuterClick?: (stateAndHelpers: ControllerStateAndHelpers<any>) => void;
   children: (Settings: ChildProps) => React.ReactNode;
 }
 
@@ -144,7 +146,7 @@ class MultiSelectDownshift extends React.PureComponent<
   }
 
   public render() {
-    const { children, ...props } = this.props;
+    const { children, onOuterClick, ...props } = this.props;
 
     return (
       <Downshift
@@ -152,6 +154,7 @@ class MultiSelectDownshift extends React.PureComponent<
         stateReducer={this.stateReducer}
         onChange={this.handleSelection}
         selectedItem={null}
+        onOuterClick={onOuterClick}
       >
         {downshift => children(this.getStateAndHelpers(downshift))}
       </Downshift>

@@ -50,6 +50,15 @@ releaseVersion: 0.0.27
 ]} closeOnSelect={false} />
 ```
 
+### Initial is open when initialized
+```.tsx
+<MultiSelect label="Dont close" options={[
+  { "value": "chocolate", label: "Chocolate" },
+  { "value": "strawberry", label: "Strawberry" },
+  { "value": "vanilla", label: "Vanilla" }
+]} initialIsOpen={true} />
+```
+
 ### Default Value
 ```.tsx
 <MultiSelect label="Label" options={[
