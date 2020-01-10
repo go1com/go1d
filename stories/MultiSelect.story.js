@@ -4,19 +4,24 @@ import { MultiSelect } from '../src';
 storiesOf("MultiSelect", module)
   .add('A custom Multi Select component', () => <MultiSelect options={[
     { "value": "chocolate", label: "Chocolate" },
-    { "value": "stawberry", label: "Strawberry" },
+    { "value": "strawberry", label: "Strawberry" },
     { "value": "vanilla", label: "Vanilla" }
   ]} />)
   .add('Disabled Multi Select Field', () => <MultiSelect label="Disabled" options={[
     { "value": "chocolate", label: "Chocolate" },
-    { "value": "stawberry", label: "Strawberry" },
+    { "value": "strawberry", label: "Strawberry" },
     { "value": "vanilla", label: "Vanilla" }
   ]} disabled={true} />)
   .add('Searchable Multi Select Field', () => <MultiSelect label="Favourite" options={[
     { "value": "chocolate", label: "Chocolate" },
-    { "value": "stawberry", label: "Strawberry" },
+    { "value": "strawberry", label: "Strawberry" },
     { "value": "vanilla", label: "Vanilla" }
   ]} searchable={true} />)
+  .add('Initial is open when initialized', () => <MultiSelect label="Favourite" options={[
+    { "value": "chocolate", label: "Chocolate" },
+    { "value": "strawberry", label: "Strawberry" },
+    { "value": "vanilla", label: "Vanilla" }
+  ]} initialIsOpen={true}  />)
   .add('Multi Select with extra style props', () => <MultiSelect
     label="Favourite"
     searchable={true}
@@ -27,7 +32,7 @@ storiesOf("MultiSelect", module)
     }}
     options={[
       { "value": "chocolate", label: "Chocolate" },
-      { "value": "stawberry", label: "Strawberry" },
+      { "value": "strawberry", label: "Strawberry" },
       { "value": "vanilla", label: "Vanilla" }
     ]}
   />)
