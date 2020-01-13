@@ -36,7 +36,7 @@ class Portal extends React.PureComponent<Props, never> {
 
   public render() {
     if (isServer) {
-      return;
+      return <React.Fragment />;
     }
 
     return createPortal(this.props.children, this.portalNode);
