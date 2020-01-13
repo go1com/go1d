@@ -28,7 +28,7 @@ class BaseUpload extends React.Component<BaseUploadProps, any> {
     const {
       children,
       fileType,
-      multiple,
+      multiple = true,
       onBlur,
       disabled = false,
       value,
@@ -41,6 +41,7 @@ class BaseUpload extends React.Component<BaseUploadProps, any> {
         accept={fileType}
         onDrop={this.onDrop}
         disabled={disabled}
+        multiple={multiple}
         {...props}
       >
         {({ getInputProps, ...dropzoneProps }) => (
