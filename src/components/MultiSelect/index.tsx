@@ -447,11 +447,13 @@ class MultiSelect extends React.PureComponent<MultiSelectProps, any> {
   }
 
   public handleSelectionClear = clearFunction => {
-    const { onChange } = this.props;
+    const { onChange, onClear } = this.props;
 
     return () => {
       clearFunction();
-      if (onChange) {
+      if (onClear) {
+        safeInvoke(onClear);
+      } else {
         safeInvoke(onChange, {
           target: {
             value: [],
