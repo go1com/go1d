@@ -163,3 +163,60 @@ it("Calculates the Width of the dropdown correctly", () => {
     fail("ref could not be set");
   }
 });
+
+describe("handleSelectionClear", () => {
+  let onChangeMock;
+  let onClearMock;
+
+  beforeEach(() => {
+    onChangeMock = jest.fn();
+    onClearMock = jest.fn();
+  });
+
+  afterEach(() => {
+    jest.clearAllMocks();
+  });
+
+  it("runs correctly without onClear", () => {
+    const { getByTestId } = render(
+      <MultiSelect
+        options={Options}
+        label="Test"
+        disabled={true}
+        onChange={onChangeMock}
+        name="Test"
+        searchable={true}
+        defaultValue={["test 1", "test"]}
+      />
+    );
+    fireEvent.click(getByTestId("clearSelectionButton"));
+    expect(onChangeMock.mock.calls[0][0]).toEqual({
+      target: {
+        value: [],
+      },
+    });
+    expect(onClearMock.mock.calls.length).toBe(0);
+  });
+
+  it("runs correctly with onClear", () => {
+    const { getByTestId } = render(
+      <MultiSelect
+        options={Options}
+        label="Test"
+        disabled={true}
+        onChange={onChangeMock}
+        onClear={onClearMock}
+        name="Test"
+        searchable={true}
+        defaultValue={["test 1", "test"]}
+      />
+    );
+    fireEvent.click(getByTestId("clearSelectionButton"));
+    expect(onChangeMock.mock.calls[0][0]).not.toEqual({
+      target: {
+        value: [],
+      },
+    });
+    expect(onClearMock.mock.calls.length).toBe(1);
+  });
+});
