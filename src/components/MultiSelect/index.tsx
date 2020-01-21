@@ -60,6 +60,26 @@ class MultiSelect extends React.PureComponent<MultiSelectProps, any> {
     }
   }
 
+  public renderRowContent = ({ option, selectedOptions }) => (
+    <>
+      <Checkbox
+        isStatic={true}
+        value={selectedOptions[option.value] === true}
+      />
+      <Text
+        fontSize={Sizes[this.props.size].fontSize}
+        css={{
+          transition: "none",
+        }}
+        color={"default"}
+        ellipsis={true}
+        title={option.label}
+      >
+        {option.label}
+      </Text>
+    </>
+  );
+
   /* istanbul ignore next */
   public renderSelectRow({
     options,
@@ -111,21 +131,7 @@ class MultiSelect extends React.PureComponent<MultiSelectProps, any> {
               },
             })}
           >
-            <Checkbox
-              isStatic={true}
-              value={selectedOptions[Option.value] === true}
-            />
-            <Text
-              fontSize={Sizes[this.props.size].fontSize}
-              css={{
-                transition: "none",
-              }}
-              color={"default"}
-              ellipsis={true}
-              title={Option.label}
-            >
-              {Option.label}
-            </Text>
+            {this.renderRowContent({ option: Option, selectedOptions })}
           </View>
         </View>
       );
