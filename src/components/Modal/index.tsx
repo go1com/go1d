@@ -94,7 +94,12 @@ class Modal extends React.Component<ModalProps, any> {
 
       const container = this.dialog;
 
-      if (e.target && !container.contains(e.target as any)) {
+      if (
+        e.target &&
+        container &&
+        container.contains &&
+        !container.contains(e.target as any)
+      ) {
         this.handleBackgroundClick();
       }
     }
