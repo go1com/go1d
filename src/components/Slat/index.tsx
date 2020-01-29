@@ -263,7 +263,7 @@ const Slat: React.SFC<SlatProps> = ({
                     ))}
                   </View>
                 )}
-                {currency && price > 0 && (
+                {currency && price && (
                   <View
                     flexDirection="row"
                     css={{
@@ -273,7 +273,13 @@ const Slat: React.SFC<SlatProps> = ({
                     }}
                   >
                     <Text color="accent" fontWeight="semibold">
-                      {formatPrice(currency, price, tax)} {priceSuffix}
+                      {`
+                        ${
+                          typeof price === "number"
+                            ? formatPrice(currency, price, tax)
+                            : price
+                        }
+                       ${priceSuffix}`}
                     </Text>
                   </View>
                 )}
