@@ -24,6 +24,15 @@ A plan for a Subscription Package
   price="10"
   currency="AUD"
 />
+
+<PackagePlan
+  id={1234}
+  title="Monthly"
+  interval="month"
+  price="10"
+  currency="AUD"
+  perPortalLicensing={true}
+/>
 ```
 
 ```!jsx
