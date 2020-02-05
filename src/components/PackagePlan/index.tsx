@@ -107,12 +107,14 @@ class PackagePlan extends React.Component<PackagePlanProps, any> {
                 >
                   <Text fontWeight="semibold">
                     {priceFormatterUtil(currency, price, tax)}
-                    {!perPortalLicensing && ` pp / ${interval}`}
+                    {!perPortalLicensing && ` pp`}
+                    {` / ${interval}`}
                   </Text>
                   {yearToMonth && yearToMonth > 0 && (
                     <Text fontSize={1} color="subtle">
                       {priceFormatterUtil(currency, yearToMonth, tax)}
-                      {!perPortalLicensing && ` pp / month`}
+                      {!perPortalLicensing && ` pp`}
+                      {`/ month`}
                     </Text>
                   )}
                 </View>
