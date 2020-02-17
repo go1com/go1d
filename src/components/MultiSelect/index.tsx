@@ -146,7 +146,7 @@ class MultiSelect extends React.PureComponent<MultiSelectProps, any> {
     ref,
   }) {
     const {
-      defaultText,
+      defaultText = "Please Select", // Deprecated - use placeholder
       disabled: isDisabled,
       options,
       placeholder,
@@ -281,8 +281,6 @@ class MultiSelect extends React.PureComponent<MultiSelectProps, any> {
       size,
       defaultValue,
       label = "",
-      defaultText = "Please Select", // Deprecated - use placeholder
-      placeholder,
       name, // Do not pass to child
       onChange, // Do not pass to child
       searchable,
