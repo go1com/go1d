@@ -138,6 +138,143 @@ class MultiSelect extends React.PureComponent<MultiSelectProps, any> {
     };
   }
 
+  public renderSelectDropdownTrigger({
+    colors,
+    getToggleButtonProps,
+    isOpen,
+    selectedItems,
+    ref,
+  }) {
+    const {
+      defaultText,
+      disabled: isDisabled,
+      options,
+      placeholder,
+      size,
+    } = this.props;
+    const disabled = !options || options.length === 0 ? true : isDisabled;
+
+    return (
+      <button
+        ref={ref}
+        type="button"
+        {...getToggleButtonProps({
+          disabled,
+        })}
+        data-testid="select-dropdown-trigger"
+        style={{
+          cursor: disabled ? "initial" : "pointer",
+        }}
+      >
+        <View
+          borderRadius={2}
+          paddingX={4}
+          border={1}
+          opacity={disabled && "disabled"}
+          borderColor={isOpen ? "accent" : "soft"}
+          position="relative"
+          boxShadow={isOpen ? "strong" : "soft"}
+          backgroundColor={selectedItems.length > 0 ? "accent" : "background"}
+        >
+          <View
+            paddingY={3}
+            css={{
+              overflow: "hidden",
+            }}
+          >
+            <Text
+              fontSize={Sizes[size].fontSize}
+              css={{
+                whiteSpace: "nowrap",
+              }}
+              color={selectedItems.length > 0 ? "background" : "default"}
+            >
+              {selectedItems.length > 0
+                ? selectedItems.map(x => x.label).join(", ")
+                : placeholder || defaultText}
+            </Text>
+          </View>
+          <View
+            css={{
+              position: "absolute",
+              right: 12,
+              top: 3,
+              alignItems: "center",
+              justifyContent: "center",
+              paddingRight: 0,
+              backgroundColor:
+                selectedItems.length > 0 ? colors.accent : colors.background,
+            }}
+            height="calc(100% - 3px)"
+            paddingLeft={3}
+          >
+            <Icon
+              name="ChevronDown"
+              size={2}
+              color={selectedItems.length > 0 ? "background" : "muted"}
+            />
+          </View>
+        </View>
+      </button>
+    );
+  }
+
+  public renderClearSelection({ colors, clearSelection, selectedItems }) {
+    return (
+      <View
+        flexDirection="row-reverse"
+        flexGrow={2}
+        flexWrap="wrap"
+        css={{
+          flexShrink: "initial",
+        }}
+      >
+        {selectedItems.length > 0 && (
+          <View
+            display="inline-flex"
+            backgroundColor="accent"
+            backgroundOpacity="pill"
+            borderRadius={2}
+            flexDirection="row"
+            css={{ overflow: "hidden" }}
+            marginLeft={3}
+            marginBottom={3}
+          >
+            <View
+              backgroundColor="accent"
+              paddingX={3}
+              paddingY={1}
+              justifyContent="center"
+            >
+              <Text color="background" fontSize={1}>
+                {selectedItems.length}
+              </Text>
+            </View>
+            <Button
+              padding={0}
+              color="subtle"
+              justifyContent="center"
+              height="100%"
+              onClick={this.handleSelectionClear(clearSelection)}
+              data-testid="clearSelectionButton"
+              borderRadius={3}
+              iconName="Cross"
+              size="sm"
+              width={20}
+              css={{
+                backgroundColor: "transparent",
+                "&:hover": {
+                  color: colors.default,
+                  cursor: "pointer",
+                },
+              }}
+            />
+          </View>
+        )}
+      </View>
+    );
+  }
+
   public render() {
     const {
       options,
@@ -155,12 +292,6 @@ class MultiSelect extends React.PureComponent<MultiSelectProps, any> {
       onOuterClick,
       ...remainingProps
     } = this.props;
-    let { disabled } = this.props;
-
-    if (!options || options.length === 0) {
-      disabled = true;
-    }
-
     const { flattenedOptions = [], selectableCount } = this.flattenOptions(
       options
     );
@@ -248,138 +379,24 @@ class MultiSelect extends React.PureComponent<MultiSelectProps, any> {
                         )}
                       </View>
                     )}
-                    <View
-                      flexDirection="row-reverse"
-                      flexGrow={2}
-                      flexWrap="wrap"
-                      css={{
-                        flexShrink: "initial",
-                      }}
-                    >
-                      {selectedItems.length > 0 && (
-                        <View
-                          display="inline-flex"
-                          backgroundColor="accent"
-                          backgroundOpacity="pill"
-                          borderRadius={2}
-                          flexDirection="row"
-                          css={{ overflow: "hidden" }}
-                          marginLeft={3}
-                          marginBottom={3}
-                        >
-                          <View
-                            backgroundColor="accent"
-                            paddingX={3}
-                            paddingY={1}
-                            justifyContent="center"
-                          >
-                            <Text color="background" fontSize={1}>
-                              {selectedItems.length}
-                            </Text>
-                          </View>
-                          <Button
-                            padding={0}
-                            color="subtle"
-                            justifyContent="center"
-                            height="100%"
-                            onClick={this.handleSelectionClear(clearSelection)}
-                            data-testid="clearSelectionButton"
-                            borderRadius={3}
-                            iconName="Cross"
-                            size="sm"
-                            width={20}
-                            css={{
-                              backgroundColor: "transparent",
-                              "&:hover": {
-                                color: colors.default,
-                                cursor: "pointer",
-                              },
-                            }}
-                          />
-                        </View>
-                      )}
-                    </View>
+                    {this.renderClearSelection({
+                      colors,
+                      clearSelection,
+                      selectedItems,
+                    })}
                   </View>
                   <View>
                     <Manager>
                       <Reference>
-                        {({ ref }) => (
-                          <button
-                            ref={ref}
-                            type="button"
-                            {...getToggleButtonProps({
-                              disabled,
-                            })}
-                            data-testid="select-dropdown-trigger"
-                            style={{
-                              cursor: disabled ? "initial" : "pointer",
-                            }}
-                          >
-                            <View
-                              borderRadius={2}
-                              paddingX={4}
-                              border={1}
-                              opacity={disabled && "disabled"}
-                              borderColor={isOpen ? "accent" : "soft"}
-                              position="relative"
-                              boxShadow={isOpen ? "strong" : "soft"}
-                              backgroundColor={
-                                selectedItems.length > 0
-                                  ? "accent"
-                                  : "background"
-                              }
-                            >
-                              <View
-                                paddingY={3}
-                                css={{
-                                  overflow: "hidden",
-                                }}
-                              >
-                                <Text
-                                  fontSize={Sizes[size].fontSize}
-                                  css={{
-                                    whiteSpace: "nowrap",
-                                  }}
-                                  color={
-                                    selectedItems.length > 0
-                                      ? "background"
-                                      : "default"
-                                  }
-                                >
-                                  {selectedItems.length > 0
-                                    ? selectedItems.map(x => x.label).join(", ")
-                                    : placeholder || defaultText}
-                                </Text>
-                              </View>
-                              <View
-                                css={{
-                                  position: "absolute",
-                                  right: 12,
-                                  top: 3,
-                                  alignItems: "center",
-                                  justifyContent: "center",
-                                  paddingRight: 0,
-                                  backgroundColor:
-                                    selectedItems.length > 0
-                                      ? colors.accent
-                                      : colors.background,
-                                }}
-                                height="calc(100% - 3px)"
-                                paddingLeft={3}
-                              >
-                                <Icon
-                                  name="ChevronDown"
-                                  size={2}
-                                  color={
-                                    selectedItems.length > 0
-                                      ? "background"
-                                      : "muted"
-                                  }
-                                />
-                              </View>
-                            </View>
-                          </button>
-                        )}
+                        {({ ref }) =>
+                          this.renderSelectDropdownTrigger({
+                            colors,
+                            getToggleButtonProps,
+                            isOpen,
+                            selectedItems,
+                            ref,
+                          })
+                        }
                       </Reference>
                       {isOpen && (
                         <Portal>
