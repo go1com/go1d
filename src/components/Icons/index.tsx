@@ -85,6 +85,7 @@ export { default as MapPin } from "./MapPin";
 export { default as Mastercard } from "./Mastercard";
 export { default as Menu } from "./Menu";
 export { default as Minus } from "./Minus";
+export { default as Mixer } from "./Mixer";
 export { default as Mobile } from "./Mobile";
 export { default as MultipleUsers } from "./MultipleUsers";
 export { default as NotPassed } from "./NotPassed";
