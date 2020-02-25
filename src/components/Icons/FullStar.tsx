@@ -1,7 +1,7 @@
 import * as React from "react";
 import IconBase from "../IconBase";
 
-class FullStarIcon extends IconBase {
+class IconFullStar extends IconBase {
   getIconComponent(props) {
     return (
       <svg fill="currentColor" viewBox="0 0 16 16" {...props}>
@@ -11,6 +11,6 @@ class FullStarIcon extends IconBase {
   }
 }
 
-FullStarIcon.displayName = "IconFullStar";
+IconFullStar.displayName = "IconFullStar";
 
-export default FullStarIcon;
+export default IconFullStar;

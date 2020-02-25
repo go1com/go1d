@@ -1,7 +1,7 @@
 import * as React from "react";
 import IconBase from "../IconBase";
 
-class BriefcaseIcon extends IconBase {
+class IconBriefcase extends IconBase {
   getIconComponent(props) {
     return (
       <svg fill="currentColor" viewBox="0 0 16 16" {...props}>
@@ -11,6 +11,6 @@ class BriefcaseIcon extends IconBase {
   }
 }
 
-BriefcaseIcon.displayName = "IconBriefcase";
+IconBriefcase.displayName = "IconBriefcase";
 
-export default BriefcaseIcon;
+export default IconBriefcase;

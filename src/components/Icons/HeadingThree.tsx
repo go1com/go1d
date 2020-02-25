@@ -1,7 +1,7 @@
 import * as React from "react";
 import IconBase from "../IconBase";
 
-class HeadingThreeIcon extends IconBase {
+class IconHeadingThree extends IconBase {
   getIconComponent(props) {
     return (
       <svg
@@ -22,6 +22,6 @@ class HeadingThreeIcon extends IconBase {
   }
 }
 
-HeadingThreeIcon.displayName = "IconHeadingThree";
+IconHeadingThree.displayName = "IconHeadingThree";
 
-export default HeadingThreeIcon;
+export default IconHeadingThree;

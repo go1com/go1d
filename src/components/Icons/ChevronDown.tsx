@@ -1,7 +1,7 @@
 import * as React from "react";
 import IconBase from "../IconBase";
 
-class ChevronDownIcon extends IconBase {
+class IconChevronDown extends IconBase {
   getIconComponent(props) {
     return (
       <svg fill="currentColor" viewBox="0 0 16 16" {...props}>
@@ -11,6 +11,6 @@ class ChevronDownIcon extends IconBase {
   }
 }
 
-ChevronDownIcon.displayName = "IconChevronDown";
+IconChevronDown.displayName = "IconChevronDown";
 
-export default ChevronDownIcon;
+export default IconChevronDown;

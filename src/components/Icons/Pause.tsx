@@ -1,7 +1,7 @@
 import * as React from "react";
 import IconBase from "../IconBase";
 
-class PauseIcon extends IconBase {
+class IconPause extends IconBase {
   getIconComponent(props) {
     return (
       <svg fill="currentColor" viewBox="0 0 16 16" {...props}>
@@ -15,6 +15,6 @@ class PauseIcon extends IconBase {
   }
 }
 
-PauseIcon.displayName = "IconPause";
+IconPause.displayName = "IconPause";
 
-export default PauseIcon;
+export default IconPause;

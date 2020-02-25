@@ -1,7 +1,7 @@
 import * as React from "react";
 import IconBase from "../IconBase";
 
-class StrikethroughIcon extends IconBase {
+class IconStrikethrough extends IconBase {
   getIconComponent(props) {
     return (
       <svg
@@ -23,6 +23,6 @@ class StrikethroughIcon extends IconBase {
   }
 }
 
-StrikethroughIcon.displayName = "IconStrikethrough";
+IconStrikethrough.displayName = "IconStrikethrough";
 
-export default StrikethroughIcon;
+export default IconStrikethrough;

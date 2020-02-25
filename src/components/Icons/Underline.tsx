@@ -1,7 +1,7 @@
 import * as React from "react";
 import IconBase from "../IconBase";
 
-class UnderlineIcon extends IconBase {
+class IconUnderline extends IconBase {
   getIconComponent(props) {
     return (
       <svg
@@ -22,6 +22,6 @@ class UnderlineIcon extends IconBase {
   }
 }
 
-UnderlineIcon.displayName = "IconUnderline";
+IconUnderline.displayName = "IconUnderline";
 
-export default UnderlineIcon;
+export default IconUnderline;

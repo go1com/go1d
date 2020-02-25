@@ -1,7 +1,7 @@
 import * as React from "react";
 import IconBase from "../IconBase";
 
-class HeartOutlineIcon extends IconBase {
+class IconHeartOutline extends IconBase {
   getIconComponent(props) {
     return (
       <svg fill="currentColor" viewBox="0 0 16 16" {...props}>
@@ -11,6 +11,6 @@ class HeartOutlineIcon extends IconBase {
   }
 }
 
-HeartOutlineIcon.displayName = "IconHeartOutline";
+IconHeartOutline.displayName = "IconHeartOutline";
 
-export default HeartOutlineIcon;
+export default IconHeartOutline;

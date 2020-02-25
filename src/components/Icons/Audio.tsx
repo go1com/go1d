@@ -1,7 +1,7 @@
 import * as React from "react";
 import IconBase from "../IconBase";
 
-class AudioIcon extends IconBase {
+class IconAudio extends IconBase {
   getIconComponent(props) {
     return (
       <svg fill="currentColor" viewBox="0 0 16 16" {...props}>
@@ -20,6 +20,6 @@ class AudioIcon extends IconBase {
   }
 }
 
-AudioIcon.displayName = "IconAudio";
+IconAudio.displayName = "IconAudio";
 
-export default AudioIcon;
+export default IconAudio;

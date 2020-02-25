@@ -1,7 +1,7 @@
 import * as React from "react";
 import IconBase from "../IconBase";
 
-class NotPassedIcon extends IconBase {
+class IconNotPassed extends IconBase {
   getIconComponent(props) {
     return (
       <svg fill="currentColor" viewBox="0 0 16 16" {...props}>
@@ -11,6 +11,6 @@ class NotPassedIcon extends IconBase {
   }
 }
 
-NotPassedIcon.displayName = "IconNotPassed";
+IconNotPassed.displayName = "IconNotPassed";
 
-export default NotPassedIcon;
+export default IconNotPassed;

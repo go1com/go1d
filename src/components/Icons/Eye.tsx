@@ -1,7 +1,7 @@
 import * as React from "react";
 import IconBase from "../IconBase";
 
-class EyeIcon extends IconBase {
+class IconEye extends IconBase {
   getIconComponent(props) {
     return (
       <svg fill="currentColor" viewBox="0 0 16 16" {...props}>
@@ -11,6 +11,6 @@ class EyeIcon extends IconBase {
   }
 }
 
-EyeIcon.displayName = "IconEye";
+IconEye.displayName = "IconEye";
 
-export default EyeIcon;
+export default IconEye;

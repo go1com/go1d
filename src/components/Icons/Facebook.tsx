@@ -1,7 +1,7 @@
 import * as React from "react";
 import IconBase from "../IconBase";
 
-class FacebookIcon extends IconBase {
+class IconFacebook extends IconBase {
   getIconComponent(props) {
     return (
       <svg fill="currentColor" viewBox="0 0 16 16" {...props}>
@@ -11,6 +11,6 @@ class FacebookIcon extends IconBase {
   }
 }
 
-FacebookIcon.displayName = "IconFacebook";
+IconFacebook.displayName = "IconFacebook";
 
-export default FacebookIcon;
+export default IconFacebook;

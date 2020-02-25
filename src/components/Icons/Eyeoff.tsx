@@ -1,7 +1,7 @@
 import * as React from "react";
 import IconBase from "../IconBase";
 
-class EyeoffIcon extends IconBase {
+class IconEyeoff extends IconBase {
   getIconComponent(props) {
     return (
       <svg fill="currentColor" viewBox="0 0 16 16" {...props}>
@@ -11,6 +11,6 @@ class EyeoffIcon extends IconBase {
   }
 }
 
-EyeoffIcon.displayName = "IconEyeoff";
+IconEyeoff.displayName = "IconEyeoff";
 
-export default EyeoffIcon;
+export default IconEyeoff;

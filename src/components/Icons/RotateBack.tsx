@@ -1,7 +1,7 @@
 import * as React from "react";
 import IconBase from "../IconBase";
 
-class RotateBackIcon extends IconBase {
+class IconRotateBack extends IconBase {
   getIconComponent(props) {
     return (
       <svg fill="currentColor" viewBox="0 0 16 16" {...props}>
@@ -15,6 +15,6 @@ class RotateBackIcon extends IconBase {
   }
 }
 
-RotateBackIcon.displayName = "IconRotateBack";
+IconRotateBack.displayName = "IconRotateBack";
 
-export default RotateBackIcon;
+export default IconRotateBack;

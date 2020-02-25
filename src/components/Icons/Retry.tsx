@@ -1,7 +1,7 @@
 import * as React from "react";
 import IconBase from "../IconBase";
 
-class RetryIcon extends IconBase {
+class IconRetry extends IconBase {
   getIconComponent(props) {
     return (
       <svg fill="currentColor" viewBox="0 0 16 16" {...props}>
@@ -11,6 +11,6 @@ class RetryIcon extends IconBase {
   }
 }
 
-RetryIcon.displayName = "IconRetry";
+IconRetry.displayName = "IconRetry";
 
-export default RetryIcon;
+export default IconRetry;

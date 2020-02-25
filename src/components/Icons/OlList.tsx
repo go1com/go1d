@@ -1,7 +1,7 @@
 import * as React from "react";
 import IconBase from "../IconBase";
 
-class OlListIcon extends IconBase {
+class IconOlList extends IconBase {
   getIconComponent(props) {
     return (
       <svg
@@ -22,6 +22,6 @@ class OlListIcon extends IconBase {
   }
 }
 
-OlListIcon.displayName = "IconOlList";
+IconOlList.displayName = "IconOlList";
 
-export default OlListIcon;
+export default IconOlList;

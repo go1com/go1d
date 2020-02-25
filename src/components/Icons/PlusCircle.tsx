@@ -1,7 +1,7 @@
 import * as React from "react";
 import IconBase from "../IconBase";
 
-class PlusCircleIcon extends IconBase {
+class IconPlusCircle extends IconBase {
   getIconComponent(props) {
     return (
       <svg fill="currentColor" viewBox="0 0 16 16" {...props}>
@@ -11,6 +11,6 @@ class PlusCircleIcon extends IconBase {
   }
 }
 
-PlusCircleIcon.displayName = "IconPlusCircle";
+IconPlusCircle.displayName = "IconPlusCircle";
 
-export default PlusCircleIcon;
+export default IconPlusCircle;

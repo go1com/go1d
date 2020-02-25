@@ -1,7 +1,7 @@
 import * as React from "react";
 import IconBase from "../IconBase";
 
-class UnpublishIcon extends IconBase {
+class IconUnpublish extends IconBase {
   getIconComponent(props) {
     return (
       <svg fill="currentColor" viewBox="0 0 16 16" {...props}>
@@ -11,6 +11,6 @@ class UnpublishIcon extends IconBase {
   }
 }
 
-UnpublishIcon.displayName = "IconUnpublish";
+IconUnpublish.displayName = "IconUnpublish";
 
-export default UnpublishIcon;
+export default IconUnpublish;

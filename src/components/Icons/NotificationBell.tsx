@@ -1,7 +1,7 @@
 import * as React from "react";
 import IconBase from "../IconBase";
 
-class NotificationBellIcon extends IconBase {
+class IconNotificationBell extends IconBase {
   getIconComponent(props) {
     return (
       <svg fill="currentColor" viewBox="0 0 16 16" {...props}>
@@ -11,6 +11,6 @@ class NotificationBellIcon extends IconBase {
   }
 }
 
-NotificationBellIcon.displayName = "IconNotificationBell";
+IconNotificationBell.displayName = "IconNotificationBell";
 
-export default NotificationBellIcon;
+export default IconNotificationBell;

@@ -1,7 +1,7 @@
 import * as React from "react";
 import IconBase from "../IconBase";
 
-class TagIcon extends IconBase {
+class IconTag extends IconBase {
   getIconComponent(props) {
     return (
       <svg fill="currentColor" viewBox="0 0 16 16" {...props}>
@@ -11,6 +11,6 @@ class TagIcon extends IconBase {
   }
 }
 
-TagIcon.displayName = "IconTag";
+IconTag.displayName = "IconTag";
 
-export default TagIcon;
+export default IconTag;

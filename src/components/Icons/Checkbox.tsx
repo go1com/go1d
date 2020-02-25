@@ -1,7 +1,7 @@
 import * as React from "react";
 import IconBase from "../IconBase";
 
-class CheckboxIcon extends IconBase {
+class IconCheckbox extends IconBase {
   getIconComponent(props) {
     return (
       <svg fill="currentColor" viewBox="0 0 16 16" {...props}>
@@ -11,6 +11,6 @@ class CheckboxIcon extends IconBase {
   }
 }
 
-CheckboxIcon.displayName = "IconCheckbox";
+IconCheckbox.displayName = "IconCheckbox";
 
-export default CheckboxIcon;
+export default IconCheckbox;

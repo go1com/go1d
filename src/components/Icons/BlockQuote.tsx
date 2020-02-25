@@ -1,7 +1,7 @@
 import * as React from "react";
 import IconBase from "../IconBase";
 
-class BlockQuoteIcon extends IconBase {
+class IconBlockQuote extends IconBase {
   getIconComponent(props) {
     return (
       <svg
@@ -22,6 +22,6 @@ class BlockQuoteIcon extends IconBase {
   }
 }
 
-BlockQuoteIcon.displayName = "IconBlockQuote";
+IconBlockQuote.displayName = "IconBlockQuote";
 
-export default BlockQuoteIcon;
+export default IconBlockQuote;

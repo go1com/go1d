@@ -1,7 +1,7 @@
 import * as React from "react";
 import IconBase from "../IconBase";
 
-class CopyIcon extends IconBase {
+class IconCopy extends IconBase {
   getIconComponent(props) {
     return (
       <svg fill="currentColor" viewBox="0 0 16 16" {...props}>
@@ -11,6 +11,6 @@ class CopyIcon extends IconBase {
   }
 }
 
-CopyIcon.displayName = "IconCopy";
+IconCopy.displayName = "IconCopy";
 
-export default CopyIcon;
+export default IconCopy;

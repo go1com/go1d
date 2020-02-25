@@ -1,7 +1,7 @@
 import * as React from "react";
 import IconBase from "../IconBase";
 
-class Go1LogoIcon extends IconBase {
+class IconGo1Logo extends IconBase {
   getIconComponent(props) {
     return (
       <svg fill="currentColor" viewBox="0 0 16 16" {...props}>
@@ -16,6 +16,6 @@ class Go1LogoIcon extends IconBase {
   }
 }
 
-Go1LogoIcon.displayName = "IconGo1Logo";
+IconGo1Logo.displayName = "IconGo1Logo";
 
-export default Go1LogoIcon;
+export default IconGo1Logo;

@@ -1,7 +1,7 @@
 import * as React from "react";
 import IconBase from "../IconBase";
 
-class IncompleteIcon extends IconBase {
+class IconIncomplete extends IconBase {
   getIconComponent(props) {
     return (
       <svg fill="currentColor" viewBox="0 0 16 16" {...props}>
@@ -11,6 +11,6 @@ class IncompleteIcon extends IconBase {
   }
 }
 
-IncompleteIcon.displayName = "IconIncomplete";
+IconIncomplete.displayName = "IconIncomplete";
 
-export default IncompleteIcon;
+export default IconIncomplete;

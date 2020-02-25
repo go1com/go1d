@@ -1,7 +1,7 @@
 import * as React from "react";
 import IconBase from "../IconBase";
 
-class MultipleUsersIcon extends IconBase {
+class IconMultipleUsers extends IconBase {
   getIconComponent(props) {
     return (
       <svg fill="currentColor" viewBox="0 0 16 16" {...props}>
@@ -11,6 +11,6 @@ class MultipleUsersIcon extends IconBase {
   }
 }
 
-MultipleUsersIcon.displayName = "IconMultipleUsers";
+IconMultipleUsers.displayName = "IconMultipleUsers";
 
-export default MultipleUsersIcon;
+export default IconMultipleUsers;

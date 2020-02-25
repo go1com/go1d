@@ -1,7 +1,7 @@
 import * as React from "react";
 import IconBase from "../IconBase";
 
-class TooHardIcon extends IconBase {
+class IconTooHard extends IconBase {
   getIconComponent(props) {
     return (
       <svg fill="currentColor" viewBox="0 0 16 16" {...props}>
@@ -15,6 +15,6 @@ class TooHardIcon extends IconBase {
   }
 }
 
-TooHardIcon.displayName = "IconTooHard";
+IconTooHard.displayName = "IconTooHard";
 
-export default TooHardIcon;
+export default IconTooHard;

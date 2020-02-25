@@ -10,7 +10,7 @@ export interface IconProps extends ViewProps {
 }
 
 const Icon: React.SFC<IconProps> = ({ name, ...props }: IconProps) => {
-  const IconComponent = Icons[name];
+  const IconComponent = Icons[`Icon${name}`];
   if (!IconComponent) {
     return null;
   }

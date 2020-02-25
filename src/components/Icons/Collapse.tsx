@@ -1,7 +1,7 @@
 import * as React from "react";
 import IconBase from "../IconBase";
 
-class CollapseIcon extends IconBase {
+class IconCollapse extends IconBase {
   getIconComponent(props) {
     return (
       <svg fill="currentColor" viewBox="0 0 16 16" {...props}>
@@ -11,6 +11,6 @@ class CollapseIcon extends IconBase {
   }
 }
 
-CollapseIcon.displayName = "IconCollapse";
+IconCollapse.displayName = "IconCollapse";
 
-export default CollapseIcon;
+export default IconCollapse;

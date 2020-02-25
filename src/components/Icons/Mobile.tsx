@@ -1,7 +1,7 @@
 import * as React from "react";
 import IconBase from "../IconBase";
 
-class MobileIcon extends IconBase {
+class IconMobile extends IconBase {
   getIconComponent(props) {
     return (
       <svg fill="currentColor" viewBox="0 0 16 16" {...props}>
@@ -20,6 +20,6 @@ class MobileIcon extends IconBase {
   }
 }
 
-MobileIcon.displayName = "IconMobile";
+IconMobile.displayName = "IconMobile";
 
-export default MobileIcon;
+export default IconMobile;

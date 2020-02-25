@@ -3,7 +3,7 @@ const reactDomTemplate = (code, config, state) => {
   const result = `import * as React from "react";
 import IconBase from "../IconBase";
 
-class ${name}Icon extends IconBase {
+class Icon${name} extends IconBase {
   getIconComponent(props) {
     return (
       ${code}
@@ -11,9 +11,9 @@ class ${name}Icon extends IconBase {
   }
 }
 
-${name}Icon.displayName = "Icon${name}";
+Icon${name}.displayName = "Icon${name}";
 
-export default ${name}Icon;
+export default Icon${name};
 `;
 
   return result

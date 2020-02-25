@@ -1,7 +1,7 @@
 import * as React from "react";
 import IconBase from "../IconBase";
 
-class CameraIcon extends IconBase {
+class IconCamera extends IconBase {
   getIconComponent(props) {
     return (
       <svg fill="currentColor" viewBox="0 0 16 16" {...props}>
@@ -11,6 +11,6 @@ class CameraIcon extends IconBase {
   }
 }
 
-CameraIcon.displayName = "IconCamera";
+IconCamera.displayName = "IconCamera";
 
-export default CameraIcon;
+export default IconCamera;

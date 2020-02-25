@@ -1,7 +1,7 @@
 import * as React from "react";
 import IconBase from "../IconBase";
 
-class DrawerCloseIcon extends IconBase {
+class IconDrawerClose extends IconBase {
   getIconComponent(props) {
     return (
       <svg fill="currentColor" viewBox="0 0 16 16" {...props}>
@@ -16,6 +16,6 @@ class DrawerCloseIcon extends IconBase {
   }
 }
 
-DrawerCloseIcon.displayName = "IconDrawerClose";
+IconDrawerClose.displayName = "IconDrawerClose";
 
-export default DrawerCloseIcon;
+export default IconDrawerClose;

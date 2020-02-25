@@ -1,7 +1,7 @@
 import * as React from "react";
 import IconBase from "../IconBase";
 
-class LockIcon extends IconBase {
+class IconLock extends IconBase {
   getIconComponent(props) {
     return (
       <svg fill="currentColor" viewBox="0 0 16 16" {...props}>
@@ -11,6 +11,6 @@ class LockIcon extends IconBase {
   }
 }
 
-LockIcon.displayName = "IconLock";
+IconLock.displayName = "IconLock";
 
-export default LockIcon;
+export default IconLock;

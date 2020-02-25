@@ -1,7 +1,7 @@
 import * as React from "react";
 import IconBase from "../IconBase";
 
-class EnvelopeIcon extends IconBase {
+class IconEnvelope extends IconBase {
   getIconComponent(props) {
     return (
       <svg fill="currentColor" viewBox="0 0 16 16" {...props}>
@@ -11,6 +11,6 @@ class EnvelopeIcon extends IconBase {
   }
 }
 
-EnvelopeIcon.displayName = "IconEnvelope";
+IconEnvelope.displayName = "IconEnvelope";
 
-export default EnvelopeIcon;
+export default IconEnvelope;

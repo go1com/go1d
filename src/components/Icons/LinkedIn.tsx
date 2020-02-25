@@ -1,7 +1,7 @@
 import * as React from "react";
 import IconBase from "../IconBase";
 
-class LinkedInIcon extends IconBase {
+class IconLinkedIn extends IconBase {
   getIconComponent(props) {
     return (
       <svg fill="currentColor" viewBox="0 0 16 16" {...props}>
@@ -15,6 +15,6 @@ class LinkedInIcon extends IconBase {
   }
 }
 
-LinkedInIcon.displayName = "IconLinkedIn";
+IconLinkedIn.displayName = "IconLinkedIn";
 
-export default LinkedInIcon;
+export default IconLinkedIn;

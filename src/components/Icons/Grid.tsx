@@ -1,7 +1,7 @@
 import * as React from "react";
 import IconBase from "../IconBase";
 
-class GridIcon extends IconBase {
+class IconGrid extends IconBase {
   getIconComponent(props) {
     return (
       <svg fill="currentColor" viewBox="0 0 16 16" {...props}>
@@ -11,6 +11,6 @@ class GridIcon extends IconBase {
   }
 }
 
-GridIcon.displayName = "IconGrid";
+IconGrid.displayName = "IconGrid";
 
-export default GridIcon;
+export default IconGrid;

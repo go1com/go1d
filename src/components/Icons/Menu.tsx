@@ -1,7 +1,7 @@
 import * as React from "react";
 import IconBase from "../IconBase";
 
-class MenuIcon extends IconBase {
+class IconMenu extends IconBase {
   getIconComponent(props) {
     return (
       <svg fill="currentColor" viewBox="0 0 16 16" {...props}>
@@ -11,6 +11,6 @@ class MenuIcon extends IconBase {
   }
 }
 
-MenuIcon.displayName = "IconMenu";
+IconMenu.displayName = "IconMenu";
 
-export default MenuIcon;
+export default IconMenu;

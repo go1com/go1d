@@ -1,7 +1,7 @@
 import * as React from "react";
 import IconBase from "../IconBase";
 
-class ReplayIcon extends IconBase {
+class IconReplay extends IconBase {
   getIconComponent(props) {
     return (
       <svg fill="currentColor" viewBox="0 0 16 16" {...props}>
@@ -15,6 +15,6 @@ class ReplayIcon extends IconBase {
   }
 }
 
-ReplayIcon.displayName = "IconReplay";
+IconReplay.displayName = "IconReplay";
 
-export default ReplayIcon;
+export default IconReplay;

@@ -1,7 +1,7 @@
 import * as React from "react";
 import IconBase from "../IconBase";
 
-class SkipBackIcon extends IconBase {
+class IconSkipBack extends IconBase {
   getIconComponent(props) {
     return (
       <svg fill="currentColor" viewBox="0 0 16 16" {...props}>
@@ -16,6 +16,6 @@ class SkipBackIcon extends IconBase {
   }
 }
 
-SkipBackIcon.displayName = "IconSkipBack";
+IconSkipBack.displayName = "IconSkipBack";
 
-export default SkipBackIcon;
+export default IconSkipBack;

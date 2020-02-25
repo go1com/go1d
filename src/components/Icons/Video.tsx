@@ -1,7 +1,7 @@
 import * as React from "react";
 import IconBase from "../IconBase";
 
-class VideoIcon extends IconBase {
+class IconVideo extends IconBase {
   getIconComponent(props) {
     return (
       <svg fill="currentColor" viewBox="0 0 16 16" {...props}>
@@ -11,6 +11,6 @@ class VideoIcon extends IconBase {
   }
 }
 
-VideoIcon.displayName = "IconVideo";
+IconVideo.displayName = "IconVideo";
 
-export default VideoIcon;
+export default IconVideo;

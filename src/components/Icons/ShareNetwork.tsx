@@ -1,7 +1,7 @@
 import * as React from "react";
 import IconBase from "../IconBase";
 
-class ShareNetworkIcon extends IconBase {
+class IconShareNetwork extends IconBase {
   getIconComponent(props) {
     return (
       <svg fill="currentColor" viewBox="0 0 16 16" {...props}>
@@ -11,6 +11,6 @@ class ShareNetworkIcon extends IconBase {
   }
 }
 
-ShareNetworkIcon.displayName = "IconShareNetwork";
+IconShareNetwork.displayName = "IconShareNetwork";
 
-export default ShareNetworkIcon;
+export default IconShareNetwork;

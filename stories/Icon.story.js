@@ -2,6 +2,7 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { Icon } from '../src';
 import Go1LogoIcon from "../src/components/Icons/Go1Logo";
+import { IconGo1Logo } from "../src/components/Icons/";
 
 storiesOf("Icon", module)
     .add('Base', () => <Icon name="Go1Logo" />)
@@ -13,4 +14,7 @@ storiesOf("Icon", module)
     </React.Fragment>)
     .add('Direct Build', () => <React.Fragment>
         <Go1LogoIcon />
+    </React.Fragment>)
+    .add('Direct Build - Index Import', () => <React.Fragment>
+        <IconGo1Logo />
     </React.Fragment>)

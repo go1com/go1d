@@ -1,7 +1,7 @@
 import * as React from "react";
 import IconBase from "../IconBase";
 
-class PriceIcon extends IconBase {
+class IconPrice extends IconBase {
   getIconComponent(props) {
     return (
       <svg fill="currentColor" viewBox="0 0 16 16" {...props}>
@@ -20,6 +20,6 @@ class PriceIcon extends IconBase {
   }
 }
 
-PriceIcon.displayName = "IconPrice";
+IconPrice.displayName = "IconPrice";
 
-export default PriceIcon;
+export default IconPrice;

@@ -1,7 +1,7 @@
 import * as React from "react";
 import IconBase from "../IconBase";
 
-class BoldIcon extends IconBase {
+class IconBold extends IconBase {
   getIconComponent(props) {
     return (
       <svg
@@ -26,6 +26,6 @@ class BoldIcon extends IconBase {
   }
 }
 
-BoldIcon.displayName = "IconBold";
+IconBold.displayName = "IconBold";
 
-export default BoldIcon;
+export default IconBold;

@@ -1,7 +1,7 @@
 import * as React from "react";
 import IconBase from "../IconBase";
 
-class ClockIcon extends IconBase {
+class IconClock extends IconBase {
   getIconComponent(props) {
     return (
       <svg fill="currentColor" viewBox="0 0 16 16" {...props}>
@@ -11,6 +11,6 @@ class ClockIcon extends IconBase {
   }
 }
 
-ClockIcon.displayName = "IconClock";
+IconClock.displayName = "IconClock";
 
-export default ClockIcon;
+export default IconClock;

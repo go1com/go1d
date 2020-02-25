@@ -1,7 +1,7 @@
 import * as React from "react";
 import IconBase from "../IconBase";
 
-class ExternallinkIcon extends IconBase {
+class IconExternallink extends IconBase {
   getIconComponent(props) {
     return (
       <svg fill="currentColor" viewBox="0 0 16 16" {...props}>
@@ -11,6 +11,6 @@ class ExternallinkIcon extends IconBase {
   }
 }
 
-ExternallinkIcon.displayName = "IconExternallink";
+IconExternallink.displayName = "IconExternallink";
 
-export default ExternallinkIcon;
+export default IconExternallink;

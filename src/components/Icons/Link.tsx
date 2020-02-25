@@ -1,7 +1,7 @@
 import * as React from "react";
 import IconBase from "../IconBase";
 
-class LinkIcon extends IconBase {
+class IconLink extends IconBase {
   getIconComponent(props) {
     return (
       <svg
@@ -26,6 +26,6 @@ class LinkIcon extends IconBase {
   }
 }
 
-LinkIcon.displayName = "IconLink";
+IconLink.displayName = "IconLink";
 
-export default LinkIcon;
+export default IconLink;

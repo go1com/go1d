@@ -1,7 +1,7 @@
 import * as React from "react";
 import IconBase from "../IconBase";
 
-class IrrelevantIcon extends IconBase {
+class IconIrrelevant extends IconBase {
   getIconComponent(props) {
     return (
       <svg fill="currentColor" viewBox="0 0 16 16" {...props}>
@@ -15,6 +15,6 @@ class IrrelevantIcon extends IconBase {
   }
 }
 
-IrrelevantIcon.displayName = "IconIrrelevant";
+IconIrrelevant.displayName = "IconIrrelevant";
 
-export default IrrelevantIcon;
+export default IconIrrelevant;

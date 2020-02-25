@@ -1,7 +1,7 @@
 import * as React from "react";
 import IconBase from "../IconBase";
 
-class ItalicIcon extends IconBase {
+class IconItalic extends IconBase {
   getIconComponent(props) {
     return (
       <svg
@@ -22,6 +22,6 @@ class ItalicIcon extends IconBase {
   }
 }
 
-ItalicIcon.displayName = "IconItalic";
+IconItalic.displayName = "IconItalic";
 
-export default ItalicIcon;
+export default IconItalic;

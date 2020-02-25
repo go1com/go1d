@@ -1,7 +1,7 @@
 import * as React from "react";
 import IconBase from "../IconBase";
 
-class SpeechBubbleIcon extends IconBase {
+class IconSpeechBubble extends IconBase {
   getIconComponent(props) {
     return (
       <svg fill="currentColor" viewBox="0 0 16 16" {...props}>
@@ -11,6 +11,6 @@ class SpeechBubbleIcon extends IconBase {
   }
 }
 
-SpeechBubbleIcon.displayName = "IconSpeechBubble";
+IconSpeechBubble.displayName = "IconSpeechBubble";
 
-export default SpeechBubbleIcon;
+export default IconSpeechBubble;

@@ -1,7 +1,7 @@
 import * as React from "react";
 import IconBase from "../IconBase";
 
-class LtiIcon extends IconBase {
+class IconLti extends IconBase {
   getIconComponent(props) {
     return (
       <svg fill="currentColor" viewBox="0 0 16 16" {...props}>
@@ -11,6 +11,6 @@ class LtiIcon extends IconBase {
   }
 }
 
-LtiIcon.displayName = "IconLti";
+IconLti.displayName = "IconLti";
 
-export default LtiIcon;
+export default IconLti;

@@ -1,7 +1,7 @@
 import * as React from "react";
 import IconBase from "../IconBase";
 
-class MixerIcon extends IconBase {
+class IconMixer extends IconBase {
   getIconComponent(props) {
     return (
       <svg fill="currentColor" viewBox="0 0 16 16" {...props}>
@@ -22,6 +22,6 @@ class MixerIcon extends IconBase {
   }
 }
 
-MixerIcon.displayName = "IconMixer";
+IconMixer.displayName = "IconMixer";
 
-export default MixerIcon;
+export default IconMixer;

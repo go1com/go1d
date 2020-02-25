@@ -1,7 +1,7 @@
 import * as React from "react";
 import IconBase from "../IconBase";
 
-class TwitterIcon extends IconBase {
+class IconTwitter extends IconBase {
   getIconComponent(props) {
     return (
       <svg fill="currentColor" viewBox="0 0 16 16" {...props}>
@@ -11,6 +11,6 @@ class TwitterIcon extends IconBase {
   }
 }
 
-TwitterIcon.displayName = "IconTwitter";
+IconTwitter.displayName = "IconTwitter";
 
-export default TwitterIcon;
+export default IconTwitter;

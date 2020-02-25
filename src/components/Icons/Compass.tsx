@@ -1,7 +1,7 @@
 import * as React from "react";
 import IconBase from "../IconBase";
 
-class CompassIcon extends IconBase {
+class IconCompass extends IconBase {
   getIconComponent(props) {
     return (
       <svg fill="currentColor" viewBox="0 0 16 16" {...props}>
@@ -20,6 +20,6 @@ class CompassIcon extends IconBase {
   }
 }
 
-CompassIcon.displayName = "IconCompass";
+IconCompass.displayName = "IconCompass";
 
-export default CompassIcon;
+export default IconCompass;

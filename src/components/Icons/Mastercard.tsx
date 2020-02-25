@@ -1,7 +1,7 @@
 import * as React from "react";
 import IconBase from "../IconBase";
 
-class MastercardIcon extends IconBase {
+class IconMastercard extends IconBase {
   getIconComponent(props) {
     return (
       <svg fill="currentColor" viewBox="0 0 16 16" {...props}>
@@ -11,6 +11,6 @@ class MastercardIcon extends IconBase {
   }
 }
 
-MastercardIcon.displayName = "IconMastercard";
+IconMastercard.displayName = "IconMastercard";
 
-export default MastercardIcon;
+export default IconMastercard;

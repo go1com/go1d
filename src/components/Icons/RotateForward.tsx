@@ -1,7 +1,7 @@
 import * as React from "react";
 import IconBase from "../IconBase";
 
-class RotateForwardIcon extends IconBase {
+class IconRotateForward extends IconBase {
   getIconComponent(props) {
     return (
       <svg fill="currentColor" viewBox="0 0 16 16" {...props}>
@@ -11,6 +11,6 @@ class RotateForwardIcon extends IconBase {
   }
 }
 
-RotateForwardIcon.displayName = "IconRotateForward";
+IconRotateForward.displayName = "IconRotateForward";
 
-export default RotateForwardIcon;
+export default IconRotateForward;
