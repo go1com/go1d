@@ -2,7 +2,7 @@ import * as React from "react";
 import IconBase from "../IconBase";
 
 class ImportIcon extends IconBase {
-  getIconComponent() {
+  getIconComponent(props) {
     return (
       <svg fill="currentColor" viewBox="0 0 16 16" {...props}>
         <path d="M11.315 7.547L8.53 4.75a.683.683 0 00-.968 0 .688.688 0 00-.002.971l1.62 1.628H.686a.686.686 0 000 1.371H9.18l-1.622 1.63a.686.686 0 00.972.967l2.784-2.797.002-.002a.686.686 0 000-.97h-.002z" />

@@ -4,7 +4,7 @@ const reactDomTemplate = (code, config, state) => {
 import IconBase from "../IconBase";
 
 class ${name}Icon extends IconBase {
-  getIconComponent() {
+  getIconComponent(props) {
     return (
       ${code}
     )

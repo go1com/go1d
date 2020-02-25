@@ -2,7 +2,7 @@ import * as React from "react";
 import IconBase from "../IconBase";
 
 class QuizIcon extends IconBase {
-  getIconComponent() {
+  getIconComponent(props) {
     return (
       <svg fill="currentColor" viewBox="0 0 16 16" {...props}>
         <path d="M7 10v.4h1.4v-.6l.7-.4.8-.8c.2-.3.3-.6.3-1 0-.5-.2-1-.6-1.2-.4-.3-1-.5-1.6-.5-.9 0-1.7.2-2.4.7l.6 1.2c.6-.3 1.2-.5 1.6-.5.2 0 .4 0 .5.2.1 0 .2.1.2.3 0 .1 0 .3-.2.4l-.5.4a2 2 0 00-.7.6L7 10zm0 1.4c-.2.1-.3.3-.3.6s.1.5.3.7l.7.2c.3 0 .5 0 .7-.2.2-.2.3-.4.3-.7 0-.3-.1-.5-.3-.6-.1-.2-.4-.3-.7-.3-.3 0-.6.1-.7.3z" />

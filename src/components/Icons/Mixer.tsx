@@ -2,7 +2,7 @@ import * as React from "react";
 import IconBase from "../IconBase";
 
 class MixerIcon extends IconBase {
-  getIconComponent() {
+  getIconComponent(props) {
     return (
       <svg fill="currentColor" viewBox="0 0 16 16" {...props}>
         <g clipPath="url(#clip0)">

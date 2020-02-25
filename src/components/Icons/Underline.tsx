@@ -2,7 +2,7 @@ import * as React from "react";
 import IconBase from "../IconBase";
 
 class UnderlineIcon extends IconBase {
-  getIconComponent() {
+  getIconComponent(props) {
     return (
       <svg
         fill="currentColor"
