@@ -1,17 +1,20 @@
 import * as React from "react";
+import IconBase from "../IconBase";
 
-const Pause: React.SFC<React.SVGProps<SVGSVGElement>> = (
-  props: React.SVGProps<SVGSVGElement>
-) => (
-  <svg fill="currentColor" viewBox="0 0 16 16" {...props}>
-    <path
-      fillRule="evenodd"
-      d="M16 8A8 8 0 110 8a8 8 0 0116 0zM5.455 4.5h1.909v7h-1.91v-7zm3.181 0h1.91v7h-1.91v-7z"
-      clipRule="evenodd"
-    />
-  </svg>
-);
+class PauseIcon extends IconBase {
+  getIconComponent() {
+    return (
+      <svg fill="currentColor" viewBox="0 0 16 16" {...props}>
+        <path
+          fillRule="evenodd"
+          d="M16 8A8 8 0 110 8a8 8 0 0116 0zM5.455 4.5h1.909v7h-1.91v-7zm3.181 0h1.91v7h-1.91v-7z"
+          clipRule="evenodd"
+        />
+      </svg>
+    );
+  }
+}
 
-Pause.displayName = "IconPause";
+PauseIcon.displayName = "IconPause";
 
-export default Pause;
+export default PauseIcon;

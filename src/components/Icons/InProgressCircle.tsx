@@ -1,13 +1,16 @@
 import * as React from "react";
+import IconBase from "../IconBase";
 
-const InProgressCircle: React.SFC<React.SVGProps<SVGSVGElement>> = (
-  props: React.SVGProps<SVGSVGElement>
-) => (
-  <svg fill="currentColor" viewBox="0 0 16 16" {...props}>
-    <circle cx={8} cy={8} r={8} />
-  </svg>
-);
+class InProgressCircleIcon extends IconBase {
+  getIconComponent() {
+    return (
+      <svg fill="currentColor" viewBox="0 0 16 16" {...props}>
+        <circle cx={8} cy={8} r={8} />
+      </svg>
+    );
+  }
+}
 
-InProgressCircle.displayName = "IconInProgressCircle";
+InProgressCircleIcon.displayName = "IconInProgressCircle";
 
-export default InProgressCircle;
+export default InProgressCircleIcon;
