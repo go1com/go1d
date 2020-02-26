@@ -8,7 +8,7 @@ const iconsIndex = iconComponents
       return null
     }
     const name = iconFile.replace('.tsx', '')
-    return `export { default as ${name} } from "./${name}";`
+    return `export { default as Icon${name} } from "./${name}";`
   })
   .join('\n')
 

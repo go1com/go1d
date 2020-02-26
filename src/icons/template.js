@@ -1,18 +1,20 @@
-const { getProps } = require('@svgr/core')
-
 const reactDomTemplate = (code, config, state) => {
   const name = state.componentName.replace('Svg', '')
   const result = `import * as React from "react";
+import IconBase from "../IconBase";
 
-const ${name}: React.SFC<React.SVGProps<SVGSVGElement>> = (
-  props: React.SVGProps<SVGSVGElement>
-) => (
-  ${code}
-);
+class Icon${name} extends IconBase {
+  getIconComponent(props) {
+    return (
+      ${code}
+    )
+  }
+}
 
-${name}.displayName = "Icon${name}";
+Icon${name}.displayName = "Icon${name}";
 
-export default ${name};`
+export default Icon${name};
+`;
 
   return result
 }

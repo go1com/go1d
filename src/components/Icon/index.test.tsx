@@ -19,7 +19,7 @@ it("renders without crashing with all props", () => {
 
 it("renders all icons", () => {
   Object.keys(Icons).forEach(name => {
-    const wrapper = render(<Icon name={name} />);
+    const wrapper = render(<Icon name={name.slice(4)} />);
     expect(wrapper.container.children.length).toBe(1);
     expect(wrapper.container.children[0].tagName).toBe("svg");
     cleanup();
