@@ -10,6 +10,7 @@ export interface LessonProps extends ViewProps {
   type?: string;
   duration?: number;
   author?: string;
+  typeLabel?: string | JSX.Element;
 }
 
 export const typeIconDic = {
@@ -39,6 +40,7 @@ const Lesson: React.SFC<LessonProps> = ({
   type,
   duration,
   author,
+  typeLabel,
   children,
   ...props
 }: LessonProps) => (
@@ -76,7 +78,16 @@ const Lesson: React.SFC<LessonProps> = ({
           fontWeight="semibold"
           textTransform="uppercase"
         >
-          {[type, author, !!duration && formatDuration(duration)]
+          {typeLabel && (
+            <>
+              {typeLabel} {" • "}
+            </>
+          )}
+          {[
+            typeLabel ? 0 : type,
+            author,
+            !!duration && formatDuration(duration),
+          ]
             .filter(val => val)
             .join(" • ")}
         </Text>
