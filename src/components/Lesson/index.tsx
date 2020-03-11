@@ -78,18 +78,10 @@ const Lesson: React.SFC<LessonProps> = ({
           fontWeight="semibold"
           textTransform="uppercase"
         >
-          {typeLabel && (
-            <>
-              {typeLabel} {" • "}
-            </>
-          )}
-          {[
-            typeLabel ? 0 : type,
-            author,
-            !!duration && formatDuration(duration),
-          ]
+          {typeLabel || type}
+          {[author, !!duration && formatDuration(duration)]
             .filter(val => val)
-            .join(" • ")}
+            .map(val => " • " + val)}
         </Text>
       </View>
     </View>

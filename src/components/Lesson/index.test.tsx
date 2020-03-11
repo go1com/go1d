@@ -20,6 +20,12 @@ it("renders without crashing with full options", () => {
   );
 
   expect(getByText(container, "course123").parentElement.innerHTML).toBe(
-    "<span>course123</span>"
+    "<span>course123</span> • Einstein • 1 hr"
   );
+});
+
+it("renders with only type li", () => {
+  const { container } = render(<Lesson title="course 1" type="course" />);
+
+  expect(getByText(container, "course").innerHTML).toBe("course");
 });
