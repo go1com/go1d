@@ -20,6 +20,7 @@ export interface SlatMiniProps extends ViewProps {
   actionRenderer?: () => React.ReactChild;
   dropdownItems?: DropdownItem[];
   size?: "lg" | "md" | "sm";
+  imageOverlayRenderer?: () => React.ReactNode;
 }
 
 const SlatMini: React.SFC<SlatMiniProps> = ({
@@ -34,6 +35,7 @@ const SlatMini: React.SFC<SlatMiniProps> = ({
   dropdownItems,
   skeleton = false,
   size = "md",
+  imageOverlayRenderer,
   ...props
 }: SlatMiniProps) => {
   if (skeleton) {
@@ -83,6 +85,7 @@ const SlatMini: React.SFC<SlatMiniProps> = ({
             marginBottom={4}
             color="default"
             overflow="hidden"
+            data-testid="slatmini"
             {...props}
           >
             {/* Render slat image */}
@@ -128,6 +131,8 @@ const SlatMini: React.SFC<SlatMiniProps> = ({
                   }}
                 />
               )}
+
+              {imageOverlayRenderer && imageOverlayRenderer()}
             </View>
 
             <View
