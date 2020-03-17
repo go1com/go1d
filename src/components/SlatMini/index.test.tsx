@@ -11,6 +11,7 @@ const props = {
   image: "https://fake-image.jpg",
   type: "Event",
   typeBackground: "background",
+  imageOverlayRenderer: () => <p>Hello</p>,
   dropdownItems: [
     {
       icon: "Cross",
