@@ -23,17 +23,16 @@ const MESSAGES = {
   fileTypeError: (fileName) => `${fileName} is not a supported file type.`,
 };
 
-interface Props extends ViewProps {
-  name: string;
-  onChange: (evt: any) => void;
-  value: any;
-  element?: React.ComponentClass;
+export interface FileUploaderProps extends ViewProps {
+  name?: string;
+  onChange?: (evt: { target: { name: string; value: string | File } }) => void;
+  value?: File | string;
   description?: string;
   acceptedFileExts?: string;
   maxSizeInBytes?: number;
-  upload: (file: File) => Promise<string>;
+  upload?: (file: File) => Promise<File | string>;
   uploadProgress?: number;
-  iconName: string;
+  iconName?: string;
   errorMessage?: string;
 }
 
@@ -43,12 +42,13 @@ interface State {
   uploadError: boolean;
 }
 
-interface InnerProps extends Props {
+interface InnerProps extends FileUploaderProps {
   removeIcon?: string;
   formik: FormikContext<any>;
 }
 
 export class FileUploader extends React.Component<InnerProps, State> {
+  public static displayName = "FileUploader";
   public static defaultProps = {
     uploadProgress: 0,
     iconName: "Document",
@@ -98,7 +98,7 @@ export class FileUploader extends React.Component<InnerProps, State> {
   }
 
   public showUploadCompleted = () => {
-    this.props.uploadComplete();
+    this.props.uploadComplete && this.props.uploadComplete();
     this.setState(
       {
         uploadCompleted: true,
@@ -120,14 +120,14 @@ export class FileUploader extends React.Component<InnerProps, State> {
     const file: File = files[0];
 
     this.cancelToken.cancel(this.messages.cancelled);
-    if (file) {
+    if (file && upload) {
       this.cancelToken = axios.CancelToken.source();
       this.setState({
         uploading: true,
       });
 
       upload(file)
-        .then((res: string) => {
+        .then((res) => {
           this.showUploadCompleted();
 
           safeInvoke(onChange, {
@@ -135,6 +135,10 @@ export class FileUploader extends React.Component<InnerProps, State> {
           });
         })
         .catch(this.handleError);
+    } else if (file) {
+      safeInvoke(onChange, {
+        target: { name, value: file },
+      });
     } else {
       safeInvoke(onChange, {
         target: { name, value: "" },
@@ -255,7 +259,7 @@ export class FileUploader extends React.Component<InnerProps, State> {
     
     let fileName = "";
     if (value) {
-      fileName = value.title ||
+      fileName = get(value, 'name') ||
         typeof value === "string" && value.substr(value.lastIndexOf("/") + 1);
     }
 
@@ -315,4 +319,4 @@ export class FileUploader extends React.Component<InnerProps, State> {
   }
 }
 
-export default connect<Props>(FileUploader);
+export default connect<FileUploaderProps>(FileUploader);
