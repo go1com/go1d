@@ -37,102 +37,121 @@ function transformMarginBottomFromFont(fontSize: number) {
   }
 }
 
-const Prose: React.SFC<ProseProps> = ({
-  HTML,
-  fontSize = 3,
-  lineHeight = "paragraph",
-  lineClamp,
-  expandable,
-  ...props
-}: ProseProps) => {
-  const innerRef = React.useRef(null);
-  const [isLineClamped, setIsLineClamped] = React.useState<boolean>(false);
-  const [currentLineClamp, setCurrentLineClamp] = React.useState<number>(
-    lineClamp
-  );
-  React.useEffect(() => {
-    const { offsetHeight, scrollHeight } = innerRef.current;
-    setIsLineClamped(offsetHeight < scrollHeight);
-  }, []);
+interface State {
+  isLineClamped: boolean;
+  currentLineClamp: number;
+}
 
-  const toggleLineClamp = () => {
-    setCurrentLineClamp(currentLineClamp ? undefined : lineClamp);
-  };
+class Prose extends React.Component<ProseProps, State> {
+  public static displayName = "Prose";
 
-  return (
-    <Theme.Consumer>
-      {foundations => (
-        <Base
-          css={{
-            a: {
-              "&:hover:after, &:focus:after": {
-                content: "''",
-                height: Array.isArray(fontSize)
-                  ? fontSize.map(transformHeightFromFont)
-                  : transformHeightFromFont(fontSize),
-                background: foundations.colors.accent,
-                width: "100%",
-                position: "relative",
-                bottom: 0,
-                left: 0,
-                right: 0,
-                marginBottom: Array.isArray(fontSize)
-                  ? fontSize.map(transformMarginBottomFromFont)
-                  : transformMarginBottomFromFont(fontSize),
-              },
-              "&:active:after": {
-                background: foundations.colors.contrast,
-              },
-            },
-          }}
-        >
-          <Text
-            innerRef={innerRef}
-            fontSize={fontSize}
-            lineHeight={lineHeight}
-            lineClamp={expandable ? currentLineClamp : lineClamp}
-            css={getStyles(foundations)}
-            dangerouslySetInnerHTML={{
-              __html: SanitizeHTML(HTML, {
-                allowedTags: SanitizeHTML.defaults.allowedTags.concat([
-                  "center",
-                  "h2",
-                  "img",
-                  "iframe",
-                ]),
-                allowedAttributes: {
-                  ...SanitizeHTML.defaults.allowedAttributes,
-                  img: ["alt", "src", "title"],
-                  iframe: [
-                    "src",
-                    "width",
-                    "height",
-                    "allow",
-                    "allowfullscreen",
-                    "frameborder",
-                  ],
+  private innerRef = React.createRef<HTMLElement>();
+
+  constructor(props: ProseProps) {
+    super(props);
+    this.state = {
+      isLineClamped: false,
+      currentLineClamp: props.lineClamp,
+    };
+  }
+
+  public componentDidMount() {
+    const { offsetHeight, scrollHeight } = this.innerRef.current;
+    this.setState({
+      isLineClamped: offsetHeight < scrollHeight,
+    });
+  }
+
+  public render() {
+    const {
+      HTML,
+      fontSize = 3,
+      lineHeight = "paragraph",
+      lineClamp,
+      expandable,
+      ...props
+    } = this.props;
+    const { isLineClamped, currentLineClamp } = this.state;
+    return (
+      <Theme.Consumer>
+        {foundations => (
+          <Base
+            css={{
+              a: {
+                "&:hover:after, &:focus:after": {
+                  content: "''",
+                  height: Array.isArray(fontSize)
+                    ? fontSize.map(transformHeightFromFont)
+                    : transformHeightFromFont(fontSize),
+                  background: foundations.colors.accent,
+                  width: "100%",
+                  position: "relative",
+                  bottom: 0,
+                  left: 0,
+                  right: 0,
+                  marginBottom: Array.isArray(fontSize)
+                    ? fontSize.map(transformMarginBottomFromFont)
+                    : transformMarginBottomFromFont(fontSize),
                 },
-              }),
+                "&:active:after": {
+                  background: foundations.colors.contrast,
+                },
+              },
             }}
-            {...props}
-          />
-          {expandable && isLineClamped && (
-            <Button
-              color="accent"
-              onClick={toggleLineClamp}
-              paddingLeft={0}
-              iconName={currentLineClamp ? "ChevronDown" : "ChevronUp"}
-              flexDirection="row-reverse"
-            >
-              {`Show ${currentLineClamp ? "more" : "less"}`}
-            </Button>
-          )}
-        </Base>
-      )}
-    </Theme.Consumer>
-  );
-};
+          >
+            <Text
+              innerRef={this.innerRef}
+              fontSize={fontSize}
+              lineHeight={lineHeight}
+              lineClamp={expandable ? currentLineClamp : lineClamp}
+              css={getStyles(foundations)}
+              {...props}
+              dangerouslySetInnerHTML={{
+                __html: SanitizeHTML(HTML, {
+                  allowedTags: SanitizeHTML.defaults.allowedTags.concat([
+                    "center",
+                    "h2",
+                    "img",
+                    "iframe",
+                  ]),
+                  allowedAttributes: {
+                    ...SanitizeHTML.defaults.allowedAttributes,
+                    img: ["alt", "src", "title"],
+                    iframe: [
+                      "src",
+                      "width",
+                      "height",
+                      "allow",
+                      "allowfullscreen",
+                      "frameborder",
+                    ],
+                  },
+                }),
+              }}
+            />
+            {expandable && isLineClamped && (
+              <Button
+                color="accent"
+                onClick={this.toggleLineClamp}
+                paddingLeft={0}
+                iconName={currentLineClamp ? "ChevronDown" : "ChevronUp"}
+                flexDirection="row-reverse"
+              >
+                {`Show ${currentLineClamp ? "more" : "less"}`}
+              </Button>
+            )}
+          </Base>
+        )}
+      </Theme.Consumer>
+    );
+  }
 
-Prose.displayName = "Prose";
+  private toggleLineClamp = () => {
+    const { lineClamp } = this.props;
+    this.setState(({ currentLineClamp }) => ({
+      currentLineClamp: currentLineClamp ? undefined : lineClamp,
+    }));
+  };
+}
 
 export default Prose;
