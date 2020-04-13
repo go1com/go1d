@@ -15,27 +15,27 @@ import View, { ViewProps } from "../View";
 const MESSAGES = {
   cancelled: "Cancelled because a new file is being used",
   chooseFile: "Choose a file",
-  uploading: "Uploading...",
   dropFile: "Drop your file",
   dragFile: "Drag and drop to upload",
-  networkError: "Network Error",
   fileUploaded: "File uploaded",
+  networkError: "Network Error",
+  uploading: "Uploading...",
   fileSizeError: (fileName, fileSize) =>
     `${fileName} exceeds the ${fileSize}MB limit. Please upload a smaller file.`,
   fileTypeError: fileName => `${fileName} is not a supported file type.`,
 };
 
 export interface FileUploaderProps extends ViewProps {
-  name?: string;
-  onChange?: (evt: { target: { name: string; value: string | File } }) => void;
-  value?: File | string;
-  description?: string;
   acceptedFileExts?: string;
-  maxSizeInBytes?: number;
-  upload?: (file: File) => Promise<File | string>;
-  uploadProgress?: number;
-  iconName?: string;
+  description?: string;
   errorMessage?: string;
+  iconName?: string;
+  maxSizeInBytes?: number;
+  name?: string;
+  uploadProgress?: number;
+  value?: File | string;
+  onChange?: (evt: { target: { name: string; value: string | File } }) => void;
+  upload?: (file: File) => Promise<File | string>;
 }
 
 interface State {
@@ -52,13 +52,12 @@ interface InnerProps extends FileUploaderProps {
 export class FileUploader extends React.Component<InnerProps, State> {
   public static displayName = "FileUploader";
   public static defaultProps = {
-    uploadProgress: 0,
     iconName: "Document",
+    uploadProgress: 0,
   };
 
   public cancelToken = axios.CancelToken.source();
   public messages = MESSAGES;
-  private readonly height: number = 52;
   private readonly containerStyle: any = {
     alignItems: "center",
     backgroundColor: "faint",
@@ -66,9 +65,9 @@ export class FileUploader extends React.Component<InnerProps, State> {
     flexDirection: "row",
     border: 1,
     borderRadius: 2,
+    height: 52,
     marginBottom: 2,
     paddingX: 4,
-    height: this.height,
   };
 
   constructor(props: InnerProps) {
@@ -76,8 +75,8 @@ export class FileUploader extends React.Component<InnerProps, State> {
     this.messages = { ...MESSAGES, ...props.messages };
     this.state = {
       uploadCompleted: false,
-      uploading: false,
       uploadError: false,
+      uploading: false,
     };
   }
 
