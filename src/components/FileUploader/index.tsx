@@ -71,7 +71,7 @@ export class FileUploader extends React.Component<InnerProps, State> {
   };
   private readonly iconStyle: any = {
     size: 3,
-    marginRight: 3
+    marginRight: 3,
   };
 
   constructor(props: InnerProps) {
@@ -205,12 +205,10 @@ export class FileUploader extends React.Component<InnerProps, State> {
     const file: File = files[0];
     const acceptedExtsList = acceptedFileExts && acceptedFileExts.split(",");
     if (maxSizeInBytes && file.size > maxSizeInBytes) {
+      const maxSizeInMegaBytes = Math.round(maxSizeInBytes / 1000000);
       formik.setFieldError(
         name,
-        this.messages.fileSizeError(
-          file.name,
-          Math.round(maxSizeInBytes / 1000000)
-        )
+        this.messages.fileSizeError(file.name, maxSizeInMegaBytes)
       );
     }
     if (acceptedExtsList) {
@@ -301,11 +299,7 @@ export class FileUploader extends React.Component<InnerProps, State> {
             if (isDragActive) {
               fileUploadInner = (
                 <View {...this.containerStyle} borderColor="accent">
-                  <Icon
-                    name="PlusCircle"
-                    color="accent"
-                    {...this.iconStyle}
-                  />
+                  <Icon name="PlusCircle" color="accent" {...this.iconStyle} />
                   <Text>{this.messages.dropFile}</Text>
                 </View>
               );
