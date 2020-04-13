@@ -22,7 +22,7 @@ const MESSAGES = {
   uploading: "Uploading...",
   fileSizeError: (fileName, fileSize) =>
     `${fileName} exceeds the ${fileSize}MB limit. Please upload a smaller file.`,
-  fileTypeError: fileName => `${fileName} is not a supported file type.`,
+  fileTypeError: fileExt => `${fileExt} is not a supported file type.`,
 };
 
 export interface FileUploaderProps extends ViewProps {
@@ -68,6 +68,10 @@ export class FileUploader extends React.Component<InnerProps, State> {
     height: 52,
     marginBottom: 2,
     paddingX: 4,
+  };
+  private readonly iconStyle: any = {
+    size: 3,
+    marginRight: 3
   };
 
   constructor(props: InnerProps) {
@@ -173,7 +177,7 @@ export class FileUploader extends React.Component<InnerProps, State> {
             },
           }}
         >
-          <Icon name={iconName} color="muted" size={3} marginRight={3} />
+          <Icon name={iconName} color="muted" {...this.iconStyle} />
           <Text>{this.messages.dragFile}</Text>
           <Button iconName="Upload" marginLeft="auto" color="subtle">
             {this.messages.chooseFile}
@@ -187,7 +191,7 @@ export class FileUploader extends React.Component<InnerProps, State> {
   public renderUploadInProgressState = () => {
     return (
       <View {...this.containerStyle}>
-        <Spinner color="success" size={3} marginRight={3} />
+        <Spinner color="success" {...this.iconStyle} />
         <Text>{this.messages.uploading}</Text>
         <View flexDirection="row" marginLeft="auto">
           <Text>{this.props.uploadProgress}%</Text>
@@ -212,7 +216,7 @@ export class FileUploader extends React.Component<InnerProps, State> {
     if (acceptedExtsList) {
       const fileExt = file.name.split(".").map(fl => `.${fl}`);
       if (!acceptedExtsList.find(af => fileExt.includes(af))) {
-        formik.setFieldError(name, this.messages.fileTypeError(file.name));
+        formik.setFieldError(name, this.messages.fileTypeError(fileExt));
       }
     }
   };
@@ -227,7 +231,7 @@ export class FileUploader extends React.Component<InnerProps, State> {
         {...this.containerStyle}
         borderColor={error ? "danger" : this.containerStyle.borderColor}
       >
-        <Icon name="Success" color="success" size={3} marginRight={3} />
+        <Icon name="Success" color="success" {...this.iconStyle} />
         <Text>{this.messages.fileUploaded}</Text>
       </View>
     );
@@ -247,7 +251,7 @@ export class FileUploader extends React.Component<InnerProps, State> {
           borderColor={error ? "danger" : this.containerStyle.borderColor}
           boxShadow="crisp"
         >
-          <Icon name={iconName} color="muted" size={3} marginRight={3} />
+          <Icon name={iconName} color="muted" {...this.iconStyle} />
           <Text ellipsis={true}>{fileName}</Text>
           <ButtonMinimal
             flexDirection="row"
@@ -300,8 +304,7 @@ export class FileUploader extends React.Component<InnerProps, State> {
                   <Icon
                     name="PlusCircle"
                     color="accent"
-                    size={3}
-                    marginRight={3}
+                    {...this.iconStyle}
                   />
                   <Text>{this.messages.dropFile}</Text>
                 </View>
