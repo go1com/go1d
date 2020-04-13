@@ -1,8 +1,9 @@
-import * as React from "react";
+import axios from "axios";
 import { connect, FormikContext } from "formik";
 import { get } from "lodash";
-import axios from "axios";
+import * as React from "react";
 import safeInvoke from "../../utils/safeInvoke";
+
 import BaseUploader from "../BaseUploader";
 import Button from "../Button";
 import ButtonMinimal from "../ButtonMinimal";
@@ -19,8 +20,9 @@ const MESSAGES = {
   dragFile: "Drag and drop to upload",
   networkError: "Network Error",
   fileUploaded: "File uploaded",
-  fileSizeError: (fileName, fileSize) => `${fileName} exceeds the ${fileSize}MB limit. Please upload a smaller file.`,
-  fileTypeError: (fileName) => `${fileName} is not a supported file type.`,
+  fileSizeError: (fileName, fileSize) =>
+    `${fileName} exceeds the ${fileSize}MB limit. Please upload a smaller file.`,
+  fileTypeError: fileName => `${fileName} is not a supported file type.`,
 };
 
 export interface FileUploaderProps extends ViewProps {
@@ -66,7 +68,7 @@ export class FileUploader extends React.Component<InnerProps, State> {
     borderRadius: 2,
     marginBottom: 2,
     paddingX: 4,
-    height: this.height
+    height: this.height,
   };
 
   constructor(props: InnerProps) {
@@ -87,18 +89,18 @@ export class FileUploader extends React.Component<InnerProps, State> {
     });
     window.onbeforeunload = null;
     if (err && err.message) {
-      if (
-        err.message === this.messages.cancelled
-      ) {
+      if (err.message === this.messages.cancelled) {
         safeInvoke(this.props.onChange, {
           target: { name, value: "" },
         });
       }
     }
-  }
+  };
 
   public showUploadCompleted = () => {
-    this.props.uploadComplete && this.props.uploadComplete();
+    if (this.props.uploadComplete) {
+      this.props.uploadComplete();
+    }
     this.setState(
       {
         uploadCompleted: true,
@@ -113,7 +115,7 @@ export class FileUploader extends React.Component<InnerProps, State> {
         }, 1000);
       }
     );
-  }
+  };
 
   public onChange = (files: File[]) => {
     const { name, upload, onChange } = this.props;
@@ -127,7 +129,7 @@ export class FileUploader extends React.Component<InnerProps, State> {
       });
 
       upload(file)
-        .then((res) => {
+        .then(res => {
           this.showUploadCompleted();
 
           safeInvoke(onChange, {
@@ -144,38 +146,44 @@ export class FileUploader extends React.Component<InnerProps, State> {
         target: { name, value: "" },
       });
     }
-  }
+  };
 
   public onDelete = () => {
     const { name, onChange } = this.props;
     safeInvoke(onChange, {
       target: { name, value: "" },
     });
-  }
+  };
 
   public renderNoFileState = () => {
-    const { formik: { errors }, iconName } = this.props;
-    const error = get(errors, this.props.name);
+    const {
+      formik: { errors },
+      iconName,
+      name,
+    } = this.props;
+    const error = get(errors, name);
 
-    return (<>
-      <View
-        {...this.containerStyle}
-        borderColor={error ? "danger" : this.containerStyle.borderColor}
-        css={{
-          "&:hover, &:focus": {
-            cursor: "pointer",
-          },
-        }}
-      >
-        <Icon name={iconName} color="muted" size={3} marginRight={3} />
-        <Text>{this.messages.dragFile}</Text>
-        <Button iconName="Upload" marginLeft="auto" color="subtle">
-          {this.messages.chooseFile}
-        </Button>
-      </View>
-      {error && <Text color="danger">{error}</Text>}
-    </>);
-  }
+    return (
+      <>
+        <View
+          {...this.containerStyle}
+          borderColor={error ? "danger" : this.containerStyle.borderColor}
+          css={{
+            "&:hover, &:focus": {
+              cursor: "pointer",
+            },
+          }}
+        >
+          <Icon name={iconName} color="muted" size={3} marginRight={3} />
+          <Text>{this.messages.dragFile}</Text>
+          <Button iconName="Upload" marginLeft="auto" color="subtle">
+            {this.messages.chooseFile}
+          </Button>
+        </View>
+        {error && <Text color="danger">{error}</Text>}
+      </>
+    );
+  };
 
   public renderUploadInProgressState = () => {
     return (
@@ -183,35 +191,37 @@ export class FileUploader extends React.Component<InnerProps, State> {
         <Spinner color="success" size={3} marginRight={3} />
         <Text>{this.messages.uploading}</Text>
         <View flexDirection="row" marginLeft="auto">
-          <Text>{ this.props.uploadProgress }%</Text>
+          <Text>{this.props.uploadProgress}%</Text>
         </View>
       </View>
     );
-  }
+  };
 
   public onReject = (files: File[]) => {
+    const { acceptedFileExts, formik, maxSizeInBytes, name } = this.props;
     const file: File = files[0];
-    const acceptedFileExts =
-      this.props.acceptedFileExts && this.props.acceptedFileExts.split(",");
-    if (this.props.maxSizeInBytes && file.size > this.props.maxSizeInBytes) {
-      this.props.formik.setFieldError(
-        this.props.name,
-        this.messages.fileSizeError(file.name, Math.round(this.props.maxSizeInBytes / 1000000))
+    const acceptedExtsList = acceptedFileExts && acceptedFileExts.split(",");
+    if (maxSizeInBytes && file.size > maxSizeInBytes) {
+      formik.setFieldError(
+        name,
+        this.messages.fileSizeError(
+          file.name,
+          Math.round(maxSizeInBytes / 1000000)
+        )
       );
     }
-    if (acceptedFileExts) {
+    if (acceptedExtsList) {
       const fileExt = file.name.split(".").map(fl => `.${fl}`);
-      if (!acceptedFileExts.find(af => fileExt.includes(af))) {
-        this.props.formik.setFieldError(
-          this.props.name,
-          this.messages.fileTypeError(file.name)
-        );
+      if (!acceptedExtsList.find(af => fileExt.includes(af))) {
+        formik.setFieldError(name, this.messages.fileTypeError(file.name));
       }
     }
-  }
+  };
 
   public renderUploadHasCompleted = () => {
-    const { formik: { errors } } = this.props;
+    const {
+      formik: { errors },
+    } = this.props;
     const error = get(errors, this.props.name);
     return (
       <View
@@ -222,100 +232,115 @@ export class FileUploader extends React.Component<InnerProps, State> {
         <Text>{this.messages.fileUploaded}</Text>
       </View>
     );
-  }
+  };
 
   public renderHasValueState = (fileName: string) => {
-    const { formik: { errors }, iconName, removeIcon } = this.props;
+    const {
+      formik: { errors },
+      iconName,
+      removeIcon,
+    } = this.props;
     const error = get(errors, this.props.name);
-    return (<>
-      <View
-        {...this.containerStyle}
-        borderColor={error ? "danger" : this.containerStyle.borderColor}
-        boxShadow="crisp"
-      >
-        <Icon name={iconName} color="muted" size={3} marginRight={3} />
-        <Text ellipsis={true}>{fileName}</Text>
-        <ButtonMinimal
-          flexDirection="row"
-          marginLeft="auto"
-          iconName={removeIcon || "Trash"}
-          iconColor="subtle"
-          onClick={this.onDelete}
-        />
-      </View>
-      {error && <Text color="danger">{error}</Text>}
-    </>);
-  }
+    return (
+      <>
+        <View
+          {...this.containerStyle}
+          borderColor={error ? "danger" : this.containerStyle.borderColor}
+          boxShadow="crisp"
+        >
+          <Icon name={iconName} color="muted" size={3} marginRight={3} />
+          <Text ellipsis={true}>{fileName}</Text>
+          <ButtonMinimal
+            flexDirection="row"
+            marginLeft="auto"
+            iconName={removeIcon || "Trash"}
+            iconColor="subtle"
+            onClick={this.onDelete}
+          />
+        </View>
+        {error && <Text color="danger">{error}</Text>}
+      </>
+    );
+  };
 
   public render() {
-    const { 
-      value, 
-      description, 
-      acceptedFileExts, 
-      uploadProgress, 
+    const {
+      value,
+      description,
+      acceptedFileExts,
+      uploadProgress,
       maxSizeInBytes,
     } = this.props;
     const { uploading, uploadCompleted, uploadError } = this.state;
-    
+
     let fileName = "";
     if (value) {
-      fileName = get(value, 'name') ||
-        typeof value === "string" && value.substr(value.lastIndexOf("/") + 1);
+      fileName =
+        get(value, "name") ||
+        (typeof value === "string" && value.substr(value.lastIndexOf("/") + 1));
     }
 
-    return (<>
-      <BaseUploader
-        {...this.props}
-        value={fileName}
-        fileType={acceptedFileExts}
-        maxSize={maxSizeInBytes}
-        multiple={false}
-        onChange={this.onChange}
-        onDropRejected={this.onReject}
-      >
-        {({ getRootProps, isDragActive, open }) => {
-          let fileUploadInner;
-          let allowOpen = false;
-          const { ref, ...rootProps } = getRootProps();
-          if (isDragActive) {
-            fileUploadInner = (
+    return (
+      <>
+        <BaseUploader
+          {...this.props}
+          value={fileName}
+          fileType={acceptedFileExts}
+          maxSize={maxSizeInBytes}
+          multiple={false}
+          onChange={this.onChange}
+          onDropRejected={this.onReject}
+        >
+          {({ getRootProps, isDragActive, open }) => {
+            let fileUploadInner;
+            let allowOpen = false;
+            const { ref, ...rootProps } = getRootProps();
+            if (isDragActive) {
+              fileUploadInner = (
+                <View {...this.containerStyle} borderColor="accent">
+                  <Icon
+                    name="PlusCircle"
+                    color="accent"
+                    size={3}
+                    marginRight={3}
+                  />
+                  <Text>{this.messages.dropFile}</Text>
+                </View>
+              );
+            } else if (
+              uploading ||
+              (uploadProgress && (uploadProgress > 0 && uploadProgress < 100))
+            ) {
+              fileUploadInner = this.renderUploadInProgressState();
+            } else if (
+              (uploadCompleted || uploadProgress === 100) &&
+              !uploadError
+            ) {
+              fileUploadInner = this.renderUploadHasCompleted();
+            } else if (value) {
+              fileUploadInner = this.renderHasValueState(fileName);
+            } else {
+              allowOpen = true;
+              fileUploadInner = this.renderNoFileState();
+            }
+            return (
               <View
-                {...this.containerStyle}
-                borderColor="accent"
+                {...rootProps}
+                onClick={allowOpen ? open : undefined}
+                innerRef={ref}
               >
-                <Icon name="PlusCircle" color="accent" size={3} marginRight={3} />
-                <Text>{this.messages.dropFile}</Text>
+                {fileUploadInner}
               </View>
             );
-          } else if (
-            uploading || (uploadProgress &&
-              (uploadProgress > 0 && uploadProgress < 100))
-          ) {
-            fileUploadInner = this.renderUploadInProgressState();
-          } else if (
-            (uploadCompleted || uploadProgress === 100) &&
-            !uploadError
-          ) {
-            fileUploadInner = this.renderUploadHasCompleted();
-          } else if (value) {
-            fileUploadInner = this.renderHasValueState(fileName);
-          } else {
-            allowOpen = true;
-            fileUploadInner = this.renderNoFileState();
-          }
-          return (
-            <View
-              {...rootProps}
-              onClick={allowOpen ? open : undefined}
-              innerRef={ref}
-            >
-              {fileUploadInner}
-            </View>
-          );
-        }}
-      </BaseUploader>
-      {description && <Text color="subtle" marginTop={2}>{description}</Text>}
-    </>);
+          }}
+        </BaseUploader>
+        {description && (
+          <Text color="subtle" marginTop={2}>
+            {description}
+          </Text>
+        )}
+      </>
+    );
   }
 }
 

@@ -1,8 +1,8 @@
 import * as React from "react";
 import { cleanup, render } from "react-testing-library";
-import FileUploader from "./index";
-import Form from "../Form";
 import Field from "../Field";
+import Form from "../Form";
+import FileUploader from "./index";
 
 afterEach(cleanup);
 jest.mock("react-dropzone", () => ({
@@ -17,9 +17,10 @@ jest.mock("react-dropzone", () => ({
 const submit = jest.fn();
 const onChange = jest.fn();
 const uploadComplete = jest.fn();
-const upload = (file: File): Promise<string> => new Promise((resolve, reject) => {
-  return resolve("a url");
-});
+const upload = (file: File): Promise<string> =>
+  new Promise((resolve, reject) => {
+    return resolve("a url");
+  });
 
 it("renders no file state", () => {
   render(
@@ -93,11 +94,11 @@ it("renders inside a form", () => {
   render(
     <Form
       initialValues={{
-        test: 'a url'
+        test: "a url",
       }}
       onSubmit={submit}
     >
-      <Field 
+      <Field
         name="test"
         label="File Upload"
         component={FileUploader}
