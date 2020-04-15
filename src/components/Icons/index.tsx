@@ -73,6 +73,7 @@ export { default as IconInverseClock } from "./InverseClock";
 export { default as IconIrrelevant } from "./Irrelevant";
 export { default as IconItalic } from "./Italic";
 export { default as IconLearning } from "./Learning";
+export { default as IconLearningPlus } from "./LearningPlus";
 export { default as IconLink } from "./Link";
 export { default as IconLinkedIn } from "./LinkedIn";
 export { default as IconList } from "./List";
