@@ -183,6 +183,10 @@ export { default as InputTextAffix } from "./components/InputTextAffix";
 export { default as BaseUploader } from "./components/BaseUploader";
 export { default as ImageUploadSlat } from "./components/ImageUploadSlat";
 export {
+  default as FileUploader,
+  FileUploaderProps,
+} from "./components/FileUploader";
+export {
   default as TagToggleGroup,
   TagTogggleGroupProps,
 } from "./components/TagToggleGroup";
