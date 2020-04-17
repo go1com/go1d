@@ -14,7 +14,7 @@ export interface SearchInputProps extends TextInputProps {
 class SearchInput extends React.Component<SearchInputProps, any> {
   public state = {
     value: "",
-    restoreValue: "",
+    lastSearchedValue: "",
   };
   private ref: React.RefObject<HTMLInputElement> = React.createRef();
 
@@ -57,19 +57,17 @@ class SearchInput extends React.Component<SearchInputProps, any> {
 
     switch (Key) {
       case "Enter":
-        if (value && value.trim() !== "") {
-          this.setState(
-            {
-              restoreValue: value,
-            },
-            () => {
-              if (Ref.current) {
-                Ref.current.blur();
-              }
-              safeInvoke(onSubmit, value, event);
+        this.setState(
+          {
+            lastSearchedValue: value,
+          },
+          () => {
+            if (Ref.current) {
+              Ref.current.blur();
             }
-          );
-        }
+            safeInvoke(onSubmit, value, event);
+          }
+        );
         event.preventDefault();
         break;
     }
@@ -78,10 +76,10 @@ class SearchInput extends React.Component<SearchInputProps, any> {
 
   public handleClear = event => {
     const { onClear, innerRef } = this.props;
-    const { value } = this.state;
+
     this.setState({
       value: "",
-      restoreValue: value,
+      lastSearchedValue: "",
     });
 
     const Ref = innerRef ? innerRef : this.ref;
@@ -96,10 +94,10 @@ class SearchInput extends React.Component<SearchInputProps, any> {
 
   public handleBlur = event => {
     const { onBlur } = this.props;
-    const { value, restoreValue } = this.state;
+    const { value, lastSearchedValue } = this.state;
 
-    if (value.trim() === "") {
-      this.setState({ value: restoreValue });
+    if (value !== lastSearchedValue) {
+      this.setState({ value: lastSearchedValue });
     }
 
     if (onBlur) {
