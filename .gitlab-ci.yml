@@ -44,7 +44,7 @@ build-dev:
     key: "$CI_PROJECT_ID"
   script:
     - yarn config set no-progress
-    - yarn install --silent
+    - yarn install --frozen-lockfile
     - yarn "npm:build"
   artifacts:
     paths:
@@ -67,8 +67,8 @@ test:unit:
   stage: test
   script:
     - yarn config set no-progress
-    - yarn install --silent
-    - yarn test --coverage --runInBand
+    - yarn install --frozen-lockfile --silent
+    - yarn test --no-cache --coverage
   artifacts:
     paths:
       - coverage

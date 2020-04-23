@@ -84,7 +84,7 @@ it("renders with crop and call onCrop properly after uploaded", async () => {
     type: "image/png",
   });
 
-  jest.spyOn(utils, "getCroppedImg").mockResolvedValue(file);
+  jest.spyOn(utils, "getCroppedImg").mockResolvedValue(file as any);
 
   const ref = React.createRef<ImageUploader>();
   const onCrop = jest.fn();
