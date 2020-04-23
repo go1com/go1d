@@ -49,6 +49,7 @@ export interface DropdownProps extends ViewProps {
     | "left"
     | "left-start";
   offset?: string | number;
+  labelId?: string;
 }
 
 function defaultRenderFunction(
@@ -79,6 +80,7 @@ const Dropdown: React.SFC<DropdownProps> = ({
   offset,
   onSelect,
   isOpen,
+  labelId,
   ...props
 }: DropdownProps) => (
   <Downshift
@@ -88,6 +90,7 @@ const Dropdown: React.SFC<DropdownProps> = ({
     onInputValueChange={onInputValueChange}
     onOuterClick={onOuterClick}
     isOpen={isOpen}
+    labelId={labelId}
   >
     {({
       getItemProps,
