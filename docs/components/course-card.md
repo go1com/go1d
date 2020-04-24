@@ -28,6 +28,7 @@ releaseVersion: 0.2.15
     }
   ]}
   passive={false}
+  imageOverlayRenderer={() => <View flexGrow={1} alignItems="center" justifyContent="center"><ButtonFilled>Preview</ButtonFilled></View>}
 />
 ```
 
