@@ -42,6 +42,22 @@ releaseVersion: 0.0.23
 </React.Fragment>}</Flipflop>
 ```
 
+### Modal with no header
+```.jsx
+<Flipflop>{({on, flip, flop}) => <React.Fragment>
+  <ButtonFilled color='accent' onClick={flip}>Open</ButtonFilled>
+
+  <Modal
+    isOpen={on}
+    onRequestClose={flop}
+    contentPadding={0}
+  >
+    <View flexGrow={1} borderRadius={2} css={{ backgroundImage: "url(https://res.cloudinary.com/go1/image/fetch/w_1024,h_300,c_thumb,g_auto/https://udemy-images.udemy.com/course/750x422/435262_c617.jpg)" }} />
+  </Modal>
+
+</React.Fragment>}</Flipflop>
+```
+
 ```!jsx
 <ComponentDoc component="ModalProps" />
 ```
