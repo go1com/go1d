@@ -33,8 +33,8 @@ interface CropAreaPixels {
 
 const DEFAULT_IMAGE_ZOOM = 1;
 const MIN_ZOOM = 0.5;
-const MAX_ZOOM = 5;
-const DEFAULT_ASPECT_RADIO = 16 / 9;
+const MAX_ZOOM = 3;
+const DEFAULT_ASPECT_RATIO = 16 / 9;
 
 export interface ImageUploaderProps extends ViewProps {
   onChange?: (evt: { target: { name: string; value: string | File } }) => void;
@@ -341,7 +341,7 @@ class ImageUploader extends React.Component<ImageUploaderProps, State> {
         {allowCrop ? (
           <Cropper
             image={preview}
-            aspect={DEFAULT_ASPECT_RADIO}
+            aspect={DEFAULT_ASPECT_RATIO}
             crop={this.state.crop}
             zoom={this.state.zoom}
             onCropChange={this.setCrop}

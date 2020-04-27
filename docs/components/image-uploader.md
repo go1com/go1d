@@ -20,6 +20,14 @@ This component is used to select images only. Actual uploading is left to the di
 <ImageUploader name="uploader" onChange={console.log} uploaded={true} value="https://images.pexels.com/photos/257360/pexels-photo-257360.jpeg?h=400" height="400px"/>
 ```
 
+## With crop function enabled
+
+```.jsx
+<ImageUploader name="uploader" allowCrop cropConfig={{
+    aspect: 4/3,
+}} onChange={console.log} uploaded={true} value="https://images.pexels.com/photos/257360/pexels-photo-257360.jpeg?h=400" height="400px"/>
+```
+
 
 ## Inside a form
 
