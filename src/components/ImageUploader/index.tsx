@@ -100,10 +100,18 @@ class ImageUploader extends React.Component<ImageUploaderProps, State> {
     return null;
   }
 
+  private defaultCropState = {
+    zoom: DEFAULT_IMAGE_ZOOM,
+    crop: {
+      x: 0,
+      y: 0,
+    },
+  };
+
   constructor(props: ImageUploaderProps) {
     super(props);
     this.state = {
-      ...this.genResetCropState(),
+      ...this.defaultCropState,
     };
   }
 
@@ -270,7 +278,7 @@ class ImageUploader extends React.Component<ImageUploaderProps, State> {
 
   @autobind
   public renderImage(open: () => void, isDragActive: boolean) {
-    const { file, preview } = this.state;
+    const { file, preview, crop, zoom } = this.state;
     const {
       disabled,
       uploadText,
@@ -328,7 +336,7 @@ class ImageUploader extends React.Component<ImageUploaderProps, State> {
               <Stepper
                 data-testid="cropZoom"
                 id="zoomImage"
-                value={this.state.zoom}
+                value={zoom}
                 stepIncrement={0.5}
                 minNumber={MIN_ZOOM}
                 maxNumber={MAX_ZOOM}
@@ -342,8 +350,8 @@ class ImageUploader extends React.Component<ImageUploaderProps, State> {
           <Cropper
             image={preview}
             aspect={DEFAULT_ASPECT_RATIO}
-            crop={this.state.crop}
-            zoom={this.state.zoom}
+            crop={crop}
+            zoom={zoom}
             onCropChange={this.setCrop}
             onCropComplete={this.setCroppedAreaPixels}
             {...cropConfig}
@@ -415,16 +423,6 @@ class ImageUploader extends React.Component<ImageUploaderProps, State> {
       }
     }
   };
-
-  private genResetCropState() {
-    return {
-      zoom: DEFAULT_IMAGE_ZOOM,
-      crop: {
-        x: 0,
-        y: 0,
-      },
-    };
-  }
 }
 
 export default ImageUploader;

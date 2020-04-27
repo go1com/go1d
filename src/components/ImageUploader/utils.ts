@@ -16,39 +16,17 @@ interface CropAreaPixels {
 
 export async function getCroppedImg(
   imageSrc: string,
-  pixelCrop: CropAreaPixels,
-  rotation: number = 0
+  pixelCrop: CropAreaPixels
 ): Promise<Blob> {
-  const image = await createImage(imageSrc);
   const canvas = document.createElement("canvas");
-  const ctx = canvas.getContext("2d");
-
-  const maxSize = Math.max(image.width, image.height);
-  const safeArea = 2 * ((maxSize / 2) * Math.sqrt(2));
-
-  canvas.width = safeArea;
-  canvas.height = safeArea;
-
-  ctx.translate(safeArea / 2, safeArea / 2);
-  ctx.translate(-safeArea / 2, -safeArea / 2);
-
-  ctx.drawImage(
-    image,
-    safeArea / 2 - image.width * 0.5,
-    safeArea / 2 - image.height * 0.5
-  );
-  const data = ctx.getImageData(0, 0, safeArea, safeArea);
-
   canvas.width = pixelCrop.width;
   canvas.height = pixelCrop.height;
 
-  ctx.putImageData(
-    data,
-    0 - safeArea / 2 + image.width * 0.5 - pixelCrop.x,
-    0 - safeArea / 2 + image.height * 0.5 - pixelCrop.y
-  );
+  const ctx = canvas.getContext("2d");
+  const image = await createImage(imageSrc);
 
-  // As a blob
+  ctx.drawImage(image, pixelCrop.x * -1, pixelCrop.y * -1);
+
   return new Promise(resolve => {
     canvas.toBlob(resolve, "image/jpeg");
   });
