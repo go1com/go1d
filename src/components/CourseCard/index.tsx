@@ -31,6 +31,7 @@ export interface CourseCardProps extends ViewProps {
   currency?: string;
   status?: EnrolmentStatusProps | null;
   premium?: boolean;
+  imageOverlayRenderer?: () => React.ReactNode;
 }
 
 const interactiveStyle = (colors, passive) => {
@@ -59,6 +60,7 @@ const CourseCard: React.SFC<CourseCardProps> = ({
   skeleton = false,
   premium = false,
   tax,
+  imageOverlayRenderer,
   ...props
 }: CourseCardProps) => {
   if (skeleton) {
@@ -131,6 +133,19 @@ const CourseCard: React.SFC<CourseCardProps> = ({
                     <Icon name="Play" size={[7, 6, 5]} />
                   </View>
                 )}
+              {imageOverlayRenderer && (
+                <View
+                  css={{
+                    position: "absolute",
+                    top: 0,
+                    left: 0,
+                    bottom: 0,
+                    right: 0,
+                  }}
+                >
+                  {imageOverlayRenderer()}
+                </View>
+              )}
             </View>
             <View padding={4} flexGrow={1}>
               <View
