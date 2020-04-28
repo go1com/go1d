@@ -1,6 +1,7 @@
 import * as React from "react";
 import { cleanup, render } from "react-testing-library";
-import ImageUploader from "./index";
+import ImageUploader from ".";
+import * as utils from "./utils";
 
 afterEach(cleanup);
 jest.mock("react-dropzone", () => ({
@@ -12,17 +13,21 @@ jest.mock("react-dropzone", () => ({
     }),
 }));
 
-it("Renders without crashing", () => {
-  render(<ImageUploader />);
+beforeAll(() => {
+  // shim static URL methods which are unsupported in jsdom
+  // tslint:disable
+  const noop = () => {};
+
+  if (typeof window.URL.createObjectURL === "undefined") {
+    Object.defineProperty(window.URL, "createObjectURL", { value: noop });
+  }
+  if (typeof window.URL.revokeObjectURL === "undefined") {
+    Object.defineProperty(window.URL, "revokeObjectURL", { value: noop });
+  }
 });
 
-it("Renders without crashing with an image", () => {
-  const ref: React.RefObject<any> = React.createRef();
-  // tslint:disable-next-line:no-string-literal
-  global["URL"] = { revokeObjectURL: jest.fn() };
-  render(<ImageUploader value="An image" ref={ref} />);
-
-  ref!.current!.removeImage();
+it("Renders without crashing", () => {
+  render(<ImageUploader />);
 });
 
 it("can add an image", () => {
@@ -34,11 +39,13 @@ it("can add an image", () => {
     <ImageUploader onChange={fn} name="test" value="An image" ref={ref} />
   );
 
-  const newImage = new File([""], "newImage");
+  const file = new File(["(⌐□_□)"], "chucknorris.png", {
+    type: "image/png",
+  });
 
   if (ref.current) {
-    ref.current.onChange([newImage]);
-    expect(fn).toBeCalledWith({ target: { name: "test", value: newImage } });
+    ref.current.onChange([file]);
+    expect(fn).toBeCalledWith({ target: { name: "test", value: file } });
   } else {
     fail("ref could not be set");
   }
@@ -70,4 +77,42 @@ it("renders the provided placeholder", () => {
   } else {
     fail("no placeholder");
   }
+});
+
+it("renders with crop and call onCrop properly after uploaded", async () => {
+  const file = new File(["(⌐□_□)"], "chucknorris.png", {
+    type: "image/png",
+  });
+
+  jest.spyOn(utils, "getCroppedImg").mockResolvedValue(file as any);
+
+  const ref = React.createRef<ImageUploader>();
+  const onCrop = jest.fn();
+
+  const { getByTestId } = render(
+    <ImageUploader
+      ref={ref}
+      value="http://cdn.go1/logo.png"
+      allowCrop={true}
+      cropConfig={{ aspect: 18 / 9, onCrop }}
+    />
+  );
+
+  const zoom = getByTestId("cropZoom");
+
+  expect(zoom).toBeDefined();
+
+  const instance = ref.current;
+
+  await instance.setCroppedAreaPixels(
+    {},
+    {
+      width: 16,
+      height: 9,
+      x: 0,
+      y: 1,
+    }
+  );
+
+  expect(onCrop).toHaveBeenCalledWith(file);
 });

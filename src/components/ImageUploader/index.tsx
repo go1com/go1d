@@ -1,13 +1,40 @@
 import { isEqual } from "lodash";
 import * as React from "react";
+import * as CropperClass from "react-easy-crop/index";
+import ICropper from "react-easy-crop/index";
 import { autobind } from "../../utils/decorators";
 import safeInvoke from "../../utils/safeInvoke";
 import BaseUploader from "../BaseUploader";
 import ButtonFilled from "../ButtonFilled";
 import Icon from "../Icon";
+import Stepper from "../Stepper";
 import Text from "../Text";
 import Theme from "../Theme";
 import View, { ViewProps } from "../View";
+import { getCroppedImg } from "./utils";
+
+const Cropper: typeof ICropper = CropperClass as any;
+
+const isDev = process.env.NODE_ENV !== "production";
+// tslint:disable
+const logError = console.error;
+
+interface Crop {
+  x: number;
+  y: number;
+}
+
+interface CropAreaPixels {
+  width: number;
+  height: number;
+  x: number;
+  y: number;
+}
+
+const DEFAULT_IMAGE_ZOOM = 1;
+const MIN_ZOOM = 0.5;
+const MAX_ZOOM = 3;
+const DEFAULT_ASPECT_RATIO = 16 / 9;
 
 export interface ImageUploaderProps extends ViewProps {
   onChange?: (evt: { target: { name: string; value: string | File } }) => void;
@@ -15,19 +42,28 @@ export interface ImageUploaderProps extends ViewProps {
   name?: string;
   uploadText?: string;
   supportedFormatText?: string;
+  allowCrop?: boolean;
+  cropConfig?: Partial<
+    ICropper["props"] & Record<"onCrop", (file: Blob) => void>
+  >;
 }
 
 interface State {
   file?: File;
   disabledClick?: boolean;
   preview?: string;
+  crop: Crop;
+  zoom: number;
+  croppedAreaPixels?: CropAreaPixels;
 }
 
 class ImageUploader extends React.Component<ImageUploaderProps, State> {
-  public static defaultProps = {
+  public static defaultProps: Partial<ImageUploaderProps> = {
     height: "200px",
     uploadText: "Upload an image",
     supportedFormatText: "jpg, png, and gif are supported",
+    allowCrop: false,
+    cropConfig: {},
   };
 
   public static getDerivedStateFromProps(
@@ -50,7 +86,9 @@ class ImageUploader extends React.Component<ImageUploaderProps, State> {
         try {
           preview = URL.createObjectURL(nextProps.value);
         } catch (e) {
-          // Do nothing
+          if (isDev) {
+            logError(e);
+          }
         }
 
         return {
@@ -62,10 +100,50 @@ class ImageUploader extends React.Component<ImageUploaderProps, State> {
     return null;
   }
 
+  private defaultCropState = {
+    zoom: DEFAULT_IMAGE_ZOOM,
+    crop: {
+      x: 0,
+      y: 0,
+    },
+  };
+
   constructor(props: ImageUploaderProps) {
     super(props);
-    this.state = {};
+    this.state = {
+      ...this.defaultCropState,
+    };
   }
+
+  public setCrop = (values: Crop) => {
+    this.setState({
+      crop: values,
+    });
+  };
+
+  public setZoom = (evt: React.ChangeEvent<Record<"value", number>>) => {
+    this.setState({
+      zoom: evt.target.value,
+    });
+  };
+
+  public setCroppedAreaPixels = async (
+    croppedArea: unknown,
+    croppedAreaPixels: CropAreaPixels
+  ) => {
+    const { onCrop } = this.props.cropConfig;
+
+    if (onCrop) {
+      const croppedImage = await this.doCrop(
+        this.state.preview,
+        croppedAreaPixels
+      );
+
+      if (croppedImage) {
+        onCrop(croppedImage);
+      }
+    }
+  };
 
   public componentDidMount() {
     const { value } = this.props;
@@ -123,6 +201,8 @@ class ImageUploader extends React.Component<ImageUploaderProps, State> {
       error,
       uploadText,
       supportedFormatText,
+      allowCrop,
+      cropConfig,
       ...props
     } = this.props;
 
@@ -190,6 +270,7 @@ class ImageUploader extends React.Component<ImageUploaderProps, State> {
       file: undefined,
       disabledClick: false,
       preview: undefined,
+      zoom: DEFAULT_IMAGE_ZOOM,
     });
 
     safeInvoke(onChange, { target: { name, value: "" } });
@@ -197,28 +278,34 @@ class ImageUploader extends React.Component<ImageUploaderProps, State> {
 
   @autobind
   public renderImage(open: () => void, isDragActive: boolean) {
-    const { file, preview } = this.state;
-    const { disabled, uploadText, supportedFormatText } = this.props;
+    const { file, preview, crop, zoom } = this.state;
+    const {
+      disabled,
+      uploadText,
+      supportedFormatText,
+      allowCrop,
+      cropConfig,
+    } = this.props;
 
     return file || preview ? (
       <View height="100%">
         <View
-          height="100%"
+          position="absolute"
           css={{
-            position: "absolute",
             top: 0,
             left: 0,
+            bottom: 0,
           }}
+          padding={4}
+          justifyContent="space-between"
+          zIndex="popover"
         >
           <View
-            marginTop={4}
-            marginLeft={4}
             display="flex"
             flexDirection="row"
             backgroundColor="#fff"
             borderRadius={2}
             overflow="hidden"
-            height="100%"
           >
             <ButtonFilled
               iconName="Trash"
@@ -243,16 +330,43 @@ class ImageUploader extends React.Component<ImageUploaderProps, State> {
               }}
             />
           </View>
+
+          {allowCrop && (
+            <View maxWidth={120} flexDirection="row">
+              <Stepper
+                data-testid="cropZoom"
+                id="zoomImage"
+                value={zoom}
+                stepIncrement={0.5}
+                minNumber={MIN_ZOOM}
+                maxNumber={MAX_ZOOM}
+                onChange={this.setZoom}
+              />
+            </View>
+          )}
         </View>
-        <View
-          css={{
-            backgroundImage: `url("${preview}")`,
-            backgroundSize: "cover",
-            backgroundPosition: "center",
-          }}
-          width="100%"
-          height="100%"
-        />
+
+        {allowCrop ? (
+          <Cropper
+            image={preview}
+            aspect={DEFAULT_ASPECT_RATIO}
+            crop={crop}
+            zoom={zoom}
+            onCropChange={this.setCrop}
+            onCropComplete={this.setCroppedAreaPixels}
+            {...cropConfig}
+          />
+        ) : (
+          <View
+            css={{
+              backgroundImage: `url("${preview}")`,
+              backgroundSize: "cover",
+              backgroundPosition: "center",
+            }}
+            width="100%"
+            height="100%"
+          />
+        )}
       </View>
     ) : (
       <View
@@ -294,6 +408,21 @@ class ImageUploader extends React.Component<ImageUploaderProps, State> {
       </View>
     );
   }
+
+  private doCrop = async (
+    blobUrl: string,
+    croppedAreaPixels: CropAreaPixels
+  ) => {
+    try {
+      const croppedImage = await getCroppedImg(blobUrl, croppedAreaPixels);
+
+      return croppedImage;
+    } catch (e) {
+      if (isDev) {
+        logError(e);
+      }
+    }
+  };
 }
 
 export default ImageUploader;
