@@ -1,5 +1,5 @@
 import * as React from "react";
-import View from "../View";
+import View, { ViewProps } from "../View";
 import NotificationManager from "./NotificationManager";
 import Notifications from "./Notifications";
 
@@ -13,7 +13,11 @@ const AbsoluteStyling = {
   width: "100%",
 };
 
-class NotificationContainer extends React.Component {
+class NotificationContainer extends React.Component<ViewProps, any> {
+  constructor(props: ViewProps) {
+    super(props);
+  }
+
   public state = {
     notifications: [],
   };
@@ -38,12 +42,15 @@ class NotificationContainer extends React.Component {
 
   public render() {
     const { notifications } = this.state;
+    const { ...props } = this.props;
     return (
       <View
         zIndex="tooltip"
         css={{
           ...AbsoluteStyling,
+          ...props
         }}
+        {...props}
       >
         <Notifications
           notifications={notifications}
