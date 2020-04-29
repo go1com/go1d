@@ -15,10 +15,6 @@ class NotificationContainer extends React.Component<ViewProps, any> {
     notifications: [],
   };
 
-  constructor(props: ViewProps) {
-    super(props);
-  }
-
   public componentDidMount() {
     NotificationManager.addChangeListener(this.handleStoreChange);
   }
@@ -39,7 +35,6 @@ class NotificationContainer extends React.Component<ViewProps, any> {
 
   public render() {
     const { notifications } = this.state;
-    const { ...props } = this.props;
     return (
       <View
         zIndex="tooltip"
@@ -52,7 +47,7 @@ class NotificationContainer extends React.Component<ViewProps, any> {
         css={{
           ...AbsoluteStyling,
         }}
-        {...props}
+        {...this.props}
       >
         <Notifications
           notifications={notifications}
