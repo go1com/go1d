@@ -8,9 +8,6 @@ const AbsoluteStyling = {
   top: "87px",
   left: 0,
   right: 0,
-  margin: "0 auto",
-  maxWidth: "560px",
-  width: "100%",
 };
 
 class NotificationContainer extends React.Component<ViewProps, any> {
@@ -46,9 +43,14 @@ class NotificationContainer extends React.Component<ViewProps, any> {
     return (
       <View
         zIndex="tooltip"
+        maxWidth="560px"
+        width="100%"
+        marginTop={0}
+        marginBottom={0}
+        marginLeft="auto"
+        marginRight="auto"
         css={{
           ...AbsoluteStyling,
-          ...props
         }}
         {...props}
       >

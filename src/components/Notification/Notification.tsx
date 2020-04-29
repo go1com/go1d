@@ -76,8 +76,10 @@ class Notification extends React.Component<NotificationProps, any> {
           opacity: this.state.alive ? 1 : 0,
           transition: "all 300ms",
         }}
+        justifyContent="center"
+        flexDirection="row"
       >
-        <Banner type={type} close={this.close} floating={true}>
+        <Banner type={type} close={this.close} floating={true} >
           {message}
         </Banner>
       </View>

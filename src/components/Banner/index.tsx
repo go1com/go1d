@@ -48,8 +48,7 @@ const Banner: React.SFC<BannerProps> = ({
             flexWrap="wrap"
             flexGrow={1}
             paddingX={5}
-            width="90%"
-            maxWidth="90%"
+            maxWidth="95%"
             alignItems={floating ? "center" : "left"}
             css={{
               "*": {
