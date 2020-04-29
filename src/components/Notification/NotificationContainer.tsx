@@ -11,13 +11,13 @@ const AbsoluteStyling = {
 };
 
 class NotificationContainer extends React.Component<ViewProps, any> {
-  constructor(props: ViewProps) {
-    super(props);
-  }
-
   public state = {
     notifications: [],
   };
+
+  constructor(props: ViewProps) {
+    super(props);
+  }
 
   public componentDidMount() {
     NotificationManager.addChangeListener(this.handleStoreChange);

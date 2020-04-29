@@ -79,7 +79,7 @@ class Notification extends React.Component<NotificationProps, any> {
         justifyContent="center"
         flexDirection="row"
       >
-        <Banner type={type} close={this.close} floating={true} >
+        <Banner type={type} close={this.close} floating={true}>
           {message}
         </Banner>
       </View>
