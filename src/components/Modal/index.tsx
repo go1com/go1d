@@ -3,6 +3,7 @@ import * as React from "react";
 import { css } from "emotion";
 import foundations from "../../foundations";
 import { autobind } from "../../utils/decorators";
+import ButtonFilled from "../ButtonFilled";
 import ButtonMinimal from "../ButtonMinimal";
 import MoreMenu from "../MoreMenu";
 import Portal from "../Portal";
@@ -19,6 +20,7 @@ export interface ModalProps extends ViewProps {
   headerIcon?: string;
   headerAction?: () => void;
   moreMenu?: MoreMenu;
+  contentPadding?: number | number[];
 }
 
 const modalOpenClassName = css`
@@ -126,6 +128,7 @@ class Modal extends React.Component<ModalProps, any> {
       headerIcon = "Cross",
       headerAction,
       moreMenu,
+      contentPadding = 5,
       ...viewProps
     } = this.props;
 
@@ -171,6 +174,7 @@ class Modal extends React.Component<ModalProps, any> {
           }}
         >
           <View
+            position="relative"
             maxWidth={600}
             width="100%"
             minHeight={300}
@@ -185,41 +189,60 @@ class Modal extends React.Component<ModalProps, any> {
             innerRef={innerRef}
             {...viewProps}
           >
-            <View
-              paddingY={4}
-              flexDirection="row"
-              alignItems="center"
-              borderColor="divide"
-              borderBottom={1}
-            >
-              {(headerAction || onRequestClose) && (
-                <ButtonMinimal
-                  onClick={headerAction || this.onClose}
-                  iconName={headerIcon}
-                  round={true}
-                  marginLeft={4}
-                />
-              )}
-              <View css={{ flex: 1 }}>
-                <Text
-                  element="h1"
-                  textAlign="center"
-                  fontSize={3}
-                  paddingX={5}
-                  ellipsis={true}
-                  css={{
-                    wordWrap: "break-word",
-                    maxWidth: onRequestClose
-                      ? `calc(100% - ${foundations.spacing[5] * 2 + 18}px)`
-                      : "100%",
-                  }}
-                >
-                  {title}
-                </Text>
+            {title && (
+              <View
+                paddingY={4}
+                flexDirection="row"
+                alignItems="center"
+                borderColor="divide"
+                borderBottom={1}
+              >
+                {(headerAction || onRequestClose) && (
+                  <ButtonMinimal
+                    onClick={headerAction || this.onClose}
+                    iconName={headerIcon}
+                    round={true}
+                    marginLeft={4}
+                  />
+                )}
+                <View css={{ flex: 1 }}>
+                  <Text
+                    element="h1"
+                    textAlign="center"
+                    fontSize={3}
+                    paddingX={5}
+                    ellipsis={true}
+                    css={{
+                      wordWrap: "break-word",
+                      maxWidth: onRequestClose
+                        ? `calc(100% - ${foundations.spacing[5] * 2 + 18}px)`
+                        : "100%",
+                    }}
+                  >
+                    {title}
+                  </Text>
+                </View>
+                <View marginRight={4}>{moreMenu}</View>
               </View>
-              <View marginRight={4}>{moreMenu}</View>
-            </View>
-            <View padding={5} flexGrow={1}>
+            )}
+            {!title && (
+              <View
+                mode="dark"
+                position="absolute"
+                css={{ top: 0, left: 0 }}
+                padding={4}
+                backgroundColor="transparent"
+              >
+                <ButtonFilled
+                  iconName={headerIcon}
+                  color="soft"
+                  opacity="modal"
+                  round={true}
+                  onClick={headerAction || this.onClose}
+                />
+              </View>
+            )}
+            <View padding={contentPadding} flexGrow={1}>
               {children}
             </View>
           </View>
