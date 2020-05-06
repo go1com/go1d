@@ -28,7 +28,9 @@ releaseVersion: 0.2.15
     }
   ]}
   passive={false}
+  status={{ type: "inProgress", text: "In progress" }}
   imageOverlayRenderer={() => <View flexGrow={1} alignItems="center" justifyContent="center"><ButtonFilled>Preview</ButtonFilled></View>}
+  actionRenderer={() => <View marginTop={3}><ButtonFilled color="accent">Try for free</ButtonFilled></View>}
 />
 ```
 
