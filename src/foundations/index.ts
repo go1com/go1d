@@ -206,7 +206,7 @@ export const type: ThemeType = {
     light: 300,
     normal: 400,
     semibold: 600,
-    bold: 700,
+    bold: 800,
   },
   leading: {
     display: 1.2,
