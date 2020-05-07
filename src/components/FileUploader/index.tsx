@@ -7,10 +7,16 @@ import safeInvoke from "../../utils/safeInvoke";
 import BaseUploader from "../BaseUploader";
 import Button from "../Button";
 import ButtonMinimal from "../ButtonMinimal";
-import Icon from "../Icon";
 import Spinner from "../Spinner";
 import Text from "../Text";
 import View, { ViewProps } from "../View";
+
+import DocumentIcon from "../Icons/Document";
+import UploadIcon from "../Icons/Upload";
+import SuccessIcon from "../Icons/Success";
+import PlusCircleIcon from "../Icons/PlusCircle";
+import TrashIcon from "../Icons/Trash";
+import { IconProps } from "../IconBase";
 
 const MESSAGES = {
   cancelled: "Cancelled because a new file is being used",
@@ -29,7 +35,8 @@ export interface FileUploaderProps extends ViewProps {
   acceptedFileExts?: string;
   description?: string;
   errorMessage?: string;
-  iconName?: string;
+  iconName?: never;
+  icon: React.ComponentType<IconProps>;
   maxSizeInBytes?: number;
   name?: string;
   uploadProgress?: number;
@@ -45,14 +52,14 @@ interface State {
 }
 
 interface InnerProps extends FileUploaderProps {
-  removeIcon?: string;
+  removeIcon?: React.ComponentType<IconProps>;
   formik: FormikContext<any>;
 }
 
 export class FileUploader extends React.Component<InnerProps, State> {
   public static displayName = "FileUploader";
   public static defaultProps = {
-    iconName: "Document",
+    icon: DocumentIcon,
     uploadProgress: 0,
   };
 
@@ -161,7 +168,7 @@ export class FileUploader extends React.Component<InnerProps, State> {
   public renderNoFileState = () => {
     const {
       formik: { errors },
-      iconName,
+      icon: IconElement,
       name,
     } = this.props;
     const error = get(errors, name);
@@ -177,9 +184,9 @@ export class FileUploader extends React.Component<InnerProps, State> {
             },
           }}
         >
-          <Icon name={iconName} color="muted" {...this.iconStyle} />
+          <IconElement color="muted" {...this.iconStyle} />
           <Text>{this.messages.dragFile}</Text>
-          <Button iconName="Upload" marginLeft="auto" color="subtle">
+          <Button icon={UploadIcon} marginLeft="auto" color="subtle">
             {this.messages.chooseFile}
           </Button>
         </View>
@@ -229,7 +236,7 @@ export class FileUploader extends React.Component<InnerProps, State> {
         {...this.containerStyle}
         borderColor={error ? "danger" : this.containerStyle.borderColor}
       >
-        <Icon name="Success" color="success" {...this.iconStyle} />
+        <SuccessIcon color="success" {...this.iconStyle} />
         <Text>{this.messages.fileUploaded}</Text>
       </View>
     );
@@ -238,7 +245,7 @@ export class FileUploader extends React.Component<InnerProps, State> {
   public renderHasValueState = (fileName: string) => {
     const {
       formik: { errors },
-      iconName,
+      icon: IconElement,
       removeIcon,
     } = this.props;
     const error = get(errors, this.props.name);
@@ -249,12 +256,12 @@ export class FileUploader extends React.Component<InnerProps, State> {
           borderColor={error ? "danger" : this.containerStyle.borderColor}
           boxShadow="crisp"
         >
-          <Icon name={iconName} color="muted" {...this.iconStyle} />
+          <IconElement color="muted" {...this.iconStyle} />
           <Text ellipsis={true}>{fileName}</Text>
           <ButtonMinimal
             flexDirection="row"
             marginLeft="auto"
-            iconName={removeIcon || "Trash"}
+            icon={removeIcon || TrashIcon}
             iconColor="subtle"
             onClick={this.onDelete}
           />
@@ -299,7 +306,7 @@ export class FileUploader extends React.Component<InnerProps, State> {
             if (isDragActive) {
               fileUploadInner = (
                 <View {...this.containerStyle} borderColor="accent">
-                  <Icon name="PlusCircle" color="accent" {...this.iconStyle} />
+                  <PlusCircleIcon color="accent" {...this.iconStyle} />
                   <Text>{this.messages.dropFile}</Text>
                 </View>
               );

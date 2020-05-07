@@ -2,13 +2,15 @@ import * as React from "react";
 import foundations from "../../foundations";
 import formatPrice from "../../utils/priceFormatter";
 import ContentType from "../ContentType";
-import Icon from "../Icon";
 import MoreMenu from "../MoreMenu";
 import { Item as DropdownItem } from "../MoreMenu/DropdownMenuItem";
 import Skeleton from "../SlatSkeleton";
 import Text from "../Text";
 import Theme from "../Theme";
 import View, { ViewProps } from "../View";
+
+import EmptyIcon from "../Icons/Empty";
+import { IconProps } from "../IconBase";
 
 export interface SlatProps extends ViewProps {
   id?: number;
@@ -19,7 +21,7 @@ export interface SlatProps extends ViewProps {
   price?: number;
   priceSuffix?: string;
   bottomMeta?: Array<{
-    icon?: string;
+    icon?: React.ComponentType<IconProps>;
     text: string;
   }>;
   image?: string;
@@ -105,7 +107,7 @@ const Slat: React.SFC<SlatProps> = ({
                   width="100%"
                   opacity="emptyIcon"
                 >
-                  <Icon size={7} name="Empty" color="default" />
+                  <EmptyIcon size={7} color="default" />
                 </View>
               )}
               {type && (
@@ -237,7 +239,7 @@ const Slat: React.SFC<SlatProps> = ({
                       },
                     }}
                   >
-                    {bottomMeta.map((meta, i) => (
+                    {bottomMeta.map(({ icon: IconElement, text}, i) => (
                       <Text
                         display="flex"
                         marginRight={5}
@@ -251,14 +253,13 @@ const Slat: React.SFC<SlatProps> = ({
                           },
                         }}
                       >
-                        {meta.icon && (
-                          <Icon
-                            name={meta.icon}
+                        {IconElement && (
+                          <IconElement
                             marginRight={3}
                             color="muted"
                           />
                         )}
-                        {meta.text}
+                        {text}
                       </Text>
                     ))}
                   </View>

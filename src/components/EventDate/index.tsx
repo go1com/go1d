@@ -1,9 +1,12 @@
 import * as React from "react";
 import foundations from "../../foundations";
-import Icon from "../Icon";
 import Link from "../Link";
 import Text from "../Text";
 import View, { ViewProps } from "../View";
+
+import MapPinIcon from "../Icons/MapPin";
+import ClockIcon from "../Icons/Clock";
+import AddUserIcon from "../Icons/AddUser";
 
 export interface SessionProps extends ViewProps {
   start: Date | string;
@@ -141,8 +144,7 @@ const EventDate: React.SFC<SessionProps> = ({
             paddingLeft={bigDate ? 0 : 4}
           >
             <View width="15%" maxWidth={25} minWidth={20}>
-              <Icon
-                name="MapPin"
+              <MapPinIcon
                 display="inline"
                 color="faded"
                 marginRight={3}
@@ -163,8 +165,7 @@ const EventDate: React.SFC<SessionProps> = ({
             paddingLeft={bigDate ? 0 : 4}
           >
             <View width="15%" maxWidth={25} minWidth={20}>
-              <Icon
-                name="Clock"
+              <ClockIcon
                 display="inline"
                 color="faded"
                 marginRight={3}
@@ -193,7 +194,7 @@ const EventDate: React.SFC<SessionProps> = ({
                 padding={2}
                 marginRight={3}
               >
-                <Icon name="AddUser" color="muted" />
+                <AddUserIcon color="muted" />
               </View>
               {availableSeats > 0 && limit && (
                 <Text fontSize={1} color="subtle">

@@ -3,7 +3,6 @@ import foundations from "../../foundations";
 import formatDuration from "../../utils/durationFormatter";
 import formatPrice from "../../utils/priceFormatter";
 import EnrolmentStatus, { EnrolmentStatusProps } from "../EnrolmentStatus";
-import Icon from "../Icon";
 import MoreMenu from "../MoreMenu";
 import { Item as DropdownItem } from "../MoreMenu/DropdownMenuItem";
 import Pill from "../Pill";
@@ -12,8 +11,13 @@ import Theme from "../Theme";
 import View, { ViewProps } from "../View";
 import Skeleton from "./Skeleton";
 
+import EmptyIcon from "../Icons/Empty";
+import PlayIcon from "../Icons/Play";
+import ClockIcon from "../Icons/Clock";
+import { IconProps } from "../IconBase";
+
 interface MetaItem {
-  icon?: string;
+  icon?: React.ComponentType<IconProps>;
   text: string;
 }
 
@@ -71,7 +75,7 @@ const CourseCard: React.SFC<CourseCardProps> = ({
 
   const lineList: MetaItem[] = [...metaList];
   if (duration) {
-    lineList.unshift({ icon: "Clock", text: formatDuration(duration) });
+    lineList.unshift({ icon: ClockIcon, text: formatDuration(duration) });
   }
 
   return (
@@ -119,7 +123,7 @@ const CourseCard: React.SFC<CourseCardProps> = ({
                   width="100%"
                   opacity="emptyIcon"
                 >
-                  <Icon size={7} name="Empty" color="default" />
+                  <EmptyIcon size={7} color="default" />
                 </View>
               )}
               {status &&
@@ -132,7 +136,7 @@ const CourseCard: React.SFC<CourseCardProps> = ({
                     color="background"
                     css={{ position: "absolute", bottom: 8, left: 10 }}
                   >
-                    <Icon name="Play" size={[7, 6, 5]} />
+                    <PlayIcon size={[7, 6, 5]} />
                   </View>
                 )}
               {imageOverlayRenderer && (
@@ -187,15 +191,14 @@ const CourseCard: React.SFC<CourseCardProps> = ({
                   {title}
                 </Text>
               )}
-              {lineList.map((item, index) => (
+              {lineList.map(({ text, icon: IconElement }, index) => (
                 <View
                   flexDirection="row"
                   marginTop={index === 0 ? 3 : 1}
                   key={index}
                 >
-                  {item.icon && (
-                    <Icon
-                      name={item.icon}
+                  {typeof IconElement === "function" && (
+                    <IconElement
                       size={1}
                       color="muted"
                       marginTop={1}
@@ -204,12 +207,12 @@ const CourseCard: React.SFC<CourseCardProps> = ({
                   )}
                   {type && index === 0 && (
                     <Text color="subtle" fontSize={1} lineClamp={1}>
-                      {item.text} ･ {type}
+                      {text} ･ {type}
                     </Text>
                   )}
                   {index > 0 && (
                     <Text color="subtle" fontSize={1} lineClamp={1}>
-                      {item.text}
+                      {text}
                     </Text>
                   )}
                 </View>

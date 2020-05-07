@@ -1,15 +1,17 @@
 import * as React from "react";
-import Icon from "../Icon";
 import Text from "../Text";
 import Theme from "../Theme";
 import View, { ViewProps } from "../View";
+import UserIcon from "../Icons/User";
+import { IconProps } from "../IconBase";
 
 export interface AvatarProps extends ViewProps {
   fullName?: string;
   size?: number | number[];
   scaleSize?: number;
   src?: string;
-  iconName?: string;
+  icon?: React.ComponentType<IconProps>;
+  iconName?: never; // Removed
   avatarType?: "circle" | "square";
   skeleton?: boolean;
 }
@@ -19,7 +21,7 @@ const Avatar: React.SFC<AvatarProps> = ({
   fullName,
   size = 6,
   scaleSize = 1,
-  iconName = "User",
+  icon,
   avatarType = "circle",
   skeleton = false,
   ...props
@@ -28,6 +30,8 @@ const Avatar: React.SFC<AvatarProps> = ({
   const displayName = `${names[0].charAt(0)}${
     names.length > 1 ? names[names.length - 1].charAt(0) : ""
   }`;
+
+  const IconElement = icon || UserIcon;
 
   const constrainSize = Size => {
     let constrained = Math.abs(Math.trunc(Size)) || 6;
@@ -65,7 +69,7 @@ const Avatar: React.SFC<AvatarProps> = ({
 
   return (
     <Theme.Consumer>
-      {({ spacing, type, breakpoints }) => (
+      {({ type, breakpoints }) => (
         <View
           css={{
             verticalAlign: "middle",
@@ -95,8 +99,7 @@ const Avatar: React.SFC<AvatarProps> = ({
                 </Text>
               ) : (
                 <View alignItems="center">
-                  <Icon
-                    name={iconName}
+                  <IconElement
                     size={
                       Array.isArray(size)
                         ? size.map(constrainIcon)

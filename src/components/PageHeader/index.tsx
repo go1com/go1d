@@ -2,11 +2,13 @@ import * as React from "react";
 import { Transition } from "react-transition-group";
 
 import ButtonMinimal from "../ButtonMinimal";
-import Icon from "../Icon";
 import Link from "../Link";
 import Text from "../Text";
 import Theme from "../Theme";
 import View, { ViewProps } from "../View";
+
+import MenuIcon from "../Icons/Menu";
+import ChevronLeftIcon from "../Icons/ChevronLeft";
 
 export interface PageHeaderProps extends ViewProps {
   title: string;
@@ -70,8 +72,7 @@ const PageHeader: React.SFC<PageHeaderProps> = ({
               paddingX={2}
               onClick={onMenuButtonClick}
             >
-              <Icon
-                name="Menu"
+              <MenuIcon
                 size={5}
                 color="subtle"
                 marginX="auto"
@@ -84,8 +85,7 @@ const PageHeader: React.SFC<PageHeaderProps> = ({
           {breadcrumbTitle && breadcrumbHref && (
             <Link href={breadcrumbHref}>
               <View flexDirection="row" alignItems="center">
-                <Icon
-                  name="ChevronLeft"
+                <ChevronLeftIcon
                   color="subtle"
                   size={1}
                   marginRight={2}

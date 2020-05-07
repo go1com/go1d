@@ -5,7 +5,6 @@ import Text from "../../Text";
 export interface Item extends ButtonMinimalProps {
   title: string;
   href?: any;
-  iconName?: string;
   color?: string;
   iconColor?: string;
   onClick?: (evt: React.SyntheticEvent) => void;

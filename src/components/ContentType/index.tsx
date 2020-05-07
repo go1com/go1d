@@ -1,7 +1,9 @@
 import * as React from "react";
-import Icon from "../Icon";
 import Text from "../Text";
 import View, { ViewProps } from "../View";
+
+import CalendarIcon from "../Icons/Calendar";
+import CourseIcon from "../Icons/Course";
 
 export interface ContentTypeProps extends ViewProps {
   type?: string;
@@ -16,10 +18,11 @@ const ContentType: React.SFC<ContentTypeProps> = ({
   ...props
 }: ContentTypeProps) => {
   const typeIcons = {
-    event: "Calendar",
-    course: "Course",
+    event: CalendarIcon,
+    course: CourseIcon,
   };
-  const iconName = typeIcons[String(type).toLowerCase()] || typeIcons.course;
+
+  const IconElement = typeIcons[String(type).toLowerCase()] || typeIcons.course;
 
   return (
     <View
@@ -31,7 +34,7 @@ const ContentType: React.SFC<ContentTypeProps> = ({
       {...props}
     >
       <View paddingRight={!!text ? 2 : 0}>
-        <Icon name={iconName} />
+        <IconElement />
       </View>
 
       {text && (

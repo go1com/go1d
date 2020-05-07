@@ -1,17 +1,18 @@
 import get = require("lodash/get");
 import * as React from "react";
 import foundations from "../../foundations";
-import Icon from "../Icon/index";
 import Text from "../Text";
 import Theme from "../Theme";
 import View, { ViewProps } from "../View";
+import { IconProps } from "../IconBase";
 
 export interface FeaturedTagProps extends ViewProps {
   size?: "lg" | "md" | "sm";
   color?: string;
   iconColor?: string;
   backgroundColor?: string;
-  iconName?: string;
+  iconName?: never; // Removed
+  icon?: React.ComponentType<IconProps>
   onClick?: (evt: React.SyntheticEvent) => void;
 }
 
@@ -27,7 +28,7 @@ const FeaturedTag: React.SFC<FeaturedTagProps> = ({
   size = "md",
   color = "subtle",
   backgroundColor = "background",
-  iconName,
+  icon: IconElement,
   children,
   onClick,
   iconColor = color,
@@ -58,9 +59,8 @@ const FeaturedTag: React.SFC<FeaturedTagProps> = ({
         }}
         {...props}
       >
-        {iconName && (
-          <Icon
-            name={iconName}
+        {IconElement && (
+          <IconElement
             size={get({ lg: 5, md: 4, sm: 3 }, size)}
             marginRight={children && get({ lg: 6, md: 4, sm: 3 }, size)}
             color={iconColor}
@@ -73,7 +73,7 @@ const FeaturedTag: React.SFC<FeaturedTagProps> = ({
           color="inherit"
           css={{
             textAlign: "center",
-            width: iconName ? "auto" : "100%",
+            width: IconElement ? "auto" : "100%",
           }}
         >
           {children}

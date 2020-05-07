@@ -1,11 +1,14 @@
 import * as React from "react";
 import safeInvoke from "../../utils/safeInvoke";
 import Base from "../Base";
-import Icon from "../Icon";
 import Provider from "../Provider";
 import Text, { TextProps } from "../Text";
 import Theme from "../Theme";
 import View from "../View";
+
+import { IconProps } from "../IconBase";
+import CheckIcon from "../Icons/Check";
+import PlusIcon from "../Icons/Plus";
 
 const sizeStyles = {
   lg: {
@@ -36,8 +39,10 @@ export interface TagToggleProps extends TextProps {
   defaultValue?: boolean | string;
   disabled?: boolean;
   size?: "lg" | "md" | "sm";
-  activeIconName?: string;
-  inactiveIconName?: string;
+  activeIconName?: never; // Removed
+  inactiveIconName?: string; // Removed
+  activeIcon?: React.ComponentType<IconProps>;
+  inactiveIcon?: React.ComponentType<IconProps>;
 }
 
 class TagToggle extends React.Component<
@@ -90,14 +95,17 @@ class TagToggle extends React.Component<
       marginBottom = 0,
       disabled = false,
       size = "md",
-      activeIconName = "Check",
-      inactiveIconName = "Plus",
+      activeIcon,
+      inactiveIcon,
       ...props
     } = this.props;
 
     const { height, paddingY, paddingX, typeScale } = sizeStyles[size];
 
     const value = typeof propValue === "undefined" ? checkedState : propValue;
+    const IconElement = value 
+      ? (activeIcon || CheckIcon) 
+      : (inactiveIcon || PlusIcon);
 
     return (
       <Provider mode={value ? "dark" : "light"}>
@@ -166,11 +174,12 @@ class TagToggle extends React.Component<
                   {label}
                   {children}
                 </Text>
-                <Icon
-                  size={typeScale}
-                  marginLeft={size === "lg" ? 4 : 3}
-                  name={value ? activeIconName : inactiveIconName}
-                />
+                {typeof IconElement === "function" && (
+                  <IconElement
+                    size={typeScale}
+                    marginLeft={size === "lg" ? 4 : 3}
+                  />
+                )}
               </View>
             </React.Fragment>
           )}

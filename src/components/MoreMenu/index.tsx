@@ -10,6 +10,8 @@ import Theme from "../Theme";
 import View from "../View";
 import DropdownMenuItem, { Item as DropdownItem } from "./DropdownMenuItem";
 
+import EllipsisIcon from "../Icons/Ellipsis";
+
 export interface MoreMenuProps extends ButtonProps {
   itemList: DropdownItem[];
   loading?: boolean;
@@ -69,7 +71,7 @@ class MoreMenu extends React.Component<MoreMenuProps, State> {
 
     return (
       <Theme.Consumer>
-        {({ colors, spacing }) => (
+        {({ spacing }) => (
           <Dropdown
             itemList={loading ? [{ title: "loader" }] : itemList}
             renderFunction={loading ? Loader : DropdownMenuItem}
@@ -86,7 +88,7 @@ class MoreMenu extends React.Component<MoreMenuProps, State> {
               });
               return isButtonFilled ? (
                 <ButtonFilled
-                  iconName="Ellipsis"
+                  icon={EllipsisIcon}
                   {...buttonProps}
                   {...toggleButtonProps}
                   innerRef={ref}
@@ -95,7 +97,7 @@ class MoreMenu extends React.Component<MoreMenuProps, State> {
               ) : (
                 <ButtonMinimal
                   data-testid="toggle"
-                  iconName="Ellipsis"
+                  icon={EllipsisIcon}
                   innerRef={ref}
                   {...buttonProps}
                   {...toggleButtonProps}

@@ -7,6 +7,7 @@ import safeInvoke from "../../utils/safeInvoke";
 import Label from "../Label";
 import Text from "../Text";
 import View, { ViewProps } from "../View";
+import { IconProps } from "../IconBase";
 
 function shallowCompare(newObj, prevObj) {
   if (Object.keys(newObj).length !== Object.keys(prevObj).length) {
@@ -33,7 +34,7 @@ export interface FieldProps extends ViewProps {
   invalidText?: string;
   requiredText?: string;
   statusColor?: string;
-  statusIcon?: string;
+  statusIcon?: React.ComponentType<IconProps>;
   errorFormat?: (errorMessage: string) => React.ReactNode | string;
   suppressError?: boolean;
   errorForLabel?: boolean;

@@ -4,6 +4,8 @@ import { autobind } from "../../utils/decorators";
 import Field, { FieldProps } from "../Field";
 import InputSuffix from "../InputSuffix";
 import Text from "../Text";
+import PassedIcon from "../Icons/Passed";
+import NotPassedIcon from "../Icons/NotPassed";
 
 export interface PortalUrlFieldProps extends FieldProps {
   isAvailable?: boolean;
@@ -36,11 +38,11 @@ class PortalUrlField extends React.Component<PortalUrlFieldProps, any> {
   @autobind
   public getStatusIcon() {
     if (this.props.isAvailable) {
-      return "Passed";
+      return PassedIcon;
     } else if (this.props.isAvailable === false) {
-      return "NotPassed";
+      return NotPassedIcon;
     }
-    return "";
+    return undefined;
   }
 
   public render() {

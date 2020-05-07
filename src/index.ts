@@ -32,7 +32,7 @@ export {
 } from "./components/ToggleButtonFeature";
 export { default as Pill, PillProps } from "./components/Pill";
 export { default as PageBody, PageBodyProps } from "./components/PageBody";
-export { default as Icon, IconProps } from "./components/Icon";
+export { IconProps } from "./components/IconBase";
 export {
   default as PageHeader,
   PageHeaderProps,

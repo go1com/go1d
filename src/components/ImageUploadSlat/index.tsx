@@ -4,10 +4,15 @@ import { autobind } from "../../utils/decorators";
 import safeInvoke from "../../utils/safeInvoke";
 import BaseUploader from "../BaseUploader";
 import ButtonMinimal from "../ButtonMinimal";
-import Icon from "../Icon";
 import Spinner from "../Spinner";
 import Text from "../Text";
 import View, { ViewProps } from "../View";
+
+import TrashIcon from "../Icons/Trash";
+import CameraIcon from "../Icons/Camera";
+import PlusCircleIcon from "../Icons/PlusCircle";
+import SuccessIcon from "../Icons/Success";
+import UploadIcon from "../Icons/Upload";
 
 export interface ImageUploadSlatProps extends ViewProps {
   onChange?: (evt: { target: { name: string; value: string | File } }) => void;
@@ -187,16 +192,15 @@ class ImageUploadSlat extends React.Component<ImageUploadSlatProps, State> {
           marginRight={5}
           padding={5}
         >
-          <Icon name="Camera" color="muted" size={4} marginBottom={2} />
+          <CameraIcon color="muted" size={4} marginBottom={2} />
           <Text textAlign="center" color="subtle">
             {this.props.dragDropText}
           </Text>
         </View>
         <View justifyContent="center">
           <View flexDirection="row">
-            <Icon
+            <UploadIcon
               marginTop={2}
-              name="Upload"
               color="muted"
               size={2}
               marginRight={4}
@@ -270,7 +274,7 @@ class ImageUploadSlat extends React.Component<ImageUploadSlatProps, State> {
           justifyContent="center"
         >
           <View marginBottom={3} flexDirection="row">
-            <Icon name="Success" color="success" size={3} marginRight={3} />
+            <SuccessIcon color="success" size={3} marginRight={3} />
             <Text>{this.props.uploadedText}</Text>
           </View>
           {`${this.props.uploadProgress}%`}
@@ -295,11 +299,11 @@ class ImageUploadSlat extends React.Component<ImageUploadSlatProps, State> {
             <Text>{fileName}</Text>
           </View>
           <View flexDirection="row">
-            <ButtonMinimal iconName="Camera" iconColor="subtle" onClick={open}>
+            <ButtonMinimal icon={CameraIcon} iconColor="subtle" onClick={open}>
               {this.props.replaceImageText}
             </ButtonMinimal>
             <ButtonMinimal
-              iconName="Trash"
+              icon={TrashIcon}
               iconColor="subtle"
               onClick={this.removeImage}
             >
@@ -379,7 +383,7 @@ class ImageUploadSlat extends React.Component<ImageUploadSlatProps, State> {
                     borderColor="accent"
                     borderRight={1}
                   >
-                    <Icon name="PlusCircle" color="accent" size={3} />
+                    <PlusCircleIcon color="accent" size={3} />
                   </View>
                   <View>
                     <Text fontWeight="semibold">

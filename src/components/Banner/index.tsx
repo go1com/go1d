@@ -2,14 +2,25 @@ import * as React from "react";
 
 import { tint } from "../../foundations";
 import ButtonMinimal from "../ButtonFilled";
-import Icon from "../Icon";
 import Theme from "../Theme";
 import View, { ViewProps } from "../View";
+
+import DangerIcon from "../Icons/Danger";
+import SuccessIcon from "../Icons/Success";
+import WarningIcon from "../Icons/Warning";
+import CrossIcon from "../Icons/Cross";
 
 export interface BannerProps extends ViewProps {
   type: "success" | "warning" | "danger" | "note";
   close?: (evt: React.SyntheticEvent) => void;
   floating?: boolean;
+}
+
+const IconMap = {
+  "note": DangerIcon,
+  "warning": WarningIcon,
+  "danger": DangerIcon,
+  "success": SuccessIcon,
 }
 
 const Banner: React.SFC<BannerProps> = ({
@@ -19,8 +30,7 @@ const Banner: React.SFC<BannerProps> = ({
   floating,
   ...props
 }: BannerProps) => {
-  const iconType =
-    type === "note" ? `Danger` : type.charAt(0).toUpperCase() + type.slice(1);
+  const IconElement = IconMap[type];
   const tintLevel = type === "success" ? 0.1 : type === "note" ? 0.1 : 0.2;
   return (
     <Theme.Consumer>
@@ -43,7 +53,7 @@ const Banner: React.SFC<BannerProps> = ({
           }}
           {...props}
         >
-          <Icon name={iconType} color={type} marginTop={1} />
+          <IconElement color={type} marginTop={1} />
           <View
             flexWrap="wrap"
             flexGrow={1}
@@ -69,7 +79,7 @@ const Banner: React.SFC<BannerProps> = ({
               paddingX={1}
               paddingY={1}
             >
-              <Icon name="Cross" color={type} />
+              <CrossIcon color={type} />
             </ButtonMinimal>
           )}
         </View>

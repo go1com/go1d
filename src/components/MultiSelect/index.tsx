@@ -4,15 +4,16 @@ import { List } from "react-virtualized";
 import safeInvoke from "../../utils/safeInvoke";
 import Button from "../Button";
 import Checkbox from "../Checkbox";
-import Icon from "../Icon";
 import Portal from "../Portal";
 import SearchInput from "../SearchInput";
 import Text from "../Text";
 import Theme from "../Theme";
+import ChevronDownIcon from "../Icons/ChevronDown";
 
 import MultiSelectDownshift from "./components/MultiSelectDownshift";
 
 import View, { ViewProps } from "../View";
+import CrossIcon from "../Icons/Cross";
 
 export interface MultiSelectProps extends ViewProps {
   options?: Array<{
@@ -208,8 +209,7 @@ class MultiSelect extends React.PureComponent<MultiSelectProps, any> {
             height="calc(100% - 3px)"
             paddingLeft={3}
           >
-            <Icon
-              name="ChevronDown"
+            <ChevronDownIcon
               size={2}
               color={selectedItems.length > 0 ? "background" : "muted"}
             />
@@ -258,7 +258,7 @@ class MultiSelect extends React.PureComponent<MultiSelectProps, any> {
               onClick={this.handleSelectionClear(clearSelection)}
               data-testid="clearSelectionButton"
               borderRadius={3}
-              iconName="Cross"
+              icon={CrossIcon}
               size="sm"
               width={20}
               css={{

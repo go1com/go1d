@@ -4,12 +4,15 @@ import formatDuration from "../../utils/durationFormatter";
 import formatPrice from "../../utils/priceFormatter";
 import Avatar from "../Avatar";
 import EnrolmentStatus from "../EnrolmentStatus";
-import Icon from "../Icon";
 import Pill from "../Pill";
 import Skeleton from "../SlatSkeleton";
 import Text from "../Text";
 import Theme from "../Theme";
 import View, { ViewProps } from "../View";
+
+import EmptyIcon from "../Icons/Empty";
+import ClockIcon from "../Icons/Clock";
+import { IconProps } from "../IconBase";
 
 interface EnrollmentProps {
   status?: string;
@@ -33,7 +36,7 @@ export interface CourseSlatProps extends ViewProps {
   price?: number;
   title?: string;
   type?: string;
-  typeIcon?: string;
+  typeIcon?: React.ComponentType<IconProps>;
   tax?: {
     amount?: number;
     included?: boolean;
@@ -151,7 +154,7 @@ const CourseSlat: React.SFC<CourseSlatProps> = ({
   price,
   title,
   type,
-  typeIcon,
+  typeIcon: TypeIconElement,
   tax,
   skeleton = false,
   premium = false,
@@ -212,10 +215,10 @@ const CourseSlat: React.SFC<CourseSlatProps> = ({
                   width="100%"
                   opacity="emptyIcon"
                 >
-                  <Icon size={7} name="Empty" color="default" />
+                  <EmptyIcon size={7} color="default" />
                 </View>
               )}
-              {(type || typeIcon) && (
+              {(type || TypeIconElement) && (
                 <View
                   flexDirection="row"
                   padding={2}
@@ -228,9 +231,9 @@ const CourseSlat: React.SFC<CourseSlatProps> = ({
                     left: 10,
                   }}
                 >
-                  {typeIcon && (
+                  {TypeIconElement && (
                     <View paddingRight={2}>
-                      <Icon name={typeIcon} />
+                      <TypeIconElement />
                     </View>
                   )}
                   {type && (
@@ -302,8 +305,7 @@ const CourseSlat: React.SFC<CourseSlatProps> = ({
                           },
                         }}
                       >
-                        <Icon
-                          name="Clock"
+                        <ClockIcon
                           size={1}
                           color="muted"
                           marginRight={2}

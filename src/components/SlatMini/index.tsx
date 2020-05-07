@@ -1,13 +1,13 @@
 import get = require("lodash/get");
 import * as React from "react";
 import ContentType from "../ContentType";
-import Icon from "../Icon";
 import MoreMenu from "../MoreMenu";
 import { Item as DropdownItem } from "../MoreMenu/DropdownMenuItem";
 import SlatMiniSkeleton from "../SlatMiniSkeleton";
 import Text from "../Text";
 import Theme from "../Theme";
 import View, { ViewProps } from "../View";
+import EmptyIcon from "../Icons/Empty"
 
 export interface SlatMiniProps extends ViewProps {
   id?: number;
@@ -115,7 +115,7 @@ const SlatMini: React.SFC<SlatMiniProps> = ({
                   width="100%"
                   opacity="emptyIcon"
                 >
-                  <Icon size={iconSize} name="Empty" color="default" />
+                  <EmptyIcon size={iconSize} color="default" />
                 </View>
               )}
 

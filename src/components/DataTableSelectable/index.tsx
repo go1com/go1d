@@ -34,7 +34,7 @@ export interface DataTableSelectableProps
   mapRowToId?: (row: number) => number;
   rowRenderer?: (props: RowRendererProps) => React.ReactNode;
   disabled?: boolean;
-  mainIconName?: string;
+  mainIconName?: never; // No longer used
   prefixRow?: (
     SelectedCount: number,
     SelectedData: {
@@ -281,7 +281,6 @@ class DataTableSelectable extends React.Component<
       disabled,
       header,
       mainActionText,
-      mainIconName,
       rowCount,
       prefixRow,
       index,

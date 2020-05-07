@@ -1,9 +1,47 @@
 import * as React from "react";
 
 import formatDuration from "../../utils/durationFormatter";
-import Icon from "../Icon";
 import Text from "../Text";
 import View, { ViewProps } from "../View";
+
+import ActivityIcon from "../Icons/Activity";
+import UserTickIcon from "../Icons/UserTick";
+import AssignmentIcon from "../Icons/Assignment";
+import DocumentIcon from "../Icons/Document";
+import VideoplayIcon from "../Icons/Videoplay";
+import LinkIcon from "../Icons/Link";
+import InteractiveIcon from "../Icons/Interactive";
+import CheckboxIcon from "../Icons/Checkbox";
+import QuizIcon from "../Icons/Quiz";
+import TextIcon from "../Icons/Text";
+import VideoIcon from "../Icons/Video";
+import CourseIcon from "../Icons/Course";
+import AwardIcon from "../Icons/Award";
+import LtiIcon from "../Icons/Lti";
+import CalendarIcon from "../Icons/Calendar";
+import AudioIcon from "../Icons/Audio";
+
+export const typeIconDic = {
+  activities: ActivityIcon,
+  attendance: UserTickIcon,
+  assignment: AssignmentIcon,
+  document: DocumentIcon,
+  h5p: VideoplayIcon,
+  iframe: LinkIcon,
+  interactive: InteractiveIcon,
+  question: CheckboxIcon,
+  quiz: QuizIcon,
+  resource: TextIcon,
+  link: LinkIcon,
+  text: TextIcon,
+  video: VideoIcon,
+  workshop: CourseIcon,
+  course: CourseIcon,
+  award: AwardIcon,
+  lti: LtiIcon,
+  event: CalendarIcon,
+  audio: AudioIcon,
+};
 
 export interface LessonProps extends ViewProps {
   title?: string;
@@ -13,28 +51,6 @@ export interface LessonProps extends ViewProps {
   typeLabel?: string | JSX.Element;
 }
 
-export const typeIconDic = {
-  activities: "Activity",
-  attendance: "UserTick",
-  assignment: "Assignment",
-  document: "Document",
-  h5p: "Videoplay",
-  iframe: "Link",
-  interactive: "Interactive",
-  question: "Checkbox",
-  quiz: "Quiz",
-  resource: "Text",
-  link: "Link",
-  text: "Text",
-  video: "Video",
-  workshop: "Course",
-  course: "Course",
-  award: "Award",
-  lti: "Lti",
-  event: "Calendar",
-  audio: "Audio",
-};
-
 const Lesson: React.SFC<LessonProps> = ({
   title,
   type,
@@ -43,52 +59,51 @@ const Lesson: React.SFC<LessonProps> = ({
   typeLabel,
   children,
   ...props
-}: LessonProps) => (
-  <View
-    backgroundColor="background"
-    borderBottom={1}
-    borderColor="soft"
-    {...props}
-  >
+}: LessonProps) => {
+  const TypeIconElement = typeIconDic[type.toLowerCase()]
+    ? typeIconDic[type.toLowerCase()]
+    : CourseIcon;
+  return (
     <View
-      flexDirection="row"
-      overflow="hidden"
-      flexShrink={children ? 1 : undefined}
+      backgroundColor="background"
+      borderBottom={1}
+      borderColor="soft"
+      {...props}
     >
-      <View paddingBottom={5} paddingTop={6} justifyContent="flex-start">
-        {type && (
-          <Icon
-            name={
-              typeIconDic[type.toLowerCase()]
-                ? typeIconDic[type.toLowerCase()]
-                : "Course"
-            }
-          />
-        )}
-      </View>
-      <View paddingY={5} paddingX={4} flexGrow={1}>
-        {title && (
-          <Text fontSize={2} marginBottom={1}>
-            {title}
+      <View
+        flexDirection="row"
+        overflow="hidden"
+        flexShrink={children ? 1 : undefined}
+      >
+        <View paddingBottom={5} paddingTop={6} justifyContent="flex-start">
+          {typeof TypeIconElement === "function" && (
+            <TypeIconElement />
+          )}
+        </View>
+        <View paddingY={5} paddingX={4} flexGrow={1}>
+          {title && (
+            <Text fontSize={2} marginBottom={1}>
+              {title}
+            </Text>
+          )}
+          <Text
+            color="subtle"
+            fontSize={1}
+            fontWeight="semibold"
+            textTransform="uppercase"
+          >
+            {typeLabel || type}
+            {[author, !!duration && formatDuration(duration)]
+              .filter(val => val)
+              .map(val => " • " + val)}
           </Text>
-        )}
-        <Text
-          color="subtle"
-          fontSize={1}
-          fontWeight="semibold"
-          textTransform="uppercase"
-        >
-          {typeLabel || type}
-          {[author, !!duration && formatDuration(duration)]
-            .filter(val => val)
-            .map(val => " • " + val)}
-        </Text>
+        </View>
+      </View>
+      <View paddingY={3} flexDirection="row" overflow="hidden">
+        {children}
       </View>
     </View>
-    <View paddingY={3} flexDirection="row" overflow="hidden">
-      {children}
-    </View>
-  </View>
-);
+  )
+};
 
 export default Lesson;

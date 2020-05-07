@@ -10,6 +10,9 @@ import Portal from "../Portal";
 import Text from "../Text";
 import View, { ViewProps } from "../View";
 
+import { IconProps } from "../IconBase";
+import CrossIcon from "../Icons/Cross";
+
 export interface ModalProps extends ViewProps {
   title?: string;
   children?: React.ReactNode;
@@ -17,7 +20,7 @@ export interface ModalProps extends ViewProps {
   onRequestClose?: () => void;
   disableKeyBindings?: boolean;
   disableBackgroundClose?: boolean;
-  headerIcon?: string;
+  headerIcon?: React.ComponentType<IconProps>;
   headerAction?: () => void;
   moreMenu?: MoreMenu;
   contentPadding?: number | number[];
@@ -125,7 +128,7 @@ class Modal extends React.Component<ModalProps, any> {
       disableBackgroundClose,
       disableKeyBindings,
       children,
-      headerIcon = "Cross",
+      headerIcon,
       headerAction,
       moreMenu,
       contentPadding = 5,
@@ -142,6 +145,8 @@ class Modal extends React.Component<ModalProps, any> {
     const innerRef = c => {
       this.dialog = c;
     };
+
+    const HeaderIconElement = headerIcon || CrossIcon;
 
     return (
       <Portal>
@@ -200,7 +205,7 @@ class Modal extends React.Component<ModalProps, any> {
                 {(headerAction || onRequestClose) && (
                   <ButtonMinimal
                     onClick={headerAction || this.onClose}
-                    iconName={headerIcon}
+                    icon={HeaderIconElement}
                     round={true}
                     marginLeft={4}
                   />
@@ -234,7 +239,7 @@ class Modal extends React.Component<ModalProps, any> {
                 backgroundColor="transparent"
               >
                 <ButtonFilled
-                  iconName={headerIcon}
+                  icon={HeaderIconElement}
                   color="soft"
                   opacity="modal"
                   round={true}

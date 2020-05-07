@@ -11,11 +11,11 @@ import {
 import { autobind } from "../../utils/decorators";
 import safeInvoke from "../../utils/safeInvoke";
 import ButtonFilled from "../ButtonFilled";
-import Icon from "../Icon";
 import TR from "../Table/TR";
 import Text from "../Text";
 import Theme from "../Theme";
 import View, { ViewProps } from "../View";
+import ChevronUpIcon from "../Icons/ChevronUp";
 
 export interface DataTableProps extends ViewProps {
   /** Component shown if there is no results */
@@ -270,7 +270,7 @@ class DataTable extends React.Component<DataTableProps, {}> {
                             marginLeft="auto"
                             css={{ bottom: spacing[4] }}
                           >
-                            <Icon name="ChevronUp" />
+                            <ChevronUpIcon />
                           </ButtonFilled>
                         )}
                       </React.Fragment>

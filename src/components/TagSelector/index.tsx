@@ -8,6 +8,8 @@ import Text from "../Text";
 import TextInput from "../TextInput";
 import View, { ViewProps } from "../View";
 
+import CloseIcon from "../Icons/Close";
+
 interface State {
   value: string[];
   isFocused: boolean;
@@ -200,7 +202,7 @@ class TagSelector extends React.PureComponent<TagSelectorProps, State> {
         </Text>
         <ButtonMinimal
           marginLeft={2}
-          iconName="Close"
+          icon={CloseIcon}
           size="sm"
           width={16}
           height={16}

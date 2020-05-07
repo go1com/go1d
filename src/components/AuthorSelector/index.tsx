@@ -3,11 +3,13 @@ import { autobind } from "../../utils/decorators";
 import safeInvoke from "../../utils/safeInvoke";
 import Avatar from "../Avatar";
 import ButtonMinimal from "../ButtonMinimal";
-import Icon from "../Icon";
 import SelectDropdown, { SelectDropdownItemProps } from "../SelectDropdown";
 import Text from "../Text";
 import TextInput from "../TextInput";
 import View, { ViewProps } from "../View";
+
+import CrossIcon from "../Icons/Cross";
+import PlusCircleIcon from "../Icons/PlusCircle";
 
 export interface AuthorSelectorProps extends ViewProps {
   optionRenderer?: (item: SelectDropdownItemProps) => React.ReactNode;
@@ -215,7 +217,7 @@ class AuthorSelector extends React.PureComponent<AuthorSelectorProps, State> {
     return (
       <View flexDirection="row">
         <View flexDirection="row" width={31}>
-          <Icon name="PlusCircle" marginX="auto" size={3} />
+          <PlusCircleIcon name="PlusCircle" marginX="auto" size={3} />
         </View>
         <View marginLeft={4}>
           <Text>{`${this.props.createableText} "${this.state.search}"`}</Text>
@@ -275,7 +277,7 @@ class AuthorSelector extends React.PureComponent<AuthorSelectorProps, State> {
                   disabled={disabled}
                   marginLeft="auto"
                   marginY="auto"
-                  iconName="Cross"
+                  icon={CrossIcon}
                   size="sm"
                   width={16}
                   height={16}

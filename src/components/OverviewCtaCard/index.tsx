@@ -6,10 +6,14 @@ import formatPrice from "../../utils/priceFormatter";
 import Avatar from "../Avatar";
 import ButtonMinimal from "../ButtonMinimal";
 import Dropdown from "../Dropdown";
-import Icon from "../Icon";
 import Text from "../Text";
 import Theme from "../Theme";
 import View, { ViewProps } from "../View";
+
+import EllipsisIcon from "../Icons/Ellipsis";
+import ClockIcon from "../Icons/Clock";
+import ThumbsUpIcon from "../Icons/ThumbsUp";
+import ThumbsDownIcon from "../Icons/ThumbsDown";
 
 export interface OverviewCtaCardProps extends ViewProps {
   actions?: Array<{
@@ -51,7 +55,7 @@ const renderFunction = (item, index, getItemProps) => (
       index,
     })}
     color={item.color || "default"}
-    iconName={item.iconName}
+    icon={item.icon}
     iconColor={item.iconColor}
     paddingX={4}
     borderRadius={0}
@@ -321,7 +325,7 @@ class OverviewCtaCard extends React.Component<OverviewCtaCardProps, any> {
                         innerRef={ref}
                         size="md"
                       >
-                        <Icon name="Ellipsis" />
+                        <EllipsisIcon />
                       </ButtonMinimal>
                     </View>
                   )}
@@ -402,7 +406,7 @@ class OverviewCtaCard extends React.Component<OverviewCtaCardProps, any> {
 
               {duration > 0 && (
                 <View flexDirection="row" alignItems="center" marginTop={4}>
-                  <Icon name="Clock" color="muted" marginRight={3} />
+                  <ClockIcon color="muted" marginRight={3} />
                   <Text fontSize={1} color="subtle" fontWeight="semibold">
                     {formatDuration(duration)}
                   </Text>
@@ -450,7 +454,7 @@ class OverviewCtaCard extends React.Component<OverviewCtaCardProps, any> {
                     innerRef={ref}
                     size="md"
                   >
-                    <Icon name="Ellipsis" />
+                    <EllipsisIcon />
                   </ButtonMinimal>
                 </View>
               )}
@@ -467,11 +471,11 @@ class OverviewCtaCard extends React.Component<OverviewCtaCardProps, any> {
     return (
       <View flexDirection="row" alignItems="center">
         <View flexDirection="row" alignItems="center">
-          <Icon name="ThumbsUp" color="subtle" size={2} marginRight={3} />
+          <ThumbsUpIcon color="subtle" size={2} marginRight={3} />
           <Text color="subtle">{likes}</Text>
         </View>
         <View flexDirection="row" alignItems="center" marginLeft={4}>
-          <Icon name="ThumbsDown" color="subtle" size={2} marginRight={3} />
+          <ThumbsDownIcon color="subtle" size={2} marginRight={3} />
           <Text color="subtle">{dislikes}</Text>
         </View>
       </View>

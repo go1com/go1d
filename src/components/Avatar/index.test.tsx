@@ -11,7 +11,7 @@ it("renders without crashing", () => {
 });
 
 it("renders initials when no url is given", () => {
-  const wrapper = render(<Avatar fullName="first last" iconName="User" />);
+  const wrapper = render(<Avatar fullName="first last" />);
   expect(wrapper.container.children.length).toBe(1);
   expect(wrapper.container.children[0].children.length).toBe(1);
   expect(wrapper.container.children[0].children[0].tagName).toBe("SPAN");
@@ -38,7 +38,7 @@ it("renders higher than 6 as default", () => {
 
 it("renders skeleton when skeleton true", () => {
   const wrapper = render(
-    <Avatar skeleton={true} fullName="first last" iconName="User" />
+    <Avatar skeleton={true} fullName="first last" />
   );
   expect(wrapper.container.children.length).toBe(1);
   expect(wrapper.container.children[0].children.length).toBe(0);
@@ -46,7 +46,7 @@ it("renders skeleton when skeleton true", () => {
 
 it("renders square", () => {
   const wrapper = render(
-    <Avatar avatarType="square" fullName="first last" iconName="User" />
+    <Avatar avatarType="square" fullName="first last" />
   );
   expect(wrapper.container.children.length).toBe(1);
   expect(wrapper.container.children[0].children.length).toBe(1);
