@@ -127,9 +127,7 @@ class ToggleSwitch extends React.Component<
       <Theme.Consumer>
         {({ breakpoints, colors }) => {
           const iconCheckStyles = {
-            ...{
-              opacity: value ? 1 : 0,
-            },
+            opacity: value ? 1 : 0,
             ...Object.keys(breakpoints).reduce(
               (previous: any, current: any) => {
                 return {
@@ -143,9 +141,7 @@ class ToggleSwitch extends React.Component<
             ),
           };
           const iconCrossStyles = {
-            ...{
-              opacity: !value ? 1 : 0,
-            },
+            opacity: !value ? 1 : 0,
             ...Object.keys(breakpoints).reduce(
               (previous: any, current: any) => {
                 return {
