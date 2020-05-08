@@ -33,6 +33,33 @@ lead: This component used to on/off some attributes.
 </View>
 ```
 
+### Toggle with a label props
+```.jsx
+<View flexDirection="column" alignItems="baseline" justifyContent="center">
+    <ToggleSwitch defaultValue={true} size="sm" marginRight={2} label="Toggle switch" />
+    <ToggleSwitch defaultValue={false} size="md" marginRight={2} label="Toggle switch" />
+    <ToggleSwitch defaultValue={true} size="lg" marginRight={2} label="Toggle switch" />
+</View>
+```
+
+### Toggle with a label and helper text props
+```.jsx
+<View flexDirection="column" alignItems="baseline" justifyContent="center">
+    <ToggleSwitch defaultValue={true} size="sm" marginRight={2} label="Toggle switch" helperText="This is helper text" />
+    <ToggleSwitch defaultValue={false} size="md" marginRight={2} label="Toggle switch" helperText="This is helper text" />
+    <ToggleSwitch defaultValue={true} size="lg" marginRight={2} label="Toggle switch" helperText="This is helper text" />
+</View>
+```
+
+### Toggle with a label, helper text, reverse props
+```.jsx
+<View flexDirection="column" alignItems="baseline" justifyContent="center" width={300}>
+    <ToggleSwitch defaultValue={true} size="sm" marginRight={2} label="Toggle switch" reverse={true} />
+    <ToggleSwitch defaultValue={false} size="md" marginRight={2} label="Toggle switch" reverse={true} />
+    <ToggleSwitch defaultValue={true} size="lg" marginRight={2} label="Toggle switch" reverse={true} />
+</View>
+```
+
 ```!jsx
 <ComponentDoc component="ToggleSwitchProps" />
 ```
