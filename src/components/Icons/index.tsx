@@ -147,3 +147,4 @@ export { default as IconVisa } from "./Visa";
 export { default as IconWarning } from "./Warning";
 export { default as IconWeblink } from "./Weblink";
 export { default as IconWhiteboard } from "./Whiteboard";
+export { default as IconYoutube } from "./Youtube";
