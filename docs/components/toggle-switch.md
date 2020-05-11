@@ -42,22 +42,26 @@ lead: This component used to on/off some attributes.
 </View>
 ```
 
-### Toggle with a label and helper text props
+### Toggle with a label and description props
 ```.jsx
-<View flexDirection="column" alignItems="baseline" justifyContent="center">
-    <ToggleSwitch defaultValue={true} size="sm" marginRight={2} label="Toggle switch" helperText="This is helper text" />
-    <ToggleSwitch defaultValue={false} size="md" marginRight={2} label="Toggle switch" helperText="This is helper text" />
-    <ToggleSwitch defaultValue={true} size="lg" marginRight={2} label="Toggle switch" helperText="This is helper text" />
-</View>
+<ToggleSwitch defaultValue={true} size="sm" marginRight={2} label="Toggle switch" description="This is helper text" />
+<ToggleSwitch defaultValue={false} size="md" marginRight={2} label="Toggle switch" description="This is helper text" />
+<ToggleSwitch defaultValue={true} size="lg" marginRight={2} label="Toggle switch" description="This is helper text" />
 ```
 
-### Toggle with a label, helper text, reverse props
+### Toggle with a label, description, reverse props
 ```.jsx
-<View flexDirection="column" alignItems="baseline" justifyContent="center" width={300}>
-    <ToggleSwitch defaultValue={true} size="sm" marginRight={2} label="Toggle switch" reverse={true} />
-    <ToggleSwitch defaultValue={false} size="md" marginRight={2} label="Toggle switch" reverse={true} />
-    <ToggleSwitch defaultValue={true} size="lg" marginRight={2} label="Toggle switch" reverse={true} />
+<View width="300px">
+<ToggleSwitch defaultValue={true} size="sm" marginRight={2} label="Toggle switch" description="This is helper text" reverse={true} alignText="right" />
+<ToggleSwitch defaultValue={false} size="md" marginRight={2} label="Toggle switch" description="This is helper text" reverse={true} alignText="right" />
+<ToggleSwitch defaultValue={true} size="lg" marginRight={2} label="Toggle switch" description="This is helper text" reverse={true} alignText="right" />
 </View>
+```
+### Toggle with a label, inline props
+```.jsx
+<ToggleSwitch defaultValue={true} size="sm" marginRight={2} label="Toggle switch" inline={true} />
+<ToggleSwitch defaultValue={false} size="md" marginRight={2} label="Toggle switch" inline={true} />
+<ToggleSwitch defaultValue={true} size="lg" marginRight={2} label="Toggle switch" inline={true} />
 ```
 
 ```!jsx

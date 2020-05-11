@@ -62,8 +62,10 @@ export interface ToggleSwitchProps extends ViewProps {
   disabled?: boolean;
   size?: "lg" | "md" | "sm";
   label?: string | React.ReactNode;
-  helperText?: string | React.ReactNode;
+  description?: string | React.ReactNode;
   reverse?: boolean;
+  alignText?: "right" | "left";
+  inline?: boolean;
   onChange?: (evt: React.ChangeEvent<any>) => void;
 }
 
@@ -111,8 +113,10 @@ class ToggleSwitch extends React.Component<
       disabled = false,
       size = "md",
       label,
-      helperText,
-      reverse,
+      description,
+      reverse = false,
+      alignText = "left",
+      inline = false,
       ...props
     } = this.props;
 
@@ -157,8 +161,10 @@ class ToggleSwitch extends React.Component<
           return (
             <>
               <View
+                display={inline ? "inline-flex" : "flex"}
                 flexDirection={reverse ? "row-reverse" : "row"}
                 alignItems="baseline"
+                {...props}
               >
                 <View>
                   <View
@@ -177,7 +183,6 @@ class ToggleSwitch extends React.Component<
                         borderColor: value ? colors.default : colors.accent,
                       },
                     }}
-                    {...props}
                   >
                     <View
                       width={width}
@@ -242,10 +247,13 @@ class ToggleSwitch extends React.Component<
                       position: "absolute",
                       left: -9999,
                     }}
-                    {...props}
                   />
                 </View>
-                <View flexShrink={1} paddingX={3}>
+                <View
+                  flexShrink={1}
+                  paddingX={3}
+                  alignItems={alignText === "left" ? "flex-start" : "flex-end"}
+                >
                   {typeof label === "string" && (
                     <Text
                       color="default"
@@ -256,12 +264,12 @@ class ToggleSwitch extends React.Component<
                     </Text>
                   )}
                   {typeof label !== "string" && label}
-                  {typeof helperText === "string" && (
+                  {typeof description === "string" && (
                     <Text color="subtle" fontSize={sizeStyles[size].labelSize}>
-                      {helperText}
+                      {description}
                     </Text>
                   )}
-                  {typeof helperText !== "string" && helperText}
+                  {typeof description !== "string" && description}
                 </View>
               </View>
             </>
