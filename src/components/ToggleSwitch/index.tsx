@@ -1,3 +1,4 @@
+import { FlexDirectionProperty } from "csstype";
 import * as React from "react";
 import safeInvoke from "../../utils/safeInvoke";
 import Base from "../Base";
@@ -63,8 +64,7 @@ export interface ToggleSwitchProps extends ViewProps {
   size?: "lg" | "md" | "sm";
   label?: string | React.ReactNode;
   description?: string | React.ReactNode;
-  reverse?: boolean;
-  alignText?: "right" | "left";
+  direction?: FlexDirectionProperty;
   inline?: boolean;
   onChange?: (evt: React.ChangeEvent<any>) => void;
 }
@@ -114,8 +114,7 @@ class ToggleSwitch extends React.Component<
       size = "md",
       label,
       description,
-      reverse = false,
-      alignText = "left",
+      direction = "row",
       inline = false,
       ...props
     } = this.props;
@@ -126,6 +125,8 @@ class ToggleSwitch extends React.Component<
 
     const value = typeof propValue === "undefined" ? checkedState : propValue;
     const currentPos = value ? width - diameter - switchPadding : switchPadding;
+
+    const isRowReverse = direction === "row-reverse";
 
     return (
       <Theme.Consumer>
@@ -162,8 +163,8 @@ class ToggleSwitch extends React.Component<
             <>
               <View
                 display={inline ? "inline-flex" : "flex"}
-                flexDirection={reverse ? "row-reverse" : "row"}
-                alignItems="baseline"
+                flexDirection={direction}
+                alignItems={inline ? "center" : "baseline"}
                 {...props}
               >
                 <View>
@@ -236,7 +237,7 @@ class ToggleSwitch extends React.Component<
                   <Base
                     element="input"
                     id={id}
-                    onChange={this.handleOnChange}
+                    onChange={disabled ? null : this.handleOnChange}
                     type="checkbox"
                     name={name}
                     disabled={disabled}
@@ -251,8 +252,9 @@ class ToggleSwitch extends React.Component<
                 </View>
                 <View
                   flexShrink={1}
-                  paddingX={3}
-                  alignItems={alignText === "left" ? "flex-start" : "flex-end"}
+                  paddingLeft={!isRowReverse ? 3 : 0}
+                  paddingRight={isRowReverse ? 3 : 0}
+                  alignItems={isRowReverse ? "flex-end" : "flex-start"}
                 >
                   {typeof label === "string" && (
                     <Text
