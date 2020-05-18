@@ -1,5 +1,6 @@
 import * as React from "react";
 import { cleanup, fireEvent, render } from "react-testing-library";
+import IconSearch from "../Icons/Search";
 import TextInput from "./index";
 
 afterEach(cleanup);
@@ -9,7 +10,7 @@ it("renders without crashing without any optional props", () => {
 });
 
 it("renders without crashing with an icon", () => {
-  render(<TextInput id="crashing" iconName="Search" />);
+  render(<TextInput id="crashing" icon={IconSearch} />);
 });
 
 it("test focus", () => {

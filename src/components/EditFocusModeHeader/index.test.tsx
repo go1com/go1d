@@ -1,7 +1,12 @@
 import * as React from "react";
 import { cleanup, render } from "react-testing-library";
-import { Icon, Pill, Text, View } from "../../index";
+import { Pill, Text, View } from "../../index";
 import EditFocusModeHeader from "./index";
+
+import IconCheck from "../Icons/Check";
+import IconEdit from "../Icons/Edit";
+import IconEye from "../Icons/Eye";
+import IconTrash from "../Icons/Trash";
 
 afterEach(cleanup);
 
@@ -38,7 +43,7 @@ it("renders without crashing with all props", () => {
             </Pill>
           </View>
           <View marginRight={4} flexDirection="row" alignItems="center">
-            <Icon size={1} name="Check" color="accent" marginRight={2} />
+            <IconCheck size={1} color="accent" marginRight={2} />
             <Text fontSize={1}>Saved</Text>
           </View>
         </View>
@@ -47,23 +52,23 @@ it("renders without crashing with all props", () => {
         {
           title: "Done",
           href: "#testing",
-          iconName: "Check",
+          icon: IconCheck,
         },
         {
           title: "Visibility and Access",
           href: "#testing",
-          iconName: "Eye",
+          icon: IconEye,
           iconColor: "muted",
         },
         {
           title: "MenuItem1",
           href: "#testing",
-          iconName: "Edit",
+          icon: IconEdit,
         },
         {
           title: "DeleteMenuItem",
           href: "#testing",
-          iconName: "Trash",
+          icon: IconTrash,
           color: "danger",
         },
       ]}

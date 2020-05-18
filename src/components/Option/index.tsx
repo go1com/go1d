@@ -32,7 +32,10 @@ const Option: React.SFC<OptionProps> = ({
   css,
   ...props
 }: OptionProps) => {
-  const IconElement = checked && disabled ? SuccessIcon : actionIcon;
+  const IconElement =
+    (checked && disabled) || typeof actionIcon !== "function"
+      ? SuccessIcon
+      : actionIcon;
 
   return (
     <Theme.Consumer>

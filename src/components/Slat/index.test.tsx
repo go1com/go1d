@@ -2,6 +2,10 @@ import * as React from "react";
 import { cleanup, render } from "react-testing-library";
 import Slat from "./index";
 
+import IconCalendar from "../Icons/Calendar";
+import IconCross from "../Icons/Cross";
+import IconMapPin from "../Icons/MapPin";
+
 afterEach(cleanup);
 
 const props = {
@@ -13,11 +17,11 @@ const props = {
   price: 100,
   bottomMeta: [
     {
-      icon: "Calendar",
+      icon: IconCalendar,
       text: "1.30pm - 2.30pm",
     },
     {
-      icon: "MapPin",
+      icon: IconMapPin,
       text: "Underwood, QLD, Australia",
     },
   ],
@@ -27,12 +31,12 @@ const props = {
   typeBackground: "background",
   dropdownItems: [
     {
-      icon: "Cross",
+      icon: IconCross,
       title: "fake item",
       action: jest.fn(),
     },
     {
-      icon: "Cross",
+      icon: IconCross,
       title: "fake item2",
       action: jest.fn(),
     },

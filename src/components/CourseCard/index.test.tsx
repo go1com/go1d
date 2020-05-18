@@ -1,5 +1,6 @@
 import * as React from "react";
 import { cleanup, render } from "react-testing-library";
+import IconStar from "../Icons/Star";
 import CourseCard from "./index";
 
 it("renders without crashing without any optional props", () => {
@@ -18,7 +19,7 @@ it("renders without crashing with all props", () => {
       title="Test Title"
       courseImage="https://res.cloudinary.com/go1/image/fetch/w_1024,h_300,c_thumb,g_auto/https://udemy-images.udemy.com/course/750x422/435262_c617.jpg"
       itemList={[{ title: "Test" }]}
-      metaList={[{ icon: "Star", text: "Hello, world" }]}
+      metaList={[{ icon: IconStar, text: "Hello, world" }]}
       passive={false}
       premium={true}
       status={{
@@ -42,7 +43,7 @@ it("renders without crashing when status is enrolled", () => {
       author="Cian O'Leary"
       title="Test Title"
       courseImage="https://res.cloudinary.com/go1/image/fetch/w_1024,h_300,c_thumb,g_auto/https://udemy-images.udemy.com/course/750x422/435262_c617.jpg"
-      metaList={[{ icon: "Star", text: "Hello, world" }]}
+      metaList={[{ icon: IconStar, text: "Hello, world" }]}
       passive={false}
       premium={true}
       status={{

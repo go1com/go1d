@@ -53,7 +53,7 @@ export interface LessonProps extends ViewProps {
 
 const Lesson: React.SFC<LessonProps> = ({
   title,
-  type,
+  type = "",
   duration,
   author,
   typeLabel,

@@ -2,6 +2,7 @@ import * as React from "react";
 import { cleanup, render } from "react-testing-library";
 import Button from "../Button";
 import ButtonFilled from "../ButtonFilled";
+import IconChevronRight from "../Icons/ChevronRight";
 import Text from "../Text";
 import OverviewCtaCard from "./index";
 
@@ -44,7 +45,7 @@ it("renders without crashing with all available props", () => {
           <Button
             marginBottom={4}
             paddingTop={0}
-            iconName="ChevronRight"
+            icon={IconChevronRight}
             flexDirection="row-reverse"
             justifyContent="flex-end"
             paddingLeft={0}

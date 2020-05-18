@@ -2,6 +2,9 @@ import * as React from "react";
 import { cleanup, render } from "react-testing-library";
 import MoreMenu from "./index";
 
+import IconPlus from "../Icons/Plus";
+import IconTrash from "../Icons/Trash";
+
 afterEach(cleanup);
 
 it("renders without crashing without any optional props", () => {
@@ -12,13 +15,13 @@ it("renders without crashing without any optional props", () => {
           title: "Add",
           href: "#testing",
           color: "accent",
-          iconName: "Plus",
+          icon: IconPlus,
         },
         {
           title: "Delete",
           onClick: jest.fn(),
           color: "danger",
-          iconName: "Trash",
+          icon: IconTrash,
         },
       ]}
     />
@@ -36,13 +39,13 @@ it("should show loader", () => {
           title: "Add",
           href: "#testing",
           color: "accent",
-          iconName: "Plus",
+          icon: IconPlus,
         },
         {
           title: "Delete",
           onClick: jest.fn(),
           color: "danger",
-          iconName: "Trash",
+          icon: IconTrash,
         },
       ]}
     />
