@@ -93,6 +93,7 @@ export { default as IconMobile } from "./Mobile";
 export { default as IconMultipleUsers } from "./MultipleUsers";
 export { default as IconNotPassed } from "./NotPassed";
 export { default as IconNotificationBell } from "./NotificationBell";
+export { default as IconNull } from "./Null";
 export { default as IconOlList } from "./OlList";
 export { default as IconPackage } from "./Package";
 export { default as IconPassed } from "./Passed";
