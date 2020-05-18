@@ -8,7 +8,7 @@ import CheckIcon from "../../Icons/Check";
 
 export interface LIProps extends ViewProps {
   iconName?: never; // Removed
-  icon?: React.ComponentType<IconProps>
+  icon?: React.ComponentType<IconProps>;
   iconColor?: string;
   fontSize?: number;
 }
@@ -51,7 +51,7 @@ const LI: React.SFC<LIProps> = ({
         {children}
       </Text>
     </View>
-  )
+  );
 };
 
 export default LI;

@@ -9,8 +9,8 @@ import Text from "../Text";
 import Theme from "../Theme";
 import View, { ViewProps } from "../View";
 
-import EmptyIcon from "../Icons/Empty";
 import { IconProps } from "../IconBase";
+import EmptyIcon from "../Icons/Empty";
 
 export interface SlatProps extends ViewProps {
   id?: number;
@@ -239,7 +239,7 @@ const Slat: React.SFC<SlatProps> = ({
                       },
                     }}
                   >
-                    {bottomMeta.map(({ icon: IconElement, text}, i) => (
+                    {bottomMeta.map(({ icon: IconElement, text }, i) => (
                       <Text
                         display="flex"
                         marginRight={5}
@@ -254,10 +254,7 @@ const Slat: React.SFC<SlatProps> = ({
                         }}
                       >
                         {IconElement && (
-                          <IconElement
-                            marginRight={3}
-                            color="muted"
-                          />
+                          <IconElement marginRight={3} color="muted" />
                         )}
                         {text}
                       </Text>

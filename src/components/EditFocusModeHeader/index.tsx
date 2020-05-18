@@ -9,9 +9,9 @@ import TabNavigation from "../TabNavigation";
 import Text from "../Text";
 import View from "../View";
 
-import DocumentIcon from "../Icons/Document";
-import CrossIcon from "../Icons/Cross";
 import { IconProps } from "../IconBase";
+import CrossIcon from "../Icons/Cross";
+import DocumentIcon from "../Icons/Document";
 
 export interface EditFocusModeHeaderProps {
   returnHref?: any;
@@ -39,7 +39,7 @@ const EditFocusModeHeader = ({
   tabs,
 }: EditFocusModeHeaderProps) => {
   const ReturnIconElement = returnIcon || CrossIcon;
- 
+
   return (
     <React.Fragment>
       <View flexDirection="row" borderBottom={1} borderColor="soft">
@@ -64,7 +64,11 @@ const EditFocusModeHeader = ({
           flexShrink={1}
         >
           {avatar && (
-            <View justifyContent="center" marginRight={4} display={hideOnMobile}>
+            <View
+              justifyContent="center"
+              marginRight={4}
+              display={hideOnMobile}
+            >
               <Avatar
                 icon={DocumentIcon}
                 src={avatar}
@@ -143,7 +147,7 @@ const EditFocusModeHeader = ({
         </TabNavigation>
       )}
     </React.Fragment>
-  )
+  );
 };
 
 export default EditFocusModeHeader;
@@ -153,29 +157,29 @@ const FirstHeaderSuffixNode: React.SFC<ButtonFilledProps> = ({
   css = {},
   ...props
 }: ButtonFilledProps) => (
-    <ButtonFilled
-      borderRadius={0}
-      height={65}
-      color="accent"
-      marginLeft={2}
-      iconMargin={[0, 3, 3]}
-      paddingX={[5, 4, 4]}
-      {...props}
-      css={[
-        {
-          marginBottom: "-1px", // can not use marginBottomProp as -2px is too much
+  <ButtonFilled
+    borderRadius={0}
+    height={65}
+    color="accent"
+    marginLeft={2}
+    iconMargin={[0, 3, 3]}
+    paddingX={[5, 4, 4]}
+    {...props}
+    css={[
+      {
+        marginBottom: "-1px", // can not use marginBottomProp as -2px is too much
+        boxShadow: "none",
+        ":hover, :focus": {
+          transform: "none",
           boxShadow: "none",
-          ":hover, :focus": {
-            transform: "none",
-            boxShadow: "none",
-          },
         },
-        css,
-      ]}
-    >
-      <Text display={hideOnMobile}>{title}</Text>
-    </ButtonFilled>
-  );
+      },
+      css,
+    ]}
+  >
+    <Text display={hideOnMobile}>{title}</Text>
+  </ButtonFilled>
+);
 
 const SecondHeaderSuffixNode: React.SFC<ButtonMinimalProps> = ({
   title,

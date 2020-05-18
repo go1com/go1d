@@ -11,10 +11,10 @@ import Theme from "../Theme";
 import View, { ViewProps } from "../View";
 import Skeleton from "./Skeleton";
 
+import { IconProps } from "../IconBase";
+import ClockIcon from "../Icons/Clock";
 import EmptyIcon from "../Icons/Empty";
 import PlayIcon from "../Icons/Play";
-import ClockIcon from "../Icons/Clock";
-import { IconProps } from "../IconBase";
 
 interface MetaItem {
   icon?: React.ComponentType<IconProps>;

@@ -5,10 +5,10 @@ import ButtonMinimal from "../ButtonMinimal";
 import Theme from "../Theme";
 import View from "../View";
 
-import CrossIcon from "../Icons/Cross";
+import ChevronDownIcon from "../Icons/ChevronDown";
 import ChevronLeftIcon from "../Icons/ChevronLeft";
 import ChevronRightIcon from "../Icons/ChevronRight";
-import ChevronDownIcon from "../Icons/ChevronDown";
+import CrossIcon from "../Icons/Cross";
 
 import "../DatePicker/css";
 

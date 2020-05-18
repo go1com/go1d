@@ -1,11 +1,11 @@
 import isFunction = require("lodash/isFunction");
 import * as React from "react";
 import ButtonMinimal from "../ButtonMinimal";
+import CrossIcon from "../Icons/Cross";
 import Text from "../Text";
 import TextInput from "../TextInput";
 import Theme from "../Theme";
 import View, { ViewProps } from "../View";
-import CrossIcon from "../Icons/Cross";
 
 interface Options {
   label: string;

@@ -11,12 +11,12 @@ import Spinner from "../Spinner";
 import Text from "../Text";
 import View, { ViewProps } from "../View";
 
-import DocumentIcon from "../Icons/Document";
-import UploadIcon from "../Icons/Upload";
-import SuccessIcon from "../Icons/Success";
-import PlusCircleIcon from "../Icons/PlusCircle";
-import TrashIcon from "../Icons/Trash";
 import { IconProps } from "../IconBase";
+import DocumentIcon from "../Icons/Document";
+import PlusCircleIcon from "../Icons/PlusCircle";
+import SuccessIcon from "../Icons/Success";
+import TrashIcon from "../Icons/Trash";
+import UploadIcon from "../Icons/Upload";
 
 const MESSAGES = {
   cancelled: "Cancelled because a new file is being used",

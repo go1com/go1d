@@ -103,9 +103,9 @@ class TagToggle extends React.Component<
     const { height, paddingY, paddingX, typeScale } = sizeStyles[size];
 
     const value = typeof propValue === "undefined" ? checkedState : propValue;
-    const IconElement = value 
-      ? (activeIcon || CheckIcon) 
-      : (inactiveIcon || PlusIcon);
+    const IconElement = value
+      ? activeIcon || CheckIcon
+      : inactiveIcon || PlusIcon;
 
     return (
       <Provider mode={value ? "dark" : "light"}>

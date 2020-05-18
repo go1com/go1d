@@ -1,20 +1,20 @@
 import * as React from "react";
 import { Colors } from "../../../foundations/foundation-types";
 import Button from "../../Button";
+import { IconProps } from "../../IconBase";
 import Theme from "../../Theme";
 import View from "../../View";
-import { IconProps } from "../../IconBase";
 
-import HeadingTwoIcon from "../../Icons/HeadingTwo";
-import HeadingThreeIcon from "../../Icons/HeadingThree";
-import BoldIcon from "../../Icons/Bold";
-import ItalicIcon from "../../Icons/Italic";
-import UnderlineIcon from "../../Icons/Underline";
-import StrikethroughIcon from "../../Icons/Strikethrough";
 import BlockQuoteIcon from "../../Icons/BlockQuote";
+import BoldIcon from "../../Icons/Bold";
+import HeadingThreeIcon from "../../Icons/HeadingThree";
+import HeadingTwoIcon from "../../Icons/HeadingTwo";
+import ItalicIcon from "../../Icons/Italic";
 import LinkIcon from "../../Icons/Link";
 import OlListIcon from "../../Icons/OlList";
+import StrikethroughIcon from "../../Icons/Strikethrough";
 import UlListIcon from "../../Icons/UlList";
+import UnderlineIcon from "../../Icons/Underline";
 
 export interface Props {
   onClickMarked: (event: React.SyntheticEvent<HTMLButtonElement>) => void;

@@ -2,10 +2,10 @@ import * as React from "react";
 import { Transition } from "react-transition-group";
 import { autobind } from "../../utils/decorators";
 import safeInvoke from "../../utils/safeInvoke";
+import { IconProps } from "../IconBase";
 import Text, { TextProps } from "../Text";
 import Theme from "../Theme";
 import View from "../View";
-import { IconProps } from "../IconBase";
 
 export interface TextInputProps extends TextProps {
   id: string;
@@ -27,7 +27,7 @@ export interface TextInputProps extends TextProps {
   onFocus?: (evt: React.FocusEvent<any>) => void;
   onBlur?: (evt: React.FocusEvent<any>) => void;
   iconName?: never; // Removed
-  icon?: React.ComponentType<IconProps>
+  icon?: React.ComponentType<IconProps>;
   suffixNode?: React.ReactNode;
   inputType?: string;
   error?: boolean;

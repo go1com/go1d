@@ -1,9 +1,9 @@
 import * as React from "react";
+import { IconProps } from "../IconBase";
+import UserIcon from "../Icons/User";
 import Text from "../Text";
 import Theme from "../Theme";
 import View, { ViewProps } from "../View";
-import UserIcon from "../Icons/User";
-import { IconProps } from "../IconBase";
 
 export interface AvatarProps extends ViewProps {
   fullName?: string;

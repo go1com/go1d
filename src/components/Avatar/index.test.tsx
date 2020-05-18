@@ -37,17 +37,13 @@ it("renders higher than 6 as default", () => {
 });
 
 it("renders skeleton when skeleton true", () => {
-  const wrapper = render(
-    <Avatar skeleton={true} fullName="first last" />
-  );
+  const wrapper = render(<Avatar skeleton={true} fullName="first last" />);
   expect(wrapper.container.children.length).toBe(1);
   expect(wrapper.container.children[0].children.length).toBe(0);
 });
 
 it("renders square", () => {
-  const wrapper = render(
-    <Avatar avatarType="square" fullName="first last" />
-  );
+  const wrapper = render(<Avatar avatarType="square" fullName="first last" />);
   expect(wrapper.container.children.length).toBe(1);
   expect(wrapper.container.children[0].children.length).toBe(1);
   expect(wrapper.container.children[0].children[0].tagName).toBe("SPAN");

@@ -12,9 +12,9 @@ import Theme from "../Theme";
 import View, { ViewProps } from "../View";
 import { getCroppedImg } from "./utils";
 
-import TrashIcon from "../Icons/Trash";
-import CameraIcon from "../Icons/Camera";
 import AddItemIcon from "../Icons/AddItem";
+import CameraIcon from "../Icons/Camera";
+import TrashIcon from "../Icons/Trash";
 
 const Cropper: typeof ICropper = CropperClass as any;
 

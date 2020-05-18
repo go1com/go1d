@@ -1,14 +1,14 @@
 import * as React from "react";
 
+import { IconProps } from "../IconBase";
 import Text from "../Text";
 import View, { ViewProps } from "../View";
-import { IconProps } from "../IconBase";
 
-import LockIcon from "../Icons/Lock";
 import EnrolledIcon from "../Icons/Enrolled";
 import InProgressIcon from "../Icons/InProgress";
-import PassedIcon from "../Icons/Passed";
+import LockIcon from "../Icons/Lock";
 import NotPassedIcon from "../Icons/NotPassed";
+import PassedIcon from "../Icons/Passed";
 
 export interface EnrolmentStatusProps {
   type: "unpublished" | "enrolled" | "inProgress" | "completed" | "failed";

@@ -5,10 +5,10 @@ import ButtonMinimal from "../ButtonFilled";
 import Theme from "../Theme";
 import View, { ViewProps } from "../View";
 
+import CrossIcon from "../Icons/Cross";
 import DangerIcon from "../Icons/Danger";
 import SuccessIcon from "../Icons/Success";
 import WarningIcon from "../Icons/Warning";
-import CrossIcon from "../Icons/Cross";
 
 export interface BannerProps extends ViewProps {
   type: "success" | "warning" | "danger" | "note";
@@ -17,11 +17,11 @@ export interface BannerProps extends ViewProps {
 }
 
 const IconMap = {
-  "note": DangerIcon,
-  "warning": WarningIcon,
-  "danger": DangerIcon,
-  "success": SuccessIcon,
-}
+  note: DangerIcon,
+  warning: WarningIcon,
+  danger: DangerIcon,
+  success: SuccessIcon,
+};
 
 const Banner: React.SFC<BannerProps> = ({
   type,

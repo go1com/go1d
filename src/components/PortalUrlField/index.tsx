@@ -2,10 +2,10 @@ import * as React from "react";
 
 import { autobind } from "../../utils/decorators";
 import Field, { FieldProps } from "../Field";
+import NotPassedIcon from "../Icons/NotPassed";
+import PassedIcon from "../Icons/Passed";
 import InputSuffix from "../InputSuffix";
 import Text from "../Text";
-import PassedIcon from "../Icons/Passed";
-import NotPassedIcon from "../Icons/NotPassed";
 
 export interface PortalUrlFieldProps extends FieldProps {
   isAvailable?: boolean;

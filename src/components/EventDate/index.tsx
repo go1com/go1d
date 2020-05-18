@@ -4,9 +4,9 @@ import Link from "../Link";
 import Text from "../Text";
 import View, { ViewProps } from "../View";
 
-import MapPinIcon from "../Icons/MapPin";
-import ClockIcon from "../Icons/Clock";
 import AddUserIcon from "../Icons/AddUser";
+import ClockIcon from "../Icons/Clock";
+import MapPinIcon from "../Icons/MapPin";
 
 export interface SessionProps extends ViewProps {
   start: Date | string;
@@ -144,11 +144,7 @@ const EventDate: React.SFC<SessionProps> = ({
             paddingLeft={bigDate ? 0 : 4}
           >
             <View width="15%" maxWidth={25} minWidth={20}>
-              <MapPinIcon
-                display="inline"
-                color="faded"
-                marginRight={3}
-              />
+              <MapPinIcon display="inline" color="faded" marginRight={3} />
             </View>
             <View width="85%">
               <Text fontSize={1} ellipsis={true}>
@@ -165,11 +161,7 @@ const EventDate: React.SFC<SessionProps> = ({
             paddingLeft={bigDate ? 0 : 4}
           >
             <View width="15%" maxWidth={25} minWidth={20}>
-              <ClockIcon
-                display="inline"
-                color="faded"
-                marginRight={3}
-              />
+              <ClockIcon display="inline" color="faded" marginRight={3} />
             </View>
             <View width="85%">
               <Text fontSize={1} ellipsis={true}>

@@ -8,10 +8,10 @@ import Spinner from "../Spinner";
 import Text from "../Text";
 import View, { ViewProps } from "../View";
 
-import TrashIcon from "../Icons/Trash";
 import CameraIcon from "../Icons/Camera";
 import PlusCircleIcon from "../Icons/PlusCircle";
 import SuccessIcon from "../Icons/Success";
+import TrashIcon from "../Icons/Trash";
 import UploadIcon from "../Icons/Upload";
 
 export interface ImageUploadSlatProps extends ViewProps {

@@ -1,16 +1,16 @@
 import * as React from "react";
 import { Transition } from "react-transition-group";
+import { IconProps } from "../IconBase";
 import Link from "../Link";
 import Text from "../Text";
 import Theme from "../Theme";
 import View, { ViewProps } from "../View";
-import { IconProps } from "../IconBase";
 
 export interface MenuItemProps extends ViewProps {
   collapsed?: boolean;
   active?: boolean;
   iconName?: never;
-  icon: React.ComponentType<IconProps>
+  icon: React.ComponentType<IconProps>;
   href: string;
 }
 

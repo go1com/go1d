@@ -2,11 +2,11 @@ import isUndefined = require("lodash/isUndefined");
 import merge = require("lodash/merge");
 import * as React from "react";
 import { FontWeight } from "../../foundations/foundation-types";
+import { IconProps } from "../IconBase";
 import Link from "../Link";
 import Spinner from "../Spinner";
 import Text from "../Text";
 import View, { ViewProps } from "../View";
-import { IconProps } from "../IconBase";
 
 export interface ButtonProps extends ViewProps {
   size?: "lg" | "md" | "sm";
@@ -146,21 +146,21 @@ const Button: React.SFC<ButtonProps> = ({
       ]}
       {...props}
     >
-        {spinnerIcon && (
-          <Spinner
-            borderColor={iconColor}
-            size={iconSizeValue}
-            {...iconMarginStyle}
-          />
-        )}
-        {!spinnerIcon && IconElement && (
-          <IconElement
-            transition={transition}
-            color={iconColor}
-            size={iconSizeValue}
-            {...iconMarginStyle}
-          />
-        )}
+      {spinnerIcon && (
+        <Spinner
+          borderColor={iconColor}
+          size={iconSizeValue}
+          {...iconMarginStyle}
+        />
+      )}
+      {!spinnerIcon && IconElement && (
+        <IconElement
+          transition={transition}
+          color={iconColor}
+          size={iconSizeValue}
+          {...iconMarginStyle}
+        />
+      )}
       <Text
         lineHeight="ui"
         transition={transition}

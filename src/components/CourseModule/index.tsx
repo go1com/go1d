@@ -44,9 +44,7 @@ class CourseModule extends React.Component<CourseModuleProps, any> {
     } = this.props;
 
     const { isOpen } = this.state;
-    const ChevronIcon = isOpen
-      ? ChevronUpIcon
-      : ChevronDownIcon;
+    const ChevronIcon = isOpen ? ChevronUpIcon : ChevronDownIcon;
 
     return (
       <View paddingX={4} {...props}>
@@ -72,10 +70,7 @@ class CourseModule extends React.Component<CourseModuleProps, any> {
                   cursor: "pointer",
                 }}
               >
-                <ChevronIcon
-                  color="subtle"
-                  size={1}
-                />
+                <ChevronIcon color="subtle" size={1} />
               </View>
             )}
           </View>

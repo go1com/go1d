@@ -1,10 +1,10 @@
 import get = require("lodash/get");
 import * as React from "react";
 import foundations from "../../foundations";
+import { IconProps } from "../IconBase";
 import Text from "../Text";
 import Theme from "../Theme";
 import View, { ViewProps } from "../View";
-import { IconProps } from "../IconBase";
 
 export interface FeaturedTagProps extends ViewProps {
   size?: "lg" | "md" | "sm";
@@ -12,7 +12,7 @@ export interface FeaturedTagProps extends ViewProps {
   iconColor?: string;
   backgroundColor?: string;
   iconName?: never; // Removed
-  icon?: React.ComponentType<IconProps>
+  icon?: React.ComponentType<IconProps>;
   onClick?: (evt: React.SyntheticEvent) => void;
 }
 

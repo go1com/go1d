@@ -4,8 +4,8 @@ import safeInvoke from "../../utils/safeInvoke";
 import Button from "../Button";
 import TextInput, { TextInputProps } from "../TextInput";
 
-import SearchIcon from "../Icons/Search";
 import CloseIcon from "../Icons/Close";
+import SearchIcon from "../Icons/Search";
 
 export interface SearchInputProps extends TextInputProps {
   element?: any;

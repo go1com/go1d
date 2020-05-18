@@ -3,8 +3,8 @@ import Text from "../Text";
 import View, { ViewProps } from "../View";
 
 import { IconProps } from "../IconBase";
-import ChevronUpIcon from "../Icons/ChevronUp";
 import ChevronDownIcon from "../Icons/ChevronDown";
+import ChevronUpIcon from "../Icons/ChevronUp";
 
 export type CollapseProps = {
   isOpen: boolean;
@@ -92,7 +92,7 @@ class Collapse extends React.Component<CollapseProps, CollapseState> {
     } = this.props;
     const { heightWrapper } = this.state;
     const overflow = isOpen ? "auto" : "hidden";
-    const CollapseIconElement = reverseCollapse 
+    const CollapseIconElement = reverseCollapse
       ? ChevronUpIcon
       : ChevronDownIcon;
     const cssRotate = isOpen

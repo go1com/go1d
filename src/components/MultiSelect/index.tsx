@@ -4,16 +4,16 @@ import { List } from "react-virtualized";
 import safeInvoke from "../../utils/safeInvoke";
 import Button from "../Button";
 import Checkbox from "../Checkbox";
+import ChevronDownIcon from "../Icons/ChevronDown";
 import Portal from "../Portal";
 import SearchInput from "../SearchInput";
 import Text from "../Text";
 import Theme from "../Theme";
-import ChevronDownIcon from "../Icons/ChevronDown";
 
 import MultiSelectDownshift from "./components/MultiSelectDownshift";
 
-import View, { ViewProps } from "../View";
 import CrossIcon from "../Icons/Cross";
+import View, { ViewProps } from "../View";
 
 export interface MultiSelectProps extends ViewProps {
   options?: Array<{

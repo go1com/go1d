@@ -10,9 +10,9 @@ import Text from "../Text";
 import Theme from "../Theme";
 import View, { ViewProps } from "../View";
 
-import EmptyIcon from "../Icons/Empty";
-import ClockIcon from "../Icons/Clock";
 import { IconProps } from "../IconBase";
+import ClockIcon from "../Icons/Clock";
+import EmptyIcon from "../Icons/Empty";
 
 interface EnrollmentProps {
   status?: string;

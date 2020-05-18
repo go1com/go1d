@@ -2,10 +2,10 @@ import * as React from "react";
 import { autobind } from "../../utils/decorators";
 import priceFormatterUtil from "../../utils/priceFormatter";
 import safeInvoke from "../../utils/safeInvoke";
+import CheckIcon from "../Icons/Check";
 import Text from "../Text";
 import Theme from "../Theme";
 import View, { ViewProps } from "../View";
-import CheckIcon from "../Icons/Check";
 
 export interface PackagePlanProps extends ViewProps {
   id: string;

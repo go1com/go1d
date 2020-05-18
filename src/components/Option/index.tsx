@@ -5,9 +5,9 @@ import Text from "../Text";
 import Theme from "../Theme";
 import View, { ViewProps } from "../View";
 
+import { IconProps } from "../IconBase";
 import CrossIcon from "../Icons/Cross";
 import SuccessIcon from "../Icons/Success";
-import { IconProps } from "../IconBase";
 
 export interface OptionProps extends ViewProps {
   onClick?: (evt: React.SyntheticEvent) => void;
@@ -32,9 +32,7 @@ const Option: React.SFC<OptionProps> = ({
   css,
   ...props
 }: OptionProps) => {
-  const IconElement = checked && disabled
-    ? SuccessIcon 
-    : actionIcon;
+  const IconElement = checked && disabled ? SuccessIcon : actionIcon;
 
   return (
     <Theme.Consumer>
@@ -99,15 +97,15 @@ const Option: React.SFC<OptionProps> = ({
               type="button"
             />
           ) : (
-              <IconElement
-                color={checked && disabled ? "accent" : "subtle"}
-                size={2}
-              />
-            )}
+            <IconElement
+              color={checked && disabled ? "accent" : "subtle"}
+              size={2}
+            />
+          )}
         </View>
       )}
     </Theme.Consumer>
-  )
+  );
 };
 
 Option.displayName = "Option";

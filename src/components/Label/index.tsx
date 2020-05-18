@@ -1,8 +1,8 @@
 import * as React from "react";
+import { IconProps } from "../IconBase";
 import Spinner from "../Spinner";
 import Text from "../Text";
 import View, { ViewProps } from "../View";
-import { IconProps } from "../IconBase";
 
 export interface LabelProps extends ViewProps {
   htmlFor?: string;
@@ -48,18 +48,11 @@ class Label extends React.PureComponent<LabelProps> {
         {statusText && (
           <View flexDirection="row" alignItems="center">
             {(StatusIcon || spinnerIcon) &&
-              (spinnerIcon
-                ? (
-                  <Spinner borderColor="accent" size={1} marginRight={2} />
-                )
-                : (
-                  <StatusIcon
-                    size={1}
-                    color={statusColor}
-                    marginRight={2}
-                  />
-                )
-              )}
+              (spinnerIcon ? (
+                <Spinner borderColor="accent" size={1} marginRight={2} />
+              ) : (
+                <StatusIcon size={1} color={statusColor} marginRight={2} />
+              ))}
             <Text
               fontSize={1}
               color={statusColor}

@@ -4,10 +4,10 @@ import * as React from "react";
 import { autobind } from "../../utils/decorators";
 import firstDefined from "../../utils/firstDefined";
 import safeInvoke from "../../utils/safeInvoke";
+import { IconProps } from "../IconBase";
 import Label from "../Label";
 import Text from "../Text";
 import View, { ViewProps } from "../View";
-import { IconProps } from "../IconBase";
 
 function shallowCompare(newObj, prevObj) {
   if (Object.keys(newObj).length !== Object.keys(prevObj).length) {

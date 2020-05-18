@@ -4,12 +4,12 @@ import { Manager, Popper, Reference } from "react-popper";
 import { List } from "react-virtualized";
 import { FontWeight } from "../../foundations/foundation-types";
 import safeInvoke from "../../utils/safeInvoke";
+import ChevronDownIcon from "../Icons/ChevronDown";
+import CrossIcon from "../Icons/Cross";
 import Portal from "../Portal";
 import SearchInput from "../SearchInput";
 import Text from "../Text";
 import Theme from "../Theme";
-import ChevronDownIcon from "../Icons/ChevronDown";
-import CrossIcon from "../Icons/Cross";
 
 import View, { ViewProps } from "../View";
 
@@ -254,10 +254,7 @@ class Select extends React.PureComponent<SelectProps, any> {
                                   )}
                                 />
                               ) : (
-                                <ChevronDownIcon
-                                  color="muted"
-                                  size={2}
-                                />
+                                <ChevronDownIcon color="muted" size={2} />
                               )}
                             </View>
                           </View>

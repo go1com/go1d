@@ -5,21 +5,21 @@ import Text from "../Text";
 import View, { ViewProps } from "../View";
 
 import ActivityIcon from "../Icons/Activity";
-import UserTickIcon from "../Icons/UserTick";
 import AssignmentIcon from "../Icons/Assignment";
-import DocumentIcon from "../Icons/Document";
-import VideoplayIcon from "../Icons/Videoplay";
-import LinkIcon from "../Icons/Link";
-import InteractiveIcon from "../Icons/Interactive";
+import AudioIcon from "../Icons/Audio";
+import AwardIcon from "../Icons/Award";
+import CalendarIcon from "../Icons/Calendar";
 import CheckboxIcon from "../Icons/Checkbox";
+import CourseIcon from "../Icons/Course";
+import DocumentIcon from "../Icons/Document";
+import InteractiveIcon from "../Icons/Interactive";
+import LinkIcon from "../Icons/Link";
+import LtiIcon from "../Icons/Lti";
 import QuizIcon from "../Icons/Quiz";
 import TextIcon from "../Icons/Text";
+import UserTickIcon from "../Icons/UserTick";
 import VideoIcon from "../Icons/Video";
-import CourseIcon from "../Icons/Course";
-import AwardIcon from "../Icons/Award";
-import LtiIcon from "../Icons/Lti";
-import CalendarIcon from "../Icons/Calendar";
-import AudioIcon from "../Icons/Audio";
+import VideoplayIcon from "../Icons/Videoplay";
 
 export const typeIconDic = {
   activities: ActivityIcon,
@@ -76,9 +76,7 @@ const Lesson: React.SFC<LessonProps> = ({
         flexShrink={children ? 1 : undefined}
       >
         <View paddingBottom={5} paddingTop={6} justifyContent="flex-start">
-          {typeof TypeIconElement === "function" && (
-            <TypeIconElement />
-          )}
+          {typeof TypeIconElement === "function" && <TypeIconElement />}
         </View>
         <View paddingY={5} paddingX={4} flexGrow={1}>
           {title && (
@@ -103,7 +101,7 @@ const Lesson: React.SFC<LessonProps> = ({
         {children}
       </View>
     </View>
-  )
+  );
 };
 
 export default Lesson;

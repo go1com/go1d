@@ -6,8 +6,8 @@ import Text, { TextProps } from "../Text";
 import Theme from "../Theme";
 import View from "../View";
 
-import PlusIcon from "../Icons/Plus";
 import MinusIcon from "../Icons/Minus";
+import PlusIcon from "../Icons/Plus";
 
 export interface StepperProps extends TextProps {
   id: string;

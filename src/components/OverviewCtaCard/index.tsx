@@ -10,10 +10,10 @@ import Text from "../Text";
 import Theme from "../Theme";
 import View, { ViewProps } from "../View";
 
-import EllipsisIcon from "../Icons/Ellipsis";
 import ClockIcon from "../Icons/Clock";
-import ThumbsUpIcon from "../Icons/ThumbsUp";
+import EllipsisIcon from "../Icons/Ellipsis";
 import ThumbsDownIcon from "../Icons/ThumbsDown";
+import ThumbsUpIcon from "../Icons/ThumbsUp";
 
 export interface OverviewCtaCardProps extends ViewProps {
   actions?: Array<{

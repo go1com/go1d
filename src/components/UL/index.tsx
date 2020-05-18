@@ -1,11 +1,11 @@
 import * as React from "react";
 
-import View, { ViewProps } from "../View";
 import { IconProps } from "../IconBase";
+import View, { ViewProps } from "../View";
 
 export interface ULProps extends ViewProps {
   iconName?: never;
-  icon?: React.ComponentType<IconProps>
+  icon?: React.ComponentType<IconProps>;
   iconColor?: string;
   fontSize?: number;
 }
@@ -42,7 +42,7 @@ const UL: React.SFC<ULProps> = ({
         });
       })}
     </View>
-  )
+  );
 };
 
 export default UL;

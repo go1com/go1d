@@ -11,7 +11,7 @@ import StarOutlineIcon from "../Icons/StarOutline";
 export interface RatingProps extends ButtonProps {
   name?: string;
   unselectedIconName?: never; // Removed
-  unselectedIcon?: React.ComponentType<IconProps>
+  unselectedIcon?: React.ComponentType<IconProps>;
   value?: number;
   defaultValue?: number;
   selectedColor?: string;
@@ -88,9 +88,9 @@ class Rating extends React.PureComponent<RatingProps> {
           const val = index + 1;
           const selected = selectedValue >= val;
           const hover = hoverValue >= val;
-          const toggledIcon = selected 
-            ? (icon || StarIcon) 
-            : (unselectedIcon || StarOutlineIcon);
+          const toggledIcon = selected
+            ? icon || StarIcon
+            : unselectedIcon || StarOutlineIcon;
           const color = selected || hover ? selectedColor : unselectedColor;
 
           return (
