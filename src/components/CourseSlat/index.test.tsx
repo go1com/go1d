@@ -64,7 +64,7 @@ it("should render author as passed component", () => {
       actionRender={testRenderer}
       contentRender={testRenderer}
       type="Course"
-      typeIcon={CourseIcon}
+      typeIcon={IconCourse}
       passive={true}
     />
   );
@@ -131,7 +131,7 @@ it("renders with premium", () => {
       actionRender={testRenderer}
       contentRender={testRenderer}
       type="Course"
-      typeIcon={CourseIcon}
+      typeIcon={IconCourse}
       passive={true}
       premium={true}
     />
