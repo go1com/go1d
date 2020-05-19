@@ -10,8 +10,8 @@ import Text from "../Text";
 import View from "../View";
 
 import { IconProps } from "../IconBase";
-import CrossIcon from "../Icons/Cross";
-import DocumentIcon from "../Icons/Document";
+import IconCross from "../Icons/Cross";
+import IconDocument from "../Icons/Document";
 
 export interface EditFocusModeHeaderProps {
   returnHref?: any;
@@ -38,7 +38,7 @@ const EditFocusModeHeader = ({
   avatarType = "square",
   tabs,
 }: EditFocusModeHeaderProps) => {
-  const ReturnIconElement = returnIcon || CrossIcon;
+  const ReturnIconElement = returnIcon || IconCross;
 
   return (
     <React.Fragment>
@@ -70,7 +70,7 @@ const EditFocusModeHeader = ({
               display={hideOnMobile}
             >
               <Avatar
-                icon={DocumentIcon}
+                icon={IconDocument}
                 src={avatar}
                 size={3}
                 avatarType={avatarType}

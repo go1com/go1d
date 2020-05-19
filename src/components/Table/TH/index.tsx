@@ -4,8 +4,8 @@ import ButtonMinimal from "../../ButtonMinimal";
 import Text from "../../Text";
 import View, { ViewProps } from "../../View";
 
-import ChevronDownIcon from "../../Icons/ChevronDown";
-import ChevronUpIcon from "../../Icons/ChevronUp";
+import IconChevronDown from "../../Icons/ChevronDown";
+import IconChevronUp from "../../Icons/ChevronUp";
 
 interface TableHeaderCellProps extends ViewProps {
   text: React.ReactNode;
@@ -37,7 +37,7 @@ const TableHeaderCell: React.SFC<TableHeaderCellProps> = ({
     ...otherProps
   } = props;
 
-  const SortIconElement = direction === "ASC" ? ChevronUpIcon : ChevronDownIcon;
+  const SortIconElement = direction === "ASC" ? IconChevronUp : IconChevronDown;
 
   return (
     <View

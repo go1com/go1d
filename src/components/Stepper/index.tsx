@@ -6,8 +6,8 @@ import Text, { TextProps } from "../Text";
 import Theme from "../Theme";
 import View from "../View";
 
-import MinusIcon from "../Icons/Minus";
-import PlusIcon from "../Icons/Plus";
+import IconMinus from "../Icons/Minus";
+import IconPlus from "../Icons/Plus";
 
 export interface StepperProps extends TextProps {
   id: string;
@@ -273,7 +273,7 @@ class TextInput extends React.PureComponent<StepperProps, StepperState> {
               <View backgroundColor="transparent">
                 <ButtonMinimal
                   size="md"
-                  icon={MinusIcon}
+                  icon={IconMinus}
                   color="default"
                   onClick={this.decrement}
                   disabled={
@@ -308,7 +308,7 @@ class TextInput extends React.PureComponent<StepperProps, StepperState> {
               <View backgroundColor="transparent">
                 <ButtonMinimal
                   size="md"
-                  icon={PlusIcon}
+                  icon={IconPlus}
                   color="default"
                   onClick={this.increment}
                   data-testid="increment"

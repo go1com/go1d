@@ -12,9 +12,9 @@ import View, { ViewProps } from "../View";
 import Skeleton from "./Skeleton";
 
 import { IconProps } from "../IconBase";
-import ClockIcon from "../Icons/Clock";
-import EmptyIcon from "../Icons/Empty";
-import PlayIcon from "../Icons/Play";
+import IconClock from "../Icons/Clock";
+import IconEmpty from "../Icons/Empty";
+import IconPlay from "../Icons/Play";
 
 interface MetaItem {
   icon?: React.ComponentType<IconProps>;
@@ -75,7 +75,7 @@ const CourseCard: React.SFC<CourseCardProps> = ({
 
   const lineList: MetaItem[] = [...metaList];
   if (duration) {
-    lineList.unshift({ icon: ClockIcon, text: formatDuration(duration) });
+    lineList.unshift({ icon: IconClock, text: formatDuration(duration) });
   }
 
   return (
@@ -121,9 +121,9 @@ const CourseCard: React.SFC<CourseCardProps> = ({
                   justifyContent="center"
                   height="100%"
                   width="100%"
-                  opacity="emptyIcon"
+                  opacity="IconEmpty"
                 >
-                  <EmptyIcon size={7} color="default" />
+                  <IconEmpty size={7} color="default" />
                 </View>
               )}
               {status &&
@@ -136,7 +136,7 @@ const CourseCard: React.SFC<CourseCardProps> = ({
                     color="background"
                     css={{ position: "absolute", bottom: 8, left: 10 }}
                   >
-                    <PlayIcon size={[7, 6, 5]} />
+                    <IconPlay size={[7, 6, 5]} />
                   </View>
                 )}
               {imageOverlayRenderer && (

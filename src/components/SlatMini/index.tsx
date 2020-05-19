@@ -1,7 +1,7 @@
 import get = require("lodash/get");
 import * as React from "react";
 import ContentType from "../ContentType";
-import EmptyIcon from "../Icons/Empty";
+import IconEmpty from "../Icons/Empty";
 import MoreMenu from "../MoreMenu";
 import { Item as DropdownItem } from "../MoreMenu/DropdownMenuItem";
 import SlatMiniSkeleton from "../SlatMiniSkeleton";
@@ -113,9 +113,9 @@ const SlatMini: React.SFC<SlatMiniProps> = ({
                   justifyContent="center"
                   height="100%"
                   width="100%"
-                  opacity="emptyIcon"
+                  opacity="IconEmpty"
                 >
-                  <EmptyIcon size={iconSize} color="default" />
+                  <IconEmpty size={iconSize} color="default" />
                 </View>
               )}
 

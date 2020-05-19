@@ -1,7 +1,7 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { Icon } from '../src';
-import Go1LogoIcon from "../src/components/Icons/Go1Logo";
+import IconGo1Logo from "../src/components/Icons/Go1Logo";
 import { IconGo1Logo } from "../src/components/Icons/";
 
 storiesOf("Icon", module)
@@ -13,7 +13,7 @@ storiesOf("Icon", module)
         <Icon name="Go1Logo" size={7} /> <br />
     </React.Fragment>)
     .add('Direct Build', () => <React.Fragment>
-        <Go1LogoIcon />
+        <IconGo1Logo />
     </React.Fragment>)
     .add('Direct Build - Index Import', () => <React.Fragment>
         <IconGo1Logo />

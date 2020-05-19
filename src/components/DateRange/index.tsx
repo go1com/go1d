@@ -5,10 +5,10 @@ import ButtonMinimal from "../ButtonMinimal";
 import Theme from "../Theme";
 import View from "../View";
 
-import ChevronDownIcon from "../Icons/ChevronDown";
-import ChevronLeftIcon from "../Icons/ChevronLeft";
-import ChevronRightIcon from "../Icons/ChevronRight";
-import CrossIcon from "../Icons/Cross";
+import IconChevronDown from "../Icons/ChevronDown";
+import IconChevronLeft from "../Icons/ChevronLeft";
+import IconChevronRight from "../Icons/ChevronRight";
+import IconCross from "../Icons/Cross";
 
 import "../DatePicker/css";
 
@@ -182,8 +182,8 @@ class DateRange extends React.Component<any, any> {
               inputIconPosition="after"
               showClearDates={true}
               noBorder={true}
-              navNext={<ChevronRightIcon size={2} color="subtle" />}
-              navPrev={<ChevronLeftIcon size={2} color="subtle" />}
+              navNext={<IconChevronRight size={2} color="subtle" />}
+              navPrev={<IconChevronLeft size={2} color="subtle" />}
               weekDayFormat="dd"
               verticalSpacing={5}
               verticalHeight={7}
@@ -192,7 +192,7 @@ class DateRange extends React.Component<any, any> {
               customCloseIcon={
                 this.state.endDate || this.state.startDate ? (
                   <ButtonMinimal
-                    icon={CrossIcon}
+                    icon={IconCross}
                     size="sm"
                     data-testid="clearButton"
                     aria-label="Clear Icon"
@@ -210,7 +210,7 @@ class DateRange extends React.Component<any, any> {
               }
               customInputIcon={
                 this.state.endDate || this.state.startDate ? null : (
-                  <ChevronDownIcon size={3} color="muted" />
+                  <IconChevronDown size={3} color="muted" />
                 )
               }
               startDate={startDate || this.state.startDate}

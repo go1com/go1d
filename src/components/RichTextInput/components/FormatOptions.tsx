@@ -5,16 +5,16 @@ import { IconProps } from "../../IconBase";
 import Theme from "../../Theme";
 import View from "../../View";
 
-import BlockQuoteIcon from "../../Icons/BlockQuote";
-import BoldIcon from "../../Icons/Bold";
-import HeadingThreeIcon from "../../Icons/HeadingThree";
-import HeadingTwoIcon from "../../Icons/HeadingTwo";
-import ItalicIcon from "../../Icons/Italic";
-import LinkIcon from "../../Icons/Link";
-import OlListIcon from "../../Icons/OlList";
-import StrikethroughIcon from "../../Icons/Strikethrough";
-import UlListIcon from "../../Icons/UlList";
-import UnderlineIcon from "../../Icons/Underline";
+import IconBlockQuote from "../../Icons/BlockQuote";
+import IconBold from "../../Icons/Bold";
+import IconHeadingThree from "../../Icons/HeadingThree";
+import IconHeadingTwo from "../../Icons/HeadingTwo";
+import IconItalic from "../../Icons/Italic";
+import IconLink from "../../Icons/Link";
+import IconOlList from "../../Icons/OlList";
+import IconStrikethrough from "../../Icons/Strikethrough";
+import IconUlList from "../../Icons/UlList";
+import IconUnderline from "../../Icons/Underline";
 
 export interface Props {
   onClickMarked: (event: React.SyntheticEvent<HTMLButtonElement>) => void;
@@ -115,7 +115,7 @@ const FormatOptions: React.SFC<Props> = ({
             data-testid="blockHeadingTwo"
             onClick={onClickBlock}
             type="heading-two"
-            icon={HeadingTwoIcon}
+            icon={IconHeadingTwo}
             active={blockActive("heading-two")}
             colors={colors}
           />
@@ -125,7 +125,7 @@ const FormatOptions: React.SFC<Props> = ({
             data-testid="blockHeadingThree"
             onClick={onClickBlock}
             type="heading-three"
-            icon={HeadingThreeIcon}
+            icon={IconHeadingThree}
             active={blockActive("heading-three")}
             colors={colors}
           />
@@ -135,7 +135,7 @@ const FormatOptions: React.SFC<Props> = ({
             data-testid="markBold"
             onClick={onClickMarked}
             type="bold"
-            icon={BoldIcon}
+            icon={IconBold}
             active={markActive("bold")}
             colors={colors}
           />
@@ -145,7 +145,7 @@ const FormatOptions: React.SFC<Props> = ({
             data-testid="markItalic"
             onClick={onClickMarked}
             type="italic"
-            icon={ItalicIcon}
+            icon={IconItalic}
             active={markActive("italic")}
             colors={colors}
           />
@@ -155,7 +155,7 @@ const FormatOptions: React.SFC<Props> = ({
             data-testid="markUnderline"
             onClick={onClickMarked}
             type="underline"
-            icon={UnderlineIcon}
+            icon={IconUnderline}
             active={markActive("underline")}
             colors={colors}
           />
@@ -165,7 +165,7 @@ const FormatOptions: React.SFC<Props> = ({
             data-testid="markStrikethrough"
             onClick={onClickMarked}
             type="strikethrough"
-            icon={StrikethroughIcon}
+            icon={IconStrikethrough}
             active={markActive("strikethrough")}
             colors={colors}
           />
@@ -175,7 +175,7 @@ const FormatOptions: React.SFC<Props> = ({
             data-testid="blockBlockquote"
             onClick={onClickBlock}
             type="block-quote"
-            icon={BlockQuoteIcon}
+            icon={IconBlockQuote}
             active={blockActive("block-quote")}
             colors={colors}
           />
@@ -185,7 +185,7 @@ const FormatOptions: React.SFC<Props> = ({
             data-testid="inlineLink"
             onClick={onClickLink}
             type="link"
-            icon={LinkIcon}
+            icon={IconLink}
             active={linkActive()}
             colors={colors}
           />
@@ -195,7 +195,7 @@ const FormatOptions: React.SFC<Props> = ({
             data-testid="blockNumberedList"
             onClick={onClickBlock}
             type="numbered-list"
-            icon={OlListIcon}
+            icon={IconOlList}
             active={blockActive("numbered-list")}
             colors={colors}
           />
@@ -205,7 +205,7 @@ const FormatOptions: React.SFC<Props> = ({
             data-testid="blockBulletedList"
             onClick={onClickBlock}
             type="bulleted-list"
-            icon={UlListIcon}
+            icon={IconUlList}
             active={blockActive("bulleted-list")}
             colors={colors}
           />

@@ -53,7 +53,7 @@ export const opacities: MappedKey<Opacities, number> = {
   feedback: 0.1,
   highlight: 0.15,
   emptyBackground: 0.16,
-  emptyIcon: 0.24,
+  IconEmpty: 0.24,
   pill: 0.3,
   heroOverlayAccentNoImage: 0.3,
   heroOverlayAccent: 0.6,

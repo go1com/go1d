@@ -4,11 +4,11 @@ import { IconProps } from "../IconBase";
 import Text from "../Text";
 import View, { ViewProps } from "../View";
 
-import EnrolledIcon from "../Icons/Enrolled";
-import InProgressIcon from "../Icons/InProgress";
-import LockIcon from "../Icons/Lock";
-import NotPassedIcon from "../Icons/NotPassed";
-import PassedIcon from "../Icons/Passed";
+import IconEnrolled from "../Icons/Enrolled";
+import IconInProgress from "../Icons/InProgress";
+import IconLock from "../Icons/Lock";
+import IconNotPassed from "../Icons/NotPassed";
+import IconPassed from "../Icons/Passed";
 
 export interface EnrolmentStatusProps {
   type: "unpublished" | "enrolled" | "inProgress" | "completed" | "failed";
@@ -41,22 +41,22 @@ const EnrolmentStatus: React.SFC<EnrolmentStatusComponentProps> = ({
   };
   const statusStyleMapping: { [key: string]: StatusStyle } = {
     unpublished: {
-      icon: LockIcon,
+      icon: IconLock,
     },
     enrolled: {
-      icon: EnrolledIcon,
+      icon: IconEnrolled,
       iconColor: overDue ? "danger" : "accent",
     },
     inProgress: {
-      icon: InProgressIcon,
+      icon: IconInProgress,
       iconColor: overDue ? "danger" : "accent",
     },
     completed: {
-      icon: PassedIcon,
+      icon: IconPassed,
       iconColor: "success",
     },
     failed: {
-      icon: NotPassedIcon,
+      icon: IconNotPassed,
       iconColor: "danger",
     },
   };

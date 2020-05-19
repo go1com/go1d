@@ -1,6 +1,6 @@
 import * as React from "react";
 import { cleanup, render } from "react-testing-library";
-import CourseIcon from "../Icons/Course";
+import IconCourse from "../Icons/Course";
 import CourseSlat, { dueDateFormatter } from "./index";
 
 afterEach(cleanup);
@@ -24,7 +24,7 @@ it("renders without crashing with all props", () => {
       imageOverlayRenderer={testRenderer}
       enrollment={{ status: "completed", dueDate: "" }}
       type="Course"
-      typeIcon={CourseIcon}
+      typeIcon={IconCourse}
       passive={false}
     />
   );
@@ -44,7 +44,7 @@ it("renders passive course slats", () => {
       actionRender={testRenderer}
       contentRender={testRenderer}
       type="Course"
-      typeIcon={CourseIcon}
+      typeIcon={IconCourse}
       passive={true}
     />
   );

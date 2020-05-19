@@ -5,7 +5,7 @@ import Base from "../Base";
 import Text, { TextProps } from "../Text";
 import View from "../View";
 
-import CheckIcon from "../Icons/Check";
+import IconCheck from "../Icons/Check";
 
 export interface CheckboxProps extends TextProps {
   id?: string;
@@ -142,7 +142,7 @@ class Checkbox extends React.Component<
               borderWidth: 1,
             }}
           >
-            {value && <CheckIcon size={iconSize} color="accent" />}
+            {value && <IconCheck size={iconSize} color="accent" />}
           </View>
           <Text
             color={color}

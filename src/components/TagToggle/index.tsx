@@ -7,8 +7,8 @@ import Theme from "../Theme";
 import View from "../View";
 
 import { IconProps } from "../IconBase";
-import CheckIcon from "../Icons/Check";
-import PlusIcon from "../Icons/Plus";
+import IconCheck from "../Icons/Check";
+import IconPlus from "../Icons/Plus";
 
 const sizeStyles = {
   lg: {
@@ -104,8 +104,8 @@ class TagToggle extends React.Component<
 
     const value = typeof propValue === "undefined" ? checkedState : propValue;
     const IconElement = value
-      ? activeIcon || CheckIcon
-      : inactiveIcon || PlusIcon;
+      ? activeIcon || IconCheck
+      : inactiveIcon || IconPlus;
 
     return (
       <Provider mode={value ? "dark" : "light"}>

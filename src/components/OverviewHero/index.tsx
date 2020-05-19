@@ -6,8 +6,8 @@ import Container from "../Container";
 import Text from "../Text";
 import View, { ViewProps } from "../View";
 
-import ChevronLeftIcon from "../Icons/ChevronLeft";
-import ClockIcon from "../Icons/Clock";
+import IconChevronLeft from "../Icons/ChevronLeft";
+import IconClock from "../Icons/Clock";
 
 export interface OverviewHeroProps extends ViewProps {
   title: string | React.ReactNode;
@@ -128,7 +128,7 @@ const OverviewHero: React.SFC<OverviewHeroProps> = ({
         >
           {breadcrumb && (
             <View flexDirection="row" alignItems="center">
-              <ChevronLeftIcon size={1} marginRight={2} />
+              <IconChevronLeft size={1} marginRight={2} />
               <Text fontSize={1}>{breadcrumb}</Text>
             </View>
           )}
@@ -154,7 +154,7 @@ const OverviewHero: React.SFC<OverviewHeroProps> = ({
             )}
             {duration && (
               <View flexDirection="row" alignItems="center">
-                <ClockIcon color="default" marginRight={3} />
+                <IconClock color="default" marginRight={3} />
                 <Text fontWeight="semibold" fontSize={3} color="contrast">
                   {formatDuration(duration)}
                 </Text>

@@ -11,7 +11,7 @@ import Text from "../Text";
 import View, { ViewProps } from "../View";
 
 import { IconProps } from "../IconBase";
-import CrossIcon from "../Icons/Cross";
+import IconCross from "../Icons/Cross";
 
 export interface ModalProps extends ViewProps {
   title?: string;
@@ -146,7 +146,7 @@ class Modal extends React.Component<ModalProps, any> {
       this.dialog = c;
     };
 
-    const HeaderIconElement = headerIcon || CrossIcon;
+    const HeaderIconElement = headerIcon || IconCross;
 
     return (
       <Portal>

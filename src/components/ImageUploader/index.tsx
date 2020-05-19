@@ -12,9 +12,9 @@ import Theme from "../Theme";
 import View, { ViewProps } from "../View";
 import { getCroppedImg } from "./utils";
 
-import AddItemIcon from "../Icons/AddItem";
-import CameraIcon from "../Icons/Camera";
-import TrashIcon from "../Icons/Trash";
+import IconAddItem from "../Icons/AddItem";
+import IconCamera from "../Icons/Camera";
+import IconTrash from "../Icons/Trash";
 
 const Cropper: typeof ICropper = CropperClass as any;
 
@@ -311,7 +311,7 @@ class ImageUploader extends React.Component<ImageUploaderProps, State> {
             overflow="hidden"
           >
             <ButtonFilled
-              icon={TrashIcon}
+              icon={IconTrash}
               iconColor="subtle"
               onClick={this.removeImage}
               disabled={disabled}
@@ -322,7 +322,7 @@ class ImageUploader extends React.Component<ImageUploaderProps, State> {
               }}
             />
             <ButtonFilled
-              icon={CameraIcon}
+              icon={IconCamera}
               iconColor="subtle"
               onClick={open}
               disabled={disabled}
@@ -384,7 +384,7 @@ class ImageUploader extends React.Component<ImageUploaderProps, State> {
           flexDirection="column"
           css={{ opacity: isDragActive ? 0 : 1 }}
         >
-          <CameraIcon color="muted" size={8} />
+          <IconCamera color="muted" size={8} />
           <View marginBottom={2}>
             <Text fontWeight="semibold">{uploadText}</Text>
           </View>
@@ -392,7 +392,7 @@ class ImageUploader extends React.Component<ImageUploaderProps, State> {
             {supportedFormatText}
           </Text>
         </View>
-        <AddItemIcon
+        <IconAddItem
           size={6}
           position="absolute"
           color="accent"

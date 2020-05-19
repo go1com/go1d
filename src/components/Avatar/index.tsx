@@ -1,6 +1,6 @@
 import * as React from "react";
 import { IconProps } from "../IconBase";
-import UserIcon from "../Icons/User";
+import IconUser from "../Icons/User";
 import Text from "../Text";
 import Theme from "../Theme";
 import View, { ViewProps } from "../View";
@@ -31,7 +31,7 @@ const Avatar: React.SFC<AvatarProps> = ({
     names.length > 1 ? names[names.length - 1].charAt(0) : ""
   }`;
 
-  const IconElement = icon || UserIcon;
+  const IconElement = icon || IconUser;
 
   const constrainSize = Size => {
     let constrained = Math.abs(Math.trunc(Size)) || 6;

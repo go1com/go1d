@@ -2,8 +2,8 @@ import * as React from "react";
 import Text from "../Text";
 import View, { ViewProps } from "../View";
 
-import CalendarIcon from "../Icons/Calendar";
-import CourseIcon from "../Icons/Course";
+import IconCalendar from "../Icons/Calendar";
+import IconCourse from "../Icons/Course";
 
 export interface ContentTypeProps extends ViewProps {
   type?: string;
@@ -18,8 +18,8 @@ const ContentType: React.SFC<ContentTypeProps> = ({
   ...props
 }: ContentTypeProps) => {
   const typeIcons = {
-    event: CalendarIcon,
-    course: CourseIcon,
+    event: IconCalendar,
+    course: IconCourse,
   };
 
   const IconElement = typeIcons[String(type).toLowerCase()] || typeIcons.course;

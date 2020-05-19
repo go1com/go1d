@@ -10,7 +10,7 @@ import Theme from "../Theme";
 import View, { ViewProps } from "../View";
 
 import { IconProps } from "../IconBase";
-import EmptyIcon from "../Icons/Empty";
+import IconEmpty from "../Icons/Empty";
 
 export interface SlatProps extends ViewProps {
   id?: number;
@@ -105,9 +105,9 @@ const Slat: React.SFC<SlatProps> = ({
                   justifyContent="center"
                   height="100%"
                   width="100%"
-                  opacity="emptyIcon"
+                  opacity="IconEmpty"
                 >
-                  <EmptyIcon size={7} color="default" />
+                  <IconEmpty size={7} color="default" />
                 </View>
               )}
               {type && (

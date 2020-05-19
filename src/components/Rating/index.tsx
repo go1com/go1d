@@ -5,8 +5,8 @@ import safeInvoke from "../../utils/safeInvoke";
 import View from "../View";
 
 import { IconProps } from "../IconBase";
-import StarIcon from "../Icons/Star";
-import StarOutlineIcon from "../Icons/StarOutline";
+import IconStar from "../Icons/Star";
+import IconStarOutline from "../Icons/StarOutline";
 
 export interface RatingProps extends ButtonProps {
   name?: string;
@@ -89,8 +89,8 @@ class Rating extends React.PureComponent<RatingProps> {
           const selected = selectedValue >= val;
           const hover = hoverValue >= val;
           const toggledIcon = selected
-            ? icon || StarIcon
-            : unselectedIcon || StarOutlineIcon;
+            ? icon || IconStar
+            : unselectedIcon || IconStarOutline;
           const color = selected || hover ? selectedColor : unselectedColor;
 
           return (

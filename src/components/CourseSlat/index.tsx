@@ -11,8 +11,8 @@ import Theme from "../Theme";
 import View, { ViewProps } from "../View";
 
 import { IconProps } from "../IconBase";
-import ClockIcon from "../Icons/Clock";
-import EmptyIcon from "../Icons/Empty";
+import IconClock from "../Icons/Clock";
+import IconEmpty from "../Icons/Empty";
 
 interface EnrollmentProps {
   status?: string;
@@ -213,9 +213,9 @@ const CourseSlat: React.SFC<CourseSlatProps> = ({
                   justifyContent="center"
                   height="100%"
                   width="100%"
-                  opacity="emptyIcon"
+                  opacity="IconEmpty"
                 >
-                  <EmptyIcon size={7} color="default" />
+                  <IconEmpty size={7} color="default" />
                 </View>
               )}
               {(type || TypeIconElement) && (
@@ -305,7 +305,7 @@ const CourseSlat: React.SFC<CourseSlatProps> = ({
                           },
                         }}
                       >
-                        <ClockIcon
+                        <IconClock
                           size={1}
                           color="muted"
                           marginRight={2}

@@ -12,11 +12,11 @@ import Text from "../Text";
 import View, { ViewProps } from "../View";
 
 import { IconProps } from "../IconBase";
-import DocumentIcon from "../Icons/Document";
-import PlusCircleIcon from "../Icons/PlusCircle";
-import SuccessIcon from "../Icons/Success";
-import TrashIcon from "../Icons/Trash";
-import UploadIcon from "../Icons/Upload";
+import IconDocument from "../Icons/Document";
+import IconPlusCircle from "../Icons/PlusCircle";
+import IconSuccess from "../Icons/Success";
+import IconTrash from "../Icons/Trash";
+import IconUpload from "../Icons/Upload";
 
 const MESSAGES = {
   cancelled: "Cancelled because a new file is being used",
@@ -59,7 +59,7 @@ interface InnerProps extends FileUploaderProps {
 export class FileUploader extends React.Component<InnerProps, State> {
   public static displayName = "FileUploader";
   public static defaultProps = {
-    icon: DocumentIcon,
+    icon: IconDocument,
     uploadProgress: 0,
   };
 
@@ -186,7 +186,7 @@ export class FileUploader extends React.Component<InnerProps, State> {
         >
           <IconElement color="muted" {...this.iconStyle} />
           <Text>{this.messages.dragFile}</Text>
-          <Button icon={UploadIcon} marginLeft="auto" color="subtle">
+          <Button icon={IconUpload} marginLeft="auto" color="subtle">
             {this.messages.chooseFile}
           </Button>
         </View>
@@ -236,7 +236,7 @@ export class FileUploader extends React.Component<InnerProps, State> {
         {...this.containerStyle}
         borderColor={error ? "danger" : this.containerStyle.borderColor}
       >
-        <SuccessIcon color="success" {...this.iconStyle} />
+        <IconSuccess color="success" {...this.iconStyle} />
         <Text>{this.messages.fileUploaded}</Text>
       </View>
     );
@@ -261,7 +261,7 @@ export class FileUploader extends React.Component<InnerProps, State> {
           <ButtonMinimal
             flexDirection="row"
             marginLeft="auto"
-            icon={removeIcon || TrashIcon}
+            icon={removeIcon || IconTrash}
             iconColor="subtle"
             onClick={this.onDelete}
           />
@@ -306,7 +306,7 @@ export class FileUploader extends React.Component<InnerProps, State> {
             if (isDragActive) {
               fileUploadInner = (
                 <View {...this.containerStyle} borderColor="accent">
-                  <PlusCircleIcon color="accent" {...this.iconStyle} />
+                  <IconPlusCircle color="accent" {...this.iconStyle} />
                   <Text>{this.messages.dropFile}</Text>
                 </View>
               );

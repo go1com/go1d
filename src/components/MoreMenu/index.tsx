@@ -10,7 +10,7 @@ import Theme from "../Theme";
 import View from "../View";
 import DropdownMenuItem, { Item as DropdownItem } from "./DropdownMenuItem";
 
-import EllipsisIcon from "../Icons/Ellipsis";
+import IconEllipsis from "../Icons/Ellipsis";
 
 export interface MoreMenuProps extends ButtonProps {
   itemList: DropdownItem[];
@@ -88,7 +88,7 @@ class MoreMenu extends React.Component<MoreMenuProps, State> {
               });
               return isButtonFilled ? (
                 <ButtonFilled
-                  icon={EllipsisIcon}
+                  icon={IconEllipsis}
                   {...buttonProps}
                   {...toggleButtonProps}
                   innerRef={ref}
@@ -97,7 +97,7 @@ class MoreMenu extends React.Component<MoreMenuProps, State> {
               ) : (
                 <ButtonMinimal
                   data-testid="toggle"
-                  icon={EllipsisIcon}
+                  icon={IconEllipsis}
                   innerRef={ref}
                   {...buttonProps}
                   {...toggleButtonProps}

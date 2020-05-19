@@ -4,7 +4,7 @@ import Text from "../../Text";
 import View, { ViewProps } from "../../View";
 
 import { IconProps } from "../../IconBase";
-import CheckIcon from "../../Icons/Check";
+import IconCheck from "../../Icons/Check";
 
 export interface LIProps extends ViewProps {
   iconName?: never; // Removed
@@ -23,7 +23,7 @@ const LI: React.SFC<LIProps> = ({
   color,
   ...props
 }: LIProps) => {
-  const IconElement = icon || CheckIcon;
+  const IconElement = icon || IconCheck;
 
   return (
     <View

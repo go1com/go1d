@@ -6,7 +6,7 @@ import Text, { TextProps } from "../Text";
 import Theme from "../Theme";
 import { getStyles } from "./style";
 
-import ChevronDownIcon from "../Icons/ChevronDown";
+import IconChevronDown from "../Icons/ChevronDown";
 import ChevronUpcon from "../Icons/ChevronUp";
 
 export interface ProseProps extends TextProps {
@@ -137,7 +137,7 @@ class Prose extends React.Component<ProseProps, State> {
                 color="accent"
                 onClick={this.toggleLineClamp}
                 paddingLeft={0}
-                icon={currentLineClamp ? ChevronDownIcon : ChevronUpcon}
+                icon={currentLineClamp ? IconChevronDown : ChevronUpcon}
                 flexDirection="row-reverse"
               >
                 {`Show ${currentLineClamp ? "more" : "less"}`}

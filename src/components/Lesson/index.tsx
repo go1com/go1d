@@ -4,43 +4,43 @@ import formatDuration from "../../utils/durationFormatter";
 import Text from "../Text";
 import View, { ViewProps } from "../View";
 
-import ActivityIcon from "../Icons/Activity";
-import AssignmentIcon from "../Icons/Assignment";
-import AudioIcon from "../Icons/Audio";
-import AwardIcon from "../Icons/Award";
-import CalendarIcon from "../Icons/Calendar";
-import CheckboxIcon from "../Icons/Checkbox";
-import CourseIcon from "../Icons/Course";
-import DocumentIcon from "../Icons/Document";
-import InteractiveIcon from "../Icons/Interactive";
-import LinkIcon from "../Icons/Link";
-import LtiIcon from "../Icons/Lti";
-import QuizIcon from "../Icons/Quiz";
-import TextIcon from "../Icons/Text";
-import UserTickIcon from "../Icons/UserTick";
-import VideoIcon from "../Icons/Video";
-import VideoplayIcon from "../Icons/Videoplay";
+import IconActivity from "../Icons/Activity";
+import IconAssignment from "../Icons/Assignment";
+import IconAudio from "../Icons/Audio";
+import IconAward from "../Icons/Award";
+import IconCalendar from "../Icons/Calendar";
+import IconCheckbox from "../Icons/Checkbox";
+import IconCourse from "../Icons/Course";
+import IconDocument from "../Icons/Document";
+import IconInteractive from "../Icons/Interactive";
+import IconLink from "../Icons/Link";
+import IconLti from "../Icons/Lti";
+import IconQuiz from "../Icons/Quiz";
+import IconText from "../Icons/Text";
+import IconUserTick from "../Icons/UserTick";
+import IconVideo from "../Icons/Video";
+import IconVideoplay from "../Icons/Videoplay";
 
 export const typeIconDic = {
-  activities: ActivityIcon,
-  attendance: UserTickIcon,
-  assignment: AssignmentIcon,
-  document: DocumentIcon,
-  h5p: VideoplayIcon,
-  iframe: LinkIcon,
-  interactive: InteractiveIcon,
-  question: CheckboxIcon,
-  quiz: QuizIcon,
-  resource: TextIcon,
-  link: LinkIcon,
-  text: TextIcon,
-  video: VideoIcon,
-  workshop: CourseIcon,
-  course: CourseIcon,
-  award: AwardIcon,
-  lti: LtiIcon,
-  event: CalendarIcon,
-  audio: AudioIcon,
+  activities: IconActivity,
+  attendance: IconUserTick,
+  assignment: IconAssignment,
+  document: IconDocument,
+  h5p: IconVideoplay,
+  iframe: IconLink,
+  interactive: IconInteractive,
+  question: IconCheckbox,
+  quiz: IconQuiz,
+  resource: IconText,
+  link: IconLink,
+  text: IconText,
+  video: IconVideo,
+  workshop: IconCourse,
+  course: IconCourse,
+  award: IconAward,
+  lti: IconLti,
+  event: IconCalendar,
+  audio: IconAudio,
 };
 
 export interface LessonProps extends ViewProps {
@@ -62,7 +62,7 @@ const Lesson: React.SFC<LessonProps> = ({
 }: LessonProps) => {
   const TypeIconElement = typeIconDic[type.toLowerCase()]
     ? typeIconDic[type.toLowerCase()]
-    : CourseIcon;
+    : IconCourse;
   return (
     <View
       backgroundColor="background"

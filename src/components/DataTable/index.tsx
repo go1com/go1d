@@ -11,7 +11,7 @@ import {
 import { autobind } from "../../utils/decorators";
 import safeInvoke from "../../utils/safeInvoke";
 import ButtonFilled from "../ButtonFilled";
-import ChevronUpIcon from "../Icons/ChevronUp";
+import IconChevronUp from "../Icons/ChevronUp";
 import TR from "../Table/TR";
 import Text from "../Text";
 import Theme from "../Theme";
@@ -270,7 +270,7 @@ class DataTable extends React.Component<DataTableProps, {}> {
                             marginLeft="auto"
                             css={{ bottom: spacing[4] }}
                           >
-                            <ChevronUpIcon />
+                            <IconChevronUp />
                           </ButtonFilled>
                         )}
                       </React.Fragment>

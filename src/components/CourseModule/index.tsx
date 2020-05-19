@@ -4,9 +4,9 @@ import formatDuration from "../../utils/durationFormatter";
 import Text from "../Text";
 import View, { ViewProps } from "../View";
 
-import ChevronDownIcon from "../Icons/ChevronDown";
-import ChevronUpIcon from "../Icons/ChevronUp";
-import ClockIcon from "../Icons/Clock";
+import IconChevronDown from "../Icons/ChevronDown";
+import IconChevronUp from "../Icons/ChevronUp";
+import IconClock from "../Icons/Clock";
 
 export interface CourseModuleProps extends ViewProps {
   title: string;
@@ -44,7 +44,7 @@ class CourseModule extends React.Component<CourseModuleProps, any> {
     } = this.props;
 
     const { isOpen } = this.state;
-    const ChevronIcon = isOpen ? ChevronUpIcon : ChevronDownIcon;
+    const ChevronIcon = isOpen ? IconChevronUp : IconChevronDown;
 
     return (
       <View paddingX={4} {...props}>
@@ -56,7 +56,7 @@ class CourseModule extends React.Component<CourseModuleProps, any> {
             {duration && (
               <View flexDirection="row" alignItems="center">
                 <View paddingRight={2}>
-                  <ClockIcon size={1} color="muted" />
+                  <IconClock size={1} color="muted" />
                 </View>
                 <Text fontSize={2}>{formatDuration(duration)}</Text>
               </View>

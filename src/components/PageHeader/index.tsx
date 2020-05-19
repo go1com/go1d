@@ -7,8 +7,8 @@ import Text from "../Text";
 import Theme from "../Theme";
 import View, { ViewProps } from "../View";
 
-import ChevronLeftIcon from "../Icons/ChevronLeft";
-import MenuIcon from "../Icons/Menu";
+import IconChevronLeft from "../Icons/ChevronLeft";
+import IconMenu from "../Icons/Menu";
 
 export interface PageHeaderProps extends ViewProps {
   title: string;
@@ -72,7 +72,7 @@ const PageHeader: React.SFC<PageHeaderProps> = ({
               paddingX={2}
               onClick={onMenuButtonClick}
             >
-              <MenuIcon size={5} color="subtle" marginX="auto" marginY={0} />
+              <IconMenu size={5} color="subtle" marginX="auto" marginY={0} />
             </ButtonMinimal>
           </Transition>
         </View>
@@ -80,7 +80,7 @@ const PageHeader: React.SFC<PageHeaderProps> = ({
           {breadcrumbTitle && breadcrumbHref && (
             <Link href={breadcrumbHref}>
               <View flexDirection="row" alignItems="center">
-                <ChevronLeftIcon color="subtle" size={1} marginRight={2} />
+                <IconChevronLeft color="subtle" size={1} marginRight={2} />
                 <Text color="subtle">{breadcrumbTitle}</Text>
               </View>
             </Link>

@@ -10,10 +10,10 @@ import Text from "../Text";
 import Theme from "../Theme";
 import View, { ViewProps } from "../View";
 
-import ClockIcon from "../Icons/Clock";
-import EllipsisIcon from "../Icons/Ellipsis";
-import ThumbsDownIcon from "../Icons/ThumbsDown";
-import ThumbsUpIcon from "../Icons/ThumbsUp";
+import IconClock from "../Icons/Clock";
+import IconEllipsis from "../Icons/Ellipsis";
+import IconThumbsDown from "../Icons/ThumbsDown";
+import IconThumbsUp from "../Icons/ThumbsUp";
 
 export interface OverviewCtaCardProps extends ViewProps {
   actions?: Array<{
@@ -325,7 +325,7 @@ class OverviewCtaCard extends React.Component<OverviewCtaCardProps, any> {
                         innerRef={ref}
                         size="md"
                       >
-                        <EllipsisIcon />
+                        <IconEllipsis />
                       </ButtonMinimal>
                     </View>
                   )}
@@ -406,7 +406,7 @@ class OverviewCtaCard extends React.Component<OverviewCtaCardProps, any> {
 
               {duration > 0 && (
                 <View flexDirection="row" alignItems="center" marginTop={4}>
-                  <ClockIcon color="muted" marginRight={3} />
+                  <IconClock color="muted" marginRight={3} />
                   <Text fontSize={1} color="subtle" fontWeight="semibold">
                     {formatDuration(duration)}
                   </Text>
@@ -454,7 +454,7 @@ class OverviewCtaCard extends React.Component<OverviewCtaCardProps, any> {
                     innerRef={ref}
                     size="md"
                   >
-                    <EllipsisIcon />
+                    <IconEllipsis />
                   </ButtonMinimal>
                 </View>
               )}
@@ -471,11 +471,11 @@ class OverviewCtaCard extends React.Component<OverviewCtaCardProps, any> {
     return (
       <View flexDirection="row" alignItems="center">
         <View flexDirection="row" alignItems="center">
-          <ThumbsUpIcon color="subtle" size={2} marginRight={3} />
+          <IconThumbsUp color="subtle" size={2} marginRight={3} />
           <Text color="subtle">{likes}</Text>
         </View>
         <View flexDirection="row" alignItems="center" marginLeft={4}>
-          <ThumbsDownIcon color="subtle" size={2} marginRight={3} />
+          <IconThumbsDown color="subtle" size={2} marginRight={3} />
           <Text color="subtle">{dislikes}</Text>
         </View>
       </View>

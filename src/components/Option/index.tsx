@@ -6,8 +6,8 @@ import Theme from "../Theme";
 import View, { ViewProps } from "../View";
 
 import { IconProps } from "../IconBase";
-import CrossIcon from "../Icons/Cross";
-import SuccessIcon from "../Icons/Success";
+import IconCross from "../Icons/Cross";
+import IconSuccess from "../Icons/Success";
 
 export interface OptionProps extends ViewProps {
   onClick?: (evt: React.SyntheticEvent) => void;
@@ -34,7 +34,7 @@ const Option: React.SFC<OptionProps> = ({
 }: OptionProps) => {
   const IconElement =
     (checked && disabled) || typeof actionIcon !== "function"
-      ? SuccessIcon
+      ? IconSuccess
       : actionIcon;
 
   return (
@@ -96,7 +96,7 @@ const Option: React.SFC<OptionProps> = ({
               onClick={checked && onClick}
               size="md"
               round={true}
-              icon={CrossIcon}
+              icon={IconCross}
               type="button"
             />
           ) : (
