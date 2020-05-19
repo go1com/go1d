@@ -1,10 +1,6 @@
 {
   "name": "@go1d/go1d",
-<<<<<<< HEAD
   "version": "0.10.0",
-=======
-  "version": "0.9.95",
->>>>>>> master
   "description": "GO1 Design System",
   "main": "build/index.js",
   "homepage": "https://go1d.go1.com",
