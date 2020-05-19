@@ -164,7 +164,7 @@ const Slat: React.SFC<SlatProps> = ({
                       },
                     }}
                   >
-                    {actionRenderer && actionRenderer()}
+                    {typeof actionRenderer === "function" && actionRenderer()}
                     {dropdownItems && dropdownItems.length > 0 && (
                       <MoreMenu
                         itemList={dropdownItems}
