@@ -18,13 +18,13 @@ releaseVersion: 0.0.23
         itemList={[
             {
               title: "Add",
-              iconName: "Plus",
+              icon: IconPlus,
               iconColor: "muted"
             },
             {
               title: "Delete",
               color: "danger",
-              iconName: "Trash",
+              icon: IconTrash,
               iconColor: "danger",
             },
           ]}

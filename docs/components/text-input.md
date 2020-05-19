@@ -81,7 +81,7 @@ releaseVersion: 0.0.32
 ```.jsx
 <TextInput
   id="search"
-  iconName="Search"
+  icon={IconSearch}
   placeholder="Type here to Search"
 />
 ```
@@ -91,7 +91,7 @@ releaseVersion: 0.0.32
 ```.jsx
 <TextInput
   id="search"
-  iconName="Search"
+  icon={IconSearch}
   floating={true}
   label="Medium"
   value="Medium Size"
@@ -115,7 +115,7 @@ releaseVersion: 0.0.32
 <TextInput
   id="clear"
   value="Type here to Search"
-  suffixNode={<ButtonMinimal iconName="Cross" color="accent" />}
+  suffixNode={<ButtonMinimal icon={IconCross} color="accent" />}
 />
 ```
 
@@ -128,7 +128,7 @@ releaseVersion: 0.0.32
   floating={true}
   label="Large"
   value="Large Size"
-  suffixNode={<ButtonMinimal size="lg" iconName="Cross" color="accent" />}
+  suffixNode={<ButtonMinimal size="lg" icon={IconCross} color="accent" />}
 />
 ```
 

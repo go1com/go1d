@@ -5,8 +5,8 @@ import Text from "../Text";
 import Theme from "../Theme";
 import View, { ViewProps } from "../View";
 
-import ChevronLeftIcon from "../Icons/ChevronLeft";
-import Go1LogoIcon from "../Icons/Go1Logo";
+import IconChevronLeft from "../Icons/ChevronLeft";
+import IconGo1Logo from "../Icons/Go1Logo";
 
 export interface LeftMenuProps extends ViewProps {
   showMenuButton?: boolean;
@@ -49,7 +49,7 @@ const LeftMenu: React.SFC<LeftMenuProps> = ({
       >
         <View flexDirection="row" alignItems="center" marginBottom={4}>
           <View marginX={5}>
-            <Go1LogoIcon size={5} />
+            <IconGo1Logo size={5} />
           </View>
           <Transition
             in={showMenuButton}
@@ -96,7 +96,7 @@ const LeftMenu: React.SFC<LeftMenuProps> = ({
               }}
               onClick={onMenuButtonClick}
             >
-              <ChevronLeftIcon size={4} />
+              <IconChevronLeft size={4} />
             </ButtonMinimal>
           </Transition>
         </View>

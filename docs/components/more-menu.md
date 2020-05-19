@@ -29,14 +29,14 @@ The standard action menu contains:
       {
         title: "Add",
         href: "#testing",
-        iconName: "Plus",
+        icon: IconPlus,
         iconColor: "muted"
       },
       {
         title: "Delete",
         href: "#testing",
         color: "danger",
-        iconName: "Trash",
+        icon: IconTrash,
         target:"_blank",
         rel:"noopener noreferrer",
       },
@@ -67,14 +67,14 @@ The standard action menu contains:
             {
               title: "Add",
               href: "#testing",
-              iconName: "Plus",
+              icon: IconPlus,
               iconColor: "muted"
             },
             {
               title: "Delete",
               href: "#testing",
               color: "danger",
-              iconName: "Trash",
+              icon: IconTrash,
             },
           ]}
         />

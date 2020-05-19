@@ -30,12 +30,12 @@ A generic slat component
   type="Event"
   typeBackground="background"
   dropdownItems={[{
-    iconName: "Calendar",
+    icon: IconCalendar,
     title: "fake item",
     onClick: () => console.log('foo'),
   },
   {
-    iconName: "Calendar",
+    icon: IconCalendar,
     title: "fake item2",
     onClick: () => console.log('foo2'),
   }]}
@@ -53,11 +53,11 @@ A generic slat component
   price={100}
   bottomMeta={[
     {
-      icon: "Calendar",
+      icon: IconCalendar,
       text: "1.30pm - 2.30pm",
     },
     {
-      icon: "MapPin",
+      icon: IconMapPin,
       text: "Underwood, QLD, Australia",
     },
   ]}
@@ -66,7 +66,7 @@ A generic slat component
   typeBackground="background"
   actionRenderer={() => (
       <View flexDirection="row">
-      <Icon name="Import" marginRight={3} color="accent" />
+      <IconImport marginRight={3} color="accent" />
       <Text color="accent">Import</Text>
       </View>
   )}
@@ -85,11 +85,11 @@ A generic slat component
   price={100}
   bottomMeta={[
     {
-      icon: "Calendar",
+      icon: IconCalendar,
       text: "1.30pm - 2.30pm",
     },
     {
-      icon: "MapPin",
+      icon: IconMapPin,
       text: "Underwood, QLD, Australia",
     },
   ]}

@@ -39,7 +39,7 @@ Focus Mode Header is a minimalistic header designed to allow the content of the 
         </Pill>
       </View>
       <View marginRight={4} flexDirection="row" alignItems="center">
-        <Icon size={1} name="Check" color="accent" marginRight={2} />
+        <IconCheck size={1} color="accent" marginRight={2} />
         <Text fontSize={1}>Saved</Text>
       </View>
     </View>
@@ -48,23 +48,23 @@ Focus Mode Header is a minimalistic header designed to allow the content of the 
     {
       title: "Done",
       href: "#testing",
-      iconName: "Check",
+      icon: IconCheck,
     },
     {
       title: "Visibility and Access",
       href: "#testing",
-      iconName: "Eye",
+      icon: IconEye,
       iconColor: "muted",
     },
     {
       title: "MenuItem1",
       href: "#testing",
-      iconName: "Edit",
+      icon: IconEdit,
     },
     {
       title: "DeleteMenuItem",
       href: "#testing",
-      iconName: "Trash",
+      icon: IconTrash,
       color: "danger"
     },
   ]}

@@ -110,7 +110,7 @@ Offset can be used to customise the placement of the dropdown, for the syntax pl
             index,
           })}
           color={item.color || "default"}
-          iconName={item.iconName}
+          icon={item.icon}
           iconColor={item.iconColor}
           css={{
             justifyContent: "flex-start",
@@ -123,14 +123,14 @@ Offset can be used to customise the placement of the dropdown, for the syntax pl
       {
         title: "Add",
         href: "#testing",
-        iconName: "Plus",
+        icon: IconPlus,
         iconColor: "muted"
       },
       {
         title: "Delete",
         href: "#testing",
         color: "danger",
-        iconName: "Trash",
+        icon: IconPlus,
       },
     ]}
     placement="right"

@@ -2,7 +2,7 @@ import * as React from "react";
 import { cleanup, render } from "react-testing-library";
 import Field from "../Field";
 import Form from "../Form";
-import DocumentIcon from "../Icons/Document";
+import IconDocument from "../Icons/Document";
 import FileUploader from "./index";
 
 afterEach(cleanup);
@@ -32,7 +32,7 @@ it("renders no file state", () => {
       uploadProgress={0}
       upload={upload}
       description={"picklerick"}
-      icon={DocumentIcon}
+      icon={IconDocument}
       uploadComplete={uploadComplete}
       onChange={onChange}
       value={null}
@@ -49,7 +49,7 @@ it("renders in progress state", () => {
       uploadProgress={50}
       upload={upload}
       description={"picklerick"}
-      icon={DocumentIcon}
+      icon={IconDocument}
       uploadComplete={uploadComplete}
       onChange={onChange}
       value={null}
@@ -66,7 +66,7 @@ it("renders completed upload", () => {
       uploadProgress={100}
       upload={upload}
       description={"picklerick"}
-      icon={DocumentIcon}
+      icon={IconDocument}
       uploadComplete={uploadComplete}
       onChange={onChange}
       value={null}
@@ -83,7 +83,7 @@ it("renders value given", () => {
       uploadProgress={100}
       upload={upload}
       description={"picklerick"}
-      icon={DocumentIcon}
+      icon={IconDocument}
       uploadComplete={uploadComplete}
       onChange={onChange}
       value={"a url"}
@@ -104,7 +104,7 @@ it("renders inside a form", () => {
         label="File Upload"
         component={FileUploader}
         description={"picklerick"}
-        iconName="Document"
+        icon={IconDocument}
         upload={upload}
         uploadComplete={uploadComplete}
         acceptedFileExts=".zip"

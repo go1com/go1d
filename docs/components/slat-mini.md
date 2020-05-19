@@ -19,12 +19,12 @@ A generic mini slat component
   image="http://res.cloudinary.com/go1/image/upload/v1557388417/l7jhug2k9n1s4qzw3ai8.png"
   type="Course"
   dropdownItems={[{
-    iconName: "Calendar",
+    icon: IconCalendar,
     title: "fake item",
     onClick: () => console.log('foo'),
   },
   {
-    iconName: "Calendar",
+    icon: IconCalendar,
     title: "fake item2",
     onClick: () => console.log('foo2'),
   }]}
