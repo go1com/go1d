@@ -2,10 +2,10 @@ import { FlexDirectionProperty } from "csstype";
 import * as React from "react";
 import safeInvoke from "../../utils/safeInvoke";
 import Base from "../Base";
-import Icon from "../Icon";
 import Text from "../Text";
 import Theme from "../Theme";
 import View, { ViewProps } from "../View";
+import { IconCross, IconCheck } from "../Icons";
 
 const sizeStyles = {
   lg: {
@@ -201,16 +201,14 @@ class ToggleSwitch extends React.Component<
                         borderRadius: height,
                       }}
                     >
-                      <Icon
-                        name="Check"
+                      <IconCheck
                         color="background"
                         transition="subtle"
                         css={{
                           ...iconCheckStyles,
                         }}
                       />
-                      <Icon
-                        name="Cross"
+                      <IconCross
                         color="background"
                         transition="subtle"
                         css={{
