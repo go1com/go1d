@@ -6,10 +6,14 @@ import "react-dates/initialize";
 import { autobind } from "../../utils/decorators";
 import safeInvoke from "../../utils/safeInvoke";
 import ButtonMinimal from "../ButtonMinimal";
-import Icon from "../Icon";
 import Text from "../Text";
 import Theme from "../Theme";
 import View, { ViewProps } from "../View";
+
+import IconCalendar from "../Icons/Calendar";
+import IconChevronLeft from "../Icons/ChevronLeft";
+import IconChevronRight from "../Icons/ChevronRight";
+
 import "./css";
 
 export interface DatePickerProps extends ViewProps {
@@ -339,14 +343,13 @@ class DatePicker extends React.Component<DatePickerProps, DatePickerState> {
               weekDayFormat="dd"
               inputIconPosition="after"
               displayFormat="DD/MM/YYYY"
-              navNext={<Icon name="ChevronRight" size={2} color="subtle" />}
-              navPrev={<Icon name="ChevronLeft" size={2} color="subtle" />}
+              navNext={<IconChevronRight size={2} color="subtle" />}
+              navPrev={<IconChevronLeft size={2} color="subtle" />}
               verticalSpacing={5}
               verticalHeight={7}
               horizontalMonthPadding={0}
               customInputIcon={
-                <Icon
-                  name="Calendar"
+                <IconCalendar
                   size={get({ lg: 3, md: 2, sm: 1 }, size)}
                   color="subtle"
                 />

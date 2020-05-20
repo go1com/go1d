@@ -1,8 +1,20 @@
 import * as React from "react";
 import { Colors } from "../../../foundations/foundation-types";
 import Button from "../../Button";
+import { IconProps } from "../../IconBase";
 import Theme from "../../Theme";
 import View from "../../View";
+
+import IconBlockQuote from "../../Icons/BlockQuote";
+import IconBold from "../../Icons/Bold";
+import IconHeadingThree from "../../Icons/HeadingThree";
+import IconHeadingTwo from "../../Icons/HeadingTwo";
+import IconItalic from "../../Icons/Italic";
+import IconLink from "../../Icons/Link";
+import IconOlList from "../../Icons/OlList";
+import IconStrikethrough from "../../Icons/Strikethrough";
+import IconUlList from "../../Icons/UlList";
+import IconUnderline from "../../Icons/Underline";
 
 export interface Props {
   onClickMarked: (event: React.SyntheticEvent<HTMLButtonElement>) => void;
@@ -23,19 +35,21 @@ export interface Props {
   bulletListFormatOption: boolean;
 }
 
-const FormatButton: React.SFC<any> = ({
-  type,
-  iconName,
-  onClick,
-  active,
-  colors,
-  ...props
-}: {
-  iconName: string;
+interface FormatButtonProps {
+  icon: React.ComponentType<IconProps>;
   type: string;
   active: boolean;
   colors: Colors;
   onClick: (event: React.SyntheticEvent<HTMLButtonElement>) => void;
+}
+
+const FormatButton: React.FC<FormatButtonProps> = ({
+  type,
+  icon,
+  onClick,
+  active,
+  colors,
+  ...props
 }) => {
   return (
     <Button
@@ -43,7 +57,7 @@ const FormatButton: React.SFC<any> = ({
       data-value={type}
       onClick={onClick}
       active={active}
-      iconName={iconName}
+      icon={icon}
       css={[
         {
           svg: {
@@ -101,7 +115,7 @@ const FormatOptions: React.SFC<Props> = ({
             data-testid="blockHeadingTwo"
             onClick={onClickBlock}
             type="heading-two"
-            iconName="HeadingTwo"
+            icon={IconHeadingTwo}
             active={blockActive("heading-two")}
             colors={colors}
           />
@@ -111,7 +125,7 @@ const FormatOptions: React.SFC<Props> = ({
             data-testid="blockHeadingThree"
             onClick={onClickBlock}
             type="heading-three"
-            iconName="HeadingThree"
+            icon={IconHeadingThree}
             active={blockActive("heading-three")}
             colors={colors}
           />
@@ -121,7 +135,7 @@ const FormatOptions: React.SFC<Props> = ({
             data-testid="markBold"
             onClick={onClickMarked}
             type="bold"
-            iconName="Bold"
+            icon={IconBold}
             active={markActive("bold")}
             colors={colors}
           />
@@ -131,7 +145,7 @@ const FormatOptions: React.SFC<Props> = ({
             data-testid="markItalic"
             onClick={onClickMarked}
             type="italic"
-            iconName="Italic"
+            icon={IconItalic}
             active={markActive("italic")}
             colors={colors}
           />
@@ -141,7 +155,7 @@ const FormatOptions: React.SFC<Props> = ({
             data-testid="markUnderline"
             onClick={onClickMarked}
             type="underline"
-            iconName="Underline"
+            icon={IconUnderline}
             active={markActive("underline")}
             colors={colors}
           />
@@ -151,7 +165,7 @@ const FormatOptions: React.SFC<Props> = ({
             data-testid="markStrikethrough"
             onClick={onClickMarked}
             type="strikethrough"
-            iconName="Strikethrough"
+            icon={IconStrikethrough}
             active={markActive("strikethrough")}
             colors={colors}
           />
@@ -161,7 +175,7 @@ const FormatOptions: React.SFC<Props> = ({
             data-testid="blockBlockquote"
             onClick={onClickBlock}
             type="block-quote"
-            iconName="BlockQuote"
+            icon={IconBlockQuote}
             active={blockActive("block-quote")}
             colors={colors}
           />
@@ -171,7 +185,7 @@ const FormatOptions: React.SFC<Props> = ({
             data-testid="inlineLink"
             onClick={onClickLink}
             type="link"
-            iconName="Link"
+            icon={IconLink}
             active={linkActive()}
             colors={colors}
           />
@@ -181,7 +195,7 @@ const FormatOptions: React.SFC<Props> = ({
             data-testid="blockNumberedList"
             onClick={onClickBlock}
             type="numbered-list"
-            iconName="OlList"
+            icon={IconOlList}
             active={blockActive("numbered-list")}
             colors={colors}
           />
@@ -191,7 +205,7 @@ const FormatOptions: React.SFC<Props> = ({
             data-testid="blockBulletedList"
             onClick={onClickBlock}
             type="bulleted-list"
-            iconName="UlList"
+            icon={IconUlList}
             active={blockActive("bulleted-list")}
             colors={colors}
           />

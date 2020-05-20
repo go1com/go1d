@@ -30,7 +30,7 @@ Buttons usually simulate a 3D-appearance but may also have a minimal appearance.
 ### Filled Icon only button in success colour and round
 
 ```.jsx
-<ButtonFilled round={true} color="success" iconName="Check" />
+<ButtonFilled round={true} color="success" icon={IconCheck} />
 ```
 
 ### Filled button in danger colour
@@ -48,25 +48,25 @@ Buttons usually simulate a 3D-appearance but may also have a minimal appearance.
 ### Minimal button subtle colour (Icon and label)
 
 ```.jsx
-<ButtonMinimal iconName="Plus">Minimal button</ButtonMinimal>
+<ButtonMinimal icon={IconPlus}>Minimal button</ButtonMinimal>
 ```
 
 ### Minimal button subtle colour (Icon and label, Icon to the right)
 
 ```.jsx
-<ButtonMinimal iconName="Plus" flexDirection="row-reverse">Minimal button</ButtonMinimal>
+<ButtonMinimal icon={IconPlus} flexDirection="row-reverse">Minimal button</ButtonMinimal>
 ```
 
 ### Minimal button in accent colour (Icon only)
 
 ```.jsx
-<ButtonMinimal color='accent' iconName='Plus' />
+<ButtonMinimal color='accent' icon={IconPlus} />
 ```
 
 ### Minimal button in accent colour (Icon and label)
 
 ```.jsx
-<ButtonMinimal color='accent' iconName='Plus'>Call to action</ButtonMinimal>
+<ButtonMinimal color='accent' icon={IconPlus}>Call to action</ButtonMinimal>
 ```
 
 ### Minimal button in danger colour

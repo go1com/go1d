@@ -1,7 +1,10 @@
 import * as React from "react";
-import Icon, { IconProps } from "../Icon";
 import Text from "../Text";
 import View, { ViewProps } from "../View";
+
+import { IconProps } from "../IconBase";
+import IconChevronDown from "../Icons/ChevronDown";
+import IconChevronUp from "../Icons/ChevronUp";
 
 export type CollapseProps = {
   isOpen: boolean;
@@ -89,8 +92,9 @@ class Collapse extends React.Component<CollapseProps, CollapseState> {
     } = this.props;
     const { heightWrapper } = this.state;
     const overflow = isOpen ? "auto" : "hidden";
-    const iconClose = reverseCollapse ? "ChevronUp" : "ChevronDown";
-    const icon = iconClose;
+    const CollapseIconElement = reverseCollapse
+      ? IconChevronUp
+      : IconChevronDown;
     const cssRotate = isOpen
       ? {
           transform: "rotate(180deg)",
@@ -131,8 +135,7 @@ class Collapse extends React.Component<CollapseProps, CollapseState> {
                   {header()}
                 </View>
               )}
-              <Icon
-                name={icon}
+              <CollapseIconElement
                 color="subtle"
                 marginLeft={4}
                 transition="subtle"

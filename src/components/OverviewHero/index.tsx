@@ -3,9 +3,11 @@ import * as React from "react";
 import foundations from "../../foundations";
 import formatDuration from "../../utils/durationFormatter";
 import Container from "../Container";
-import Icon from "../Icon";
 import Text from "../Text";
 import View, { ViewProps } from "../View";
+
+import IconChevronLeft from "../Icons/ChevronLeft";
+import IconClock from "../Icons/Clock";
 
 export interface OverviewHeroProps extends ViewProps {
   title: string | React.ReactNode;
@@ -126,7 +128,7 @@ const OverviewHero: React.SFC<OverviewHeroProps> = ({
         >
           {breadcrumb && (
             <View flexDirection="row" alignItems="center">
-              <Icon name="ChevronLeft" size={1} marginRight={2} />
+              <IconChevronLeft size={1} marginRight={2} />
               <Text fontSize={1}>{breadcrumb}</Text>
             </View>
           )}
@@ -152,7 +154,7 @@ const OverviewHero: React.SFC<OverviewHeroProps> = ({
             )}
             {duration && (
               <View flexDirection="row" alignItems="center">
-                <Icon name="Clock" color="default" marginRight={3} />
+                <IconClock color="default" marginRight={3} />
                 <Text fontWeight="semibold" fontSize={3} color="contrast">
                   {formatDuration(duration)}
                 </Text>

@@ -1,6 +1,5 @@
 import React, { Component, Fragment } from "react";
 import * as Icons from "../../../src/components/Icons";
-import Icon from "../../../src/components/Icon";
 import SearchInput from "../../../src/components/SearchInput";
 
 class AllIcons extends Component {
@@ -36,13 +35,13 @@ class AllIcons extends Component {
               Icon
             </th>
           </tr>
-          {Object.keys(Icons)
-            .map(Key => {
+          {Object.entries(Icons)
+            .map((Key, Component) => {
               if (Key.substr(0, 4).toLowerCase() === "icon") {
-                return Key.substr(4);
+                return [Key.substr(4), Component];
               }
 
-              return Key;
+              return [Key, Component];
             })
             .filter(
               name =>
@@ -50,11 +49,11 @@ class AllIcons extends Component {
                   ? name.toLowerCase().includes(filter.toLowerCase())
                   : true
             )
-            .map((name, index) => (
+            .map(([name, IconElement], index) => (
               <tr key={index}>
                 <td style={{ padding: "0 0 1rem 0" }}>{name}</td>
                 <td style={{ padding: "0 0 1rem 0" }}>
-                  <Icon name={name} />
+                  <IconElement />
                 </td>
               </tr>
             ))}

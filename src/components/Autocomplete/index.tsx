@@ -1,7 +1,7 @@
 import isFunction = require("lodash/isFunction");
 import * as React from "react";
 import ButtonMinimal from "../ButtonMinimal";
-import Icon from "../Icon";
+import IconCross from "../Icons/Cross";
 import Text from "../Text";
 import TextInput from "../TextInput";
 import Theme from "../Theme";
@@ -170,7 +170,7 @@ class Autocomplete extends React.Component<AutocompleteProps, any> {
                     backgroundColor={colors.accent}
                     color={colors.background}
                   >
-                    <Icon name="Cross" />
+                    <IconCross />
                   </ButtonMinimal>
                 ) : null
               }

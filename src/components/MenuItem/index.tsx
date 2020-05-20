@@ -1,6 +1,6 @@
 import * as React from "react";
 import { Transition } from "react-transition-group";
-import Icon from "../Icon";
+import { IconProps } from "../IconBase";
 import Link from "../Link";
 import Text from "../Text";
 import Theme from "../Theme";
@@ -9,7 +9,8 @@ import View, { ViewProps } from "../View";
 export interface MenuItemProps extends ViewProps {
   collapsed?: boolean;
   active?: boolean;
-  iconName: string;
+  iconName?: never;
+  icon: React.ComponentType<IconProps>;
   href: string;
 }
 
@@ -17,7 +18,7 @@ const MenuItem: React.SFC<MenuItemProps> = ({
   collapsed = false,
   active = false,
   children,
-  iconName,
+  icon: IconElement,
   href,
   ...props
 }: MenuItemProps) => (
@@ -49,16 +50,18 @@ const MenuItem: React.SFC<MenuItemProps> = ({
           }}
           {...props}
         >
-          <View
-            color={colors.muted}
-            marginLeft={3}
-            marginRight={5}
-            css={{
-              transition: "none",
-            }}
-          >
-            <Icon name={iconName} size={4} />
-          </View>
+          {IconElement && (
+            <View
+              color={colors.muted}
+              marginLeft={3}
+              marginRight={5}
+              css={{
+                transition: "none",
+              }}
+            >
+              <IconElement size={4} />
+            </View>
+          )}
           <Transition
             in={collapsed}
             timeout={animation.subtle}

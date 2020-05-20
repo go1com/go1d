@@ -10,18 +10,18 @@ status: ready
 
 ```.jsx
 <View flexDirection="row">
-  <ToggleButtonFeature color="danger" iconName="Danger" marginRight={3}>Oh</ToggleButtonFeature>
-  <ToggleButtonFeature iconName="Eye" marginRight={3}>Hi</ToggleButtonFeature>
-  <ToggleButtonFeature color="accent" iconName="User">Mark</ToggleButtonFeature>
+  <ToggleButtonFeature color="danger" icon={IconDanger} marginRight={3}>Oh</ToggleButtonFeature>
+  <ToggleButtonFeature icon={IconEye} marginRight={3}>Hi</ToggleButtonFeature>
+  <ToggleButtonFeature color="accent" icon={IconUser}>Mark</ToggleButtonFeature>
 </View>
 ```
 
 ### Toggle Button Feature in sizes
 ```.jsx
 <View flexDirection="row" alignItems="center">
-  <ToggleButtonFeature size="sm" iconName="Star" marginRight={3}>Star</ToggleButtonFeature>
-  <ToggleButtonFeature size="md" iconName="User" marginRight={3}>User</ToggleButtonFeature>
-  <ToggleButtonFeature size="lg" iconName="Video">Video</ToggleButtonFeature>
+  <ToggleButtonFeature size="sm" icon={IconStar} marginRight={3}>Star</ToggleButtonFeature>
+  <ToggleButtonFeature size="md" icon={IconUser} marginRight={3}>User</ToggleButtonFeature>
+  <ToggleButtonFeature size="lg" icon={IconVideo}>Video</ToggleButtonFeature>
 </View>
 ```
 
@@ -46,8 +46,8 @@ const customSizeStyles = {
 
 ```.jsx
 <View flexDirection="row">
-  <ToggleButtonFeature sizeStyles={customSizeStyles} iconName="TooEasy" marginRight={3}>Too easy</ToggleButtonFeature>
-  <ToggleButtonFeature sizeStyles={customSizeStyles} iconName="Suitable" marginRight={3}>Suitable</ToggleButtonFeature>
-  <ToggleButtonFeature sizeStyles={customSizeStyles} iconName="TooHard">Too hard</ToggleButtonFeature>
+  <ToggleButtonFeature sizeStyles={customSizeStyles} icon={IconTooEasy} marginRight={3}>Too easy</ToggleButtonFeature>
+  <ToggleButtonFeature sizeStyles={customSizeStyles} icon={IconSuitable} marginRight={3}>Suitable</ToggleButtonFeature>
+  <ToggleButtonFeature sizeStyles={customSizeStyles} icon={IconTooHard}>Too hard</ToggleButtonFeature>
 </View>
 ```

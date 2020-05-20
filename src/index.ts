@@ -32,7 +32,7 @@ export {
 } from "./components/ToggleButtonFeature";
 export { default as Pill, PillProps } from "./components/Pill";
 export { default as PageBody, PageBodyProps } from "./components/PageBody";
-export { default as Icon, IconProps } from "./components/Icon";
+export { IconProps } from "./components/IconBase";
 export {
   default as PageHeader,
   PageHeaderProps,
@@ -216,6 +216,8 @@ export {
 export { default as Stepper, StepperProps } from "./components/Stepper";
 
 export { default as Rating, RatingProps } from "./components/Rating";
+
+export { default as Null } from "./components/Null"; // DO NOT USE
 
 /* Utils */
 export { default as priceFormatterUtil } from "./utils/priceFormatter";

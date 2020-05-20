@@ -20,7 +20,7 @@ releaseVersion: 0.0.73
 ### UL with specific icon and color and fontSize
 
 ```.jsx
-<UL iconName="Success" fontSize="3" color="subtle">
+<UL icon={IconSuccess} fontSize="3" color="subtle">
     <LI>List Item 1</LI>
     <LI>List Item 2 multiline Text, Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</LI>
     <LI>List Item 3</LI>
@@ -33,15 +33,15 @@ releaseVersion: 0.0.73
 ### UL with different icons on each Li
 
 ```.jsx
-<UL iconName="Success">
+<UL icon={IconSuccess}>
     <LI iconColor="success">Parent Icon</LI>
-    <LI iconName="Star">Star Icon</LI>
-    <LI iconName="StarOutline">StarOutline Icon</LI>
-    <LI iconName="Tag">Tag Icon</LI>
-    <LI iconName="Toggle">Toggle Icon</LI>
-    <LI iconName="Trash">Trash Icon</LI>
-    <LI iconName="Warning">Warning Icon</LI>
-    <LI iconName="Video">Video Icon</LI>
+    <LI icon={IconStar}>Star Icon</LI>
+    <LI icon={IconStarOutline}>StarOutline Icon</LI>
+    <LI icon={IconTag}>Tag Icon</LI>
+    <LI icon={IconToggle}>Toggle Icon</LI>
+    <LI icon={IconTrash}>Trash Icon</LI>
+    <LI icon={IconWarning}>Warning Icon</LI>
+    <LI icon={IconVideo}>Video Icon</LI>
      
 </UL>
 ```

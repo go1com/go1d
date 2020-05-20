@@ -1,5 +1,6 @@
 import * as React from "react";
 import { cleanup, render } from "react-testing-library";
+import IconCourse from "../Icons/Course";
 import CourseSlat, { dueDateFormatter } from "./index";
 
 afterEach(cleanup);
@@ -23,7 +24,7 @@ it("renders without crashing with all props", () => {
       imageOverlayRenderer={testRenderer}
       enrollment={{ status: "completed", dueDate: "" }}
       type="Course"
-      typeIcon="Course"
+      typeIcon={IconCourse}
       passive={false}
     />
   );
@@ -43,7 +44,7 @@ it("renders passive course slats", () => {
       actionRender={testRenderer}
       contentRender={testRenderer}
       type="Course"
-      typeIcon="Course"
+      typeIcon={IconCourse}
       passive={true}
     />
   );
@@ -63,7 +64,7 @@ it("should render author as passed component", () => {
       actionRender={testRenderer}
       contentRender={testRenderer}
       type="Course"
-      typeIcon="Course"
+      typeIcon={IconCourse}
       passive={true}
     />
   );
@@ -130,7 +131,7 @@ it("renders with premium", () => {
       actionRender={testRenderer}
       contentRender={testRenderer}
       type="Course"
-      typeIcon="Course"
+      typeIcon={IconCourse}
       passive={true}
       premium={true}
     />

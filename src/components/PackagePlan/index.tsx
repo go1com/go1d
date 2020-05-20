@@ -2,7 +2,7 @@ import * as React from "react";
 import { autobind } from "../../utils/decorators";
 import priceFormatterUtil from "../../utils/priceFormatter";
 import safeInvoke from "../../utils/safeInvoke";
-import Icon from "../Icon";
+import IconCheck from "../Icons/Check";
 import Text from "../Text";
 import Theme from "../Theme";
 import View, { ViewProps } from "../View";
@@ -82,7 +82,7 @@ class PackagePlan extends React.Component<PackagePlanProps, any> {
                   height="100%"
                   width="100%"
                 >
-                  {selected && <Icon size={2} name="Check" color="accent" />}
+                  {selected && <IconCheck size={2} color="accent" />}
                 </View>
               </View>
 

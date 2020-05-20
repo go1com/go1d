@@ -8,7 +8,7 @@ releaseVersion: 0.9.38
 ## Examples
 
 ```.jsx
-<Rating name="rating" iconName="Star" defaultValue={4} />
+<Rating name="rating" defaultValue={4} />
 ```
 
 ### Empty
@@ -19,7 +19,7 @@ releaseVersion: 0.9.38
 
 ### Any icon can be used
 ```.jsx
-<Rating name="rating" iconName="Go1Logo" defaultValue={4} />
+<Rating name="rating" icon={IconGo1Logo} unselectedIcon={IconGo1Logo} defaultValue={4} />
 ```
 
 ### Doesnt have to be out of 5
@@ -29,13 +29,13 @@ releaseVersion: 0.9.38
 
 ### Controller
 ```.jsx
-<Rating name="rating" iconName="Star" value={4} />
+<Rating name="rating" icon={IconStar} value={4} />
 ```
 
 
 ### Disabled
 ```.jsx
-<Rating name="rating" iconName="Star" disabled={true} defaultValue={4} />
+<Rating name="rating" icon={IconStar} disabled={true} defaultValue={4} />
 ```
 
 

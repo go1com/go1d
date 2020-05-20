@@ -1,5 +1,7 @@
 import * as React from "react";
 import { render } from "react-testing-library";
+import IconGo1Logo from "../Icons/Go1Logo";
+import IconStar from "../Icons/Star";
 import Rating from "./index";
 
 it("test render count", () => {
@@ -16,7 +18,7 @@ it("renders with default value", () => {
   const value = 4;
   const ref: React.RefObject<any> = React.createRef();
   render(
-    <Rating name="Rating" iconName="Go1Logo" defaultValue={value} ref={ref} />
+    <Rating name="Rating" icon={IconGo1Logo} defaultValue={value} ref={ref} />
   );
   if (ref.current) {
     expect(ref.current.state.value).toBe(value);
@@ -29,7 +31,7 @@ it("renders controlled", () => {
   render(
     <Rating
       name="Rating"
-      iconName="Star"
+      icon={IconStar}
       value={3}
       count={3}
       selectedColor="contrast"

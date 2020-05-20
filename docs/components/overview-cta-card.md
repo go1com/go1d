@@ -48,7 +48,7 @@ releaseVersion: 0.0.41
     <>
         <Text fontSize={3} fontWeight="semibold">Included in GO1 Premium</Text>
         <Text fontWeight="semibold" color="subtle">Starting from $12 per user for teams</Text>
-        <Button marginBottom={4} paddingTop={0} iconName="ChevronRight" flexDirection="row-reverse" justifyContent="flex-end" paddingLeft={0} color="accent" href="google.com">Learn more</Button>
+        <Button marginBottom={4} paddingTop={0} icon={IconChevronRight} flexDirection="row-reverse" justifyContent="flex-end" paddingLeft={0} color="accent" href="google.com">Learn more</Button>
         <ButtonFilled>Try it free</ButtonFilled>
       </>
     )}
@@ -80,7 +80,7 @@ Different properties are displayed in different positions and shown/hidden based
     <>
         <Text fontSize={3} fontWeight="semibold">Included in GO1 Premium</Text>
         <Text fontWeight="semibold" color="subtle">Starting from $12 per user for teams</Text>
-        <Button marginBottom={4} paddingTop={0} iconName="ChevronRight" flexDirection="row-reverse" justifyContent="flex-end" paddingLeft={0} color="accent" href="google.com">Learn more</Button>
+        <Button marginBottom={4} paddingTop={0} icon={IconChevronRight} flexDirection="row-reverse" justifyContent="flex-end" paddingLeft={0} color="accent" href="google.com">Learn more</Button>
         <ButtonFilled>Try it free</ButtonFilled>
       </>
     )}
@@ -131,7 +131,7 @@ Different properties are displayed in different positions and shown/hidden based
       <>
         <Text fontSize={3} fontWeight="semibold">Included in GO1 Premium</Text>
         <Text fontWeight="semibold" color="subtle">Starting from $12 per user for teams</Text>
-        <Button marginBottom={4} paddingTop={0} iconName="ChevronRight" flexDirection="row-reverse" justifyContent="flex-end" paddingLeft={0} color="accent" href="google.com">Learn more</Button>
+        <Button marginBottom={4} paddingTop={0} icon={IconChevronRight} flexDirection="row-reverse" justifyContent="flex-end" paddingLeft={0} color="accent" href="google.com">Learn more</Button>
         <ButtonFilled>Try it free</ButtonFilled>
       </>
     )}

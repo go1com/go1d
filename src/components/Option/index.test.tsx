@@ -1,5 +1,6 @@
 import * as React from "react";
 import { cleanup, render } from "react-testing-library";
+import IconChevronRight from "../Icons/ChevronRight";
 import Option from "./index";
 
 afterEach(cleanup);
@@ -13,7 +14,7 @@ it("renders without crashing with full options", () => {
     <Option
       title="Title Test"
       spotIcon="PlusCircle"
-      actionIcon="ChevronRight"
+      actionIcon={IconChevronRight}
       lines={2}
       onClick={jest.fn()}
       checked={true}

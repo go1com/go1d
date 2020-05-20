@@ -3,6 +3,9 @@ import { cleanup, render } from "react-testing-library";
 import ButtonFilled from "../ButtonFilled";
 import Dropdown from "./index";
 
+import IconPlus from "../Icons/Plus";
+import IconTrash from "../Icons/Trash";
+
 afterEach(cleanup);
 
 it("renders without crashing without items", () => {
@@ -27,13 +30,13 @@ it("renders without crashing with items", () => {
           title: "Add",
           href: "#testing",
           color: "accent",
-          iconName: "Plus",
+          icon: IconPlus,
         },
         {
           title: "Delete",
           href: "#testing",
           color: "danger",
-          iconName: "Trash",
+          icon: IconTrash,
         },
       ]}
       renderFunction={mock}
@@ -56,13 +59,13 @@ it("renders with defaul render function", () => {
           title: "Add",
           href: "#testing",
           color: "accent",
-          iconName: "Plus",
+          icon: IconPlus,
         },
         {
           title: "Delete",
           href: "#testing",
           color: "danger",
-          iconName: "Trash",
+          icon: IconTrash,
         },
       ]}
       itemToString={jest.fn()}

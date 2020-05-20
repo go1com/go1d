@@ -2,9 +2,10 @@ import get = require("lodash/get");
 import * as React from "react";
 import safeInvoke from "../../utils/safeInvoke";
 import Base from "../Base";
-import Icon from "../Icon";
 import Text, { TextProps } from "../Text";
 import View from "../View";
+
+import IconCheck from "../Icons/Check";
 
 export interface CheckboxProps extends TextProps {
   id?: string;
@@ -141,7 +142,7 @@ class Checkbox extends React.Component<
               borderWidth: 1,
             }}
           >
-            {value && <Icon size={iconSize} color="accent" name="Check" />}
+            {value && <IconCheck size={iconSize} color="accent" />}
           </View>
           <Text
             color={color}

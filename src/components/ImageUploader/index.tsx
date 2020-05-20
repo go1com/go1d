@@ -6,12 +6,15 @@ import { autobind } from "../../utils/decorators";
 import safeInvoke from "../../utils/safeInvoke";
 import BaseUploader from "../BaseUploader";
 import ButtonFilled from "../ButtonFilled";
-import Icon from "../Icon";
 import Stepper from "../Stepper";
 import Text from "../Text";
 import Theme from "../Theme";
 import View, { ViewProps } from "../View";
 import { getCroppedImg } from "./utils";
+
+import IconAddItem from "../Icons/AddItem";
+import IconCamera from "../Icons/Camera";
+import IconTrash from "../Icons/Trash";
 
 const Cropper: typeof ICropper = CropperClass as any;
 
@@ -308,7 +311,7 @@ class ImageUploader extends React.Component<ImageUploaderProps, State> {
             overflow="hidden"
           >
             <ButtonFilled
-              iconName="Trash"
+              icon={IconTrash}
               iconColor="subtle"
               onClick={this.removeImage}
               disabled={disabled}
@@ -319,7 +322,7 @@ class ImageUploader extends React.Component<ImageUploaderProps, State> {
               }}
             />
             <ButtonFilled
-              iconName="Camera"
+              icon={IconCamera}
               iconColor="subtle"
               onClick={open}
               disabled={disabled}
@@ -381,7 +384,7 @@ class ImageUploader extends React.Component<ImageUploaderProps, State> {
           flexDirection="column"
           css={{ opacity: isDragActive ? 0 : 1 }}
         >
-          <Icon name="Camera" color="muted" size={8} />
+          <IconCamera color="muted" size={8} />
           <View marginBottom={2}>
             <Text fontWeight="semibold">{uploadText}</Text>
           </View>
@@ -389,8 +392,7 @@ class ImageUploader extends React.Component<ImageUploaderProps, State> {
             {supportedFormatText}
           </Text>
         </View>
-        <Icon
-          name="AddItem"
+        <IconAddItem
           size={6}
           position="absolute"
           color="accent"

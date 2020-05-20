@@ -2,7 +2,7 @@ import * as React from "react";
 import { Transition } from "react-transition-group";
 import { autobind } from "../../utils/decorators";
 import safeInvoke from "../../utils/safeInvoke";
-import Icon from "../Icon";
+import { IconProps } from "../IconBase";
 import Text, { TextProps } from "../Text";
 import Theme from "../Theme";
 import View from "../View";
@@ -26,7 +26,8 @@ export interface TextInputProps extends TextProps {
   onClick?: (evt: React.MouseEvent<any>) => void;
   onFocus?: (evt: React.FocusEvent<any>) => void;
   onBlur?: (evt: React.FocusEvent<any>) => void;
-  iconName?: string;
+  iconName?: never; // Removed
+  icon?: React.ComponentType<IconProps>;
   suffixNode?: React.ReactNode;
   inputType?: string;
   error?: boolean;
@@ -98,9 +99,9 @@ class TextInput extends React.PureComponent<TextInputProps, TextInputState> {
   public render() {
     const {
       id,
-      iconName,
       size,
       value,
+      icon: IconElement,
       label,
       floating,
       placeholder,
@@ -117,6 +118,7 @@ class TextInput extends React.PureComponent<TextInputProps, TextInputState> {
       css,
       ...props
     } = this.props;
+
     const sizeStyles = {
       lg: {
         height: 48,
@@ -188,7 +190,7 @@ class TextInput extends React.PureComponent<TextInputProps, TextInputState> {
               ...viewCss,
             }}
           >
-            {iconName && (
+            {IconElement && (
               <View
                 position="absolute"
                 height={height}
@@ -200,7 +202,7 @@ class TextInput extends React.PureComponent<TextInputProps, TextInputState> {
                   left: 0,
                 }}
               >
-                <Icon name={iconName} size={typeScale} color="subtle" />
+                <IconElement size={typeScale} color="subtle" />
               </View>
             )}
             <Transition in={isFloating} timeout={animation.subtle}>
@@ -227,7 +229,7 @@ class TextInput extends React.PureComponent<TextInputProps, TextInputState> {
                     // get rid of default styles
                     width: "100%",
                     minHeight: height,
-                    paddingLeft: iconName && height,
+                    paddingLeft: IconElement && height,
                     background: 0,
                     border: 0,
                     flexGrow: 1,
@@ -253,19 +255,19 @@ class TextInput extends React.PureComponent<TextInputProps, TextInputState> {
                   color={error ? "danger" : "inherit"}
                   lineHeight="ui"
                   htmlFor={id}
-                  paddingX={!iconName ? paddingX : 0}
+                  paddingX={!IconElement ? paddingX : 0}
                   fontSize={isFloating ? floatingLabelSize : typeScale}
                   css={[
                     {
                       position: "absolute",
                       top: "50%",
-                      left: iconName ? height : 0,
+                      left: IconElement ? height : 0,
                       transform: "translate(0, -50%)",
                     },
                     isFloating && {
                       fontSize: floatingLabelSize,
                       top: floatingLabelTop,
-                      left: iconName ? height : 0,
+                      left: IconElement ? height : 0,
                       transform: "none",
                     },
                   ]}

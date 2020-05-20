@@ -1,9 +1,12 @@
 import * as React from "react";
 
 import formatDuration from "../../utils/durationFormatter";
-import Icon from "../Icon";
 import Text from "../Text";
 import View, { ViewProps } from "../View";
+
+import IconChevronDown from "../Icons/ChevronDown";
+import IconChevronUp from "../Icons/ChevronUp";
+import IconClock from "../Icons/Clock";
 
 export interface CourseModuleProps extends ViewProps {
   title: string;
@@ -41,6 +44,7 @@ class CourseModule extends React.Component<CourseModuleProps, any> {
     } = this.props;
 
     const { isOpen } = this.state;
+    const ChevronIcon = isOpen ? IconChevronUp : IconChevronDown;
 
     return (
       <View paddingX={4} {...props}>
@@ -52,7 +56,7 @@ class CourseModule extends React.Component<CourseModuleProps, any> {
             {duration && (
               <View flexDirection="row" alignItems="center">
                 <View paddingRight={2}>
-                  <Icon size={1} color="muted" name="Clock" />
+                  <IconClock size={1} color="muted" />
                 </View>
                 <Text fontSize={2}>{formatDuration(duration)}</Text>
               </View>
@@ -66,11 +70,7 @@ class CourseModule extends React.Component<CourseModuleProps, any> {
                   cursor: "pointer",
                 }}
               >
-                <Icon
-                  color="subtle"
-                  size={1}
-                  name={isOpen ? "ChevronUp" : "ChevronDown"}
-                />
+                <ChevronIcon color="subtle" size={1} />
               </View>
             )}
           </View>

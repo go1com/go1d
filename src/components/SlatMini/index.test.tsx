@@ -1,5 +1,6 @@
 import * as React from "react";
 import { cleanup, render } from "react-testing-library";
+import IconCross from "../Icons/Cross";
 import SlatMini from "./index";
 
 afterEach(cleanup);
@@ -14,12 +15,12 @@ const props = {
   imageOverlayRenderer: () => <p>Hello</p>,
   dropdownItems: [
     {
-      icon: "Cross",
+      icon: IconCross,
       title: "fake item #01",
       action: jest.fn(),
     },
     {
-      icon: "Cross",
+      icon: IconCross,
       title: "fake item #02",
       action: jest.fn(),
     },

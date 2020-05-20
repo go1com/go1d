@@ -1,5 +1,5 @@
 import * as React from "react";
-import Icon from "../Icon";
+import { IconProps } from "../IconBase";
 import Spinner from "../Spinner";
 import Text from "../Text";
 import View, { ViewProps } from "../View";
@@ -8,7 +8,8 @@ export interface LabelProps extends ViewProps {
   htmlFor?: string;
   statusText?: string;
   statusColor?: string;
-  statusIcon?: string;
+  statusIcon?: React.ComponentType<IconProps>;
+  spinnerIcon?: boolean;
   color?: string;
 }
 
@@ -21,7 +22,8 @@ class Label extends React.PureComponent<LabelProps> {
       children,
       statusText,
       statusColor = "subtle",
-      statusIcon,
+      statusIcon: StatusIcon,
+      spinnerIcon,
       whiteSpace,
       color = "default",
       ...props
@@ -45,16 +47,11 @@ class Label extends React.PureComponent<LabelProps> {
         </Text>
         {statusText && (
           <View flexDirection="row" alignItems="center">
-            {statusIcon &&
-              (statusIcon === "Spinner" ? (
+            {(StatusIcon || spinnerIcon) &&
+              (spinnerIcon ? (
                 <Spinner borderColor="accent" size={1} marginRight={2} />
               ) : (
-                <Icon
-                  size={1}
-                  name={statusIcon}
-                  color={statusColor}
-                  marginRight={2}
-                />
+                <StatusIcon size={1} color={statusColor} marginRight={2} />
               ))}
             <Text
               fontSize={1}

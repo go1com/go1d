@@ -4,7 +4,8 @@ import { Manager, Popper, Reference } from "react-popper";
 import { List } from "react-virtualized";
 import { FontWeight } from "../../foundations/foundation-types";
 import safeInvoke from "../../utils/safeInvoke";
-import Icon from "../Icon";
+import IconChevronDown from "../Icons/ChevronDown";
+import IconCross from "../Icons/Cross";
 import Portal from "../Portal";
 import SearchInput from "../SearchInput";
 import Text from "../Text";
@@ -245,8 +246,7 @@ class Select extends React.PureComponent<SelectProps, any> {
                               }}
                             >
                               {selectedItem && clearable ? (
-                                <Icon
-                                  name="Cross"
+                                <IconCross
                                   color="muted"
                                   size={2}
                                   onClick={this.handleSelectionClear(
@@ -254,11 +254,7 @@ class Select extends React.PureComponent<SelectProps, any> {
                                   )}
                                 />
                               ) : (
-                                <Icon
-                                  name="ChevronDown"
-                                  color="muted"
-                                  size={2}
-                                />
+                                <IconChevronDown color="muted" size={2} />
                               )}
                             </View>
                           </View>

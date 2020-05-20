@@ -1,7 +1,6 @@
 import * as React from "react";
 import { Colors } from "../../../foundations/foundation-types";
 import ButtonMinimal, { ButtonMinimalProps } from "../../ButtonMinimal";
-import Icon from "../../Icon";
 import Text from "../../Text";
 import Theme from "../../Theme";
 import View from "../../View";
@@ -24,7 +23,7 @@ export default ({ item, index, getItemProps }: Props) => {
     href,
     title,
     description,
-    iconName,
+    icon: IconElement,
     css,
     hoverColor = "highlight",
     onClick,
@@ -64,7 +63,7 @@ export default ({ item, index, getItemProps }: Props) => {
           {...itemProps}
         >
           <View flexDirection="row" alignItems="center">
-            {iconName && <Icon name={iconName} iconColor="subtle" size={4} />}
+            {IconElement && <IconElement iconColor="subtle" size={4} />}
             <View marginLeft={3}>
               <Text fontWeight="semibold">{title}</Text>
               <Text fontSize={2} fontWeight="normal" color="subtle">

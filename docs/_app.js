@@ -8,6 +8,7 @@ import { Flipflop } from "libreact/lib/Flipflop";
 import { Provider as RebassProvider } from "rebass";
 import { Link } from "react-router-dom";
 import groupBy from "lodash/groupBy";
+import * as iconScope from "../src/components/Icons";
 import * as systemScope from "../src";
 import * as docsScope from "./_src/components";
 import * as docsVariables from './_src'
@@ -24,6 +25,7 @@ const navOrder = ["/brand", "/design", "/writing", "/components"];
 
 const scope = {
   Flipflop,
+  ...iconScope,
   ...systemScope,
   ...docsScope,
   ...docsVariables,

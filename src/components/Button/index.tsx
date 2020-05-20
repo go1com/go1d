@@ -2,7 +2,7 @@ import isUndefined = require("lodash/isUndefined");
 import merge = require("lodash/merge");
 import * as React from "react";
 import { FontWeight } from "../../foundations/foundation-types";
-import Icon from "../Icon/index";
+import { IconProps } from "../IconBase";
 import Link from "../Link";
 import Spinner from "../Spinner";
 import Text from "../Text";
@@ -15,7 +15,9 @@ export interface ButtonProps extends ViewProps {
   round?: boolean;
   backgroundColor?: string;
   sizeStyles?: any;
-  iconName?: string;
+  iconName?: never; // No longer supported
+  icon?: React.ComponentType<IconProps>;
+  spinnerIcon?: boolean;
   iconMargin?: number | number[];
   fontWeight?: FontWeight;
   onClick?: (evt: React.SyntheticEvent) => void;
@@ -52,7 +54,8 @@ const Button: React.SFC<ButtonProps> = ({
   color = "subtle",
   backgroundColor,
   sizeStyles,
-  iconName,
+  icon: IconElement,
+  spinnerIcon,
   children,
   fontWeight = "semibold",
   css,
@@ -143,22 +146,21 @@ const Button: React.SFC<ButtonProps> = ({
       ]}
       {...props}
     >
-      {iconName &&
-        (iconName === "Spinner" ? (
-          <Spinner
-            borderColor={iconColor}
-            size={iconSizeValue}
-            {...iconMarginStyle}
-          />
-        ) : (
-          <Icon
-            name={iconName}
-            transition={transition}
-            color={iconColor}
-            size={iconSizeValue}
-            {...iconMarginStyle}
-          />
-        ))}
+      {spinnerIcon && (
+        <Spinner
+          borderColor={iconColor}
+          size={iconSizeValue}
+          {...iconMarginStyle}
+        />
+      )}
+      {!spinnerIcon && IconElement && (
+        <IconElement
+          transition={transition}
+          color={iconColor}
+          size={iconSizeValue}
+          {...iconMarginStyle}
+        />
+      )}
       <Text
         lineHeight="ui"
         transition={transition}

@@ -10,7 +10,7 @@ export type Opacities =
   | "feedback"
   | "highlight"
   | "emptyBackground"
-  | "emptyIcon"
+  | "IconEmpty"
   | "pill"
   | "heroOverlayAccentNoImage"
   | "heroOverlayAccent"

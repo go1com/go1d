@@ -8,6 +8,10 @@ import PureWrapper from "./internals/PureWrapper";
 
 import foundations from "../../foundations";
 import ButtonFilled from "../ButtonFilled";
+
+import IconChevronLeft from "../Icons/ChevronLeft";
+import IconChevronRight from "../Icons/ChevronRight";
+
 interface StandardProps extends ViewProps {
   children?: React.ReactNode;
   slidesToShow?: number;
@@ -308,7 +312,7 @@ class Carousel extends React.Component<CarouselProps, any> {
             )}
             aria-label="Navigate Carousel Left"
             data-testid="leftNavigationButton"
-            iconName="ChevronLeft"
+            icon={IconChevronLeft}
             position="absolute"
             round={true}
             justifyContent="center"
@@ -326,7 +330,7 @@ class Carousel extends React.Component<CarouselProps, any> {
             )}
             aria-label="Navigate Carousel Right"
             data-testid="rightNavigationButton"
-            iconName="ChevronRight"
+            icon={IconChevronRight}
             position="absolute"
             justifyContent="center"
             round={true}

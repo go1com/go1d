@@ -1,8 +1,14 @@
 import * as React from "react";
 
-import Icon from "../Icon";
+import { IconProps } from "../IconBase";
 import Text from "../Text";
 import View, { ViewProps } from "../View";
+
+import IconEnrolled from "../Icons/Enrolled";
+import IconInProgress from "../Icons/InProgress";
+import IconLock from "../Icons/Lock";
+import IconNotPassed from "../Icons/NotPassed";
+import IconPassed from "../Icons/Passed";
 
 export interface EnrolmentStatusProps {
   type: "unpublished" | "enrolled" | "inProgress" | "completed" | "failed";
@@ -16,7 +22,7 @@ interface EnrolmentStatusComponentProps extends ViewProps {
 
 interface StatusStyle {
   textColor?: string;
-  iconName?: string;
+  icon?: React.ComponentType<IconProps>;
   iconColor?: string;
 }
 
@@ -35,38 +41,43 @@ const EnrolmentStatus: React.SFC<EnrolmentStatusComponentProps> = ({
   };
   const statusStyleMapping: { [key: string]: StatusStyle } = {
     unpublished: {
-      iconName: "Lock",
+      icon: IconLock,
     },
     enrolled: {
-      iconName: "Enrolled",
+      icon: IconEnrolled,
       iconColor: overDue ? "danger" : "accent",
     },
     inProgress: {
-      iconName: "InProgress",
+      icon: IconInProgress,
       iconColor: overDue ? "danger" : "accent",
     },
     completed: {
-      iconName: "Passed",
+      icon: IconPassed,
       iconColor: "success",
     },
     failed: {
-      iconName: "NotPassed",
+      icon: IconNotPassed,
       iconColor: "danger",
     },
   };
+
   const statusStyle: StatusStyle = {
     ...(statusStyleMapping[type] || {}),
     ...defaultStatusStyleMapping,
   };
+
+  const IconElement = statusStyle.icon;
+
   return (
     <View flexDirection="row" {...props}>
-      <Icon
-        name={statusStyle.iconName}
-        size={1}
-        color={statusStyle.iconColor}
-        marginTop={1}
-        marginRight={2}
-      />
+      {IconElement && (
+        <IconElement
+          size={1}
+          color={statusStyle.iconColor}
+          marginTop={1}
+          marginRight={2}
+        />
+      )}
       {text && (
         <Text color={statusStyle.textColor} fontSize={1} fontWeight="semibold">
           {text}

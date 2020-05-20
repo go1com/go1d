@@ -31,7 +31,7 @@ A container for the header of a page, it contains the menu open button and then 
   breadcrumbHref="#testing"
   breadcrumbTitle="Portals"
 >
-  <ButtonFilled iconName="Edit">
+  <ButtonFilled icon={IconEdit}>
     Edit
   </ButtonFilled>
 </PageHeader>

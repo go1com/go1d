@@ -1,6 +1,7 @@
 import Downshift, * as DownshiftType from "downshift";
 import * as React from "react";
 import { Manager, Popper, Reference, RefHandler } from "react-popper";
+import { IconProps } from "../IconBase";
 import Portal from "../Portal";
 import View, { ViewProps } from "../View";
 import DropdownItem from "./DropdownItem";
@@ -56,7 +57,7 @@ function defaultRenderFunction(
   item: {
     title: string;
     description: string;
-    iconName?: string;
+    icon?: React.ComponentType<IconProps>;
     href?: any;
     onClick?: (evt: React.SyntheticEvent<any>) => void;
   },

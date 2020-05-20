@@ -4,6 +4,9 @@ import safeInvoke from "../../utils/safeInvoke";
 import Button from "../Button";
 import TextInput, { TextInputProps } from "../TextInput";
 
+import IconClose from "../Icons/Close";
+import IconSearch from "../Icons/Search";
+
 export interface SearchInputProps extends TextInputProps {
   element?: any;
   onSubmit: (search: string, event: React.SyntheticEvent<HTMLElement>) => void;
@@ -122,7 +125,7 @@ class SearchInput extends React.Component<SearchInputProps, any> {
 
     return (
       <TextInput
-        iconName="Search"
+        icon={IconSearch}
         value={this.state.value}
         size={size}
         onChange={this.handleChange}
@@ -132,7 +135,7 @@ class SearchInput extends React.Component<SearchInputProps, any> {
         innerRef={innerRef ? innerRef : this.ref}
         suffixNode={
           <Button
-            iconName="Close"
+            icon={IconClose}
             color="muted"
             size={size}
             data-testid="clearButton"

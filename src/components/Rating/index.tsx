@@ -4,10 +4,14 @@ import { Button, ButtonProps } from "../..";
 import safeInvoke from "../../utils/safeInvoke";
 import View from "../View";
 
+import { IconProps } from "../IconBase";
+import IconStar from "../Icons/Star";
+import IconStarOutline from "../Icons/StarOutline";
+
 export interface RatingProps extends ButtonProps {
   name?: string;
-  iconName?: string;
-  unselectedIconName?: string;
+  unselectedIconName?: never; // Removed
+  unselectedIcon?: React.ComponentType<IconProps>;
   value?: number;
   defaultValue?: number;
   selectedColor?: string;
@@ -58,13 +62,13 @@ class Rating extends React.PureComponent<RatingProps> {
 
   public render() {
     const {
-      iconName = "Star",
+      icon,
+      unselectedIcon,
       selectedColor = "accent",
       unselectedColor = "muted",
       disabled = false,
       value: propValue,
       viewProps,
-      unselectedIconName = iconName === "Star" ? "StarOutline" : iconName,
       count = 5,
       ...remainingProps
     } = this.props;
@@ -84,13 +88,15 @@ class Rating extends React.PureComponent<RatingProps> {
           const val = index + 1;
           const selected = selectedValue >= val;
           const hover = hoverValue >= val;
-          const icon = selected ? iconName : unselectedIconName;
+          const toggledIcon = selected
+            ? icon || IconStar
+            : unselectedIcon || IconStarOutline;
           const color = selected || hover ? selectedColor : unselectedColor;
 
           return (
             <Button
               key={index}
-              iconName={icon}
+              icon={toggledIcon}
               color={color}
               onClick={this.onClick}
               value={val}
