@@ -113,6 +113,8 @@ export { default as IconRetry } from "./Retry";
 export { default as IconRockOn } from "./RockOn";
 export { default as IconRotateBack } from "./RotateBack";
 export { default as IconRotateForward } from "./RotateForward";
+export { default as IconSave } from "./Save";
+export { default as IconSaved } from "./Saved";
 export { default as IconSearch } from "./Search";
 export { default as IconSettings } from "./Settings";
 export { default as IconShare } from "./Share";
