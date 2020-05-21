@@ -37,7 +37,6 @@ class AllIcons extends Component {
           </tr>
           {Object.entries(Icons)
             .map(([Key, Component]) => {
-              console.log(Key);
               if (Key.substr(0, 4).toLowerCase() === "icon") {
                 return [Key.substr(4), Component];
               }
@@ -45,7 +44,7 @@ class AllIcons extends Component {
               return [Key, Component];
             })
             .filter(
-              name =>
+              ([name]) =>
                 filter && filter.length
                   ? name.toLowerCase().includes(filter.toLowerCase())
                   : true
