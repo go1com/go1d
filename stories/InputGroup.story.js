@@ -1,8 +1,8 @@
-import React from 'react'; 
-import {storiesOf} from '@storybook/react'; 
-import {InputGroup,InputTextAffix,TextInput,SelectDropdown,View,ButtonFilled,Icon} from '../src'; 
-storiesOf("InputGroup", module) 
-.add('Base', () =>   <InputGroup>
+import React from 'react';
+import { storiesOf } from '@storybook/react';
+import { InputGroup, InputTextAffix, TextInput, SelectDropdown, View, ButtonFilled, Icon } from '../src';
+storiesOf("InputGroup", module)
+  .add('Base', () => <InputGroup>
     <InputTextAffix text="www." />
     <TextInput
       borderRadius={0}
@@ -12,15 +12,15 @@ storiesOf("InputGroup", module)
       }}
     />
     <InputTextAffix text=".mygo1.com" />
-  </InputGroup>) 
-.add('With SelectDropdown and TextInput', () =>   <InputGroup>
+  </InputGroup>)
+  .add('With SelectDropdown and TextInput', () => <InputGroup>
     <SelectDropdown
       options={[
         { "value": "chocolate", label: "Chocolate" },
         { "value": "stawberry", label: "Strawberry" },
         { "value": "vanilla", label: "Vanilla" }
       ]}
-      optionRenderer={({value, label}) => <View>{label}</View>}
+      optionRenderer={({ value, label }) => <View>{label}</View>}
       onChange={value => window.alert(`You selected ${value}`)}
     >
       {({ ref, getToggleButtonProps }) => (
@@ -39,9 +39,9 @@ storiesOf("InputGroup", module)
             }
           }}
         >
-        <View flexDirection="row" alignItems="center">
-          Button <Icon name="ChevronDown" marginLeft={3} />
-        </View>
+          <View flexDirection="row" alignItems="center">
+            Button <IconChevronDown marginLeft={3} />
+          </View>
         </ButtonFilled>
       )}
     </SelectDropdown>

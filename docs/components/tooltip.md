@@ -23,7 +23,7 @@ This is a tooltip component, In the basic usage it will wrap the tooltip's child
 ```.jsx
 <Text
 >
- <Tooltip tip={<Text color=""><Icon name="Eye" display="inline" /> See You</Text>} mode="click" placement="right">Click ME!</Tooltip>
+ <Tooltip tip={<Text color=""><EyeIcon display="inline" /> See You</Text>} mode="click" placement="right">Click ME!</Tooltip>
 </Text>
 ```
 

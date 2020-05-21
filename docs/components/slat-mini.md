@@ -41,7 +41,7 @@ A generic mini slat component
   type="Event"
   typeBackground="background"
   actionRenderer={() => (
-    <Icon color="muted" name="PlusCircle" marginRight={3} />
+    <IconPlusCircle color="muted" marginRight={3} />
   )}
 />
 ```

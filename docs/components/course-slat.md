@@ -32,7 +32,7 @@ releaseVersion: 0.0.3
   duration="4"
   actionRenderer={() => (
       <View flexDirection="row">
-      <Icon name="Import" marginRight={3} color="accent" />
+      <IconImport marginRight={3} color="accent" />
       <Text color="accent">Import</Text>
       </View>
   )}

@@ -48,7 +48,7 @@ lead: A component that brings common styles to inline input groups
           }}
         >
         <View flexDirection="row" alignItems="center">
-          Button <Icon name="ChevronDown" marginLeft={3} />
+          Button <IconChevronDown marginLeft={3} />
         </View>
         </ButtonFilled>
       )}

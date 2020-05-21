@@ -8,7 +8,7 @@ storiesOf("OverviewHero", module)
     backgroundImage="https://images.unsplash.com/photo-1539512110726-6d89c892f117?fit=crop&w=589"
     subtitle={
       <View flexDirection="row" alignItems="center">
-        <Icon name="Video" marginRight={3} />
+        <IconVideo marginRight={3} />
         VIDEO
     </View>}
     breadcrumb={
@@ -23,7 +23,7 @@ storiesOf("OverviewHero", module)
     backgroundImage="https://images.unsplash.com/photo-1539512110726-6d89c892f117?fit=crop&w=589"
     subtitle={
       <View flexDirection="row" alignItems="center">
-        <Icon name="Course" marginRight={3} />
+        <IconCourse marginRight={3} />
         COURSE
     </View>}
     breadcrumb={
@@ -58,7 +58,7 @@ storiesOf("OverviewHero", module)
       backgroundImage="https://images.unsplash.com/photo-1539512110726-6d89c892f117?fit=crop&w=589"
       subtitle={
         <View flexDirection="row" alignItems="center">
-          <Icon name="Course" marginRight={3} />
+          <IconCourse marginRight={3} />
           COURSE
       </View>
       }

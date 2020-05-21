@@ -1,6 +1,7 @@
 import React from "react";
-import { View, Text, Table, TR, TH, TD, Theme, Icon } from "../../../src";
+import { View, Text, Table, TR, TH, TD, Theme } from "../../../src";
 import docs from "../../react-docs.json";
+import CheckIcon from "../../../src/components/Icons/Check";
 
 const Prop = ({
   name = "",
@@ -11,48 +12,48 @@ const Prop = ({
   inheritedFrom = false,
   previousRow = {},
 }) => (
-  <React.Fragment>
-    {fileName !== previousRow.fileName && (
-      <TR>
-        <TD>
-          {inheritedFrom ? (
-            <Text fontWeight="bold">
-              Inherited From {inheritedFrom.split(".")[0]}
+    <React.Fragment>
+      {fileName !== previousRow.fileName && (
+        <TR>
+          <TD>
+            {inheritedFrom ? (
+              <Text fontWeight="bold">
+                Inherited From {inheritedFrom.split(".")[0]}
+              </Text>
+            ) : (
+                <Text fontWeight="bold">Component Props</Text>
+              )}
+          </TD>
+          <TD>
+            <Text
+              marginLeft="auto"
+              element="a"
+              target="_blank"
+              href={`https://code.go1.com.au/apps/GO1D/blob/master/${fileName}`}
+            >
+              {fileName}
             </Text>
-          ) : (
-            <Text fontWeight="bold">Component Props</Text>
-          )}
-        </TD>
-        <TD>
-          <Text
-            marginLeft="auto"
-            element="a"
-            target="_blank"
-            href={`https://code.go1.com.au/apps/GO1D/blob/master/${fileName}`}
-          >
-            {fileName}
-          </Text>
-        </TD>
-      </TR>
-    )}
-    <TR>
-      <TD width="20%">
-        <Text>{name}</Text>
-      </TD>
-      <TD>{!flags.isOptional && <Icon name="Check" marginX="auto" />}</TD>
-      <TD width="50%">
-        <Text>{type || "N/A"}</Text>
-      </TD>
-    </TR>
-    {documentation.contentsRaw && (
+          </TD>
+        </TR>
+      )}
       <TR>
-        <TD>
-          <Text fontSize={1}>{documentation.contentsRaw}</Text>
+        <TD width="20%">
+          <Text>{name}</Text>
+        </TD>
+        <TD>{!flags.isOptional && <CheckIcon marginX="auto" />}</TD>
+        <TD width="50%">
+          <Text>{type || "N/A"}</Text>
         </TD>
       </TR>
-    )}
-  </React.Fragment>
-);
+      {documentation.contentsRaw && (
+        <TR>
+          <TD>
+            <Text fontSize={1}>{documentation.contentsRaw}</Text>
+          </TD>
+        </TR>
+      )}
+    </React.Fragment>
+  );
 
 function flatten(input) {
   const stack = [...input];
