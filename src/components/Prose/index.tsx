@@ -1,5 +1,5 @@
 import * as React from "react";
-import * as SanitizeHTML from "sanitize-html";
+import * as XSS from "xss";
 import Base from "../Base";
 import Button from "../Button";
 import Text, { TextProps } from "../Text";
@@ -72,6 +72,7 @@ class Prose extends React.Component<ProseProps, State> {
       lineHeight = "paragraph",
       lineClamp,
       expandable,
+      css = {},
       ...props
     } = this.props;
     const { isLineClamped, currentLineClamp } = this.state;
@@ -107,29 +108,13 @@ class Prose extends React.Component<ProseProps, State> {
               fontSize={fontSize}
               lineHeight={lineHeight}
               lineClamp={expandable ? currentLineClamp : lineClamp}
-              css={getStyles(foundations)}
+              css={{
+                ...getStyles(foundations),
+                ...css,
+              }}
               {...props}
               dangerouslySetInnerHTML={{
-                __html: SanitizeHTML(HTML, {
-                  allowedTags: SanitizeHTML.defaults.allowedTags.concat([
-                    "center",
-                    "h2",
-                    "img",
-                    "iframe",
-                  ]),
-                  allowedAttributes: {
-                    ...SanitizeHTML.defaults.allowedAttributes,
-                    img: ["alt", "src", "title"],
-                    iframe: [
-                      "src",
-                      "width",
-                      "height",
-                      "allow",
-                      "allowfullscreen",
-                      "frameborder",
-                    ],
-                  },
-                }),
+                __html: XSS.filterXSS(HTML),
               }}
             />
             {expandable && isLineClamped && (
