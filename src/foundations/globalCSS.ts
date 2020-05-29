@@ -20,7 +20,7 @@ export function fontCSS() {
 
   const link = document.createElement("link");
   link.href =
-    "https://fonts.googleapis.com/css?family=Muli:300,400,400i,600,800";
+    "https://fonts.googleapis.com/css?family=Muli:300,400,400i,600,800&display=swap";
   link.rel = "stylesheet";
 
   document.head.appendChild(link);
