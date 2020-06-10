@@ -7,6 +7,7 @@ import {
   JustifyContentProperty,
   OverflowProperty,
   PositionProperty,
+  TextAlignProperty,
 } from "csstype";
 import * as React from "react";
 import { opacify } from "../../foundations";
@@ -52,6 +53,7 @@ export interface ViewProps extends BaseProps {
   borderBottom?: number | number[];
   borderLeft?: number | number[];
   transition?: string | string[];
+  textAlign?: TextAlignProperty | TextAlignProperty[];
   tid?: string;
 }
 
