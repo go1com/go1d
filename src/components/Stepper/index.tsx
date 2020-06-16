@@ -214,20 +214,26 @@ class TextInput extends React.PureComponent<StepperProps, StepperState> {
 
   @autobind
   public increment() {
-    const { stepIncrement, maxNumber } = this.props;
+    const { stepIncrement, maxNumber, allowDecimal } = this.props;
 
-    this.updateStep(
-      Math.min(this.getCurrentValue() + Math.abs(stepIncrement), maxNumber)
-    );
+    const currentValue = this.getCurrentValue();
+    let newValue = currentValue + Math.abs(stepIncrement);
+    if (allowDecimal) {
+      newValue = Number(newValue.toPrecision(7));
+    }
+    this.updateStep(Math.min(newValue, maxNumber));
   }
 
   @autobind
   public decrement() {
-    const { stepIncrement, minNumber } = this.props;
+    const { stepIncrement, minNumber, allowDecimal } = this.props;
 
-    this.updateStep(
-      Math.max(this.getCurrentValue() - Math.abs(stepIncrement), minNumber)
-    );
+    const currentValue = this.getCurrentValue();
+    let newValue = currentValue - Math.abs(stepIncrement);
+    if (allowDecimal) {
+      newValue = Number(newValue.toPrecision(7));
+    }
+    this.updateStep(Math.max(newValue, minNumber));
   }
 
   public render() {
