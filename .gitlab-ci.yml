@@ -35,7 +35,7 @@ build:
   except:
     - "tags"
   only:
-    - master
+    - go1d-2.0
 
 build-dev:
   stage: build
@@ -54,13 +54,13 @@ build-dev:
     expire_in: 6h
   only: ["branches"]
   except:
-    - master
+    - go1d-2.0
 
 test:linting:
   stage: test
   script: yarn run tslint
   except:
-    - master
+    - go1d-2.0
     - tags
 
 test:unit:
@@ -82,7 +82,7 @@ visual-test:happo:
   - test:linting
   allow_failure: true
   before_script:
-    - export PREVIOUS_SHA=`git rev-parse origin/master`
+    - export PREVIOUS_SHA=`git rev-parse origin/go1d-2.0`
     - export CURRENT_SHA=$CI_COMMIT_SHA
     - export CHANGE_URL=$CI_PAGES_URL
   script:
@@ -97,7 +97,7 @@ visual-test:happo:
     - SUMMARY=$("$NPM_BIN"/happo compare "$PREVIOUS_SHA" "$CURRENT_SHA");
     - if [ "$EXIT_CODE" == "113" ]; then exit 1; fi; fi
   except:
-  - master
+  - go1d-2.0
   - tags
 
 pages: # NEVER rename this. I must apparently be exactly this to work
@@ -118,7 +118,7 @@ pages: # NEVER rename this. I must apparently be exactly this to work
   except:
     - "tags"
   only:
-    - master
+    - go1d-2.0
 
 release:npm:
   stage: npm-release
@@ -149,7 +149,7 @@ release:npm:
     - mv npm-readme.md readme.md
     - npm publish --access public
     - NPM_BIN=$(yarn bin)
-    - MASTER_SHA=$(git rev-parse origin/master)
+    - MASTER_SHA=$(git rev-parse origin/go1d-2.0)
     - if ! "$NPM_BIN"/happo has-report "$MASTER_SHA"; then
     - yarn config set no-progress
     - yarn install --silent
@@ -158,4 +158,4 @@ release:npm:
   except:
     - "tags"
   only:
-    - master
+    - go1d-2.0
