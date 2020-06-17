@@ -160,7 +160,7 @@ const CourseCard: React.SFC<CourseCardProps> = ({
                 paddingBottom={2}
               >
                 {author && (
-                  <View paddingBottom={2}>
+                  <View paddingBottom={2} flexShrink={1}>
                     <Text fontSize={1} color="subtle" lineClamp={1}>
                       {author}
                     </Text>
@@ -173,6 +173,7 @@ const CourseCard: React.SFC<CourseCardProps> = ({
                     width={20}
                     height={20}
                     paddingY={0}
+                    marginLeft={2}
                     backgroundColor="transparent"
                     css={{
                       ":hover, :focus": {
