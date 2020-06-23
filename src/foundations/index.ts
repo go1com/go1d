@@ -184,29 +184,33 @@ export const shadows: MappedKey<Shadows, string> = {
  * Type
  */
 
-const defaultFontFamily: string =
+const defaultSansserif: string =
   "-apple-system,BlinkMacSystemFont,helvetica,'helvetica neue',ubuntu,roboto,noto,'segoe ui',arial,sans-serif";
-const sansSerif: string = "'Muli', " + defaultFontFamily;
-const monospace: string = "'Source Code Pro', 'Menlo', monospace";
+const defaultSerif: string =
+  "-apple-system-ui-serif, ui-serif, Iowan Old Style, Apple Garamond, Baskerville, Times New Roman, Droid Serif, Times, Source Serif Pro, serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, serif";
+const sansSerif = "'Mark Pro'" + defaultSansserif;
+const serif = "'Victor Serif Trial'" + defaultSerif;
+const monospace = "'Source Code Pro', monospace" + defaultSansserif;
 
 export const type: ThemeType = {
   scale: {
-    sm: [0, 14, 16, 18, 21, 24, 28, 32, 37, 43, 49],
-    md: [0, 13, 16, 19, 23, 28, 33, 40, 48, 57, 69],
-    lg: [0, 13, 16, 20, 25, 31, 39, 49, 61, 76, 95],
+    sm: [12, 14, 16, 18, 20, 24, 28, 32, 36, 40, 44],
+    md: [12, 14, 16, 20, 22, 28, 34, 40, 50, 58, 72],
+    lg: [12, 14, 16, 20, 24, 32, 40, 48, 64, 76, 96],
   },
   family: {
     sansSerif,
-    title: sansSerif,
+    serif,
+    display: serif,
     paragraph: sansSerif,
     ui: sansSerif,
     mono: monospace,
   },
   weight: {
     light: 300,
-    normal: 400,
-    semibold: 600,
-    bold: 800,
+    normal: 500,
+    semibold: 600, // May get removed/changed in the future.
+    bold: 700,
   },
   leading: {
     display: 1.2,
