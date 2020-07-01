@@ -20,13 +20,13 @@ export function fontCSS() {
 
   const link = document.createElement("link");
   link.href =
-    "https://fonts.googleapis.com/css?family=Muli:300,400,400i,600,800&display=swap";
+    "https://fonts.googleapis.com/css?family=DM Sans:400,400i,500,500i,700,700i&display=swap";
   link.rel = "stylesheet";
 
   document.head.appendChild(link);
 
-  const muli = new FontFaceObserver("Muli");
-  return muli.load();
+  const dmSans = new FontFaceObserver("DM Sans");
+  return dmSans.load();
 }
 
 export function resetCSS() {
