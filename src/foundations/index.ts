@@ -188,7 +188,7 @@ const defaultSansserif: string =
   "-apple-system,BlinkMacSystemFont,helvetica,'helvetica neue',ubuntu,roboto,noto,'segoe ui',arial,sans-serif";
 const defaultSerif: string =
   "-apple-system-ui-serif, ui-serif, Iowan Old Style, Apple Garamond, Baskerville, Times New Roman, Droid Serif, Times, Source Serif Pro, serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, serif";
-const sansSerif = "'Mark Pro', " + defaultSansserif;
+const sansSerif = "'DM Sans', " + defaultSansserif;
 const serif = "'Victor Serif Trial', " + defaultSerif;
 const monospace = "'Source Code Pro', monospace, " + defaultSansserif;
 
@@ -208,7 +208,7 @@ export const type: ThemeType = {
   },
   weight: {
     light: 300,
-    normal: 500,
+    normal: 400,
     semibold: 600, // May get removed/changed in the future.
     bold: 700,
   },
