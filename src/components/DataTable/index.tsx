@@ -12,6 +12,7 @@ import { autobind } from "../../utils/decorators";
 import safeInvoke from "../../utils/safeInvoke";
 import ButtonFilled from "../ButtonFilled";
 import IconChevronUp from "../Icons/ChevronUp";
+import MultiSelect from "../MultiSelect";
 import TR from "../Table/TR";
 import Text from "../Text";
 import Theme from "../Theme";
@@ -69,9 +70,17 @@ export interface DataTableProps extends ViewProps {
    * eg. { headerRenderer: () => <TH text="Column Heading" />, cellRenderer: () => <TD>Row cell</TD> }
    */
   columns?: DataTableColumn[];
+
+  /**
+   * If we wish to allow a user to have control over what columns are showing, then supply a true to this prop.
+   */
+  dynamicColumns?: boolean;
 }
 
 export interface DataTableColumn {
+  displayOnOpening: boolean;
+  columnIdentifier: string;
+  columnSelectorLabel: string;
   cellRenderer: any;
   headerRenderer: any;
 }
@@ -139,6 +148,37 @@ class DataTable extends React.Component<DataTableProps, {}> {
     );
   }
 
+  @autobind
+  public renderColumnSelector() {
+    //   columnIdentifier: string;
+    // columnSelectorLabel: string; TODO sort out validation for these fields being null
+    const { columns } = this.props;
+    const options = columns.map(column => {
+      return {
+        value: column.columnIdentifier,
+        label: column.columnSelectorLabel,
+      };
+    });
+    const defaultValue = columns
+      .filter(column => {
+        if (column.displayOnOpening === true) {
+          return column.columnIdentifier;
+        }
+      })
+      .map(column => {
+        return column.columnIdentifier;
+      });
+    return (
+      <MultiSelect
+        label="Columns"
+        width="155px"
+        closeOnSelect={false}
+        options={options}
+        defaultValue={defaultValue}
+      />
+    );
+  }
+
   public render() {
     const {
       rowHeight,
@@ -158,6 +198,7 @@ class DataTable extends React.Component<DataTableProps, {}> {
       hideScrollButton,
       scrollElement,
       isListLoading = false,
+      dynamicColumns,
       ...viewProps
     } = this.props;
 
@@ -187,13 +228,23 @@ class DataTable extends React.Component<DataTableProps, {}> {
       <Theme.Consumer>
         {({ zIndex, spacing }) => (
           <React.Fragment>
-            {total && typeof total === "string" ? (
-              <View marginBottom={4}>
-                <Text fontSize={3}>{total}</Text>
+            <View
+              flexDirection="row"
+              justifyContent="space-between"
+              alignItems="flex-end"
+              marginBottom={4}
+            >
+              <View>
+                {total && typeof total === "string" ? (
+                  <View>
+                    <Text fontSize={3}>{total}</Text>
+                  </View>
+                ) : (
+                  total
+                )}
               </View>
-            ) : (
-              total
-            )}
+              {dynamicColumns && <View>{this.renderColumnSelector()}</View>}
+            </View>
             <View
               display="block"
               css={[
