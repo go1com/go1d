@@ -85,7 +85,7 @@ export interface DataTableColumn {
   headerRenderer: any;
 }
 
-class DataTable extends React.Component<DataTableProps, {}> {
+class DataTable extends React.Component<DataTableProps, any> {
   public listEl: List;
   public header: HTMLElement;
 
@@ -98,6 +98,29 @@ class DataTable extends React.Component<DataTableProps, {}> {
       defaultHeight: this.props.rowHeight || 50,
       fixedWidth: true,
     });
+    this.state = {
+      columnsToDisplay: [],
+    };
+
+    // find out which columns we are going to display on first render if we have been given instriction to do so
+    const { columns, dynamicColumns } = this.props;
+    if (dynamicColumns) {
+      if (!columns) {
+        // TODO how will we fail out of here? the user is asking for dynamic column control but supplied no columns
+      } else {
+        this.state = {
+          columnsToDisplay: columns
+            .filter(column => {
+              if (column.displayOnOpening === true) {
+                return column;
+              }
+            })
+            .map(column => {
+              return column.columnIdentifier;
+            }),
+        };
+      }
+    }
   }
 
   @autobind
@@ -139,10 +162,14 @@ class DataTable extends React.Component<DataTableProps, {}> {
     // when calling to renderer columns, pass in all props which have been collected together by implementing components,
     // aswell as the args which come from the react row renderer callback.
     const { columns } = this.props;
+    const { columnsToDisplay } = this.state;
     return (
       <TR style={args.style} key={args.key}>
-        {columns.map(column => {
-          return column.cellRenderer({ ...this.props, ...args });
+        {columnsToDisplay.map(identifier => {
+          const columnToDisplay = columns.filter(column => {
+            return column.columnIdentifier === identifier;
+          });
+          return columnToDisplay[0].cellRenderer({ ...this.props, ...args });
         })}
       </TR>
     );
@@ -153,28 +180,22 @@ class DataTable extends React.Component<DataTableProps, {}> {
     //   columnIdentifier: string;
     // columnSelectorLabel: string; TODO sort out validation for these fields being null
     const { columns } = this.props;
+    const { columnsToDisplay } = this.state;
+    // tslint:disable-next-line:no-console
+    console.log(columnsToDisplay);
     const options = columns.map(column => {
       return {
         value: column.columnIdentifier,
         label: column.columnSelectorLabel,
       };
     });
-    const defaultValue = columns
-      .filter(column => {
-        if (column.displayOnOpening === true) {
-          return column.columnIdentifier;
-        }
-      })
-      .map(column => {
-        return column.columnIdentifier;
-      });
     return (
       <MultiSelect
         label="Columns"
         width="155px"
         closeOnSelect={false}
         options={options}
-        defaultValue={defaultValue}
+        defaultValue={columnsToDisplay}
       />
     );
   }
