@@ -24,6 +24,7 @@ export { default as IconChevronDown } from "./ChevronDown";
 export { default as IconChevronLeft } from "./ChevronLeft";
 export { default as IconChevronRight } from "./ChevronRight";
 export { default as IconChevronUp } from "./ChevronUp";
+export { default as IconCircleStrike } from "./CircleStrike";
 export { default as IconClock } from "./Clock";
 export { default as IconClose } from "./Close";
 export { default as IconClosedBook } from "./ClosedBook";
