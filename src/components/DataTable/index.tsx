@@ -161,24 +161,22 @@ class DataTable extends React.Component<DataTableProps, any> {
   public headersRenderer(args: any) {
     const { columns } = this.props;
     const { columnsToDisplay } = this.state;
-    return (
-      <View>
-        {columnsToDisplay.length > 0 &&
-          columnsToDisplay.map(identifier => {
-            const columnToDisplay = columns.filter(column => {
-              return column.columnIdentifier === identifier;
-            });
-            return columnToDisplay[0].headerRenderer({
-              ...this.props,
-              ...args,
-            });
-          })}
-        {columnsToDisplay.length === 0 &&
-          columns.map(column => {
-            return column.cellRenderer({ ...this.props, ...args });
-          })}
-      </View>
-    );
+    if (columnsToDisplay.length > 0) {
+      return columnsToDisplay.map(identifier => {
+        const columnToDisplay = columns.filter(column => {
+          return column.columnIdentifier === identifier;
+        });
+        return columnToDisplay[0].headerRenderer({
+          ...this.props,
+          ...args,
+        });
+      });
+    }
+    if (columnsToDisplay.length === 0) {
+      return columns.map(column => {
+        return column.headerRenderer({ ...this.props, ...args });
+      });
+    }
   }
 
   @autobind
@@ -204,14 +202,15 @@ class DataTable extends React.Component<DataTableProps, any> {
     );
   }
 
+  /**
+   * Render a select component which has an entry for each of the column array.
+   */
   @autobind
   public renderColumnSelector() {
     //   columnIdentifier: string;
     // columnSelectorLabel: string; TODO sort out validation for these fields being null
     const { columns } = this.props;
     const { columnsToDisplay } = this.state;
-    // tslint:disable-next-line:no-console
-    console.log(columnsToDisplay);
     const options = columns.map(column => {
       return {
         value: column.columnIdentifier,
@@ -225,8 +224,29 @@ class DataTable extends React.Component<DataTableProps, any> {
         closeOnSelect={false}
         options={options}
         defaultValue={columnsToDisplay}
+        onChange={this.handleColumnChange}
       />
     );
+  }
+
+  /**
+   * When the column selection changes we want to update the columnsToDisplay, in the same order as the columns are supplied, so they are not changing order all the time.
+   * @param evt
+   */
+  @autobind
+  public handleColumnChange(evt) {
+    const { columns } = this.props;
+    this.setState({
+      columnsToDisplay: columns
+        .filter(column => {
+          if (evt.target.value.indexOf(column.columnIdentifier) >= 0) {
+            return column;
+          }
+        })
+        .map(column => {
+          return column.columnIdentifier;
+        }),
+    });
   }
 
   public render() {
