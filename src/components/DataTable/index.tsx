@@ -158,6 +158,30 @@ class DataTable extends React.Component<DataTableProps, any> {
   }
 
   @autobind
+  public headersRenderer(args: any) {
+    const { columns } = this.props;
+    const { columnsToDisplay } = this.state;
+    return (
+      <View>
+        {columnsToDisplay.length > 0 &&
+          columnsToDisplay.map(identifier => {
+            const columnToDisplay = columns.filter(column => {
+              return column.columnIdentifier === identifier;
+            });
+            return columnToDisplay[0].headerRenderer({
+              ...this.props,
+              ...args,
+            });
+          })}
+        {columnsToDisplay.length === 0 &&
+          columns.map(column => {
+            return column.cellRenderer({ ...this.props, ...args });
+          })}
+      </View>
+    );
+  }
+
+  @autobind
   public columnsRenderer(args: any) {
     // when calling to renderer columns, pass in all props which have been collected together by implementing components,
     // aswell as the args which come from the react row renderer callback.
@@ -165,12 +189,17 @@ class DataTable extends React.Component<DataTableProps, any> {
     const { columnsToDisplay } = this.state;
     return (
       <TR style={args.style} key={args.key}>
-        {columnsToDisplay.map(identifier => {
-          const columnToDisplay = columns.filter(column => {
-            return column.columnIdentifier === identifier;
-          });
-          return columnToDisplay[0].cellRenderer({ ...this.props, ...args });
-        })}
+        {columnsToDisplay.length > 0 &&
+          columnsToDisplay.map(identifier => {
+            const columnToDisplay = columns.filter(column => {
+              return column.columnIdentifier === identifier;
+            });
+            return columnToDisplay[0].cellRenderer({ ...this.props, ...args });
+          })}
+        {columnsToDisplay.length === 0 &&
+          columns.map(column => {
+            return column.cellRenderer({ ...this.props, ...args });
+          })}
       </TR>
     );
   }
@@ -285,8 +314,7 @@ class DataTable extends React.Component<DataTableProps, any> {
                   zIndex={zIndex.sticky}
                   innerRef={this.setHeader}
                 >
-                  {columns &&
-                    columns.map(column => column.headerRenderer(this.props))}
+                  {columns && this.headersRenderer(this.props)}
                   {!columns && header}
                 </TR>
               )}
