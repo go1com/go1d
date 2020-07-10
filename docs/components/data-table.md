@@ -63,16 +63,15 @@ Supply an array of columns along with dynamicColumns == true, and the user can c
   rowHeight={55}
   total="10 Items"
   dynamicColumns={true}
+  initialColumns={["first-column", "second-column"]}
   columns={[
     { 
-      displayOnOpening: true,
       columnIdentifier: "first-column", 
       columnSelectorLabel: "First Item",
       headerRenderer: ({key}) => <TH key={key} text="First Column"/>,
       cellRenderer: ({key}) => <TD>First Cell {key}</TD>,
     },
     {
-      displayOnOpening: true,
       columnIdentifier: "second-column", 
       columnSelectorLabel: "Second Item",
       headerRenderer: ({key}) => <TH key={key} text="Second Column"/>,

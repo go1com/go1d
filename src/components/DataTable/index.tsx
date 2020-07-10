@@ -75,12 +75,17 @@ export interface DataTableProps extends ViewProps {
    * If we wish to allow a user to have control over what columns are showing, then supply a true to this prop.
    */
   dynamicColumns?: boolean;
+
+  /**
+   * If the component is supplied an array of initialColumns, then only display the columns with columnIdentifier contained in this array
+   */
+  initialColumns?: string[];
 }
 
 export interface DataTableColumn {
-  displayOnOpening: boolean;
-  columnIdentifier: string;
-  columnSelectorLabel: string;
+  displayOnOpening?: boolean;
+  columnIdentifier?: string;
+  columnSelectorLabel?: string;
   cellRenderer: any;
   headerRenderer: any;
 }
@@ -102,22 +107,28 @@ class DataTable extends React.Component<DataTableProps, any> {
       columnsToDisplay: [],
     };
 
-    // find out which columns we are going to display on first render if we have been given instriction to do so
-    const { columns, dynamicColumns } = this.props;
+    // if the prop has been given to instruct dynamic columns support, determine which columns will be showed
+    const { columns, dynamicColumns, initialColumns } = this.props;
     if (dynamicColumns) {
-      if (!columns) {
-        // TODO how will we fail out of here? the user is asking for dynamic column control but supplied no columns
-      } else {
+      if (initialColumns && initialColumns.length > 0) {
+        // if we have been supplied a list of initial columns, get them into the same order as the columns array
         this.state = {
           columnsToDisplay: columns
             .filter(column => {
-              if (column.displayOnOpening === true) {
+              if (initialColumns.indexOf(column.columnIdentifier) >= 0) {
                 return column;
               }
             })
             .map(column => {
               return column.columnIdentifier;
             }),
+        };
+      } else {
+        // otherwise show all of the columns
+        this.state = {
+          columnsToDisplay: columns.map(column => {
+            return column.columnIdentifier;
+          }),
         };
       }
     }
@@ -207,14 +218,12 @@ class DataTable extends React.Component<DataTableProps, any> {
    */
   @autobind
   public renderColumnSelector() {
-    //   columnIdentifier: string;
-    // columnSelectorLabel: string; TODO sort out validation for these fields being null
     const { columns } = this.props;
     const { columnsToDisplay } = this.state;
     const options = columns.map(column => {
       return {
-        value: column.columnIdentifier,
-        label: column.columnSelectorLabel,
+        value: column.columnIdentifier || "No identifier supplied",
+        label: column.columnSelectorLabel || "No label supplied",
       };
     });
     return (
