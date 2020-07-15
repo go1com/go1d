@@ -170,10 +170,13 @@ class DataTable extends React.Component<DataTableProps, any> {
   @autobind
   public getColumnsToDisplayObjects(): DataTableColumn[] {
     const { columns } = this.props;
-    const { columnsToDisplay } = this.state;
+    if (columns === undefined) {
+      return [];
+    }
 
     // if the columnsToDisplay string array is empty, then display all columns.
-    if (columnsToDisplay.length === 0) {
+    const { columnsToDisplay } = this.state;
+    if (columnsToDisplay === undefined || columnsToDisplay.length === 0) {
       return columns;
     }
 
