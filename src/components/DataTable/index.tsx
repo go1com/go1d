@@ -83,9 +83,8 @@ export interface DataTableProps extends ViewProps {
 }
 
 export interface DataTableColumn {
-  displayOnOpening?: boolean;
   columnIdentifier?: string;
-  columnSelectorLabel?: string;
+  columnSelectorLabel: string;
   cellRenderer: any;
   headerRenderer: any;
 }
@@ -169,46 +168,43 @@ class DataTable extends React.Component<DataTableProps, any> {
   }
 
   @autobind
-  public headersRenderer(args: any) {
+  public getColumnsToDisplayObjects(): DataTableColumn[] {
     const { columns } = this.props;
     const { columnsToDisplay } = this.state;
-    if (columnsToDisplay.length > 0) {
-      return columnsToDisplay.map(identifier => {
-        const columnToDisplay = columns.filter(column => {
-          return column.columnIdentifier === identifier;
-        });
-        return columnToDisplay[0].headerRenderer({
-          ...this.props,
-          ...args,
-        });
-      });
-    }
+
+    // if the columnsToDisplay string array is empty, then display all columns.
     if (columnsToDisplay.length === 0) {
-      return columns.map(column => {
-        return column.headerRenderer({ ...this.props, ...args });
-      });
+      return columns;
     }
+
+    // but if there are entries in the columnsToDisplay string array, we only want to render those columns
+    return columnsToDisplay.map(identifier => {
+      const columnToDisplay = columns.filter(column => {
+        return column.columnIdentifier === identifier;
+      });
+      return columnToDisplay[0];
+    });
+  }
+
+  @autobind
+  public headersRenderer(args: any) {
+    return this.getColumnsToDisplayObjects().map(column => {
+      return column.headerRenderer({
+        ...this.props,
+        ...args,
+      });
+    });
   }
 
   @autobind
   public columnsRenderer(args: any) {
     // when calling to renderer columns, pass in all props which have been collected together by implementing components,
     // aswell as the args which come from the react row renderer callback.
-    const { columns } = this.props;
-    const { columnsToDisplay } = this.state;
     return (
       <TR style={args.style} key={args.key}>
-        {columnsToDisplay.length > 0 &&
-          columnsToDisplay.map(identifier => {
-            const columnToDisplay = columns.filter(column => {
-              return column.columnIdentifier === identifier;
-            });
-            return columnToDisplay[0].cellRenderer({ ...this.props, ...args });
-          })}
-        {columnsToDisplay.length === 0 &&
-          columns.map(column => {
-            return column.cellRenderer({ ...this.props, ...args });
-          })}
+        {this.getColumnsToDisplayObjects().map(column => {
+          return column.cellRenderer({ ...this.props, ...args });
+        })}
       </TR>
     );
   }
