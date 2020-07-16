@@ -113,21 +113,10 @@ class DataTable extends React.Component<DataTableProps, any> {
         // if we have been supplied a list of initial columns, get them into the same order as the columns array
         this.state = {
           columnsToDisplay: columns
-            .filter(column => {
-              if (initialColumns.indexOf(column.columnIdentifier) >= 0) {
-                return column;
-              }
-            })
+            .filter(column => initialColumns.includes(column.columnIdentifier))
             .map(column => {
               return column.columnIdentifier;
             }),
-        };
-      } else {
-        // otherwise show all of the columns
-        this.state = {
-          columnsToDisplay: columns.map(column => {
-            return column.columnIdentifier;
-          }),
         };
       }
     }
