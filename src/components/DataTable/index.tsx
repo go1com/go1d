@@ -170,21 +170,20 @@ class DataTable extends React.Component<DataTableProps, any> {
     }
 
     // but if there are entries in the columnsToDisplay string array, we only want to render those columns
-    return columnsToDisplay.map(identifier => {
-      const columnToDisplay = columns.filter(column => {
-        return column.columnIdentifier === identifier;
-      });
-      return columnToDisplay[0];
-    });
+    return columnsToDisplay.map(identifier =>
+      columns.find(({ columnIdentifier }) => columnIdentifier === identifier)
+    );
   }
 
   @autobind
   public headersRenderer(args: any) {
+    const HeaderOptions = {
+      ...this.props,
+      ...args,
+    };
+
     return this.getColumnsToDisplayObjects().map(column => {
-      return column.headerRenderer({
-        ...this.props,
-        ...args,
-      });
+      return column.headerRenderer(HeaderOptions);
     });
   }
 
