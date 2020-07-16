@@ -234,14 +234,10 @@ class DataTable extends React.Component<DataTableProps, any> {
     const { columns } = this.props;
     this.setState({
       columnsToDisplay: columns
-        .filter(column => {
-          if (evt.target.value.indexOf(column.columnIdentifier) >= 0) {
-            return column;
-          }
-        })
-        .map(column => {
-          return column.columnIdentifier;
-        }),
+        .filter(({ columnIdentifier }) =>
+          evt.target.value.includes(columnIdentifier)
+        )
+        .map(({ columnIdentifier }) => columnIdentifier),
     });
   }
 
@@ -301,7 +297,7 @@ class DataTable extends React.Component<DataTableProps, any> {
               marginBottom={4}
             >
               <View>
-                {total && typeof total === "string" ? (
+                {typeof total === "string" ? (
                   <View>
                     <Text fontSize={3}>{total}</Text>
                   </View>
