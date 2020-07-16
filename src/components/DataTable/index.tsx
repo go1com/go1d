@@ -84,7 +84,7 @@ export interface DataTableProps extends ViewProps {
 
 export interface DataTableColumn {
   columnIdentifier?: string;
-  columnSelectorLabel: string;
+  columnSelectorLabel?: string;
   cellRenderer: any;
   headerRenderer: any;
 }
