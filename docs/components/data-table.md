@@ -54,6 +54,40 @@ Supply an array of columns and the header and cell renderer will be used to crea
 />
 ```
 
+### Basic Table using a column array with dynamic column control
+
+Supply an array of columns along with dynamicColumns == true, and the user can control which columns are showing on screen. With this approach, you also need to supply a menuEntryRenderer within each of the columns entries which will be used in the selection menu. 
+
+```.jsx
+<DataTable
+  rowHeight={55}
+  total="10 Items"
+  dynamicColumns={true}
+  initialColumns={["first-column", "second-column"]}
+  columns={[
+    { 
+      columnIdentifier: "first-column", 
+      columnSelectorLabel: "First Item",
+      headerRenderer: ({key}) => <TH key={key} text="First Column"/>,
+      cellRenderer: ({key}) => <TD>First Cell {key}</TD>,
+    },
+    {
+      columnIdentifier: "second-column", 
+      columnSelectorLabel: "Second Item",
+      headerRenderer: ({key}) => <TH key={key} text="Second Column"/>,
+      cellRenderer: ({key}) => <TD>Second Cell {key}</TD>,
+    },
+    {
+      columnIdentifier: "third-column", 
+      columnSelectorLabel: "Third Item",
+      headerRenderer: ({key}) =>  <TH key={key} text="Third Column" />,
+      cellRenderer: ({key}) => <TD>Third Cell {key}</TD>,
+    },
+  ]}
+  rowCount={2}
+/>
+```
+
 ### Experimental: Auto Row Height
 
 Setting auto row height to true means you dont have to set the row height manually. However, this may produce unexpected results

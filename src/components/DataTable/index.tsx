@@ -12,6 +12,7 @@ import { autobind } from "../../utils/decorators";
 import safeInvoke from "../../utils/safeInvoke";
 import ButtonFilled from "../ButtonFilled";
 import IconChevronUp from "../Icons/ChevronUp";
+import MultiSelect from "../MultiSelect";
 import TR from "../Table/TR";
 import Text from "../Text";
 import Theme from "../Theme";
@@ -69,14 +70,26 @@ export interface DataTableProps extends ViewProps {
    * eg. { headerRenderer: () => <TH text="Column Heading" />, cellRenderer: () => <TD>Row cell</TD> }
    */
   columns?: DataTableColumn[];
+
+  /**
+   * If we wish to allow a user to have control over what columns are showing, then supply a true to this prop.
+   */
+  dynamicColumns?: boolean;
+
+  /**
+   * If the component is supplied an array of initialColumns, then only display the columns with columnIdentifier contained in this array
+   */
+  initialColumns?: string[];
 }
 
 export interface DataTableColumn {
+  columnIdentifier?: string;
+  columnSelectorLabel?: string;
   cellRenderer: any;
   headerRenderer: any;
 }
 
-class DataTable extends React.Component<DataTableProps, {}> {
+class DataTable extends React.Component<DataTableProps, any> {
   public listEl: List;
   public header: HTMLElement;
 
@@ -89,6 +102,24 @@ class DataTable extends React.Component<DataTableProps, {}> {
       defaultHeight: this.props.rowHeight || 50,
       fixedWidth: true,
     });
+    this.state = {
+      columnsToDisplay: [],
+    };
+
+    // if the prop has been given to instruct dynamic columns support, determine which columns will be showed
+    const { columns, dynamicColumns, initialColumns } = this.props;
+    if (dynamicColumns) {
+      if (initialColumns && initialColumns.length > 0) {
+        // if we have been supplied a list of initial columns, get them into the same order as the columns array
+        this.state = {
+          columnsToDisplay: columns
+            .filter(column => initialColumns.includes(column.columnIdentifier))
+            .map(column => {
+              return column.columnIdentifier;
+            }),
+        };
+      }
+    }
   }
 
   @autobind
@@ -126,17 +157,88 @@ class DataTable extends React.Component<DataTableProps, {}> {
   }
 
   @autobind
+  public getColumnsToDisplayObjects(): DataTableColumn[] {
+    const { columns } = this.props;
+    if (columns === undefined) {
+      return [];
+    }
+
+    // if the columnsToDisplay string array is empty, then display all columns.
+    const { columnsToDisplay } = this.state;
+    if (columnsToDisplay === undefined || columnsToDisplay.length === 0) {
+      return columns;
+    }
+
+    // but if there are entries in the columnsToDisplay string array, we only want to render those columns
+    return columnsToDisplay.map(identifier =>
+      columns.find(({ columnIdentifier }) => columnIdentifier === identifier)
+    );
+  }
+
+  @autobind
+  public headersRenderer(args: any) {
+    const HeaderOptions = {
+      ...this.props,
+      ...args,
+    };
+
+    return this.getColumnsToDisplayObjects().map(column => {
+      return column.headerRenderer(HeaderOptions);
+    });
+  }
+
+  @autobind
   public columnsRenderer(args: any) {
     // when calling to renderer columns, pass in all props which have been collected together by implementing components,
     // aswell as the args which come from the react row renderer callback.
-    const { columns } = this.props;
     return (
       <TR style={args.style} key={args.key}>
-        {columns.map(column => {
+        {this.getColumnsToDisplayObjects().map(column => {
           return column.cellRenderer({ ...this.props, ...args });
         })}
       </TR>
     );
+  }
+
+  /**
+   * Render a select component which has an entry for each of the column array.
+   */
+  @autobind
+  public renderColumnSelector() {
+    const { columns } = this.props;
+    const { columnsToDisplay } = this.state;
+    const options = columns.map(column => {
+      return {
+        value: column.columnIdentifier || "No identifier supplied",
+        label: column.columnSelectorLabel || "No label supplied",
+      };
+    });
+    return (
+      <MultiSelect
+        label="Columns"
+        width="155px"
+        closeOnSelect={false}
+        options={options}
+        defaultValue={columnsToDisplay}
+        onChange={this.handleColumnChange}
+      />
+    );
+  }
+
+  /**
+   * When the column selection changes we want to update the columnsToDisplay, in the same order as the columns are supplied, so they are not changing order all the time.
+   * @param evt
+   */
+  @autobind
+  public handleColumnChange(evt) {
+    const { columns } = this.props;
+    this.setState({
+      columnsToDisplay: columns
+        .filter(({ columnIdentifier }) =>
+          evt.target.value.includes(columnIdentifier)
+        )
+        .map(({ columnIdentifier }) => columnIdentifier),
+    });
   }
 
   public render() {
@@ -158,6 +260,7 @@ class DataTable extends React.Component<DataTableProps, {}> {
       hideScrollButton,
       scrollElement,
       isListLoading = false,
+      dynamicColumns,
       ...viewProps
     } = this.props;
 
@@ -187,13 +290,23 @@ class DataTable extends React.Component<DataTableProps, {}> {
       <Theme.Consumer>
         {({ zIndex, spacing }) => (
           <React.Fragment>
-            {total && typeof total === "string" ? (
-              <View marginBottom={4}>
-                <Text fontSize={3}>{total}</Text>
+            <View
+              flexDirection="row"
+              justifyContent="space-between"
+              alignItems="flex-end"
+              marginBottom={4}
+            >
+              <View>
+                {typeof total === "string" ? (
+                  <View>
+                    <Text fontSize={3}>{total}</Text>
+                  </View>
+                ) : (
+                  total
+                )}
               </View>
-            ) : (
-              total
-            )}
+              {dynamicColumns && <View>{this.renderColumnSelector()}</View>}
+            </View>
             <View
               display="block"
               css={[
@@ -213,8 +326,7 @@ class DataTable extends React.Component<DataTableProps, {}> {
                   zIndex={zIndex.sticky}
                   innerRef={this.setHeader}
                 >
-                  {columns &&
-                    columns.map(column => column.headerRenderer(this.props))}
+                  {columns && this.headersRenderer(this.props)}
                   {!columns && header}
                 </TR>
               )}

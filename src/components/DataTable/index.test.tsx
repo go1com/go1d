@@ -59,6 +59,69 @@ it("renders without crashing using the columns approach", () => {
   );
 });
 
+it("renders without crashing using the columns approach with dynamic display, but no minimal set of columns", () => {
+  render(
+    <DataTable
+      autoRowHeight={true}
+      rowCount={10}
+      scrollToIndex={4}
+      hideScrollButton={true}
+      total="Many things"
+      dynamicColumns={true}
+      columns={[
+        {
+          columnIdentifier: "columnID1",
+          columnSelectorLabel: "Label 1",
+          headerRenderer: ({ key }) => (
+            <TH key={key} text="First Column" flexBasis="100%" />
+          ),
+          cellRenderer: ({ key }) => <TD flexBasis="100%">First Cell {key}</TD>,
+        },
+        {
+          columnIdentifier: "columnID2",
+          columnSelectorLabel: "Label 2",
+          headerRenderer: ({ key }) => (
+            <TH key={key} text="Second Column" width="100px" />
+          ),
+          cellRenderer: ({ key }) => <TD width="100px">Second Cell {key}</TD>,
+        },
+      ]}
+    />
+  );
+});
+
+it("renders without crashing using the columns approach with dynamic display, with a minimal set of columns", () => {
+  render(
+    <DataTable
+      autoRowHeight={true}
+      rowCount={10}
+      scrollToIndex={4}
+      hideScrollButton={true}
+      total="Many things"
+      dynamicColumns={true}
+      initialColumns={["columnID1"]}
+      columns={[
+        {
+          columnIdentifier: "columnID1",
+          columnSelectorLabel: "Label 1",
+          headerRenderer: ({ key }) => (
+            <TH key={key} text="First Column" flexBasis="100%" />
+          ),
+          cellRenderer: ({ key }) => <TD flexBasis="100%">First Cell {key}</TD>,
+        },
+        {
+          columnIdentifier: "columnID2",
+          columnSelectorLabel: "Label 2",
+          headerRenderer: ({ key }) => (
+            <TH key={key} text="Second Column" width="100px" />
+          ),
+          cellRenderer: ({ key }) => <TD width="100px">Second Cell {key}</TD>,
+        },
+      ]}
+    />
+  );
+});
+
 class LoadMocker {
   public rowsLoaded = 0;
 
