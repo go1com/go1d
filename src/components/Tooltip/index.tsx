@@ -85,9 +85,10 @@ class Tooltip extends React.Component<TooltipProps, any> {
     mode: "hover",
   };
 
+  private scheduleUpdate?: () => void;
+
   constructor(props) {
     super(props);
-
     this.state = { visible: props.mode === "always" };
   }
 
@@ -124,6 +125,12 @@ class Tooltip extends React.Component<TooltipProps, any> {
     }
   }
 
+  public componentDidUpdate() {
+    if (this.scheduleUpdate) {
+      this.scheduleUpdate();
+    }
+  }
+
   public render() {
     const { placement, tip, children } = this.props;
 
@@ -153,32 +160,35 @@ class Tooltip extends React.Component<TooltipProps, any> {
             </Reference>
             {this.state.visible && (
               <Popper placement={placement}>
-                {({ ref, style, placement: p, arrowProps }) => (
-                  <Portal>
-                    <View
-                      innerRef={ref}
-                      style={style}
-                      backgroundColor="default"
-                      paddingY={3}
-                      paddingX={4}
-                      borderRadius={2}
-                      margin={3}
-                      transition="none"
-                      boxShadow="soft"
-                      zIndex="tooltip"
-                      role="tooltip"
-                      data-testid="tooltip"
-                    >
-                      <Text color="background">{tip}</Text>
+                {({ ref, style, placement: p, arrowProps, scheduleUpdate }) => {
+                  this.scheduleUpdate = scheduleUpdate;
+                  return (
+                    <Portal>
                       <View
-                        css={generateArrowCSS(p, s, colors)}
-                        innerRef={arrowProps.ref}
-                        style={arrowProps.style}
+                        innerRef={ref}
+                        style={style}
+                        backgroundColor="default"
+                        paddingY={3}
+                        paddingX={4}
+                        borderRadius={2}
+                        margin={3}
                         transition="none"
-                      />
-                    </View>
-                  </Portal>
-                )}
+                        boxShadow="soft"
+                        zIndex="tooltip"
+                        role="tooltip"
+                        data-testid="tooltip"
+                      >
+                        <Text color="background">{tip}</Text>
+                        <View
+                          css={generateArrowCSS(p, s, colors)}
+                          innerRef={arrowProps.ref}
+                          style={arrowProps.style}
+                          transition="none"
+                        />
+                      </View>
+                    </Portal>
+                  );
+                }}
               </Popper>
             )}
           </Manager>
