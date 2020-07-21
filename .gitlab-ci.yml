@@ -1,9 +1,5 @@
 image: go1com/ci-nodejs:node10
 
-cache:
-  paths:
-    - node_modules/
-
 stages:
   - build
   - test
@@ -14,8 +10,11 @@ stages:
 build:
   stage: build
   cache:
-    paths: [node_modules]
-    key: "$CI_PROJECT_ID"
+    key:
+      files:
+        - yarn.lock
+    paths:
+      - node_modules/
   script:
     - yarn config set no-progress
     - yarn install --silent
@@ -40,8 +39,11 @@ build:
 build-dev:
   stage: build
   cache:
-    paths: [node_modules]
-    key: "$CI_PROJECT_ID"
+    key:
+      files:
+        - yarn.lock
+    paths:
+      - node_modules/
   script:
     - yarn config set no-progress
     - yarn install --frozen-lockfile
@@ -65,6 +67,7 @@ test:linting:
 
 test:unit:
   stage: test
+  needs: []
   script:
     - yarn config set no-progress
     - yarn install --frozen-lockfile --silent
