@@ -13,6 +13,21 @@ it("renders without crashing with an icon", () => {
   render(<TextInput id="crashing" icon={IconSearch} />);
 });
 
+it("renders without crashing with a maxLength", () => {
+  render(
+    <TextInput
+      id="clear"
+      size="md"
+      label="MaxLength"
+      maxLength={120}
+      multiline={2}
+      paddingY={3}
+      paddingX={3}
+      css={{ resize: "none" }}
+    />
+  );
+});
+
 it("test focus", () => {
   const onFocus = jest.fn();
 

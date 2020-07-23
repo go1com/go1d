@@ -132,6 +132,21 @@ releaseVersion: 0.0.32
 />
 ```
 
+### TextInput with maxLength
+
+```.jsx
+<TextInput
+  id="clear"
+  size="md"
+  label="MaxLength"
+  maxLength={120}
+  multiline={2}
+  paddingY={3}
+  paddingX={4}
+  css={{resize:"none"}}
+/>
+```
+
 ```!jsx
 <ComponentDoc component="TextInputProps" />
 ```
