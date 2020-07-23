@@ -39,6 +39,7 @@ export interface TextInputProps extends TextProps {
 
 interface TextInputState {
   isFocused: boolean;
+  valueLength?: number;
 }
 
 class TextInput extends React.PureComponent<TextInputProps, TextInputState> {
@@ -55,6 +56,7 @@ class TextInput extends React.PureComponent<TextInputProps, TextInputState> {
 
     this.state = {
       isFocused: false,
+      valueLength: (this.props.value && this.props.value.length) || 0,
     };
   }
 
@@ -69,6 +71,9 @@ class TextInput extends React.PureComponent<TextInputProps, TextInputState> {
 
   @autobind
   public handleChange(evt: React.ChangeEvent<any>) {
+    this.setState({
+      valueLength: evt.currentTarget.value.length,
+    });
     safeInvoke(this.props.onChange, evt);
   }
 
@@ -76,8 +81,8 @@ class TextInput extends React.PureComponent<TextInputProps, TextInputState> {
   public handleBlur(evt: React.FocusEvent<any>) {
     this.setState({
       isFocused: false,
+      valueLength: evt.currentTarget.value.length,
     });
-
     safeInvoke(this.props.onBlur, evt);
   }
 
@@ -116,8 +121,11 @@ class TextInput extends React.PureComponent<TextInputProps, TextInputState> {
       error, // do not pass
       borderColor, // do not pass
       css,
+      maxLength,
       ...props
     } = this.props;
+
+    const { valueLength } = this.state;
 
     const sizeStyles = {
       lg: {
@@ -223,6 +231,7 @@ class TextInput extends React.PureComponent<TextInputProps, TextInputState> {
                 onBlur={this.handleBlur}
                 disabled={disabled}
                 data-testid="inputElement"
+                maxLength={maxLength}
                 {...props}
                 css={[
                   {
@@ -278,6 +287,15 @@ class TextInput extends React.PureComponent<TextInputProps, TextInputState> {
             )}
             {suffixNode && (
               <View backgroundColor="transparent">{suffixNode}</View>
+            )}
+            {maxLength && (
+              <Text
+                padding={3}
+                color="subtle"
+                css={{ "align-self": "flex-end" }}
+              >
+                {maxLength - valueLength}
+              </Text>
             )}
           </View>
         )}
