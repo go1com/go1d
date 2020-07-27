@@ -25,6 +25,41 @@ releaseVersion: 0.0.32
 />
 ```
 
+### TextInput with description text
+
+```.jsx
+<TextInput
+  id="title"
+  placeholder="Blank"
+  description="Give your course a name"
+/>
+```
+
+### TextInput with a thingyNode
+
+```.jsx
+<TextInput
+  id="title"
+  placeholder="Blank"
+  thingyNode={<Text>boop</Text>}
+/>
+```
+
+### TextInput with a description and thingyNode
+
+```.jsx
+<TextInput
+  id="title"
+  placeholder="Blank"
+  description="Give your course a name"
+  thingyNode={<ButtonMinimal icon={IconPlus}
+                paddingX={0}
+                paddingY={0}
+                color="accent"
+              >Summary</ButtonMinimal>}
+/>
+```
+
 ### TextInput with Small Size and floating label
 ```.jsx
 <TextInput

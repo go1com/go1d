@@ -35,6 +35,8 @@ export interface TextInputProps extends TextProps {
   viewCss?: any;
   borderColor?: string;
   tid?: string;
+  description?: string;
+  thingyNode?: React.ReactNode;
 }
 
 interface TextInputState {
@@ -71,6 +73,11 @@ class TextInput extends React.PureComponent<TextInputProps, TextInputState> {
 
   @autobind
   public handleChange(evt: React.ChangeEvent<any>) {
+    safeInvoke(this.props.onChange, evt);
+  }
+
+  @autobind
+  public onKeyUp(evt: React.ChangeEvent<any>) {
     this.setState({
       valueLength: evt.currentTarget.value.length,
     });
@@ -122,6 +129,8 @@ class TextInput extends React.PureComponent<TextInputProps, TextInputState> {
       borderColor, // do not pass
       css,
       maxLength,
+      description,
+      thingyNode,
       ...props
     } = this.props;
 
@@ -183,120 +192,133 @@ class TextInput extends React.PureComponent<TextInputProps, TextInputState> {
     return (
       <Theme.Consumer>
         {({ animation }) => (
-          <View
-            borderRadius={borderRadius}
-            backgroundColor="background"
-            border={1}
-            borderColor={this.getBorderColor()}
-            boxShadow="inner"
-            flexDirection="row"
-            alignItems="center"
-            htmlFor={id}
-            opacity={disabled ? "disabled" : null}
-            css={{
-              position: "relative",
-              ...viewCss,
-            }}
-          >
-            {IconElement && (
-              <View
-                position="absolute"
-                height={height}
-                width={height}
-                alignItems="center"
-                justifyContent="center"
-                css={{
-                  top: 0,
-                  left: 0,
-                }}
-              >
-                <IconElement size={typeScale} color="subtle" />
-              </View>
-            )}
-            <Transition in={isFloating} timeout={animation.subtle}>
-              <Text
-                id={id}
-                value={value}
-                element={multiline ? "textarea" : "input"}
-                type={inputType}
-                rows={multiline}
-                lineHeight="ui"
-                placeholder={isShowPlaceholder ? placeholder : null}
-                fontSize={typeScale}
-                paddingX={paddingX}
-                paddingY={paddingY}
-                color="inherit"
-                onFocus={this.handleFocus}
-                onChange={this.handleChange}
-                onBlur={this.handleBlur}
-                disabled={disabled}
-                data-testid="inputElement"
-                maxLength={maxLength}
-                {...props}
-                css={[
-                  {
-                    // get rid of default styles
-                    width: "100%",
-                    minHeight: height,
-                    paddingLeft: IconElement && height,
-                    background: 0,
-                    border: 0,
-                    flexGrow: 1,
-                    "::placeholder": {
-                      color: "inherit",
-                      opacity: 0.5,
-                    },
-                  },
-                  isFloating && {
-                    paddingBottom: floatingPaddingBottom,
-                    lineHeight: floatingLineHeight,
-                    paddingTop: floatingPaddingTop,
-                  },
-                  css,
-                ]}
-              />
-            </Transition>
-
-            {isFloatingEnabled && (
+          <View>
+            <View
+              borderRadius={borderRadius}
+              backgroundColor="background"
+              border={1}
+              borderColor={this.getBorderColor()}
+              boxShadow="inner"
+              flexDirection="row"
+              alignItems="center"
+              htmlFor={id}
+              opacity={disabled ? "disabled" : null}
+              css={{
+                position: "relative",
+                ...viewCss,
+              }}
+            >
+              {IconElement && (
+                <View
+                  position="absolute"
+                  height={height}
+                  width={height}
+                  alignItems="center"
+                  justifyContent="center"
+                  css={{
+                    top: 0,
+                    left: 0,
+                  }}
+                >
+                  <IconElement size={typeScale} color="subtle" />
+                </View>
+              )}
               <Transition in={isFloating} timeout={animation.subtle}>
                 <Text
-                  element="label"
-                  color={error ? "danger" : "inherit"}
+                  id={id}
+                  value={value}
+                  element={multiline ? "textarea" : "input"}
+                  type={inputType}
+                  rows={multiline}
                   lineHeight="ui"
-                  htmlFor={id}
-                  paddingX={!IconElement ? paddingX : 0}
-                  fontSize={isFloating ? floatingLabelSize : typeScale}
+                  placeholder={isShowPlaceholder ? placeholder : null}
+                  fontSize={typeScale}
+                  paddingX={paddingX}
+                  paddingY={paddingY}
+                  color="inherit"
+                  onFocus={this.handleFocus}
+                  onChange={this.handleChange}
+                  onBlur={this.handleBlur}
+                  onKeyUp={this.onKeyUp}
+                  disabled={disabled}
+                  data-testid="inputElement"
+                  maxLength={maxLength}
+                  {...props}
                   css={[
                     {
-                      position: "absolute",
-                      top: "50%",
-                      left: IconElement ? height : 0,
-                      transform: "translate(0, -50%)",
+                      // get rid of default styles
+                      width: "100%",
+                      minHeight: height,
+                      paddingLeft: IconElement && height,
+                      background: 0,
+                      border: 0,
+                      flexGrow: 1,
+                      "::placeholder": {
+                        color: "inherit",
+                        opacity: 0.5,
+                      },
                     },
                     isFloating && {
-                      fontSize: floatingLabelSize,
-                      top: floatingLabelTop,
-                      left: IconElement ? height : 0,
-                      transform: "none",
+                      paddingBottom: floatingPaddingBottom,
+                      lineHeight: floatingLineHeight,
+                      paddingTop: floatingPaddingTop,
                     },
+                    css,
                   ]}
-                >
-                  {label}
-                </Text>
+                />
               </Transition>
-            )}
-            {suffixNode && (
-              <View backgroundColor="transparent">{suffixNode}</View>
-            )}
-            {maxLength && (
-              <Text
-                padding={3}
-                color="subtle"
-                css={{ "align-self": "flex-end" }}
-              >
-                {maxLength - valueLength}
-              </Text>
-            )}
+
+              {isFloatingEnabled && (
+                <Transition in={isFloating} timeout={animation.subtle}>
+                  <Text
+                    element="label"
+                    color={error ? "danger" : "inherit"}
+                    lineHeight="ui"
+                    htmlFor={id}
+                    paddingX={!IconElement ? paddingX : 0}
+                    fontSize={isFloating ? floatingLabelSize : typeScale}
+                    css={[
+                      {
+                        position: "absolute",
+                        top: "50%",
+                        left: IconElement ? height : 0,
+                        transform: "translate(0, -50%)",
+                      },
+                      isFloating && {
+                        fontSize: floatingLabelSize,
+                        top: floatingLabelTop,
+                        left: IconElement ? height : 0,
+                        transform: "none",
+                      },
+                    ]}
+                  >
+                    {label}
+                  </Text>
+                </Transition>
+              )}
+              {suffixNode && (
+                <View backgroundColor="transparent">{suffixNode}</View>
+              )}
+              {maxLength && (
+                <Text
+                  padding={3}
+                  color="subtle"
+                  css={{ "align-self": "flex-end" }}
+                >
+                  {maxLength - valueLength}
+                </Text>
+              )}
+            </View>
+            <View flexDirection="row" justifyContent="space-between">
+              <View>
+                {description && (
+                  <Text paddingTop={3} color="subtle">
+                    {description}
+                  </Text>
+                )}
+              </View>
+              {thingyNode && thingyNode}
+            </View>
           </View>
         )}
       </Theme.Consumer>
