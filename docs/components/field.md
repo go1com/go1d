@@ -29,6 +29,30 @@ Field is an extension of Formik's Field component https://jaredpalmer.com/formik
 </Form>
 ```
 
+### Example with a descriptionSuffix and labelSuffix
+
+```.jsx
+<Form initialValues={{ portalName: "A portal" }} onSubmit={(values, actions) => console.log(values, actions)}>
+    <Field
+    component={TextInput}
+    name="portalName"
+    label="Portal name"
+    labelSuffix={<ButtonMinimal icon={IconCross}
+                paddingX={0}
+                paddingY={0}
+                color="subtle"
+              >Remove</ButtonMinimal>}
+    description="The name displayed across the site"
+    descriptionSuffix={<ButtonMinimal icon={IconPlus}
+                paddingX={0}
+                paddingY={0}
+                color="accent"
+              >Summary</ButtonMinimal>}
+    />
+    <ButtonFilled type="submit" color="accent">Submit</ButtonFilled>
+</Form>
+```
+
 ### Example Required Field
 
 ```.jsx

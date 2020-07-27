@@ -11,6 +11,7 @@ export interface LabelProps extends ViewProps {
   statusIcon?: React.ComponentType<IconProps>;
   spinnerIcon?: boolean;
   color?: string;
+  labelSuffix?: React.ReactNode;
 }
 
 class Label extends React.PureComponent<LabelProps> {
@@ -26,6 +27,7 @@ class Label extends React.PureComponent<LabelProps> {
       spinnerIcon,
       whiteSpace,
       color = "default",
+      labelSuffix,
       ...props
     } = this.props;
     return (
@@ -33,8 +35,8 @@ class Label extends React.PureComponent<LabelProps> {
         flexDirection="row"
         justifyContent="space-between"
         alignItems="flex-end"
-        paddingBottom={2}
         whiteSpace={whiteSpace}
+        paddingBottom={2}
         {...props}
       >
         <Text
@@ -45,22 +47,25 @@ class Label extends React.PureComponent<LabelProps> {
         >
           {children}
         </Text>
-        {statusText && (
-          <View flexDirection="row" alignItems="center">
-            {(StatusIcon || spinnerIcon) &&
-              (spinnerIcon ? (
-                <Spinner borderColor="accent" size={1} marginRight={2} />
-              ) : (
-                <StatusIcon size={1} color={statusColor} marginRight={2} />
-              ))}
-            <Text
-              fontSize={1}
-              color={statusColor}
-              fontWeight="semibold"
-              textTransform="uppercase"
-            >
-              {statusText}
-            </Text>
+        {(statusText || labelSuffix) && (
+          <View flexDirection="row" alignItems="flex-end">
+            <View>
+              {(StatusIcon || spinnerIcon) &&
+                (spinnerIcon ? (
+                  <Spinner borderColor="accent" size={1} marginRight={2} />
+                ) : (
+                  <StatusIcon size={1} color={statusColor} marginRight={2} />
+                ))}
+              <Text
+                fontSize={1}
+                color={statusColor}
+                fontWeight="semibold"
+                textTransform="uppercase"
+              >
+                {statusText}
+              </Text>
+            </View>
+            {labelSuffix && <View paddingLeft={4}>{labelSuffix}</View>}
           </View>
         )}
       </View>

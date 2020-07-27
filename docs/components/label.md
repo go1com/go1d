@@ -24,6 +24,34 @@ Portal Name
 </Label>
 ```
 
+### Label with labelSuffix
+```.jsx
+<Label
+    labelSuffix={<ButtonMinimal icon={IconCross}
+                    paddingX={0}
+                    height="20px"
+                    color="subtle"
+                >Remove</ButtonMinimal>}
+>
+Portal Name
+</Label>
+```
+
+### Label with status and labelSuffix
+```.jsx
+<Label
+    statusText="unavailable"
+    statusColor="danger"
+    labelSuffix={<ButtonMinimal icon={IconCross}
+                    paddingX={0}
+                    height="20px"
+                    color="subtle"
+                >Remove</ButtonMinimal>}
+>
+Portal Name
+</Label>
+```
+
 ```!jsx
 <ComponentDoc component="LabelProps" />
 ```
