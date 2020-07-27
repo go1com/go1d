@@ -2,6 +2,7 @@ import * as React from "react";
 import { cleanup, render, waitForElement } from "react-testing-library";
 import Button from "../Button";
 import Form from "../Form";
+import Text from "../Text";
 import Field from "./index";
 
 afterEach(cleanup);
@@ -61,4 +62,32 @@ it("handles errors properly for nested entities", async () => {
 
   await waitForElement(() => getByText("Bad Name"));
   expect(getByText("Bad Name")).not.toBeNull();
+});
+
+it("renders without crashing with a labelSuffix", () => {
+  const input = () => <div />;
+  render(
+    <Form onSubmit={noOp} initialValues={{}}>
+      <Field
+        label="label"
+        name="name"
+        component={input}
+        labelSuffix={<Text>test</Text>}
+      />
+    </Form>
+  );
+});
+
+it("renders without crashing with a descriptionSuffix", () => {
+  const input = () => <div />;
+  render(
+    <Form onSubmit={noOp} initialValues={{}}>
+      <Field
+        label="label"
+        name="name"
+        component={input}
+        descriptionSuffix={<Text>test</Text>}
+      />
+    </Form>
+  );
 });
