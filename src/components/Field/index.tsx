@@ -23,12 +23,14 @@ function shallowCompare(newObj, prevObj) {
 }
 export interface FieldProps extends ViewProps {
   label?: string;
+  labelSuffix?: React.ReactNode;
   id?: string;
   name: string;
   value?: any;
   required?: boolean;
   disabled?: boolean;
   description?: React.ReactNode;
+  descriptionSuffix?: React.ReactNode;
   inputRef?: (instance: any) => void;
   statusText?: string;
   invalidText?: string;
@@ -109,7 +111,9 @@ class Field extends React.Component<
       component,
       children,
       description,
+      descriptionSuffix,
       label,
+      labelSuffix,
       id,
       required,
       disabled,
@@ -205,6 +209,7 @@ class Field extends React.Component<
             statusIcon={statusIcon}
             color={errorForLabel && !!message ? "danger" : null}
             whiteSpace="pre-wrap"
+            labelSuffix={labelSuffix}
           >
             {label}
           </Label>
@@ -232,11 +237,12 @@ class Field extends React.Component<
             <Text color="danger">{message}</Text>
           </View>
         )}
-        {description && (
-          <View paddingBottom={2}>
-            <Text color="subtle">{description}</Text>
+        <View flexDirection="row" justifyContent="space-between" paddingTop={2}>
+          <View>
+            {description && <Text color="subtle">{description}</Text>}
           </View>
-        )}
+          {descriptionSuffix && descriptionSuffix}
+        </View>
       </View>
     );
   }

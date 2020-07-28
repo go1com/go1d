@@ -71,6 +71,11 @@ class TextInput extends React.PureComponent<TextInputProps, TextInputState> {
 
   @autobind
   public handleChange(evt: React.ChangeEvent<any>) {
+    safeInvoke(this.props.onChange, evt);
+  }
+
+  @autobind
+  public onKeyUp(evt: React.ChangeEvent<any>) {
     this.setState({
       valueLength: evt.currentTarget.value.length,
     });
@@ -229,6 +234,7 @@ class TextInput extends React.PureComponent<TextInputProps, TextInputState> {
                 onFocus={this.handleFocus}
                 onChange={this.handleChange}
                 onBlur={this.handleBlur}
+                onKeyUp={this.onKeyUp}
                 disabled={disabled}
                 data-testid="inputElement"
                 maxLength={maxLength}
