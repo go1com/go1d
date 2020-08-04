@@ -56,7 +56,6 @@ class TextInput extends React.PureComponent<TextInputProps, TextInputState> {
 
     this.state = {
       isFocused: false,
-      valueLength: (this.props.value && this.props.value.length) || 0,
     };
   }
 
@@ -70,24 +69,11 @@ class TextInput extends React.PureComponent<TextInputProps, TextInputState> {
   }
 
   @autobind
-  public handleChange(evt: React.ChangeEvent<any>) {
-    safeInvoke(this.props.onChange, evt);
-  }
-
-  @autobind
-  public onKeyDown(evt: React.ChangeEvent<any>) {
-    this.setState({
-      valueLength: evt.currentTarget.value.length,
-    });
-    safeInvoke(this.props.onChange, evt);
-  }
-
-  @autobind
   public handleBlur(evt: React.FocusEvent<any>) {
     this.setState({
       isFocused: false,
-      valueLength: evt.currentTarget.value.length,
     });
+
     safeInvoke(this.props.onBlur, evt);
   }
 
@@ -130,7 +116,7 @@ class TextInput extends React.PureComponent<TextInputProps, TextInputState> {
       ...props
     } = this.props;
 
-    const { valueLength } = this.state;
+    const valueLength = (value && value.length) || 0;
 
     const sizeStyles = {
       lg: {
@@ -232,9 +218,7 @@ class TextInput extends React.PureComponent<TextInputProps, TextInputState> {
                 paddingY={paddingY}
                 color="inherit"
                 onFocus={this.handleFocus}
-                onChange={this.handleChange}
                 onBlur={this.handleBlur}
-                onKeyDown={this.onKeyDown}
                 disabled={disabled}
                 data-testid="inputElement"
                 maxLength={maxLength}
