@@ -49,7 +49,7 @@ class Label extends React.PureComponent<LabelProps> {
         </Text>
         {(statusText || labelSuffix) && (
           <View flexDirection="row" alignItems="flex-end">
-            <View>
+            <View flexDirection="row">
               {(StatusIcon || spinnerIcon) &&
                 (spinnerIcon ? (
                   <Spinner borderColor="accent" size={1} marginRight={2} />
