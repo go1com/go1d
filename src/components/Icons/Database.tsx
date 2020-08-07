@@ -4,7 +4,7 @@ import IconBase from "../IconBase";
 class IconDatabase extends IconBase {
   getIconComponent(props) {
     return (
-      <svg width={15} height={16} viewBox="0 0 15 16" fill="none" {...props}>
+      <svg width={16} height={16} viewBox="0 0 16 16" fill="none" {...props}>
         <path
           fillRule="evenodd"
           clipRule="evenodd"
