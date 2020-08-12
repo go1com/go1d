@@ -6,14 +6,49 @@ import Theme from "../Theme";
 export interface ProviderProps extends GenerateThemeInput {
   linkComponent?: React.ReactNode;
   children?: React.ReactNode;
+  rootComponent?: HTMLElement;
 }
 
 export const LinkContext = React.createContext(null);
+export const RootContext = React.createContext(null);
+
+const LinkContextWrapper = ({ linkComponent, children }) =>
+  linkComponent !== undefined ? (
+    <LinkContext.Provider value={linkComponent}>
+      {children}
+    </LinkContext.Provider>
+  ) : (
+    children
+  );
+
+const RootContextWrapper = ({ rootComponent, children }) =>
+  rootComponent !== undefined ? (
+    <RootContext.Provider value={rootComponent}>
+      {children}
+    </RootContext.Provider>
+  ) : (
+    children
+  );
 
 class Provider extends React.PureComponent<ProviderProps> {
   public render() {
-    const { linkComponent, mode, accent, theme, children, logo } = this.props;
-    return !!mode || !!accent || !!theme || !!linkComponent || !!logo ? (
+    const {
+      linkComponent,
+      mode,
+      accent,
+      theme,
+      children,
+      logo,
+      emotion,
+      rootComponent,
+    } = this.props;
+    return !!emotion ||
+      !!mode ||
+      !!accent ||
+      !!theme ||
+      !!linkComponent ||
+      !!rootComponent ||
+      !!logo ? (
       <Theme.Consumer>
         {({ colors, mode: currentMode, logo: currentLogo }) => (
           <Theme.Provider
@@ -22,15 +57,14 @@ class Provider extends React.PureComponent<ProviderProps> {
               accent: accent || colors.accent,
               theme,
               logo: logo || currentLogo,
+              emotion,
             })}
           >
-            {linkComponent !== undefined ? (
-              <LinkContext.Provider value={linkComponent}>
+            <LinkContextWrapper linkComponent={linkComponent}>
+              <RootContextWrapper rootComponent={rootComponent}>
                 {children}
-              </LinkContext.Provider>
-            ) : (
-              children
-            )}
+              </RootContextWrapper>
+            </LinkContextWrapper>
           </Theme.Provider>
         )}
       </Theme.Consumer>
@@ -41,3 +75,9 @@ class Provider extends React.PureComponent<ProviderProps> {
 }
 
 export default Provider;
+
+export const withRootContextProvider = WrappedComponent => props => (
+  <RootContext.Consumer>
+    {value => <WrappedComponent {...props} rootContext={value || undefined} />}
+  </RootContext.Consumer>
+);

@@ -1,14 +1,14 @@
 /* istanbul ignore file */
-import { injectGlobal } from "emotion";
+import { injectGlobal as defaultInjectGlobal } from "emotion";
 import * as FontFaceObserver from "fontfaceobserver";
 import { type } from "./index";
 
 const isServer =
   typeof window === "undefined" || typeof document === "undefined";
 
-const globalCSS = () => {
+const globalCSS = (injectGlobal = defaultInjectGlobal) => {
   fontCSS();
-  resetCSS();
+  resetCSS(injectGlobal);
 };
 
 export default globalCSS;
@@ -29,7 +29,7 @@ export function fontCSS() {
   return muli.load();
 }
 
-export function resetCSS() {
+export function resetCSS(injectGlobal = defaultInjectGlobal) {
   // tslint:disable-next-line:no-unused-expression
   injectGlobal`
 :root {

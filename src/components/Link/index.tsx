@@ -1,4 +1,3 @@
-import { css as emotion } from "emotion";
 import * as React from "react";
 import { darken } from "../../foundations";
 import { LinkContext } from "../Provider";
@@ -24,7 +23,7 @@ const Link = ({
 }: LinkProps) => {
   return (
     <Theme.Consumer>
-      {({ colors }) => (
+      {({ colors, emotion }) => (
         <LinkContext.Consumer>
           {LinkComponent => {
             const defaultCss = {
@@ -45,7 +44,10 @@ const Link = ({
             };
             if (LinkComponent) {
               return (
-                <LinkComponent className={emotion(defaultCss, css)} {...props}>
+                <LinkComponent
+                  className={emotion.css(defaultCss, css)}
+                  {...props}
+                >
                   {children}
                 </LinkComponent>
               );

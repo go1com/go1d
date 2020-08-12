@@ -1,5 +1,4 @@
 import { Globals } from "csstype";
-import { css as emotion } from "emotion";
 import * as React from "react";
 import applySpacing from "../../utils/applySpacing";
 import Theme from "../Theme";
@@ -64,9 +63,9 @@ const Base: React.SFC<BaseProps> = ({
 
   return (
     <Theme.Consumer>
-      {({ spacing: s, mq }) => (
+      {({ spacing: s, mq, emotion }) => (
         <Element
-          className={emotion(
+          className={emotion.css(
             mq([
               {
                 paddingTop: applySpacing(s, paddingTop),

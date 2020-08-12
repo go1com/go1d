@@ -12,6 +12,7 @@ export interface TooltipProps {
   placement?: "top" | "right" | "bottom" | "left";
   mode?: "hover" | "click" | "always";
   tip: React.ReactNode;
+  positionFixed?: boolean;
   children: React.ReactNode | ((params: any) => React.ReactNode); // this doesn't work
 }
 
@@ -132,11 +133,11 @@ class Tooltip extends React.Component<TooltipProps, any> {
   }
 
   public render() {
-    const { placement, tip, children } = this.props;
+    const { placement, tip, children, positionFixed } = this.props;
 
     let render = null;
     if (typeof children === "function") {
-      render = children as ((params: any) => React.ReactNode);
+      render = children as (params: any) => React.ReactNode;
     }
 
     return (
@@ -159,7 +160,7 @@ class Tooltip extends React.Component<TooltipProps, any> {
               }
             </Reference>
             {this.state.visible && (
-              <Popper placement={placement}>
+              <Popper placement={placement} positionFixed={positionFixed}>
                 {({ ref, style, placement: p, arrowProps, scheduleUpdate }) => {
                   this.scheduleUpdate = scheduleUpdate;
                   return (
