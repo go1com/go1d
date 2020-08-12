@@ -26,8 +26,8 @@
     "test": "yarn lint && jest",
     "test:watch": "jest --watch",
     "test:debug": "yarn lint && node --max_old_space_size=4096 --inspect-brk ./node_modules/.bin/jest --runInBand",
-    "tslint": "tslint -c tslint.json ./src/**/**/*.{ts,tsx}",
-    "tslint:fix": "tslint -c tslint.json './src/**/**/*.{ts,tsx}' --fix"
+    "tslint": "tslint -c tslint.json \"./src/**/*.{ts,tsx}\"",
+    "tslint:fix": "tslint -c tslint.json \"./src/**/*.{ts,tsx}\" --fix"
   },
   "lint-staged": {
     "./src/**/*.{ts,tsx}": [
@@ -107,6 +107,7 @@
     "bundlesize": "^0.17.0",
     "chalk": "2.4.0",
     "concurrently": "^4.1.0",
+    "create-emotion": "^10.0.27",
     "documentalist": "^1.5.0",
     "happo-plugin-storybook": "^2.3.0",
     "happo-plugin-typescript": "^1.0.0",

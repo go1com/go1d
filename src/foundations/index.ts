@@ -14,6 +14,8 @@ import {
   ZIndex,
 } from "./foundation-types";
 
+import * as defaultEmotion from "emotion";
+
 /**
  * Color utilities
  */
@@ -279,6 +281,7 @@ export const generateTheme = ({
   mode,
   theme,
   logo,
+  emotion,
 }: GenerateThemeInput = {}): Theme => ({
   colors: generateColors({ accent, mode }),
   type,
@@ -293,6 +296,7 @@ export const generateTheme = ({
   zIndex,
   mode,
   logo,
+  emotion: emotion || defaultEmotion,
   ...theme,
 });
 

@@ -312,7 +312,7 @@ export class FileUploader extends React.Component<InnerProps, State> {
               );
             } else if (
               uploading ||
-              (uploadProgress && (uploadProgress > 0 && uploadProgress < 100))
+              (uploadProgress && uploadProgress > 0 && uploadProgress < 100)
             ) {
               fileUploadInner = this.renderUploadInProgressState();
             } else if (

@@ -1,8 +1,10 @@
 import * as React from "react";
 import { createPortal } from "react-dom";
+import { withRootContextProvider } from "../Provider";
 
 export interface Props {
   children?: React.ReactNode;
+  rootContext?: HTMLElement;
 }
 
 export const isServer =
@@ -23,14 +25,16 @@ class Portal extends React.PureComponent<Props, never> {
       return;
     }
 
+    const { rootContext = document.body } = props;
     this.portalNode = document.createElement("div");
     this.portalNode.setAttribute("data-portal-id", Unique());
-    document.body.appendChild(this.portalNode);
+    rootContext.appendChild(this.portalNode);
   }
 
   public componentWillUnmount() {
+    const { rootContext = document.body } = this.props;
     if (this.portalNode) {
-      document.body.removeChild(this.portalNode);
+      rootContext.removeChild(this.portalNode);
     }
   }
 
@@ -43,4 +47,4 @@ class Portal extends React.PureComponent<Props, never> {
   }
 }
 
-export default Portal;
+export default withRootContextProvider(Portal);

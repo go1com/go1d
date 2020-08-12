@@ -1,6 +1,8 @@
 /**
  * interfaces
  */
+import { Emotion } from "create-emotion";
+
 export type FontFamily = "sansSerif" | "title" | "paragraph" | "ui" | "mono";
 
 export type FontWeight = "light" | "normal" | "semibold" | "bold";
@@ -107,6 +109,7 @@ export interface Theme {
   zIndex: MappedKey<ZIndex, number>;
   mode?: string;
   logo?: string;
+  emotion: Emotion;
 }
 
 export interface GenerateThemeInput {
@@ -114,4 +117,5 @@ export interface GenerateThemeInput {
   mode?: string;
   theme?: Theme;
   logo?: string;
+  emotion?: Emotion;
 }
