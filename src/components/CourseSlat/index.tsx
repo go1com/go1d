@@ -174,7 +174,7 @@ const CourseSlat: React.SFC<CourseSlatProps> = ({
           <View
             borderRadius={2}
             boxShadow="crisp"
-            flexDirection="row"
+            flexDirection={["column", "row"]}
             marginBottom={4}
             color="default"
             css={[
@@ -182,9 +182,6 @@ const CourseSlat: React.SFC<CourseSlatProps> = ({
               {
                 overflow: "hidden",
                 textDecoration: "none",
-                [breakpoints.sm]: {
-                  flexDirection: "column",
-                },
               },
               interactiveStyle(colors, passive),
             ]}

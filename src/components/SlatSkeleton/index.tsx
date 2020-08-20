@@ -1,5 +1,4 @@
 import * as React from "react";
-import { breakpoints } from "../../foundations";
 import Skeleton from "../Skeleton";
 import View from "../View";
 
@@ -7,13 +6,12 @@ export default () => (
   <View
     borderRadius={2}
     boxShadow="crisp"
-    flexDirection="row"
+    flexDirection={["column", "row"]}
     marginBottom={4}
     color="default"
     backgroundColor="background"
     width="100%"
     overflow="hidden"
-    css={{ [breakpoints.sm]: { flexDirection: "column" } }}
   >
     <Skeleton padding={3} height={[130, 142, 142]} width={["100%", 221, 221]} />
     <View padding={5} flexGrow={1}>
@@ -24,7 +22,7 @@ export default () => (
         maxWidth={250}
         width="50%"
         marginBottom={3}
-        css={{ [breakpoints.sm]: { display: "none" } }}
+        display={["none", "flex"]}
       />
       <Skeleton
         backgroundColor="faded"
