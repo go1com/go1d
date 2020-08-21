@@ -4,7 +4,7 @@ GO1D (Spoken Gold) stands for GO1 Design System and is a library of mostly stati
 
 ## Installation
 ```sh
-npm install @go1d/go1d
+yarn install @go1d/go1d
 ```
 
 ## Documentation
@@ -15,28 +15,28 @@ npm install @go1d/go1d
 
 To install dependency libraries:
 ```sh
-npm install
+yarn install
 ```
 
 To run locally, choose which method you want to use:
 
 ```sh
-npm run docs:dev
-npm run storybook
-npm run npm:dev
+yarn run docs:dev
+yarn run storybook
+yarn run npm:dev
 ```
 
 To create a deployment build, choose which method you want to use:
 
 ```sh
-npm run docs:build
-npm run storybook:build
-npm run npm:build
+yarn run docs:build
+yarn run storybook:build
+yarn run npm:build
 ```
 
 ## Testing
 ```sh
-npm test --coverage
+yarn test --coverage
 ```
 
 ##Happo.io cross-browser screenshot testing
@@ -55,7 +55,6 @@ This feature currently is still experimental, please contact shangzhi.pan@go1.co
 - inside content loader run `yarn start`
 
 ## Maintainers
-* Cian O'Leary (cian.oleary@go1.com)
 * Luke Brooker (luke.brooker@go1.com)
 * Stephen Mudra (stephen.mudra@go1.com)
 
