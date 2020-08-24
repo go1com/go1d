@@ -174,7 +174,7 @@ const CourseSlat: React.SFC<CourseSlatProps> = ({
           <View
             borderRadius={2}
             boxShadow="crisp"
-            flexDirection="row"
+            flexDirection={["column", "row"]}
             marginBottom={4}
             color="default"
             css={[
@@ -203,7 +203,7 @@ const CourseSlat: React.SFC<CourseSlatProps> = ({
                 width: 221,
                 [breakpoints.sm]: {
                   height: 130,
-                  width: 130,
+                  width: "100%",
                 },
               }}
             >
@@ -245,146 +245,153 @@ const CourseSlat: React.SFC<CourseSlatProps> = ({
               )}
               {imageOverlayRenderer && imageOverlayRenderer()}
             </View>
-            <View
-              paddingY={4}
-              paddingX={5}
-              flexShrink={1}
-              flexGrow={1}
-              width="100%"
-              flexDirection="column"
-              justifyContent="space-between"
-            >
-              <View>
-                {title && (
-                  <Text
-                    fontSize={3}
-                    fontWeight="semibold"
-                    css={{
-                      overflow: "hidden",
-                      whiteSpace: "nowrap",
-                      textOverflow: "ellipsis",
-                      [foundations.breakpoints.sm]: {
-                        wordWrap: "break-word",
-                        whiteSpace: "initial",
-                        lineHeight: 1.2,
-                        maxHeight: "2.4rem",
-                        WebkitLineClamp: 2,
-                        WebkitBoxOrient: "vertical",
-                        display: "-webkit-box",
-                        fontSize: foundations.type.scale.sm[2],
-                      },
-                    }}
-                  >
-                    {title}
-                  </Text>
-                )}
-                {(duration || author) && (
-                  <View flexDirection="row" marginTop={3} flexWrap="wrap">
-                    {authorAvatar && (
-                      <View paddingRight={3}>
-                        <Avatar src={authorAvatar} size={1} />
-                      </View>
-                    )}
-                    {author && (
-                      <View paddingRight={3}>
-                        {typeof author === "string" ? (
-                          <Text color="subtle" fontSize={1}>
-                            {author}
-                          </Text>
-                        ) : (
-                          author()
-                        )}
-                      </View>
-                    )}
-                    {!!duration && (
-                      <View
-                        flexDirection="row"
-                        css={{
-                          [foundations.breakpoints.sm]: {
-                            display: "none",
-                          },
-                        }}
-                      >
-                        <IconClock
-                          size={1}
-                          color="muted"
-                          marginRight={2}
-                          marginTop={1}
-                        />
-                        <Text color="subtle" fontSize={1}>
-                          {formatDuration(duration)}
-                        </Text>
-                      </View>
-                    )}
-                  </View>
-                )}
-              </View>
-              <View>
-                <View flexDirection="row" alignItems="center">
-                  {currency && !enrollment && price > 0 && (
-                    <React.Fragment>
-                      <Text
-                        color="accent"
-                        fontWeight="semibold"
-                        marginRight={3}
-                      >
-                        {formatPrice(currency, price, tax)}
-                      </Text>
-                      {premium && (
-                        <Text fontSize={1} marginRight={3} color="subtle">
-                          or
-                        </Text>
-                      )}
-                    </React.Fragment>
-                  )}
-                  {premium && !enrollment && (
-                    <Pill
-                      fontSize={1}
-                      marginRight={2}
-                      paddingY={1}
-                      color="accent"
-                    >
-                      Premium
-                    </Pill>
-                  )}
-                  {ratingRenderer && ratingRenderer(rating)}
-                </View>
-
-                {enrollment && enrollmentProgressRenderer(enrollment)}
-                {contentRender && contentRender()}
-                {contentRenderer && contentRenderer()}
-                {description && (
-                  <Text
-                    color="subtle"
-                    marginTop={3}
-                    css={{
-                      overflow: "hidden",
-                      whiteSpace: "nowrap",
-                      textOverflow: "ellipsis",
-                      [foundations.breakpoints.sm]: {
-                        display: "none",
-                      },
-                    }}
-                  >
-                    {description}
-                  </Text>
-                )}
-              </View>
-            </View>
-            {(actionRender || actionRenderer) && (
+            <View flexDirection="row" flexShrink={1} flexGrow={1}>
               <View
+                paddingY={4}
+                paddingX={5}
+                flexShrink={1}
+                flexGrow={1}
+                width="100%"
+                flexDirection="column"
+                justifyContent="space-between"
                 css={{
-                  padding: spacing[5],
-                  paddingLeft: spacing[7],
                   [breakpoints.sm]: {
-                    padding: spacing[4],
+                    paddingRight: 0,
                   },
                 }}
               >
-                {actionRender && actionRender()}
-                {actionRenderer && actionRenderer()}
+                <View>
+                  {title && (
+                    <Text
+                      fontSize={3}
+                      fontWeight="semibold"
+                      css={{
+                        overflow: "hidden",
+                        whiteSpace: "nowrap",
+                        textOverflow: "ellipsis",
+                        [foundations.breakpoints.sm]: {
+                          wordWrap: "break-word",
+                          whiteSpace: "initial",
+                          lineHeight: 1.2,
+                          maxHeight: "2.4rem",
+                          WebkitLineClamp: 2,
+                          WebkitBoxOrient: "vertical",
+                          display: "-webkit-box",
+                          fontSize: foundations.type.scale.sm[2],
+                        },
+                      }}
+                    >
+                      {title}
+                    </Text>
+                  )}
+                  {(duration || author) && (
+                    <View flexDirection="row" marginY={3} flexWrap="wrap">
+                      {authorAvatar && (
+                        <View paddingRight={3}>
+                          <Avatar src={authorAvatar} size={1} />
+                        </View>
+                      )}
+                      {author && (
+                        <View paddingRight={3}>
+                          {typeof author === "string" ? (
+                            <Text color="subtle" fontSize={1} lineClamp={1}>
+                              {author}
+                            </Text>
+                          ) : (
+                            author()
+                          )}
+                        </View>
+                      )}
+                      {!!duration && (
+                        <View
+                          flexDirection="row"
+                          css={{
+                            [foundations.breakpoints.sm]: {
+                              display: "none",
+                            },
+                          }}
+                        >
+                          <IconClock
+                            size={1}
+                            color="muted"
+                            marginRight={2}
+                            marginTop={1}
+                          />
+                          <Text color="subtle" fontSize={1}>
+                            {formatDuration(duration)}
+                          </Text>
+                        </View>
+                      )}
+                    </View>
+                  )}
+                </View>
+                <View>
+                  <View flexDirection="row" alignItems="center">
+                    {currency && !enrollment && price > 0 && (
+                      <React.Fragment>
+                        <Text
+                          color="accent"
+                          fontWeight="semibold"
+                          marginRight={3}
+                        >
+                          {formatPrice(currency, price, tax)}
+                        </Text>
+                        {premium && (
+                          <Text fontSize={1} marginRight={3} color="subtle">
+                            or
+                          </Text>
+                        )}
+                      </React.Fragment>
+                    )}
+                    {premium && !enrollment && (
+                      <Pill
+                        fontSize={1}
+                        marginRight={2}
+                        paddingY={1}
+                        color="accent"
+                      >
+                        Premium
+                      </Pill>
+                    )}
+                    {ratingRenderer && ratingRenderer(rating)}
+                  </View>
+
+                  {enrollment && enrollmentProgressRenderer(enrollment)}
+                  {contentRender && contentRender()}
+                  {contentRenderer && contentRenderer()}
+                  {description && (
+                    <Text
+                      color="subtle"
+                      marginTop={3}
+                      css={{
+                        overflow: "hidden",
+                        whiteSpace: "nowrap",
+                        textOverflow: "ellipsis",
+                        [foundations.breakpoints.sm]: {
+                          display: "none",
+                        },
+                      }}
+                    >
+                      {description}
+                    </Text>
+                  )}
+                </View>
               </View>
-            )}
+              {(actionRender || actionRenderer) && (
+                <View
+                  css={{
+                    padding: spacing[5],
+                    paddingLeft: spacing[7],
+                    [breakpoints.sm]: {
+                      padding: spacing[4],
+                    },
+                  }}
+                >
+                  {actionRender && actionRender()}
+                  {actionRenderer && actionRenderer()}
+                </View>
+              )}
+            </View>
           </View>
         );
       }}
