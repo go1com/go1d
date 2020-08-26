@@ -19,5 +19,6 @@ storiesOf("SpotIcon", module)
       <SpotIcon name="BusinessSkills" background="blue" />
       <SpotIcon name="PersonalDevelopment" background="yellow" />
       <SpotIcon name="SectorSpecific" background="lime" />
+      <SpotIcon name="PlusCircle" background="red" />
     </View>
   )

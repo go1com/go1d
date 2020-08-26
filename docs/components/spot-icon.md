@@ -92,3 +92,8 @@ status: ready
 ```.tsx
   <SpotIcon name="Website" />
 ```
+
+### PlusCircle
+```.tsx
+  <SpotIcon name="PlusCircle" />
+```
