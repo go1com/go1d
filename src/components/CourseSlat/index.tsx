@@ -248,7 +248,7 @@ const CourseSlat: React.SFC<CourseSlatProps> = ({
             <View flexDirection="row" flexShrink={1} flexGrow={1}>
               <View
                 paddingY={4}
-                paddingX={5}
+                paddingX={[4, 5]}
                 flexShrink={1}
                 flexGrow={1}
                 width="100%"
