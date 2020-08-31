@@ -52,7 +52,7 @@ const Option: React.SFC<OptionProps> = ({
           }
           element={!checked ? "button" : "div"}
           borderRadius={2}
-          onClick={!checked && onClick}
+          onClick={checked ? undefined : onClick}
           opacity={disabled && "disabled"}
           border={1}
           borderColor="soft"
