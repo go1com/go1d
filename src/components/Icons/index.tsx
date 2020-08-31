@@ -109,6 +109,7 @@ export { default as IconPause } from "./Pause";
 export { default as IconPhone } from "./Phone";
 export { default as IconPlay } from "./Play";
 export { default as IconPlaylist } from "./Playlist";
+export { default as IconPlaylistPlus } from "./PlaylistPlus";
 export { default as IconPlus } from "./Plus";
 export { default as IconPlusCircle } from "./PlusCircle";
 export { default as IconPortal } from "./Portal";
