@@ -7,7 +7,7 @@ class IconPause extends IconBase {
       <svg fill="currentColor" viewBox="0 0 16 16" {...props}>
         <path
           fillRule="evenodd"
-          d="M16 8A8 8 0 110 8a8 8 0 0116 0zM5.455 4.5h1.909v7h-1.91v-7zm3.181 0h1.91v7h-1.91v-7z"
+          d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.455 4.5h1.909v7h-1.91v-7zm3.181 0h1.91v7h-1.91v-7z"
           clipRule="evenodd"
         />
       </svg>

@@ -149,6 +149,7 @@ export { default as IconToggle } from "./Toggle";
 export { default as IconTooEasy } from "./TooEasy";
 export { default as IconTooHard } from "./TooHard";
 export { default as IconTrash } from "./Trash";
+export { default as IconTrendArrow } from "./TrendArrow";
 export { default as IconTwitter } from "./Twitter";
 export { default as IconUlList } from "./UlList";
 export { default as IconUnderline } from "./Underline";
