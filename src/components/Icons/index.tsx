@@ -119,6 +119,7 @@ export { default as IconPublish } from "./Publish";
 export { default as IconQuiz } from "./Quiz";
 export { default as IconRelevant } from "./Relevant";
 export { default as IconReplay } from "./Replay";
+export { default as IconReport } from "./Report";
 export { default as IconRetry } from "./Retry";
 export { default as IconRockOn } from "./RockOn";
 export { default as IconRotateBack } from "./RotateBack";
