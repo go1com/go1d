@@ -24,6 +24,7 @@ const Avatar: React.SFC<AvatarProps> = ({
   icon,
   avatarType = "circle",
   skeleton = false,
+  borderRadius = 3,
   ...props
 }: AvatarProps) => {
   const names = `${fullName}`.split(" ");
@@ -71,9 +72,10 @@ const Avatar: React.SFC<AvatarProps> = ({
     <Theme.Consumer>
       {({ type, breakpoints }) => (
         <View
+          borderRadius={borderRadius}
           css={{
             verticalAlign: "middle",
-            borderRadius: `${avatarType === "square" ? 3 : "50%"}`,
+            borderRadius: avatarType === "circle" ? "50%" : undefined,
             textAlign: "center",
             position: "relative",
             ...getBreakPointSizeStyles(breakpoints, type),
@@ -113,6 +115,7 @@ const Avatar: React.SFC<AvatarProps> = ({
               {src && (
                 <View
                   position="absolute"
+                  borderRadius={borderRadius}
                   css={{
                     top: 0,
                     left: 0,
@@ -120,7 +123,7 @@ const Avatar: React.SFC<AvatarProps> = ({
                     backgroundSize: "cover",
                     backgroundImage: `url('${src}')`,
                     backgroundPosition: "center",
-                    borderRadius: `${avatarType === "square" ? 3 : "50%"}`,
+                    borderRadius: avatarType === "circle" ? "50%" : undefined,
                     ...getBreakPointSizeStyles(breakpoints, type),
                   }}
                 />
