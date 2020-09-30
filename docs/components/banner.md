@@ -55,6 +55,20 @@ releaseVersion: 0.0.36
 </Banner>
 ```
 
+## Type custom
+```.jsx
+<Banner
+  type="success"
+  close={() => alert('close event')}
+  customColor="accent"
+>
+  <Text fontWeight="semibold">Success! </Text>
+  <Text>
+    This is a message <Link css={{ display: 'inline', fontWeight: '600', textDecoration: 'underline' }} href="https://foo.com">read more</Link>.
+  </Text>
+</Banner>
+```
+
 
 ```!jsx
 <ComponentDoc component="BannerProps" />

@@ -14,6 +14,7 @@ export interface BannerProps extends ViewProps {
   type: "success" | "warning" | "danger" | "note";
   close?: (evt: React.SyntheticEvent) => void;
   floating?: boolean;
+  customColor?: string;
 }
 
 const IconMap = {
@@ -28,6 +29,7 @@ const Banner: React.SFC<BannerProps> = ({
   children,
   close,
   floating,
+  customColor = type,
   ...props
 }: BannerProps) => {
   const IconElement = IconMap[type];
@@ -46,14 +48,16 @@ const Banner: React.SFC<BannerProps> = ({
           maxWidth="100%"
           css={{
             backgroundColor: `${
-              floating ? colors.background : tint(colors[type], tintLevel)
+              floating
+                ? colors.background
+                : tint(colors[customColor], tintLevel)
             }`,
-            borderLeft: `4px solid ${colors[type]}`,
+            borderLeft: `4px solid ${colors[customColor]}`,
             transition: "all 0.2s linear",
           }}
           {...props}
         >
-          <IconElement color={type} marginTop={1} />
+          <IconElement color={customColor} marginTop={1} />
           <View
             flexWrap="wrap"
             flexGrow={1}
@@ -79,7 +83,7 @@ const Banner: React.SFC<BannerProps> = ({
               paddingX={1}
               paddingY={1}
             >
-              <IconCross color={type} />
+              <IconCross color={customColor} />
             </ButtonMinimal>
           )}
         </View>
