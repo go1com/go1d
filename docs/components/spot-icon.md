@@ -97,3 +97,8 @@ status: ready
 ```.tsx
   <SpotIcon name="PlusCircle" />
 ```
+
+### Recommendation
+```.tsx
+  <SpotIcon name="Recommendation" />
+```

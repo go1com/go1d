@@ -17,3 +17,4 @@ export { default as University } from "./University";
 export { default as Video } from "./Video";
 export { default as Website } from "./Website";
 export { default as PlusCircle } from "./PlusCircle";
+export { default as Recommendation } from "./Recommendation";
