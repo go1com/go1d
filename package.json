@@ -1,6 +1,6 @@
 {
   "name": "@go1d/go1d",
-  "version": "0.10.32",
+  "version": "0.10.33",
   "description": "GO1 Design System",
   "main": "build/index.js",
   "homepage": "https://go1d.go1.com",
