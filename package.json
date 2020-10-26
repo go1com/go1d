@@ -27,7 +27,8 @@
     "test:watch": "jest --watch",
     "test:debug": "yarn lint && node --max_old_space_size=4096 --inspect-brk ./node_modules/.bin/jest --runInBand",
     "tslint": "tslint -c tslint.json \"./src/**/*.{ts,tsx}\"",
-    "tslint:fix": "tslint -c tslint.json \"./src/**/*.{ts,tsx}\" --fix"
+    "tslint:fix": "tslint -c tslint.json \"./src/**/*.{ts,tsx}\" --fix",
+    "type-check": "tsc --noEmit"
   },
   "lint-staged": {
     "./src/**/*.{ts,tsx}": [
