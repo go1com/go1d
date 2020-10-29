@@ -131,6 +131,7 @@ export { default as IconSettings } from "./Settings";
 export { default as IconShare } from "./Share";
 export { default as IconShareNetwork } from "./ShareNetwork";
 export { default as IconSkipBack } from "./SkipBack";
+export { default as IconSortArrowDown } from "./SortArrowDown";
 export { default as IconSpeechBubble } from "./SpeechBubble";
 export { default as IconStar } from "./Star";
 export { default as IconStarHalf } from "./StarHalf";
