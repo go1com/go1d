@@ -11,6 +11,8 @@ import ButtonFilled from "../ButtonFilled";
 
 import IconChevronLeft from "../Icons/ChevronLeft";
 import IconChevronRight from "../Icons/ChevronRight";
+import ButtonMinimal from "../ButtonMinimal";
+import Text, { TextProps } from "../Text";
 
 interface StandardProps extends ViewProps {
   children?: React.ReactNode;
@@ -28,6 +30,7 @@ interface BreakpointProps {
 
 export interface CarouselProps extends StandardProps {
   breakpoints?: BreakpointProps;
+  title?: React.ReactNode
 }
 
 class Carousel extends React.Component<CarouselProps, any> {
@@ -285,6 +288,7 @@ class Carousel extends React.Component<CarouselProps, any> {
       css,
       clickScrollAmount,
       slideAnimationDuration,
+      title,
       ...props
     } = this.props;
     const { currentSlide, finishedScrolling } = this.state;
@@ -292,6 +296,49 @@ class Carousel extends React.Component<CarouselProps, any> {
     const wrapperCSS = this.wrapperCSS(css);
     return (
       <View position="relative" {...props}>
+        <div style={{ display: 'flex' }}>
+          {title}
+          <div style={{ flexGrow: 1 }} />
+          <div style={{ display: 'flex' }}>
+            {currentSlide > 0
+              ? <ButtonMinimal
+                  onClick={this.scrollToIndex(
+                    this.state.currentSlide - clickScrollAmount
+                  )}
+                  aria-label="Navigate Carousel Left"
+                  data-testid="leftNavigationButton"
+                  round
+                  icon={IconChevronLeft}
+                />
+              : <ButtonMinimal
+                  aria-label="Disabled Navigate Carousel Left"
+                  data-testid="leftNavigationButton"
+                  round
+                  icon={IconChevronLeft}
+                  disabled={true}
+                />
+            }
+            {!finishedScrolling && currentSlide < this.slideRefs.length - 1
+              ? <ButtonMinimal
+                  onClick={this.scrollToIndex(
+                    this.state.currentSlide + clickScrollAmount
+                  )}
+                  aria-label="Navigate Carousel Right"
+                  data-testid="rightNavigationButton"
+                  round
+                  icon={IconChevronRight}
+                  disabled={finishedScrolling || currentSlide > this.slideRefs.length - 1}
+                />
+              : <ButtonMinimal
+                  aria-label="Navigate Carousel Right"
+                  data-testid="rightNavigationButton"
+                  round
+                  icon={IconChevronRight}
+                  disabled={true}
+                />
+            }
+          </div>
+        </div>
         <PureWrapper
           innerRef={this.sliderContainerRef}
           flexDirection="row"
@@ -305,42 +352,6 @@ class Carousel extends React.Component<CarouselProps, any> {
         >
           {slideItems}
         </PureWrapper>
-        {currentSlide > 0 && (
-          <ButtonFilled
-            onClick={this.scrollToIndex(
-              this.state.currentSlide - clickScrollAmount
-            )}
-            aria-label="Navigate Carousel Left"
-            data-testid="leftNavigationButton"
-            icon={IconChevronLeft}
-            position="absolute"
-            round={true}
-            justifyContent="center"
-            css={{
-              borderRadius: "50%",
-              top: "calc(50% - 20px)",
-              left: -20,
-            }}
-          />
-        )}
-        {!finishedScrolling && currentSlide < this.slideRefs.length - 1 && (
-          <ButtonFilled
-            onClick={this.scrollToIndex(
-              this.state.currentSlide + clickScrollAmount
-            )}
-            aria-label="Navigate Carousel Right"
-            data-testid="rightNavigationButton"
-            icon={IconChevronRight}
-            position="absolute"
-            justifyContent="center"
-            round={true}
-            css={{
-              borderRadius: "50%",
-              top: "calc(50% - 20px)",
-              right: -20,
-            }}
-          />
-        )}
       </View>
     );
   }
