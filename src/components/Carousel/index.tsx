@@ -36,7 +36,7 @@ export interface CarouselProps extends StandardProps {
 class Carousel extends React.Component<CarouselProps, any> {
   public static defaultProps = {
     slidesToShow: 1,
-    gutter: 3,
+    gutter: 4,
     clickScrollAmount: 1,
   };
   public timer = null;
@@ -57,7 +57,7 @@ class Carousel extends React.Component<CarouselProps, any> {
       return (
         <View
           innerRef={SlideRef}
-          maxWidth={`${100 / slidesToShow}%`}
+          width={`${100 / slidesToShow}%`}
           marginY={1}
           css={{
             paddingLeft: foundations.spacing[gutter] / 2,
@@ -297,8 +297,7 @@ class Carousel extends React.Component<CarouselProps, any> {
     return (
       <View position="relative" {...props}>
         <div style={{ display: 'flex' }}>
-          {title}
-          <div style={{ flexGrow: 1 }} />
+          <div style={{ flexGrow: 1 }}>{title}</div>
           <div style={{ display: 'flex' }}>
             {currentSlide > 0
               ? <ButtonMinimal
@@ -396,12 +395,12 @@ const ExportCarousel: React.SFC<CarouselProps> = (props: CarouselProps) => (
         size = "sm";
       }
 
-      if (Params.width > 600 && Params.width < 1100) {
+      if (Params.width > 600 && Params.width < 960) {
         size = "md";
       }
 
       const { breakpoints = {}, ...RemainingProps } = props;
-
+      
       const PassProps = {
         // Use the props for the current size
         ...RemainingProps,
@@ -412,7 +411,6 @@ const ExportCarousel: React.SFC<CarouselProps> = (props: CarouselProps) => (
             }
           : {}),
       };
-
       return <Carousel size={size} {...PassProps} />;
     }}
   </ContainerDimensions>
