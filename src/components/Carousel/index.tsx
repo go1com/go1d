@@ -295,7 +295,7 @@ class Carousel extends React.Component<CarouselProps, any> {
     const slideItems = this.slideItems(children, slidesToShow, gutter);
     const wrapperCSS = this.wrapperCSS(css);
     return (
-      <View position="relative" {...props}>
+      <View position="relative" flexGrow={1} {...props}>
         <div style={{ display: 'flex' }}>
           <div style={{ flexGrow: 1 }}>{title}</div>
           <div style={{ display: 'flex' }}>
