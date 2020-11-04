@@ -27,9 +27,7 @@ export {
   default as ToggleSwitch,
   ToggleSwitchProps,
 } from "./components/ToggleSwitch";
-export {
-  default as ToggleButtonFeature,
-} from "./components/ToggleButtonFeature";
+export { default as ToggleButtonFeature } from "./components/ToggleButtonFeature";
 export { default as Pill, PillProps } from "./components/Pill";
 export { default as PageBody, PageBodyProps } from "./components/PageBody";
 export { IconProps } from "./components/IconBase";

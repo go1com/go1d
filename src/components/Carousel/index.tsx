@@ -8,9 +8,9 @@ import PureWrapper from "./internals/PureWrapper";
 
 import foundations from "../../foundations";
 
+import ButtonMinimal from "../ButtonMinimal";
 import IconChevronLeft from "../Icons/ChevronLeft";
 import IconChevronRight from "../Icons/ChevronRight";
-import ButtonMinimal from "../ButtonMinimal";
 
 interface StandardProps extends ViewProps {
   children?: React.ReactNode;
@@ -28,7 +28,7 @@ interface BreakpointProps {
 
 export interface CarouselProps extends StandardProps {
   breakpoints?: BreakpointProps;
-  title?: React.ReactNode
+  title?: React.ReactNode;
 }
 
 class Carousel extends React.Component<CarouselProps, any> {
@@ -295,48 +295,59 @@ class Carousel extends React.Component<CarouselProps, any> {
 
     return (
       <View position="relative" flexGrow={1} {...props}>
-        <View display='flex' flexDirection='row' marginBottom={5}>
-          <div style={{ flexGrow: 1, display: 'flex', alignItems: 'center', justifyContent: 'flex-start' }}>
+        <View display="flex" flexDirection="row" marginBottom={5}>
+          <div
+            style={{
+              flexGrow: 1,
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "flex-start",
+            }}
+          >
             {title}
           </div>
-          <div style={{ display: 'flex' }}>
-            {currentSlide > 0
-              ? <ButtonMinimal
-                  onClick={this.scrollToIndex(
-                    this.state.currentSlide - clickScrollAmount
-                  )}
-                  aria-label="Navigate Carousel Left"
-                  data-testid="leftNavigationButton"
-                  round
-                  icon={IconChevronLeft}
-                />
-              : <ButtonMinimal
-                  aria-label="Disabled Navigate Carousel Left"
-                  data-testid="leftNavigationButton"
-                  round
-                  icon={IconChevronLeft}
-                  disabled={true}
-                />
-            }
-            {!finishedScrolling && currentSlide < this.slideRefs.length - 1
-              ? <ButtonMinimal
-                  onClick={this.scrollToIndex(
-                    this.state.currentSlide + clickScrollAmount
-                  )}
-                  aria-label="Navigate Carousel Right"
-                  data-testid="rightNavigationButton"
-                  round
-                  icon={IconChevronRight}
-                  disabled={finishedScrolling || currentSlide > this.slideRefs.length - 1}
-                />
-              : <ButtonMinimal
-                  aria-label="Navigate Carousel Right"
-                  data-testid="rightNavigationButton"
-                  round
-                  icon={IconChevronRight}
-                  disabled={true}
-                />
-            }
+          <div style={{ display: "flex" }}>
+            {currentSlide > 0 ? (
+              <ButtonMinimal
+                onClick={this.scrollToIndex(
+                  this.state.currentSlide - clickScrollAmount
+                )}
+                aria-label="Navigate Carousel Left"
+                data-testid="leftNavigationButton"
+                round={true}
+                icon={IconChevronLeft}
+              />
+            ) : (
+              <ButtonMinimal
+                aria-label="Disabled Navigate Carousel Left"
+                data-testid="leftNavigationButton"
+                round={true}
+                icon={IconChevronLeft}
+                disabled={true}
+              />
+            )}
+            {!finishedScrolling && currentSlide < this.slideRefs.length - 1 ? (
+              <ButtonMinimal
+                onClick={this.scrollToIndex(
+                  this.state.currentSlide + clickScrollAmount
+                )}
+                aria-label="Navigate Carousel Right"
+                data-testid="rightNavigationButton"
+                round={true}
+                icon={IconChevronRight}
+                disabled={
+                  finishedScrolling || currentSlide > this.slideRefs.length - 1
+                }
+              />
+            ) : (
+              <ButtonMinimal
+                aria-label="Navigate Carousel Right"
+                data-testid="rightNavigationButton"
+                round={true}
+                icon={IconChevronRight}
+                disabled={true}
+              />
+            )}
           </div>
         </View>
         <PureWrapper
@@ -401,7 +412,7 @@ const ExportCarousel: React.SFC<CarouselProps> = (props: CarouselProps) => (
       }
 
       const { breakpoints = {}, ...RemainingProps } = props;
-      
+
       const PassProps = {
         // Use the props for the current size
         ...RemainingProps,
