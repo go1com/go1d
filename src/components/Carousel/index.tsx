@@ -296,17 +296,20 @@ class Carousel extends React.Component<CarouselProps, any> {
     return (
       <View position="relative" flexGrow={1} {...props}>
         <View display="flex" flexDirection="row" marginBottom={5}>
-          <div
-            style={{
-              flexGrow: 1,
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "flex-start",
-            }}
+          <View
+            display='flex'
+            flexGrow={1}
+            alignItems='flex-start'
+            justifyContent='center'
           >
             {title}
-          </div>
-          <div style={{ display: "flex" }}>
+          </View>
+          <View
+            display='flex'
+            flexDirection='row'
+            alignItems='flex-end'
+            justifyContent='center'
+          >
             {currentSlide > 0 ? (
               <ButtonMinimal
                 onClick={this.scrollToIndex(
@@ -348,7 +351,7 @@ class Carousel extends React.Component<CarouselProps, any> {
                 disabled={true}
               />
             )}
-          </div>
+          </View>
         </View>
         <PureWrapper
           innerRef={this.sliderContainerRef}
