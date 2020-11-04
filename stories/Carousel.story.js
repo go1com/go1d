@@ -1,6 +1,6 @@
 import React from 'react'; 
 import {storiesOf} from '@storybook/react'; 
-import {Carousel,View} from '../src'; 
+import {Carousel,View, Text} from '../src'; 
 storiesOf("Carousel", module) 
 .add('Base', () => <Carousel>
   <View css={{
@@ -132,3 +132,65 @@ storiesOf("Carousel", module)
     backgroundColor: "#db7c00",
   }} />
 </Carousel>) 
+.add('With title', () => {
+  return (
+    <Carousel title={<Text fontSize={4} fontWeight='semibold' lineHeight='paragraph'>Title</Text>}>
+      <View css={{
+        height: 200,
+        minWidth: 150,
+        maxWidth: '100%',
+        width: 425,
+        backgroundColor: "#7732bb",
+      }} />
+      <View css={{
+        height: 200,
+        minWidth: 150,
+        maxWidth: '100%',
+        width: 425,
+        backgroundColor: "#047cc0",
+      }} />
+      <View css={{
+        height: 200,
+        minWidth: 150,
+        maxWidth: '100%',
+        width: 425,
+        backgroundColor: "#e3bc13",
+      }} />
+      <View css={{
+        height: 200,
+        minWidth: 150,
+        maxWidth: '100%',
+        width: 425,
+        backgroundColor: "#db7c00",
+      }} />
+      <View css={{
+        height: 200,
+        minWidth: 150,
+        maxWidth: '100%',
+        width: 425,
+        backgroundColor: "#7732bb",
+      }} />
+      <View css={{
+        height: 200,
+        minWidth: 150,
+        maxWidth: '100%',
+        width: 425,
+        backgroundColor: "#047cc0",
+      }} />
+      <View css={{
+        height: 200,
+        minWidth: 150,
+        maxWidth: '100%',
+        width: 425,
+        backgroundColor: "#e3bc13",
+      }} />
+      <View css={{
+        height: 200,
+        minWidth: 150,
+        maxWidth: '100%',
+        width: 425,
+        backgroundColor: "#db7c00",
+      }} />
+    </Carousel>
+  )
+})
