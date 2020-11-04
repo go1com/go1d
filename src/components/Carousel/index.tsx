@@ -294,9 +294,10 @@ class Carousel extends React.Component<CarouselProps, any> {
     const { currentSlide, finishedScrolling } = this.state;
     const slideItems = this.slideItems(children, slidesToShow, gutter);
     const wrapperCSS = this.wrapperCSS(css);
+
     return (
       <View position="relative" flexGrow={1} {...props}>
-        <div style={{ display: 'flex' }}>
+        <View display='flex' flexDirection='row' marginBottom={5}>
           <div style={{ flexGrow: 1 }}>{title}</div>
           <div style={{ display: 'flex' }}>
             {currentSlide > 0
@@ -337,7 +338,7 @@ class Carousel extends React.Component<CarouselProps, any> {
                 />
             }
           </div>
-        </div>
+        </View>
         <PureWrapper
           innerRef={this.sliderContainerRef}
           flexDirection="row"
