@@ -298,7 +298,9 @@ class Carousel extends React.Component<CarouselProps, any> {
     return (
       <View position="relative" flexGrow={1} {...props}>
         <View display='flex' flexDirection='row' marginBottom={5}>
-          <div style={{ flexGrow: 1 }}>{title}</div>
+          <div style={{ flexGrow: 1, display: 'flex', alignItems: 'center', justifyContent: 'flex-start' }}>
+            {title}
+          </div>
           <div style={{ display: 'flex' }}>
             {currentSlide > 0
               ? <ButtonMinimal
