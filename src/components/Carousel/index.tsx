@@ -7,12 +7,10 @@ import ContainerDimensions from "./internals/ContainerDimensions";
 import PureWrapper from "./internals/PureWrapper";
 
 import foundations from "../../foundations";
-import ButtonFilled from "../ButtonFilled";
 
 import IconChevronLeft from "../Icons/ChevronLeft";
 import IconChevronRight from "../Icons/ChevronRight";
 import ButtonMinimal from "../ButtonMinimal";
-import Text, { TextProps } from "../Text";
 
 interface StandardProps extends ViewProps {
   children?: React.ReactNode;
