@@ -307,7 +307,6 @@ class Carousel extends React.Component<CarouselProps, any> {
             {title}
           </div>
           <div style={{ display: "flex" }}>
-            {/* FIX ME */}
             {currentSlide > 0 ? (
               <ButtonMinimal
                 onClick={this.scrollToIndex(
