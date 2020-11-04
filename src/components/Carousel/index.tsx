@@ -7,8 +7,8 @@ import ContainerDimensions from "./internals/ContainerDimensions";
 import PureWrapper from "./internals/PureWrapper";
 
 import foundations from "../../foundations";
-import ButtonFilled from "../ButtonFilled";
 
+import ButtonMinimal from "../ButtonMinimal";
 import IconChevronLeft from "../Icons/ChevronLeft";
 import IconChevronRight from "../Icons/ChevronRight";
 
@@ -28,12 +28,13 @@ interface BreakpointProps {
 
 export interface CarouselProps extends StandardProps {
   breakpoints?: BreakpointProps;
+  title?: React.ReactNode;
 }
 
 class Carousel extends React.Component<CarouselProps, any> {
   public static defaultProps = {
     slidesToShow: 1,
-    gutter: 3,
+    gutter: 4,
     clickScrollAmount: 1,
   };
   public timer = null;
@@ -54,7 +55,7 @@ class Carousel extends React.Component<CarouselProps, any> {
       return (
         <View
           innerRef={SlideRef}
-          maxWidth={`${100 / slidesToShow}%`}
+          width={`${100 / slidesToShow}%`}
           marginY={1}
           css={{
             paddingLeft: foundations.spacing[gutter] / 2,
@@ -285,13 +286,73 @@ class Carousel extends React.Component<CarouselProps, any> {
       css,
       clickScrollAmount,
       slideAnimationDuration,
+      title,
       ...props
     } = this.props;
     const { currentSlide, finishedScrolling } = this.state;
     const slideItems = this.slideItems(children, slidesToShow, gutter);
     const wrapperCSS = this.wrapperCSS(css);
+
     return (
-      <View position="relative" {...props}>
+      <View position="relative" flexGrow={1} {...props}>
+        <View display="flex" flexDirection="row" marginBottom={5}>
+          <View
+            display="flex"
+            flexGrow={1}
+            alignItems="flex-start"
+            justifyContent="center"
+          >
+            {title}
+          </View>
+          <View
+            display="flex"
+            flexDirection="row"
+            alignItems="flex-end"
+            justifyContent="center"
+          >
+            {currentSlide > 0 ? (
+              <ButtonMinimal
+                onClick={this.scrollToIndex(
+                  this.state.currentSlide - clickScrollAmount
+                )}
+                aria-label="Navigate Carousel Left"
+                data-testid="leftNavigationButton"
+                round={true}
+                icon={IconChevronLeft}
+              />
+            ) : (
+              <ButtonMinimal
+                aria-label="Disabled Navigate Carousel Left"
+                data-testid="leftNavigationButton"
+                round={true}
+                icon={IconChevronLeft}
+                disabled={true}
+              />
+            )}
+            {!finishedScrolling && currentSlide < this.slideRefs.length - 1 ? (
+              <ButtonMinimal
+                onClick={this.scrollToIndex(
+                  this.state.currentSlide + clickScrollAmount
+                )}
+                aria-label="Navigate Carousel Right"
+                data-testid="rightNavigationButton"
+                round={true}
+                icon={IconChevronRight}
+                disabled={
+                  finishedScrolling || currentSlide > this.slideRefs.length - 1
+                }
+              />
+            ) : (
+              <ButtonMinimal
+                aria-label="Navigate Carousel Right"
+                data-testid="rightNavigationButton"
+                round={true}
+                icon={IconChevronRight}
+                disabled={true}
+              />
+            )}
+          </View>
+        </View>
         <PureWrapper
           innerRef={this.sliderContainerRef}
           flexDirection="row"
@@ -305,42 +366,6 @@ class Carousel extends React.Component<CarouselProps, any> {
         >
           {slideItems}
         </PureWrapper>
-        {currentSlide > 0 && (
-          <ButtonFilled
-            onClick={this.scrollToIndex(
-              this.state.currentSlide - clickScrollAmount
-            )}
-            aria-label="Navigate Carousel Left"
-            data-testid="leftNavigationButton"
-            icon={IconChevronLeft}
-            position="absolute"
-            round={true}
-            justifyContent="center"
-            css={{
-              borderRadius: "50%",
-              top: "calc(50% - 20px)",
-              left: -20,
-            }}
-          />
-        )}
-        {!finishedScrolling && currentSlide < this.slideRefs.length - 1 && (
-          <ButtonFilled
-            onClick={this.scrollToIndex(
-              this.state.currentSlide + clickScrollAmount
-            )}
-            aria-label="Navigate Carousel Right"
-            data-testid="rightNavigationButton"
-            icon={IconChevronRight}
-            position="absolute"
-            justifyContent="center"
-            round={true}
-            css={{
-              borderRadius: "50%",
-              top: "calc(50% - 20px)",
-              right: -20,
-            }}
-          />
-        )}
       </View>
     );
   }
@@ -385,7 +410,7 @@ const ExportCarousel: React.SFC<CarouselProps> = (props: CarouselProps) => (
         size = "sm";
       }
 
-      if (Params.width > 600 && Params.width < 1100) {
+      if (Params.width > 600 && Params.width < 960) {
         size = "md";
       }
 
@@ -401,7 +426,6 @@ const ExportCarousel: React.SFC<CarouselProps> = (props: CarouselProps) => (
             }
           : {}),
       };
-
       return <Carousel size={size} {...PassProps} />;
     }}
   </ContainerDimensions>
