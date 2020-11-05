@@ -219,6 +219,8 @@ export { default as Rating, RatingProps } from "./components/Rating";
 
 export { default as Null } from "./components/Null"; // DO NOT USE
 
+export { default as VisuallyHidden } from "./components/VisuallyHidden";
+
 /* Utils */
 export { default as priceFormatterUtil } from "./utils/priceFormatter";
 export { default as durationFormatterUtil } from "./utils/durationFormatter";

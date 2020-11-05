@@ -2,6 +2,7 @@ import { keyframes } from "emotion";
 import * as React from "react";
 import Theme from "../Theme";
 import View, { ViewProps } from "../View";
+import VisuallyHidden from "../VisuallyHidden";
 
 // This returns an animation
 const clip = keyframes`
@@ -20,32 +21,35 @@ class Spinner extends React.Component<ViewProps> {
     return (
       <Theme.Consumer>
         {({ type, breakpoints }) => (
-          <View
-            borderColor={color}
-            border={2}
-            display="inline-block"
-            background="transparent"
-            css={[
-              {
-                "border-radius": "100%",
-                "border-bottom-color": "transparent",
-                animation: `${clip} 0.75s 0s infinite linear`,
-                "animation-fill-mode": "both",
-              },
-              Object.keys(breakpoints).reduce(
-                (acc, bpKey) => ({
-                  ...acc,
-                  [breakpoints[bpKey]]: {
-                    width: type.scale[bpKey][size] || "1em",
-                    height: type.scale[bpKey][size] || "1em",
-                  },
-                }),
-                {}
-              ),
-              propCss,
-            ]}
-            {...props}
-          />
+          <View role="status">
+            <VisuallyHidden>Loading</VisuallyHidden>
+            <View
+              borderColor={color}
+              border={2}
+              display="inline-block"
+              background="transparent"
+              css={[
+                {
+                  "border-radius": "100%",
+                  "border-bottom-color": "transparent",
+                  animation: `${clip} 0.75s 0s infinite linear`,
+                  "animation-fill-mode": "both",
+                },
+                Object.keys(breakpoints).reduce(
+                  (acc, bpKey) => ({
+                    ...acc,
+                    [breakpoints[bpKey]]: {
+                      width: type.scale[bpKey][size] || "1em",
+                      height: type.scale[bpKey][size] || "1em",
+                    },
+                  }),
+                  {}
+                ),
+                propCss,
+              ]}
+              {...props}
+            />
+          </View>
         )}
       </Theme.Consumer>
     );
