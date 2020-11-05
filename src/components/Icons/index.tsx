@@ -146,6 +146,7 @@ export { default as IconSun } from "./Sun";
 export { default as IconSunrise } from "./Sunrise";
 export { default as IconSunset } from "./Sunset";
 export { default as IconTag } from "./Tag";
+export { default as IconTeam } from "./Team";
 export { default as IconText } from "./Text";
 export { default as IconThumbsDown } from "./ThumbsDown";
 export { default as IconThumbsUp } from "./ThumbsUp";
