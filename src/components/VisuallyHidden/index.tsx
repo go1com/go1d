@@ -1,6 +1,5 @@
 import * as React from "react";
-import Theme from "../Theme";
-import View, { ViewProps } from "../View";
+import View from "../View";
 
 export interface VisuallyHiddenProps {
   children?: React.ReactNode;
