@@ -296,6 +296,7 @@ class Carousel extends React.Component<CarouselProps, any> {
     const { currentSlide, finishedScrolling } = this.state;
     const slideItems = this.slideItems(children, slidesToShow, gutter);
     const wrapperCSS = this.wrapperCSS(css);
+    const numberOfSlides = React.Children.toArray(children).length;
 
     return (
       <View
@@ -314,54 +315,58 @@ class Carousel extends React.Component<CarouselProps, any> {
           >
             {title}
           </View>
-          <View
-            display="flex"
-            flexDirection="row"
-            alignItems="flex-end"
-            justifyContent="center"
-          >
-            {currentSlide > 0 ? (
-              <ButtonMinimal
-                onClick={this.scrollToIndex(
-                  this.state.currentSlide - clickScrollAmount
-                )}
-                aria-label="Navigate Carousel Left"
-                data-testid="leftNavigationButton"
-                round={true}
-                icon={IconChevronLeft}
-              />
-            ) : (
-              <ButtonMinimal
-                aria-label="Disabled Navigate Carousel Left"
-                data-testid="leftNavigationButton"
-                round={true}
-                icon={IconChevronLeft}
-                disabled={true}
-              />
-            )}
-            {!finishedScrolling && currentSlide < this.slideRefs.length - 1 ? (
-              <ButtonMinimal
-                onClick={this.scrollToIndex(
-                  this.state.currentSlide + clickScrollAmount
-                )}
-                aria-label="Navigate Carousel Right"
-                data-testid="rightNavigationButton"
-                round={true}
-                icon={IconChevronRight}
-                disabled={
-                  finishedScrolling || currentSlide > this.slideRefs.length - 1
-                }
-              />
-            ) : (
-              <ButtonMinimal
-                aria-label="Navigate Carousel Right"
-                data-testid="rightNavigationButton"
-                round={true}
-                icon={IconChevronRight}
-                disabled={true}
-              />
-            )}
-          </View>
+          {numberOfSlides > slidesToShow && (
+            <View
+              display="flex"
+              flexDirection="row"
+              alignItems="flex-end"
+              justifyContent="center"
+            >
+              {currentSlide > 0 ? (
+                <ButtonMinimal
+                  onClick={this.scrollToIndex(
+                    this.state.currentSlide - clickScrollAmount
+                  )}
+                  aria-label="Navigate Carousel Left"
+                  data-testid="leftNavigationButton"
+                  round={true}
+                  icon={IconChevronLeft}
+                />
+              ) : (
+                <ButtonMinimal
+                  aria-label="Disabled Navigate Carousel Left"
+                  data-testid="leftNavigationButton"
+                  round={true}
+                  icon={IconChevronLeft}
+                  disabled={true}
+                />
+              )}
+              {!finishedScrolling &&
+              currentSlide < this.slideRefs.length - 1 ? (
+                <ButtonMinimal
+                  onClick={this.scrollToIndex(
+                    this.state.currentSlide + clickScrollAmount
+                  )}
+                  aria-label="Navigate Carousel Right"
+                  data-testid="rightNavigationButton"
+                  round={true}
+                  icon={IconChevronRight}
+                  disabled={
+                    finishedScrolling ||
+                    currentSlide > this.slideRefs.length - 1
+                  }
+                />
+              ) : (
+                <ButtonMinimal
+                  aria-label="Navigate Carousel Right"
+                  data-testid="rightNavigationButton"
+                  round={true}
+                  icon={IconChevronRight}
+                  disabled={true}
+                />
+              )}
+            </View>
+          )}
         </View>
         <PureWrapper
           innerRef={this.sliderContainerRef}
