@@ -48,30 +48,32 @@ class Carousel extends React.Component<CarouselProps, any> {
   private slideTween;
   private ignoreScroll = false;
   private initialSliderOffset = null;
-  private slideItems = memoize((children, slidesToShow, gutter) =>
-    React.Children.map(children, (Slide, Index) => {
-      const SlideRef = React.createRef();
-      this.slideRefs[Index] = SlideRef;
-      return (
-        <View
-          innerRef={SlideRef}
-          width={`${100 / slidesToShow}%`}
-          marginY={1}
-          css={{
-            paddingLeft: foundations.spacing[gutter] / 2,
-            paddingRight: foundations.spacing[gutter] / 2,
-            ":first-child": {
-              paddingLeft: 0,
-            },
-            ":last-child": {
-              paddingRight: 0,
-            },
-          }}
-        >
-          {Slide}
-        </View>
-      );
-    })
+  private slideItems = memoize(
+    (children, slidesToShow, gutter) =>
+      React.Children.map(children, (Slide, Index) => {
+        const SlideRef = React.createRef();
+        this.slideRefs[Index] = SlideRef;
+        return (
+          <View
+            innerRef={SlideRef}
+            width={`${100 / slidesToShow}%`}
+            marginY={1}
+            css={{
+              paddingLeft: foundations.spacing[gutter] / 2,
+              paddingRight: foundations.spacing[gutter] / 2,
+              ":first-child": {
+                paddingLeft: 0,
+              },
+              ":last-child": {
+                paddingRight: 0,
+              },
+            }}
+          >
+            {Slide}
+          </View>
+        );
+      }),
+    (_, slidesToShow) => slidesToShow
   );
   private wrapperCSS = memoize(css => {
     return [
@@ -287,14 +289,23 @@ class Carousel extends React.Component<CarouselProps, any> {
       clickScrollAmount,
       slideAnimationDuration,
       title,
+      size,
+      containerMaxWidth,
       ...props
     } = this.props;
     const { currentSlide, finishedScrolling } = this.state;
     const slideItems = this.slideItems(children, slidesToShow, gutter);
     const wrapperCSS = this.wrapperCSS(css);
+    const numberOfSlides = React.Children.toArray(children).length;
 
     return (
-      <View position="relative" flexGrow={1} {...props}>
+      <View
+        position="relative"
+        flexGrow={1}
+        maxWidth={containerMaxWidth}
+        width="100%"
+        {...props}
+      >
         <View display="flex" flexDirection="row" marginBottom={5}>
           <View
             display="flex"
@@ -304,54 +315,58 @@ class Carousel extends React.Component<CarouselProps, any> {
           >
             {title}
           </View>
-          <View
-            display="flex"
-            flexDirection="row"
-            alignItems="flex-end"
-            justifyContent="center"
-          >
-            {currentSlide > 0 ? (
-              <ButtonMinimal
-                onClick={this.scrollToIndex(
-                  this.state.currentSlide - clickScrollAmount
-                )}
-                aria-label="Navigate Carousel Left"
-                data-testid="leftNavigationButton"
-                round={true}
-                icon={IconChevronLeft}
-              />
-            ) : (
-              <ButtonMinimal
-                aria-label="Disabled Navigate Carousel Left"
-                data-testid="leftNavigationButton"
-                round={true}
-                icon={IconChevronLeft}
-                disabled={true}
-              />
-            )}
-            {!finishedScrolling && currentSlide < this.slideRefs.length - 1 ? (
-              <ButtonMinimal
-                onClick={this.scrollToIndex(
-                  this.state.currentSlide + clickScrollAmount
-                )}
-                aria-label="Navigate Carousel Right"
-                data-testid="rightNavigationButton"
-                round={true}
-                icon={IconChevronRight}
-                disabled={
-                  finishedScrolling || currentSlide > this.slideRefs.length - 1
-                }
-              />
-            ) : (
-              <ButtonMinimal
-                aria-label="Navigate Carousel Right"
-                data-testid="rightNavigationButton"
-                round={true}
-                icon={IconChevronRight}
-                disabled={true}
-              />
-            )}
-          </View>
+          {numberOfSlides > slidesToShow && (
+            <View
+              display="flex"
+              flexDirection="row"
+              alignItems="flex-end"
+              justifyContent="center"
+            >
+              {currentSlide > 0 ? (
+                <ButtonMinimal
+                  onClick={this.scrollToIndex(
+                    this.state.currentSlide - clickScrollAmount
+                  )}
+                  aria-label="Navigate Carousel Left"
+                  data-testid="leftNavigationButton"
+                  round={true}
+                  icon={IconChevronLeft}
+                />
+              ) : (
+                <ButtonMinimal
+                  aria-label="Disabled Navigate Carousel Left"
+                  data-testid="leftNavigationButton"
+                  round={true}
+                  icon={IconChevronLeft}
+                  disabled={true}
+                />
+              )}
+              {!finishedScrolling &&
+              currentSlide < this.slideRefs.length - 1 ? (
+                <ButtonMinimal
+                  onClick={this.scrollToIndex(
+                    this.state.currentSlide + clickScrollAmount
+                  )}
+                  aria-label="Navigate Carousel Right"
+                  data-testid="rightNavigationButton"
+                  round={true}
+                  icon={IconChevronRight}
+                  disabled={
+                    finishedScrolling ||
+                    currentSlide > this.slideRefs.length - 1
+                  }
+                />
+              ) : (
+                <ButtonMinimal
+                  aria-label="Navigate Carousel Right"
+                  data-testid="rightNavigationButton"
+                  round={true}
+                  icon={IconChevronRight}
+                  disabled={true}
+                />
+              )}
+            </View>
+          )}
         </View>
         <PureWrapper
           innerRef={this.sliderContainerRef}
@@ -406,12 +421,16 @@ const ExportCarousel: React.SFC<CarouselProps> = (props: CarouselProps) => (
   <ContainerDimensions>
     {Params => {
       let size = "lg";
+      let containerMaxWidth = foundations.type.measure.wide;
+
       if (Params.width < 600) {
         size = "sm";
+        containerMaxWidth = foundations.type.measure.narrow;
       }
 
       if (Params.width > 600 && Params.width < 960) {
         size = "md";
+        containerMaxWidth = foundations.type.measure.normal;
       }
 
       const { breakpoints = {}, ...RemainingProps } = props;
@@ -426,7 +445,13 @@ const ExportCarousel: React.SFC<CarouselProps> = (props: CarouselProps) => (
             }
           : {}),
       };
-      return <Carousel size={size} {...PassProps} />;
+      return (
+        <Carousel
+          size={size}
+          containerMaxWidth={containerMaxWidth}
+          {...PassProps}
+        />
+      );
     }}
   </ContainerDimensions>
 );
