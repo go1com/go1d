@@ -5,7 +5,7 @@ import { Emotion } from "create-emotion";
 
 export type FontFamily = "sansSerif" | "title" | "paragraph" | "ui" | "mono";
 
-export type FontWeight = "light" | "normal" | "semibold" | "bold";
+export type FontWeight = "light" | "normal" | "medium" | "semibold" | "bold";
 
 export type Gradients = "warmOverlay" | "lightWarmOverlay" | "darkWarmOverlay";
 export type Opacities =
