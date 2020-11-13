@@ -13,13 +13,16 @@ import Theme from "../Theme";
 
 import View, { ViewProps } from "../View";
 
+interface SelectOptionItem {
+  value?: string;
+  label: string;
+  labelSelected?: string;
+  optgroup?: boolean;
+  values?: Array<{ value: string; label: string }>;
+}
+
 export interface SelectProps extends ViewProps {
-  options?: Array<{
-    value?: string;
-    label: string;
-    optgroup?: boolean;
-    values?: Array<{ value: string; label: string }>;
-  }>;
+  options?: SelectOptionItem[];
   disabled?: boolean;
   placeholder?: string;
   defaultValue?: any;
@@ -232,7 +235,8 @@ class Select extends React.PureComponent<SelectProps, any> {
                                 }}
                               >
                                 {selectedItem
-                                  ? selectedItem.label
+                                  ? selectedItem.labelSelected ||
+                                    selectedItem.label
                                   : placeholder || defaultText}
                               </Text>
                             </View>
