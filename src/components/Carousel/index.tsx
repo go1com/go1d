@@ -54,7 +54,7 @@ class Carousel extends React.Component<CarouselProps, any> {
     (children, slidesToShow, gutter, viewAllElement, maxSlides) =>
       React.Children.map(children, (Slide, Index) => {
         if (maxSlides !== undefined && Index + 1 > maxSlides) {
-          return <></>
+          return <></>;
         }
         let slideToShow = Slide;
         if (
