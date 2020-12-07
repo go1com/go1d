@@ -51,17 +51,13 @@ class Carousel extends React.Component<CarouselProps, any> {
   private ignoreScroll = false;
   private initialSliderOffset = null;
   private slideItems = memoize(
-    (children, slidesToShow, gutter, viewAllElement, maxSlides) =>
+    (children, slidesToShow, gutter, viewAllElement = null, maxSlides = null) =>
       React.Children.map(children, (Slide, Index) => {
-        if (maxSlides !== undefined && Index + 1 > maxSlides) {
+        if (maxSlides && Index + 1 > maxSlides) {
           return null;
         }
         let slideToShow = Slide;
-        if (
-          maxSlides !== undefined &&
-          viewAllElement !== undefined &&
-          Index + 1 === maxSlides
-        ) {
+        if (maxSlides && viewAllElement && Index + 1 === maxSlides) {
           slideToShow = viewAllElement;
         }
         const SlideRef = React.createRef();
