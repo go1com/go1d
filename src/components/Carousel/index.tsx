@@ -29,6 +29,8 @@ interface BreakpointProps {
 export interface CarouselProps extends StandardProps {
   breakpoints?: BreakpointProps;
   title?: React.ReactNode;
+  viewAllElement?: React.ReactNode;
+  maxSlides?: number;
 }
 
 class Carousel extends React.Component<CarouselProps, any> {
@@ -49,8 +51,15 @@ class Carousel extends React.Component<CarouselProps, any> {
   private ignoreScroll = false;
   private initialSliderOffset = null;
   private slideItems = memoize(
-    (children, slidesToShow, gutter) =>
+    (children, slidesToShow, gutter, viewAllElement = null, maxSlides = null) =>
       React.Children.map(children, (Slide, Index) => {
+        if (maxSlides && Index + 1 > maxSlides) {
+          return null;
+        }
+        let slideToShow = Slide;
+        if (maxSlides && viewAllElement && Index + 1 === maxSlides) {
+          slideToShow = viewAllElement;
+        }
         const SlideRef = React.createRef();
         this.slideRefs[Index] = SlideRef;
         return (
@@ -69,7 +78,7 @@ class Carousel extends React.Component<CarouselProps, any> {
               },
             }}
           >
-            {Slide}
+            {slideToShow}
           </View>
         );
       }),
@@ -285,6 +294,8 @@ class Carousel extends React.Component<CarouselProps, any> {
       children,
       slidesToShow,
       gutter,
+      maxSlides,
+      viewAllElement,
       css,
       clickScrollAmount,
       slideAnimationDuration,
@@ -294,7 +305,13 @@ class Carousel extends React.Component<CarouselProps, any> {
       ...props
     } = this.props;
     const { currentSlide, finishedScrolling } = this.state;
-    const slideItems = this.slideItems(children, slidesToShow, gutter);
+    const slideItems = this.slideItems(
+      children,
+      slidesToShow,
+      gutter,
+      viewAllElement,
+      maxSlides
+    );
     const wrapperCSS = this.wrapperCSS(css);
     const numberOfSlides = React.Children.toArray(children).length;
 
