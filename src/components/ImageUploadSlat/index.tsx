@@ -227,7 +227,8 @@ class ImageUploadSlat extends React.Component<ImageUploadSlatProps, State> {
     const { preview } = this.state;
     return (
       <View
-        width={this.imageWidth}
+        width={["100%", this.imageWidth]}
+        height={this.height}
         borderRight={1}
         borderColor="soft"
         css={{
@@ -286,7 +287,12 @@ class ImageUploadSlat extends React.Component<ImageUploadSlatProps, State> {
   @autobind
   public renderHasValueState(fileName: string, open: any) {
     return (
-      <View flexDirection="row" border={1} borderColor="soft" boxShadow="crisp">
+      <View
+        flexDirection={["column", "row"]}
+        border={1}
+        borderColor="soft"
+        boxShadow="crisp"
+      >
         {this.renderPreview()}
         <View
           borderRadius={2}
@@ -352,7 +358,11 @@ class ImageUploadSlat extends React.Component<ImageUploadSlatProps, State> {
     }
 
     return (
-      <View {...props} width="100%" height={height}>
+      <View
+        {...props}
+        width="100%"
+        height={[this.props.value ? this.height * 2 : this.height, this.height]}
+      >
         <BaseUploader
           fileType="image/*"
           disabled={!!disabled}
