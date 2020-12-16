@@ -208,6 +208,7 @@ class Modal extends React.Component<ModalProps, any> {
                     icon={HeaderIconElement}
                     round={true}
                     marginLeft={4}
+                    data-testid="button-close"
                   />
                 )}
                 <View css={{ flex: 1 }}>
@@ -244,6 +245,7 @@ class Modal extends React.Component<ModalProps, any> {
                   opacity="modal"
                   round={true}
                   onClick={headerAction || this.onClose}
+                  data-testid="button-close"
                 />
               </View>
             )}
