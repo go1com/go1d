@@ -57,6 +57,7 @@ export { default as IconEmpty } from "./Empty";
 export { default as IconEnrolled } from "./Enrolled";
 export { default as IconEnvelope } from "./Envelope";
 export { default as IconExpand } from "./Expand";
+export { default as IconExplore } from "./Explore";
 export { default as IconExport } from "./Export";
 export { default as IconExternallink } from "./Externallink";
 export { default as IconEye } from "./Eye";
