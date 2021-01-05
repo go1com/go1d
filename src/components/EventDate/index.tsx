@@ -11,6 +11,7 @@ import IconMapPin from "../Icons/MapPin";
 export interface SessionProps extends ViewProps {
   start: Date | string;
   end?: Date | string;
+  timezone?: string;
   onClick?: (evt: React.SyntheticEvent) => void;
   active?: boolean;
   location: {
@@ -28,6 +29,11 @@ export interface SessionProps extends ViewProps {
   availableSeats?: number;
   limit?: number;
   mapLink?: boolean;
+  timeFormatter?: (
+    start: string | Date,
+    end?: string | Date,
+    timezone?: string
+  ) => any;
 }
 
 const formatTime = timestamp => {
@@ -42,7 +48,7 @@ const formatTime = timestamp => {
   return `${hours}:${min > 9 ? `${min}AM` : `0${min}AM`}`;
 };
 
-const EventDate: React.SFC<SessionProps> = ({
+const EventDate: React.FunctionComponent<SessionProps> = ({
   start,
   end,
   location,
@@ -53,6 +59,8 @@ const EventDate: React.SFC<SessionProps> = ({
   availableSeats,
   limit,
   mapLink,
+  timeFormatter,
+  timezone,
   ...props
 }: SessionProps) => {
   let locationString;
@@ -165,8 +173,14 @@ const EventDate: React.SFC<SessionProps> = ({
             </View>
             <View width="85%">
               <Text fontSize={1} ellipsis={true}>
-                {day} {month} {year} {" • "} {startTime}
-                {endTime && ` - ${endTime}`}
+                {timeFormatter ? (
+                  timeFormatter(start, end, timezone)
+                ) : (
+                  <>
+                    {day} {month} {year} {" • "} {startTime}
+                    {endTime && ` - ${endTime}`}
+                  </>
+                )}
               </Text>
             </View>
           </View>
