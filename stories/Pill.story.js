@@ -5,6 +5,11 @@ export default {
   title: 'Pill',
   component: Pill,
   parameters: {},
+  argTypes: {
+    fontWeight: {
+      description: 'This is an inherited prop',
+    },
+  },
 };
 
 export const Default = (args) => <Pill {...args}>Default</Pill>;
