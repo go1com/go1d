@@ -5,10 +5,10 @@ globalCSS();
 
 export const parameters = {
   actions: { argTypesRegex: "^on[A-Z].*" },
-  viewMode: 'story',
+  viewMode: 'docs',
   layout: 'centered',
   docs: { page: DocsPage },
   previewTabs: {
-    'storybook/docs/canvas': { index: -1 }
+    'storybook/docs/panel': { index: -1 }
   },
 }
