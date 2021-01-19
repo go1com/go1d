@@ -1,5 +1,8 @@
 import { DocsPage } from '@storybook/addon-docs/blocks';
 
+import { globalCSS } from "../src";
+globalCSS();
+
 export const parameters = {
   actions: { argTypesRegex: "^on[A-Z].*" },
   viewMode: 'story',
