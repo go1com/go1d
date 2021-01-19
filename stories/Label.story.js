@@ -1,7 +1,7 @@
 import React from 'react'; 
 import {storiesOf} from '@storybook/react'; 
 import {Label} from '../src'; 
-storiesOf("Label", module) 
+storiesOf("Original Go1d/Label", module) 
 .add('Label', () => <Label>
 Portal Name
 </Label>) 

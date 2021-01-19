@@ -1,7 +1,7 @@
 import React from 'react'; 
 import {storiesOf} from '@storybook/react'; 
 import {DataTable,TR,TD,TH, ButtonFilled} from '../src'; 
-storiesOf("DataTable", module) 
+storiesOf("Original Go1d/DataTable", module) 
 .add('Basic Table using a row renderer', () => <DataTable
   rowHeight={55}
   total="10 Items"

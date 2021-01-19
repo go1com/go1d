@@ -1,7 +1,7 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { MultiSelect } from '../src';
-storiesOf("MultiSelect", module)
+storiesOf("Original Go1d/MultiSelect", module)
   .add('A custom Multi Select component', () => <MultiSelect options={[
     { "value": "chocolate", label: "Chocolate" },
     { "value": "strawberry", label: "Strawberry" },

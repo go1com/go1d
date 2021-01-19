@@ -7,7 +7,7 @@ import {
   IconImport,
 } from "../src/components/Icons";
 
-storiesOf("Slat", module)
+storiesOf("Original Go1d/Slat", module)
   .add('With dropdown actions', () => (
     <Slat
       id={123}

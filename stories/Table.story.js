@@ -1,7 +1,7 @@
 import React from 'react'; 
 import {storiesOf} from '@storybook/react'; 
 import {Table,TR,TD,Text,TH} from '../src'; 
-storiesOf("Table", module) 
+storiesOf("Original Go1d/Table", module) 
 .add('Basic table with a header', () => <Table
   rows={[
     <TR key="0">

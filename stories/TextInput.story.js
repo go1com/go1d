@@ -3,7 +3,7 @@ import { storiesOf } from '@storybook/react';
 import { TextInput, ButtonMinimal } from '../src';
 import { IconCross, IconSearch } from '../src/components/Icons';
 
-storiesOf("TextInput", module)
+storiesOf("Original Go1d/TextInput", module)
   .add('Basic TextInput', () => <TextInput
     id="blank"
     placeholder="Blank"

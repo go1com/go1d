@@ -1,7 +1,7 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { SpotIcon, View } from '../src';
-storiesOf("SpotIcon", module)
+storiesOf("Original Go1d/SpotIcon", module)
   .add('Business', () => <SpotIcon name="BusinessSkills" />)
   .add('PersonalDevelopment', () => <SpotIcon name="PersonalDevelopment" />)
   .add('SectorSpecific', () => <SpotIcon name="SectorSpecific" />)

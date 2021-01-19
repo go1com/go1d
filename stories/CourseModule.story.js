@@ -1,7 +1,7 @@
 import React from 'react'; 
 import {storiesOf} from '@storybook/react'; 
 import {CourseModule,Lesson} from '../src'; 
-storiesOf("CourseModule", module) 
+storiesOf("Original Go1d/CourseModule", module) 
 .add('Base', () => <CourseModule title="Test Title">
   <Lesson title="This is a test lesson" type="resource" />
 </CourseModule>) 

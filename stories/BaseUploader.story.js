@@ -1,7 +1,7 @@
 import React from 'react'; 
 import {storiesOf} from '@storybook/react'; 
 import {BaseUploader,View,Text,ButtonFilled} from '../src'; 
-storiesOf("BaseUploader", module) 
+storiesOf("Original Go1d/BaseUploader", module) 
 .add('Base', () => <BaseUploader fileType="image/*">
   {({open, getRootProps, isDragActive}) => (<View {...getRootProps()} justifyContent="center" onChange={files => window.alert(`{files[0].name} Uploaded`)}>
     <View alignItems="center" justifyContent="center" backgroundColor={isDragActive ? "faded" : "soft"} height="100px">

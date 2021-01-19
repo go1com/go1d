@@ -8,7 +8,7 @@ import { isHappoRun } from 'happo-plugin-storybook/register';
 // 1. A Focus into the date range, causes a blinking cursor
 // 2. The Picker displays the current month, which can't be influenced in the current implementation
 if (!isHappoRun()) {
-  storiesOf("DateRange", module)
+  storiesOf("Original Go1d/DateRange", module)
     .add('Basic Datepicker', () => <DateRange />)
     .add('Default Value', () => (
       <DateRange

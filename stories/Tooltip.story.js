@@ -1,7 +1,7 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { Tooltip, Text, Icon, ButtonFilled } from '../src';
-storiesOf("Tooltip", module)
+storiesOf("Original Go1d/Tooltip", module)
   .add('Basic Usage', () => <Text
     color='subtle'
     fontSize={4}

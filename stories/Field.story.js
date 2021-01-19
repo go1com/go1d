@@ -1,7 +1,7 @@
 import React from 'react';
 import {storiesOf} from '@storybook/react';
 import {TextInput, Field,Banner,Form,ButtonFilled} from '../src';
-storiesOf("Field", module)
+storiesOf("Original Go1d/Field", module)
 .add('Base', () => <Banner type="warning">
     This component is required to be wrapped in a Form component otherwise it will fail to render
 </Banner>)

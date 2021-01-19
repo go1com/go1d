@@ -6,7 +6,7 @@ import {
   IconTrash
 } from "../src/components/Icons";
 
-storiesOf("Dropdown", module)
+storiesOf("Original Go1d/Dropdown", module)
   .add('Basic dropdown', () => <Dropdown
     placement="bottom"
     renderFunction={(item, index, getItemProps) => (

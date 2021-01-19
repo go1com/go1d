@@ -1,7 +1,7 @@
 import React from 'react'; 
 import {storiesOf} from '@storybook/react'; 
 import {EmptyState} from '../src'; 
-storiesOf("EmptyState", module) 
+storiesOf("Original Go1d/EmptyState", module) 
 .add('Base', () => <EmptyState
   title="No Content"
   actionText="Add Some Content"

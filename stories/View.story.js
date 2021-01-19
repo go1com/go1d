@@ -1,7 +1,7 @@
 import React from 'react'; 
 import {storiesOf} from '@storybook/react'; 
 import {View,Text} from '../src'; 
-storiesOf("View", module) 
+storiesOf("Original Go1d/View", module) 
 .add('Basic Usage', () => <View><Text>My View</Text></View>) 
 .add('Responsive Examples', () => <React.Fragment>
     <View flexDirection="row" flexWrap="wrap">

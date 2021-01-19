@@ -1,7 +1,7 @@
 import React from 'react'; 
 import {storiesOf} from '@storybook/react'; 
 import {View,CTACard,ButtonFilled} from '../src'; 
-storiesOf("CtaCard", module) 
+storiesOf("Original Go1d/CtaCard", module) 
 .add('With Price', () => <View padding={5} backgroundColor="soft">
   <CTACard
     iconImage="https://res.cloudinary.com/go1/image/upload/v1542240162/ojaevw3frdaiji5zzmf3.png"

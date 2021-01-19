@@ -1,7 +1,7 @@
 import React from 'react';
 import {storiesOf} from '@storybook/react';
 import {DatePicker} from '../src';
-storiesOf("DatePicker", module)
+storiesOf("Original Go1d/DatePicker", module)
 .add('Basic Datepicker', () => <DatePicker id="id1" allowBlank  defaultValue={new Date("2019-06-07")}/>)
 .add('Date Supplied', () => <DatePicker id="id2" defaultValue={new Date("2019-06-07")} />)
 .add('Disabled Datepicker', () => <DatePicker id="id3" disabled  defaultValue={new Date("2019-06-07")}/>)

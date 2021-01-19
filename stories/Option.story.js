@@ -1,7 +1,7 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { Option } from '../src';
-storiesOf("Option", module)
+storiesOf("Original Go1d/Option", module)
   .add('Base', () => <Option title="Title test" />)
   .add('Add actionIcon', () => <Option title="Title test" actionIcon="ChevronRight" />)
   .add('Add spotIcon', () => <Option title="Sector Specific" spotIcon="SectorSpecific" />)

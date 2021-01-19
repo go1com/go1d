@@ -1,7 +1,7 @@
 import React from 'react'; 
 import {storiesOf} from '@storybook/react'; 
 import {Avatar} from '../src'; 
-storiesOf("Avatar", module) 
+storiesOf("Original Go1d/Avatar", module) 
 .add('Avatar with an image', () => <Avatar src="https://i.imgur.com/Ee55uvc.jpg" fullName="Leslie Knope" />) 
 .add('Avatar without an image', () => <Avatar fullName="Leslie Knope" />) 
 .add('Avatar without an image and name', () => <Avatar />) 

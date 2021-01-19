@@ -3,7 +3,7 @@ import { storiesOf } from '@storybook/react';
 import { Collapse, ButtonFilled, View, Text } from '../src';
 import { Flipflop } from "libreact/lib/Flipflop";
 
-storiesOf('Collapse', module)
+storiesOf('Original Go1d/Collapse', module)
   .add('with header string', () => <div style={{ width: '50%' }}>
     <Flipflop>{({ on, flip, flop }) => (
       <React.Fragment>

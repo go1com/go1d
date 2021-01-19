@@ -1,7 +1,7 @@
 import React from 'react';
 import {storiesOf} from '@storybook/react';
 import {ToggleSwitch,View} from '../src';
-storiesOf("ToggleSwitch", module)
+storiesOf("Original Go1d/ToggleSwitch", module)
 .add('Toggle with no props', () => <ToggleSwitch />)
 .add('Toggle with default value props', () => <ToggleSwitch defaultValue={true} />)
 .add('Toggle with a different size', () => <View flexDirection="row" alignItems="baseline">

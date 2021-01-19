@@ -1,7 +1,7 @@
 import React from 'react';
 import {storiesOf} from '@storybook/react';
 import {TextInput, Form,Field,SubmitButton} from '../src';
-storiesOf("Form", module)
+storiesOf("Original Go1d/Form", module)
 .add('Example Form with field', () => <Form initialValues={{ portalName: "A portal" }} onSubmit={(values, actions) => console.log(values, actions)}>
     <Field
     component={TextInput}

@@ -2,7 +2,7 @@ import React from 'react';
 import { Pill } from '../src';
 
 export default {
-  title: 'Pill',
+  title: 'Original Go1d/Pill',
   component: Pill,
   parameters: {},
   argTypes: {

@@ -3,7 +3,7 @@ import { storiesOf } from '@storybook/react';
 import { CourseSlat, View, Text } from '../src';
 import IconImport from "../src/components/Icons/Import";
 
-storiesOf("CourseSlat", module)
+storiesOf("Original Go1d/CourseSlat", module)
   .add('With avatar', () => <CourseSlat
     courseImage="https://images.pexels.com/photos/459225/pexels-photo-459225.jpeg?h=400"
     title="Master sourdough in a week"

@@ -2,7 +2,7 @@ import React from 'react';
 import {storiesOf} from '@storybook/react';
 import {View,ContentType} from '../src';
 
-storiesOf("ContentType", module)
+storiesOf("Original Go1d/ContentType", module)
   .add(
     'ContentType',
     () => <View flexDirection="row"><ContentType type="Course" /></View>

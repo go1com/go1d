@@ -1,7 +1,7 @@
 import React from 'react'; 
 import {storiesOf} from '@storybook/react'; 
 import {Autocomplete} from '../src'; 
-storiesOf("Autocomplete", module) 
+storiesOf("Original Go1d/Autocomplete", module) 
 .add('Base', () => <Autocomplete
   lookupMethod={() => {
     // pass a method to request options

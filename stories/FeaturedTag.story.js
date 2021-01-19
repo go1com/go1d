@@ -7,7 +7,7 @@ import {
   IconCourse,
 } from "../src/components/Icons";
 
-storiesOf("FeaturedTag", module)
+storiesOf("Original Go1d/FeaturedTag", module)
   .add('Base', () => (
     <View backgroundColor="faint" padding={5}>
       <FeaturedTag>

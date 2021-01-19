@@ -1,7 +1,7 @@
 import React from 'react'; 
 import {storiesOf} from '@storybook/react'; 
 import {RichTextInput,Form,Field,ButtonFilled} from '../src'; 
-storiesOf("RichTextInput", module) 
+storiesOf("Original Go1d/RichTextInput", module) 
 .add('Rich Text Input in Field', () => 
 
 <Form initialValues={{}} onSubmit={(values, actions) => console.log(values, actions)}>

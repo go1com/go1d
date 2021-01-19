@@ -1,7 +1,7 @@
 import React from 'react'; 
 import {storiesOf} from '@storybook/react'; 
 import {Provider,PageBody,View,Text,Link} from '../src'; 
-storiesOf("Provider", module) 
+storiesOf("Original Go1d/Provider", module) 
 .add('Default props with light mode', () => <Provider>
   <PageBody>
     <View marginBottom={5}>

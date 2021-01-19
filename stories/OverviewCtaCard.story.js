@@ -1,7 +1,7 @@
 import React from 'react';
 import {storiesOf} from '@storybook/react';
 import {OverviewCtaCard,View,ButtonFilled,Avatar,Icon,Text} from '../src';
-storiesOf("OverviewCtaCard", module)
+storiesOf("Original Go1d/OverviewCtaCard", module)
 .add('Overview CTA card with no props', () => <View css={{
   position: "relative",
   height: 60,

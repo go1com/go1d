@@ -1,7 +1,7 @@
 import React from 'react'; 
 import {storiesOf} from '@storybook/react'; 
 import {RadioInput,RadioGroup} from '../src'; 
-storiesOf("RadioInput", module) 
+storiesOf("Original Go1d/RadioInput", module) 
 .add('Label', () => <RadioGroup name="TestInput" options={[
   {
     label: "test",

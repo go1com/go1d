@@ -1,7 +1,7 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { OverviewHero, View, Icon, Link, Text, Avatar, OverviewCtaCard, ButtonFilled } from '../src';
-storiesOf("OverviewHero", module)
+storiesOf("Original Go1d/OverviewHero", module)
   .add('Overview hero with required props only (title)', () => <OverviewHero title="Interaction Design" />)
   .add('Overview hero with background, breadcrumb and subtitle', () => <OverviewHero
     title="Interaction Design"

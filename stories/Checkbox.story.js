@@ -1,7 +1,7 @@
 import React from 'react'; 
 import {storiesOf} from '@storybook/react'; 
 import {Checkbox,Text,Form,Field,ButtonFilled,CheckboxGroup} from '../src'; 
-storiesOf("Checkbox", module) 
+storiesOf("Original Go1d/Checkbox", module) 
 .add('Label', () => <Checkbox name="Test" label="Test" />) 
 .add('Label size sm', () => <Checkbox size="sm" name="Test" label="Test" />) 
 .add('Label size lg', () => <Checkbox size="lg" name="Test" label="Test" />) 

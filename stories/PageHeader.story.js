@@ -5,7 +5,7 @@ import {
   IconEdit
 } from "../src/components/Icons";
 
-storiesOf("PageHeader", module)
+storiesOf("Original Go1d/PageHeader", module)
   .add('Lightmode page header with menu button', () => <PageHeader showMenuButton={false} title="Overview" />)
   .add('Lightmode page header without menu button', () => <PageHeader showMenuButton={true} title="Overview" />)
   .add('Page header with breadcrumb and subtitle', () => (

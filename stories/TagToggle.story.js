@@ -1,7 +1,7 @@
 import React from 'react'; 
 import {storiesOf} from '@storybook/react'; 
 import {TagToggle,View} from '../src'; 
-storiesOf("TagToggle", module) 
+storiesOf("Original Go1d/TagToggle", module) 
 .add('Tag Toggle', () => <React.Fragment>
     <View flexDirection="row">
       <TagToggle label="Mad Skillz" />

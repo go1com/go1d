@@ -6,7 +6,7 @@ import {
   IconPlus,
 } from "../src/components/Icons";
 
-storiesOf("Button", module)
+storiesOf("Original Go1d/Button", module)
   .add('Filled button in subtle colour', () => <React.Fragment>
     <ButtonFilled>I'm a button</ButtonFilled>
     <br />

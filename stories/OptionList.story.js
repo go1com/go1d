@@ -1,7 +1,7 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { OptionList, Option } from '../src';
-storiesOf("OptionList", module)
+storiesOf("Original Go1d/OptionList", module)
   .add('Base', () => <OptionList>
     <Option title="This is a test title" />
     <Option title="This is a test title" />

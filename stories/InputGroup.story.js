@@ -1,7 +1,7 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { InputGroup, InputTextAffix, TextInput, SelectDropdown, View, ButtonFilled, Icon } from '../src';
-storiesOf("InputGroup", module)
+storiesOf("Original Go1d/InputGroup", module)
   .add('Base', () => <InputGroup>
     <InputTextAffix text="www." />
     <TextInput

@@ -1,7 +1,7 @@
 import React from 'react'; 
 import {storiesOf} from '@storybook/react'; 
 import {CourseCard,View,Carousel} from '../src'; 
-storiesOf("CourseCard", module) 
+storiesOf("Original Go1d/CourseCard", module) 
 .add('Base', () => <CourseCard />) 
 .add('Almost all the Props', () => <CourseCard
   typeIcon="Course"

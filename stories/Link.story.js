@@ -1,7 +1,7 @@
 import React from 'react'; 
 import {storiesOf} from '@storybook/react'; 
 import {Link,Text,Provider} from '../src'; 
-storiesOf("Link", module) 
+storiesOf("Original Go1d/Link", module) 
 .add('Default link', () => <Link href="#testing">
   Link text
 </Link>) 

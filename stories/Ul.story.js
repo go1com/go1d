@@ -13,7 +13,7 @@ import {
     IconSuccess
 } from "../src/components/Icons";
 
-storiesOf("Ul", module)
+storiesOf("Original Go1d/Ul", module)
     .add('Basic UL', () => <UL>
         <LI>List Item 1</LI>
         <LI>List Item 2 multiline Text, Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</LI>

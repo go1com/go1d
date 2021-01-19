@@ -1,7 +1,7 @@
 import React from 'react'; 
 import {storiesOf} from '@storybook/react'; 
 import {PasswordInput} from '../src'; 
-storiesOf("PasswordInput", module) 
+storiesOf("Original Go1d/PasswordInput", module) 
 .add('Basic Password Input', () => <PasswordInput id="Password" placeholder="Pasword" />) 
 .add('Password Input Sizes', () => <React.Fragment>
     <PasswordInput id="Small" size="sm" value="Small" />

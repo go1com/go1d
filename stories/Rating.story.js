@@ -1,7 +1,7 @@
 import React from "react";
 import { storiesOf } from "@storybook/react";
 import { Rating } from "../src";
-storiesOf("rating", module)
+storiesOf("Original Go1d/rating", module)
   .add("Basic Rating", () => <Rating name="rating" />)
   .add("Rating with default value", () => (
     <Rating name="rating" defaultValue={3} />

@@ -1,7 +1,7 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { Select } from '../src';
-storiesOf("Select", module)
+storiesOf("Original Go1d/Select", module)
   .add('A custom select component', () => <Select options={[
     { "value": "chocolate", label: "Chocolate" },
     { "value": "stawberry", label: "Strawberry" },

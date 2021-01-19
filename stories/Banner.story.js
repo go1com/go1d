@@ -1,7 +1,7 @@
 import React from 'react'; 
 import {storiesOf} from '@storybook/react'; 
 import {Banner,Text,Link} from '../src'; 
-storiesOf("Banner", module) 
+storiesOf("Original Go1d/Banner", module) 
 .add('Type success', () => <Banner
   type="success"
   close={() => alert('close event')}

@@ -1,7 +1,7 @@
 import React from 'react'; 
 import {storiesOf} from '@storybook/react'; 
 import {Carousel,View, Text} from '../src'; 
-storiesOf("Carousel", module) 
+storiesOf("Original Go1d/Carousel", module) 
 .add('Base', () => <Carousel>
   <View css={{
     height: 200,

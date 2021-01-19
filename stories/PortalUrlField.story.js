@@ -1,7 +1,7 @@
 import React from 'react'; 
 import {storiesOf} from '@storybook/react'; 
 import {PortalUrlField,Form} from '../src'; 
-storiesOf("PortalUrlField", module) 
+storiesOf("Original Go1d/PortalUrlField", module) 
 .add('PortalUrlField Available', () => <Form initialValues={{ portalName: "A portal" }} onSubmit={(values, actions) => actions.submit()}>
 <PortalUrlField
   name="portalName"

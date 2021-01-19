@@ -1,7 +1,7 @@
 import React from 'react'; 
 import {storiesOf} from '@storybook/react'; 
 import {SearchInput} from '../src'; 
-storiesOf("SearchInput", module) 
+storiesOf("Original Go1d/SearchInput", module) 
 .add('Basic SearchInput', () => <SearchInput 
     id="blank" 
     placeholder="Search for courses, videos, interactive lessons, and more..." 

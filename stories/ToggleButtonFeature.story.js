@@ -3,7 +3,7 @@ import { storiesOf } from '@storybook/react';
 import { View, ToggleButtonFeature } from '../src';
 import { IconDanger, IconEye, IconUser, IconStar, IconVideo } from '../src/components/Icons';
 
-storiesOf("ToggleButtonFeature", module)
+storiesOf("Original Go1d/ToggleButtonFeature", module)
   .add('Toggle Button Feature', () => (
     <View flexDirection="row">
       <ToggleButtonFeature color="danger" icon={IconDanger} marginRight={3}>Oh</ToggleButtonFeature>

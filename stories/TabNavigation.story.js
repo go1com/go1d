@@ -1,7 +1,7 @@
 import React from 'react'; 
 import {storiesOf} from '@storybook/react'; 
 import {TabNavigation,Tab,Pill} from '../src'; 
-storiesOf("TabNavigation", module) 
+storiesOf("Original Go1d/TabNavigation", module) 
 .add('Multiple tabs with one selected', () => <TabNavigation>
   <Tab href="/overview" text="Overview">
       Overview

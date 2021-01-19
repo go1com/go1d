@@ -6,7 +6,7 @@ import {
   IconPlusCircle,
 } from "../src/components/Icons"
 
-storiesOf("SlatMini", module)
+storiesOf("Original Go1d/SlatMini", module)
   .add('With dropdown actions', () => (
     <SlatMini
       id={123}

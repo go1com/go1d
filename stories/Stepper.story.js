@@ -1,7 +1,7 @@
 import React from 'react';
 import {storiesOf} from '@storybook/react';
 import {Stepper,ButtonMinimal} from '../src';
-storiesOf("Stepper", module)
+storiesOf("Original Go1d/Stepper", module)
 .add('Basic Stepper', () => <Stepper
   id="stepper"
 />)
