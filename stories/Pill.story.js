@@ -1,9 +1,10 @@
 import React from 'react';
-import { Pill } from '../src';
+import { Pill, View, Text } from '../src';
 
 export default {
   title: 'Original Go1d/Pill',
   component: Pill,
+  subcomponents: { View, Text },
   parameters: {},
   argTypes: {
     fontWeight: {
