@@ -1,19 +1,29 @@
-import React from 'react';
-import { storiesOf } from '@storybook/react';
-import { LeftMenu, MenuItem } from '../src';
-import {
-  IconHome,
-  IconBriefcase,
-} from "../src/components/Icons";
+import React from "react";
+import { LeftMenu, MenuItem } from "../src";
+import { IconHome, IconBriefcase } from "../src/components/Icons";
 
-storiesOf("Original Go1d/LeftMenu", module)
-  .add('Collapsible Expanded', () => <LeftMenu title="Content" showMenuButton={true}>
-    <MenuItem icon={IconHome} href="#testing" collapsed={true}>Overview</MenuItem>
-    <MenuItem icon={IconBriefcase} href="#testing" collapsed={true}>Partners</MenuItem>
-  </LeftMenu>)
-  .add('Collapsible Collapsed', () => (
-    <LeftMenu title="Content">
-      <MenuItem icon={IconHome} href="#testing">Overview</MenuItem>
-      <MenuItem icon={IconBriefcase} href="#testing">Partners</MenuItem>
-    </LeftMenu>
-  )) 
+export default {
+  title: "Original Go1d/LeftMenu",
+};
+
+export const CollapsibleExpanded = () => (
+  <LeftMenu title="Content" showMenuButton={true}>
+    <MenuItem icon={IconHome} href="#testing" collapsed={true}>
+      Overview
+    </MenuItem>
+    <MenuItem icon={IconBriefcase} href="#testing" collapsed={true}>
+      Partners
+    </MenuItem>
+  </LeftMenu>
+);
+
+export const CollapsibleCollapsed = () => (
+  <LeftMenu title="Content">
+    <MenuItem icon={IconHome} href="#testing">
+      Overview
+    </MenuItem>
+    <MenuItem icon={IconBriefcase} href="#testing">
+      Partners
+    </MenuItem>
+  </LeftMenu>
+);

@@ -1,8 +1,12 @@
-import React from 'react'; 
-import {storiesOf} from '@storybook/react'; 
-import {TagToggle,View} from '../src'; 
-storiesOf("Original Go1d/TagToggle", module) 
-.add('Tag Toggle', () => <React.Fragment>
+import React from "react";
+import { TagToggle, View } from "../src";
+
+export default {
+  title: "Original Go1d/TagToggle",
+};
+
+export const _TagToggle = () => (
+  <React.Fragment>
     <View flexDirection="row">
       <TagToggle label="Mad Skillz" />
       <TagToggle label="Mad Skillz" />
@@ -14,4 +18,5 @@ storiesOf("Original Go1d/TagToggle", module)
       <TagToggle label="Sick Skillz" size="md" />
       <TagToggle label="Mad Skillz" size="lg" />
     </View>
-</React.Fragment>) 
+  </React.Fragment>
+);

@@ -1,5 +1,8 @@
-import React from 'react'; 
-import {storiesOf} from '@storybook/react'; 
-import {TextArea} from '../src'; 
-storiesOf("Original Go1d/Textarea", module) 
-.add('Label', () => <TextArea id="Testing" />) 
+import React from "react";
+import { TextArea } from "../src";
+
+export default {
+  title: "Original Go1d/Textarea",
+};
+
+export const Label = () => <TextArea id="Testing" />;

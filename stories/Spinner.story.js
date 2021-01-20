@@ -1,5 +1,8 @@
-import React from 'react'; 
-import {storiesOf} from '@storybook/react'; 
-import {Spinner} from '../src'; 
-storiesOf("Original Go1d/Spinner", module) 
-.add('Spinner', () => <Spinner size={5}/>) 
+import React from "react";
+import { Spinner } from "../src";
+
+export default {
+  title: "Original Go1d/Spinner",
+};
+
+export const _Spinner = () => <Spinner size={5} />;

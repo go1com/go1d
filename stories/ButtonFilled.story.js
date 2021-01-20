@@ -1,9 +1,26 @@
-import React from 'react';
-import {storiesOf} from '@storybook/react';
-import {ButtonFilled} from "../src";
+import React from "react";
+import { ButtonFilled } from "../src";
 
-storiesOf('Original Go1d/ButtonFilled', module)
-  .add('with text', () => <ButtonFilled>This is a filled button</ButtonFilled>)
-  .add('with some emoji', () => (
-    <ButtonFilled><span role="img" aria-label="so cool">😀 😎 👍 💯</span></ButtonFilled>
-  ));
+export default {
+  title: "Original Go1d/ButtonFilled",
+};
+
+export const WithText = () => (
+  <ButtonFilled>This is a filled button</ButtonFilled>
+);
+
+WithText.story = {
+  name: "with text",
+};
+
+export const WithSomeEmoji = () => (
+  <ButtonFilled>
+    <span role="img" aria-label="so cool">
+      😀 😎 👍 💯
+    </span>
+  </ButtonFilled>
+);
+
+WithSomeEmoji.story = {
+  name: "with some emoji",
+};

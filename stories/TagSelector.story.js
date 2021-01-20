@@ -1,7 +1,8 @@
-import React from 'react'; 
-import {storiesOf} from '@storybook/react'; 
-import {TagSelector} from '../src'; 
-storiesOf("Original Go1d/TagSelector", module) 
-.add('Basic Tag Selector', () => <TagSelector
-  options={["Tag 1"]}
-/>) 
+import React from "react";
+import { TagSelector } from "../src";
+
+export default {
+  title: "Original Go1d/TagSelector",
+};
+
+export const BasicTagSelector = () => <TagSelector options={["Tag 1"]} />;

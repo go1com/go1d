@@ -1,15 +1,38 @@
-import React from 'react';
-import {storiesOf} from '@storybook/react';
-import {DatePicker} from '../src';
-storiesOf("Original Go1d/DatePicker", module)
-.add('Basic Datepicker', () => <DatePicker id="id1" allowBlank  defaultValue={new Date("2019-06-07")}/>)
-.add('Date Supplied', () => <DatePicker id="id2" defaultValue={new Date("2019-06-07")} />)
-.add('Disabled Datepicker', () => <DatePicker id="id3" disabled  defaultValue={new Date("2019-06-07")}/>)
-.add('Sizes', () => <React.Fragment>
-    <DatePicker id="id4" size="sm"  defaultValue={new Date("2019-06-07")}/>
+import React from "react";
+import { DatePicker } from "../src";
+
+export default {
+  title: "Original Go1d/DatePicker",
+};
+
+export const BasicDatepicker = () => (
+  <DatePicker id="id1" allowBlank defaultValue={new Date("2019-06-07")} />
+);
+export const DateSupplied = () => (
+  <DatePicker id="id2" defaultValue={new Date("2019-06-07")} />
+);
+export const DisabledDatepicker = () => (
+  <DatePicker id="id3" disabled defaultValue={new Date("2019-06-07")} />
+);
+
+export const Sizes = () => (
+  <React.Fragment>
+    <DatePicker id="id4" size="sm" defaultValue={new Date("2019-06-07")} />
     <br />
-    <DatePicker id="id4" size="md"  defaultValue={new Date("2019-06-07")}/>
+    <DatePicker id="id4" size="md" defaultValue={new Date("2019-06-07")} />
     <br />
-    <DatePicker id="id4" size="lg"  defaultValue={new Date("2019-06-07")}/>
-</React.Fragment>)
-.add('Basic Datepicker with Time', () => <DatePicker id="id5" time={true} defaultValue={new Date("2019-06-07 10:00")} />)
+    <DatePicker id="id4" size="lg" defaultValue={new Date("2019-06-07")} />
+  </React.Fragment>
+);
+
+export const BasicDatepickerWithTime = () => (
+  <DatePicker
+    id="id5"
+    time={true}
+    defaultValue={new Date("2019-06-07 10:00")}
+  />
+);
+
+BasicDatepickerWithTime.story = {
+  name: "Basic Datepicker with Time",
+};

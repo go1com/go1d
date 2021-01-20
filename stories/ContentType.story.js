@@ -1,17 +1,36 @@
-import React from 'react';
-import {storiesOf} from '@storybook/react';
-import {View,ContentType} from '../src';
+import React from "react";
+import { View, ContentType } from "../src";
 
-storiesOf("Original Go1d/ContentType", module)
-  .add(
-    'ContentType',
-    () => <View flexDirection="row"><ContentType type="Course" /></View>
-  )
-  .add(
-    'ContentType with text',
-    () => <View flexDirection="row"><ContentType type="Course" text="Course" /></View>
-  )
-  .add(
-    'ContentType with background',
-    () => <View flexDirection="row"><ContentType type="Event" text="Event" background="default" width={70} /></View>
-  )
+export default {
+  title: "Original Go1d/ContentType",
+};
+
+export const _ContentType = () => (
+  <View flexDirection="row">
+    <ContentType type="Course" />
+  </View>
+);
+
+_ContentType.story = {
+  name: "ContentType",
+};
+
+export const ContentTypeWithText = () => (
+  <View flexDirection="row">
+    <ContentType type="Course" text="Course" />
+  </View>
+);
+
+ContentTypeWithText.story = {
+  name: "ContentType with text",
+};
+
+export const ContentTypeWithBackground = () => (
+  <View flexDirection="row">
+    <ContentType type="Event" text="Event" background="default" width={70} />
+  </View>
+);
+
+ContentTypeWithBackground.story = {
+  name: "ContentType with background",
+};

@@ -1,10 +1,13 @@
-import React from 'react';
-import { storiesOf } from '@storybook/react';
-import { CourseSlat, View, Text } from '../src';
+import React from "react";
+import { CourseSlat, View, Text } from "../src";
 import IconImport from "../src/components/Icons/Import";
 
-storiesOf("Original Go1d/CourseSlat", module)
-  .add('With avatar', () => <CourseSlat
+export default {
+  title: "Original Go1d/CourseSlat",
+};
+
+export const WithAvatar = () => (
+  <CourseSlat
     courseImage="https://images.pexels.com/photos/459225/pexels-photo-459225.jpeg?h=400"
     title="Master sourdough in a week"
     description="Despite general improvements in workplace health and safety over the past the risk of sourdough related injuries are still insurmountable for most"
@@ -13,8 +16,15 @@ storiesOf("Original Go1d/CourseSlat", module)
     duration="60"
     type="Course"
     typeIcon="Course"
-  />)
-  .add('With Import action', () => <CourseSlat
+  />
+);
+
+WithAvatar.story = {
+  name: "With avatar",
+};
+
+export const WithImportAction = () => (
+  <CourseSlat
     courseImage="https://images.pexels.com/photos/257360/pexels-photo-257360.jpeg?h=400"
     title="Master sourdough in a week"
     description="Despite general improvements in workplace health and safety over the past the risk of sourdough related injuries are still insurmountable for most"
@@ -28,8 +38,15 @@ storiesOf("Original Go1d/CourseSlat", module)
     )}
     type="Course"
     typeIcon="Course"
-  />)
-  .add('With enrollment status', () => <CourseSlat
+  />
+);
+
+WithImportAction.story = {
+  name: "With Import action",
+};
+
+export const WithEnrollmentStatus = () => (
+  <CourseSlat
     courseImage="https://images.pexels.com/photos/257360/pexels-photo-257360.jpeg?h=400"
     title="Master sourdough in a week"
     description="Despite general improvements in workplace health and safety over the past the risk of sourdough related injuries are still insurmountable for most"
@@ -46,8 +63,15 @@ storiesOf("Original Go1d/CourseSlat", module)
     enrollment={{
       status: "completed",
     }}
-  />)
-  .add('With price and duration', () => <CourseSlat
+  />
+);
+
+WithEnrollmentStatus.story = {
+  name: "With enrollment status",
+};
+
+export const WithPriceAndDuration = () => (
+  <CourseSlat
     courseImage="https://images.pexels.com/photos/814499/pexels-photo-814499.jpeg?h=400"
     title="Master sourdough in a week"
     description="Despite general improvements in workplace health and safety over the past the risk of sourdough related injuries are still insurmountable for most"
@@ -57,7 +81,11 @@ storiesOf("Original Go1d/CourseSlat", module)
     currency="INR"
     type="Course"
     typeIcon="Course"
-  />)
-  .add('Skeleton', () => <CourseSlat
-    skeleton={true}
-  />)
+  />
+);
+
+WithPriceAndDuration.story = {
+  name: "With price and duration",
+};
+
+export const Skeleton = () => <CourseSlat skeleton={true} />;

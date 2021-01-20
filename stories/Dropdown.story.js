@@ -1,13 +1,13 @@
-import React from 'react';
-import { storiesOf } from '@storybook/react';
-import { Dropdown, ButtonFilled, ButtonMinimal, Text, View } from '../src';
-import {
-  IconPlus,
-  IconTrash
-} from "../src/components/Icons";
+import React from "react";
+import { Dropdown, ButtonFilled, ButtonMinimal, Text, View } from "../src";
+import { IconPlus, IconTrash } from "../src/components/Icons";
 
-storiesOf("Original Go1d/Dropdown", module)
-  .add('Basic dropdown', () => <Dropdown
+export default {
+  title: "Original Go1d/Dropdown",
+};
+
+export const BasicDropdown = () => (
+  <Dropdown
     placement="bottom"
     renderFunction={(item, index, getItemProps) => (
       <View
@@ -38,19 +38,22 @@ storiesOf("Original Go1d/Dropdown", module)
   >
     {({ ref, getToggleButtonProps }) => (
       <View width="70">
-        <ButtonFilled
-          {...getToggleButtonProps()}
-          innerRef={ref}
-          color="accent"
-        >
+        <ButtonFilled {...getToggleButtonProps()} innerRef={ref} color="accent">
           Button
-      </ButtonFilled>
+        </ButtonFilled>
       </View>
     )}
-  </Dropdown>)
-  .add('Dropdown with complex items', () => <View>
+  </Dropdown>
+);
+
+BasicDropdown.story = {
+  name: "Basic dropdown",
+};
+
+export const DropdownWithComplexItems = () => (
+  <View>
     <Dropdown
-      itemToString={item => (item ? item.title : "")}
+      itemToString={(item) => (item ? item.title : "")}
       renderFunction={(item, index, getItemProps) => (
         <ButtonMinimal
           key={index}
@@ -76,7 +79,7 @@ storiesOf("Original Go1d/Dropdown", module)
           title: "Add",
           href: "#testing",
           icon: IconPlus,
-          iconColor: "muted"
+          iconColor: "muted",
         },
         {
           title: "Delete",
@@ -87,6 +90,21 @@ storiesOf("Original Go1d/Dropdown", module)
       ]}
       placement="right"
     >
-      {({ ref, getToggleButtonProps }) => <View width="70"><ButtonFilled {...getToggleButtonProps()} innerRef={ref} color="accent">Button</ButtonFilled></View>}
+      {({ ref, getToggleButtonProps }) => (
+        <View width="70">
+          <ButtonFilled
+            {...getToggleButtonProps()}
+            innerRef={ref}
+            color="accent"
+          >
+            Button
+          </ButtonFilled>
+        </View>
+      )}
     </Dropdown>
-  </View>)
+  </View>
+);
+
+DropdownWithComplexItems.story = {
+  name: "Dropdown with complex items",
+};

@@ -1,8 +1,20 @@
-import React from 'react';
-import { storiesOf } from '@storybook/react';
-import { InputGroup, InputTextAffix, TextInput, SelectDropdown, View, ButtonFilled, Icon } from '../src';
-storiesOf("Original Go1d/InputGroup", module)
-  .add('Base', () => <InputGroup>
+import React from "react";
+import {
+  InputGroup,
+  InputTextAffix,
+  TextInput,
+  SelectDropdown,
+  View,
+  ButtonFilled,
+  Icon,
+} from "../src";
+
+export default {
+  title: "Original Go1d/InputGroup",
+};
+
+export const Base = () => (
+  <InputGroup>
     <InputTextAffix text="www." />
     <TextInput
       borderRadius={0}
@@ -12,16 +24,19 @@ storiesOf("Original Go1d/InputGroup", module)
       }}
     />
     <InputTextAffix text=".mygo1.com" />
-  </InputGroup>)
-  .add('With SelectDropdown and TextInput', () => <InputGroup>
+  </InputGroup>
+);
+
+export const WithSelectDropdownAndTextInput = () => (
+  <InputGroup>
     <SelectDropdown
       options={[
-        { "value": "chocolate", label: "Chocolate" },
-        { "value": "stawberry", label: "Strawberry" },
-        { "value": "vanilla", label: "Vanilla" }
+        { value: "chocolate", label: "Chocolate" },
+        { value: "stawberry", label: "Strawberry" },
+        { value: "vanilla", label: "Vanilla" },
       ]}
       optionRenderer={({ value, label }) => <View>{label}</View>}
-      onChange={value => window.alert(`You selected ${value}`)}
+      onChange={(value) => window.alert(`You selected ${value}`)}
     >
       {({ ref, getToggleButtonProps }) => (
         <ButtonFilled
@@ -35,8 +50,8 @@ storiesOf("Original Go1d/InputGroup", module)
             flexGrow: 1,
             flexShrink: 1,
             ":hover, :focus, :active": {
-              transform: "none"
-            }
+              transform: "none",
+            },
           }}
         >
           <View flexDirection="row" alignItems="center">
@@ -46,4 +61,9 @@ storiesOf("Original Go1d/InputGroup", module)
       )}
     </SelectDropdown>
     <TextInput borderRadius={0} />
-  </InputGroup>) 
+  </InputGroup>
+);
+
+WithSelectDropdownAndTextInput.story = {
+  name: "With SelectDropdown and TextInput",
+};
