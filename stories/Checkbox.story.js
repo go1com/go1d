@@ -7,9 +7,13 @@ import {
   ButtonFilled,
   CheckboxGroup,
 } from "../src";
+import hideInheritedProps from '../.storybook/hideInheritedProps.js'
+
+let argTypes = hideInheritedProps({}, Checkbox);
 
 export default {
   title: "Original Go1d/Checkbox",
+  argTypes: argTypes,
   component: Checkbox,
 };
 

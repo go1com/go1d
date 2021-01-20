@@ -1,8 +1,12 @@
 import React from "react";
 import { View, ContentType } from "../src";
+import hideInheritedProps from '../.storybook/hideInheritedProps.js'
+
+let argTypes = hideInheritedProps({}, ContentType);
 
 export default {
   title: "Original Go1d/ContentType",
+  argTypes: argTypes,
   component: ContentType,
   subcomponents: { View },
 };

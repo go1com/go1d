@@ -1,9 +1,13 @@
 import React from "react";
 import { ButtonMinimal } from "../src";
+import hideInheritedProps from '../.storybook/hideInheritedProps.js'
 import { IconPlus } from "../src/components/Icons";
+
+let argTypes = hideInheritedProps({}, ButtonMinimal);
 
 export default {
   title: "Original Go1d/ButtonMinimal",
+  argTypes: argTypes,
   component: ButtonMinimal,
 };
 

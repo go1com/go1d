@@ -1,5 +1,6 @@
 import React from "react";
 import { View, ToggleButtonFeature } from "../src";
+import hideInheritedProps from '../.storybook/hideInheritedProps.js'
 import {
   IconDanger,
   IconEye,
@@ -8,8 +9,11 @@ import {
   IconVideo,
 } from "../src/components/Icons";
 
+let argTypes = hideInheritedProps({}, ToggleButtonFeature);
+
 export default {
   title: "Original Go1d/ToggleButtonFeature",
+  argTypes: argTypes,
   component: ToggleButtonFeature,
 };
 

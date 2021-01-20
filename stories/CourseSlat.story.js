@@ -1,9 +1,13 @@
 import React from "react";
 import { CourseSlat, View, Text } from "../src";
+import hideInheritedProps from '../.storybook/hideInheritedProps.js'
 import IconImport from "../src/components/Icons/Import";
+
+let argTypes = hideInheritedProps({}, CourseSlat);
 
 export default {
   title: "Original Go1d/CourseSlat",
+  argTypes: argTypes,
   component: CourseSlat,
   subcomponents: { View, Text },
 };

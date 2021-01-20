@@ -1,8 +1,12 @@
 import React from "react";
 import { View, CTACard, ButtonFilled } from "../src";
+import hideInheritedProps from '../.storybook/hideInheritedProps.js'
+
+let argTypes = hideInheritedProps({}, CTACard);
 
 export default {
-  title: "Original Go1d/CtaCard",
+  title: "Original Go1d/CTACard",
+  argTypes: argTypes,
   component: CTACard,
   subcomponents: { ButtonFilled, View },
 };

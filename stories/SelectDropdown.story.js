@@ -1,8 +1,12 @@
 import React from "react";
 import { SelectDropdown, View, ButtonFilled } from "../src";
+import hideInheritedProps from '../.storybook/hideInheritedProps.js'
+
+let argTypes = hideInheritedProps({}, SelectDropdown);
 
 export default {
   title: "Original Go1d/SelectDropdown",
+  argTypes: argTypes,
   component: SelectDropdown,
 };
 

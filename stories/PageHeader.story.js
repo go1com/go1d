@@ -1,9 +1,13 @@
 import React from "react";
 import { PageHeader, Text, ButtonFilled } from "../src";
+import hideInheritedProps from '../.storybook/hideInheritedProps.js'
 import { IconEdit } from "../src/components/Icons";
+
+let argTypes = hideInheritedProps({}, PageHeader);
 
 export default {
   title: "Original Go1d/PageHeader",
+  argTypes: argTypes,
   component: PageHeader,
   subcomponents: { ButtonFilled, Text },
 };

@@ -8,9 +8,13 @@ import {
   ButtonFilled,
 } from "../src";
 import { IconChevronDown } from "../src/components/Icons";
+import hideInheritedProps from '../.storybook/hideInheritedProps.js'
+
+let argTypes = hideInheritedProps({}, InputGroup);
 
 export default {
   title: "Original Go1d/InputGroup",
+  argTypes: argTypes,
 };
 
 export const Base = args => (

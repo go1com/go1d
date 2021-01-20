@@ -1,8 +1,12 @@
 import React from "react";
 import { Link, Text, Provider } from "../src";
+import hideInheritedProps from '../.storybook/hideInheritedProps.js'
+
+let argTypes = hideInheritedProps({}, Link);
 
 export default {
   title: "Original Go1d/Link",
+  argTypes: argTypes,
   component: Link,
 };
 

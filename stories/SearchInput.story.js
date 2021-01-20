@@ -1,8 +1,12 @@
 import React from "react";
 import { SearchInput } from "../src";
+import hideInheritedProps from '../.storybook/hideInheritedProps.js'
+
+let argTypes = hideInheritedProps({}, SearchInput);
 
 export default {
   title: "Original Go1d/SearchInput",
+  argTypes: argTypes,
   component: SearchInput,
 };
 

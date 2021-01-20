@@ -1,8 +1,12 @@
 import React from "react";
 import { Rating } from "../src";
+import hideInheritedProps from '../.storybook/hideInheritedProps.js'
+
+let argTypes = hideInheritedProps({}, Rating);
 
 export default {
   title: "Original Go1d/Rating",
+  argTypes: argTypes,
   component: Rating,
 };
 

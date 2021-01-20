@@ -1,8 +1,12 @@
 import React from "react";
 import { ToggleSwitch, View } from "../src";
+import hideInheritedProps from '../.storybook/hideInheritedProps.js'
+
+let argTypes = hideInheritedProps({}, ToggleSwitch);
 
 export default {
   title: "Original Go1d/ToggleSwitch",
+  argTypes: argTypes,
   component: ToggleSwitch,
 };
 

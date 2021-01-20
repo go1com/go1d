@@ -1,8 +1,12 @@
 import React from "react";
 import { PageTitle, PageBody, Text, ButtonFilled } from "../src";
+import hideInheritedProps from '../.storybook/hideInheritedProps.js'
+
+let argTypes = hideInheritedProps({}, PageTitle);
 
 export default {
   title: "Original Go1d/PageTitle",
+  argTypes: argTypes,
   component: PageTitle,
   subcomponents: { PageBody, ButtonFilled, Text },
 };

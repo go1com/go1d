@@ -1,8 +1,12 @@
 import React from "react";
 import { TextInput, Form, Field, SubmitButton } from "../src";
+import hideInheritedProps from '../.storybook/hideInheritedProps.js'
+
+let argTypes = hideInheritedProps({}, Form);
 
 export default {
   title: "Original Go1d/Form",
+  argTypes: argTypes,
   component: Form,
 };
 

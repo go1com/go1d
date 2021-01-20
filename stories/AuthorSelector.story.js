@@ -1,8 +1,12 @@
 import React from "react";
 import { AuthorSelector } from "../src";
+import hideInheritedProps from '../.storybook/hideInheritedProps.js'
+
+let argTypes = hideInheritedProps({}, AuthorSelector);
 
 export default {
   title: "Original Go1d/AuthorSelector",
+  argTypes: argTypes,
   component: AuthorSelector,
 };
 

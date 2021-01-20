@@ -1,9 +1,13 @@
 import React from "react";
 import { SlatMini } from "../src";
+import hideInheritedProps from '../.storybook/hideInheritedProps.js'
 import { IconCalendar, IconPlusCircle } from "../src/components/Icons";
+
+let argTypes = hideInheritedProps({}, SlatMini);
 
 export default {
   title: "Original Go1d/SlatMini",
+  argTypes: argTypes,
   component: SlatMini
 };
 

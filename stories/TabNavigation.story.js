@@ -1,8 +1,12 @@
 import React from "react";
 import { TabNavigation, Tab, Pill } from "../src";
+import hideInheritedProps from '../.storybook/hideInheritedProps.js'
+
+let argTypes = hideInheritedProps({}, TabNavigation);
 
 export default {
   title: "Original Go1d/TabNavigation",
+  argTypes: argTypes,
   component: TabNavigation,
 };
 

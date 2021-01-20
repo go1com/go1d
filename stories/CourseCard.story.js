@@ -1,8 +1,12 @@
 import React from "react";
 import { CourseCard, View, Carousel } from "../src";
+import hideInheritedProps from '../.storybook/hideInheritedProps.js'
+
+let argTypes = hideInheritedProps({}, CourseCard);
 
 export default {
   title: "Original Go1d/CourseCard",
+  argTypes: argTypes,
   component: CourseCard,
   subcomponents: { View },
 };

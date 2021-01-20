@@ -1,8 +1,12 @@
 import React from "react";
 import { TextInput, Field, Banner, Form, ButtonFilled } from "../src";
+import hideInheritedProps from '../.storybook/hideInheritedProps.js'
+
+let argTypes = hideInheritedProps({}, Field);
 
 export default {
   title: "Original Go1d/Field",
+  argTypes: argTypes,
 };
 
 export const Base = () => (

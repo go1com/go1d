@@ -1,9 +1,13 @@
 import React from "react";
 import { Tooltip, Text, ButtonFilled } from "../src";
+import hideInheritedProps from '../.storybook/hideInheritedProps.js'
 import { IconEye } from "../src/components/Icons";
+
+let argTypes = hideInheritedProps({}, Tooltip);
 
 export default {
   title: "Original Go1d/Tooltip",
+  argTypes: argTypes,
   component: Tooltip,
 };
 

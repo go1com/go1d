@@ -1,8 +1,12 @@
 import React from "react";
 import { Carousel, View, Text } from "../src";
+import hideInheritedProps from '../.storybook/hideInheritedProps.js'
+
+let argTypes = hideInheritedProps({}, Carousel);
 
 export default {
   title: "Original Go1d/Carousel",
+  argTypes: argTypes,
   component: Carousel, // FIXME: Storybook wants `ExportCarousel`
   subcomponents: { View, Text },
 };

@@ -1,8 +1,12 @@
 import React from "react";
 import { BaseUploader, View, Text, ButtonFilled } from "../src";
+import hideInheritedProps from '../.storybook/hideInheritedProps.js'
+
+let argTypes = hideInheritedProps({}, BaseUploader);
 
 export default {
   title: "Original Go1d/BaseUploader",
+  argTypes: argTypes,
   component: "BaseUploader",
 };
 

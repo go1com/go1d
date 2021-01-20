@@ -1,8 +1,12 @@
 import React from "react";
 import { Autocomplete } from "../src";
+import hideInheritedProps from '../.storybook/hideInheritedProps.js'
+
+let argTypes = hideInheritedProps({}, Autocomplete);
 
 export default {
   title: "Original Go1d/Autocomplete",
+  argTypes: argTypes,
   component: Autocomplete,
 };
 

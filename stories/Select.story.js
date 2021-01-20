@@ -1,8 +1,12 @@
 import React from "react";
 import { Select } from "../src";
+import hideInheritedProps from '../.storybook/hideInheritedProps.js'
+
+let argTypes = hideInheritedProps({}, Select);
 
 export default {
   title: "Original Go1d/Select",
+  argTypes: argTypes,
   component: Select,
 };
 

@@ -1,5 +1,6 @@
 import React from "react";
 import { UL, LI } from "../src";
+import hideInheritedProps from '../.storybook/hideInheritedProps.js'
 
 import {
   IconStar,
@@ -12,8 +13,11 @@ import {
   IconSuccess,
 } from "../src/components/Icons";
 
+let argTypes = hideInheritedProps({}, UL);
+
 export default {
   title: "Original Go1d/Ul",
+  argTypes: argTypes,
   component: UL,
 };
 
@@ -34,7 +38,7 @@ export const BasicUl = args => (
   </UL>
 );
 
-BasicUl.storyName = "Basic UL";
+BasicUl.storyName = "Basic Unordered List";
 
 export const UlWithSpecificIconAndColorAndFontSize = args => (
   <UL icon={IconSuccess} fontSize="3" color="subtle">

@@ -1,8 +1,12 @@
 import React from "react";
 import { Table, TR, TD, Text, TH } from "../src";
+import hideInheritedProps from '../.storybook/hideInheritedProps.js'
+
+let argTypes = hideInheritedProps({}, Table);
 
 export default {
   title: "Original Go1d/Table",
+  argTypes: argTypes,
   component: Table,
 };
 

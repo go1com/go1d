@@ -1,8 +1,12 @@
 import React from "react";
 import { DataTable, TR, TD, TH, ButtonFilled } from "../src";
+import hideInheritedProps from '../.storybook/hideInheritedProps.js'
+
+let argTypes = hideInheritedProps({}, DataTable);
 
 export default {
   title: "Original Go1d/DataTable",
+  argTypes: argTypes,
   component: DataTable,
 };
 

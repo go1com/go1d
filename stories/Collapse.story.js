@@ -1,9 +1,14 @@
 import React from "react";
 import { Collapse, ButtonFilled, View, Text } from "../src";
+import hideInheritedProps from '../.storybook/hideInheritedProps.js'
 import { Flipflop } from "libreact/lib/Flipflop";
+
+let argTypes = hideInheritedProps({}, Collapse);
+// console.log(argTypes);
 
 export default {
   title: "Original Go1d/Collapse",
+  argTypes: argTypes,
   component: Collapse,
   subcomponents: { ButtonFilled, View, Text },
 };

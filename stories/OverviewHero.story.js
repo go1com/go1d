@@ -9,9 +9,13 @@ import {
   ButtonFilled,
 } from "../src";
 import { IconVideo, IconCourse } from "../src/components/Icons";
+import hideInheritedProps from '../.storybook/hideInheritedProps.js'
+
+let argTypes = hideInheritedProps({}, OverviewHero);
 
 export default {
   title: "Original Go1d/OverviewHero",
+  argTypes: argTypes,
   component: OverviewHero,
 };
 

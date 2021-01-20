@@ -1,9 +1,13 @@
 import React from "react";
 import { Slat, View, Text } from "../src";
+import hideInheritedProps from '../.storybook/hideInheritedProps.js'
 import { IconCalendar, IconMapPin, IconImport } from "../src/components/Icons";
+
+let argTypes = hideInheritedProps({}, Slat);
 
 export default {
   title: "Original Go1d/Slat",
+  argTypes: argTypes,
   component: Slat,
 };
 

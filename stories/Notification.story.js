@@ -6,9 +6,13 @@ import {
   Text,
   Link,
 } from "../src";
+import hideInheritedProps from '../.storybook/hideInheritedProps.js'
+
+let argTypes = hideInheritedProps({}, Notification);
 
 export default {
   title: "Original Go1d/Notification",
+  argTypes: argTypes,
 };
 
 export const Base = args => (

@@ -1,8 +1,12 @@
 import React from "react";
 import { Button, SubmitButton } from "../src";
+import hideInheritedProps from '../.storybook/hideInheritedProps.js'
+
+let argTypes = hideInheritedProps({}, Button);
 
 export default {
   title: "Original Go1d/Button",
+  argTypes: argTypes,
   component: Button,
   parameters: {
     docs: {

@@ -1,8 +1,12 @@
 import React from "react";
 import { SpotIcon, View } from "../src";
+import hideInheritedProps from '../.storybook/hideInheritedProps.js'
+
+let argTypes = hideInheritedProps({}, SpotIcon);
 
 export default {
   title: "Original Go1d/SpotIcon",
+  argTypes: argTypes,
   component: SpotIcon,
 };
 

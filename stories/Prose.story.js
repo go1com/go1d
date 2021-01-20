@@ -1,8 +1,12 @@
 import React from "react";
 import { Prose } from "../src";
+import hideInheritedProps from '../.storybook/hideInheritedProps.js'
+
+let argTypes = hideInheritedProps({}, Prose);
 
 export default {
   title: "Original Go1d/Prose",
+  argTypes: argTypes,
   component: Prose,
 };
 
