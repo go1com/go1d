@@ -6,7 +6,7 @@ export default {
   component: ImageUploadSlat,
 };
 
-export const BasicUsage = () => (
+export const BasicUsage = args => (
   <Form
     enableReinitialize
     initialValues={{

@@ -6,7 +6,7 @@ export default {
   component: Autocomplete,
 };
 
-export const Base = () => (
+export const Base = args => (
   <Autocomplete
     lookupMethod={() => {
       // pass a method to request options
@@ -32,5 +32,6 @@ export const Base = () => (
       fontSize: 1,
     }}
     flexGrow={1}
+    {...args}
   />
 );

@@ -6,9 +6,9 @@ export default {
   component: LineProgress,
 };
 
-export const WithPercent = () => (
+export const WithPercent = args => (
   <div style={{ width: "50%" }}>
-    <LineProgress percent={50} />
+    <LineProgress {...args} percent={50} />
   </div>
 );
 

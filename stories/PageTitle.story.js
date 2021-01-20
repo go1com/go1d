@@ -7,18 +7,18 @@ export default {
   subcomponents: { PageBody, ButtonFilled, Text },
 };
 
-export const LightmodePageTitle = () => (
+export const LightmodePageTitle = args => (
   <PageBody>
-    <PageTitle title="The Page Title" />
+    <PageTitle {...args} title="The Page Title" />
     <Text>This is standard body content text.</Text>
   </PageBody>
 );
 
 LightmodePageTitle.storyName = "Lightmode page title";
 
-export const LightmodePageTitleWithChildren = () => (
+export const LightmodePageTitleWithChildren = args => (
   <PageBody>
-    <PageTitle title="The Page Title">
+    <PageTitle {...args} title="The Page Title">
       <ButtonFilled>I'm a button</ButtonFilled>
     </PageTitle>
     <Text>This is standard body content text.</Text>

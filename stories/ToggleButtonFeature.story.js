@@ -13,21 +13,21 @@ export default {
   component: ToggleButtonFeature,
 };
 
-export const _ToggleButtonFeature = () => (
+export const _ToggleButtonFeature = args => (
   <View flexDirection="row">
-    <ToggleButtonFeature color="danger" icon={IconDanger} marginRight={3}>
+    <ToggleButtonFeature {...args} color="danger" icon={IconDanger} marginRight={3}>
       Oh
     </ToggleButtonFeature>
-    <ToggleButtonFeature icon={IconEye} marginRight={3}>
+    <ToggleButtonFeature {...args} icon={IconEye} marginRight={3}>
       Hi
     </ToggleButtonFeature>
-    <ToggleButtonFeature color="accent" icon={IconUser}>
+    <ToggleButtonFeature {...args} color="accent" icon={IconUser}>
       Mark
     </ToggleButtonFeature>
   </View>
 );
 
-export const ToggleButtonFeatureInSizes = () => (
+export const ToggleButtonFeatureInSizes = args => (
   <View flexDirection="row" alignItems="center">
     <ToggleButtonFeature size="sm" icon={IconStar} marginRight={3}>
       Star

@@ -13,8 +13,8 @@ export default {
   }
 };
 
-export const BaseStory = () => (
-  <Base>I am Base</Base>
+export const BaseStory = args => (
+  <Base {...args}>I am Base</Base>
 );
 
 BaseStory.storyName = "Base";

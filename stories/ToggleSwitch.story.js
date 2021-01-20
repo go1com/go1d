@@ -6,17 +6,17 @@ export default {
   component: ToggleSwitch,
 };
 
-export const ToggleWithNoProps = () => <ToggleSwitch />;
+export const ToggleWithNoProps = args => <ToggleSwitch />;
 
 ToggleWithNoProps.storyName = "Toggle with no props";
 
-export const ToggleWithDefaultValueProps = () => (
+export const ToggleWithDefaultValueProps = args => (
   <ToggleSwitch defaultValue={true} />
 );
 
 ToggleWithDefaultValueProps.storyName = "Toggle with default value props";
 
-export const ToggleWithADifferentSize = () => (
+export const ToggleWithADifferentSize = args => (
   <View flexDirection="row" alignItems="baseline">
     <ToggleSwitch defaultValue={true} size="sm" marginRight={2} />
     <ToggleSwitch defaultValue={false} size="md" marginRight={2} />
@@ -26,7 +26,7 @@ export const ToggleWithADifferentSize = () => (
 
 ToggleWithADifferentSize.storyName = "Toggle with a different size";
 
-export const ToggleWithDisabledProps = () => (
+export const ToggleWithDisabledProps = args => (
   <View flexDirection="row">
     <ToggleSwitch
       defaultValue={false}
@@ -45,7 +45,7 @@ export const ToggleWithDisabledProps = () => (
 
 ToggleWithDisabledProps.storyName = "Toggle with disabled props";
 
-export const ToggleWithALabelProps = () => (
+export const ToggleWithALabelProps = args => (
   <View flexDirection="column" alignItems="baseline" justifyContent="center">
     <ToggleSwitch
       defaultValue={true}
@@ -70,7 +70,7 @@ export const ToggleWithALabelProps = () => (
 
 ToggleWithALabelProps.storyName = "Toggle with a label props";
 
-export const ToggleWithALabelAndDescriptionProps = () => (
+export const ToggleWithALabelAndDescriptionProps = args => (
   <>
     <ToggleSwitch
       defaultValue={true}
@@ -98,7 +98,7 @@ export const ToggleWithALabelAndDescriptionProps = () => (
 
 ToggleWithALabelAndDescriptionProps.storyName = "Toggle with a label and description props";
 
-export const ToggleWithALabelDescriptionReverseProps = () => (
+export const ToggleWithALabelDescriptionReverseProps = args => (
   <View width="300px">
     <ToggleSwitch
       defaultValue={true}
@@ -129,7 +129,7 @@ export const ToggleWithALabelDescriptionReverseProps = () => (
 
 ToggleWithALabelDescriptionReverseProps.storyName = "Toggle with a label, description, reverse props";
 
-export const ToggleWithALabelInlineProps = () => (
+export const ToggleWithALabelInlineProps = args => (
   <>
     <ToggleSwitch
       defaultValue={true}
@@ -157,7 +157,7 @@ export const ToggleWithALabelInlineProps = () => (
 
 ToggleWithALabelInlineProps.storyName = "Toggle with a label, inline props";
 
-export const ToggleWithAllProps = () => (
+export const ToggleWithAllProps = args => (
   <>
     <ToggleSwitch
       defaultValue={true}

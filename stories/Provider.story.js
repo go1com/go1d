@@ -24,7 +24,7 @@ export const DefaultPropsWithLightMode = () => (
 
 DefaultPropsWithLightMode.storyName = "Default props with light mode";
 
-export const CustomLinkAndDarkModeSpecified = () => (
+export const CustomLinkAndDarkModeSpecified = args => (
   <Provider mode="dark" linkComponent={() => <div>custom link</div>}>
     <PageBody>
       <View marginBottom={5}>

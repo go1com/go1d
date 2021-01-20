@@ -6,4 +6,4 @@ export default {
   component: Spinner,
 };
 
-export const _Spinner = () => <Spinner size={5} />;
+export const _Spinner = (args) => <Spinner {...args} size={5} />;

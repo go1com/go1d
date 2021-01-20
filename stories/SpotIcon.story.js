@@ -6,20 +6,20 @@ export default {
   component: SpotIcon,
 };
 
-export const Business = () => <SpotIcon name="BusinessSkills" />;
-export const PersonalDevelopment = () => (
+export const Business = args => <SpotIcon {...args} name="BusinessSkills" />;
+export const PersonalDevelopment = args => (
   <SpotIcon name="PersonalDevelopment" />
 );
 
 PersonalDevelopment.storyName = "PersonalDevelopment";
 
-export const SectorSpecific = () => <SpotIcon name="SectorSpecific" />;
+export const SectorSpecific = args => <SpotIcon name="SectorSpecific" />;
 
 SectorSpecific.storyName = "SectorSpecific";
 
-export const Technology = () => <SpotIcon name="TechnologySkills" />;
+export const Technology = args => <SpotIcon name="TechnologySkills" />;
 
-export const SpotIcons = () => (
+export const SpotIcons = args => (
   <View flexDirection="row">
     <SpotIcon
       name="SafetyAndCompliance"

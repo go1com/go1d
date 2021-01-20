@@ -11,7 +11,7 @@ export default {
   title: "Original Go1d/Notification",
 };
 
-export const Base = () => (
+export const Base = args => (
   <React.Fragment>
     <Button
       color="success"

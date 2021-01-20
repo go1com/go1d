@@ -6,4 +6,4 @@ export default {
   component: TagSelector,
 };
 
-export const BasicTagSelector = () => <TagSelector options={["Tag 1"]} />;
+export const BasicTagSelector = args => <TagSelector {...args} options={["Tag 1"]} />;

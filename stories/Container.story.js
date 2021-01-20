@@ -7,8 +7,8 @@ export default {
   subcomponents: { View, Text },
 };
 
-export const LightmodePageBody = () => (
-  <Container backgroundColor="soft" contain="full" paddingX={8} paddingY={6}>
+export const LightmodePageBody = args => (
+  <Container {...args} backgroundColor="soft" contain="full" paddingX={8} paddingY={6}>
     <View marginBottom={5}>
       <Text element="h2" fontSize={4} fontWeight="semibold">
         Reports

@@ -6,8 +6,9 @@ export default {
   component: DataTable,
 };
 
-export const BasicTableUsingARowRenderer = () => (
+export const BasicTableUsingARowRenderer = args => (
   <DataTable
+    {...args}
     rowHeight={55}
     total="10 Items"
     rowRenderer={({ index, isScrolling, isVisible, key, parent, style }) => (
@@ -23,8 +24,9 @@ export const BasicTableUsingARowRenderer = () => (
 
 BasicTableUsingARowRenderer.storyName = "Basic Table using a row renderer";
 
-export const ExperimentalAutoRowHeight = () => (
+export const ExperimentalAutoRowHeight = args => (
   <DataTable
+    {...args}
     autoRowHeight
     total="10 Items"
     rowRenderer={({ index, isScrolling, isVisible, key, parent, style }) => (

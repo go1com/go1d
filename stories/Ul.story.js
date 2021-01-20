@@ -17,8 +17,8 @@ export default {
   component: UL,
 };
 
-export const BasicUl = () => (
-  <UL>
+export const BasicUl = args => (
+  <UL {...args}>
     <LI>List Item 1</LI>
     <LI>
       List Item 2 multiline Text, Lorem ipsum dolor sit amet, consetetur
@@ -36,7 +36,7 @@ export const BasicUl = () => (
 
 BasicUl.storyName = "Basic UL";
 
-export const UlWithSpecificIconAndColorAndFontSize = () => (
+export const UlWithSpecificIconAndColorAndFontSize = args => (
   <UL icon={IconSuccess} fontSize="3" color="subtle">
     <LI>List Item 1</LI>
     <LI>
@@ -55,7 +55,7 @@ export const UlWithSpecificIconAndColorAndFontSize = () => (
 
 UlWithSpecificIconAndColorAndFontSize.storyName = "UL with specific icon and color and fontSize";
 
-export const UlWithDifferentIconsOnEachLi = () => (
+export const UlWithDifferentIconsOnEachLi = args => (
   <UL icon={IconSuccess}>
     <LI iconColor="success">Parent Icon</LI>
     <LI icon={IconStar}>Star Icon</LI>

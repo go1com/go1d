@@ -6,8 +6,8 @@ export default {
   component: InputSuffix,
 };
 
-export const BasicInputSuffix = () => (
-  <InputSuffix id="test" suffixValue="test.com" />
+export const BasicInputSuffix = args => (
+  <InputSuffix {...args} id="test" suffixValue="test.com" />
 );
 
 BasicInputSuffix.storyName = "Basic InputSuffix";

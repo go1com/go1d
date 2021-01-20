@@ -7,13 +7,13 @@ export default {
   component: Tooltip,
 };
 
-export const BasicUsage = () => (
+export const BasicUsage = args => (
   <Text color="subtle" fontSize={4} fontWeight="bold">
-    My large <Tooltip tip="Really Bold">bold</Tooltip> grey text
+    My large <Tooltip {...args} tip="Really Bold">bold</Tooltip> grey text
   </Text>
 );
 
-export const ClickMode = () => (
+export const ClickMode = args => (
   <Text>
     <Tooltip
       tip={
@@ -29,7 +29,7 @@ export const ClickMode = () => (
   </Text>
 );
 
-export const AdvancedUsage = () => (
+export const AdvancedUsage = args => (
   <Tooltip tip="This is a tooltip">
     {({ ref, getEventProps }) => (
       <ButtonFilled color="accent" innerRef={ref} {...getEventProps()}>

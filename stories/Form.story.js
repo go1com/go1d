@@ -6,8 +6,9 @@ export default {
   component: Form,
 };
 
-export const ExampleFormWithField = () => (
+export const ExampleFormWithField = args => (
   <Form
+    {...args}
     initialValues={{ portalName: "A portal" }}
     onSubmit={(values, actions) => console.log(values, actions)}
   >
@@ -23,7 +24,7 @@ export const ExampleFormWithField = () => (
 
 ExampleFormWithField.storyName = "Example Form with field";
 
-export const ExampleDisabledFormWithField = () => (
+export const ExampleDisabledFormWithField = args => (
   <Form
     initialValues={{ portalName: "A portal" }}
     disabled={true}

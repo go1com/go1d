@@ -6,8 +6,8 @@ export default {
   component: TabNavigation,
 };
 
-export const MultipleTabsWithOneSelected = () => (
-  <TabNavigation>
+export const MultipleTabsWithOneSelected = args => (
+  <TabNavigation {...args}>
     <Tab href="/overview" text="Overview">
       Overview
     </Tab>
@@ -20,7 +20,7 @@ export const MultipleTabsWithOneSelected = () => (
 
 MultipleTabsWithOneSelected.storyName = "Multiple tabs with one selected";
 
-export const TabWithChildren = () => (
+export const TabWithChildren = args => (
   <TabNavigation>
     <Tab href="/overview" text="Overview">
       Overview
@@ -37,7 +37,7 @@ export const TabWithChildren = () => (
 
 TabWithChildren.storyName = "Tab with children";
 
-export const MultipleTabNavigationComponentsStacked = () => (
+export const MultipleTabNavigationComponentsStacked = args => (
   <React.Fragment>
     <TabNavigation>
       <Tab href="/overview" text="Overview">

@@ -7,13 +7,13 @@ export default {
   component: FeaturedTag,
 };
 
-export const Base = () => (
+export const Base = args => (
   <View backgroundColor="faint" padding={5}>
-    <FeaturedTag>Hello World!</FeaturedTag>
+    <FeaturedTag {...args}>Hello World!</FeaturedTag>
   </View>
 );
 
-export const WithAllProps = () => (
+export const WithAllProps = args => (
   <FeaturedTag
     size="md"
     color="danger"
@@ -27,7 +27,7 @@ export const WithAllProps = () => (
 
 WithAllProps.storyName = "With all props";
 
-export const WithCards = () => (
+export const WithCards = args => (
   <View backgroundColor="faint" padding={5}>
     <Carousel slidesToShow={2} slideAnimationDuration={150}>
       <FeaturedTag>Test Words</FeaturedTag>
@@ -41,7 +41,7 @@ export const WithCards = () => (
   </View>
 );
 
-export const InteractiveStyles = () => (
+export const InteractiveStyles = args => (
   <FeaturedTag passive={false}>Hello World!</FeaturedTag>
 );
 

@@ -13,32 +13,32 @@ export default {
   component: Checkbox,
 };
 
-export const Label = () => <Checkbox name="Test" label="Test" />;
-export const LabelSizeSm = () => (
-  <Checkbox size="sm" name="Test" label="Test" />
+export const Label = args => <Checkbox {...args} name="Test" label="Test" />;
+export const LabelSizeSm = args => (
+  <Checkbox {...args} size="sm" name="Test" label="Test" />
 );
 
 LabelSizeSm.storyName = "Label size sm";
 
-export const LabelSizeLg = () => (
-  <Checkbox size="lg" name="Test" label="Test" />
+export const LabelSizeLg = args => (
+  <Checkbox {...args} size="lg" name="Test" label="Test" />
 );
 
 LabelSizeLg.storyName = "Label size lg";
 
-export const ChildLabel = () => (
-  <Checkbox name="Test">
+export const ChildLabel = args => (
+  <Checkbox {...args} name="Test">
     <Text fontWeight="bold">Test</Text>
   </Checkbox>
 );
 
 ChildLabel.storyName = "Child label";
 
-export const Disabled = () => (
-  <Checkbox disabled name="Test" value={true} label="Test" />
+export const Disabled = args => (
+  <Checkbox {...args} disabled name="Test" value={true} label="Test" />
 );
 
-export const CheckboxInField = () => (
+export const CheckboxInField = args => (
   <Form
     initialValues={{ portalName: true }}
     onSubmit={(values, actions) => console.log(values, actions)}
@@ -57,8 +57,9 @@ export const CheckboxInField = () => (
 
 CheckboxInField.storyName = "Checkbox in Field";
 
-export const UsageInACheckboxGroup = () => (
+export const UsageInACheckboxGroup = args => (
   <CheckboxGroup
+    {...args}
     name="TestInput"
     options={[
       {
@@ -75,8 +76,9 @@ export const UsageInACheckboxGroup = () => (
 
 UsageInACheckboxGroup.storyName = "Usage in a CheckboxGroup";
 
-export const InitialValues = () => (
+export const InitialValues = args => (
   <CheckboxGroup
+    {...args}
     name="TestInput"
     value={["testValue"]}
     options={[
@@ -94,8 +96,9 @@ export const InitialValues = () => (
 
 InitialValues.storyName = "Initial values";
 
-export const _Disabled = () => (
+export const _Disabled = args => (
   <CheckboxGroup
+    {...args}
     disabled
     name="TestInput"
     options={[

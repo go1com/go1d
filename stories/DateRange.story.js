@@ -12,9 +12,9 @@ export default {
   },
 };
 
-export const BasicDatepicker = () => <DateRange />;
+export const BasicDatepicker = args => <DateRange />;
 
-export const DefaultValue = () => (
+export const DefaultValue = args => (
   <DateRange
     defaultValue={{
       startDate: new moment("2019-12-05"),
@@ -23,7 +23,7 @@ export const DefaultValue = () => (
   />
 );
 
-export const ControlledValue = () => (
+export const ControlledValue = args => (
   <DateRange
     value={{
       startDate: new moment("2019-12-05"),

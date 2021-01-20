@@ -6,14 +6,15 @@ export default {
   component: ImageUploader,
 };
 
-export const ExampleUsageWithoutCrop = () => (
-  <ImageUploader name="uploader" onChange={console.log} height="300px" />
+export const ExampleUsageWithoutCrop = args => (
+  <ImageUploader {...args} name="uploader" onChange={console.log} height="300px" />
 );
 
 ExampleUsageWithoutCrop.storyName = "Example usage without crop";
 
-export const ExampleUsageWithCropAndCustomConfig = () => (
+export const ExampleUsageWithCropAndCustomConfig = args => (
   <ImageUploader
+    {...args}
     allowCrop
     cropConfig={{ aspect: 20 / 3 }}
     name="uploader"
@@ -24,7 +25,7 @@ export const ExampleUsageWithCropAndCustomConfig = () => (
 
 ExampleUsageWithCropAndCustomConfig.storyName = "Example usage with crop and custom config";
 
-export const InsideAForm = () => (
+export const InsideAForm = args => (
   <Form onSubmit={(values, actions) => console.log(values, actions)}>
     <Field
       hideLabel

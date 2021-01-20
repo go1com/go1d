@@ -6,4 +6,4 @@ export default {
   component: TextArea,
 };
 
-export const Label = () => <TextArea id="Testing" />;
+export const Label = args => <TextArea {...args} id="Testing" />;

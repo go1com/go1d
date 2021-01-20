@@ -8,19 +8,19 @@ export default {
   subcomponents: { ButtonFilled, Text },
 };
 
-export const LightmodePageHeaderWithMenuButton = () => (
-  <PageHeader showMenuButton={false} title="Overview" />
+export const LightmodePageHeaderWithMenuButton = args => (
+  <PageHeader {...args} showMenuButton={false} title="Overview" />
 );
 
 LightmodePageHeaderWithMenuButton.storyName = "Lightmode page header with menu button";
 
-export const LightmodePageHeaderWithoutMenuButton = () => (
+export const LightmodePageHeaderWithoutMenuButton = args => (
   <PageHeader showMenuButton={true} title="Overview" />
 );
 
 LightmodePageHeaderWithoutMenuButton.storyName = "Lightmode page header without menu button";
 
-export const PageHeaderWithBreadcrumbAndSubtitle = () => (
+export const PageHeaderWithBreadcrumbAndSubtitle = args => (
   <PageHeader
     showMenuButton={false}
     title="Portal"

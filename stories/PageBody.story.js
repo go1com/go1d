@@ -6,8 +6,8 @@ export default {
   component: PageBody,
 };
 
-export const LightmodePageBody = () => (
-  <PageBody>
+export const LightmodePageBody = args => (
+  <PageBody {...args}>
     <View marginBottom={5}>
       <Text element="h2" fontSize={4} fontWeight="semibold">
         Reports

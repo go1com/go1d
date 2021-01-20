@@ -48,7 +48,7 @@ export const Base = (args) => (
   </Carousel>
 );
 
-export const FullWidthOnes = () => (
+export const FullWidthOnes = args => (
   <Carousel width={800}>
     <View
       css={{
@@ -91,7 +91,7 @@ export const FullWidthOnes = () => (
 
 FullWidthOnes.storyName = "Full Width ones";
 
-export const MoreProps = () => (
+export const MoreProps = args => (
   <Carousel
     clickScrollAmount={2}
     breakpoints={{
@@ -145,7 +145,7 @@ export const MoreProps = () => (
   </Carousel>
 );
 
-export const ShorterDuration = () => (
+export const ShorterDuration = args => (
   <Carousel slideAnimationDuration={50}>
     <View
       css={{
@@ -186,7 +186,7 @@ export const ShorterDuration = () => (
   </Carousel>
 );
 
-export const WithTitle = () => {
+export const WithTitle = args => {
   return (
     <Carousel
       title={

@@ -12,7 +12,7 @@ export const Base = () => (
   </Banner>
 );
 
-export const ExampleFieldAndForm = () => (
+export const ExampleFieldAndForm = args => (
   <Form
     initialValues={{ portalName: "A portal" }}
     onSubmit={(values, actions) => console.log(values, actions)}
@@ -31,7 +31,7 @@ export const ExampleFieldAndForm = () => (
 
 ExampleFieldAndForm.storyName = "Example field and Form";
 
-export const ExampleRequiredField = () => (
+export const ExampleRequiredField = args => (
   <Form
     initialValues={{ portalName: "A portal" }}
     onSubmit={(values, actions) => actions.submit()}

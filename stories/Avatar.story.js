@@ -6,27 +6,27 @@ export default {
   component: Avatar,
 };
 
-export const AvatarWithAnImage = () => (
-  <Avatar src="https://i.imgur.com/Ee55uvc.jpg" fullName="Leslie Knope" />
+export const AvatarWithAnImage = args => (
+  <Avatar {...args} src="https://i.imgur.com/Ee55uvc.jpg" fullName="Leslie Knope" />
 );
 
 AvatarWithAnImage.storyName = "Avatar with an image";
 
-export const AvatarWithoutAnImage = () => <Avatar fullName="Leslie Knope" />;
+export const AvatarWithoutAnImage = args => <Avatar fullName="Leslie Knope" />;
 
 AvatarWithoutAnImage.storyName = "Avatar without an image";
 
-export const AvatarWithoutAnImageAndName = () => <Avatar />;
+export const AvatarWithoutAnImageAndName = args => <Avatar />;
 
 AvatarWithoutAnImageAndName.storyName = "Avatar without an image and name";
 
-export const AvatarWithADifferentSize = () => (
+export const AvatarWithADifferentSize = args => (
   <Avatar fullName="Willy Wonka" size={4} />
 );
 
 AvatarWithADifferentSize.storyName = "Avatar with a different size";
 
-export const AvatarWithDifferentColors = () => (
+export const AvatarWithDifferentColors = args => (
   <Avatar
     fullName="Leslie Knope"
     backgroundColor="subtle"

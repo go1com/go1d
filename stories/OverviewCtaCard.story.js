@@ -12,20 +12,20 @@ export default {
   title: "Original Go1d/OverviewCtaCard",
 };
 
-export const OverviewCtaCardWithNoProps = () => (
+export const OverviewCtaCardWithNoProps = args => (
   <View
     css={{
       position: "relative",
       height: 60,
     }}
   >
-    <OverviewCtaCard />
+    <OverviewCtaCard {...args} />
   </View>
 );
 
 OverviewCtaCardWithNoProps.storyName = "Overview CTA card with no props";
 
-export const OverviewCtaCardWithImageAndCtaButton = () => (
+export const OverviewCtaCardWithImageAndCtaButton = args => (
   <View
     css={{
       position: "relative",
@@ -42,7 +42,7 @@ export const OverviewCtaCardWithImageAndCtaButton = () => (
 
 OverviewCtaCardWithImageAndCtaButton.storyName = "Overview CTA card with image and CTA button";
 
-export const OverviewCtaCardWithPriceAndCtaButton = () => (
+export const OverviewCtaCardWithPriceAndCtaButton = args => (
   <View
     css={{
       position: "relative",
@@ -60,7 +60,7 @@ export const OverviewCtaCardWithPriceAndCtaButton = () => (
 
 OverviewCtaCardWithPriceAndCtaButton.storyName = "Overview CTA card with price and CTA button";
 
-export const OverviewCtaCardWithPropsAndCtaButton = () => (
+export const OverviewCtaCardWithPropsAndCtaButton = args => (
   <View
     css={{
       position: "relative",
@@ -102,7 +102,7 @@ export const OverviewCtaCardWithPropsAndCtaButton = () => (
 
 OverviewCtaCardWithPropsAndCtaButton.storyName = "Overview CTA card with props and CTA button";
 
-export const OverviewCtaCardWithCustomChildren = () => (
+export const OverviewCtaCardWithCustomChildren = args => (
   <View
     css={{
       position: "relative",

@@ -6,8 +6,9 @@ export default {
   component: EmptyState,
 };
 
-export const Base = () => (
+export const Base = args => (
   <EmptyState
+    {...args}
     title="No Content"
     actionText="Add Some Content"
     action={() => {}}

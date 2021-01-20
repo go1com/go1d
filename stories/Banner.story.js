@@ -6,8 +6,8 @@ export default {
   component: Banner,
 };
 
-export const TypeSuccess = () => (
-  <Banner type="success" close={() => alert("close event")}>
+export const TypeSuccess = args => (
+  <Banner {...args} type="success" close={() => alert("close event")}>
     <Text fontWeight="semibold">Success! </Text>
     <Text>
       This is a message{" "}
@@ -28,8 +28,8 @@ export const TypeSuccess = () => (
 
 TypeSuccess.storyName = "Type success";
 
-export const TypeWarning = () => (
-  <Banner type="warning" close={() => alert("close event")}>
+export const TypeWarning = args => (
+  <Banner {...args} type="warning" close={() => alert("close event")}>
     <Text fontWeight="semibold">Warning! </Text>
     <Text>
       This is a message{" "}
@@ -50,7 +50,7 @@ export const TypeWarning = () => (
 
 TypeWarning.storyName = "Type warning";
 
-export const TypeDanger = () => (
+export const TypeDanger = args => (
   <Banner type="danger" close={() => alert("close event")}>
     <Text fontWeight="semibold">Danger! </Text>
     <Text>

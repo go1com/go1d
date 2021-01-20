@@ -6,18 +6,18 @@ export default {
   component: Stepper,
 };
 
-export const BasicStepper = () => <Stepper id="stepper" />;
+export const BasicStepper = args => <Stepper {...args} id="stepper" />;
 
-export const StepperWithStepIncrement = () => (
+export const StepperWithStepIncrement = args => (
   <Stepper id="stepper" stepIncrement={5} />
 );
 
 StepperWithStepIncrement.storyName = "Stepper with step increment";
 
-export const StepperWithMinNum = () => <Stepper id="stepper" minNumber={0} />;
+export const StepperWithMinNum = args => <Stepper id="stepper" minNumber={0} />;
 
 StepperWithMinNum.storyName = "Stepper with min num";
 
-export const StepperWithMaxNum = () => <Stepper id="stepper" maxNumber={5} />;
+export const StepperWithMaxNum = args => <Stepper id="stepper" maxNumber={5} />;
 
 StepperWithMaxNum.storyName = "Stepper with max num";

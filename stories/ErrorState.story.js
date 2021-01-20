@@ -6,8 +6,8 @@ export default {
   component: ErrorState,
 };
 
-export const Base = () => (
-  <ErrorState title="No Content">
+export const Base = args => (
+  <ErrorState {...args} title="No Content">
     This is a description for No Content
   </ErrorState>
 );

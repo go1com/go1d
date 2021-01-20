@@ -6,7 +6,7 @@ export default {
   component: RichTextInput,
 };
 
-export const RichTextInputInField = () => (
+export const RichTextInputInField = args => (
   <Form
     initialValues={{}}
     onSubmit={(values, actions) => console.log(values, actions)}

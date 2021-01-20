@@ -6,11 +6,11 @@ export default {
   component: PasswordInput,
 };
 
-export const BasicPasswordInput = () => (
-  <PasswordInput id="Password" placeholder="Pasword" />
+export const BasicPasswordInput = args => (
+  <PasswordInput {...args} id="Password" placeholder="Pasword" />
 );
 
-export const PasswordInputSizes = () => (
+export const PasswordInputSizes = args => (
   <React.Fragment>
     <PasswordInput id="Small" size="sm" value="Small" />
     <br />
@@ -20,12 +20,12 @@ export const PasswordInputSizes = () => (
   </React.Fragment>
 );
 
-export const PasswordInputWithNoToggle = () => (
+export const PasswordInputWithNoToggle = args => (
   <PasswordInput id="noToggle" toggleableDisplay={false} />
 );
 
 PasswordInputWithNoToggle.storyName = "Password Input with no toggle";
 
-export const DisabledPasswordInput = () => (
+export const DisabledPasswordInput = args => (
   <PasswordInput id="Disabled" disabled={true} />
 );

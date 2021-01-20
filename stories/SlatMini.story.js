@@ -7,8 +7,9 @@ export default {
   component: SlatMini
 };
 
-export const WithDropdownActions = () => (
+export const WithDropdownActions = args => (
   <SlatMini
+    {...args}
     id={123}
     title="This is an online content"
     bottomMeta={["Provider", "29 mins"]}
@@ -31,7 +32,7 @@ export const WithDropdownActions = () => (
 
 WithDropdownActions.storyName = "With dropdown actions";
 
-export const WithActionRender = () => (
+export const WithActionRender = args => (
   <SlatMini
     id={123}
     title="This is an offline content"
@@ -47,7 +48,7 @@ export const WithActionRender = () => (
 
 WithActionRender.storyName = "With actionRender";
 
-export const WithLink = () => (
+export const WithLink = args => (
   <SlatMini
     id={123}
     title="This is an offline content"
@@ -61,4 +62,4 @@ export const WithLink = () => (
 
 WithLink.storyName = "With link";
 
-export const Skeleton = () => <SlatMini skeleton={true} />;
+export const Skeleton = args => <SlatMini skeleton={true} />;

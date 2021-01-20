@@ -6,8 +6,9 @@ export default {
   component: SearchInput,
 };
 
-export const BasicSearchInput = () => (
+export const BasicSearchInput = args => (
   <SearchInput
+    {...args}
     id="blank"
     placeholder="Search for courses, videos, interactive lessons, and more..."
     onSubmit={() => {}}
@@ -16,7 +17,7 @@ export const BasicSearchInput = () => (
 
 BasicSearchInput.storyName = "Basic SearchInput";
 
-export const SearchInputSizes = () => (
+export const SearchInputSizes = args => (
   <React.Fragment>
     <SearchInput
       id="blank"
@@ -46,7 +47,7 @@ export const SearchInputSizes = () => (
 
 SearchInputSizes.storyName = "SearchInput Sizes";
 
-export const SearchInputNotClearable = () => (
+export const SearchInputNotClearable = args => (
   <SearchInput
     id="blank"
     placeholder="Search for courses, videos, interactive lessons, and more..."
@@ -59,7 +60,7 @@ export const SearchInputNotClearable = () => (
 
 SearchInputNotClearable.storyName = "SearchInput not clearable";
 
-export const SearchInputWithBehaviourOnClearAndOnSubmit = () => (
+export const SearchInputWithBehaviourOnClearAndOnSubmit = args => (
   <SearchInput
     id="blank"
     value="Hold me Thrill me Submit me Clear me"

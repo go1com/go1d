@@ -6,21 +6,22 @@ export default {
   component: Option,
 };
 
-export const Base = () => <Option title="Title test" />;
-export const AddActionIcon = () => (
-  <Option title="Title test" actionIcon="ChevronRight" />
+export const Base = args => <Option {...args} title="Title test" />;
+export const AddActionIcon = args => (
+  <Option {...args} title="Title test" actionIcon="ChevronRight" />
 );
 
 AddActionIcon.storyName = "Add actionIcon";
 
-export const AddSpotIcon = () => (
-  <Option title="Sector Specific" spotIcon="SectorSpecific" />
+export const AddSpotIcon = args => (
+  <Option {...args} title="Sector Specific" spotIcon="SectorSpecific" />
 );
 
 AddSpotIcon.storyName = "Add spotIcon";
 
-export const WithMeta = () => (
+export const WithMeta = args => (
   <Option
+    {...args}
     title="Title test"
     meta="Meta level test 1, Meta level test 2, Meta level test 3, Meta level test 4, Meta level test 5"
   />
@@ -28,8 +29,9 @@ export const WithMeta = () => (
 
 WithMeta.storyName = "With meta";
 
-export const WithMetaSpotIconActionIcon = () => (
+export const WithMetaSpotIconActionIcon = args => (
   <Option
+    {...args}
     title="Title test"
     spotIcon="SafetyAndCompliance"
     actionIcon="ChevronRight"
@@ -39,8 +41,9 @@ export const WithMetaSpotIconActionIcon = () => (
 
 WithMetaSpotIconActionIcon.storyName = "With meta + spotIcon + actionIcon";
 
-export const WithCheckedAndSpotIcon = () => (
+export const WithCheckedAndSpotIcon = args => (
   <Option
+    {...args}
     title="Title test"
     spotIcon="SafetyAndCompliance"
     checked={true}
@@ -50,14 +53,15 @@ export const WithCheckedAndSpotIcon = () => (
 
 WithCheckedAndSpotIcon.storyName = "With checked and spotIcon";
 
-export const WithCheckedAndDisabled = () => (
-  <Option title="Title test" checked={true} disabled={true} />
+export const WithCheckedAndDisabled = args => (
+  <Option {...args} title="Title test" checked={true} disabled={true} />
 );
 
 WithCheckedAndDisabled.storyName = "With checked and disabled";
 
-export const ForceHeight = () => (
+export const ForceHeight = args => (
   <Option
+    {...args}
     title="Title test"
     spotIcon="SafetyAndCompliance"
     actionIcon="ChevronRight"

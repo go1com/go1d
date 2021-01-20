@@ -6,10 +6,10 @@ export default {
   component: Label,
 };
 
-export const _Label = () => <Label>Portal Name</Label>;
+export const _Label = args => <Label {...args}>Portal Name</Label>;
 
-export const LabelWithStatus = () => (
-  <Label statusText="unavailable" statusColor="danger">
+export const LabelWithStatus = args => (
+  <Label {...args} statusText="unavailable" statusColor="danger">
     Portal Name
   </Label>
 );

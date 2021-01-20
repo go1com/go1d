@@ -6,8 +6,9 @@ export default {
   component: SelectDropdown,
 };
 
-export const Base = () => (
+export const Base = args => (
   <SelectDropdown
+    {...args}
     options={[
       { value: "chocolate", label: "Chocolate" },
       { value: "stawberry", label: "Strawberry" },

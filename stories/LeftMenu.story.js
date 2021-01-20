@@ -7,8 +7,8 @@ export default {
   component: LeftMenu,
 };
 
-export const CollapsibleExpanded = () => (
-  <LeftMenu title="Content" showMenuButton={true}>
+export const CollapsibleExpanded = args => (
+  <LeftMenu {...args} title="Content" showMenuButton={true}>
     <MenuItem icon={IconHome} href="#testing" collapsed={true}>
       Overview
     </MenuItem>
@@ -18,8 +18,8 @@ export const CollapsibleExpanded = () => (
   </LeftMenu>
 );
 
-export const CollapsibleCollapsed = () => (
-  <LeftMenu title="Content">
+export const CollapsibleCollapsed = args => (
+  <LeftMenu {...args} title="Content">
     <MenuItem icon={IconHome} href="#testing">
       Overview
     </MenuItem>

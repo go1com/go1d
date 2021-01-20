@@ -15,13 +15,13 @@ export default {
   component: OverviewHero,
 };
 
-export const OverviewHeroWithRequiredPropsOnlyTitle = () => (
-  <OverviewHero title="Interaction Design" />
+export const OverviewHeroWithRequiredPropsOnlyTitle = args => (
+  <OverviewHero {...args} title="Interaction Design" />
 );
 
 OverviewHeroWithRequiredPropsOnlyTitle.storyName = "Overview hero with required props only (title)";
 
-export const OverviewHeroWithBackgroundBreadcrumbAndSubtitle = () => (
+export const OverviewHeroWithBackgroundBreadcrumbAndSubtitle = args => (
   <OverviewHero
     title="Interaction Design"
     backgroundImage="https://images.unsplash.com/photo-1539512110726-6d89c892f117?fit=crop&w=589"
@@ -43,7 +43,7 @@ export const OverviewHeroWithBackgroundBreadcrumbAndSubtitle = () => (
 
 OverviewHeroWithBackgroundBreadcrumbAndSubtitle.storyName = "Overview hero with background, breadcrumb and subtitle";
 
-export const OverviewHeroWithAllProps = () => (
+export const OverviewHeroWithAllProps = args => (
   <OverviewHero
     title="Interaction Design"
     backgroundImage="https://images.unsplash.com/photo-1539512110726-6d89c892f117?fit=crop&w=589"
@@ -87,7 +87,7 @@ export const OverviewHeroWithAllProps = () => (
 
 OverviewHeroWithAllProps.storyName = "Overview hero with all props";
 
-export const KitchenSink = () => (
+export const KitchenSink = args => (
   <OverviewHero
     title="Interaction Design"
     backgroundImage="https://images.unsplash.com/photo-1539512110726-6d89c892f117?fit=crop&w=589"

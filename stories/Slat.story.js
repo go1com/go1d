@@ -7,8 +7,9 @@ export default {
   component: Slat,
 };
 
-export const WithDropdownActions = () => (
+export const WithDropdownActions = args => (
   <Slat
+    {...args}
     id={123}
     topMeta={["one", "two"]}
     title="This is test title"
@@ -45,7 +46,7 @@ export const WithDropdownActions = () => (
 
 WithDropdownActions.storyName = "With dropdown actions";
 
-export const WithActionRenderer = () => (
+export const WithActionRenderer = args => (
   <Slat
     id={123}
     topMeta={["one", "two"]}
@@ -77,7 +78,7 @@ export const WithActionRenderer = () => (
 
 WithActionRenderer.storyName = "With actionRenderer";
 
-export const WithImpliedLinkWrapperAndActiveHoverStates = () => (
+export const WithImpliedLinkWrapperAndActiveHoverStates = args => (
   <Slat
     id={123}
     topMeta={[
@@ -106,4 +107,4 @@ export const WithImpliedLinkWrapperAndActiveHoverStates = () => (
 
 WithImpliedLinkWrapperAndActiveHoverStates.storyName = "With implied link wrapper and active/hover states";
 
-export const Skeleton = () => <Slat skeleton={true} />;
+export const Skeleton = args => <Slat skeleton={true} />;

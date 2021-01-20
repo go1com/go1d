@@ -6,8 +6,8 @@ export default {
   component: "BaseUploader",
 };
 
-export const Base = () => (
-  <BaseUploader fileType="image/*">
+export const Base = args => (
+  <BaseUploader {...args} fileType="image/*">
     {({ open, getRootProps, isDragActive }) => (
       <View
         {...getRootProps()}

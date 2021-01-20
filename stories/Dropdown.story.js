@@ -8,8 +8,9 @@ export default {
   subcomponents: { ButtonFilled, ButtonMinimal, View, Text }
 };
 
-export const BasicDropdown = () => (
+export const BasicDropdown = args => (
   <Dropdown
+    {...args}
     placement="bottom"
     renderFunction={(item, index, getItemProps) => (
       <View
@@ -50,7 +51,7 @@ export const BasicDropdown = () => (
 
 BasicDropdown.storyName = "Basic dropdown";
 
-export const DropdownWithComplexItems = () => (
+export const DropdownWithComplexItems = args => (
   <View>
     <Dropdown
       itemToString={(item) => (item ? item.title : "")}

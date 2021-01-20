@@ -6,11 +6,11 @@ export default {
   component: Link,
 };
 
-export const DefaultLink = () => <Link href="#testing">Link text</Link>;
+export const DefaultLink = args => <Link href="#testing">Link text</Link>;
 
 DefaultLink.storyName = "Default link";
 
-export const LinkWithTextInside = () => (
+export const LinkWithTextInside = args => (
   <Link href="#testing">
     <Text>Hello world</Text>
   </Link>
@@ -18,7 +18,7 @@ export const LinkWithTextInside = () => (
 
 LinkWithTextInside.storyName = "Link with Text inside";
 
-export const LinkWithTextWithDifferentPseudoElementFocusColorActiveColor = () => (
+export const LinkWithTextWithDifferentPseudoElementFocusColorActiveColor = args => (
   <Link href="#testing" hoverFocusColor="success" activeColor="warning">
     <Text>Hello world</Text>
   </Link>
@@ -26,7 +26,7 @@ export const LinkWithTextWithDifferentPseudoElementFocusColorActiveColor = () =>
 
 LinkWithTextWithDifferentPseudoElementFocusColorActiveColor.storyName = "Link with Text with different pseudo element focus color & active color";
 
-export const OverridenLink = () => (
+export const OverridenLink = args => (
   <Provider
     linkComponent={({ href, children }) => (
       <a href={href + "-custom"}>

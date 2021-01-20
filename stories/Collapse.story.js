@@ -8,13 +8,14 @@ export default {
   subcomponents: { ButtonFilled, View, Text },
 };
 
-export const WithHeaderString = () => (
+export const WithHeaderString = args => (
   <div style={{ width: "50%" }}>
     <Flipflop>
       {({ on, flip, flop }) => (
         <React.Fragment>
           <View width="320px">
             <Collapse
+              {...args}
               header="Commodo nisi velit culpa consectetur laboris cupidatat ullamco minim Lorem dolore veniam enim excepteur."
               isOpen={on}
               onCollapse={on ? flop : flip}
@@ -47,7 +48,7 @@ export const WithHeaderString = () => (
 
 WithHeaderString.storyName = "with header string";
 
-export const WithHeaderComponent = () => (
+export const WithHeaderComponent = args => (
   <div style={{ width: "50%" }}>
     <Flipflop>
       {({ on, flip, flop }) => (
@@ -96,7 +97,7 @@ export const WithHeaderComponent = () => (
 
 WithHeaderComponent.storyName = "with header component";
 
-export const WithoutHeader = () => (
+export const WithoutHeader = args => (
   <div style={{ width: "50%" }}>
     <Flipflop>
       {({ on, flip, flop }) => (
@@ -133,7 +134,7 @@ export const WithoutHeader = () => (
 
 WithoutHeader.storyName = "without header";
 
-export const WithReverseCollapse = () => (
+export const WithReverseCollapse = args => (
   <div style={{ width: "50%" }}>
     <Flipflop>
       {({ on, flip, flop }) => (

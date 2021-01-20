@@ -6,8 +6,9 @@ export default {
   component: Text,
 };
 
-export const Base = () => (
+export const Base = args => (
   <Text
+    {...args}
     color="subtle"
     fontSize={4}
     fontWeight="semibold"

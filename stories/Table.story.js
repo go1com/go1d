@@ -6,8 +6,9 @@ export default {
   component: Table,
 };
 
-export const BasicTableWithAHeader = () => (
+export const BasicTableWithAHeader = args => (
   <Table
+    {...args}
     rows={[
       <TR key="0">
         <TD>
@@ -56,7 +57,7 @@ export const BasicTableWithAHeader = () => (
 
 BasicTableWithAHeader.storyName = "Basic table with a header";
 
-export const BasicTableWithNoHeader = () => (
+export const BasicTableWithNoHeader = args => (
   <Table
     rows={[
       <TR key="0">
@@ -99,7 +100,7 @@ export const BasicTableWithNoHeader = () => (
 
 BasicTableWithNoHeader.storyName = "Basic table with no header";
 
-export const _BasicTableWithAHeader = () => (
+export const _BasicTableWithAHeader = args => (
   <Table
     rows={[
       <TR key="0">
@@ -132,7 +133,7 @@ export const _BasicTableWithAHeader = () => (
 
 _BasicTableWithAHeader.storyName = "Basic table with a header";
 
-export const BasicTableWithASortableHeader = () => (
+export const BasicTableWithASortableHeader = args => (
   <Table
     rows={[
       <TR key="0">
@@ -165,7 +166,7 @@ export const BasicTableWithASortableHeader = () => (
 
 BasicTableWithASortableHeader.storyName = "Basic table with a sortable header";
 
-export const Examples = () => (
+export const Examples = args => (
   <Table
     rows={[
       <TR key="0">
@@ -196,7 +197,7 @@ export const Examples = () => (
   />
 );
 
-export const _Examples = () => (
+export const _Examples = args => (
   <Table
     rows={[
       <TR key="0">

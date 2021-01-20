@@ -6,6 +6,6 @@ export default {
   component: Lesson,
 };
 
-export const BasicLesson = () => (
-  <Lesson title="Design Thinking" type="video" duration={80} />
+export const BasicLesson = args => (
+  <Lesson {...args} title="Design Thinking" type="video" duration={80} />
 );

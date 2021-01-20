@@ -6,7 +6,7 @@ export default {
   component: AuthorSelector,
 };
 
-export const BasicAuthorSelector = () => (
+export const BasicAuthorSelector = args => (
   <AuthorSelector
     createable={true}
     options={[
@@ -35,5 +35,6 @@ export const BasicAuthorSelector = () => (
       lastName: "lastName",
       mail: email,
     })}
+    {...args}
   />
 );

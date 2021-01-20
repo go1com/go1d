@@ -7,15 +7,15 @@ export default {
   subcomponents: { Option },
 };
 
-export const Base = () => (
-  <OptionList>
+export const Base = args => (
+  <OptionList {...args}>
     <Option title="This is a test title" />
     <Option title="This is a test title" />
     <Option title="This is a test title" />
   </OptionList>
 );
 
-export const WithOptions = () => (
+export const WithOptions = args => (
   <OptionList>
     <Option
       title="This is a test title"
@@ -38,7 +38,7 @@ export const WithOptions = () => (
 
 WithOptions.storyName = "With options";
 
-export const TopLevelTopics = () => (
+export const TopLevelTopics = args => (
   <OptionList>
     <Option
       title="Safety and Compliance"

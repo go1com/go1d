@@ -8,8 +8,9 @@ export default {
   subcomponents: { View, Text },
 };
 
-export const WithAvatar = () => (
+export const WithAvatar = args => (
   <CourseSlat
+    {...args}
     courseImage="https://images.pexels.com/photos/459225/pexels-photo-459225.jpeg?h=400"
     title="Master sourdough in a week"
     description="Despite general improvements in workplace health and safety over the past the risk of sourdough related injuries are still insurmountable for most"
@@ -23,8 +24,9 @@ export const WithAvatar = () => (
 
 WithAvatar.storyName = "With avatar";
 
-export const WithImportAction = () => (
+export const WithImportAction = args => (
   <CourseSlat
+    {...args}
     courseImage="https://images.pexels.com/photos/257360/pexels-photo-257360.jpeg?h=400"
     title="Master sourdough in a week"
     description="Despite general improvements in workplace health and safety over the past the risk of sourdough related injuries are still insurmountable for most"
@@ -43,8 +45,9 @@ export const WithImportAction = () => (
 
 WithImportAction.storyName = "With Import action";
 
-export const WithEnrollmentStatus = () => (
+export const WithEnrollmentStatus = args => (
   <CourseSlat
+    {...args}
     courseImage="https://images.pexels.com/photos/257360/pexels-photo-257360.jpeg?h=400"
     title="Master sourdough in a week"
     description="Despite general improvements in workplace health and safety over the past the risk of sourdough related injuries are still insurmountable for most"
@@ -66,8 +69,9 @@ export const WithEnrollmentStatus = () => (
 
 WithEnrollmentStatus.storyName = "With enrollment status";
 
-export const WithPriceAndDuration = () => (
+export const WithPriceAndDuration = args => (
   <CourseSlat
+    {...args}
     courseImage="https://images.pexels.com/photos/814499/pexels-photo-814499.jpeg?h=400"
     title="Master sourdough in a week"
     description="Despite general improvements in workplace health and safety over the past the risk of sourdough related injuries are still insurmountable for most"
@@ -82,4 +86,4 @@ export const WithPriceAndDuration = () => (
 
 WithPriceAndDuration.storyName = "With price and duration";
 
-export const Skeleton = () => <CourseSlat skeleton={true} />;
+export const Skeleton = args => <CourseSlat {...args} skeleton={true} />;

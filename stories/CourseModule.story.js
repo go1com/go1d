@@ -7,30 +7,30 @@ export default {
   subcomponents: { Lesson },
 };
 
-export const Base = () => (
-  <CourseModule title="Test Title">
+export const Base = args => (
+  <CourseModule {...args} title="Test Title">
     <Lesson title="This is a test lesson" type="resource" />
   </CourseModule>
 );
 
-export const DurationIsOptional = () => (
-  <CourseModule duration={75} title="Test Title">
+export const DurationIsOptional = args => (
+  <CourseModule {...args} duration={75} title="Test Title">
     <Lesson title="This is a test lesson" type="resource" />
   </CourseModule>
 );
 
 DurationIsOptional.storyName = "Duration is optional";
 
-export const DefaultClosed = () => (
-  <CourseModule defaultOpen={false} title="Test Title">
+export const DefaultClosed = args => (
+  <CourseModule {...args} defaultOpen={false} title="Test Title">
     <Lesson title="This is a test lesson" type="resource" />
     <Lesson title="This is a test lesson" type="resource" />
     <Lesson title="This is a test lesson" type="resource" />
   </CourseModule>
 );
 
-export const NoToggle = () => (
-  <CourseModule collapsible={false} title="Test Title">
+export const NoToggle = args => (
+  <CourseModule {...args} collapsible={false} title="Test Title">
     <Lesson title="This is a test lesson" type="resource" />
     <Lesson title="This is a test lesson" type="resource" />
     <Lesson title="This is a test lesson" type="resource" />

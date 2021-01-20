@@ -6,28 +6,29 @@ export default {
   component: DatePicker,
 };
 
-export const BasicDatepicker = () => (
-  <DatePicker id="id1" allowBlank defaultValue={new Date("2019-06-07")} />
+export const BasicDatepicker = args => (
+  <DatePicker {...args} id="id1" allowBlank defaultValue={new Date("2019-06-07")} />
 );
-export const DateSupplied = () => (
-  <DatePicker id="id2" defaultValue={new Date("2019-06-07")} />
+export const DateSupplied = args => (
+  <DatePicker {...args} id="id2" defaultValue={new Date("2019-06-07")} />
 );
-export const DisabledDatepicker = () => (
-  <DatePicker id="id3" disabled defaultValue={new Date("2019-06-07")} />
+export const DisabledDatepicker = args => (
+  <DatePicker {...args} id="id3" disabled defaultValue={new Date("2019-06-07")} />
 );
 
-export const Sizes = () => (
+export const Sizes = args => (
   <React.Fragment>
-    <DatePicker id="id4" size="sm" defaultValue={new Date("2019-06-07")} />
+    <DatePicker {...args} id="id4" size="sm" defaultValue={new Date("2019-06-07")} />
     <br />
-    <DatePicker id="id4" size="md" defaultValue={new Date("2019-06-07")} />
+    <DatePicker {...args} id="id4" size="md" defaultValue={new Date("2019-06-07")} />
     <br />
-    <DatePicker id="id4" size="lg" defaultValue={new Date("2019-06-07")} />
+    <DatePicker {...args} id="id4" size="lg" defaultValue={new Date("2019-06-07")} />
   </React.Fragment>
 );
 
-export const BasicDatepickerWithTime = () => (
+export const BasicDatepickerWithTime = args => (
   <DatePicker
+    {...args}
     id="id5"
     time={true}
     defaultValue={new Date("2019-06-07 10:00")}

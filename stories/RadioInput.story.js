@@ -6,8 +6,9 @@ export default {
   component: RadioGroup,
 };
 
-export const Label = () => (
+export const Label = args => (
   <RadioGroup
+    {...args}
     name="TestInput"
     options={[
       {

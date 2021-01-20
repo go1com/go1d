@@ -7,19 +7,19 @@ export default {
   component: TextInput,
 };
 
-export const BasicTextInput = () => (
-  <TextInput id="blank" placeholder="Blank" />
+export const BasicTextInput = args => (
+  <TextInput {...args} id="blank" placeholder="Blank" />
 );
 
 BasicTextInput.storyName = "Basic TextInput";
 
-export const TextInputWithSmallSize = () => (
+export const TextInputWithSmallSize = args => (
   <TextInput id="Small" size="sm" value="Small" />
 );
 
 TextInputWithSmallSize.storyName = "TextInput with Small Size";
 
-export const TextInputWithSmallSizeAndFloatingLabel = () => (
+export const TextInputWithSmallSizeAndFloatingLabel = args => (
   <TextInput
     id="Small"
     size="sm"
@@ -31,13 +31,13 @@ export const TextInputWithSmallSizeAndFloatingLabel = () => (
 
 TextInputWithSmallSizeAndFloatingLabel.storyName = "TextInput with Small Size and floating label";
 
-export const TextInputMediumSize = () => (
+export const TextInputMediumSize = args => (
   <TextInput id="Medium" size="md" value="Medium" />
 );
 
 TextInputMediumSize.storyName = "TextInput Medium Size";
 
-export const TextInputWithMediumSizeAndFloatingLabel = () => (
+export const TextInputWithMediumSizeAndFloatingLabel = args => (
   <TextInput
     id="Medium"
     size="md"
@@ -49,13 +49,13 @@ export const TextInputWithMediumSizeAndFloatingLabel = () => (
 
 TextInputWithMediumSizeAndFloatingLabel.storyName = "TextInput with Medium Size and floating label";
 
-export const TextInputLargeSize = () => (
+export const TextInputLargeSize = args => (
   <TextInput id="Large" size="lg" value="Large" />
 );
 
 TextInputLargeSize.storyName = "TextInput Large Size";
 
-export const TextInputWithLargeSizeAndFloatingLabel = () => (
+export const TextInputWithLargeSizeAndFloatingLabel = args => (
   <TextInput
     id="Large"
     size="lg"
@@ -67,13 +67,13 @@ export const TextInputWithLargeSizeAndFloatingLabel = () => (
 
 TextInputWithLargeSizeAndFloatingLabel.storyName = "TextInput with Large Size and floating label";
 
-export const TextInputWithIcon = () => (
+export const TextInputWithIcon = args => (
   <TextInput id="search" icon={IconSearch} placeholder="Type here to Search" />
 );
 
 TextInputWithIcon.storyName = "TextInput with Icon";
 
-export const TextInputWithIconAndFloatingLabel = () => (
+export const TextInputWithIconAndFloatingLabel = args => (
   <TextInput
     id="search"
     icon={IconSearch}
@@ -85,7 +85,7 @@ export const TextInputWithIconAndFloatingLabel = () => (
 
 TextInputWithIconAndFloatingLabel.storyName = "TextInput with Icon and floating label";
 
-export const TextInputWithRightNode = () => (
+export const TextInputWithRightNode = args => (
   <TextInput
     id="clear"
     value="Type here to Search"
@@ -95,7 +95,7 @@ export const TextInputWithRightNode = () => (
 
 TextInputWithRightNode.storyName = "TextInput with RightNode";
 
-export const TextInputWithRightNodeAndFloatingLabel = () => (
+export const TextInputWithRightNodeAndFloatingLabel = args => (
   <TextInput
     id="clear"
     size="lg"

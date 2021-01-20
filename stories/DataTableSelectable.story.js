@@ -6,8 +6,9 @@ export default {
   component: DataTableSelectable,
 };
 
-export const BasicTableUsingARowRenderer = () => (
+export const BasicTableUsingARowRenderer = args => (
   <DataTableSelectable
+    {...args}
     rowHeight={55}
     mainAction={(resp) =>
       alert(

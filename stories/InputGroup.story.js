@@ -13,7 +13,7 @@ export default {
   title: "Original Go1d/InputGroup",
 };
 
-export const Base = () => (
+export const Base = args => (
   <InputGroup>
     <InputTextAffix text="www." />
     <TextInput
@@ -27,7 +27,7 @@ export const Base = () => (
   </InputGroup>
 );
 
-export const WithSelectDropdownAndTextInput = () => (
+export const WithSelectDropdownAndTextInput = args => (
   <InputGroup>
     <SelectDropdown
       options={[

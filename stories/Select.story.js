@@ -6,8 +6,9 @@ export default {
   component: Select,
 };
 
-export const ACustomSelectComponent = () => (
+export const ACustomSelectComponent = args => (
   <Select
+    {...args}
     options={[
       { value: "chocolate", label: "Chocolate" },
       { value: "stawberry", label: "Strawberry" },
@@ -18,7 +19,7 @@ export const ACustomSelectComponent = () => (
 
 ACustomSelectComponent.storyName = "A custom select component";
 
-export const DisabledSelectField = () => (
+export const DisabledSelectField = args => (
   <Select
     options={[
       { value: "chocolate", label: "Chocolate" },
@@ -29,7 +30,7 @@ export const DisabledSelectField = () => (
   />
 );
 
-export const ClearableSelectField = () => (
+export const ClearableSelectField = args => (
   <Select
     options={[
       { value: "chocolate", label: "Chocolate" },
@@ -40,7 +41,7 @@ export const ClearableSelectField = () => (
   />
 );
 
-export const SearchableSelectField = () => (
+export const SearchableSelectField = args => (
   <Select
     options={[
       { value: "chocolate", label: "Chocolate" },
@@ -51,7 +52,7 @@ export const SearchableSelectField = () => (
   />
 );
 
-export const SelectFilledWithOptgroups = () => (
+export const SelectFilledWithOptgroups = args => (
   <Select
     options={[
       {
@@ -78,7 +79,7 @@ export const SelectFilledWithOptgroups = () => (
 
 SelectFilledWithOptgroups.storyName = "Select filled with optgroups";
 
-export const SelectFilledWithLabelLessOptgroups = () => (
+export const SelectFilledWithLabelLessOptgroups = args => (
   <Select
     options={[
       {
@@ -105,7 +106,7 @@ export const SelectFilledWithLabelLessOptgroups = () => (
 
 SelectFilledWithLabelLessOptgroups.storyName = "Select filled with label-less optgroups";
 
-export const ControlledSelectValue = () => (
+export const ControlledSelectValue = args => (
   <Select
     value={null}
     options={[

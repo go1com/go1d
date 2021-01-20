@@ -7,9 +7,10 @@ export default {
   subcomponents: { ButtonFilled, View },
 };
 
-export const WithPrice = () => (
+export const WithPrice = args => (
   <View padding={5} backgroundColor="soft">
     <CTACard
+      {...args}
       iconImage="https://res.cloudinary.com/go1/image/upload/v1542240162/ojaevw3frdaiji5zzmf3.png"
       subtitle="Up to 20 learners"
       description="<center><b>$25 flat</b> / month</center>"
@@ -22,9 +23,10 @@ export const WithPrice = () => (
   </View>
 );
 
-export const WithContentProviderCard = () => (
+export const WithContentProviderCard = args => (
   <View padding={5} backgroundColor="background">
     <CTACard
+      {...args}
       iconImage="https://res.cloudinary.com/go1/image/upload/v1542240162/ojaevw3frdaiji5zzmf3.png"
       title="Pay per use"
       backgroundColor="soft"

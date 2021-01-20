@@ -6,7 +6,7 @@ export default {
   component: PortalUrlField,
 };
 
-export const PortalUrlFieldAvailable = () => (
+export const PortalUrlFieldAvailable = args => (
   <Form
     initialValues={{ portalName: "A portal" }}
     onSubmit={(values, actions) => actions.submit()}
@@ -24,7 +24,7 @@ export const PortalUrlFieldAvailable = () => (
 
 PortalUrlFieldAvailable.storyName = "PortalUrlField Available";
 
-export const PortalUrlFieldNotAvailable = () => (
+export const PortalUrlFieldNotAvailable = args => (
   <Form
     initialValues={{ portalName: "A portal" }}
     onSubmit={(values, actions) => actions.submit()}

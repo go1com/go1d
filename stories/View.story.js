@@ -6,13 +6,13 @@ export default {
   component: View,
 };
 
-export const BasicUsage = () => (
-  <View>
+export const BasicUsage = args => (
+  <View {...args}>
     <Text>My View</Text>
   </View>
 );
 
-export const ResponsiveExamples = () => (
+export const ResponsiveExamples = args => (
   <React.Fragment>
     <View flexDirection="row" flexWrap="wrap">
       <View width={[1 / 3, 1 / 6, 1 / 12]}>

@@ -7,10 +7,11 @@ export default {
   subcomponents: { View },
 };
 
-export const Base = () => <CourseCard />;
+export const Base = args => <CourseCard />;
 
-export const AlmostAllTheProps = () => (
+export const AlmostAllTheProps = args => (
   <CourseCard
+    {...args}
     typeIcon="Course"
     type="Course"
     duration={74}
@@ -30,7 +31,7 @@ export const AlmostAllTheProps = () => (
 
 AlmostAllTheProps.storyName = "Almost all the Props";
 
-export const CarouselWithLotsOfCombinationsOfCards = () => (
+export const CarouselWithLotsOfCombinationsOfCards = args => (
   <View padding={3}>
     <Carousel slidesToShow={3} slideAnimationDuration={150}>
       <CourseCard>Hello World!</CourseCard>
@@ -84,4 +85,4 @@ export const CarouselWithLotsOfCombinationsOfCards = () => (
 
 CarouselWithLotsOfCombinationsOfCards.storyName = "Carousel with lots of combinations of Cards";
 
-export const Skeleton = () => <CourseCard skeleton={true} />;
+export const Skeleton = args => <CourseCard skeleton={true} />;

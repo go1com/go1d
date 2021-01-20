@@ -6,7 +6,7 @@ export default {
   component: MultiSelect,
 };
 
-export const ACustomMultiSelectComponent = () => (
+export const ACustomMultiSelectComponent = args => (
   <MultiSelect
     options={[
       { value: "chocolate", label: "Chocolate" },
@@ -18,7 +18,7 @@ export const ACustomMultiSelectComponent = () => (
 
 ACustomMultiSelectComponent.storyName = "A custom Multi Select component";
 
-export const DisabledMultiSelectField = () => (
+export const DisabledMultiSelectField = args => (
   <MultiSelect
     label="Disabled"
     options={[
@@ -30,7 +30,7 @@ export const DisabledMultiSelectField = () => (
   />
 );
 
-export const SearchableMultiSelectField = () => (
+export const SearchableMultiSelectField = args => (
   <MultiSelect
     label="Favourite"
     options={[
@@ -42,7 +42,7 @@ export const SearchableMultiSelectField = () => (
   />
 );
 
-export const InitialIsOpenWhenInitialized = () => (
+export const InitialIsOpenWhenInitialized = args => (
   <MultiSelect
     label="Favourite"
     options={[
@@ -56,7 +56,7 @@ export const InitialIsOpenWhenInitialized = () => (
 
 InitialIsOpenWhenInitialized.storyName = "Initial is open when initialized";
 
-export const MultiSelectWithExtraStyleProps = () => (
+export const MultiSelectWithExtraStyleProps = args => (
   <MultiSelect
     label="Favourite"
     searchable={true}
