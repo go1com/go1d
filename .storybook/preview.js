@@ -1,4 +1,5 @@
 import { DocsPage } from '@storybook/addon-docs/blocks';
+import 'happo-plugin-storybook/register';
 
 import { globalCSS } from "../src";
 globalCSS();
