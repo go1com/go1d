@@ -1,9 +1,8 @@
 import React from 'react';
 import { Pill, View, Text } from '../src';
-import filterInheritedProps from '../.storybook/filterInheritedProps.js'
+import hideInheritedProps from '../.storybook/hideInheritedProps.js'
 
-let argTypes = {};
-Object.assign(argTypes, filterInheritedProps(Pill))
+let argTypes = hideInheritedProps({}, Pill);
 
 export default {
   title: 'Original Go1d/Pill',
