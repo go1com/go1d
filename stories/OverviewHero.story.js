@@ -12,6 +12,7 @@ import {
 
 export default {
   title: "Original Go1d/OverviewHero",
+  component: OverviewHero,
 };
 
 export const OverviewHeroWithRequiredPropsOnlyTitle = () => (

@@ -3,6 +3,7 @@ import { ButtonFilled } from "../src";
 
 export default {
   title: "Original Go1d/ButtonFilled",
+  component: ButtonFilled,
 };
 
 export const WithText = () => (

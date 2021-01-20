@@ -2,7 +2,8 @@ import React from "react";
 import { RadioInput, RadioGroup } from "../src";
 
 export default {
-  title: "Original Go1d/RadioInput",
+  title: "Original Go1d/RadioGroup",
+  component: RadioGroup,
 };
 
 export const Label = () => (

@@ -3,6 +3,7 @@ import { SelectDropdown, View, ButtonFilled } from "../src";
 
 export default {
   title: "Original Go1d/SelectDropdown",
+  component: SelectDropdown,
 };
 
 export const Base = () => (

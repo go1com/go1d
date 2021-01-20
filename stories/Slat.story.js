@@ -4,6 +4,7 @@ import { IconCalendar, IconMapPin, IconImport } from "../src/components/Icons";
 
 export default {
   title: "Original Go1d/Slat",
+  component: Slat,
 };
 
 export const WithDropdownActions = () => (

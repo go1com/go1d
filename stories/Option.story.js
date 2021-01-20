@@ -3,6 +3,7 @@ import { Option } from "../src";
 
 export default {
   title: "Original Go1d/Option",
+  component: Option,
 };
 
 export const Base = () => <Option title="Title test" />;

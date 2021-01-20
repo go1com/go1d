@@ -3,6 +3,7 @@ import { Autocomplete } from "../src";
 
 export default {
   title: "Original Go1d/Autocomplete",
+  component: Autocomplete,
 };
 
 export const Base = () => (

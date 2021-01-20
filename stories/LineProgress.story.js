@@ -3,6 +3,7 @@ import { LineProgress } from "../src";
 
 export default {
   title: "Original Go1d/Line Progress Bar",
+  component: LineProgress,
 };
 
 export const WithPercent = () => (

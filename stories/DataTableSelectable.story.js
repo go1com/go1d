@@ -3,6 +3,7 @@ import { DataTableSelectable, TR, TD, TH } from "../src";
 
 export default {
   title: "Original Go1d/DataTableSelectable",
+  component: DataTableSelectable,
 };
 
 export const BasicTableUsingARowRenderer = () => (

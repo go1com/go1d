@@ -3,6 +3,7 @@ import { Prose } from "../src";
 
 export default {
   title: "Original Go1d/Prose",
+  component: Prose,
 };
 
 export const PlainHtml = () => (

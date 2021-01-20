@@ -3,6 +3,7 @@ import { PasswordInput } from "../src";
 
 export default {
   title: "Original Go1d/PasswordInput",
+  component: PasswordInput,
 };
 
 export const BasicPasswordInput = () => (

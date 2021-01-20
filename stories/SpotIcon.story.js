@@ -3,6 +3,7 @@ import { SpotIcon, View } from "../src";
 
 export default {
   title: "Original Go1d/SpotIcon",
+  component: SpotIcon,
 };
 
 export const Business = () => <SpotIcon name="BusinessSkills" />;

@@ -10,6 +10,7 @@ import {
 
 export default {
   title: "Original Go1d/Checkbox",
+  component: Checkbox,
 };
 
 export const Label = () => <Checkbox name="Test" label="Test" />;

@@ -4,6 +4,7 @@ import { IconCheck, IconPlus } from "../src/components/Icons";
 
 export default {
   title: "Original Go1d/Button",
+  component: Button,
 };
 
 export const FilledButtonInSubtleColour = () => (

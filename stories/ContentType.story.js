@@ -3,6 +3,8 @@ import { View, ContentType } from "../src";
 
 export default {
   title: "Original Go1d/ContentType",
+  component: ContentType,
+  subcomponents: { View },
 };
 
 export const _ContentType = () => (

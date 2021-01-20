@@ -3,6 +3,7 @@ import { DatePicker } from "../src";
 
 export default {
   title: "Original Go1d/DatePicker",
+  component: DatePicker,
 };
 
 export const BasicDatepicker = () => (

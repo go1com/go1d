@@ -3,6 +3,7 @@ import { TabNavigation, Tab, Pill } from "../src";
 
 export default {
   title: "Original Go1d/TabNavigation",
+  component: TabNavigation,
 };
 
 export const MultipleTabsWithOneSelected = () => (

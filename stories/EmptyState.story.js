@@ -3,6 +3,7 @@ import { EmptyState } from "../src";
 
 export default {
   title: "Original Go1d/EmptyState",
+  component: EmptyState,
 };
 
 export const Base = () => (

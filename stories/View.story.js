@@ -3,6 +3,7 @@ import { View, Text } from "../src";
 
 export default {
   title: "Original Go1d/View",
+  component: View,
 };
 
 export const BasicUsage = () => (

@@ -3,6 +3,7 @@ import { TagToggle, View } from "../src";
 
 export default {
   title: "Original Go1d/TagToggle",
+  component: TagToggle,
 };
 
 export const _TagToggle = () => (

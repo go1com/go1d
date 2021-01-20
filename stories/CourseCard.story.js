@@ -3,6 +3,8 @@ import { CourseCard, View, Carousel } from "../src";
 
 export default {
   title: "Original Go1d/CourseCard",
+  component: CourseCard,
+  subcomponents: { View },
 };
 
 export const Base = () => <CourseCard />;

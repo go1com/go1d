@@ -4,6 +4,8 @@ import { IconEdit } from "../src/components/Icons";
 
 export default {
   title: "Original Go1d/PageHeader",
+  component: PageHeader,
+  subcomponents: { ButtonFilled, Text },
 };
 
 export const LightmodePageHeaderWithMenuButton = () => (

@@ -3,6 +3,7 @@ import { PortalUrlField, Form } from "../src";
 
 export default {
   title: "Original Go1d/PortalUrlField",
+  component: PortalUrlField,
 };
 
 export const PortalUrlFieldAvailable = () => (

@@ -3,6 +3,8 @@ import { OptionList, Option } from "../src";
 
 export default {
   title: "Original Go1d/OptionList",
+  component: OptionList,
+  subcomponents: { Option },
 };
 
 export const Base = () => (

@@ -3,6 +3,7 @@ import { AuthorSelector } from "../src";
 
 export default {
   title: "Original Go1d/AuthorSelector",
+  component: AuthorSelector,
 };
 
 export const BasicAuthorSelector = () => (

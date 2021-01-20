@@ -3,6 +3,7 @@ import { Text } from "../src";
 
 export default {
   title: "Original Go1d/Text",
+  component: Text,
 };
 
 export const Base = () => (

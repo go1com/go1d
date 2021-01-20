@@ -7,6 +7,7 @@ import {
   View,
   ButtonFilled,
   Icon,
+  IconChevronDown
 } from "../src";
 
 export default {

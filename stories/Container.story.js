@@ -3,6 +3,8 @@ import { Container, View, Text } from "../src";
 
 export default {
   title: "Original Go1d/Container",
+  component: Container,
+  subcomponents: { View, Text },
 };
 
 export const LightmodePageBody = () => (

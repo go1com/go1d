@@ -3,6 +3,7 @@ import { MultiSelect } from "../src";
 
 export default {
   title: "Original Go1d/MultiSelect",
+  component: MultiSelect,
 };
 
 export const ACustomMultiSelectComponent = () => (

@@ -3,6 +3,7 @@ import { Provider, PageBody, View, Text, Link } from "../src";
 
 export default {
   title: "Original Go1d/Provider",
+  component: Provider,
 };
 
 export const DefaultPropsWithLightMode = () => (

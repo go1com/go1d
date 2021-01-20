@@ -3,6 +3,7 @@ import { Label } from "../src";
 
 export default {
   title: "Original Go1d/Label",
+  component: Label,
 };
 
 export const _Label = () => <Label>Portal Name</Label>;

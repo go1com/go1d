@@ -4,6 +4,8 @@ import IconImport from "../src/components/Icons/Import";
 
 export default {
   title: "Original Go1d/CourseSlat",
+  component: CourseSlat,
+  subcomponents: { View, Text },
 };
 
 export const WithAvatar = () => (

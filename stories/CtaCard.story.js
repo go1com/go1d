@@ -3,6 +3,8 @@ import { View, CTACard, ButtonFilled } from "../src";
 
 export default {
   title: "Original Go1d/CtaCard",
+  component: CTACard,
+  subcomponents: { ButtonFilled, View },
 };
 
 export const WithPrice = () => (

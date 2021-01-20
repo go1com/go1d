@@ -14,6 +14,7 @@ import {
 
 export default {
   title: "Original Go1d/Ul",
+  component: UL,
 };
 
 export const BasicUl = () => (

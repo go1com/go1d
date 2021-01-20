@@ -3,6 +3,7 @@ import { ImageUploadSlat, Form, Field } from "../src";
 
 export default {
   title: "Original Go1d/ImageUploadSlat",
+  component: ImageUploadSlat,
 };
 
 export const BasicUsage = () => (

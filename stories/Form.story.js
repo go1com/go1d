@@ -3,6 +3,7 @@ import { TextInput, Form, Field, SubmitButton } from "../src";
 
 export default {
   title: "Original Go1d/Form",
+  component: Form,
 };
 
 export const ExampleFormWithField = () => (

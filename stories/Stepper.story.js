@@ -3,6 +3,7 @@ import { Stepper, ButtonMinimal } from "../src";
 
 export default {
   title: "Original Go1d/Stepper",
+  component: Stepper,
 };
 
 export const BasicStepper = () => <Stepper id="stepper" />;

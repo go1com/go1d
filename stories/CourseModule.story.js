@@ -3,6 +3,8 @@ import { CourseModule, Lesson } from "../src";
 
 export default {
   title: "Original Go1d/CourseModule",
+  component: CourseModule,
+  subcomponents: { Lesson },
 };
 
 export const Base = () => (

@@ -3,6 +3,7 @@ import { DataTable, TR, TD, TH, ButtonFilled } from "../src";
 
 export default {
   title: "Original Go1d/DataTable",
+  component: DataTable,
 };
 
 export const BasicTableUsingARowRenderer = () => (

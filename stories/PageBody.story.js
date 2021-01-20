@@ -3,6 +3,7 @@ import { PageBody, View, Text } from "../src";
 
 export default {
   title: "Original Go1d/PageBody",
+  component: PageBody,
 };
 
 export const LightmodePageBody = () => (

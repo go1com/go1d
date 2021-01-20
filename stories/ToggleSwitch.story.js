@@ -3,6 +3,7 @@ import { ToggleSwitch, View } from "../src";
 
 export default {
   title: "Original Go1d/ToggleSwitch",
+  component: ToggleSwitch,
 };
 
 export const ToggleWithNoProps = () => <ToggleSwitch />;

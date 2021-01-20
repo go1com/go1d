@@ -4,6 +4,7 @@ import { IconCross, IconSearch } from "../src/components/Icons";
 
 export default {
   title: "Original Go1d/TextInput",
+  component: TextInput,
 };
 
 export const BasicTextInput = () => (

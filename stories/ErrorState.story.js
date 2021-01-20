@@ -3,6 +3,7 @@ import { ErrorState } from "../src";
 
 export default {
   title: "Original Go1d/ErrorState",
+  component: ErrorState,
 };
 
 export const Base = () => (

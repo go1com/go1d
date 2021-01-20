@@ -4,6 +4,8 @@ import { Flipflop } from "libreact/lib/Flipflop";
 
 export default {
   title: "Original Go1d/Collapse",
+  component: Collapse,
+  subcomponents: { ButtonFilled, View, Text },
 };
 
 export const WithHeaderString = () => (

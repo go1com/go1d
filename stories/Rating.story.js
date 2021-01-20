@@ -2,7 +2,8 @@ import React from "react";
 import { Rating } from "../src";
 
 export default {
-  title: "Original Go1d/rating",
+  title: "Original Go1d/Rating",
+  component: Rating,
 };
 
 export const BasicRating = () => <Rating name="rating" />;

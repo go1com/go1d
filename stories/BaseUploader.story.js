@@ -3,6 +3,7 @@ import { BaseUploader, View, Text, ButtonFilled } from "../src";
 
 export default {
   title: "Original Go1d/BaseUploader",
+  component: "BaseUploader",
 };
 
 export const Base = () => (

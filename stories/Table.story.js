@@ -3,6 +3,7 @@ import { Table, TR, TD, Text, TH } from "../src";
 
 export default {
   title: "Original Go1d/Table",
+  component: Table,
 };
 
 export const BasicTableWithAHeader = () => (

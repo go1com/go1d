@@ -3,6 +3,7 @@ import { Link, Text, Provider } from "../src";
 
 export default {
   title: "Original Go1d/Link",
+  component: Link,
 };
 
 export const DefaultLink = () => <Link href="#testing">Link text</Link>;

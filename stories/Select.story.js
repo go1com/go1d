@@ -3,6 +3,7 @@ import { Select } from "../src";
 
 export default {
   title: "Original Go1d/Select",
+  component: Select,
 };
 
 export const ACustomSelectComponent = () => (

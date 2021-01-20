@@ -3,6 +3,7 @@ import { CircleProgress } from "../src";
 
 export default {
   title: "Original Go1d/CircleProgress",
+  component: CircleProgress,
 };
 
 export const WithPercentage = () => (

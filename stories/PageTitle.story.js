@@ -3,6 +3,8 @@ import { PageTitle, PageBody, Text, ButtonFilled } from "../src";
 
 export default {
   title: "Original Go1d/PageTitle",
+  component: PageTitle,
+  subcomponents: { PageBody, ButtonFilled, Text },
 };
 
 export const LightmodePageTitle = () => (

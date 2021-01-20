@@ -3,6 +3,7 @@ import { Avatar } from "../src";
 
 export default {
   title: "Original Go1d/Avatar",
+  component: Avatar,
 };
 
 export const AvatarWithAnImage = () => (

@@ -10,6 +10,7 @@ import {
 
 export default {
   title: "Original Go1d/ToggleButtonFeature",
+  component: ToggleButtonFeature,
 };
 
 export const _ToggleButtonFeature = () => (

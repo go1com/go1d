@@ -4,6 +4,7 @@ import { IconCheck, IconStar, IconCourse } from "../src/components/Icons";
 
 export default {
   title: "Original Go1d/FeaturedTag",
+  component: FeaturedTag,
 };
 
 export const Base = () => (

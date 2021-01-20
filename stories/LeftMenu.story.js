@@ -4,6 +4,7 @@ import { IconHome, IconBriefcase } from "../src/components/Icons";
 
 export default {
   title: "Original Go1d/LeftMenu",
+  component: LeftMenu,
 };
 
 export const CollapsibleExpanded = () => (

@@ -3,6 +3,7 @@ import { ImageUploader, Form, Field, ButtonFilled } from "../src";
 
 export default {
   title: "Original Go1d/ImageUploader",
+  component: ImageUploader,
 };
 
 export const ExampleUsageWithoutCrop = () => (

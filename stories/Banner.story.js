@@ -3,6 +3,7 @@ import { Banner, Text, Link } from "../src";
 
 export default {
   title: "Original Go1d/Banner",
+  component: Banner,
 };
 
 export const TypeSuccess = () => (

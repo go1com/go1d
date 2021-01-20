@@ -3,6 +3,7 @@ import { SearchInput } from "../src";
 
 export default {
   title: "Original Go1d/SearchInput",
+  component: SearchInput,
 };
 
 export const BasicSearchInput = () => (

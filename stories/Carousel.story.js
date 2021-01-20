@@ -3,10 +3,12 @@ import { Carousel, View, Text } from "../src";
 
 export default {
   title: "Original Go1d/Carousel",
+  component: Carousel, // FIXME: Storybook wants `ExportCarousel`
+  subcomponents: { View, Text },
 };
 
-export const Base = () => (
-  <Carousel>
+export const Base = (args) => (
+  <Carousel {...args}>
     <View
       css={{
         height: 200,
