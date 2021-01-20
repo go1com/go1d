@@ -1,23 +1,9 @@
 import React from 'react';
 import { Pill, View, Text } from '../src';
-const pdMap = require('../.storybook/react-docs-for-storybook.json');
+import filterInheritedProps from '../.storybook/filterInheritedProps.js'
 
-const type = Pill;
-
-const propertiesDefinition = pdMap[`${type.name}Props`] ? pdMap[`${type.name}Props`].props : pdMap[type.name] ? pdMap[type.name].props : [];
-
-const propsToHide = propertiesDefinition.filter(property => property.inheritedFrom);
-
-let hiddenArgTypes = {};
-propsToHide.forEach(prop => hiddenArgTypes[prop.property] = { table: { disable: true }});
-
-let argTypes = {
-  color: {
-    description: 'This is a prop on Pill',
-  },
-};
-
-Object.assign(argTypes, hiddenArgTypes)
+let argTypes = {};
+Object.assign(argTypes, filterInheritedProps(Pill))
 
 export default {
   title: 'Original Go1d/Pill',
