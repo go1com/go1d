@@ -17,6 +17,4 @@ export const BaseStory = () => (
   <Base>I am Base</Base>
 );
 
-BaseStory.story = {
-  name: "Base",
-};
+BaseStory.storyName = "Base";

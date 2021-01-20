@@ -10,9 +10,7 @@ export const ExampleUsageWithoutCrop = () => (
   <ImageUploader name="uploader" onChange={console.log} height="300px" />
 );
 
-ExampleUsageWithoutCrop.story = {
-  name: "Example usage without crop",
-};
+ExampleUsageWithoutCrop.storyName = "Example usage without crop";
 
 export const ExampleUsageWithCropAndCustomConfig = () => (
   <ImageUploader
@@ -24,9 +22,7 @@ export const ExampleUsageWithCropAndCustomConfig = () => (
   />
 );
 
-ExampleUsageWithCropAndCustomConfig.story = {
-  name: "Example usage with crop and custom config",
-};
+ExampleUsageWithCropAndCustomConfig.storyName = "Example usage with crop and custom config";
 
 export const InsideAForm = () => (
   <Form onSubmit={(values, actions) => console.log(values, actions)}>
@@ -43,6 +39,4 @@ export const InsideAForm = () => (
   </Form>
 );
 
-InsideAForm.story = {
-  name: "Inside a form",
-};
+InsideAForm.storyName = "Inside a form";

@@ -26,9 +26,7 @@ export const TypeSuccess = () => (
   </Banner>
 );
 
-TypeSuccess.story = {
-  name: "Type success",
-};
+TypeSuccess.storyName = "Type success";
 
 export const TypeWarning = () => (
   <Banner type="warning" close={() => alert("close event")}>
@@ -50,9 +48,7 @@ export const TypeWarning = () => (
   </Banner>
 );
 
-TypeWarning.story = {
-  name: "Type warning",
-};
+TypeWarning.storyName = "Type warning";
 
 export const TypeDanger = () => (
   <Banner type="danger" close={() => alert("close event")}>
@@ -74,6 +70,4 @@ export const TypeDanger = () => (
   </Banner>
 );
 
-TypeDanger.story = {
-  name: "Type danger",
-};
+TypeDanger.storyName = "Type danger";

@@ -14,9 +14,7 @@ export const LightmodePageTitle = () => (
   </PageBody>
 );
 
-LightmodePageTitle.story = {
-  name: "Lightmode page title",
-};
+LightmodePageTitle.storyName = "Lightmode page title";
 
 export const LightmodePageTitleWithChildren = () => (
   <PageBody>
@@ -27,6 +25,4 @@ export const LightmodePageTitleWithChildren = () => (
   </PageBody>
 );
 
-LightmodePageTitleWithChildren.story = {
-  name: "Lightmode page title with children",
-};
+LightmodePageTitleWithChildren.storyName = "Lightmode page title with children";

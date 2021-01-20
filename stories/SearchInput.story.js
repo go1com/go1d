@@ -14,9 +14,7 @@ export const BasicSearchInput = () => (
   />
 );
 
-BasicSearchInput.story = {
-  name: "Basic SearchInput",
-};
+BasicSearchInput.storyName = "Basic SearchInput";
 
 export const SearchInputSizes = () => (
   <React.Fragment>
@@ -46,9 +44,7 @@ export const SearchInputSizes = () => (
   </React.Fragment>
 );
 
-SearchInputSizes.story = {
-  name: "SearchInput Sizes",
-};
+SearchInputSizes.storyName = "SearchInput Sizes";
 
 export const SearchInputNotClearable = () => (
   <SearchInput
@@ -61,9 +57,7 @@ export const SearchInputNotClearable = () => (
   />
 );
 
-SearchInputNotClearable.story = {
-  name: "SearchInput not clearable",
-};
+SearchInputNotClearable.storyName = "SearchInput not clearable";
 
 export const SearchInputWithBehaviourOnClearAndOnSubmit = () => (
   <SearchInput
@@ -79,6 +73,4 @@ export const SearchInputWithBehaviourOnClearAndOnSubmit = () => (
   />
 );
 
-SearchInputWithBehaviourOnClearAndOnSubmit.story = {
-  name: "SearchInput with behaviour on clear and on submit",
-};
+SearchInputWithBehaviourOnClearAndOnSubmit.storyName = "SearchInput with behaviour on clear and on submit";

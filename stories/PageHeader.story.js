@@ -12,17 +12,13 @@ export const LightmodePageHeaderWithMenuButton = () => (
   <PageHeader showMenuButton={false} title="Overview" />
 );
 
-LightmodePageHeaderWithMenuButton.story = {
-  name: "Lightmode page header with menu button",
-};
+LightmodePageHeaderWithMenuButton.storyName = "Lightmode page header with menu button";
 
 export const LightmodePageHeaderWithoutMenuButton = () => (
   <PageHeader showMenuButton={true} title="Overview" />
 );
 
-LightmodePageHeaderWithoutMenuButton.story = {
-  name: "Lightmode page header without menu button",
-};
+LightmodePageHeaderWithoutMenuButton.storyName = "Lightmode page header without menu button";
 
 export const PageHeaderWithBreadcrumbAndSubtitle = () => (
   <PageHeader
@@ -40,6 +36,4 @@ export const PageHeaderWithBreadcrumbAndSubtitle = () => (
   </PageHeader>
 );
 
-PageHeaderWithBreadcrumbAndSubtitle.story = {
-  name: "Page header with breadcrumb and subtitle",
-};
+PageHeaderWithBreadcrumbAndSubtitle.storyName = "Page header with breadcrumb and subtitle";

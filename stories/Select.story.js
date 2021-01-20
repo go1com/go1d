@@ -16,9 +16,7 @@ export const ACustomSelectComponent = () => (
   />
 );
 
-ACustomSelectComponent.story = {
-  name: "A custom select component",
-};
+ACustomSelectComponent.storyName = "A custom select component";
 
 export const DisabledSelectField = () => (
   <Select
@@ -78,9 +76,7 @@ export const SelectFilledWithOptgroups = () => (
   />
 );
 
-SelectFilledWithOptgroups.story = {
-  name: "Select filled with optgroups",
-};
+SelectFilledWithOptgroups.storyName = "Select filled with optgroups";
 
 export const SelectFilledWithLabelLessOptgroups = () => (
   <Select
@@ -107,9 +103,7 @@ export const SelectFilledWithLabelLessOptgroups = () => (
   />
 );
 
-SelectFilledWithLabelLessOptgroups.story = {
-  name: "Select filled with label-less optgroups",
-};
+SelectFilledWithLabelLessOptgroups.storyName = "Select filled with label-less optgroups";
 
 export const ControlledSelectValue = () => (
   <Select

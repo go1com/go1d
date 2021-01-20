@@ -40,6 +40,4 @@ export const BasicTableUsingARowRenderer = () => (
   />
 );
 
-BasicTableUsingARowRenderer.story = {
-  name: "Basic Table using a row renderer",
-};
+BasicTableUsingARowRenderer.storyName = "Basic Table using a row renderer";

@@ -34,6 +34,4 @@ export const BasicDatepickerWithTime = () => (
   />
 );
 
-BasicDatepickerWithTime.story = {
-  name: "Basic Datepicker with Time",
-};
+BasicDatepickerWithTime.storyName = "Basic Datepicker with Time";

@@ -39,6 +39,4 @@ export const WithContentProviderCard = () => (
   </View>
 );
 
-WithContentProviderCard.story = {
-  name: "With content provider card",
-};
+WithContentProviderCard.storyName = "With content provider card";

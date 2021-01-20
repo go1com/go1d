@@ -24,9 +24,7 @@ export const PasswordInputWithNoToggle = () => (
   <PasswordInput id="noToggle" toggleableDisplay={false} />
 );
 
-PasswordInputWithNoToggle.story = {
-  name: "Password Input with no toggle",
-};
+PasswordInputWithNoToggle.storyName = "Password Input with no toggle";
 
 export const DisabledPasswordInput = () => (
   <PasswordInput id="Disabled" disabled={true} />

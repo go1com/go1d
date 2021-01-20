@@ -10,6 +10,4 @@ export const BasicInputSuffix = () => (
   <InputSuffix id="test" suffixValue="test.com" />
 );
 
-BasicInputSuffix.story = {
-  name: "Basic InputSuffix",
-};
+BasicInputSuffix.storyName = "Basic InputSuffix";

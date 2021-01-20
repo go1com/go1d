@@ -22,9 +22,7 @@ export const PortalUrlFieldAvailable = () => (
   </Form>
 );
 
-PortalUrlFieldAvailable.story = {
-  name: "PortalUrlField Available",
-};
+PortalUrlFieldAvailable.storyName = "PortalUrlField Available";
 
 export const PortalUrlFieldNotAvailable = () => (
   <Form
@@ -42,6 +40,4 @@ export const PortalUrlFieldNotAvailable = () => (
   </Form>
 );
 
-PortalUrlFieldNotAvailable.story = {
-  name: "PortalUrlField Not Available",
-};
+PortalUrlFieldNotAvailable.storyName = "PortalUrlField Not Available";

@@ -19,9 +19,7 @@ export const OverviewHeroWithRequiredPropsOnlyTitle = () => (
   <OverviewHero title="Interaction Design" />
 );
 
-OverviewHeroWithRequiredPropsOnlyTitle.story = {
-  name: "Overview hero with required props only (title)",
-};
+OverviewHeroWithRequiredPropsOnlyTitle.storyName = "Overview hero with required props only (title)";
 
 export const OverviewHeroWithBackgroundBreadcrumbAndSubtitle = () => (
   <OverviewHero
@@ -43,9 +41,7 @@ export const OverviewHeroWithBackgroundBreadcrumbAndSubtitle = () => (
   </OverviewHero>
 );
 
-OverviewHeroWithBackgroundBreadcrumbAndSubtitle.story = {
-  name: "Overview hero with background, breadcrumb and subtitle",
-};
+OverviewHeroWithBackgroundBreadcrumbAndSubtitle.storyName = "Overview hero with background, breadcrumb and subtitle";
 
 export const OverviewHeroWithAllProps = () => (
   <OverviewHero
@@ -89,9 +85,7 @@ export const OverviewHeroWithAllProps = () => (
   </OverviewHero>
 );
 
-OverviewHeroWithAllProps.story = {
-  name: "Overview hero with all props",
-};
+OverviewHeroWithAllProps.storyName = "Overview hero with all props";
 
 export const KitchenSink = () => (
   <OverviewHero
@@ -158,6 +152,4 @@ export const KitchenSink = () => (
   </OverviewHero>
 );
 
-KitchenSink.story = {
-  name: "Kitchen sink",
-};
+KitchenSink.storyName = "Kitchen sink";

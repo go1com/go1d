@@ -17,6 +17,4 @@ export const BasicUsage = () => (
   </Form>
 );
 
-BasicUsage.story = {
-  name: "Basic usage",
-};
+BasicUsage.storyName = "Basic usage";

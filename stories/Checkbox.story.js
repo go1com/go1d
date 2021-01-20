@@ -18,17 +18,13 @@ export const LabelSizeSm = () => (
   <Checkbox size="sm" name="Test" label="Test" />
 );
 
-LabelSizeSm.story = {
-  name: "Label size sm",
-};
+LabelSizeSm.storyName = "Label size sm";
 
 export const LabelSizeLg = () => (
   <Checkbox size="lg" name="Test" label="Test" />
 );
 
-LabelSizeLg.story = {
-  name: "Label size lg",
-};
+LabelSizeLg.storyName = "Label size lg";
 
 export const ChildLabel = () => (
   <Checkbox name="Test">
@@ -36,9 +32,7 @@ export const ChildLabel = () => (
   </Checkbox>
 );
 
-ChildLabel.story = {
-  name: "Child label",
-};
+ChildLabel.storyName = "Child label";
 
 export const Disabled = () => (
   <Checkbox disabled name="Test" value={true} label="Test" />
@@ -61,9 +55,7 @@ export const CheckboxInField = () => (
   </Form>
 );
 
-CheckboxInField.story = {
-  name: "Checkbox in Field",
-};
+CheckboxInField.storyName = "Checkbox in Field";
 
 export const UsageInACheckboxGroup = () => (
   <CheckboxGroup
@@ -81,9 +73,7 @@ export const UsageInACheckboxGroup = () => (
   />
 );
 
-UsageInACheckboxGroup.story = {
-  name: "Usage in a CheckboxGroup",
-};
+UsageInACheckboxGroup.storyName = "Usage in a CheckboxGroup";
 
 export const InitialValues = () => (
   <CheckboxGroup
@@ -102,9 +92,7 @@ export const InitialValues = () => (
   />
 );
 
-InitialValues.story = {
-  name: "Initial values",
-};
+InitialValues.storyName = "Initial values";
 
 export const _Disabled = () => (
   <CheckboxGroup

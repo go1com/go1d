@@ -21,9 +21,7 @@ export const ExampleFormWithField = () => (
   </Form>
 );
 
-ExampleFormWithField.story = {
-  name: "Example Form with field",
-};
+ExampleFormWithField.storyName = "Example Form with field";
 
 export const ExampleDisabledFormWithField = () => (
   <Form
@@ -41,6 +39,4 @@ export const ExampleDisabledFormWithField = () => (
   </Form>
 );
 
-ExampleDisabledFormWithField.story = {
-  name: "Example Disabled Form with field",
-};
+ExampleDisabledFormWithField.storyName = "Example Disabled Form with field";

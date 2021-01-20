@@ -29,9 +29,7 @@ export const ExampleFieldAndForm = () => (
   </Form>
 );
 
-ExampleFieldAndForm.story = {
-  name: "Example field and Form",
-};
+ExampleFieldAndForm.storyName = "Example field and Form";
 
 export const ExampleRequiredField = () => (
   <Form

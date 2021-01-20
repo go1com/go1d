@@ -11,15 +11,11 @@ export const PersonalDevelopment = () => (
   <SpotIcon name="PersonalDevelopment" />
 );
 
-PersonalDevelopment.story = {
-  name: "PersonalDevelopment",
-};
+PersonalDevelopment.storyName = "PersonalDevelopment";
 
 export const SectorSpecific = () => <SpotIcon name="SectorSpecific" />;
 
-SectorSpecific.story = {
-  name: "SectorSpecific",
-};
+SectorSpecific.storyName = "SectorSpecific";
 
 export const Technology = () => <SpotIcon name="TechnologySkills" />;
 
@@ -59,6 +55,4 @@ export const SpotIcons = () => (
   </View>
 );
 
-SpotIcons.story = {
-  name: "SpotIcons",
-};
+SpotIcons.storyName = "SpotIcons";

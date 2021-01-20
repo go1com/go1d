@@ -10,29 +10,21 @@ export const AvatarWithAnImage = () => (
   <Avatar src="https://i.imgur.com/Ee55uvc.jpg" fullName="Leslie Knope" />
 );
 
-AvatarWithAnImage.story = {
-  name: "Avatar with an image",
-};
+AvatarWithAnImage.storyName = "Avatar with an image";
 
 export const AvatarWithoutAnImage = () => <Avatar fullName="Leslie Knope" />;
 
-AvatarWithoutAnImage.story = {
-  name: "Avatar without an image",
-};
+AvatarWithoutAnImage.storyName = "Avatar without an image";
 
 export const AvatarWithoutAnImageAndName = () => <Avatar />;
 
-AvatarWithoutAnImageAndName.story = {
-  name: "Avatar without an image and name",
-};
+AvatarWithoutAnImageAndName.storyName = "Avatar without an image and name";
 
 export const AvatarWithADifferentSize = () => (
   <Avatar fullName="Willy Wonka" size={4} />
 );
 
-AvatarWithADifferentSize.story = {
-  name: "Avatar with a different size",
-};
+AvatarWithADifferentSize.storyName = "Avatar with a different size";
 
 export const AvatarWithDifferentColors = () => (
   <Avatar
@@ -43,6 +35,4 @@ export const AvatarWithDifferentColors = () => (
   />
 );
 
-AvatarWithDifferentColors.story = {
-  name: "Avatar with different colors",
-};
+AvatarWithDifferentColors.storyName = "Avatar with different colors";

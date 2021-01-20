@@ -17,57 +17,43 @@ export const FilledButtonInSubtleColour = () => (
   </React.Fragment>
 );
 
-FilledButtonInSubtleColour.story = {
-  name: "Filled button in subtle colour",
-};
+FilledButtonInSubtleColour.storyName = "Filled button in subtle colour";
 
 export const FilledButtonInAccentColour = () => (
   <ButtonFilled color="accent">Call to action</ButtonFilled>
 );
 
-FilledButtonInAccentColour.story = {
-  name: "Filled button in accent colour",
-};
+FilledButtonInAccentColour.storyName = "Filled button in accent colour";
 
 export const FilledIconOnlyButtonInSuccessColourAndRound = () => (
   <ButtonFilled round={true} color="success" icon={IconCheck} />
 );
 
-FilledIconOnlyButtonInSuccessColourAndRound.story = {
-  name: "Filled Icon only button in success colour and round",
-};
+FilledIconOnlyButtonInSuccessColourAndRound.storyName = "Filled Icon only button in success colour and round";
 
 export const FilledButtonInDangerColour = () => (
   <ButtonFilled color="danger">Danger zone</ButtonFilled>
 );
 
-FilledButtonInDangerColour.story = {
-  name: "Filled button in danger colour",
-};
+FilledButtonInDangerColour.storyName = "Filled button in danger colour";
 
 export const MinimalButtonSubtleColour = () => (
   <ButtonMinimal>Minimal button</ButtonMinimal>
 );
 
-MinimalButtonSubtleColour.story = {
-  name: "Minimal button subtle colour",
-};
+MinimalButtonSubtleColour.storyName = "Minimal button subtle colour";
 
 export const MinimalButtonSubtleColourIconAndLabel = () => (
   <ButtonMinimal icon={IconPlus}>Minimal button</ButtonMinimal>
 );
 
-MinimalButtonSubtleColourIconAndLabel.story = {
-  name: "Minimal button subtle colour (Icon and label)",
-};
+MinimalButtonSubtleColourIconAndLabel.storyName = "Minimal button subtle colour (Icon and label)";
 
 export const MinimalButtonInAccentColourIconOnly = () => (
   <ButtonMinimal color="accent" icon={IconPlus} />
 );
 
-MinimalButtonInAccentColourIconOnly.story = {
-  name: "Minimal button in accent colour (Icon only)",
-};
+MinimalButtonInAccentColourIconOnly.storyName = "Minimal button in accent colour (Icon only)";
 
 export const MinimalButtonInAccentColourIconAndLabel = () => (
   <ButtonMinimal color="accent" icon={IconPlus}>
@@ -76,25 +62,19 @@ export const MinimalButtonInAccentColourIconAndLabel = () => (
   </ButtonMinimal>
 );
 
-MinimalButtonInAccentColourIconAndLabel.story = {
-  name: "Minimal button in accent colour (Icon and label)",
-};
+MinimalButtonInAccentColourIconAndLabel.storyName = "Minimal button in accent colour (Icon and label)";
 
 export const MinimalButtonInDangerColour = () => (
   <ButtonMinimal color="danger">Really</ButtonMinimal>
 );
 
-MinimalButtonInDangerColour.story = {
-  name: "Minimal button in danger colour",
-};
+MinimalButtonInDangerColour.storyName = "Minimal button in danger colour";
 
 export const SubmitButtonUsedInAForm = () => (
   <SubmitButton>Create</SubmitButton>
 );
 
-SubmitButtonUsedInAForm.story = {
-  name: "Submit Button used in a Form",
-};
+SubmitButtonUsedInAForm.storyName = "Submit Button used in a Form";
 
 export const UnstyledButtons = () => (
   <React.Fragment>

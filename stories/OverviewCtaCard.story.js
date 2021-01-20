@@ -23,9 +23,7 @@ export const OverviewCtaCardWithNoProps = () => (
   </View>
 );
 
-OverviewCtaCardWithNoProps.story = {
-  name: "Overview CTA card with no props",
-};
+OverviewCtaCardWithNoProps.storyName = "Overview CTA card with no props";
 
 export const OverviewCtaCardWithImageAndCtaButton = () => (
   <View
@@ -42,9 +40,7 @@ export const OverviewCtaCardWithImageAndCtaButton = () => (
   </View>
 );
 
-OverviewCtaCardWithImageAndCtaButton.story = {
-  name: "Overview CTA card with image and CTA button",
-};
+OverviewCtaCardWithImageAndCtaButton.storyName = "Overview CTA card with image and CTA button";
 
 export const OverviewCtaCardWithPriceAndCtaButton = () => (
   <View
@@ -62,9 +58,7 @@ export const OverviewCtaCardWithPriceAndCtaButton = () => (
   </View>
 );
 
-OverviewCtaCardWithPriceAndCtaButton.story = {
-  name: "Overview CTA card with price and CTA button",
-};
+OverviewCtaCardWithPriceAndCtaButton.storyName = "Overview CTA card with price and CTA button";
 
 export const OverviewCtaCardWithPropsAndCtaButton = () => (
   <View
@@ -106,9 +100,7 @@ export const OverviewCtaCardWithPropsAndCtaButton = () => (
   </View>
 );
 
-OverviewCtaCardWithPropsAndCtaButton.story = {
-  name: "Overview CTA card with props and CTA button",
-};
+OverviewCtaCardWithPropsAndCtaButton.storyName = "Overview CTA card with props and CTA button";
 
 export const OverviewCtaCardWithCustomChildren = () => (
   <View
@@ -126,6 +118,4 @@ export const OverviewCtaCardWithCustomChildren = () => (
   </View>
 );
 
-OverviewCtaCardWithCustomChildren.story = {
-  name: "Overview CTA card with custom children",
-};
+OverviewCtaCardWithCustomChildren.storyName = "Overview CTA card with custom children";

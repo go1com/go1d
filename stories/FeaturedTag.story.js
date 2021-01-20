@@ -25,9 +25,7 @@ export const WithAllProps = () => (
   </FeaturedTag>
 );
 
-WithAllProps.story = {
-  name: "With all props",
-};
+WithAllProps.storyName = "With all props";
 
 export const WithCards = () => (
   <View backgroundColor="faint" padding={5}>
@@ -47,6 +45,4 @@ export const InteractiveStyles = () => (
   <FeaturedTag passive={false}>Hello World!</FeaturedTag>
 );
 
-InteractiveStyles.story = {
-  name: "Interactive styles",
-};
+InteractiveStyles.storyName = "Interactive styles";

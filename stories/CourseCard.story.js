@@ -28,9 +28,7 @@ export const AlmostAllTheProps = () => (
   />
 );
 
-AlmostAllTheProps.story = {
-  name: "Almost all the Props",
-};
+AlmostAllTheProps.storyName = "Almost all the Props";
 
 export const CarouselWithLotsOfCombinationsOfCards = () => (
   <View padding={3}>
@@ -84,8 +82,6 @@ export const CarouselWithLotsOfCombinationsOfCards = () => (
   </View>
 );
 
-CarouselWithLotsOfCombinationsOfCards.story = {
-  name: "Carousel with lots of combinations of Cards",
-};
+CarouselWithLotsOfCombinationsOfCards.storyName = "Carousel with lots of combinations of Cards";
 
 export const Skeleton = () => <CourseCard skeleton={true} />;

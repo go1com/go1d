@@ -11,17 +11,13 @@ export const BasicTextInput = () => (
   <TextInput id="blank" placeholder="Blank" />
 );
 
-BasicTextInput.story = {
-  name: "Basic TextInput",
-};
+BasicTextInput.storyName = "Basic TextInput";
 
 export const TextInputWithSmallSize = () => (
   <TextInput id="Small" size="sm" value="Small" />
 );
 
-TextInputWithSmallSize.story = {
-  name: "TextInput with Small Size",
-};
+TextInputWithSmallSize.storyName = "TextInput with Small Size";
 
 export const TextInputWithSmallSizeAndFloatingLabel = () => (
   <TextInput
@@ -33,17 +29,13 @@ export const TextInputWithSmallSizeAndFloatingLabel = () => (
   />
 );
 
-TextInputWithSmallSizeAndFloatingLabel.story = {
-  name: "TextInput with Small Size and floating label",
-};
+TextInputWithSmallSizeAndFloatingLabel.storyName = "TextInput with Small Size and floating label";
 
 export const TextInputMediumSize = () => (
   <TextInput id="Medium" size="md" value="Medium" />
 );
 
-TextInputMediumSize.story = {
-  name: "TextInput Medium Size",
-};
+TextInputMediumSize.storyName = "TextInput Medium Size";
 
 export const TextInputWithMediumSizeAndFloatingLabel = () => (
   <TextInput
@@ -55,17 +47,13 @@ export const TextInputWithMediumSizeAndFloatingLabel = () => (
   />
 );
 
-TextInputWithMediumSizeAndFloatingLabel.story = {
-  name: "TextInput with Medium Size and floating label",
-};
+TextInputWithMediumSizeAndFloatingLabel.storyName = "TextInput with Medium Size and floating label";
 
 export const TextInputLargeSize = () => (
   <TextInput id="Large" size="lg" value="Large" />
 );
 
-TextInputLargeSize.story = {
-  name: "TextInput Large Size",
-};
+TextInputLargeSize.storyName = "TextInput Large Size";
 
 export const TextInputWithLargeSizeAndFloatingLabel = () => (
   <TextInput
@@ -77,17 +65,13 @@ export const TextInputWithLargeSizeAndFloatingLabel = () => (
   />
 );
 
-TextInputWithLargeSizeAndFloatingLabel.story = {
-  name: "TextInput with Large Size and floating label",
-};
+TextInputWithLargeSizeAndFloatingLabel.storyName = "TextInput with Large Size and floating label";
 
 export const TextInputWithIcon = () => (
   <TextInput id="search" icon={IconSearch} placeholder="Type here to Search" />
 );
 
-TextInputWithIcon.story = {
-  name: "TextInput with Icon",
-};
+TextInputWithIcon.storyName = "TextInput with Icon";
 
 export const TextInputWithIconAndFloatingLabel = () => (
   <TextInput
@@ -99,9 +83,7 @@ export const TextInputWithIconAndFloatingLabel = () => (
   />
 );
 
-TextInputWithIconAndFloatingLabel.story = {
-  name: "TextInput with Icon and floating label",
-};
+TextInputWithIconAndFloatingLabel.storyName = "TextInput with Icon and floating label";
 
 export const TextInputWithRightNode = () => (
   <TextInput
@@ -111,9 +93,7 @@ export const TextInputWithRightNode = () => (
   />
 );
 
-TextInputWithRightNode.story = {
-  name: "TextInput with RightNode",
-};
+TextInputWithRightNode.storyName = "TextInput with RightNode";
 
 export const TextInputWithRightNodeAndFloatingLabel = () => (
   <TextInput
@@ -126,6 +106,4 @@ export const TextInputWithRightNodeAndFloatingLabel = () => (
   />
 );
 
-TextInputWithRightNodeAndFloatingLabel.story = {
-  name: "TextInput with RightNode and floating label",
-};
+TextInputWithRightNodeAndFloatingLabel.storyName = "TextInput with RightNode and floating label";

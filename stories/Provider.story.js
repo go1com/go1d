@@ -22,9 +22,7 @@ export const DefaultPropsWithLightMode = () => (
   </Provider>
 );
 
-DefaultPropsWithLightMode.story = {
-  name: "Default props with light mode",
-};
+DefaultPropsWithLightMode.storyName = "Default props with light mode";
 
 export const CustomLinkAndDarkModeSpecified = () => (
   <Provider mode="dark" linkComponent={() => <div>custom link</div>}>
@@ -42,6 +40,4 @@ export const CustomLinkAndDarkModeSpecified = () => (
   </Provider>
 );
 
-CustomLinkAndDarkModeSpecified.story = {
-  name: "Custom link and dark mode specified",
-};
+CustomLinkAndDarkModeSpecified.storyName = "Custom link and dark mode specified";

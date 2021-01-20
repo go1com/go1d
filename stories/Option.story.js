@@ -11,17 +11,13 @@ export const AddActionIcon = () => (
   <Option title="Title test" actionIcon="ChevronRight" />
 );
 
-AddActionIcon.story = {
-  name: "Add actionIcon",
-};
+AddActionIcon.storyName = "Add actionIcon";
 
 export const AddSpotIcon = () => (
   <Option title="Sector Specific" spotIcon="SectorSpecific" />
 );
 
-AddSpotIcon.story = {
-  name: "Add spotIcon",
-};
+AddSpotIcon.storyName = "Add spotIcon";
 
 export const WithMeta = () => (
   <Option
@@ -30,9 +26,7 @@ export const WithMeta = () => (
   />
 );
 
-WithMeta.story = {
-  name: "With meta",
-};
+WithMeta.storyName = "With meta";
 
 export const WithMetaSpotIconActionIcon = () => (
   <Option
@@ -43,9 +37,7 @@ export const WithMetaSpotIconActionIcon = () => (
   />
 );
 
-WithMetaSpotIconActionIcon.story = {
-  name: "With meta + spotIcon + actionIcon",
-};
+WithMetaSpotIconActionIcon.storyName = "With meta + spotIcon + actionIcon";
 
 export const WithCheckedAndSpotIcon = () => (
   <Option
@@ -56,17 +48,13 @@ export const WithCheckedAndSpotIcon = () => (
   />
 );
 
-WithCheckedAndSpotIcon.story = {
-  name: "With checked and spotIcon",
-};
+WithCheckedAndSpotIcon.storyName = "With checked and spotIcon";
 
 export const WithCheckedAndDisabled = () => (
   <Option title="Title test" checked={true} disabled={true} />
 );
 
-WithCheckedAndDisabled.story = {
-  name: "With checked and disabled",
-};
+WithCheckedAndDisabled.storyName = "With checked and disabled";
 
 export const ForceHeight = () => (
   <Option
@@ -77,6 +65,4 @@ export const ForceHeight = () => (
   />
 );
 
-ForceHeight.story = {
-  name: "Force height ",
-};
+ForceHeight.storyName = "Force height ";

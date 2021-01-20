@@ -8,9 +8,7 @@ export default {
 
 export const DefaultLink = () => <Link href="#testing">Link text</Link>;
 
-DefaultLink.story = {
-  name: "Default link",
-};
+DefaultLink.storyName = "Default link";
 
 export const LinkWithTextInside = () => (
   <Link href="#testing">
@@ -18,9 +16,7 @@ export const LinkWithTextInside = () => (
   </Link>
 );
 
-LinkWithTextInside.story = {
-  name: "Link with Text inside",
-};
+LinkWithTextInside.storyName = "Link with Text inside";
 
 export const LinkWithTextWithDifferentPseudoElementFocusColorActiveColor = () => (
   <Link href="#testing" hoverFocusColor="success" activeColor="warning">
@@ -28,10 +24,7 @@ export const LinkWithTextWithDifferentPseudoElementFocusColorActiveColor = () =>
   </Link>
 );
 
-LinkWithTextWithDifferentPseudoElementFocusColorActiveColor.story = {
-  name:
-    "Link with Text with different pseudo element focus color & active color",
-};
+LinkWithTextWithDifferentPseudoElementFocusColorActiveColor.storyName = "Link with Text with different pseudo element focus color & active color";
 
 export const OverridenLink = () => (
   <Provider
@@ -45,6 +38,4 @@ export const OverridenLink = () => (
   </Provider>
 );
 
-OverridenLink.story = {
-  name: "Overriden link",
-};
+OverridenLink.storyName = "Overriden link";

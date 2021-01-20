@@ -12,6 +12,4 @@ export const WithPercent = () => (
   </div>
 );
 
-WithPercent.story = {
-  name: "with percent",
-};
+WithPercent.storyName = "with percent";

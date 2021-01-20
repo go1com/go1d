@@ -14,6 +14,4 @@ export const LabelWithStatus = () => (
   </Label>
 );
 
-LabelWithStatus.story = {
-  name: "Label with status",
-};
+LabelWithStatus.storyName = "Label with status";

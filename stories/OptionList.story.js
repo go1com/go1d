@@ -36,9 +36,7 @@ export const WithOptions = () => (
   </OptionList>
 );
 
-WithOptions.story = {
-  name: "With options",
-};
+WithOptions.storyName = "With options";
 
 export const TopLevelTopics = () => (
   <OptionList>
@@ -80,6 +78,4 @@ export const TopLevelTopics = () => (
   </OptionList>
 );
 
-TopLevelTopics.story = {
-  name: "Top level topics",
-};
+TopLevelTopics.storyName = "Top level topics";

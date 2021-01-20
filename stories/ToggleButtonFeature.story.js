@@ -41,6 +41,4 @@ export const ToggleButtonFeatureInSizes = () => (
   </View>
 );
 
-ToggleButtonFeatureInSizes.story = {
-  name: "Toggle Button Feature in sizes",
-};
+ToggleButtonFeatureInSizes.storyName = "Toggle Button Feature in sizes";

@@ -29,9 +29,7 @@ export const WithDropdownActions = () => (
   />
 );
 
-WithDropdownActions.story = {
-  name: "With dropdown actions",
-};
+WithDropdownActions.storyName = "With dropdown actions";
 
 export const WithActionRender = () => (
   <SlatMini
@@ -47,9 +45,7 @@ export const WithActionRender = () => (
   />
 );
 
-WithActionRender.story = {
-  name: "With actionRender",
-};
+WithActionRender.storyName = "With actionRender";
 
 export const WithLink = () => (
   <SlatMini
@@ -63,8 +59,6 @@ export const WithLink = () => (
   />
 );
 
-WithLink.story = {
-  name: "With link",
-};
+WithLink.storyName = "With link";
 
 export const Skeleton = () => <SlatMini skeleton={true} />;

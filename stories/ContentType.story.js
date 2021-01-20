@@ -13,9 +13,7 @@ export const _ContentType = () => (
   </View>
 );
 
-_ContentType.story = {
-  name: "ContentType",
-};
+_ContentType.storyName = "ContentType";
 
 export const ContentTypeWithText = () => (
   <View flexDirection="row">
@@ -23,9 +21,7 @@ export const ContentTypeWithText = () => (
   </View>
 );
 
-ContentTypeWithText.story = {
-  name: "ContentType with text",
-};
+ContentTypeWithText.storyName = "ContentType with text";
 
 export const ContentTypeWithBackground = () => (
   <View flexDirection="row">
@@ -33,6 +29,4 @@ export const ContentTypeWithBackground = () => (
   </View>
 );
 
-ContentTypeWithBackground.story = {
-  name: "ContentType with background",
-};
+ContentTypeWithBackground.storyName = "ContentType with background";

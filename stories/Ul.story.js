@@ -34,9 +34,7 @@ export const BasicUl = () => (
   </UL>
 );
 
-BasicUl.story = {
-  name: "Basic UL",
-};
+BasicUl.storyName = "Basic UL";
 
 export const UlWithSpecificIconAndColorAndFontSize = () => (
   <UL icon={IconSuccess} fontSize="3" color="subtle">
@@ -55,9 +53,7 @@ export const UlWithSpecificIconAndColorAndFontSize = () => (
   </UL>
 );
 
-UlWithSpecificIconAndColorAndFontSize.story = {
-  name: "UL with specific icon and color and fontSize",
-};
+UlWithSpecificIconAndColorAndFontSize.storyName = "UL with specific icon and color and fontSize";
 
 export const UlWithDifferentIconsOnEachLi = () => (
   <UL icon={IconSuccess}>
@@ -72,6 +68,4 @@ export const UlWithDifferentIconsOnEachLi = () => (
   </UL>
 );
 
-UlWithDifferentIconsOnEachLi.story = {
-  name: "UL with different icons on each Li",
-};
+UlWithDifferentIconsOnEachLi.storyName = "UL with different icons on each Li";

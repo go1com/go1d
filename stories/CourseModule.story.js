@@ -19,9 +19,7 @@ export const DurationIsOptional = () => (
   </CourseModule>
 );
 
-DurationIsOptional.story = {
-  name: "Duration is optional",
-};
+DurationIsOptional.storyName = "Duration is optional";
 
 export const DefaultClosed = () => (
   <CourseModule defaultOpen={false} title="Test Title">

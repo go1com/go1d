@@ -21,9 +21,7 @@ export const WithAvatar = () => (
   />
 );
 
-WithAvatar.story = {
-  name: "With avatar",
-};
+WithAvatar.storyName = "With avatar";
 
 export const WithImportAction = () => (
   <CourseSlat
@@ -43,9 +41,7 @@ export const WithImportAction = () => (
   />
 );
 
-WithImportAction.story = {
-  name: "With Import action",
-};
+WithImportAction.storyName = "With Import action";
 
 export const WithEnrollmentStatus = () => (
   <CourseSlat
@@ -68,9 +64,7 @@ export const WithEnrollmentStatus = () => (
   />
 );
 
-WithEnrollmentStatus.story = {
-  name: "With enrollment status",
-};
+WithEnrollmentStatus.storyName = "With enrollment status";
 
 export const WithPriceAndDuration = () => (
   <CourseSlat
@@ -86,8 +80,6 @@ export const WithPriceAndDuration = () => (
   />
 );
 
-WithPriceAndDuration.story = {
-  name: "With price and duration",
-};
+WithPriceAndDuration.storyName = "With price and duration";
 
 export const Skeleton = () => <CourseSlat skeleton={true} />;

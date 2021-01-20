@@ -64,6 +64,4 @@ export const WithSelectDropdownAndTextInput = () => (
   </InputGroup>
 );
 
-WithSelectDropdownAndTextInput.story = {
-  name: "With SelectDropdown and TextInput",
-};
+WithSelectDropdownAndTextInput.storyName = "With SelectDropdown and TextInput";

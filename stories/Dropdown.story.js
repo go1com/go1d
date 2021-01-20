@@ -48,9 +48,7 @@ export const BasicDropdown = () => (
   </Dropdown>
 );
 
-BasicDropdown.story = {
-  name: "Basic dropdown",
-};
+BasicDropdown.storyName = "Basic dropdown";
 
 export const DropdownWithComplexItems = () => (
   <View>
@@ -107,6 +105,4 @@ export const DropdownWithComplexItems = () => (
   </View>
 );
 
-DropdownWithComplexItems.story = {
-  name: "Dropdown with complex items",
-};
+DropdownWithComplexItems.storyName = "Dropdown with complex items";

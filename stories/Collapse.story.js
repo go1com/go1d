@@ -45,9 +45,7 @@ export const WithHeaderString = () => (
   </div>
 );
 
-WithHeaderString.story = {
-  name: "with header string",
-};
+WithHeaderString.storyName = "with header string";
 
 export const WithHeaderComponent = () => (
   <div style={{ width: "50%" }}>
@@ -96,9 +94,7 @@ export const WithHeaderComponent = () => (
   </div>
 );
 
-WithHeaderComponent.story = {
-  name: "with header component",
-};
+WithHeaderComponent.storyName = "with header component";
 
 export const WithoutHeader = () => (
   <div style={{ width: "50%" }}>
@@ -135,9 +131,7 @@ export const WithoutHeader = () => (
   </div>
 );
 
-WithoutHeader.story = {
-  name: "without header",
-};
+WithoutHeader.storyName = "without header";
 
 export const WithReverseCollapse = () => (
   <div style={{ width: "50%" }}>
@@ -235,6 +229,4 @@ export const WithReverseCollapse = () => (
   </div>
 );
 
-WithReverseCollapse.story = {
-  name: "with reverseCollapse",
-};
+WithReverseCollapse.storyName = "with reverseCollapse";

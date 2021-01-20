@@ -21,9 +21,7 @@ export const BasicTableUsingARowRenderer = () => (
   />
 );
 
-BasicTableUsingARowRenderer.story = {
-  name: "Basic Table using a row renderer",
-};
+BasicTableUsingARowRenderer.storyName = "Basic Table using a row renderer";
 
 export const ExperimentalAutoRowHeight = () => (
   <DataTable
@@ -40,9 +38,7 @@ export const ExperimentalAutoRowHeight = () => (
   />
 );
 
-ExperimentalAutoRowHeight.story = {
-  name: "Experimental: Auto Row Height",
-};
+ExperimentalAutoRowHeight.storyName = "Experimental: Auto Row Height";
 
 export const ScrollButtonWithFooter = () => (
   <DataTable
@@ -59,6 +55,4 @@ export const ScrollButtonWithFooter = () => (
   />
 );
 
-ScrollButtonWithFooter.story = {
-  name: "Scroll button with footer",
-};
+ScrollButtonWithFooter.storyName = "Scroll button with footer";

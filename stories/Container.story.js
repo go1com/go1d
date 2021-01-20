@@ -20,6 +20,4 @@ export const LightmodePageBody = () => (
   </Container>
 );
 
-LightmodePageBody.story = {
-  name: "Lightmode page body",
-};
+LightmodePageBody.storyName = "Lightmode page body";

@@ -54,9 +54,7 @@ export const BasicTableWithAHeader = () => (
   />
 );
 
-BasicTableWithAHeader.story = {
-  name: "Basic table with a header",
-};
+BasicTableWithAHeader.storyName = "Basic table with a header";
 
 export const BasicTableWithNoHeader = () => (
   <Table
@@ -99,9 +97,7 @@ export const BasicTableWithNoHeader = () => (
   />
 );
 
-BasicTableWithNoHeader.story = {
-  name: "Basic table with no header",
-};
+BasicTableWithNoHeader.storyName = "Basic table with no header";
 
 export const _BasicTableWithAHeader = () => (
   <Table
@@ -134,9 +130,7 @@ export const _BasicTableWithAHeader = () => (
   />
 );
 
-_BasicTableWithAHeader.story = {
-  name: "Basic table with a header",
-};
+_BasicTableWithAHeader.storyName = "Basic table with a header";
 
 export const BasicTableWithASortableHeader = () => (
   <Table
@@ -169,9 +163,7 @@ export const BasicTableWithASortableHeader = () => (
   />
 );
 
-BasicTableWithASortableHeader.story = {
-  name: "Basic table with a sortable header",
-};
+BasicTableWithASortableHeader.storyName = "Basic table with a sortable header";
 
 export const Examples = () => (
   <Table

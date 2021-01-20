@@ -12,22 +12,16 @@ export const RatingWithDefaultValue = () => (
   <Rating name="rating" defaultValue={3} />
 );
 
-RatingWithDefaultValue.story = {
-  name: "Rating with default value",
-};
+RatingWithDefaultValue.storyName = "Rating with default value";
 
 export const RatingWithLargeCount = () => (
   <Rating name="rating" defaultValue={3} count={37} />
 );
 
-RatingWithLargeCount.story = {
-  name: "Rating with large count",
-};
+RatingWithLargeCount.storyName = "Rating with large count";
 
 export const RatingWithControlledValue = () => (
   <Rating name="rating" value={3} />
 );
 
-RatingWithControlledValue.story = {
-  name: "Rating with controlled value",
-};
+RatingWithControlledValue.storyName = "Rating with controlled value";

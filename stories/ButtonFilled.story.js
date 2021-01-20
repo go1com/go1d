@@ -10,9 +10,7 @@ export const WithText = () => (
   <ButtonFilled>This is a filled button</ButtonFilled>
 );
 
-WithText.story = {
-  name: "with text",
-};
+WithText.storyName = "with text";
 
 export const WithSomeEmoji = () => (
   <ButtonFilled>
@@ -22,6 +20,4 @@ export const WithSomeEmoji = () => (
   </ButtonFilled>
 );
 
-WithSomeEmoji.story = {
-  name: "with some emoji",
-};
+WithSomeEmoji.storyName = "with some emoji";

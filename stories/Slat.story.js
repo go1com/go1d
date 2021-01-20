@@ -43,9 +43,7 @@ export const WithDropdownActions = () => (
   />
 );
 
-WithDropdownActions.story = {
-  name: "With dropdown actions",
-};
+WithDropdownActions.storyName = "With dropdown actions";
 
 export const WithActionRenderer = () => (
   <Slat
@@ -77,9 +75,7 @@ export const WithActionRenderer = () => (
   />
 );
 
-WithActionRenderer.story = {
-  name: "With actionRenderer",
-};
+WithActionRenderer.storyName = "With actionRenderer";
 
 export const WithImpliedLinkWrapperAndActiveHoverStates = () => (
   <Slat
@@ -108,8 +104,6 @@ export const WithImpliedLinkWrapperAndActiveHoverStates = () => (
   />
 );
 
-WithImpliedLinkWrapperAndActiveHoverStates.story = {
-  name: "With implied link wrapper and active/hover states",
-};
+WithImpliedLinkWrapperAndActiveHoverStates.storyName = "With implied link wrapper and active/hover states";
 
 export const Skeleton = () => <Slat skeleton={true} />;

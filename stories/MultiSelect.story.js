@@ -16,9 +16,7 @@ export const ACustomMultiSelectComponent = () => (
   />
 );
 
-ACustomMultiSelectComponent.story = {
-  name: "A custom Multi Select component",
-};
+ACustomMultiSelectComponent.storyName = "A custom Multi Select component";
 
 export const DisabledMultiSelectField = () => (
   <MultiSelect
@@ -56,9 +54,7 @@ export const InitialIsOpenWhenInitialized = () => (
   />
 );
 
-InitialIsOpenWhenInitialized.story = {
-  name: "Initial is open when initialized",
-};
+InitialIsOpenWhenInitialized.storyName = "Initial is open when initialized";
 
 export const MultiSelectWithExtraStyleProps = () => (
   <MultiSelect
@@ -77,6 +73,4 @@ export const MultiSelectWithExtraStyleProps = () => (
   />
 );
 
-MultiSelectWithExtraStyleProps.story = {
-  name: "Multi Select with extra style props",
-};
+MultiSelectWithExtraStyleProps.storyName = "Multi Select with extra style props";

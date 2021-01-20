@@ -18,9 +18,7 @@ export const MultipleTabsWithOneSelected = () => (
   </TabNavigation>
 );
 
-MultipleTabsWithOneSelected.story = {
-  name: "Multiple tabs with one selected",
-};
+MultipleTabsWithOneSelected.storyName = "Multiple tabs with one selected";
 
 export const TabWithChildren = () => (
   <TabNavigation>
@@ -37,9 +35,7 @@ export const TabWithChildren = () => (
   </TabNavigation>
 );
 
-TabWithChildren.story = {
-  name: "Tab with children",
-};
+TabWithChildren.storyName = "Tab with children";
 
 export const MultipleTabNavigationComponentsStacked = () => (
   <React.Fragment>
@@ -78,6 +74,4 @@ export const MultipleTabNavigationComponentsStacked = () => (
   </React.Fragment>
 );
 
-MultipleTabNavigationComponentsStacked.story = {
-  name: "Multiple TabNavigation components stacked",
-};
+MultipleTabNavigationComponentsStacked.storyName = "Multiple TabNavigation components stacked";

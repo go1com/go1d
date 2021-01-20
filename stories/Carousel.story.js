@@ -89,9 +89,7 @@ export const FullWidthOnes = () => (
   </Carousel>
 );
 
-FullWidthOnes.story = {
-  name: "Full Width ones",
-};
+FullWidthOnes.storyName = "Full Width ones";
 
 export const MoreProps = () => (
   <Carousel
@@ -273,6 +271,4 @@ export const WithTitle = () => {
   );
 };
 
-WithTitle.story = {
-  name: "With title",
-};
+WithTitle.storyName = "With title";

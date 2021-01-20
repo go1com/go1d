@@ -23,6 +23,4 @@ export const RichTextInputInField = () => (
   </Form>
 );
 
-RichTextInputInField.story = {
-  name: "Rich Text Input in Field",
-};
+RichTextInputInField.storyName = "Rich Text Input in Field";
