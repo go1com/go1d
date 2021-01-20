@@ -6,9 +6,8 @@ import {
   SelectDropdown,
   View,
   ButtonFilled,
-  Icon,
-  IconChevronDown
 } from "../src";
+import { IconChevronDown } from "../src/components/Icons";
 
 export default {
   title: "Original Go1d/InputGroup",
