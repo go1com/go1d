@@ -1,8 +1,10 @@
 import React from "react";
-import { Tooltip, Text, Icon, ButtonFilled } from "../src";
+import { Tooltip, Text, ButtonFilled } from "../src";
+import { IconEye } from "../src/components/Icons";
 
 export default {
   title: "Original Go1d/Tooltip",
+  component: Tooltip,
 };
 
 export const BasicUsage = () => (
@@ -16,7 +18,7 @@ export const ClickMode = () => (
     <Tooltip
       tip={
         <Text color="">
-          <EyeIcon display="inline" /> See You
+          <IconEye display="inline" /> See You
         </Text>
       }
       mode="click"
