@@ -2,13 +2,13 @@ import React from "react";
 import {
   OverviewHero,
   View,
-  Icon,
   Link,
   Text,
   Avatar,
   OverviewCtaCard,
   ButtonFilled,
 } from "../src";
+import { IconVideo, IconCourse } from "../src/components/Icons";
 
 export default {
   title: "Original Go1d/OverviewHero",
@@ -140,7 +140,7 @@ export const KitchenSink = () => (
         price="99"
         subtitle={
           <View flexDirection="row" alignItems="center">
-            <Icon name="Course" size={1} marginRight={3} />
+            <IconCourse size={1} marginRight={3} />
             <Text fontSize={1} color="subtle">
               COURSE
             </Text>
