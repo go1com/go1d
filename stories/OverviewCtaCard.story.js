@@ -4,9 +4,9 @@ import {
   View,
   ButtonFilled,
   Avatar,
-  Icon,
   Text,
 } from "../src";
+import { IconCourse } from "../src/components/Icons";
 
 export default {
   title: "Original Go1d/OverviewCtaCard",
@@ -95,7 +95,7 @@ export const OverviewCtaCardWithPropsAndCtaButton = () => (
       price="99"
       subtitle={
         <View flexDirection="row" alignItems="center">
-          <Icon name="Course" size={1} marginRight={3} />
+          <IconCourse size={1} marginRight={3} />
           <Text fontSize={1} color="subtle">
             COURSE
           </Text>
