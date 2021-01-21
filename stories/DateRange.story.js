@@ -14,6 +14,9 @@ export default {
     // 2. The Picker displays the current month, which can't be influenced in the current implementation
     happo: false, // this will disable all `Original Go1d/DateRange` stories
   },
+  decorators: [
+    (Story) => <div style={{ minHeight: '380px' }}><Story/></div>
+  ],
 };
 
 export const BasicDatepicker = args => <DateRange />;

@@ -8,6 +8,9 @@ export default {
   title: "Original Go1d/DatePicker",
   argTypes: argTypes,
   component: DatePicker,
+  decorators: [
+    (Story) => <div style={{ minHeight: '380px' }}><Story/></div>
+  ],
 };
 
 export const BasicDatepicker = args => (
