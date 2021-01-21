@@ -46,8 +46,9 @@ export const ExperimentalAutoRowHeight = args => (
 
 ExperimentalAutoRowHeight.storyName = "Experimental: Auto Row Height";
 
-export const ScrollButtonWithFooter = () => (
+export const ScrollButtonWithFooter = args => (
   <DataTable
+    {...args}
     rowHeight={55}
     rowRenderer={({ index, isScrolling, isVisible, key, parent, style }) => (
       <TR key={key} style={style}>
