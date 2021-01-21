@@ -31,6 +31,7 @@ export interface DataTableProps extends ViewProps {
    * A header row. Rendered inside a TR component. This is ignored if you supply a columns array.
    */
   header?: React.ReactNodeArray;
+  footer?: React.ReactNode;
   /** A string to display the total number of results */
   total?: React.ReactNode;
   /** Used to scroll directly to a row. When using autoRowHeight, the height wont be populated yet, so it is important to also specify a rowHeight */
@@ -248,6 +249,7 @@ class DataTable extends React.Component<DataTableProps, any> {
       rowCount,
       columns,
       header,
+      footer,
       total,
       css,
       emptyState,
@@ -309,6 +311,7 @@ class DataTable extends React.Component<DataTableProps, any> {
             </View>
             <View
               display="block"
+              position="relative"
               css={[
                 {
                   ".ReactVirtualized__Grid": {
@@ -374,6 +377,18 @@ class DataTable extends React.Component<DataTableProps, any> {
                             rowCount <= 0 &&
                             emptyState}
                         </View>
+                        {footer && (
+                          <View
+                            position="absolute"
+                            display="block"
+                            width={
+                              hideScrollButton ? "100%" : "calc(100% - 48px)"
+                            }
+                            css={{ bottom: 0 }}
+                          >
+                            {footer}
+                          </View>
+                        )}
                         {!hideScrollButton && scrollTop > 0 && (
                           <ButtonFilled
                             onClick={this.scrollToTop}
