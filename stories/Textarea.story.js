@@ -1,5 +1,13 @@
-import React from 'react'; 
-import {storiesOf} from '@storybook/react'; 
-import {TextArea} from '../src'; 
-storiesOf("Textarea", module) 
-.add('Label', () => <TextArea id="Testing" />) 
+import React from "react";
+import { TextArea } from "../src";
+import hideInheritedProps from '../.storybook/hideInheritedProps.js'
+
+let argTypes = hideInheritedProps({}, TextArea);
+
+export default {
+  title: "Original Go1d/TextArea",
+  argTypes: argTypes,
+  component: TextArea,
+};
+
+export const Label = args => <TextArea {...args} id="Testing" />;

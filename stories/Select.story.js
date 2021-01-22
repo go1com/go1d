@@ -1,74 +1,122 @@
-import React from 'react';
-import { storiesOf } from '@storybook/react';
-import { Select } from '../src';
-storiesOf("Select", module)
-  .add('A custom select component', () => <Select options={[
-    { "value": "chocolate", label: "Chocolate" },
-    { "value": "stawberry", label: "Strawberry" },
-    { "value": "vanilla", label: "Vanilla" }
-  ]} />)
-  .add('Disabled Select Field', () => <Select options={[
-    { "value": "chocolate", label: "Chocolate" },
-    { "value": "stawberry", label: "Strawberry" },
-    { "value": "vanilla", label: "Vanilla" }
-  ]} disabled={true} />)
-  .add('Clearable Select Field', () => <Select options={[
-    { "value": "chocolate", label: "Chocolate" },
-    { "value": "stawberry", label: "Strawberry" },
-    { "value": "vanilla", label: "Vanilla" }
-  ]} clearable={true} />)
-  .add('Searchable Select Field', () => <Select options={[
-    { "value": "chocolate", label: "Chocolate" },
-    { "value": "stawberry", label: "Strawberry" },
-    { "value": "vanilla", label: "Vanilla" }
-  ]} searchable={true} />)
-  .add('Select filled with optgroups', () => <Select options={[
-    {
-      label: "Icecream",
-      optgroup: true,
-      values: [
-        { "value": "chocolate", label: "Chocolate" },
-        { "value": "stawberry", label: "Strawberry" },
-        { "value": "vanilla", label: "Vanilla" }
-      ]
-    },
-    {
-      label: "Cheese",
-      optgroup: true,
-      values: [
-        { "value": "brie", label: "Brie" },
-        { "value": "cheddar", label: "Cheddar" },
-        { "value": "gorgonzola", label: "Gorgonzola" }
-      ]
-    }
-  ]} />)
-  .add('Select filled with label-less optgroups', () => <Select options={[
-    {
-      label: "",
-      optgroup: true,
-      values: [
-        { "value": "chocolate", label: "Chocolate" },
-        { "value": "stawberry", label: "Strawberry" },
-        { "value": "vanilla", label: "Vanilla" }
-      ]
-    },
-    {
-      label: "",
-      optgroup: true,
-      values: [
-        { "value": "brie", label: "Brie" },
-        { "value": "cheddar", label: "Cheddar" },
-        { "value": "gorgonzola", label: "Gorgonzola" }
-      ]
-    }
-  ]} />)
-  .add('Controlled Select Value', () => (
-    <Select
-      value={null}
-      options={[
-        { "value": "chocolate", label: "Chocolate" },
-        { "value": "stawberry", label: "Strawberry" },
-        { "value": "vanilla", label: "Vanilla" }
-      ]}
-    />
-  )); 
+import React from "react";
+import { Select } from "../src";
+import hideInheritedProps from '../.storybook/hideInheritedProps.js'
+
+let argTypes = hideInheritedProps({}, Select);
+
+export default {
+  title: "Original Go1d/Select",
+  argTypes: argTypes,
+  component: Select,
+};
+
+export const ACustomSelectComponent = args => (
+  <Select
+    {...args}
+    options={[
+      { value: "chocolate", label: "Chocolate" },
+      { value: "stawberry", label: "Strawberry" },
+      { value: "vanilla", label: "Vanilla" },
+    ]}
+  />
+);
+
+ACustomSelectComponent.storyName = "A custom select component";
+
+export const DisabledSelectField = args => (
+  <Select
+    options={[
+      { value: "chocolate", label: "Chocolate" },
+      { value: "stawberry", label: "Strawberry" },
+      { value: "vanilla", label: "Vanilla" },
+    ]}
+    disabled={true}
+  />
+);
+
+export const ClearableSelectField = args => (
+  <Select
+    options={[
+      { value: "chocolate", label: "Chocolate" },
+      { value: "stawberry", label: "Strawberry" },
+      { value: "vanilla", label: "Vanilla" },
+    ]}
+    clearable={true}
+  />
+);
+
+export const SearchableSelectField = args => (
+  <Select
+    options={[
+      { value: "chocolate", label: "Chocolate" },
+      { value: "stawberry", label: "Strawberry" },
+      { value: "vanilla", label: "Vanilla" },
+    ]}
+    searchable={true}
+  />
+);
+
+export const SelectFilledWithOptgroups = args => (
+  <Select
+    options={[
+      {
+        label: "Icecream",
+        optgroup: true,
+        values: [
+          { value: "chocolate", label: "Chocolate" },
+          { value: "stawberry", label: "Strawberry" },
+          { value: "vanilla", label: "Vanilla" },
+        ],
+      },
+      {
+        label: "Cheese",
+        optgroup: true,
+        values: [
+          { value: "brie", label: "Brie" },
+          { value: "cheddar", label: "Cheddar" },
+          { value: "gorgonzola", label: "Gorgonzola" },
+        ],
+      },
+    ]}
+  />
+);
+
+SelectFilledWithOptgroups.storyName = "Select filled with optgroups";
+
+export const SelectFilledWithLabelLessOptgroups = args => (
+  <Select
+    options={[
+      {
+        label: "",
+        optgroup: true,
+        values: [
+          { value: "chocolate", label: "Chocolate" },
+          { value: "stawberry", label: "Strawberry" },
+          { value: "vanilla", label: "Vanilla" },
+        ],
+      },
+      {
+        label: "",
+        optgroup: true,
+        values: [
+          { value: "brie", label: "Brie" },
+          { value: "cheddar", label: "Cheddar" },
+          { value: "gorgonzola", label: "Gorgonzola" },
+        ],
+      },
+    ]}
+  />
+);
+
+SelectFilledWithLabelLessOptgroups.storyName = "Select filled with label-less optgroups";
+
+export const ControlledSelectValue = args => (
+  <Select
+    value={null}
+    options={[
+      { value: "chocolate", label: "Chocolate" },
+      { value: "stawberry", label: "Strawberry" },
+      { value: "vanilla", label: "Vanilla" },
+    ]}
+  />
+);

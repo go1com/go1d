@@ -1,22 +1,85 @@
-import React from 'react';
-import { storiesOf } from '@storybook/react';
-import { OptionList, Option } from '../src';
-storiesOf("OptionList", module)
-  .add('Base', () => <OptionList>
+import React from "react";
+import { OptionList, Option } from "../src";
+import hideInheritedProps from '../.storybook/hideInheritedProps.js'
+
+let argTypes = hideInheritedProps({}, OptionList);
+
+export default {
+  title: "Original Go1d/OptionList",
+  argTypes: argTypes,
+  component: OptionList,
+  subcomponents: { Option },
+};
+
+export const Base = args => (
+  <OptionList {...args}>
     <Option title="This is a test title" />
     <Option title="This is a test title" />
     <Option title="This is a test title" />
-  </OptionList>)
-  .add('With options', () => <OptionList>
-    <Option title="This is a test title" meta="Test meta" spotIcon="SafetyAndCompliance" actionIcon="ChevronRight" checked={true} />
-    <Option title="This is a test title" spotIcon="SafetyAndCompliance" actionIcon="ChevronRight" checked={true} disabled={true} />
+  </OptionList>
+);
+
+export const WithOptions = args => (
+  <OptionList>
+    <Option
+      title="This is a test title"
+      meta="Test meta"
+      spotIcon="SafetyAndCompliance"
+      actionIcon="ChevronRight"
+      checked={true}
+    />
+    <Option
+      title="This is a test title"
+      spotIcon="SafetyAndCompliance"
+      actionIcon="ChevronRight"
+      checked={true}
+      disabled={true}
+    />
     <Option title="This is a test title" actionIcon="ChevronRight" />
     <Option title="This is a test title" lines={1} />
-  </OptionList>)
-  .add('Top level topics', () => <OptionList>
-    <Option title="Safety and Compliance" meta="Test meta" spotIcon="SafetyAndCompliance" actionIcon="ChevronRight" checked={true} />
-    <Option title="Technology Skills" meta="Test meta" spotIcon="TechnologySkills" actionIcon="ChevronRight" checked={true} />
-    <Option title="Persona lDevelopment" meta="Test meta" spotIcon="PersonalDevelopment" actionIcon="ChevronRight" checked={true} />
-    <Option title="Business Skills" meta="Test meta" spotIcon="BusinessSkills" actionIcon="ChevronRight" checked={true} />
-    <Option title="Sector Specific" meta="Test meta" spotIcon="SectorSpecific" actionIcon="ChevronRight" checked={true} />
-  </OptionList>)
+  </OptionList>
+);
+
+WithOptions.storyName = "With options";
+
+export const TopLevelTopics = args => (
+  <OptionList>
+    <Option
+      title="Safety and Compliance"
+      meta="Test meta"
+      spotIcon="SafetyAndCompliance"
+      actionIcon="ChevronRight"
+      checked={true}
+    />
+    <Option
+      title="Technology Skills"
+      meta="Test meta"
+      spotIcon="TechnologySkills"
+      actionIcon="ChevronRight"
+      checked={true}
+    />
+    <Option
+      title="Persona lDevelopment"
+      meta="Test meta"
+      spotIcon="PersonalDevelopment"
+      actionIcon="ChevronRight"
+      checked={true}
+    />
+    <Option
+      title="Business Skills"
+      meta="Test meta"
+      spotIcon="BusinessSkills"
+      actionIcon="ChevronRight"
+      checked={true}
+    />
+    <Option
+      title="Sector Specific"
+      meta="Test meta"
+      spotIcon="SectorSpecific"
+      actionIcon="ChevronRight"
+      checked={true}
+    />
+  </OptionList>
+);
+
+TopLevelTopics.storyName = "Top level topics";

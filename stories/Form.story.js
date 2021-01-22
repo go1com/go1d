@@ -1,22 +1,47 @@
-import React from 'react';
-import {storiesOf} from '@storybook/react';
-import {TextInput, Form,Field,SubmitButton} from '../src';
-storiesOf("Form", module)
-.add('Example Form with field', () => <Form initialValues={{ portalName: "A portal" }} onSubmit={(values, actions) => console.log(values, actions)}>
+import React from "react";
+import { TextInput, Form, Field, SubmitButton } from "../src";
+import hideInheritedProps from '../.storybook/hideInheritedProps.js'
+
+let argTypes = hideInheritedProps({}, Form);
+
+export default {
+  title: "Original Go1d/Form",
+  argTypes: argTypes,
+  component: Form,
+};
+
+export const ExampleFormWithField = args => (
+  <Form
+    {...args}
+    initialValues={{ portalName: "A portal" }}
+    onSubmit={(values, actions) => console.log(values, actions)}
+  >
     <Field
-    component={TextInput}
-    name="portalName"
-    label="Portal name"
-    description="The name displayed across the site"
+      component={TextInput}
+      name="portalName"
+      label="Portal name"
+      description="The name displayed across the site"
     />
     <SubmitButton>Submit</SubmitButton>
-</Form>)
-.add('Example Disabled Form with field', () => <Form initialValues={{ portalName: "A portal" }} disabled={true} onSubmit={(values, actions) => console.log(values, actions)}>
+  </Form>
+);
+
+ExampleFormWithField.storyName = "Example Form with field";
+
+export const ExampleDisabledFormWithField = args => (
+  <Form
+    initialValues={{ portalName: "A portal" }}
+    disabled={true}
+    onSubmit={(values, actions) => console.log(values, actions)}
+  >
     <Field
-    component={TextInput}
-    name="portalName"
-    label="Portal name"
-    description="The name displayed across the site"
+      component={TextInput}
+      name="portalName"
+      label="Portal name"
+      description="The name displayed across the site"
     />
     <SubmitButton>Create</SubmitButton>
-</Form>)
+  </Form>
+);
+
+ExampleDisabledFormWithField.storyName = "Example Disabled Form with field";

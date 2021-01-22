@@ -1,71 +1,113 @@
-import React from 'react';
-import { storiesOf } from '@storybook/react';
-import { TextInput, ButtonMinimal } from '../src';
-import { IconCross, IconSearch } from '../src/components/Icons';
+import React from "react";
+import { TextInput, ButtonMinimal } from "../src";
+import hideInheritedProps from '../.storybook/hideInheritedProps.js'
+import { IconCross, IconSearch } from "../src/components/Icons";
 
-storiesOf("TextInput", module)
-  .add('Basic TextInput', () => <TextInput
-    id="blank"
-    placeholder="Blank"
-  />)
-  .add('TextInput with Small Size', () => <TextInput
-    id="Small"
-    size="sm"
-    value="Small"
-  />)
-  .add('TextInput with Small Size and floating label', () => <TextInput
+let argTypes = hideInheritedProps({}, TextInput);
+
+export default {
+  title: "Original Go1d/TextInput",
+  argTypes: argTypes,
+  component: TextInput,
+};
+
+export const BasicTextInput = args => (
+  <TextInput {...args} id="blank" placeholder="Blank" />
+);
+
+BasicTextInput.storyName = "Basic TextInput";
+
+export const TextInputWithSmallSize = args => (
+  <TextInput id="Small" size="sm" value="Small" />
+);
+
+TextInputWithSmallSize.storyName = "TextInput with Small Size";
+
+export const TextInputWithSmallSizeAndFloatingLabel = args => (
+  <TextInput
     id="Small"
     size="sm"
     floating={true}
     label="Small"
     value="Small Size"
-  />)
-  .add('TextInput Medium Size', () => <TextInput
-    id="Medium"
-    size="md"
-    value="Medium"
-  />)
-  .add('TextInput with Medium Size and floating label', () => <TextInput
+  />
+);
+
+TextInputWithSmallSizeAndFloatingLabel.storyName = "TextInput with Small Size and floating label";
+
+export const TextInputMediumSize = args => (
+  <TextInput id="Medium" size="md" value="Medium" />
+);
+
+TextInputMediumSize.storyName = "TextInput Medium Size";
+
+export const TextInputWithMediumSizeAndFloatingLabel = args => (
+  <TextInput
     id="Medium"
     size="md"
     floating={true}
     placeholder="Medium"
     value="Medium Size"
-  />)
-  .add('TextInput Large Size', () => <TextInput
-    id="Large"
-    size="lg"
-    value="Large"
-  />)
-  .add('TextInput with Large Size and floating label', () => <TextInput
+  />
+);
+
+TextInputWithMediumSizeAndFloatingLabel.storyName = "TextInput with Medium Size and floating label";
+
+export const TextInputLargeSize = args => (
+  <TextInput id="Large" size="lg" value="Large" />
+);
+
+TextInputLargeSize.storyName = "TextInput Large Size";
+
+export const TextInputWithLargeSizeAndFloatingLabel = args => (
+  <TextInput
     id="Large"
     size="lg"
     floating={true}
     label="Large"
     value="Large Size"
-  />)
-  .add('TextInput with Icon', () => <TextInput
-    id="search"
-    icon={IconSearch}
-    placeholder="Type here to Search"
-  />)
-  .add('TextInput with Icon and floating label', () => <TextInput
+  />
+);
+
+TextInputWithLargeSizeAndFloatingLabel.storyName = "TextInput with Large Size and floating label";
+
+export const TextInputWithIcon = args => (
+  <TextInput id="search" icon={IconSearch} placeholder="Type here to Search" />
+);
+
+TextInputWithIcon.storyName = "TextInput with Icon";
+
+export const TextInputWithIconAndFloatingLabel = args => (
+  <TextInput
     id="search"
     icon={IconSearch}
     floating={true}
     label="Medium"
     value="Medium Size"
-  />)
-  .add('TextInput with RightNode', () => <TextInput
+  />
+);
+
+TextInputWithIconAndFloatingLabel.storyName = "TextInput with Icon and floating label";
+
+export const TextInputWithRightNode = args => (
+  <TextInput
     id="clear"
     value="Type here to Search"
     suffixNode={<ButtonMinimal icon={IconCross} color="accent" />}
-  />)
-  .add('TextInput with RightNode and floating label', () => <TextInput
+  />
+);
+
+TextInputWithRightNode.storyName = "TextInput with RightNode";
+
+export const TextInputWithRightNodeAndFloatingLabel = args => (
+  <TextInput
     id="clear"
     size="lg"
     floating={true}
     label="Large"
     value="Large Size"
     suffixNode={<ButtonMinimal size="lg" icon={IconCross} color="accent" />}
-  />)
+  />
+);
+
+TextInputWithRightNodeAndFloatingLabel.storyName = "TextInput with RightNode and floating label";

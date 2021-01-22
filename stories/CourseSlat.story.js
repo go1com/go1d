@@ -1,10 +1,20 @@
-import React from 'react';
-import { storiesOf } from '@storybook/react';
-import { CourseSlat, View, Text } from '../src';
+import React from "react";
+import { CourseSlat, View, Text } from "../src";
+import hideInheritedProps from '../.storybook/hideInheritedProps.js'
 import IconImport from "../src/components/Icons/Import";
 
-storiesOf("CourseSlat", module)
-  .add('With avatar', () => <CourseSlat
+let argTypes = hideInheritedProps({}, CourseSlat);
+
+export default {
+  title: "Original Go1d/CourseSlat",
+  argTypes: argTypes,
+  component: CourseSlat,
+  subcomponents: { View, Text },
+};
+
+export const WithAvatar = args => (
+  <CourseSlat
+    {...args}
     courseImage="https://images.pexels.com/photos/459225/pexels-photo-459225.jpeg?h=400"
     title="Master sourdough in a week"
     description="Despite general improvements in workplace health and safety over the past the risk of sourdough related injuries are still insurmountable for most"
@@ -13,8 +23,14 @@ storiesOf("CourseSlat", module)
     duration="60"
     type="Course"
     typeIcon="Course"
-  />)
-  .add('With Import action', () => <CourseSlat
+  />
+);
+
+WithAvatar.storyName = "With avatar";
+
+export const WithImportAction = args => (
+  <CourseSlat
+    {...args}
     courseImage="https://images.pexels.com/photos/257360/pexels-photo-257360.jpeg?h=400"
     title="Master sourdough in a week"
     description="Despite general improvements in workplace health and safety over the past the risk of sourdough related injuries are still insurmountable for most"
@@ -28,8 +44,14 @@ storiesOf("CourseSlat", module)
     )}
     type="Course"
     typeIcon="Course"
-  />)
-  .add('With enrollment status', () => <CourseSlat
+  />
+);
+
+WithImportAction.storyName = "With Import action";
+
+export const WithEnrollmentStatus = args => (
+  <CourseSlat
+    {...args}
     courseImage="https://images.pexels.com/photos/257360/pexels-photo-257360.jpeg?h=400"
     title="Master sourdough in a week"
     description="Despite general improvements in workplace health and safety over the past the risk of sourdough related injuries are still insurmountable for most"
@@ -46,8 +68,14 @@ storiesOf("CourseSlat", module)
     enrollment={{
       status: "completed",
     }}
-  />)
-  .add('With price and duration', () => <CourseSlat
+  />
+);
+
+WithEnrollmentStatus.storyName = "With enrollment status";
+
+export const WithPriceAndDuration = args => (
+  <CourseSlat
+    {...args}
     courseImage="https://images.pexels.com/photos/814499/pexels-photo-814499.jpeg?h=400"
     title="Master sourdough in a week"
     description="Despite general improvements in workplace health and safety over the past the risk of sourdough related injuries are still insurmountable for most"
@@ -57,7 +85,9 @@ storiesOf("CourseSlat", module)
     currency="INR"
     type="Course"
     typeIcon="Course"
-  />)
-  .add('Skeleton', () => <CourseSlat
-    skeleton={true}
-  />)
+  />
+);
+
+WithPriceAndDuration.storyName = "With price and duration";
+
+export const Skeleton = args => <CourseSlat {...args} skeleton={true} />;

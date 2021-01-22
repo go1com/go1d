@@ -1,18 +1,45 @@
-import React from 'react'; 
-import {storiesOf} from '@storybook/react'; 
-import {Link,Text,Provider} from '../src'; 
-storiesOf("Link", module) 
-.add('Default link', () => <Link href="#testing">
-  Link text
-</Link>) 
-.add('Link with Text inside', () => <Link href="#testing">
-  <Text>Hello world</Text>
-</Link>) 
-.add('Link with Text with different pseudo element focus color & active color', () => <Link href="#testing" hoverFocusColor="success" activeColor="warning">
-  <Text>Hello world</Text>
-</Link>) 
-.add('Overriden link', () => <Provider linkComponent={({ href, children}) => <a href={href + "-custom"}>{children} + {href}</a>}>
+import React from "react";
+import { Link, Text, Provider } from "../src";
+import hideInheritedProps from '../.storybook/hideInheritedProps.js'
+
+let argTypes = hideInheritedProps({}, Link);
+
+export default {
+  title: "Original Go1d/Link",
+  argTypes: argTypes,
+  component: Link,
+};
+
+export const DefaultLink = args => <Link href="#testing">Link text</Link>;
+
+DefaultLink.storyName = "Default link";
+
+export const LinkWithTextInside = args => (
   <Link href="#testing">
-    Link text
+    <Text>Hello world</Text>
   </Link>
-</Provider>) 
+);
+
+LinkWithTextInside.storyName = "Link with Text inside";
+
+export const LinkWithTextWithDifferentPseudoElementFocusColorActiveColor = args => (
+  <Link href="#testing" hoverFocusColor="success" activeColor="warning">
+    <Text>Hello world</Text>
+  </Link>
+);
+
+LinkWithTextWithDifferentPseudoElementFocusColorActiveColor.storyName = "Link with Text with different pseudo element focus color & active color";
+
+export const OverridenLink = args => (
+  <Provider
+    linkComponent={({ href, children }) => (
+      <a href={href + "-custom"}>
+        {children} + {href}
+      </a>
+    )}
+  >
+    <Link href="#testing">Link text</Link>
+  </Provider>
+);
+
+OverridenLink.storyName = "Overriden link";

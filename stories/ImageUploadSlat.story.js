@@ -1,18 +1,24 @@
-import React from 'react'; 
-import { storiesOf } from '@storybook/react'; 
-import { ImageUploadSlat, Form, Field } from '../src'; 
+import React from "react";
+import { ImageUploadSlat, Form, Field } from "../src";
+import hideInheritedProps from '../.storybook/hideInheritedProps.js'
 
-storiesOf("ImageUploadSlat", module) 
-  .add('Basic usage', () => (
-    <Form
-      enableReinitialize
-      initialValues={{
-        uploader: '',
-      }}
-    >
-      <Field
-        name="uploader"
-        component={ImageUploadSlat}
-      />
-    </Form>
-  )) 
+let argTypes = hideInheritedProps({}, ImageUploadSlat);
+
+export default {
+  title: "Original Go1d/ImageUploadSlat",
+  argTypes: argTypes,
+  component: ImageUploadSlat,
+};
+
+export const BasicUsage = args => (
+  <Form
+    enableReinitialize
+    initialValues={{
+      uploader: "",
+    }}
+  >
+    <Field name="uploader" component={ImageUploadSlat} />
+  </Form>
+);
+
+BasicUsage.storyName = "Basic usage";

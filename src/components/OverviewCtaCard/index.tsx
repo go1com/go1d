@@ -510,7 +510,6 @@ class OverviewCtaCard extends React.Component<OverviewCtaCardProps, any> {
       <View
         flexDirection="row"
         alignItems="baseline"
-        s={true}
         marginTop={4}
         css={{
           [MobileDisplayBreak]: {

@@ -1,14 +1,32 @@
-import React from 'react'; 
-import {storiesOf} from '@storybook/react'; 
-import {PageTitle,PageBody,Text,ButtonFilled} from '../src'; 
-storiesOf("PageTitle", module) 
-.add('Lightmode page title', () => <PageBody>
-  <PageTitle title="The Page Title" />
-  <Text>This is standard body content text.</Text>
-</PageBody>) 
-.add('Lightmode page title with children', () => <PageBody>
-  <PageTitle title="The Page Title">
-    <ButtonFilled>I'm a button</ButtonFilled>
-  </PageTitle>
-  <Text>This is standard body content text.</Text>
-</PageBody>) 
+import React from "react";
+import { PageTitle, PageBody, Text, ButtonFilled } from "../src";
+import hideInheritedProps from '../.storybook/hideInheritedProps.js'
+
+let argTypes = hideInheritedProps({}, PageTitle);
+
+export default {
+  title: "Original Go1d/PageTitle",
+  argTypes: argTypes,
+  component: PageTitle,
+  subcomponents: { PageBody, ButtonFilled, Text },
+};
+
+export const LightmodePageTitle = args => (
+  <PageBody>
+    <PageTitle {...args} title="The Page Title" />
+    <Text>This is standard body content text.</Text>
+  </PageBody>
+);
+
+LightmodePageTitle.storyName = "Lightmode page title";
+
+export const LightmodePageTitleWithChildren = args => (
+  <PageBody>
+    <PageTitle {...args} title="The Page Title">
+      <ButtonFilled>I'm a button</ButtonFilled>
+    </PageTitle>
+    <Text>This is standard body content text.</Text>
+  </PageBody>
+);
+
+LightmodePageTitleWithChildren.storyName = "Lightmode page title with children";

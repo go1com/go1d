@@ -1,55 +1,81 @@
-import React from 'react'; 
-import {storiesOf} from '@storybook/react'; 
-import {TabNavigation,Tab,Pill} from '../src'; 
-storiesOf("TabNavigation", module) 
-.add('Multiple tabs with one selected', () => <TabNavigation>
-  <Tab href="/overview" text="Overview">
+import React from "react";
+import { TabNavigation, Tab, Pill } from "../src";
+import hideInheritedProps from '../.storybook/hideInheritedProps.js'
+
+let argTypes = hideInheritedProps({}, TabNavigation);
+
+export default {
+  title: "Original Go1d/TabNavigation",
+  argTypes: argTypes,
+  component: TabNavigation,
+};
+
+export const MultipleTabsWithOneSelected = args => (
+  <TabNavigation {...args}>
+    <Tab href="/overview" text="Overview">
       Overview
-  </Tab>
-  <Tab href="/content" isSelected={true}>
-    Content
-  </Tab>
-  <Tab href="/import">
-    Import
-  </Tab>
-</TabNavigation>) 
-.add('Tab with children', () => <TabNavigation>
-  <Tab href="/overview" text="Overview">
+    </Tab>
+    <Tab href="/content" isSelected={true}>
+      Content
+    </Tab>
+    <Tab href="/import">Import</Tab>
+  </TabNavigation>
+);
+
+MultipleTabsWithOneSelected.storyName = "Multiple tabs with one selected";
+
+export const TabWithChildren = args => (
+  <TabNavigation>
+    <Tab href="/overview" text="Overview">
       Overview
-  </Tab>
-  <Tab href="/content" isSelected={true}>
-    Content
-    <Pill color="note" marginLeft={3}>26</Pill>
-  </Tab>
-  <Tab href="/import">
-    Import
-  </Tab>
-</TabNavigation>) 
-.add('Multiple TabNavigation components stacked', () => <React.Fragment>
+    </Tab>
+    <Tab href="/content" isSelected={true}>
+      Content
+      <Pill color="note" marginLeft={3}>
+        26
+      </Pill>
+    </Tab>
+    <Tab href="/import">Import</Tab>
+  </TabNavigation>
+);
+
+TabWithChildren.storyName = "Tab with children";
+
+export const MultipleTabNavigationComponentsStacked = args => (
+  <React.Fragment>
     <TabNavigation>
       <Tab href="/overview" text="Overview">
-          Overview
+        Overview
       </Tab>
       <Tab href="/content" isSelected={true}>
         Content
-        <Pill color="note" marginLeft={3}>26</Pill>
+        <Pill color="note" marginLeft={3}>
+          26
+        </Pill>
       </Tab>
-      <Tab href="/import">
-        Import
-      </Tab>
+      <Tab href="/import">Import</Tab>
     </TabNavigation>
     <TabNavigation>
       <Tab href="/content">
         Content
-        <Pill color="note" marginLeft={3}>26</Pill>
+        <Pill color="note" marginLeft={3}>
+          26
+        </Pill>
       </Tab>
       <Tab href="/reject" isSelected={true}>
         Rejected
-        <Pill color="danger" marginLeft={3}>11</Pill>
+        <Pill color="danger" marginLeft={3}>
+          11
+        </Pill>
       </Tab>
       <Tab href="/approved">
         Approved
-        <Pill color="success" marginLeft={2}>0</Pill>
+        <Pill color="success" marginLeft={2}>
+          0
+        </Pill>
       </Tab>
     </TabNavigation>
-</React.Fragment>) 
+  </React.Fragment>
+);
+
+MultipleTabNavigationComponentsStacked.storyName = "Multiple TabNavigation components stacked";

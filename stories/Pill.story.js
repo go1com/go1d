@@ -1,10 +1,21 @@
-import React from 'react'; 
-import {storiesOf} from '@storybook/react'; 
-import {Pill} from '../src'; 
-storiesOf("Pill", module) 
-.add('Default pill', () => <Pill>Default</Pill>) 
-.add('Accent pill', () => <Pill color='accent'>Accent</Pill>) 
-.add('Success pill', () => <Pill color='success'>Success</Pill>) 
-.add('Note pill', () => <Pill color='note'>Note</Pill>) 
-.add('Warning pill', () => <Pill color='warning'>Warning</Pill>) 
-.add('Danger pill', () => <Pill color='danger'>Danger</Pill>) 
+import React from 'react';
+import { Pill, View, Text } from '../src';
+import hideInheritedProps from '../.storybook/hideInheritedProps.js'
+
+let argTypes = hideInheritedProps({}, Pill);
+
+export default {
+  title: 'Original Go1d/Pill',
+  component: Pill,
+  subcomponents: { View, Text },
+  parameters: {},
+  argTypes: argTypes
+};
+
+export const Default = args => <Pill {...args}>Default</Pill>;
+export const Accent = args => <Pill {...args} color='accent'>Accent</Pill>;
+export const Success = args => <Pill {...args} color='success'>Success</Pill>;
+export const Note = args => <Pill {...args} color='note'>Note</Pill>;
+export const Warning = args => <Pill {...args} color='warning'>Warning</Pill>;
+export const Danger = args => <Pill {...args} color='danger'>Danger</Pill>;
+

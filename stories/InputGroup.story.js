@@ -1,8 +1,24 @@
-import React from 'react';
-import { storiesOf } from '@storybook/react';
-import { InputGroup, InputTextAffix, TextInput, SelectDropdown, View, ButtonFilled, Icon } from '../src';
-storiesOf("InputGroup", module)
-  .add('Base', () => <InputGroup>
+import React from "react";
+import {
+  InputGroup,
+  InputTextAffix,
+  TextInput,
+  SelectDropdown,
+  View,
+  ButtonFilled,
+} from "../src";
+import { IconChevronDown } from "../src/components/Icons";
+import hideInheritedProps from '../.storybook/hideInheritedProps.js'
+
+let argTypes = hideInheritedProps({}, InputGroup);
+
+export default {
+  title: "Original Go1d/InputGroup",
+  argTypes: argTypes,
+};
+
+export const Base = args => (
+  <InputGroup>
     <InputTextAffix text="www." />
     <TextInput
       borderRadius={0}
@@ -12,16 +28,19 @@ storiesOf("InputGroup", module)
       }}
     />
     <InputTextAffix text=".mygo1.com" />
-  </InputGroup>)
-  .add('With SelectDropdown and TextInput', () => <InputGroup>
+  </InputGroup>
+);
+
+export const WithSelectDropdownAndTextInput = args => (
+  <InputGroup>
     <SelectDropdown
       options={[
-        { "value": "chocolate", label: "Chocolate" },
-        { "value": "stawberry", label: "Strawberry" },
-        { "value": "vanilla", label: "Vanilla" }
+        { value: "chocolate", label: "Chocolate" },
+        { value: "stawberry", label: "Strawberry" },
+        { value: "vanilla", label: "Vanilla" },
       ]}
       optionRenderer={({ value, label }) => <View>{label}</View>}
-      onChange={value => window.alert(`You selected ${value}`)}
+      onChange={(value) => window.alert(`You selected ${value}`)}
     >
       {({ ref, getToggleButtonProps }) => (
         <ButtonFilled
@@ -35,8 +54,8 @@ storiesOf("InputGroup", module)
             flexGrow: 1,
             flexShrink: 1,
             ":hover, :focus, :active": {
-              transform: "none"
-            }
+              transform: "none",
+            },
           }}
         >
           <View flexDirection="row" alignItems="center">
@@ -46,4 +65,7 @@ storiesOf("InputGroup", module)
       )}
     </SelectDropdown>
     <TextInput borderRadius={0} />
-  </InputGroup>) 
+  </InputGroup>
+);
+
+WithSelectDropdownAndTextInput.storyName = "With SelectDropdown and TextInput";
