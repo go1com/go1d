@@ -79,6 +79,7 @@
     "@babel/polyfill": "^7.2.5",
     "@babel/preset-env": "^7.3.4",
     "@babel/preset-react": "^7.0.0",
+    "@changesets/cli": "^2.13.1",
     "@compositor/kit": "^1.0.43",
     "@compositor/kit-snapshot": "^1.0.24",
     "@compositor/x0": "github:chrisdwheatley/x0#babel-upgrade",
