@@ -151,8 +151,9 @@ npm-release-dev:
     - git branch --set-upstream-to origin/$CI_COMMIT_REF_NAME
     - yarn install --silent
     - yarn changeset status
-  only:
-    - merge_requests
+  except:
+    - tags
+    - master
   allow_failure: false
 
 release:npm:
