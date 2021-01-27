@@ -123,6 +123,38 @@ pages: # NEVER rename this. I must apparently be exactly this to work
   only:
     - master
 
+npm-release-dev:
+  stage: npm-release
+  dependencies:
+    - build
+  variables:
+    GIT_DEPTH: 0
+  cache:
+    key:
+      files:
+        - yarn.lock
+    paths:
+      - node_modules/
+  before_script:
+    - 'which ssh-agent || ( apk add -uUv openssh-client)'
+    - eval $(ssh-agent -s)
+    - echo "$GO1D_PRIVATE_SSH_KEY" |  base64 --decode | tr -d '\r' | ssh-add - > /dev/null
+    - mkdir -p ~/.ssh
+    - chmod 700 ~/.ssh
+    - ssh-keyscan code.go1.com.au >> ~/.ssh/known_hosts
+    - chmod 644 ~/.ssh/known_hosts
+  script:
+    - git clone git@code.go1.com.au:${CI_PROJECT_PATH}.git
+    - git checkout master
+    - git branch --set-upstream-to origin/master
+    - git checkout $CI_COMMIT_REF_NAME
+    - git branch --set-upstream-to origin/$CI_COMMIT_REF_NAME
+    - yarn install --silent
+    - yarn changeset status
+  only:
+    - merge_requests
+  allow_failure: false
+
 release:npm:
   stage: npm-release
   dependencies:
@@ -162,3 +194,41 @@ release:npm:
     - "tags"
   only:
     - master
+
+npm-release-changeset-test:
+  stage: test
+  dependencies:
+    - build
+  before_script:
+    - 'which ssh-agent || ( apk add -uUv openssh-client)'
+    - eval $(ssh-agent -s)
+    - echo "$GO1D_PRIVATE_SSH_KEY" |  base64 --decode | tr -d '\r' | ssh-add - > /dev/null
+    - mkdir -p ~/.ssh
+    - chmod 700 ~/.ssh
+    - ssh-keyscan code.go1.com.au >> ~/.ssh/known_hosts
+    - chmod 644 ~/.ssh/known_hosts
+  script:
+    - git clone git@code.go1.com.au:${CI_PROJECT_PATH}.git # This should fetch all Git history so that Changesets can generate changelogs with the correct commits
+    - cp -r build ${CI_PROJECT_NAME}/
+    - cd ${CI_PROJECT_NAME}
+    - git config user.name "$GITLAB_USER_NAME"
+    - git config user.email "$GITLAB_USER_EMAIL"
+    - git checkout $CI_COMMIT_REF_NAME
+    - git branch --set-upstream-to origin/$CI_COMMIT_REF_NAME
+    - npm config set scope go1d --global
+    - echo '//registry.npmjs.org/:_authToken=${NPM_TOKEN}'>.npmrc
+    - yarn install --silent
+    - yarn changeset status || yarn changeset add --empty
+    - yarn changeset version
+    - git status
+    - git add package.json .changeset/ CHANGELOG.md
+    - git status
+    - git commit -m "[NPM-CI] Version packages [skip ci]" # [skip ci] prevents infinite loop
+    # - yarn changeset publish # creates a git tag, and must be preceded by the version commit
+    - git tag -n
+    - echo "git@${CI_SERVER_HOST}:${CI_PROJECT_PATH}.git HEAD:${CI_COMMIT_REF_NAME}" # TODO: this is a test to be deleted
+    # - git push -o ci-skip git@${CI_SERVER_HOST}:${CI_PROJECT_PATH}.git HEAD:${CI_COMMIT_REF_NAME} --follow-tags
+  except:
+    - "tags"
+    - master
+  allow_failure: true # TODO: This is for testing only.
