@@ -139,7 +139,8 @@
   ],
   "husky": {
     "hooks": {
-      "pre-commit": "lint-staged"
+      "pre-commit": "lint-staged",
+      "pre-push": "yarn changeset status || (echo \"🦋 See CONTRIBUTING guide on how to add a changeset\"; false)"
     }
   },
   "x0": {
