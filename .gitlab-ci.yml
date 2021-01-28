@@ -143,14 +143,20 @@ release:npm:
     - git config user.email "$GITLAB_USER_EMAIL"
     - git checkout $CI_COMMIT_REF_NAME
     - git branch --set-upstream-to origin/$CI_COMMIT_REF_NAME
-    - PACKAGE_VERSION=$(npm version patch -m "[NPM-CI] Publishing Version %s to NPM [skip ci]")
-    - git push origin
-    - git push origin $PACKAGE_VERSION
     - npm config set scope go1d --global
     - echo '//registry.npmjs.org/:_authToken=${NPM_TOKEN}'>.npmrc
     - rm readme.md
     - mv npm-readme.md readme.md
-    - npm publish --access public
+    - yarn changeset status || yarn changeset add --empty
+    - yarn changeset version
+    - git add package.json .changeset/ CHANGELOG.md
+    - git commit -m "[NPM-CI] Version packages [skip ci]" # [skip ci] prevents infinite loop
+    - yarn changeset publish # creates a git tag, and must be preceded by the version commit
+    - git push -o ci-skip git@${CI_SERVER_HOST}:${CI_PROJECT_PATH}.git HEAD:${CI_COMMIT_REF_NAME} --follow-tags
+    # - PACKAGE_VERSION=$(npm version patch -m "[NPM-CI] Publishing Version %s to NPM [skip ci]")
+    # - git push origin
+    # - git push origin $PACKAGE_VERSION
+    # - npm publish --access public
     - NPM_BIN=$(yarn bin)
     - MASTER_SHA=$(git rev-parse origin/master)
     - if ! "$NPM_BIN"/happo has-report "$MASTER_SHA"; then
@@ -162,42 +168,3 @@ release:npm:
     - "tags"
   only:
     - master
-
-npm-release-changeset-test:
-  stage: test
-  needs: []
-  variables:
-    GIT_STRATEGY: none
-  before_script:
-    - 'which ssh-agent || ( apk add -uUv openssh-client)'
-    - eval $(ssh-agent -s)
-    - echo "$GO1D_PRIVATE_SSH_KEY" |  base64 --decode | tr -d '\r' | ssh-add - > /dev/null
-    - mkdir -p ~/.ssh
-    - chmod 700 ~/.ssh
-    - ssh-keyscan code.go1.com.au >> ~/.ssh/known_hosts
-    - chmod 644 ~/.ssh/known_hosts
-  script:
-    - git clone git@code.go1.com.au:${CI_PROJECT_PATH}.git # This should fetch all Git history so that Changesets can generate changelogs with the correct commits
-    - cd ${CI_PROJECT_NAME}
-    - git config user.name "$GITLAB_USER_NAME"
-    - git config user.email "$GITLAB_USER_EMAIL"
-    - git checkout $CI_COMMIT_REF_NAME
-    - git branch --set-upstream-to origin/$CI_COMMIT_REF_NAME
-    - npm config set scope go1d --global
-    - echo '//registry.npmjs.org/:_authToken=${NPM_TOKEN}'>.npmrc
-    - yarn install --silent
-    - yarn changeset status || yarn changeset add --empty
-    - yarn changeset version
-    - git status
-    - git diff
-    - git add package.json .changeset/ CHANGELOG.md
-    - git status
-    - git commit -m "[NPM-CI] Version packages [skip ci]" # [skip ci] prevents infinite loop
-    # - yarn changeset publish # creates a git tag, and must be preceded by the version commit
-    - git tag -n
-    - echo "git@${CI_SERVER_HOST}:${CI_PROJECT_PATH}.git HEAD:${CI_COMMIT_REF_NAME}" # TODO: this is a test to be deleted
-    # - git push -o ci-skip git@${CI_SERVER_HOST}:${CI_PROJECT_PATH}.git HEAD:${CI_COMMIT_REF_NAME} --follow-tags
-  except:
-    - "tags"
-    - master
-  allow_failure: true # TODO: This is for testing only.
