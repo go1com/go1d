@@ -179,13 +179,13 @@ npm-release-changeset-test:
   script:
     - git clone git@code.go1.com.au:${CI_PROJECT_PATH}.git # This should fetch all Git history so that Changesets can generate changelogs with the correct commits
     - cd ${CI_PROJECT_NAME}
-    - yarn install --silent
     - git config user.name "$GITLAB_USER_NAME"
     - git config user.email "$GITLAB_USER_EMAIL"
     - git checkout $CI_COMMIT_REF_NAME
     - git branch --set-upstream-to origin/$CI_COMMIT_REF_NAME
     - npm config set scope go1d --global
     - echo '//registry.npmjs.org/:_authToken=${NPM_TOKEN}'>.npmrc
+    - yarn install --silent
     - yarn changeset status || yarn changeset add --empty
     - yarn changeset version
     - git status
