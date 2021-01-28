@@ -165,8 +165,8 @@ release:npm:
 
 npm-release-changeset-test:
   stage: test
-  dependencies:
-    - build
+  variables:
+    GIT_STRATEGY: none
   before_script:
     - 'which ssh-agent || ( apk add -uUv openssh-client)'
     - eval $(ssh-agent -s)
@@ -177,18 +177,18 @@ npm-release-changeset-test:
     - chmod 644 ~/.ssh/known_hosts
   script:
     - git clone git@code.go1.com.au:${CI_PROJECT_PATH}.git # This should fetch all Git history so that Changesets can generate changelogs with the correct commits
-    - cp -r build ${CI_PROJECT_NAME}/
     - cd ${CI_PROJECT_NAME}
+    - yarn install --silent
     - git config user.name "$GITLAB_USER_NAME"
     - git config user.email "$GITLAB_USER_EMAIL"
     - git checkout $CI_COMMIT_REF_NAME
     - git branch --set-upstream-to origin/$CI_COMMIT_REF_NAME
     - npm config set scope go1d --global
     - echo '//registry.npmjs.org/:_authToken=${NPM_TOKEN}'>.npmrc
-    - yarn install --silent
     - yarn changeset status || yarn changeset add --empty
     - yarn changeset version
     - git status
+    - git diff
     - git add package.json .changeset/ CHANGELOG.md
     - git status
     - git commit -m "[NPM-CI] Version packages [skip ci]" # [skip ci] prevents infinite loop
