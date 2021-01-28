@@ -123,39 +123,6 @@ pages: # NEVER rename this. I must apparently be exactly this to work
   only:
     - master
 
-npm-release-dev:
-  stage: npm-release
-  dependencies:
-    - build
-  variables:
-    GIT_DEPTH: 0
-  cache:
-    key:
-      files:
-        - yarn.lock
-    paths:
-      - node_modules/
-  before_script:
-    - 'which ssh-agent || ( apk add -uUv openssh-client)'
-    - eval $(ssh-agent -s)
-    - echo "$GO1D_PRIVATE_SSH_KEY" |  base64 --decode | tr -d '\r' | ssh-add - > /dev/null
-    - mkdir -p ~/.ssh
-    - chmod 700 ~/.ssh
-    - ssh-keyscan code.go1.com.au >> ~/.ssh/known_hosts
-    - chmod 644 ~/.ssh/known_hosts
-  script:
-    - git clone git@code.go1.com.au:${CI_PROJECT_PATH}.git
-    - git checkout master
-    - git branch --set-upstream-to origin/master
-    - git checkout $CI_COMMIT_REF_NAME
-    - git branch --set-upstream-to origin/$CI_COMMIT_REF_NAME
-    - yarn install --silent
-    - yarn changeset status
-  except:
-    - tags
-    - master
-  allow_failure: false
-
 release:npm:
   stage: npm-release
   dependencies:
