@@ -165,6 +165,7 @@ release:npm:
 
 npm-release-changeset-test:
   stage: test
+  needs: []
   variables:
     GIT_STRATEGY: none
   before_script:
