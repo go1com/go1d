@@ -1,5 +1,12 @@
 # @go1d/go1d
 
+## 0.11.1
+
+### Patch Changes
+
+- 894064ac: - Adds a CONTRIBUTING guide to help people version and publish packages
+  - Updates `.gitignore` to ignore `.npmrc` to further minimise risk of committing it in CI
+
 ## 0.11.0
 
 ### Minor Changes
