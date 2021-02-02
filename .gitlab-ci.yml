@@ -147,11 +147,13 @@ release:npm:
     - echo '//registry.npmjs.org/:_authToken=${NPM_TOKEN}'>.npmrc
     - rm readme.md
     - mv npm-readme.md readme.md
-    - npx changeset status || npx changeset add --empty
-    - npx changeset version
+    - yarn config set no-progress
+    - yarn install --silent
+    - yarn changeset status || yarn changeset add --empty
+    - yarn changeset version
     - git add package.json .changeset/ CHANGELOG.md
     - git commit -m "[NPM-CI] Version packages [skip ci]" # [skip ci] prevents infinite loop
-    - npx changeset publish || true # creates a git tag, and must be preceded by the version commit
+    - yarn changeset publish || true # creates a git tag, and must be preceded by the version commit
     - git push -o ci-skip git@${CI_SERVER_HOST}:${CI_PROJECT_PATH}.git --follow-tags
     # - PACKAGE_VERSION=$(npm version patch -m "[NPM-CI] Publishing Version %s to NPM [skip ci]")
     # - git push origin
@@ -160,8 +162,6 @@ release:npm:
     - NPM_BIN=$(yarn bin)
     - MASTER_SHA=$(git rev-parse origin/master)
     - if ! "$NPM_BIN"/happo has-report "$MASTER_SHA"; then
-    - yarn config set no-progress
-    - yarn install --silent
     - yarn react:docs && node ./.storybook/generate-props-file.js
     - yarn happo run $MASTER_SHA; fi
   artifacts:
