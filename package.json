@@ -140,7 +140,7 @@
   "husky": {
     "hooks": {
       "pre-commit": "lint-staged",
-      "pre-push": "yarn changeset status || true"
+      "pre-push": "yarn changeset status || echo \"🦋 Your code won't be published to NPM if you don't add a changeset. See CONTRIBUTING guide\""
     }
   },
   "x0": {
