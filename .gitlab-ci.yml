@@ -147,11 +147,11 @@ release:npm:
     - echo '//registry.npmjs.org/:_authToken=${NPM_TOKEN}'>.npmrc
     - rm readme.md
     - mv npm-readme.md readme.md
-    - yarn changeset status || yarn changeset add --empty
-    - yarn changeset version
+    - npx changeset status || npx changeset add --empty
+    - npx changeset version
     - git add package.json .changeset/ CHANGELOG.md
     - git commit -m "[NPM-CI] Version packages [skip ci]" # [skip ci] prevents infinite loop
-    - yarn changeset publish || true # creates a git tag, and must be preceded by the version commit
+    - npx changeset publish || true # creates a git tag, and must be preceded by the version commit
     - git push -o ci-skip git@${CI_SERVER_HOST}:${CI_PROJECT_PATH}.git --follow-tags
     # - PACKAGE_VERSION=$(npm version patch -m "[NPM-CI] Publishing Version %s to NPM [skip ci]")
     # - git push origin
