@@ -1,7 +1,7 @@
 {
   "name": "@go1d/go1d",
-  "version": "0.16.0",
-  "description": "GO1 Design System",
+  "version": "2.1.0",
+  "description": "Go1 Design System",
   "main": "build/index.js",
   "homepage": "https://go1d.go1.com",
   "author": "Luke Brooker <mail@lukebrooker.com> (https://lukebrooker.com/)",
