@@ -1,5 +1,11 @@
 # @go1d/go1d
 
+## 0.12.0
+
+### Minor Changes
+
+- 3a094a94: add IconCircleCheck
+
 ## 0.11.1
 
 ### Patch Changes
