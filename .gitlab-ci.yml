@@ -154,7 +154,7 @@ release:npm:
     - git add package.json .changeset/ CHANGELOG.md
     - git commit -m "[NPM-CI] Version packages [skip ci]" || true # [skip ci] prevents infinite loop
     - yarn changeset publish || true # creates a git tag, and must be preceded by the version commit
-    - git diff --staged --exit-code && git push -o ci-skip git@${CI_SERVER_HOST}:${CI_PROJECT_PATH}.git --follow-tags || true
+    - git push -o ci-skip git@${CI_SERVER_HOST}:${CI_PROJECT_PATH}.git --follow-tags || true
     # - PACKAGE_VERSION=$(npm version patch -m "[NPM-CI] Publishing Version %s to NPM [skip ci]")
     # - git push origin
     # - git push origin $PACKAGE_VERSION
