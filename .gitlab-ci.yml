@@ -82,7 +82,7 @@ test:unit:
 visual-test:happo:
   stage: visual-test
   dependencies:
-  - test:linting
+    - test:linting
   allow_failure: true
   before_script:
     - export PREVIOUS_SHA=`git rev-parse origin/master`
@@ -100,8 +100,8 @@ visual-test:happo:
     - SUMMARY=$("$NPM_BIN"/happo compare "$PREVIOUS_SHA" "$CURRENT_SHA");
     - if [ "$EXIT_CODE" == "113" ]; then exit 1; fi; fi
   except:
-  - master
-  - tags
+    - master
+    - tags
 
 pages: # NEVER rename this. I must apparently be exactly this to work
   stage: release
@@ -128,7 +128,7 @@ release:npm:
   dependencies:
     - build
   before_script:
-    - 'which ssh-agent || ( apk add -uUv openssh-client)'
+    - "which ssh-agent || ( apk add -uUv openssh-client)"
     - eval $(ssh-agent -s)
     - echo "$GO1D_PRIVATE_SSH_KEY" |  base64 --decode | tr -d '\r' | ssh-add - > /dev/null
     - mkdir -p ~/.ssh
@@ -152,9 +152,9 @@ release:npm:
     - yarn changeset status || yarn changeset add --empty
     - yarn changeset version
     - git add package.json .changeset/ CHANGELOG.md
-    - git commit -m "[NPM-CI] Version packages [skip ci]" --allow-empty # [skip ci] prevents infinite loop
+    - git commit -m "[NPM-CI] Version packages [skip ci]" || true # [skip ci] prevents infinite loop
     - yarn changeset publish || true # creates a git tag, and must be preceded by the version commit
-    - git push -o ci-skip git@${CI_SERVER_HOST}:${CI_PROJECT_PATH}.git --follow-tags
+    - git diff --staged --exit-code && git push -o ci-skip git@${CI_SERVER_HOST}:${CI_PROJECT_PATH}.git --follow-tags || true
     # - PACKAGE_VERSION=$(npm version patch -m "[NPM-CI] Publishing Version %s to NPM [skip ci]")
     # - git push origin
     # - git push origin $PACKAGE_VERSION
