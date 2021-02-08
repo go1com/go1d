@@ -1,5 +1,11 @@
 # @go1d/go1d
 
+## 0.13.0
+
+### Minor Changes
+
+- 598a77d8: --- "@go1d/go1d": minor --- edit IconExport
+
 ## 0.12.0
 
 ### Minor Changes
