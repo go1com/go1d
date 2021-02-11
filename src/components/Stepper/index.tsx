@@ -263,7 +263,7 @@ class TextInput extends React.PureComponent<StepperProps, StepperState> {
 
     return (
       <Theme.Consumer>
-        {({ spacing }) => (
+        {({ radius }) => (
           <View
             flexDirection="row"
             border={1}
@@ -335,7 +335,7 @@ class TextInput extends React.PureComponent<StepperProps, StepperState> {
                 borderLeft={1}
                 borderColor={this.getBorderColor()}
                 css={{
-                  borderRadius: `0 ${spacing[2]}px ${spacing[2]}px 0`,
+                  borderRadius: `0 ${radius[3]}px ${radius[3]}px 0`,
                   alignSelf: "stretch",
                 }}
               >
