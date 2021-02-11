@@ -5,9 +5,9 @@ import View from "../../View";
 
 export default () => (
   <Theme.Consumer>
-    {({ spacing }) => (
+    {({ radius }) => (
       <View
-        borderRadius={2}
+        borderRadius={5}
         boxShadow="crisp"
         color="default"
         height="100%"
@@ -22,7 +22,7 @@ export default () => (
           height={128}
           width={221}
           css={{
-            borderRadius: `${spacing[2]}px ${spacing[2]}px 0 0`,
+            borderRadius: `${radius[5]}px ${radius[5]}px 0 0`,
           }}
         />
         <View padding={4}>
