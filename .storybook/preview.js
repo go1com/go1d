@@ -51,8 +51,9 @@ export const globalTypes = {
     toolbar: {
       icon: 'contrast',
       items: [
-          { value: colors.accent, right: 'b', title: 'Original Go1d' },
-          { value: '#ff1493', right: 'a', title: 'Example customer color deeppink' },
+          { value: colors.accent, right: '🥇', title: 'Athletic Go1d accent' },
+          { value: '#31B8DA', right: '🎨', title: 'Original Go1d accent' },
+          { value: '#ff1493', right: '🎨', title: 'Example customer accent deeppink' },
       ],
     },
   },

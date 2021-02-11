@@ -16,6 +16,58 @@ import {
 
 import * as defaultEmotion from "emotion";
 
+const options = {
+  color: {
+    neutral: {
+      N000: "#FFFFFF",
+      N100: "#F7F8F8",
+      N200: "#F1F3F3",
+      N300: "#E6E9EA",
+      N400: "#D3D8D9",
+      N500: "#B5BEC0",
+      N600: "#8C9597",
+      N700: "#666F71",
+      N800: "#394446",
+      N900: "#22292A",
+    },
+    cyan: {
+      C50: "#F4FAFB",
+      C100: "#E9F4F7",
+      C400: "#65CADF",
+      C700: "#317481",
+      C800: "#114954",
+    },
+    blue: {
+      B50: "#F0F8FE",
+      B100: "#EAF0F6",
+      B500: "#5887B1",
+      B700: "#315A81",
+      B800: "#143452",
+    },
+    lime: {
+      L50: "#F9FFF0",
+      L100: "#F7FFE0",
+      L400: "#D4FF26",
+      L700: "#5F6F2A",
+      L800: "#34400D",
+    },
+    red: {
+      R50: "#FBF6F4",
+      R100: "#FAF2ED",
+      R200: "#FDAF8D",
+      R700: "#B03603",
+      R800: "#5E2108",
+    },
+    orange: {
+      O50: "#FFF9F0",
+      O100: "#FFF4E0",
+      O300: "#EEB068",
+      O700: "#815C31",
+      O800: "#553611",
+    },
+  },
+};
+
 /**
  * Color utilities
  */
@@ -65,19 +117,19 @@ export const opacities: MappedKey<Opacities, number> = {
   none: 1,
 };
 
-const brandAccent = "#31B8DA";
+const brandAccent = options.color.cyan.C800;
 
 const baseGreys = {
-  grey0: "#ffffff",
-  grey1: "#fcfcfc",
-  grey2: "#f9f9f9",
-  grey3: "#e9e9e9",
-  grey4: "#d9d9d9",
-  grey5: "#cdcdcd",
-  grey6: "#9b9b9b",
-  grey7: "#797979",
-  grey8: "#383838",
-  grey9: "#1d1d1d",
+  grey0: options.color.neutral.N000,
+  grey1: options.color.neutral.N100,
+  grey2: options.color.neutral.N200,
+  grey3: options.color.neutral.N300,
+  grey4: options.color.neutral.N400,
+  grey5: options.color.neutral.N500,
+  grey6: options.color.neutral.N600,
+  grey7: options.color.neutral.N700,
+  grey8: options.color.neutral.N800,
+  grey9: options.color.neutral.N900,
 };
 
 export const generateColors = ({
@@ -86,29 +138,63 @@ export const generateColors = ({
 }: ColorArguments = {}): Colors => {
   const accentMix = mix(accent);
 
+  const isGo1Accent = accent === options.color.cyan.C800;
+
   const accentGreys = {
     light: {
-      contrast: accentMix(baseGreys.grey9, 0.05),
-      default: accentMix(baseGreys.grey8, 0.15),
-      subtle: accentMix(baseGreys.grey7, 0.2),
-      muted: accentMix(baseGreys.grey5, 0.25),
-      divide: accentMix(baseGreys.grey2, 0.07),
-      faded: accentMix(baseGreys.grey3, 0.15),
-      soft: accentMix(baseGreys.grey2, 0.07),
-      faint: accentMix(baseGreys.grey1, 0.02),
-      background: baseGreys.grey0,
+      contrast: isGo1Accent
+        ? options.color.neutral.N900
+        : accentMix(baseGreys.grey9, 0.05),
+      default: isGo1Accent
+        ? options.color.neutral.N800
+        : accentMix(baseGreys.grey8, 0.25),
+      subtle: isGo1Accent
+        ? options.color.neutral.N700
+        : accentMix(baseGreys.grey7, 0.2),
+      muted: isGo1Accent
+        ? options.color.neutral.N500
+        : accentMix(baseGreys.grey5, 0.25),
+      divide: isGo1Accent
+        ? options.color.neutral.N200
+        : accentMix(baseGreys.grey2, 0.07),
+      faded: isGo1Accent
+        ? options.color.neutral.N300
+        : accentMix(baseGreys.grey3, 0.15),
+      soft: isGo1Accent
+        ? options.color.neutral.N200
+        : accentMix(baseGreys.grey2, 0.07),
+      faint: isGo1Accent
+        ? options.color.neutral.N100
+        : accentMix(baseGreys.grey1, 0.02),
+      background: isGo1Accent ? options.color.neutral.N000 : baseGreys.grey0,
       transparent: "transparent",
     },
     dark: {
       contrast: baseGreys.grey0,
-      default: accentMix(baseGreys.grey4, 0.15),
-      subtle: accentMix(baseGreys.grey6, 0.25),
-      muted: accentMix(baseGreys.grey8, 0.35),
-      divide: accentMix(baseGreys.grey9, 0.17),
-      faded: accentMix(baseGreys.grey8, 0.14),
-      soft: accentMix(baseGreys.grey9, 0.17),
-      faint: accentMix(baseGreys.grey9, 0.11),
-      background: accentMix(baseGreys.grey9, 0.05),
+      default: isGo1Accent
+        ? options.color.neutral.N400
+        : accentMix(baseGreys.grey4, 0.15),
+      subtle: isGo1Accent
+        ? options.color.neutral.N600
+        : accentMix(baseGreys.grey6, 0.25),
+      muted: isGo1Accent
+        ? options.color.neutral.N800
+        : accentMix(baseGreys.grey8, 0.35),
+      divide: isGo1Accent
+        ? options.color.neutral.N900
+        : accentMix(baseGreys.grey9, 0.17),
+      faded: isGo1Accent
+        ? options.color.neutral.N800
+        : accentMix(baseGreys.grey8, 0.14),
+      soft: isGo1Accent
+        ? options.color.neutral.N900
+        : accentMix(baseGreys.grey9, 0.17),
+      faint: isGo1Accent
+        ? options.color.neutral.N900
+        : accentMix(baseGreys.grey9, 0.11),
+      background: isGo1Accent
+        ? options.color.neutral.N900
+        : accentMix(baseGreys.grey9, 0.05),
       transparent: "transparent",
     },
   };
@@ -117,10 +203,10 @@ export const generateColors = ({
 
   const statusColors = {
     highlight: opacify(accent, opacities.highlight),
-    success: "#51C133",
-    note: "#FFDE00",
-    warning: "#F6941D",
-    danger: "#DA3131",
+    success: options.color.cyan.C400,
+    note: options.color.blue.B500,
+    warning: options.color.orange.O300,
+    danger: options.color.red.R700,
   };
 
   const gradients: MappedKey<Gradients, string> = {
