@@ -1,33 +1,81 @@
 /* istanbul ignore file */
 import { injectGlobal as defaultInjectGlobal } from "emotion";
-import * as FontFaceObserver from "fontfaceobserver";
+// import * as FontFaceObserver from "fontfaceobserver";
 import { type } from "./index";
 
-const isServer =
-  typeof window === "undefined" || typeof document === "undefined";
+// const isServer =
+//   typeof window === "undefined" || typeof document === "undefined";
 
 const globalCSS = (injectGlobal = defaultInjectGlobal) => {
-  fontCSS();
+  fontCSS(injectGlobal);
   resetCSS(injectGlobal);
 };
 
 export default globalCSS;
 
-export function fontCSS() {
-  if (isServer) {
-    return;
+export function fontCSS(injectGlobal = defaultInjectGlobal) {
+  // tslint:disable-next-line:no-unused-expression
+  injectGlobal`
+  @font-face {
+    font-family: 'Victor Serif Trial';
+    font-weight: 600;
+    font-style: semibold;
+    src:
+      url('https://cdn.go1static.com/assets/fonts/VictorSerif-Semibold.eot'), /* IE9 Compat Modes */
+      url('https://cdn.go1static.com/assets/fonts/VictorSerif-Semibold.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+      url('https://cdn.go1static.com/assets/fonts/VictorSerif-Semibold.woff2') format('woff2'), /* Super Modern Browsers */
+      url('https://cdn.go1static.com/assets/fonts/VictorSerif-Semibold.woff') format('woff'), /* Pretty Modern Browsers */
+      url('https://cdn.go1static.com/assets/fonts/VictorSerif-Semibold.ttf')  format('truetype'), /* Safari, Android, iOS */
+      url('https://cdn.go1static.com/assets/fonts/VictorSerif-Semibold.svg#svgFontName') format('svg'); /* Legacy iOS */
   }
 
-  const link = document.createElement("link");
-  link.href =
-    "https://fonts.googleapis.com/css?family=Muli:300,400,400i,600,800&display=swap";
-  link.rel = "stylesheet";
+  @font-face {
+    font-family: 'Obelisc';
+    font-weight: 400;
+    font-style: normal;
+    src:
+      url('https://cdn.go1static.com/assets/fonts/Obelisc-Regular.eot'), /* IE9 Compat Modes */
+      url('https://cdn.go1static.com/assets/fonts/Obelisc-Regular.woff2') format('woff2'), /* Super Modern Browsers */
+      url('https://cdn.go1static.com/assets/fonts/Obelisc-Regular.woff') format('woff'); /* Pretty Modern Browsers */
+  }
 
-  document.head.appendChild(link);
+  @font-face {
+    font-family: 'Obelisc';
+    font-weight: 500;
+    font-style: semibold;
+    src:
+      url('https://cdn.go1static.com/assets/fonts/Obelisc-Medium.eot'), /* IE9 Compat Modes */
+      url('https://cdn.go1static.com/assets/fonts/Obelisc-Medium.woff2') format('woff2'), /* Super Modern Browsers */
+      url('https://cdn.go1static.com/assets/fonts/Obelisc-Medium.woff') format('woff'); /* Pretty Modern Browsers */
+  }
 
-  const muli = new FontFaceObserver("Muli");
-  return muli.load();
+  @font-face {
+    font-family: 'Obelisc';
+    font-weight: 700;
+    font-style: bold;
+    src:
+      url('https://cdn.go1static.com/assets/fonts/Obelisc-Bold.eot'), /* IE9 Compat Modes */
+      url('https://cdn.go1static.com/assets/fonts/Obelisc-Bold.woff2') format('woff2'), /* Super Modern Browsers */
+      url('https://cdn.go1static.com/assets/fonts/Obelisc-Bold.woff') format('woff'); /* Pretty Modern Browsers */
+  }
+`;
 }
+
+// export function fontCSS() {
+//   if (isServer) {
+//     return;
+//   }
+
+//   const link = document.createElement("link");
+//   link.href =
+//     "https://fonts.googleapis.com/css?family=Muli:300,400,400i,600,800&display=swap";
+//   link.rel = "stylesheet";
+
+//   document.head.appendChild(link);
+
+//   const muli = new FontFaceObserver("Muli");
+//   return muli.load();
+// }
 
 export function resetCSS(injectGlobal = defaultInjectGlobal) {
   // tslint:disable-next-line:no-unused-expression

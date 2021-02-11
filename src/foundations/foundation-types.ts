@@ -3,7 +3,13 @@
  */
 import { Emotion } from "create-emotion";
 
-export type FontFamily = "sansSerif" | "title" | "paragraph" | "ui" | "mono";
+export type FontFamily =
+  | "sansSerif"
+  | "serif"
+  | "title"
+  | "paragraph"
+  | "ui"
+  | "mono";
 
 export type FontWeight = "light" | "normal" | "medium" | "semibold" | "bold";
 

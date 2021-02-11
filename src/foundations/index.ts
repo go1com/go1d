@@ -188,7 +188,8 @@ export const shadows: MappedKey<Shadows, string> = {
 
 const defaultFontFamily: string =
   "-apple-system,BlinkMacSystemFont,helvetica,'helvetica neue',ubuntu,roboto,noto,'segoe ui',arial,sans-serif";
-const sansSerif: string = "'Muli', " + defaultFontFamily;
+const sansSerif: string = "'Obelisc', " + defaultFontFamily;
+const serif: string = "'Victor Serif Trial', " + defaultFontFamily;
 const monospace: string = "'Source Code Pro', 'Menlo', monospace";
 
 export const type: ThemeType = {
@@ -199,6 +200,7 @@ export const type: ThemeType = {
   },
   family: {
     sansSerif,
+    serif,
     title: sansSerif,
     paragraph: sansSerif,
     ui: sansSerif,
@@ -209,7 +211,7 @@ export const type: ThemeType = {
     normal: 400,
     medium: 500,
     semibold: 600,
-    bold: 800,
+    bold: 700,
   },
   leading: {
     display: 1.2,
