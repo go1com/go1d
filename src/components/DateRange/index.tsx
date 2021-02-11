@@ -14,7 +14,7 @@ import "../DatePicker/css";
 
 class DateRange extends React.Component<any, any> {
   public static defaultProps = {
-    borderRadius: 2,
+    borderRadius: 5,
     value: {},
     defaultValue: {},
   };
@@ -67,7 +67,7 @@ class DateRange extends React.Component<any, any> {
 
     return (
       <Theme.Consumer>
-        {({ colors, spacing, type, shadows }) => (
+        {({ colors, radius, spacing, type, shadows }) => (
           <View
             css={[
               {
@@ -81,7 +81,7 @@ class DateRange extends React.Component<any, any> {
                       ? colors.background
                       : colors.default,
                   overflow: "hidden",
-                  borderRadius: spacing[borderRadius],
+                  borderRadius: radius[borderRadius],
                   backgroundColor:
                     this.state.startDate || this.state.endDate
                       ? colors.accent
@@ -124,7 +124,7 @@ class DateRange extends React.Component<any, any> {
                 },
                 ".DateRangePicker_picker": {
                   top: "42px !important",
-                  borderRadius: spacing[2],
+                  borderRadius: radius[5],
                   overflow: "hidden",
                   boxShadow: shadows.strong,
                 },
