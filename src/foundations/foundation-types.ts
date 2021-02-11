@@ -104,6 +104,7 @@ export interface ThemeType {
 export interface Theme {
   colors: Colors;
   type: ThemeType;
+  radius: number[];
   spacing: number[];
   shadows: MappedKey<Shadows, string>;
   transitions: MappedKey<Transitions, string>;

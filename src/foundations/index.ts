@@ -318,6 +318,12 @@ export const type: ThemeType = {
 };
 
 /**
+ * Corner Radius
+ */
+
+export const radius = [0, 4, 8, 12, 16, 32, 48, 64, 128];
+
+/**
  * Spacing
  */
 
@@ -374,6 +380,7 @@ export const generateTheme = ({
 }: GenerateThemeInput = {}): Theme => ({
   colors: generateColors({ accent, mode }),
   type,
+  radius,
   spacing,
   shadows,
   hoverStyle,
