@@ -16,10 +16,12 @@ export function DatePickerCSS() {
   }
   .CalendarMonthGrid,
   .DateInput {
+    border-radius: 32px;
     background-color: transparent;
   }
   .SingleDatePicker_picker {
     background-color: transparent;
+    border-radius: 32px;
   }
   .DateInput_input,
   .DateInput_input__focused {
@@ -389,6 +391,7 @@ export function DatePickerCSS() {
   .CalendarMonth {
     background: #fff;
     text-align: center;
+    border-radius: 24px;
     vertical-align: top;
     -webkit-user-select: none;
     -moz-user-select: none;
@@ -597,7 +600,7 @@ export function DatePickerCSS() {
   .DayPicker_transitionContainer {
     position: relative;
     overflow: hidden;
-    border-radius: 3px
+    border-radius: 32px;
   }
   .DayPicker_transitionContainer__horizontal {
     -webkit-transition: height .2s ease-in-out;
