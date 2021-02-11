@@ -78,7 +78,7 @@ const SlatMini: React.SFC<SlatMiniProps> = ({
 
   return (
     <Theme.Consumer>
-      {({ colors, spacing }) => {
+      {({ colors, radius, spacing }) => {
         return (
           <View
             flexDirection="row"
@@ -92,7 +92,7 @@ const SlatMini: React.SFC<SlatMiniProps> = ({
             <View
               element={href ? "a" : "div"}
               href={href}
-              borderRadius={2}
+              borderRadius={3}
               padding={3}
               alignItems="start"
               backgroundColor="default"
@@ -124,7 +124,7 @@ const SlatMini: React.SFC<SlatMiniProps> = ({
                   type={type}
                   background={typeBackground}
                   css={{
-                    borderRadius: `0 ${spacing[2]}px 0 ${spacing[2]}px`,
+                    borderRadius: `0 ${radius[3]}px 0 ${radius[3]}px`,
                     position: "absolute",
                     bottom: 0,
                     left: 0,
