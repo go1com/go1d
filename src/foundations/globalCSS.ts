@@ -267,13 +267,13 @@ sup {
  */
 
 ::-moz-selection {
-	background-color: #78D6FC; /* 1 */
+	background-color: #65CADF; /* 1 */
 	color: currentColor; /* 1 */
 	text-shadow: none;
 }
 
 ::selection {
-	background-color: #78D6FC; /* 1 */
+	background-color: #65CADF; /* 1 */
 	color: currentColor; /* 1 */
 	text-shadow: none;
 }
