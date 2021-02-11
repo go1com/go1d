@@ -32,6 +32,12 @@ export const parameters = {
   },
   layout: 'centered',
   docs: { page: DocsPage },
+  options: {
+    storySort: {
+      method: 'alphabetical',
+      order: ['Overview', 'Athletic', ['Foundations'], 'Original Go1d'],
+    },
+  },
   previewTabs: {
     'storybook/docs/panel': { index: -1 }
   },
