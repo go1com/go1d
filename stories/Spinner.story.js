@@ -5,7 +5,7 @@ import hideInheritedProps from '../.storybook/hideInheritedProps.js'
 let argTypes = hideInheritedProps({}, Spinner);
 
 export default {
-  title: "Original Go1d/Spinner",
+  title: "Athletic/Spinner",
   argTypes: argTypes,
   component: Spinner,
 };

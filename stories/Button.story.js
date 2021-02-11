@@ -5,7 +5,7 @@ import hideInheritedProps from '../.storybook/hideInheritedProps.js'
 let argTypes = hideInheritedProps({}, Button);
 
 export default {
-  title: "Original Go1d/Button",
+  title: "Athletic/Button",
   argTypes: argTypes,
   component: Button,
   parameters: {
@@ -17,12 +17,6 @@ export default {
   }
 };
 
-export const SubmitButtonUsedInAForm = args => (
-  <SubmitButton>Create</SubmitButton>
-);
-
-SubmitButtonUsedInAForm.storyName = "Submit Button used in a Form";
-
 export const UnstyledButtons = args => (
   <React.Fragment>
     <Button>Default</Button>
@@ -30,3 +24,9 @@ export const UnstyledButtons = args => (
     <Button color="danger">Danger</Button>
   </React.Fragment>
 );
+
+export const SubmitButtonUsedInAForm = args => (
+  <SubmitButton>Create</SubmitButton>
+);
+
+SubmitButtonUsedInAForm.storyName = "Submit Button used in a Form";
