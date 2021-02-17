@@ -183,7 +183,7 @@ class Modal extends React.Component<ModalProps, any> {
             maxWidth={600}
             width="100%"
             minHeight={300}
-            borderRadius={2}
+            borderRadius={4}
             backgroundColor="background"
             boxShadow="distant"
             marginX="auto"
