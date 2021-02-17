@@ -19,7 +19,7 @@ export default {
   }
 };
 
-const colorSwatch = (themeColorName, cssColor) => (
+const colorSwatch = (themeColorName, cssColor, mode) => (
   <View
     key={themeColorName}
     padding={2}
@@ -30,7 +30,7 @@ const colorSwatch = (themeColorName, cssColor) => (
       width: 100,
       backgroundColor: cssColor,
     }}>
-    <Text color={isDark(cssColor) ? "background" : "default"}>{themeColorName}: {cssColor}</Text>
+    <Text color={(isDark(cssColor) && mode === "light") || (!isDark(cssColor) && mode === "dark") ? "background" : "default"}>{themeColorName}: {cssColor}</Text>
   </View>
 );
 
@@ -39,7 +39,7 @@ const themeSwatches = (accent, mode) => {
 
   let swatches = [];
   for (const [themeColorName, cssColor] of Object.entries(theme.colors).filter(([key, value]) => (typeof value === 'string' && key !== "gradients"))) {
-    swatches.push(colorSwatch(themeColorName, cssColor));
+    swatches.push(colorSwatch(themeColorName, cssColor, mode));
   };
 
   return swatches;
