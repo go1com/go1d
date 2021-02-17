@@ -201,13 +201,64 @@ export const generateColors = ({
 
   const themedGreys = accentGreys[mode];
 
-  const statusColors = {
-    highlight: opacify(accent, opacities.highlight),
-    success: options.color.cyan.C400,
-    note: options.color.blue.B500,
-    warning: options.color.orange.O300,
-    danger: options.color.red.R700,
+  const statusColorsPerMode = {
+    light: {
+      highlight: opacify(accent, opacities.highlight),
+      success: options.color.cyan.C400,
+      successHighest: options.color.cyan.C50,
+      successHigh: options.color.cyan.C100,
+      successMid: options.color.cyan.C400,
+      successLow: options.color.cyan.C700,
+      successLowest: options.color.cyan.C800,
+      note: options.color.blue.B500,
+      noteHighest: options.color.blue.B50,
+      noteHigh: options.color.blue.B100,
+      noteMid: options.color.blue.B500,
+      noteLow: options.color.blue.B700,
+      noteLowest: options.color.blue.B800,
+      warning: options.color.orange.O300,
+      warningHighest: options.color.orange.O50,
+      warningHigh: options.color.orange.O100,
+      warningMid: options.color.orange.O300,
+      warningLow: options.color.orange.O700,
+      warningLowest: options.color.orange.O800,
+      danger: options.color.red.R700,
+      dangerHighest: options.color.red.R50,
+      dangerHigh: options.color.red.R100,
+      dangerMid: options.color.red.R200,
+      dangerLow: options.color.red.R700,
+      dangerLowest: options.color.red.R800,
+    },
+    dark: {
+      highlight: opacify(accent, opacities.highlight),
+      success: options.color.cyan.C400,
+      successHighest: options.color.cyan.C800,
+      successHigh: options.color.cyan.C700,
+      successMid: options.color.cyan.C400,
+      successLow: options.color.cyan.C100,
+      successLowest: options.color.cyan.C50,
+      note: options.color.blue.B500,
+      noteHighest: options.color.blue.B800,
+      noteHigh: options.color.blue.B700,
+      noteMid: options.color.blue.B500,
+      noteLow: options.color.blue.B100,
+      noteLowest: options.color.blue.B50,
+      warning: options.color.orange.O300,
+      warningHighest: options.color.orange.O800,
+      warningHigh: options.color.orange.O700,
+      warningMid: options.color.orange.O300,
+      warningLow: options.color.orange.O100,
+      warningLowest: options.color.orange.O50,
+      danger: options.color.red.R700,
+      dangerHighest: options.color.red.R800,
+      dangerHigh: options.color.red.R700,
+      dangerMid: options.color.red.R200,
+      dangerLow: options.color.red.R100,
+      dangerLowest: options.color.red.R50,
+    },
   };
+
+  const statusColors = statusColorsPerMode[mode];
 
   const gradients: MappedKey<Gradients, string> = {
     warmOverlay:
