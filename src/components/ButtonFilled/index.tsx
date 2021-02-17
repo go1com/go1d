@@ -14,6 +14,16 @@ const customModes = {
   background: "light",
 };
 
+const textColor = color => {
+  if (color === "background") {
+    return "subtle";
+  } else if (color === "accent") {
+    return "complementary";
+  } else {
+    return "contrast";
+  }
+};
+
 const ButtonFilled: React.SFC<ButtonFilledProps> = ({
   color = "background",
   children,
@@ -31,8 +41,8 @@ const ButtonFilled: React.SFC<ButtonFilledProps> = ({
         <Button
           mode={mode}
           backgroundColor={color}
-          color={color === "background" ? "subtle" : "contrast"}
-          iconColor={color === "background" ? "muted" : "contrast"}
+          color={textColor(color)}
+          iconColor={textColor(color)}
           fontWeight="bold"
           css={[
             {
