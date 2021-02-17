@@ -25,7 +25,7 @@ const EmptyState: React.SFC<EmptyStateProps> = ({
       backgroundColor="background"
       alignItems="center"
       padding={7}
-      borderRadius={2}
+      borderRadius={5}
       {...props}
     >
       <Text element="h1" fontSize={4} fontWeight="semibold">
