@@ -18,52 +18,103 @@ import * as defaultEmotion from "emotion";
 
 const options = {
   color: {
-    neutral: {
-      N000: "#FFFFFF",
-      N100: "#F7F8F8",
-      N200: "#F1F3F3",
-      N300: "#E6E9EA",
-      N400: "#D3D8D9",
-      N500: "#B5BEC0",
-      N600: "#8C9597",
-      N700: "#666F71",
-      N800: "#394446",
-      N900: "#22292A",
+    light: {
+      neutral: {
+        N000: "#FFFFFF",
+        N100: "#F7F8F8",
+        N200: "#F1F3F3",
+        N300: "#E6E9EA",
+        N400: "#D3D8D9",
+        N500: "#B5BEC0",
+        N600: "#8C9597",
+        N700: "#666F71",
+        N800: "#394446",
+        N900: "#22292A",
+      },
+      cyan: {
+        C50: "#F4FAFB",
+        C100: "#E9F4F7",
+        C400: "#65CADF",
+        C700: "#317481",
+        C800: "#114954",
+      },
+      blue: {
+        B50: "#F0F8FE",
+        B100: "#EAF0F6",
+        B500: "#5887B1",
+        B700: "#315A81",
+        B800: "#143452",
+      },
+      lime: {
+        L50: "#F9FFF0",
+        L100: "#F7FFE0",
+        L400: "#D4FF26",
+        L700: "#5F6F2A",
+        L800: "#34400D",
+      },
+      red: {
+        R50: "#FBF6F4",
+        R100: "#FAF2ED",
+        R200: "#FDAF8D",
+        R700: "#B03603",
+        R800: "#5E2108",
+      },
+      orange: {
+        O50: "#FFF9F0",
+        O100: "#FFF4E0",
+        O300: "#EEB068",
+        O700: "#815C31",
+        O800: "#553611",
+      },
     },
-    cyan: {
-      C50: "#F4FAFB",
-      C100: "#E9F4F7",
-      C400: "#65CADF",
-      C700: "#317481",
-      C800: "#114954",
-    },
-    blue: {
-      B50: "#F0F8FE",
-      B100: "#EAF0F6",
-      B500: "#5887B1",
-      B700: "#315A81",
-      B800: "#143452",
-    },
-    lime: {
-      L50: "#F9FFF0",
-      L100: "#F7FFE0",
-      L400: "#D4FF26",
-      L700: "#5F6F2A",
-      L800: "#34400D",
-    },
-    red: {
-      R50: "#FBF6F4",
-      R100: "#FAF2ED",
-      R200: "#FDAF8D",
-      R700: "#B03603",
-      R800: "#5E2108",
-    },
-    orange: {
-      O50: "#FFF9F0",
-      O100: "#FFF4E0",
-      O300: "#EEB068",
-      O700: "#815C31",
-      O800: "#553611",
+    dark: {
+      neutral: {
+        N000: "#FFFFFF",
+        N100: "#F7F8F8",
+        N200: "#F1F3F3",
+        N300: "#E6E9EA",
+        N400: "#D3D8D9",
+        N500: "#B5BEC0",
+        N600: "#8C9597",
+        N700: "#666F71",
+        N800: "#394446",
+        N900: "#22292A",
+      },
+      cyan: {
+        C50: "#F4FAFB",
+        C100: "#E9F4F7",
+        C400: "#65CADF",
+        C700: "#317481",
+        C800: "#114954",
+      },
+      blue: {
+        B50: "#F0F8FE",
+        B100: "#EAF0F6",
+        B500: "#5887B1",
+        B700: "#315A81",
+        B800: "#143452",
+      },
+      lime: {
+        L50: "#F9FFF0",
+        L100: "#F7FFE0",
+        L400: "#D4FF26",
+        L700: "#5F6F2A",
+        L800: "#34400D",
+      },
+      red: {
+        R50: "#FBF6F4",
+        R100: "#FAF2ED",
+        R200: "#FDAF8D",
+        R700: "#B03603",
+        R800: "#5E2108",
+      },
+      orange: {
+        O50: "#FFF9F0",
+        O100: "#FFF4E0",
+        O300: "#EEB068",
+        O700: "#815C31",
+        O800: "#553611",
+      },
     },
   },
 };
@@ -117,19 +168,19 @@ export const opacities: MappedKey<Opacities, number> = {
   none: 1,
 };
 
-const brandAccent = options.color.cyan.C800;
+const brandAccent = options.color.light.cyan.C800;
 
 const baseGreys = {
-  grey0: options.color.neutral.N000,
-  grey1: options.color.neutral.N100,
-  grey2: options.color.neutral.N200,
-  grey3: options.color.neutral.N300,
-  grey4: options.color.neutral.N400,
-  grey5: options.color.neutral.N500,
-  grey6: options.color.neutral.N600,
-  grey7: options.color.neutral.N700,
-  grey8: options.color.neutral.N800,
-  grey9: options.color.neutral.N900,
+  grey0: options.color.light.neutral.N000,
+  grey1: options.color.light.neutral.N100,
+  grey2: options.color.light.neutral.N200,
+  grey3: options.color.light.neutral.N300,
+  grey4: options.color.light.neutral.N400,
+  grey5: options.color.light.neutral.N500,
+  grey6: options.color.light.neutral.N600,
+  grey7: options.color.light.neutral.N700,
+  grey8: options.color.light.neutral.N800,
+  grey9: options.color.light.neutral.N900,
 };
 
 export const generateColors = ({
@@ -138,62 +189,64 @@ export const generateColors = ({
 }: ColorArguments = {}): Colors => {
   const accentMix = mix(accent);
 
-  const isGo1Accent = accent === options.color.cyan.C800;
+  const isGo1Accent = accent === options.color.light.cyan.C800;
 
   const accentGreys = {
     light: {
       contrast: isGo1Accent
-        ? options.color.neutral.N900
+        ? options.color.light.neutral.N900
         : accentMix(baseGreys.grey9, 0.05),
       default: isGo1Accent
-        ? options.color.neutral.N800
+        ? options.color.light.neutral.N800
         : accentMix(baseGreys.grey8, 0.25),
       subtle: isGo1Accent
-        ? options.color.neutral.N700
+        ? options.color.light.neutral.N700
         : accentMix(baseGreys.grey7, 0.2),
       muted: isGo1Accent
-        ? options.color.neutral.N500
+        ? options.color.light.neutral.N500
         : accentMix(baseGreys.grey5, 0.25),
       divide: isGo1Accent
-        ? options.color.neutral.N200
+        ? options.color.light.neutral.N200
         : accentMix(baseGreys.grey2, 0.07),
       faded: isGo1Accent
-        ? options.color.neutral.N300
+        ? options.color.light.neutral.N300
         : accentMix(baseGreys.grey3, 0.15),
       soft: isGo1Accent
-        ? options.color.neutral.N200
+        ? options.color.light.neutral.N200
         : accentMix(baseGreys.grey2, 0.07),
       faint: isGo1Accent
-        ? options.color.neutral.N100
+        ? options.color.light.neutral.N100
         : accentMix(baseGreys.grey1, 0.02),
-      background: isGo1Accent ? options.color.neutral.N000 : baseGreys.grey0,
+      background: isGo1Accent
+        ? options.color.light.neutral.N000
+        : baseGreys.grey0,
       transparent: "transparent",
     },
     dark: {
       contrast: baseGreys.grey0,
       default: isGo1Accent
-        ? options.color.neutral.N400
+        ? options.color.dark.neutral.N400
         : accentMix(baseGreys.grey4, 0.15),
       subtle: isGo1Accent
-        ? options.color.neutral.N600
+        ? options.color.dark.neutral.N600
         : accentMix(baseGreys.grey6, 0.25),
       muted: isGo1Accent
-        ? options.color.neutral.N800
+        ? options.color.dark.neutral.N800
         : accentMix(baseGreys.grey8, 0.35),
       divide: isGo1Accent
-        ? options.color.neutral.N900
+        ? options.color.dark.neutral.N900
         : accentMix(baseGreys.grey9, 0.17),
       faded: isGo1Accent
-        ? options.color.neutral.N800
+        ? options.color.dark.neutral.N800
         : accentMix(baseGreys.grey8, 0.14),
       soft: isGo1Accent
-        ? options.color.neutral.N900
+        ? options.color.dark.neutral.N900
         : accentMix(baseGreys.grey9, 0.17),
       faint: isGo1Accent
-        ? options.color.neutral.N900
+        ? options.color.dark.neutral.N900
         : accentMix(baseGreys.grey9, 0.11),
       background: isGo1Accent
-        ? options.color.neutral.N900
+        ? options.color.dark.neutral.N900
         : accentMix(baseGreys.grey9, 0.05),
       transparent: "transparent",
     },
@@ -204,57 +257,57 @@ export const generateColors = ({
   const statusColorsPerMode = {
     light: {
       highlight: opacify(accent, opacities.highlight),
-      success: options.color.cyan.C400,
-      successHighest: options.color.cyan.C50,
-      successHigh: options.color.cyan.C100,
-      successMid: options.color.cyan.C400,
-      successLow: options.color.cyan.C700,
-      successLowest: options.color.cyan.C800,
-      note: options.color.blue.B500,
-      noteHighest: options.color.blue.B50,
-      noteHigh: options.color.blue.B100,
-      noteMid: options.color.blue.B500,
-      noteLow: options.color.blue.B700,
-      noteLowest: options.color.blue.B800,
-      warning: options.color.orange.O300,
-      warningHighest: options.color.orange.O50,
-      warningHigh: options.color.orange.O100,
-      warningMid: options.color.orange.O300,
-      warningLow: options.color.orange.O700,
-      warningLowest: options.color.orange.O800,
-      danger: options.color.red.R700,
-      dangerHighest: options.color.red.R50,
-      dangerHigh: options.color.red.R100,
-      dangerMid: options.color.red.R200,
-      dangerLow: options.color.red.R700,
-      dangerLowest: options.color.red.R800,
+      success: options.color.light.cyan.C400,
+      successHighest: options.color.light.cyan.C50,
+      successHigh: options.color.light.cyan.C100,
+      successMid: options.color.light.cyan.C400,
+      successLow: options.color.light.cyan.C700,
+      successLowest: options.color.light.cyan.C800,
+      note: options.color.light.blue.B500,
+      noteHighest: options.color.light.blue.B50,
+      noteHigh: options.color.light.blue.B100,
+      noteMid: options.color.light.blue.B500,
+      noteLow: options.color.light.blue.B700,
+      noteLowest: options.color.light.blue.B800,
+      warning: options.color.light.orange.O300,
+      warningHighest: options.color.light.orange.O50,
+      warningHigh: options.color.light.orange.O100,
+      warningMid: options.color.light.orange.O300,
+      warningLow: options.color.light.orange.O700,
+      warningLowest: options.color.light.orange.O800,
+      danger: options.color.light.red.R700,
+      dangerHighest: options.color.light.red.R50,
+      dangerHigh: options.color.light.red.R100,
+      dangerMid: options.color.light.red.R200,
+      dangerLow: options.color.light.red.R700,
+      dangerLowest: options.color.light.red.R800,
     },
     dark: {
       highlight: opacify(accent, opacities.highlight),
-      success: options.color.cyan.C400,
-      successHighest: options.color.cyan.C800,
-      successHigh: options.color.cyan.C700,
-      successMid: options.color.cyan.C400,
-      successLow: options.color.cyan.C100,
-      successLowest: options.color.cyan.C50,
-      note: options.color.blue.B500,
-      noteHighest: options.color.blue.B800,
-      noteHigh: options.color.blue.B700,
-      noteMid: options.color.blue.B500,
-      noteLow: options.color.blue.B100,
-      noteLowest: options.color.blue.B50,
-      warning: options.color.orange.O300,
-      warningHighest: options.color.orange.O800,
-      warningHigh: options.color.orange.O700,
-      warningMid: options.color.orange.O300,
-      warningLow: options.color.orange.O100,
-      warningLowest: options.color.orange.O50,
-      danger: options.color.red.R700,
-      dangerHighest: options.color.red.R800,
-      dangerHigh: options.color.red.R700,
-      dangerMid: options.color.red.R200,
-      dangerLow: options.color.red.R100,
-      dangerLowest: options.color.red.R50,
+      success: options.color.dark.cyan.C400,
+      successHighest: options.color.dark.cyan.C800,
+      successHigh: options.color.dark.cyan.C700,
+      successMid: options.color.dark.cyan.C400,
+      successLow: options.color.dark.cyan.C100,
+      successLowest: options.color.dark.cyan.C50,
+      note: options.color.dark.blue.B500,
+      noteHighest: options.color.dark.blue.B800,
+      noteHigh: options.color.dark.blue.B700,
+      noteMid: options.color.dark.blue.B500,
+      noteLow: options.color.dark.blue.B100,
+      noteLowest: options.color.dark.blue.B50,
+      warning: options.color.dark.orange.O300,
+      warningHighest: options.color.dark.orange.O800,
+      warningHigh: options.color.dark.orange.O700,
+      warningMid: options.color.dark.orange.O300,
+      warningLow: options.color.dark.orange.O100,
+      warningLowest: options.color.dark.orange.O50,
+      danger: options.color.dark.red.R700,
+      dangerHighest: options.color.dark.red.R800,
+      dangerHigh: options.color.dark.red.R700,
+      dangerMid: options.color.dark.red.R200,
+      dangerLow: options.color.dark.red.R100,
+      dangerLowest: options.color.dark.red.R50,
     },
   };
 
