@@ -191,6 +191,10 @@ export const generateColors = ({
 
   const isGo1Accent = accent === options.color.light.cyan.C800;
 
+  const complementary = isGo1Accent
+    ? options.color.light.lime.L400
+    : options.color.light.neutral.N000;
+
   const accentGreys = {
     light: {
       contrast: isGo1Accent
@@ -326,6 +330,7 @@ export const generateColors = ({
     accent,
     ...themedGreys,
     ...statusColors,
+    complementary,
     gradients,
   };
 };
