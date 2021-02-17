@@ -21,16 +21,33 @@ export default {
 
 const colorSwatch = (themeColorName, cssColor, mode) => (
   <View
+    backgroundColor="background"
+    borderRadius={3}
+    boxShadow="crisp"
     key={themeColorName}
-    padding={2}
+    mode="light"
+    overflow="hidden"
     css={{
-      height: 100,
-      minWidth: 150,
-      maxWidth: "100%",
-      width: 100,
-      backgroundColor: cssColor,
-    }}>
-    <Text color={(isDark(cssColor) && mode === "light") || (!isDark(cssColor) && mode === "dark") ? "background" : "default"}>{themeColorName}: {cssColor}</Text>
+      margin: "12px 6px",
+      maxWidth: "140px",
+    }}
+  >
+    <View
+      css={{
+        backgroundColor: cssColor,
+        height: 150,
+        maxWidth: "100%",
+        width: 150,
+      }}>
+    </View>
+    <View
+      padding={3}
+    >
+      <View>
+        <Text color={"accent"} fontSize={1} fontWeight="semibold" fontFamily="mono">{themeColorName} </Text>
+        <Text color={"accent"} fontSize={1} fontFamily="mono">{cssColor}</Text>
+      </View>
+    </View>
   </View>
 );
 
