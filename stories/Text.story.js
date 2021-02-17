@@ -4,6 +4,15 @@ import hideInheritedProps from '../.storybook/hideInheritedProps.js'
 
 let argTypes = hideInheritedProps({}, Text);
 
+let customArgTypes = {
+  element: {
+    name: 'element',
+    defaultValue: 'p',
+    control: { type: 'text' } },
+};
+
+argTypes = Object.assign(argTypes, customArgTypes);
+
 export default {
   title: "Athletic/Text",
   argTypes: argTypes,
@@ -198,6 +207,16 @@ export const UISmall = args => (
       lineHeight="ui"
     >
       UI Small
+    </Text>
+  </React.Fragment>
+);
+
+export const UnstyledText = args => (
+  <React.Fragment>
+    <Text
+      {...args}
+    >
+      Unstyled text. You can change all the arguments.
     </Text>
   </React.Fragment>
 );
