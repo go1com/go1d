@@ -19,7 +19,7 @@ const Table: React.SFC<TableProps> = ({
     display="block"
     paddingY={4}
     boxShadow="crisp"
-    borderRadius={3}
+    borderRadius={5}
     width="100%"
     css={[
       {
