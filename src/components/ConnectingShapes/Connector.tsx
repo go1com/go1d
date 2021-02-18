@@ -1,7 +1,6 @@
 import * as React from "react";
+import { spacing } from "../../foundations";
 import Theme from "../Theme";
-
-const sizes = [0, 2, 4, 8, 16, 24, 32, 48, 64, 128];
 
 interface Props {
   space?: number;
@@ -20,8 +19,8 @@ const ConnectingShapes = ({
   isVertical = true,
   idCustom = "standard",
 }: Props) => {
-  const actualSpace = sizes[space];
-  const actualSize = sizes[size] + sizes[space];
+  const actualSpace = spacing[space];
+  const actualSize = spacing[size] + spacing[space];
   const width = isVertical ? actualSize : actualSpace;
   const height = isVertical ? actualSpace : actualSize;
   const radius = actualSpace / 2;
