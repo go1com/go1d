@@ -285,6 +285,11 @@ export const generateColors = ({
       dangerMid: options.color.light.red.R200,
       dangerLow: options.color.light.red.R700,
       dangerLowest: options.color.light.red.R800,
+      vividHighest: options.color.light.lime.L50,
+      vividHigh: options.color.light.lime.L100,
+      vividMid: options.color.light.lime.L400,
+      vividLow: options.color.light.lime.L700,
+      vividLowest: options.color.light.lime.L800,
     },
     dark: {
       highlight: opacify(accent, opacities.highlight),
@@ -312,6 +317,11 @@ export const generateColors = ({
       dangerMid: options.color.dark.red.R200,
       dangerLow: options.color.dark.red.R100,
       dangerLowest: options.color.dark.red.R50,
+      vividHighest: options.color.light.lime.L50,
+      vividHigh: options.color.light.lime.L100,
+      vividMid: options.color.light.lime.L400,
+      vividLow: options.color.light.lime.L700,
+      vividLowest: options.color.light.lime.L800,
     },
   };
 
