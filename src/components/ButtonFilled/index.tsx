@@ -14,11 +14,11 @@ const customModes = {
   background: "light",
 };
 
-const textColor = color => {
+const textColor = (color, accentColor) => {
   if (color === "background") {
     return "subtle";
   } else if (color === "accent") {
-    return "complementary";
+    return isDark(accentColor) ? "complementary" : "background";
   } else {
     return "contrast";
   }
@@ -41,8 +41,8 @@ const ButtonFilled: React.SFC<ButtonFilledProps> = ({
         <Button
           mode={mode}
           backgroundColor={color}
-          color={textColor(color)}
-          iconColor={textColor(color)}
+          color={textColor(color, colors.accent)}
+          iconColor={textColor(color, colors.accent)}
           fontWeight="bold"
           css={[
             {
