@@ -32,7 +32,7 @@ const ConnectingShapes = ({
             fillColor={colorPipe}
             size={2}
             space={6}
-            idCustom="mask_id"
+            idCustom={`mask_id_${index}`}
           />
         </View>
       );
