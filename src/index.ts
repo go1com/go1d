@@ -18,6 +18,7 @@ export {
   default as ButtonFilled,
   ButtonFilledProps,
 } from "./components/ButtonFilled";
+export { default as ConnectingShapes } from "./components/ConnectingShapes";
 export {
   default as ContentType,
   ContentTypeProps,
