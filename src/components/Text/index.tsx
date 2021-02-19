@@ -53,8 +53,6 @@ const Text: React.SFC<TextProps> = ({
             color: applyArray(color, colors) || color,
             fontFamily: fontFamily
               ? applyArray(fontFamily, type.family)
-              : element === "h1" || element === "h2"
-              ? type.family.serif
               : type.family.sansSerif,
             fontStyle,
             display,
