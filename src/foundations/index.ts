@@ -206,16 +206,22 @@ export const generateColors = ({
       subtle: isGo1Accent
         ? options.color.light.neutral.N700
         : accentMix(baseGreys.grey7, 0.2),
+      thin: isGo1Accent
+        ? options.color.light.neutral.N600
+        : accentMix(baseGreys.grey6, 0.2),
       muted: isGo1Accent
         ? options.color.light.neutral.N500
         : accentMix(baseGreys.grey5, 0.25),
-      divide: isGo1Accent
+      faded: isGo1Accent
+        ? options.color.light.neutral.N400
+        : accentMix(baseGreys.grey4, 0.15),
+      delicate: isGo1Accent
+        ? options.color.light.neutral.N300
+        : accentMix(baseGreys.grey3, 0.08),
+      soft: isGo1Accent
         ? options.color.light.neutral.N200
         : accentMix(baseGreys.grey2, 0.07),
-      faded: isGo1Accent
-        ? options.color.light.neutral.N300
-        : accentMix(baseGreys.grey3, 0.15),
-      soft: isGo1Accent
+      divide: isGo1Accent
         ? options.color.light.neutral.N200
         : accentMix(baseGreys.grey2, 0.07),
       faint: isGo1Accent
@@ -234,16 +240,22 @@ export const generateColors = ({
       subtle: isGo1Accent
         ? options.color.dark.neutral.N600
         : accentMix(baseGreys.grey6, 0.25),
+      thin: isGo1Accent
+        ? options.color.dark.neutral.N600
+        : accentMix(baseGreys.grey6, 0.2),
       muted: isGo1Accent
         ? options.color.dark.neutral.N800
         : accentMix(baseGreys.grey8, 0.35),
-      divide: isGo1Accent
-        ? options.color.dark.neutral.N900
-        : accentMix(baseGreys.grey9, 0.17),
       faded: isGo1Accent
         ? options.color.dark.neutral.N800
         : accentMix(baseGreys.grey8, 0.14),
+      delicate: isGo1Accent
+        ? options.color.dark.neutral.N900
+        : accentMix(baseGreys.grey9, 0.15),
       soft: isGo1Accent
+        ? options.color.dark.neutral.N900
+        : accentMix(baseGreys.grey9, 0.17),
+      divide: isGo1Accent
         ? options.color.dark.neutral.N900
         : accentMix(baseGreys.grey9, 0.17),
       faint: isGo1Accent
@@ -338,9 +350,9 @@ export const generateColors = ({
 
   return {
     accent,
+    complementary,
     ...themedGreys,
     ...statusColors,
-    complementary,
     gradients,
   };
 };
