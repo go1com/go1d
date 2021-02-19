@@ -3,33 +3,107 @@ import { Heading } from "../src/";
 import { Text } from "../src/";
 import hideInheritedProps from '../.storybook/hideInheritedProps.js'
 
-// let argTypes = hideInheritedProps({}, Heading);
-let argTypes = hideInheritedProps({}, Text);
-
-let customArgTypes = {
-  // element: {
-  //   name: 'element',
-  //   defaultValue: 'h1',
-  //   control: { type: 'radio', options: ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'] } },
-};
-
-argTypes = Object.assign(argTypes, customArgTypes);
+let argTypes = hideInheritedProps({}, Heading);
 
 export default {
   title: "Athletic/Heading",
   argTypes: argTypes,
-  // component: Heading,
-  component: Text,
+  component: Heading,
 };
 
-export const Heading1Story = args => (
+export const Main = args => (
   <React.Fragment>
     <Heading
       semanticElement="h1"
-      visualHeadingLevel="Heading 3"
+      visualHeadingLevel="Heading 1"
+      color="default"
+      {...args}
+    >
+      This is a heading
+    </Heading>
+  </React.Fragment>
+);
+
+export const Heading1 = () => (
+  <React.Fragment>
+    <Heading
+      semanticElement="h1"
+      visualHeadingLevel="Heading 1"
       color="default"
     >
       Heading 1
+    </Heading>
+  </React.Fragment>
+);
+
+export const Heading2 = () => (
+  <React.Fragment>
+    <Heading
+      semanticElement="h2"
+      visualHeadingLevel="Heading 2"
+      color="default"
+    >
+      Heading 2
+    </Heading>
+  </React.Fragment>
+);
+
+export const Heading3 = () => (
+  <React.Fragment>
+    <Heading
+      semanticElement="h3"
+      visualHeadingLevel="Heading 3"
+      color="default"
+    >
+      Heading 3
+    </Heading>
+  </React.Fragment>
+);
+
+export const Heading4 = () => (
+  <React.Fragment>
+    <Heading
+      semanticElement="h4"
+      visualHeadingLevel="Heading 4"
+      color="default"
+    >
+      Heading 4
+    </Heading>
+  </React.Fragment>
+);
+
+export const Heading5 = () => (
+  <React.Fragment>
+    <Heading
+      semanticElement="h5"
+      visualHeadingLevel="Heading 5"
+      color="default"
+    >
+      Heading 5
+    </Heading>
+  </React.Fragment>
+);
+
+export const Heading6 = () => (
+  <React.Fragment>
+    <Heading
+      semanticElement="h6"
+      visualHeadingLevel="Heading 6"
+      color="default"
+    >
+      Heading 6
+    </Heading>
+  </React.Fragment>
+);
+
+export const UnmatchedSemanticAndVisualLevels = () => (
+  <React.Fragment>
+    <Heading
+      semanticElement="h1"
+      visualHeadingLevel="Heading 6"
+      color="default"
+    >
+      The semantic element level doesn't need to match the visual heading level.
     </Heading>
   </React.Fragment>
 );

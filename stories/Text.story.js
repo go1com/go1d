@@ -20,107 +20,11 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: 'While this component will let you do anything you need with text, you probably want the convenience of using the Heading component instead.'
+        component: 'While this component will let you do anything you need with text, for headings you probably want the convenience of using the Heading component instead.'
       }
     },
   }
 };
-
-export const Heading1Serif = args => (
-  <React.Fragment>
-    <Text
-      {...args}
-      color="default"
-      element="h1"
-      fontSize={7}
-      fontWeight="semibold"
-      fontFamily="serif"
-      lineHeight="display"
-    >
-      Heading 1
-    </Text>
-  </React.Fragment>
-);
-
-export const Heading2Serif = args => (
-  <React.Fragment>
-    <Text
-      {...args}
-      color="default"
-      element="h2"
-      fontSize={5}
-      fontWeight="semibold"
-      fontFamily="serif"
-      lineHeight="display"
-    >
-      Heading 2
-    </Text>
-  </React.Fragment>
-);
-
-export const Heading3SansSerif = args => (
-  <React.Fragment>
-    <Text
-      {...args}
-      color="default"
-      element="h3"
-      fontSize={4}
-      fontWeight="bold"
-      fontFamily="sansSerif"
-      lineHeight="display"
-    >
-      Heading 3
-    </Text>
-  </React.Fragment>
-);
-
-export const Heading4SansSerif = args => (
-  <React.Fragment>
-    <Text
-      {...args}
-      color="default"
-      element="h4"
-      fontSize={3}
-      fontWeight="medium"
-      fontFamily="sansSerif"
-      lineHeight="display"
-    >
-      Heading 4
-    </Text>
-  </React.Fragment>
-);
-
-export const Heading5SansSerif = args => (
-  <React.Fragment>
-    <Text
-      {...args}
-      color="default"
-      element="h5"
-      fontSize={2}
-      fontWeight="medium"
-      fontFamily="sansSerif"
-      lineHeight="display"
-    >
-      Heading 5
-    </Text>
-  </React.Fragment>
-);
-
-export const Heading6SansSerif = args => (
-  <React.Fragment>
-    <Text
-      {...args}
-      color="default"
-      element="h5"
-      fontSize={1}
-      fontWeight="medium"
-      fontFamily="sansSerif"
-      lineHeight="display"
-    >
-      Heading 6
-    </Text>
-  </React.Fragment>
-);
 
 export const ParagraphLarge = args => (
   <React.Fragment>
