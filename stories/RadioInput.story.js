@@ -5,7 +5,7 @@ import hideInheritedProps from '../.storybook/hideInheritedProps.js'
 let argTypes = hideInheritedProps({}, RadioInput);
 
 export default {
-  title: "Original Go1d/RadioGroup",
+  title: "Athletic/RadioGroup",
   argTypes: argTypes,
   component: RadioGroup,
 };

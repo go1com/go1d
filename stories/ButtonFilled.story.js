@@ -6,26 +6,16 @@ import { IconCheck, IconPlus } from "../src/components/Icons";
 let argTypes = hideInheritedProps({}, ButtonFilled);
 
 export default {
-  title: "Original Go1d/ButtonFilled",
+  title: "Athletic/Buttons/ButtonFilled (Accent)",
   argTypes: argTypes,
   component: ButtonFilled,
 };
 
-export const WithText = args => (
-  <ButtonFilled {...args}>This is a filled button</ButtonFilled>
+export const FilledButtonInAccentColour = args => (
+  <ButtonFilled {...args} color="accent">Call to action</ButtonFilled>
 );
 
-WithText.storyName = "with text";
-
-export const WithSomeEmoji = args => (
-  <ButtonFilled {...args}>
-    <span role="img" aria-label="so cool">
-      😀 😎 👍 💯
-    </span>
-  </ButtonFilled>
-);
-
-WithSomeEmoji.storyName = "with some emoji";
+FilledButtonInAccentColour.storyName = "Filled button in accent colour";
 
 export const FilledButtonInSubtleColour = args => (
   <React.Fragment>
@@ -39,12 +29,6 @@ export const FilledButtonInSubtleColour = args => (
 
 FilledButtonInSubtleColour.storyName = "Filled button in subtle colour";
 
-export const FilledButtonInAccentColour = args => (
-  <ButtonFilled {...args} color="accent">Call to action</ButtonFilled>
-);
-
-FilledButtonInAccentColour.storyName = "Filled button in accent colour";
-
 export const FilledIconOnlyButtonInSuccessColourAndRound = args => (
   <ButtonFilled {...args} round={true} color="success" icon={IconCheck} />
 );
@@ -56,4 +40,20 @@ export const FilledButtonInDangerColour = args => (
 );
 
 FilledButtonInDangerColour.storyName = "Filled button in danger colour";
+
+export const WithText = args => (
+  <ButtonFilled {...args}>This is a filled button</ButtonFilled>
+);
+
+WithText.storyName = "ButtonFilled with text";
+
+export const WithSomeEmoji = args => (
+  <ButtonFilled {...args}>
+    <span role="img" aria-label="so cool">
+      😀 😎 👍 💯
+    </span>
+  </ButtonFilled>
+);
+
+WithSomeEmoji.storyName = "ButtonFilled with some emoji";
 

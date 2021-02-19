@@ -6,7 +6,7 @@ import { IconCalendar, IconPlusCircle } from "../src/components/Icons";
 let argTypes = hideInheritedProps({}, SlatMini);
 
 export default {
-  title: "Original Go1d/SlatMini",
+  title: "Athletic/SlatMini",
   argTypes: argTypes,
   component: SlatMini
 };

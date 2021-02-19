@@ -6,7 +6,7 @@ import { IconEye } from "../src/components/Icons";
 let argTypes = hideInheritedProps({}, Tooltip);
 
 export default {
-  title: "Original Go1d/Tooltip",
+  title: "Athletic/Tooltip",
   argTypes: argTypes,
   component: Tooltip,
 };

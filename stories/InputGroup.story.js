@@ -13,7 +13,7 @@ import hideInheritedProps from '../.storybook/hideInheritedProps.js'
 let argTypes = hideInheritedProps({}, InputGroup);
 
 export default {
-  title: "Original Go1d/InputGroup",
+  title: "Athletic/InputGroup",
   argTypes: argTypes,
 };
 

@@ -12,7 +12,7 @@ import hideInheritedProps from '../.storybook/hideInheritedProps.js'
 let argTypes = hideInheritedProps({}, Checkbox);
 
 export default {
-  title: "Original Go1d/Checkbox",
+  title: "Athletic/Checkbox",
   argTypes: argTypes,
   component: Checkbox,
 };

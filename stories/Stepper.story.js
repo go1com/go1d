@@ -5,7 +5,7 @@ import hideInheritedProps from '../.storybook/hideInheritedProps.js'
 let argTypes = hideInheritedProps({}, Stepper);
 
 export default {
-  title: "Original Go1d/Stepper",
+  title: "Athletic/Stepper",
   argTypes: argTypes,
   component: Stepper,
 };

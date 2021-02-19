@@ -6,7 +6,7 @@ import hideInheritedProps from '../.storybook/hideInheritedProps.js'
 let argTypes = hideInheritedProps({}, DateRange);
 
 export default {
-  title: "Original Go1d/DateRange",
+  title: "Athletic/DateRange",
   argTypes: argTypes,
   parameters: {
     // Skip DateRange picker for Happo since we are not able to achieve consistent screenshots for it for following reasons:

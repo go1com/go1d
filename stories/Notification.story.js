@@ -11,7 +11,7 @@ import hideInheritedProps from '../.storybook/hideInheritedProps.js'
 let argTypes = hideInheritedProps({}, Notification);
 
 export default {
-  title: "Original Go1d/Notification",
+  title: "Athletic/Notification",
   argTypes: argTypes,
 };
 

@@ -5,7 +5,7 @@ import hideInheritedProps from '../.storybook/hideInheritedProps.js'
 let argTypes = hideInheritedProps({}, DatePicker);
 
 export default {
-  title: "Original Go1d/DatePicker",
+  title: "Athletic/DatePicker",
   argTypes: argTypes,
   component: DatePicker,
   decorators: [

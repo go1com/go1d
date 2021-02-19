@@ -6,7 +6,7 @@ import { IconPlus } from "../src/components/Icons";
 let argTypes = hideInheritedProps({}, ButtonMinimal);
 
 export default {
-  title: "Original Go1d/ButtonMinimal",
+  title: "Athletic/Buttons/ButtonMinimal",
   argTypes: argTypes,
   component: ButtonMinimal,
 };
