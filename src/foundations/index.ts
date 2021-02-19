@@ -235,34 +235,34 @@ export const generateColors = ({
     dark: {
       contrast: baseGreys.grey0,
       default: isGo1Accent
-        ? options.color.dark.neutral.N400
+        ? accentMix(options.color.dark.neutral.N200, 0.1)
         : accentMix(baseGreys.grey4, 0.15),
       subtle: isGo1Accent
-        ? options.color.dark.neutral.N600
-        : accentMix(baseGreys.grey6, 0.25),
-      thin: isGo1Accent
-        ? options.color.dark.neutral.N600
+        ? accentMix(options.color.dark.neutral.N300, 0.27)
         : accentMix(baseGreys.grey6, 0.2),
+      thin: isGo1Accent
+        ? accentMix(options.color.dark.neutral.N400, 0.35)
+        : accentMix(baseGreys.grey7, 0.25),
       muted: isGo1Accent
-        ? options.color.dark.neutral.N800
+        ? accentMix(options.color.dark.neutral.N500, 0.55)
         : accentMix(baseGreys.grey8, 0.35),
       faded: isGo1Accent
-        ? options.color.dark.neutral.N800
+        ? accentMix(options.color.dark.neutral.N600, 0.55)
         : accentMix(baseGreys.grey8, 0.14),
       delicate: isGo1Accent
-        ? options.color.dark.neutral.N900
-        : accentMix(baseGreys.grey9, 0.15),
+        ? accentMix(options.color.dark.neutral.N700, 0.45)
+        : accentMix(baseGreys.grey8, 0.14),
       soft: isGo1Accent
-        ? options.color.dark.neutral.N900
+        ? accentMix(options.color.dark.neutral.N800, 0.35)
         : accentMix(baseGreys.grey9, 0.17),
       divide: isGo1Accent
-        ? options.color.dark.neutral.N900
+        ? accentMix(options.color.dark.neutral.N800, 0.35)
         : accentMix(baseGreys.grey9, 0.17),
       faint: isGo1Accent
-        ? options.color.dark.neutral.N900
-        : accentMix(baseGreys.grey9, 0.11),
+        ? accentMix(options.color.dark.neutral.N900, 0.22)
+        : accentMix(baseGreys.grey9, 0.12),
       background: isGo1Accent
-        ? options.color.dark.neutral.N900
+        ? accentMix(options.color.dark.neutral.N900, 0.05)
         : accentMix(baseGreys.grey9, 0.05),
       transparent: "transparent",
     },
