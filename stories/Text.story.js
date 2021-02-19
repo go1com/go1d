@@ -17,6 +17,13 @@ export default {
   title: "Athletic/Text",
   argTypes: argTypes,
   component: Text,
+  parameters: {
+    docs: {
+      description: {
+        component: 'While this component will let you do anything you need with text, you probably want the convenience of using the Heading component instead.'
+      }
+    },
+  }
 };
 
 export const Heading1Serif = args => (
