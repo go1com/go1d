@@ -53,7 +53,7 @@ class Carousel extends React.Component<CarouselProps, any> {
 
   private posX1 = 0;
   private posX2 = 0;
-  private posInital = 0;
+  private posInitial = 0;
 
   private slideItems = memoize(
     (children, slidesToShow, gutter, viewAllElement = null, maxSlides = null) =>
@@ -449,7 +449,7 @@ class Carousel extends React.Component<CarouselProps, any> {
   private dragStart = (e: MouseEvent | TouchEvent) => {
     e.preventDefault();
     const Slider: any = this.sliderContainerRef.current;
-    this.posInital = Slider.scrollLeft;
+    this.posInitial = Slider.scrollLeft;
     if (e.type === "mousedown") {
       this.posX1 = (e as MouseEvent).clientX;
       document.onmouseup = this.dragEnd;
@@ -471,7 +471,7 @@ class Carousel extends React.Component<CarouselProps, any> {
     }
 
     const Slider: any = this.sliderContainerRef.current;
-    Slider.scrollTo(this.posInital + this.posX2, 0);
+    Slider.scrollTo(this.posInitial + this.posX2, 0);
   };
 
   private dragEnd = () => {
