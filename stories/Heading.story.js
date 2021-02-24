@@ -9,6 +9,13 @@ export default {
   title: "Athletic/Heading",
   argTypes: argTypes,
   component: Heading,
+  parameters: {
+    docs: {
+      description: {
+        component: 'Avoid skipping heading levels: always start from `h1`, followed by `h2` and so on. In nearly all cases, the semantic and visual heading level should match. For example, you would use `semanticElement="h1"` and `visualHeadingLevel="Heading 1"` together. There are rare exceptions, such as embedding content in a different context, where you may wish to give a heading a different visual style but maintain its semantic ordering.'
+      }
+    },
+  }
 };
 
 export const Main = args => (
