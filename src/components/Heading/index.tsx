@@ -72,7 +72,7 @@ export interface HeadingProps extends TextProps {
 
 const Heading = ({
   children,
-  semanticElement,
+  semanticElement = "h2",
   visualHeadingLevel,
   ...otherProps
 }: HeadingProps) => {
