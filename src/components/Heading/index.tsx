@@ -73,7 +73,7 @@ export interface HeadingProps extends TextProps {
 const Heading = ({
   children,
   semanticElement = "h2",
-  visualHeadingLevel,
+  visualHeadingLevel = "Heading 2",
   ...otherProps
 }: HeadingProps) => {
   const visualHeadingProps = VISUAL_HEADING_PROPS[visualHeadingLevel];
