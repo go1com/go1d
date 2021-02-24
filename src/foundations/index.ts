@@ -329,11 +329,11 @@ export const generateColors = ({
       dangerMid: options.color.dark.red.R200,
       dangerLow: options.color.dark.red.R100,
       dangerLowest: options.color.dark.red.R50,
-      vividHighest: options.color.light.lime.L50,
-      vividHigh: options.color.light.lime.L100,
-      vividMid: options.color.light.lime.L400,
-      vividLow: options.color.light.lime.L700,
-      vividLowest: options.color.light.lime.L800,
+      vividHighest: options.color.dark.lime.L50,
+      vividHigh: options.color.dark.lime.L100,
+      vividMid: options.color.dark.lime.L400,
+      vividLow: options.color.dark.lime.L700,
+      vividLowest: options.color.dark.lime.L800,
     },
   };
 
