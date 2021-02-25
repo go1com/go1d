@@ -1,5 +1,11 @@
 # @go1d/go1d
 
+## 0.13.1
+
+### Patch Changes
+
+- 217dc764: Improve carousel component, make it scrollable by touch and click
+
 ## 0.13.0
 
 ### Minor Changes
