@@ -50,6 +50,11 @@ class Carousel extends React.Component<CarouselProps, any> {
   private slideTween;
   private ignoreScroll = false;
   private initialSliderOffset = null;
+
+  private posX1 = 0;
+  private posX2 = 0;
+  private posInitial = 0;
+
   private slideItems = memoize(
     (children, slidesToShow, gutter, viewAllElement = null, maxSlides = null) =>
       React.Children.map(children, (Slide, Index) => {
@@ -108,7 +113,11 @@ class Carousel extends React.Component<CarouselProps, any> {
     if (this.sliderContainerRef) {
       const Element: any = this.sliderContainerRef.current;
       Element.addEventListener("scroll", this.handleScrollTimer, false);
-      Element.addEventListener("touchmove", this.handleScrollTimer, false);
+      Element.addEventListener("touchstart", this.dragStart, false);
+      Element.addEventListener("touchmove", this.dragAction, false);
+      Element.addEventListener("touchend", this.dragEnd, false);
+
+      Element.addEventListener("mousedown", this.dragStart, false);
     }
 
     // changed default to true, so after mounting check who many children are in there and set to true if only one or none
@@ -170,7 +179,11 @@ class Carousel extends React.Component<CarouselProps, any> {
     if (this.sliderContainerRef) {
       const Element: any = this.sliderContainerRef.current;
       Element.removeEventListener("scroll", this.handleScrollTimer, false);
-      Element.removeEventListener("touchmove", this.handleScrollTimer, false);
+      Element.removeEventListener("touchstart", this.dragStart, false);
+      Element.removeEventListener("touchmove", this.dragAction, false);
+      Element.removeEventListener("touchend", this.dragEnd, false);
+
+      Element.removeEventListener("mousedown", this.dragStart, false);
     }
   }
 
@@ -431,6 +444,40 @@ class Carousel extends React.Component<CarouselProps, any> {
     this.setState({
       finishedScrolling: this.hasReachedRightEdge(),
     });
+  };
+
+  private dragStart = (e: MouseEvent | TouchEvent) => {
+    e.preventDefault();
+    const Slider: any = this.sliderContainerRef.current;
+    this.posInitial = Slider.scrollLeft;
+    if (e.type === "mousedown") {
+      this.posX1 = (e as MouseEvent).clientX;
+      document.onmouseup = this.dragEnd;
+      document.onmousemove = this.dragAction;
+    }
+
+    if (e.type === "touchstart") {
+      this.posX1 = (e as TouchEvent).touches[0].clientX;
+    }
+  };
+
+  private dragAction = (e: MouseEvent | TouchEvent) => {
+    if (e.type === "mousemove") {
+      this.posX2 = this.posX1 - (e as MouseEvent).clientX;
+    }
+
+    if (e.type === "touchmove") {
+      this.posX2 = this.posX1 - (e as TouchEvent).touches[0].clientX;
+    }
+
+    const Slider: any = this.sliderContainerRef.current;
+    Slider.scrollTo(this.posInitial + this.posX2, 0);
+  };
+
+  private dragEnd = () => {
+    this.handleScrollFinished();
+    document.onmouseup = null;
+    document.onmousemove = null;
   };
 }
 
