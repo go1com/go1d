@@ -29,15 +29,14 @@ const shadowSwatch = (themeShadowName, cssShadow) => (
     <View
       padding={3}
     >
-      <View>
-        <Text color={"contrast"} fontSize={1} fontWeight="semibold" fontFamily="mono">{themeShadowName}</Text>
-      </View>
+      <Text color={"contrast"} fontSize={1} fontWeight="semibold" fontFamily="mono">{themeShadowName}</Text>
     </View>
   </View>
 );
 
-const themeSwatches = (theme) => {
-  const themeSubset = Object.entries(theme.shadows);
+const themeSwatches = (theme, group) => {
+  const themeSubset = Object.entries(theme.shadows)
+    .filter(([themeShadowName, cssShadow]) => group.includes(themeShadowName));
   let swatches = [];
   for (const [themeShadowName, cssShadow] of themeSubset) {
     swatches.push(shadowSwatch(themeShadowName, cssShadow));
@@ -61,8 +60,8 @@ export const Main = (args, { globals: { accent }}) => {
 
   return (
     <View color="contrast" background="background">
-      <Text element="p" marginBottom={1}>Shadows distinguish layers to give users perspective. Use shadows to extend metaphors about the environment so users understand where they are and what actions they can take.</Text>
-      {themeSwatches(theme)}
+      <Text element="p" marginBottom={1}>Shadows distinguish layers to give users perspective. Use shadows to extend metaphors about the environment so users understand where they are and what actions they can take. We use shadows for overlay elements like modals, tooltips, and date picker visual calendars.</Text>
+      {themeSwatches(theme, ["soft", "strong", "none"])}
     </View>
   );
 };
