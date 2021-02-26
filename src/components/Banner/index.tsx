@@ -1,6 +1,6 @@
 import * as React from "react";
 
-import { tint } from "../../foundations";
+import * as Color from "color";
 import ButtonMinimal from "../ButtonFilled";
 import Theme from "../Theme";
 import View, { ViewProps } from "../View";
@@ -24,6 +24,32 @@ const IconMap = {
   success: IconSuccess,
 };
 
+const getBackgroundColor = (colors, customColor, floating = false) => {
+  if (floating) {
+    return colors.background;
+  }
+  switch (customColor) {
+    case "success":
+      return colors.successHigh;
+      break;
+    case "warning":
+      return colors.warningHigh;
+      break;
+    case "danger":
+      return colors.dangerHigh;
+      break;
+    case "note":
+      return colors.noteHigh;
+      break;
+    default:
+      return Color(colors[customColor])
+        .lightness(93)
+        .rgb()
+        .string();
+      break;
+  }
+};
+
 const Banner: React.SFC<BannerProps> = ({
   type,
   children,
@@ -33,7 +59,6 @@ const Banner: React.SFC<BannerProps> = ({
   ...props
 }: BannerProps) => {
   const IconElement = IconMap[type];
-  const tintLevel = type === "success" ? 0.1 : type === "note" ? 0.1 : 0.2;
   return (
     <Theme.Consumer>
       {({ colors }) => (
@@ -47,11 +72,11 @@ const Banner: React.SFC<BannerProps> = ({
           data-testid="banner"
           maxWidth="100%"
           css={{
-            backgroundColor: `${
+            backgroundColor: `${getBackgroundColor(
+              colors,
+              customColor,
               floating
-                ? colors.background
-                : tint(colors[customColor], tintLevel)
-            }`,
+            )}`,
             borderLeft: `4px solid ${colors[customColor]}`,
             transition: "all 0.2s linear",
           }}
@@ -74,7 +99,7 @@ const Banner: React.SFC<BannerProps> = ({
           </View>
           {close && (
             <ButtonMinimal
-              borderRadius={10}
+              borderRadius={3}
               boxShadow="none"
               size="sm"
               height="1.05rem"
