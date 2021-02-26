@@ -89,7 +89,7 @@ class TextInput extends React.PureComponent<TextInputProps, TextInputState> {
       return "accent";
     }
 
-    return borderColor ? borderColor : "soft";
+    return borderColor ? borderColor : "faded";
   }
 
   public render() {
@@ -179,7 +179,6 @@ class TextInput extends React.PureComponent<TextInputProps, TextInputState> {
             backgroundColor="background"
             border={1}
             borderColor={this.getBorderColor()}
-            boxShadow="inner"
             flexDirection="row"
             alignItems="center"
             htmlFor={id}
