@@ -6,7 +6,6 @@ import hideInheritedProps from '../.storybook/hideInheritedProps.js'
 
 export default {
   title: "Athletic/Foundations/Colors",
-  component: View,
   parameters: {
     docs: {
       description: {
@@ -14,9 +13,6 @@ export default {
       }
     },
   },
-  argTypes: {
-    table: { disable: true }
-  }
 };
 
 const colorSwatch = (themeColorName, cssColor, mode) => (

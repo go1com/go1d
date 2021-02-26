@@ -6,10 +6,6 @@ import hideInheritedProps from '../.storybook/hideInheritedProps.js'
 
 export default {
   title: "Athletic/Foundations/Shadows",
-  component: View,
-  argTypes: {
-    table: { disable: true }
-  }
 };
 
 const shadowSwatch = (themeShadowName, cssShadow) => (
