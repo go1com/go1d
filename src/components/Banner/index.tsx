@@ -101,6 +101,13 @@ const Banner: React.SFC<BannerProps> = ({
             <ButtonMinimal
               borderRadius={3}
               boxShadow="none"
+              css={{
+                backgroundColor: `${getBackgroundColor(
+                  colors,
+                  customColor,
+                  floating
+                )}`,
+              }}
               size="sm"
               height="1.05rem"
               onClick={close}
