@@ -12,6 +12,8 @@ const shadowSwatch = (themeShadowName, cssShadow) => (
   <View
     alignItems="center"
     backgroundColor="background"
+    border={1}
+    borderColor="delicate"
     borderRadius={3}
     boxShadow={themeShadowName}
     display="flex"
