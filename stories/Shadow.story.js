@@ -62,7 +62,8 @@ export const Main = (args, { globals: { accent }}) => {
 
   return (
     <View color="contrast" background="background">
-      <Text element="p" marginBottom={1}>Shadows distinguish layers to give users perspective. Use shadows to extend metaphors about the environment so users understand where they are and what actions they can take. We use shadows for overlay elements like modals, tooltips, and date picker visual calendars.</Text>
+      <Text element="p" marginBottom={3}>Shadows distinguish layers to give users perspective. Use shadows to extend metaphors about the environment so users understand where they are and what actions they can take. We use shadows for overlay elements like modals, tooltips, and date picker visual calendars.</Text>
+      <Text element="p" marginBottom={3}>To reduce variation in our shadows, we will replace “crisp” shadows with “soft” and “distant” with “strong”.</Text>
       {themeSwatches(theme, ["soft", "strong", "none"])}
     </View>
   );
