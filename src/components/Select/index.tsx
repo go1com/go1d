@@ -212,10 +212,9 @@ class Select extends React.PureComponent<SelectProps, any> {
                             paddingX={4}
                             border={1}
                             opacity={disabled && "disabled"}
-                            borderColor={isOpen ? "accent" : "soft"}
+                            borderColor={isOpen ? "accent" : "delicate"}
                             position="relative"
                             backgroundColor="background"
-                            boxShadow={isOpen ? "strong" : "soft"}
                             flexDirection="row"
                             justifyContent="space-between"
                             {...remainingProps}
