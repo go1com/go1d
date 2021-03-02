@@ -230,7 +230,7 @@ class DatePicker extends React.Component<DatePickerProps, DatePickerState> {
       return "accent";
     }
 
-    return "soft";
+    return "faded";
   }
 
   @autobind
@@ -296,8 +296,7 @@ class DatePicker extends React.Component<DatePickerProps, DatePickerState> {
                 },
                 ".SingleDatePickerInput": {
                   "border-radius": `${radius[5]}px`,
-                  "box-shadow": shadows.inner,
-                  "border-color": colors.soft,
+                  border: `1px solid ${colors.faded}`,
                   transition: transitions.subtle,
                   padding: `0 ${spacing[4]}px`,
                   "&:hover, &:focus": {
@@ -365,7 +364,6 @@ class DatePicker extends React.Component<DatePickerProps, DatePickerState> {
                 paddingX={get({ lg: 5, md: 4, sm: 1 }, size)}
                 border={1}
                 borderColor={this.getBorderColor()}
-                boxShadow="inner"
                 flexDirection="row"
                 alignItems="center"
                 htmlFor={id}
