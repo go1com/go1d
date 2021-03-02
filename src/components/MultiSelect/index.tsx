@@ -172,9 +172,8 @@ class MultiSelect extends React.PureComponent<MultiSelectProps, any> {
           paddingX={4}
           border={1}
           opacity={disabled && "disabled"}
-          borderColor={isOpen ? "accent" : "soft"}
+          borderColor={isOpen ? "accent" : "delicate"}
           position="relative"
-          boxShadow={isOpen ? "strong" : "soft"}
           backgroundColor={selectedItems.length > 0 ? "accent" : "background"}
         >
           <View
@@ -408,6 +407,8 @@ class MultiSelect extends React.PureComponent<MultiSelectProps, any> {
                                 <View
                                   backgroundColor="background"
                                   boxShadow="strong"
+                                  border={1}
+                                  borderColor="delicate"
                                   borderRadius={2}
                                   overflow="hidden"
                                   style={style}
