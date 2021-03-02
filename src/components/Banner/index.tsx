@@ -102,11 +102,28 @@ const Banner: React.SFC<BannerProps> = ({
               borderRadius={3}
               boxShadow="none"
               css={{
+                borderColor: `${getBackgroundColor(
+                  colors,
+                  customColor,
+                  floating
+                )}`,
                 backgroundColor: `${getBackgroundColor(
                   colors,
                   customColor,
                   floating
                 )}`,
+                "&:hover, &:focus, &:active": {
+                  backgroundColor: `${getBackgroundColor(
+                    colors,
+                    customColor,
+                    floating
+                  )}`,
+                  borderColor: `${getBackgroundColor(
+                    colors,
+                    customColor,
+                    floating
+                  )}`,
+                },
               }}
               size="sm"
               height="1.05rem"
