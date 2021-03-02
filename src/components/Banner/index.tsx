@@ -25,29 +25,34 @@ const IconMap = {
 };
 
 const getBackgroundColor = (colors, customColor, floating = false) => {
+  let cssColor = colors.background;
+
   if (floating) {
-    return colors.background;
+    return cssColor;
   }
+
   switch (customColor) {
     case "success":
-      return colors.successHigh;
+      cssColor = colors.successHigh;
       break;
     case "warning":
-      return colors.warningHigh;
+      cssColor = colors.warningHigh;
       break;
     case "danger":
-      return colors.dangerHigh;
+      cssColor = colors.dangerHigh;
       break;
     case "note":
-      return colors.noteHigh;
+      cssColor = colors.noteHigh;
       break;
     default:
-      return Color(colors[customColor])
+      cssColor = Color(colors[customColor])
         .lightness(93)
         .rgb()
         .string();
       break;
   }
+
+  return cssColor;
 };
 
 const Banner: React.SFC<BannerProps> = ({
