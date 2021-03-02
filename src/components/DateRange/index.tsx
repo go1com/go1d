@@ -86,10 +86,12 @@ class DateRange extends React.Component<any, any> {
                     this.state.startDate || this.state.endDate
                       ? colors.accent
                       : colors.background,
-                  boxShadow:
+                  borderWidth: "1px",
+                  borderStyle: "solid",
+                  borderColor:
                     this.state.focusedInput !== null
-                      ? shadows.strong
-                      : shadows.soft,
+                      ? colors.accent
+                      : colors.faded,
                   opacity: disabled ? "disabled" : null,
                 },
                 ".DateInput": {
@@ -125,6 +127,7 @@ class DateRange extends React.Component<any, any> {
                 ".DateRangePicker_picker": {
                   top: "42px !important",
                   borderRadius: radius[5],
+                  border: `1px solid ${colors.faded}`,
                   overflow: "hidden",
                   boxShadow: shadows.strong,
                 },

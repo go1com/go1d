@@ -19,7 +19,7 @@ export default {
   ],
 };
 
-export const BasicDatepicker = args => <DateRange />;
+export const BasicDateRange = args => <DateRange />;
 
 export const DefaultValue = args => (
   <DateRange
