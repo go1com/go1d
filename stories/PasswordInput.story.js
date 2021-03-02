@@ -11,7 +11,7 @@ export default {
 };
 
 export const BasicPasswordInput = args => (
-  <PasswordInput {...args} id="Password" placeholder="Pasword" />
+  <PasswordInput {...args} id="Password" placeholder="Password" />
 );
 
 export const PasswordInputSizes = args => (
