@@ -281,6 +281,8 @@ class Select extends React.PureComponent<SelectProps, any> {
                                 backgroundColor="background"
                                 boxShadow="strong"
                                 borderRadius={2}
+                                border={1}
+                                borderColor="delicate"
                                 overflow="hidden"
                                 style={style}
                                 innerRef={ref}
