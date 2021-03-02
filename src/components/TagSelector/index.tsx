@@ -146,7 +146,7 @@ class TagSelector extends React.PureComponent<TagSelectorProps, State> {
       return "accent";
     }
 
-    return borderColor ? borderColor : "soft";
+    return borderColor ? borderColor : "delicate";
   }
 
   @autobind
@@ -323,7 +323,6 @@ class TagSelector extends React.PureComponent<TagSelectorProps, State> {
               paddingY={1}
               border={1}
               borderColor={this.getBorderColor()}
-              boxShadow="inner"
               alignItems="center"
               width="100%"
               htmlFor={id || this.state.randomId}
