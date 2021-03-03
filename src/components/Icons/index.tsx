@@ -2,6 +2,7 @@ export { default as IconActivity } from "./Activity";
 export { default as IconAddItem } from "./AddItem";
 export { default as IconAddUser } from "./AddUser";
 export { default as IconAmex } from "./Amex";
+export { default as IconArrowLeft } from "./ArrowLeft";
 export { default as IconArrowUp } from "./ArrowUp";
 export { default as IconAssignment } from "./Assignment";
 export { default as IconAudio } from "./Audio";
