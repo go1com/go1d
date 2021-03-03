@@ -21,7 +21,6 @@ export const Main = (args, { globals: { accent } }) => (
       colorBorderShape="complementary"
       colorShape="complementary"
       colorText="accent"
-      colorPipe="complementary"
       {...args}
     />
   </View>

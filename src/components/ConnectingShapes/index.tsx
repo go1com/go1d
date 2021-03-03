@@ -8,7 +8,6 @@ interface ConnectingShapesProps {
   colorBorderShape?: string | null;
   colorShape?: string;
   colorText?: string;
-  colorPipe?: string;
 }
 
 const ConnectingShapes = ({
@@ -16,7 +15,6 @@ const ConnectingShapes = ({
   colorText,
   colorShape,
   colorBorderShape,
-  colorPipe,
 }: ConnectingShapesProps) => {
   const shapeWords = [];
   text.split(" ").forEach((word, index) => {
@@ -29,7 +27,7 @@ const ConnectingShapes = ({
         >
           <Connector
             key={`Shape_${index}`}
-            fillColor={colorPipe}
+            fillColor={colorShape}
             size={2}
             space={6}
             idCustom={`mask_id_${index}`}
@@ -62,11 +60,9 @@ const ConnectingShapes = ({
   });
 
   return (
-    <>
-      <View alignItems="center" key="Shape_Word">
-        {shapeWords}
-      </View>
-    </>
+    <View alignItems="center" key="Shape_Word">
+      {shapeWords}
+    </View>
   );
 };
 
