@@ -4,7 +4,7 @@ import View from "../View";
 import Connector from "./Connector";
 
 interface ConnectingShapesProps {
-  text: any;
+  text: any[];
   colorBorderShape?: string | null;
   colorShape?: string;
   colorText?: string;
@@ -17,7 +17,7 @@ const ConnectingShapes = ({
   colorBorderShape,
 }: ConnectingShapesProps) => {
   const shapeWords = [];
-  text.split(" ").forEach((word, index) => {
+  text.forEach((item, index) => {
     if (shapeWords.length > 0) {
       shapeWords.push(
         <View
@@ -53,7 +53,7 @@ const ConnectingShapes = ({
           fontSize={7}
           color={colorText}
         >
-          {word}
+          {item}
         </Text>
       </View>
     );
