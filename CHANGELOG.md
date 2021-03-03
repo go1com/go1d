@@ -1,5 +1,11 @@
 # @go1d/go1d
 
+## 0.13.2
+
+### Patch Changes
+
+- a55205bf: Add icon arrow left
+
 ## 0.13.1
 
 ### Patch Changes
