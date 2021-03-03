@@ -1,10 +1,6 @@
 /* istanbul ignore file */
 import { injectGlobal as defaultInjectGlobal } from "emotion";
-// import * as FontFaceObserver from "fontfaceobserver";
 import { type } from "./index";
-
-// const isServer =
-//   typeof window === "undefined" || typeof document === "undefined";
 
 const globalCSS = (injectGlobal = defaultInjectGlobal) => {
   fontCSS(injectGlobal);
@@ -60,22 +56,6 @@ export function fontCSS(injectGlobal = defaultInjectGlobal) {
   }
 `;
 }
-
-// export function fontCSS() {
-//   if (isServer) {
-//     return;
-//   }
-
-//   const link = document.createElement("link");
-//   link.href =
-//     "https://fonts.googleapis.com/css?family=Muli:300,400,400i,600,800&display=swap";
-//   link.rel = "stylesheet";
-
-//   document.head.appendChild(link);
-
-//   const muli = new FontFaceObserver("Muli");
-//   return muli.load();
-// }
 
 export function resetCSS(injectGlobal = defaultInjectGlobal) {
   // tslint:disable-next-line:no-unused-expression
