@@ -43,3 +43,19 @@ export const RichContent = (args, { globals: { accent } }) => (
   </View>
 );
 RichContent.storyName = "Rich content";
+
+export const Outline = (args, { globals: { accent } }) => (
+  <View
+    backgroundColor="dangerHigh"
+    padding={5}
+  >
+    <ConnectingShapes
+      text={["Transformational", "Learning"]}
+      colorBorderShape="dangerMid"
+      colorShape="dangerHigh"
+      colorText="accent"
+      {...args}
+    />
+  </View>
+);
+Outline.storyName = "Outline style";

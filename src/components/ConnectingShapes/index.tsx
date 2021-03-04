@@ -28,6 +28,7 @@ const ConnectingShapes = ({
           <Connector
             key={`Shape_${index}`}
             fillColor={colorShape}
+            strokeColor={colorBorderShape}
             size={2}
             space={6}
             idCustom={`mask_id_${index}`}
