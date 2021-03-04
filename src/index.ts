@@ -212,7 +212,7 @@ export {
   default as PackagePlan,
   PackagePlanProps,
 } from "./components/PackagePlan";
-
+export { default as Popover } from "./components/Popover";
 export { default as Stepper, StepperProps } from "./components/Stepper";
 
 export { default as Rating, RatingProps } from "./components/Rating";
