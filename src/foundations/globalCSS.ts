@@ -39,6 +39,16 @@ export function fontCSS(injectGlobal = defaultInjectGlobal) {
       url('https://cdn.go1static.com/assets/fonts/Obelisc-Medium.woff') format('woff'); /* Pretty Modern Browsers */
   }
 
+  /* Ensures text at 600 weight appears in Obelisc-Medium instead of Obelisc-Bold */
+  @font-face {
+    font-family: 'Obelisc';
+    font-weight: 600;
+    font-style: semibold;
+    src:
+      url('https://cdn.go1static.com/assets/fonts/Obelisc-Medium.woff2') format('woff2'), /* Super Modern Browsers */
+      url('https://cdn.go1static.com/assets/fonts/Obelisc-Medium.woff') format('woff'); /* Pretty Modern Browsers */
+  }
+
   @font-face {
     font-family: 'Obelisc';
     font-weight: 700;
