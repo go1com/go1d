@@ -1,5 +1,11 @@
 # @go1d/go1d
 
+## 0.14.0
+
+### Minor Changes
+
+- cda74b14: Add Popover component
+
 ## 0.13.2
 
 ### Patch Changes
