@@ -13,7 +13,7 @@ export function fontCSS(injectGlobal = defaultInjectGlobal) {
   // tslint:disable-next-line:no-unused-expression
   injectGlobal`
   @font-face {
-    font-family: 'Victor Serif Trial';
+    font-family: 'Victor Serif';
     font-weight: 600;
     font-style: semibold;
     src:
