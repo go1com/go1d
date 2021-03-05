@@ -17,12 +17,8 @@ export function fontCSS(injectGlobal = defaultInjectGlobal) {
     font-weight: 600;
     font-style: semibold;
     src:
-      url('https://cdn.go1static.com/assets/fonts/VictorSerif-Semibold.eot'), /* IE9 Compat Modes */
-      url('https://cdn.go1static.com/assets/fonts/VictorSerif-Semibold.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
       url('https://cdn.go1static.com/assets/fonts/VictorSerif-Semibold.woff2') format('woff2'), /* Super Modern Browsers */
       url('https://cdn.go1static.com/assets/fonts/VictorSerif-Semibold.woff') format('woff'), /* Pretty Modern Browsers */
-      url('https://cdn.go1static.com/assets/fonts/VictorSerif-Semibold.ttf')  format('truetype'), /* Safari, Android, iOS */
-      url('https://cdn.go1static.com/assets/fonts/VictorSerif-Semibold.svg#svgFontName') format('svg'); /* Legacy iOS */
   }
 
   @font-face {
@@ -30,7 +26,6 @@ export function fontCSS(injectGlobal = defaultInjectGlobal) {
     font-weight: 400;
     font-style: normal;
     src:
-      url('https://cdn.go1static.com/assets/fonts/Obelisc-Regular.eot'), /* IE9 Compat Modes */
       url('https://cdn.go1static.com/assets/fonts/Obelisc-Regular.woff2') format('woff2'), /* Super Modern Browsers */
       url('https://cdn.go1static.com/assets/fonts/Obelisc-Regular.woff') format('woff'); /* Pretty Modern Browsers */
   }
@@ -40,7 +35,6 @@ export function fontCSS(injectGlobal = defaultInjectGlobal) {
     font-weight: 500;
     font-style: semibold;
     src:
-      url('https://cdn.go1static.com/assets/fonts/Obelisc-Medium.eot'), /* IE9 Compat Modes */
       url('https://cdn.go1static.com/assets/fonts/Obelisc-Medium.woff2') format('woff2'), /* Super Modern Browsers */
       url('https://cdn.go1static.com/assets/fonts/Obelisc-Medium.woff') format('woff'); /* Pretty Modern Browsers */
   }
@@ -50,7 +44,6 @@ export function fontCSS(injectGlobal = defaultInjectGlobal) {
     font-weight: 700;
     font-style: bold;
     src:
-      url('https://cdn.go1static.com/assets/fonts/Obelisc-Bold.eot'), /* IE9 Compat Modes */
       url('https://cdn.go1static.com/assets/fonts/Obelisc-Bold.woff2') format('woff2'), /* Super Modern Browsers */
       url('https://cdn.go1static.com/assets/fonts/Obelisc-Bold.woff') format('woff'); /* Pretty Modern Browsers */
   }
