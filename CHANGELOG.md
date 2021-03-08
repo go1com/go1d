@@ -1,5 +1,11 @@
 # @go1d/go1d
 
+## 0.14.1
+
+### Patch Changes
+
+- 049b9a23: Popover: stop event propagation when clicking on backdrop
+
 ## 0.14.0
 
 ### Minor Changes
