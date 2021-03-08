@@ -23,7 +23,9 @@ const Popover: React.FC<Props> = ({
   const openPopover = () => {
     setIsOpen(true);
   };
-  const closePopover = () => {
+  const closePopover = (event: React.MouseEvent) => {
+    event.stopPropagation();
+    event.preventDefault();
     setIsOpen(false);
   };
   const buildEventHandlers = () => {
