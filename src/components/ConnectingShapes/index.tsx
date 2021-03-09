@@ -4,20 +4,20 @@ import View from "../View";
 import Connector from "./Connector";
 
 interface ConnectingShapesProps {
-  text: any[];
+  content: any[];
   colorBorderShape?: string | null;
   colorShape?: string;
   colorText?: string;
 }
 
 const ConnectingShapes = ({
-  text,
+  content,
   colorText,
   colorShape,
   colorBorderShape,
 }: ConnectingShapesProps) => {
   const shapeWords = [];
-  text.forEach((item, index) => {
+  content.forEach((item, index) => {
     if (shapeWords.length > 0) {
       shapeWords.push(
         <View

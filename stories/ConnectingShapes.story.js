@@ -18,7 +18,7 @@ export const Main = (args, { globals: { accent } }) => (
     padding={5}
   >
     <ConnectingShapes
-      text={["Transformational", "Learning"]}
+      content={["Transformational", "Learning"]}
       colorBorderShape="complementary"
       colorShape="complementary"
       colorText="accent"
@@ -34,7 +34,7 @@ export const RichContent = (args, { globals: { accent } }) => (
     padding={5}
   >
     <ConnectingShapes
-      text={[<Link href="#testing">Link</Link>, "Two words", <ButtonFilled {...args} color="accent">Call to action</ButtonFilled>]}
+      content={[<Link href="#testing">Link</Link>, "Two words", <ButtonFilled {...args} color="accent">Call to action</ButtonFilled>]}
       colorBorderShape="complementary"
       colorShape="complementary"
       colorText="accent"
@@ -50,7 +50,7 @@ export const Outline = (args, { globals: { accent } }) => (
     padding={5}
   >
     <ConnectingShapes
-      text={["Transformational", "Learning"]}
+      content={["Transformational", "Learning"]}
       colorBorderShape="dangerMid"
       colorShape="dangerHigh"
       colorText="accent"
