@@ -94,7 +94,7 @@ const Button: React.SFC<ButtonProps> = ({
       height: 32,
       paddingY: 2,
       paddingX: 4,
-      radiusScale: 2,
+      radiusScale: 3,
       typeScale: 1,
       iconOnlyScale: 1,
       iconMargin: 3,
