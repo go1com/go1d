@@ -1,6 +1,8 @@
 import * as React from "react";
 import { cleanup, render } from "react-testing-library";
+import ButtonFilled from "../ButtonFilled";
 import IconCourse from "../Icons/Course";
+import View from "../View";
 import CourseSlat, { dueDateFormatter } from "./index";
 
 afterEach(cleanup);
@@ -134,6 +136,44 @@ it("renders with premium", () => {
       typeIcon={IconCourse}
       passive={true}
       premium={true}
+    />
+  );
+});
+
+it("renders with learning outcomes popup", () => {
+  const testRenderer = () => <p>Hello</p>;
+  const author = () => <div>Foo</div>;
+  const contentPopover = (ref, contentProps, closePopover) => (
+    <View
+      innerRef={ref}
+      {...contentProps}
+      border={1}
+      borderColor="subtle"
+      borderRadius={3}
+      padding={5}
+    >
+      Learning outcomes
+      <ButtonFilled onClick={closePopover} color="accent" marginTop={4}>
+        Close
+      </ButtonFilled>
+    </View>
+  );
+
+  render(
+    <CourseSlat
+      courseImage="#"
+      title="Master sourdough in a week"
+      description="Despite general improvements in workplace health and safety"
+      author={author}
+      authorAvatar="#"
+      duration={4}
+      actionRender={testRenderer}
+      contentRender={testRenderer}
+      type="Course"
+      typeIcon={IconCourse}
+      passive={true}
+      premium={true}
+      popoverOnInteraction={contentPopover}
     />
   );
 });
