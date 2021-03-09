@@ -295,7 +295,7 @@ class DatePicker extends React.Component<DatePickerProps, DatePickerState> {
                   "border-radius": `${radius[5]}px`,
                 },
                 ".SingleDatePickerInput": {
-                  "border-radius": `${radius[5]}px`,
+                  "border-radius": `${radius[3]}px`,
                   border: `1px solid ${colors.faded}`,
                   transition: transitions.subtle,
                   padding: `0 ${spacing[4]}px`,
@@ -367,7 +367,7 @@ class DatePicker extends React.Component<DatePickerProps, DatePickerState> {
                 flexDirection="row"
                 alignItems="center"
                 htmlFor={id}
-                css={[{ "border-radius": `${radius[5]}px` }]}
+                css={[{ "border-radius": `${radius[3]}px` }]}
                 opacity={disabled ? "disabled" : null}
               >
                 <Text

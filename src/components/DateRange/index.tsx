@@ -14,7 +14,7 @@ import "../DatePicker/css";
 
 class DateRange extends React.Component<any, any> {
   public static defaultProps = {
-    borderRadius: 5,
+    borderRadius: 3,
     value: {},
     defaultValue: {},
   };
