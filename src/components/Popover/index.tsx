@@ -13,55 +13,71 @@ export interface Props {
   disabled?: boolean;
 }
 
-const Popover: React.FC<Props> = ({
-  triggerEvent = "onMouseOver",
-  placement = "auto",
-  offset,
-  handleRenderer,
-  contentRenderer,
-  disabled = false,
-}) => {
-  const [isOpen, setIsOpen] = React.useState(false);
-  const openPopover = () => {
-    setIsOpen(true);
+class Popover extends React.Component<Props, { isOpen: boolean }> {
+  constructor(props) {
+    super(props);
+    this.state = {
+      isOpen: false,
+    };
+  }
+
+  public openPopover = () => {
+    this.setState({ isOpen: true });
   };
-  const closePopover = (event: React.MouseEvent) => {
+
+  public closePopover = (event: React.MouseEvent) => {
     event.stopPropagation();
     event.preventDefault();
-    setIsOpen(false);
+    this.setState({ isOpen: false });
   };
-  const buildEventHandlers = () => {
+
+  public buildEventHandlers = event => {
     return {
-      [triggerEvent]: openPopover,
-      onFocus: openPopover,
+      [event]: this.openPopover,
+      onFocus: this.openPopover,
     };
   };
-  return (
-    <Manager>
-      <Reference>
-        {({ ref }) => handleRenderer(ref, { ...buildEventHandlers() })}
-      </Reference>
-      {!disabled && isOpen && (
-        <Popper
-          placement={placement}
-          modifiers={{ offset: { enabled: !!offset, offset } }}
-        >
-          {({ ref, style }) => (
-            <Portal>
-              <View
-                position="fixed"
-                css={{ top: 0, left: 0, bottom: 0, right: 0 }}
-                zIndex="modalBackdrop"
-                onClick={closePopover}
-              >
-                {contentRenderer(ref, { style }, closePopover)}
-              </View>
-            </Portal>
-          )}
-        </Popper>
-      )}
-    </Manager>
-  );
-};
+
+  public render() {
+    const { isOpen } = this.state;
+    const {
+      triggerEvent = "onMouseOver",
+      placement = "auto",
+      offset,
+      handleRenderer,
+      contentRenderer,
+      disabled,
+    } = this.props;
+
+    return (
+      <Manager>
+        <Reference>
+          {({ ref }) =>
+            handleRenderer(ref, this.buildEventHandlers(triggerEvent))
+          }
+        </Reference>
+        {!disabled && isOpen && (
+          <Popper
+            placement={placement}
+            modifiers={{ offset: { enabled: !!offset, offset } }}
+          >
+            {({ ref, style }) => (
+              <Portal>
+                <View
+                  position="fixed"
+                  css={{ top: 0, left: 0, bottom: 0, right: 0 }}
+                  zIndex="modalBackdrop"
+                  onClick={this.closePopover}
+                >
+                  {contentRenderer(ref, { style }, this.closePopover)}
+                </View>
+              </Portal>
+            )}
+          </Popper>
+        )}
+      </Manager>
+    );
+  }
+}
 
 export default Popover;
