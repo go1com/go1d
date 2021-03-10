@@ -1,5 +1,15 @@
 # @go1d/go1d
 
+## 0.16.0
+
+### Minor Changes
+
+- c2a3a84c: Add popover to show learning outcomes when hovering the title
+
+### Patch Changes
+
+- 0bd14350: Convert popover to class component
+
 ## 0.15.0
 
 ### Minor Changes
