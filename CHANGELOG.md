@@ -1,5 +1,11 @@
 # @go1d/go1d
 
+## 0.15.0
+
+### Minor Changes
+
+- 4a337d3f: Popover - add a prop to disable popup
+
 ## 0.14.1
 
 ### Patch Changes
