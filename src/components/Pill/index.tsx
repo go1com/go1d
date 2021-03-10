@@ -23,7 +23,7 @@ const Pill: React.SFC<PillProps> = ({
       display="inline-flex"
       backgroundColor={color}
       backgroundOpacity={color !== "faded" && "pill"}
-      borderRadius={1}
+      borderRadius={2}
       paddingX={3}
       paddingY={2}
       {...props}
