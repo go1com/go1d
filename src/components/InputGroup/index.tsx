@@ -10,10 +10,12 @@ const InputGroup = ({ children }) => (
           borderRadius: 0,
         },
         "> :first-child": {
+          marginRight: "-1px",
           borderTopLeftRadius: radius[3],
           borderBottomLeftRadius: radius[3],
         },
         "> :last-child": {
+          marginLeft: "-1px",
           borderTopRightRadius: radius[3],
           borderBottomRightRadius: radius[3],
         },
