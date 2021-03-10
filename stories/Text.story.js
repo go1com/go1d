@@ -37,7 +37,7 @@ export const ParagraphLarge = args => (
       fontFamily="sansSerif"
       lineHeight="paragraph"
     >
-      Paragraph Large
+      Paragraph Large. Upskill your workforce today to overcome the challenges of tomorrow. Go1 helps millions of people in thousands of organizations engage in learning that is relevant, effective and inspiring.
     </Text>
   </React.Fragment>
 );
@@ -53,7 +53,7 @@ export const ParagraphMedium = args => (
       fontFamily="sansSerif"
       lineHeight="paragraph"
     >
-      Paragraph Medium
+      Paragraph Medium. Upskill your workforce today to overcome the challenges of tomorrow. Go1 helps millions of people in thousands of organizations engage in learning that is relevant, effective and inspiring.
     </Text>
   </React.Fragment>
 );
@@ -69,7 +69,7 @@ export const ParagraphSmall = args => (
       fontFamily="sansSerif"
       lineHeight="paragraph"
     >
-      Paragraph Small
+      Paragraph Small. Upskill your workforce today to overcome the challenges of tomorrow. Go1 helps millions of people in thousands of organizations engage in learning that is relevant, effective and inspiring.
     </Text>
   </React.Fragment>
 );
