@@ -10,12 +10,12 @@ const InputGroup = ({ children }) => (
           borderRadius: 0,
         },
         "> :first-child": {
-          borderTopLeftRadius: radius[5],
-          borderBottomLeftRadius: radius[5],
+          borderTopLeftRadius: radius[3],
+          borderBottomLeftRadius: radius[3],
         },
         "> :last-child": {
-          borderTopRightRadius: radius[5],
-          borderBottomRightRadius: radius[5],
+          borderTopRightRadius: radius[3],
+          borderBottomRightRadius: radius[3],
         },
       };
       return (
