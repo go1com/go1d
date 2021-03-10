@@ -1,4 +1,5 @@
 import React from "react";
+import Theme from "../src/components/Theme";
 import {
   InputGroup,
   InputTextAffix,
@@ -32,6 +33,8 @@ export const Base = args => (
 );
 
 export const WithSelectDropdownAndTextInput = args => (
+  <Theme.Consumer>
+    {({ radius }) => (
   <InputGroup>
     <SelectDropdown
       options={[
@@ -47,10 +50,10 @@ export const WithSelectDropdownAndTextInput = args => (
           {...getToggleButtonProps()}
           innerRef={ref}
           paddingX={3}
-          borderRadius={0}
           fontWeight="semibold"
           flexGrow={1}
           css={{
+            borderRadius: `${radius[3]}px 0px 0px ${radius[3]}px`,
             flexGrow: 1,
             flexShrink: 1,
             ":hover, :focus, :active": {
@@ -66,6 +69,8 @@ export const WithSelectDropdownAndTextInput = args => (
     </SelectDropdown>
     <TextInput borderRadius={0} />
   </InputGroup>
+    )}
+  </Theme.Consumer>
 );
 
 WithSelectDropdownAndTextInput.storyName = "With SelectDropdown and TextInput";
