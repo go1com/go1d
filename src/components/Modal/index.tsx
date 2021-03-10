@@ -206,7 +206,6 @@ class Modal extends React.Component<ModalProps, any> {
                   <ButtonMinimal
                     onClick={headerAction || this.onClose}
                     icon={HeaderIconElement}
-                    round={true}
                     marginLeft={4}
                     data-testid="button-close"
                   />
