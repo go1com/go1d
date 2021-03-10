@@ -38,8 +38,26 @@ export const ChildLabel = args => (
 
 ChildLabel.storyName = "Child label";
 
-export const Disabled = args => (
+export const DisabledAndChecked = args => (
   <Checkbox {...args} disabled name="Test" value={true} label="Test" />
+);
+
+export const Disabled = args => (
+  <CheckboxGroup
+    {...args}
+    disabled
+    name="TestInput"
+    options={[
+      {
+        label: "test",
+        value: "testValue",
+      },
+      {
+        label: "test 2",
+        value: "testValue 2",
+      },
+    ]}
+  />
 );
 
 export const CheckboxInField = args => (
@@ -99,21 +117,3 @@ export const InitialValues = args => (
 );
 
 InitialValues.storyName = "Initial values";
-
-export const _Disabled = args => (
-  <CheckboxGroup
-    {...args}
-    disabled
-    name="TestInput"
-    options={[
-      {
-        label: "test",
-        value: "testValue",
-      },
-      {
-        label: "test 2",
-        value: "testValue 2",
-      },
-    ]}
-  />
-);
