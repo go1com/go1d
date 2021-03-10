@@ -32,6 +32,32 @@ export const Base = args => (
   </InputGroup>
 );
 
+export const PrefixOnly = args => (
+  <InputGroup>
+    <InputTextAffix text="@" />
+    <TextInput
+      borderRadius={0}
+      viewCss={{
+        flexGrow: 1,
+        flexShrink: 1,
+      }}
+    />
+  </InputGroup>
+);
+
+export const SuffixOnly = args => (
+  <InputGroup>
+    <TextInput
+      borderRadius={0}
+      viewCss={{
+        flexGrow: 1,
+        flexShrink: 1,
+      }}
+    />
+    <InputTextAffix text="@example.com" />
+  </InputGroup>
+);
+
 export const WithSelectDropdownAndTextInput = args => (
   <Theme.Consumer>
     {({ radius }) => (
