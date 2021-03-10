@@ -49,7 +49,7 @@ export const WithSelectDropdownAndTextInput = args => (
             <ButtonFilled
               {...getToggleButtonProps()}
               innerRef={ref}
-              paddingX={3}
+              paddingX={4}
               fontWeight="semibold"
               flexGrow={1}
               css={{
