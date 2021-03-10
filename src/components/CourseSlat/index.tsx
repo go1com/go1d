@@ -13,6 +13,7 @@ import View, { ViewProps } from "../View";
 import { IconProps } from "../IconBase";
 import IconClock from "../Icons/Clock";
 import IconEmpty from "../Icons/Empty";
+import Popover from "../Popover";
 
 interface EnrollmentProps {
   status?: string;
@@ -45,6 +46,7 @@ export interface CourseSlatProps extends ViewProps {
   rating?: number;
   ratingRenderer?: (rating: number) => React.ReactNode;
   imageOverlayRenderer?: () => React.ReactNode;
+  popoverOnInteraction?: (ref, props, close) => React.ReactNode;
 }
 
 const interactiveStyle = (colors, passive) => {
@@ -161,11 +163,45 @@ const CourseSlat: React.SFC<CourseSlatProps> = ({
   rating,
   ratingRenderer,
   imageOverlayRenderer,
+  popoverOnInteraction,
   ...props
 }: CourseSlatProps) => {
   if (skeleton) {
     return <Skeleton />;
   }
+
+  const renderTitle = (ref, handleProps) => (
+    <Text
+      tabIndex={0}
+      fontSize={3}
+      fontWeight="semibold"
+      innerRef={ref}
+      css={{
+        width: "fit-content",
+        overflow: "hidden",
+        whiteSpace: "nowrap",
+        textOverflow: "ellipsis",
+        [foundations.breakpoints.sm]: {
+          wordWrap: "break-word",
+          whiteSpace: "initial",
+          lineHeight: 1.2,
+          maxHeight: "2.4rem",
+          WebkitLineClamp: 2,
+          WebkitBoxOrient: "vertical",
+          display: "-webkit-box",
+          fontSize: foundations.type.scale.sm[2],
+        },
+      }}
+      {...handleProps}
+    >
+      {title}
+    </Text>
+  );
+
+  const renderContentPopover = (ref, contentProps, closePopover) =>
+    popoverOnInteraction
+      ? popoverOnInteraction(ref, contentProps, closePopover)
+      : null;
 
   return (
     <Theme.Consumer>
@@ -262,27 +298,12 @@ const CourseSlat: React.SFC<CourseSlatProps> = ({
               >
                 <View>
                   {title && (
-                    <Text
-                      fontSize={3}
-                      fontWeight="semibold"
-                      css={{
-                        overflow: "hidden",
-                        whiteSpace: "nowrap",
-                        textOverflow: "ellipsis",
-                        [foundations.breakpoints.sm]: {
-                          wordWrap: "break-word",
-                          whiteSpace: "initial",
-                          lineHeight: 1.2,
-                          maxHeight: "2.4rem",
-                          WebkitLineClamp: 2,
-                          WebkitBoxOrient: "vertical",
-                          display: "-webkit-box",
-                          fontSize: foundations.type.scale.sm[2],
-                        },
-                      }}
-                    >
-                      {title}
-                    </Text>
+                    <Popover
+                      placement="right-end"
+                      handleRenderer={renderTitle}
+                      contentRenderer={renderContentPopover}
+                      disabled={popoverOnInteraction ? false : true}
+                    />
                   )}
                   {(duration || author) && (
                     <View flexDirection="row" marginY={3} flexWrap="wrap">
