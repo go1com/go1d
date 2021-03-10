@@ -10,6 +10,7 @@ export interface Props {
   offset?: number | string;
   handleRenderer: (ref, handleProps) => React.ReactNode;
   contentRenderer: (ref, contentProps, closePopover) => React.ReactNode;
+  disabled?: boolean;
 }
 
 const Popover: React.FC<Props> = ({
@@ -18,6 +19,7 @@ const Popover: React.FC<Props> = ({
   offset,
   handleRenderer,
   contentRenderer,
+  disabled = false,
 }) => {
   const [isOpen, setIsOpen] = React.useState(false);
   const openPopover = () => {
@@ -39,7 +41,7 @@ const Popover: React.FC<Props> = ({
       <Reference>
         {({ ref }) => handleRenderer(ref, { ...buildEventHandlers() })}
       </Reference>
-      {isOpen && (
+      {!disabled && isOpen && (
         <Popper
           placement={placement}
           modifiers={{ offset: { enabled: !!offset, offset } }}
