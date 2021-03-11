@@ -27,7 +27,7 @@ build:
   except:
     - "tags"
   only:
-    - master
+    - "original-go1d"
 
 build-dev:
   stage: build
@@ -50,6 +50,7 @@ build-dev:
   only: ["branches"]
   except:
     - master
+    - "original-go1d"
 
 test:linting:
   stage: test
@@ -57,6 +58,7 @@ test:linting:
   except:
     - master
     - tags
+    - "original-go1d"
 
 test:unit:
   stage: test
@@ -103,4 +105,4 @@ release:npm:
   except:
     - "tags"
   only:
-    - master
+    - "original-go1d"
