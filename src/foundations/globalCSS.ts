@@ -18,7 +18,7 @@ export function fontCSS(injectGlobal = defaultInjectGlobal) {
     font-style: semibold;
     src:
       url('https://cdn.go1static.com/assets/fonts/VictorSerif-Semibold.woff2') format('woff2'), /* Super Modern Browsers */
-      url('https://cdn.go1static.com/assets/fonts/VictorSerif-Semibold.woff') format('woff'), /* Pretty Modern Browsers */
+      url('https://cdn.go1static.com/assets/fonts/VictorSerif-Semibold.woff') format('woff'); /* Pretty Modern Browsers */
   }
 
   @font-face {

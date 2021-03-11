@@ -404,9 +404,11 @@ export const shadows: MappedKey<Shadows, string> = {
  */
 
 const defaultFontFamily: string =
-  "-apple-system,BlinkMacSystemFont,helvetica,'helvetica neue',ubuntu,roboto,noto,'segoe ui',arial,sans-serif";
+  "-apple-system, BlinkMacSystemFont, 'avenir next', avenir, 'helvetica neue', helvetica, Ubuntu, roboto, noto, 'segoe ui', arial, ui-sans-serif, sans-serif";
+const defaultSerifFontFamily: string =
+  "'Iowan Old Style', 'Apple Garamond', Baskerville, 'Times New Roman', 'Droid Serif', Times, 'Source Serif Pro', ui-serif, serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'";
 const sansSerif: string = "'Obelisc', " + defaultFontFamily;
-const serif: string = "'Victor Serif', " + defaultFontFamily;
+const serif: string = "'Victor Serif', " + defaultSerifFontFamily;
 const monospace: string = "'Source Code Pro', 'Menlo', monospace";
 
 export const type: ThemeType = {
