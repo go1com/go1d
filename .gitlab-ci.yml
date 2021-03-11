@@ -3,7 +3,6 @@ image: go1com/ci-nodejs:node10
 stages:
   - build
   - test
-  - visual-test
   - release
   - npm-release
 
@@ -18,18 +17,12 @@ build:
   script:
     - yarn config set no-progress
     - yarn install --silent
-    - yarn "react:docs"
-    # Use concurrently to run job, also yarn react:docs was duplicated
-    - yarn "ci:build"
-    # - yarn "npm:build"
-    # - yarn "docs:build"
-    # - yarn "storybook:build"
+    - yarn "npm:build"
   artifacts:
     paths:
       - node_modules
       - build
       - dist
-      - dist_storybook
     expire_in: 6h
   except:
     - "tags"
@@ -79,50 +72,6 @@ test:unit:
   except:
     - "tags"
 
-visual-test:happo:
-  stage: visual-test
-  dependencies:
-    - test:linting
-  allow_failure: true
-  before_script:
-    - export PREVIOUS_SHA=`git rev-parse origin/master`
-    - export CURRENT_SHA=$CI_COMMIT_SHA
-    - export CHANGE_URL=$CI_PAGES_URL
-  script:
-    - DIFF_REVIEW=$(node ./scripts/check-screenshot-result.js)
-    - if [ "$DIFF_REVIEW" != "accept" ]; then
-    - yarn config set no-progress
-    - yarn install --silent
-    - yarn react:docs && node ./.storybook/generate-props-file.js
-    - yarn run happo-ci
-    # Check for EXIT_CODE env
-    - NPM_BIN=$(yarn bin)
-    - SUMMARY=$("$NPM_BIN"/happo compare "$PREVIOUS_SHA" "$CURRENT_SHA");
-    - if [ "$EXIT_CODE" == "113" ]; then exit 1; fi; fi
-  except:
-    - master
-    - tags
-
-pages: # NEVER rename this. I must apparently be exactly this to work
-  stage: release
-  dependencies:
-    - build
-  script:
-    - rm -rf public
-    - mkdir public
-    - rm -rf public/storybook
-    - mkdir public/storybook
-    - cp -r dist/* public/
-    - cp -r dist_storybook/* public/storybook/
-
-  artifacts:
-    paths:
-      - public # mandatory, other folder won't work
-  except:
-    - "tags"
-  only:
-    - master
-
 release:npm:
   stage: npm-release
   dependencies:
@@ -143,29 +92,14 @@ release:npm:
     - git config user.email "$GITLAB_USER_EMAIL"
     - git checkout $CI_COMMIT_REF_NAME
     - git branch --set-upstream-to origin/$CI_COMMIT_REF_NAME
+    - PACKAGE_VERSION=$(npm version patch -m "[NPM-CI] Publishing Version %s to NPM [skip ci]")
+    - git push origin
+    - git push origin $PACKAGE_VERSION
     - npm config set scope go1d --global
     - echo '//registry.npmjs.org/:_authToken=${NPM_TOKEN}'>.npmrc
     - rm readme.md
     - mv npm-readme.md readme.md
-    - yarn config set no-progress
-    - yarn install --silent
-    - yarn changeset status || yarn changeset add --empty
-    - yarn changeset version
-    - git add package.json .changeset/ CHANGELOG.md
-    - git commit -m "[NPM-CI] Version packages [skip ci]" || true # [skip ci] prevents infinite loop
-    - yarn changeset publish || true # creates a git tag, and must be preceded by the version commit
-    - git push -o ci.skip git@${CI_SERVER_HOST}:${CI_PROJECT_PATH}.git --follow-tags || true
-    - NPM_BIN=$(yarn bin)
-    - MASTER_SHA=$(git rev-parse origin/master)
-    - if ! "$NPM_BIN"/happo has-report "$MASTER_SHA"; then
-    - yarn react:docs && node ./.storybook/generate-props-file.js
-    - yarn happo run $MASTER_SHA; fi
-  artifacts:
-    paths:
-      - package.json
-      - .changeset/
-      - CHANGELOG.md
-    when: on_failure
+    - npm publish --access public --tag original-go1d # do NOT use tag --latest on original-go1d
   except:
     - "tags"
   only:
