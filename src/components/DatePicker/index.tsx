@@ -230,7 +230,7 @@ class DatePicker extends React.Component<DatePickerProps, DatePickerState> {
       return "accent";
     }
 
-    return "soft";
+    return "faded";
   }
 
   @autobind
@@ -256,7 +256,7 @@ class DatePicker extends React.Component<DatePickerProps, DatePickerState> {
 
     return (
       <Theme.Consumer>
-        {({ colors, spacing, shadows, transitions, type }) => (
+        {({ colors, radius, spacing, shadows, transitions, type }) => (
           <View
             flexDirection="row"
             display="flex"
@@ -292,12 +292,11 @@ class DatePicker extends React.Component<DatePickerProps, DatePickerState> {
                 ".DayPicker__withBorder": {
                   "box-shadow":
                     "0 2px 6px rgba(0,0,0,.05),0 0 0 1px rgba(0,0,0,.07)",
-                  "border-radius": `${spacing[2]}px`,
+                  "border-radius": `${radius[5]}px`,
                 },
                 ".SingleDatePickerInput": {
-                  "border-radius": `${spacing[2]}px`,
-                  "box-shadow": shadows.inner,
-                  "border-color": colors.soft,
+                  "border-radius": `${radius[3]}px`,
+                  border: `1px solid ${colors.faded}`,
                   transition: transitions.subtle,
                   padding: `0 ${spacing[4]}px`,
                   "&:hover, &:focus": {
@@ -365,11 +364,10 @@ class DatePicker extends React.Component<DatePickerProps, DatePickerState> {
                 paddingX={get({ lg: 5, md: 4, sm: 1 }, size)}
                 border={1}
                 borderColor={this.getBorderColor()}
-                boxShadow="inner"
                 flexDirection="row"
                 alignItems="center"
                 htmlFor={id}
-                css={[{ "border-radius": `${spacing[2]}px` }]}
+                css={[{ "border-radius": `${radius[3]}px` }]}
                 opacity={disabled ? "disabled" : null}
               >
                 <Text

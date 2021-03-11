@@ -24,6 +24,12 @@ const checkboxSizes = {
   sm: 16,
 };
 
+const checkboxRadiusValues = {
+  lg: 2,
+  md: 2,
+  sm: 1,
+};
+
 const iconSizes = {
   lg: 4,
   md: 2,
@@ -110,6 +116,7 @@ class Checkbox extends React.Component<
       propValue === undefined || propValue === "" ? checkedState : propValue;
 
     const checkboxSize = get(checkboxSizes, size);
+    const checkboxRadius = get(checkboxRadiusValues, size);
     const iconSize = get(iconSizes, size);
     const scaledFontSize =
       fontSize !== undefined ? fontSize : get(fontSizes, size);
@@ -132,7 +139,7 @@ class Checkbox extends React.Component<
           <View
             borderColor={this.getBorderColor(value)}
             backgroundColor="background"
-            borderRadius={2}
+            borderRadius={checkboxRadius}
             alignItems="center"
             justifyContent="center"
             opacity={disabled ? "disabled" : null}

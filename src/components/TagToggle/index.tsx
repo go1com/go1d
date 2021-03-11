@@ -15,18 +15,21 @@ const sizeStyles = {
     height: 48,
     paddingY: 3,
     paddingX: 5,
+    radius: 3,
     typeScale: 3,
   },
   md: {
     height: 40,
     paddingY: 3,
     paddingX: 4,
+    radius: 2,
     typeScale: 2,
   },
   sm: {
     height: 32,
     paddingY: 2,
     paddingX: 4,
+    radius: 1,
     typeScale: 1,
   },
 };
@@ -100,7 +103,7 @@ class TagToggle extends React.Component<
       ...props
     } = this.props;
 
-    const { height, paddingY, paddingX, typeScale } = sizeStyles[size];
+    const { height, paddingY, paddingX, radius, typeScale } = sizeStyles[size];
 
     const value = typeof propValue === "undefined" ? checkedState : propValue;
     const IconElement = value
@@ -149,7 +152,7 @@ class TagToggle extends React.Component<
                 display="inline-flex"
                 flexDirection="row"
                 alignItems="center"
-                borderRadius={2}
+                borderRadius={radius}
                 height={height}
                 paddingY={paddingY}
                 paddingX={paddingX}

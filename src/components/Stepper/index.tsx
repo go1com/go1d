@@ -180,7 +180,7 @@ class TextInput extends React.PureComponent<StepperProps, StepperState> {
       return "accent";
     }
 
-    return borderColor || "soft";
+    return borderColor || "delicate";
   }
 
   @autobind
@@ -263,14 +263,13 @@ class TextInput extends React.PureComponent<StepperProps, StepperState> {
 
     return (
       <Theme.Consumer>
-        {({ spacing }) => (
+        {({ radius }) => (
           <View
             flexDirection="row"
             border={1}
             borderColor={this.getBorderColor()}
             borderRadius={borderRadius}
             backgroundColor="background"
-            boxShadow={boxShadow}
             alignItems="center"
             htmlFor={id}
             opacity={disabled ? "disabled" : null}
@@ -335,7 +334,7 @@ class TextInput extends React.PureComponent<StepperProps, StepperState> {
                 borderLeft={1}
                 borderColor={this.getBorderColor()}
                 css={{
-                  borderRadius: `0 ${spacing[2]}px ${spacing[2]}px 0`,
+                  borderRadius: `0 ${radius[3]}px ${radius[3]}px 0`,
                   alignSelf: "stretch",
                 }}
               >

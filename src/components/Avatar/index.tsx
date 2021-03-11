@@ -24,7 +24,7 @@ const Avatar: React.SFC<AvatarProps> = ({
   icon,
   avatarType = "circle",
   skeleton = false,
-  borderRadius = 3,
+  borderRadius = 4,
   ...props
 }: AvatarProps) => {
   const names = `${fullName}`.split(" ");

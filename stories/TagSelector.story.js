@@ -5,7 +5,7 @@ import hideInheritedProps from '../.storybook/hideInheritedProps.js'
 let argTypes = hideInheritedProps({}, TagSelector);
 
 export default {
-  title: "Original Go1d/TagSelector",
+  title: "Athletic/TagSelector",
   argTypes: argTypes,
   component: TagSelector,
 };

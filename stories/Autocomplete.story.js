@@ -5,7 +5,7 @@ import hideInheritedProps from '../.storybook/hideInheritedProps.js'
 let argTypes = hideInheritedProps({}, Autocomplete);
 
 export default {
-  title: "Original Go1d/Autocomplete",
+  title: "Athletic/Autocomplete",
   argTypes: argTypes,
   component: Autocomplete,
 };

@@ -5,7 +5,7 @@ import hideInheritedProps from '../.storybook/hideInheritedProps.js'
 let argTypes = hideInheritedProps({}, Provider);
 
 export default {
-  title: "Original Go1d/Provider",
+  title: "Athletic/Provider",
   argTypes: argTypes,
   component: Provider,
 };
@@ -14,7 +14,7 @@ export const DefaultPropsWithLightMode = () => (
   <Provider>
     <PageBody>
       <View marginBottom={5}>
-        <Text element="h2" fontSize={4} fontWeight="semibold">
+        <Text element="h2" fontSize={5} fontWeight="semibold" fontFamily="serif" lineHeight="display">
           Reports
         </Text>
       </View>
@@ -32,7 +32,7 @@ export const CustomLinkAndDarkModeSpecified = args => (
   <Provider mode="dark" linkComponent={() => <div>custom link</div>}>
     <PageBody>
       <View marginBottom={5}>
-        <Text element="h2" fontSize={4} fontWeight="semibold">
+        <Text element="h2" fontSize={5} fontWeight="semibold" fontFamily="serif" lineHeight="display">
           Reports
         </Text>
       </View>

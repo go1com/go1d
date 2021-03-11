@@ -32,6 +32,12 @@ export const parameters = {
   },
   layout: 'centered',
   docs: { page: DocsPage },
+  options: {
+    storySort: {
+      method: 'alphabetical',
+      order: ['Overview', 'Athletic', ['Foundations'], 'Original Go1d'],
+    },
+  },
   previewTabs: {
     'storybook/docs/panel': { index: -1 }
   },
@@ -45,8 +51,18 @@ export const globalTypes = {
     toolbar: {
       icon: 'contrast',
       items: [
-          { value: colors.accent, right: 'b', title: 'Original Go1d' },
-          { value: '#ff1493', right: 'a', title: 'Example customer color deeppink' },
+        { value: colors.accent, right: '🟢', left: '🥇', title: 'Athletic Go1d accent' },
+        { value: '#409cb2', right: '🟢', left: '🌱', title: "CityFibre" },
+        { value: '#0d47a1', right: '🔵', left: '🎓', title: 'Hays' },
+        { value: '#ffca28', right: '🟡', left: '☀️', title: 'Suncorp' },
+        { value: '#faa519', right: '🟠', left: '💸', title: 'Bentleys' },
+        { value: '#f44336', right: '🔴', left: '💰', title: "Westpac" },
+        { value: '#e53935', right: '🔴', left: '🍙', title: "Roll'd" },
+        { value: '#d32f2f', right: '🔴', left: '🐝', title: 'Busy Bees' },
+        { value: '#e91e63', right: '💖', left: '🛍', title: 'CAMILLA' },
+        { value: '#9c27b0', right: '🟣', left: '💳', title: '🕴🏿' },
+        { value: '#ff1493', right: '💖', left: '🎨', title: 'Example customer accent deeppink' },
+        { value: '#31B8DA', right: '🔵', left: '🎨', title: 'Original Go1d accent' },
       ],
     },
   },

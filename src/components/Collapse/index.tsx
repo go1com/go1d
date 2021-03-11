@@ -165,7 +165,10 @@ class Collapse extends React.Component<CollapseProps, CollapseState> {
   }
 
   private getHeightContent = () => {
-    return this.refContent.clientHeight;
+    // The height it is calculating here is correct, but Chrome shows a scrollbar anyway.
+    // If you increase it by 1px and reduce it again by 1px in the console, the scrollbar disappears
+    // FIXME: adding a 1px adjustment is a workaround and should be fixed properly.
+    return this.refContent.clientHeight + 1;
   };
 }
 

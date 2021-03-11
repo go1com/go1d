@@ -3,7 +3,7 @@ import { create } from '@storybook/theming/create';
 export default create({
   base: 'light',
   // Typography
-  fontBase: 'Muli, system-ui, sans-serif',
+  fontBase: 'Obelisc, -apple-system, BlinkMacSystemFont, avenir next, avenir, helvetica neue, helvetica, Ubuntu, roboto, noto, segoe ui, arial, ui-sans-serif, sans-serif',
   fontCode: 'monospace',
 
   // Title, URL, logo/favicon

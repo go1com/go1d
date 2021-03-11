@@ -5,13 +5,13 @@ import hideInheritedProps from '../.storybook/hideInheritedProps.js'
 let argTypes = hideInheritedProps({}, PasswordInput);
 
 export default {
-  title: "Original Go1d/PasswordInput",
+  title: "Athletic/PasswordInput",
   argTypes: argTypes,
   component: PasswordInput,
 };
 
 export const BasicPasswordInput = args => (
-  <PasswordInput {...args} id="Password" placeholder="Pasword" />
+  <PasswordInput {...args} id="Password" placeholder="Password" />
 );
 
 export const PasswordInputSizes = args => (

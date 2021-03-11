@@ -16,6 +16,109 @@ import {
 
 import * as defaultEmotion from "emotion";
 
+const options = {
+  color: {
+    light: {
+      neutral: {
+        N000: "#FFFFFF",
+        N100: "#F7F8F8",
+        N200: "#F1F3F3",
+        N300: "#E6E9EA",
+        N400: "#D3D8D9",
+        N500: "#B5BEC0",
+        N600: "#8C9597",
+        N700: "#666F71",
+        N800: "#394446",
+        N900: "#22292A",
+      },
+      cyan: {
+        C50: "#F4FAFB",
+        C100: "#E9F4F7",
+        C400: "#65CADF",
+        C700: "#317481",
+        C800: "#114954",
+      },
+      blue: {
+        B50: "#F0F8FE",
+        B100: "#EAF0F6",
+        B500: "#5887B1",
+        B700: "#315A81",
+        B800: "#143452",
+      },
+      lime: {
+        L50: "#F9FFF0",
+        L100: "#F7FFE0",
+        L400: "#D4FF26",
+        L700: "#5F6F2A",
+        L800: "#34400D",
+      },
+      red: {
+        R50: "#FBF6F4",
+        R100: "#FAF2ED",
+        R200: "#FDAF8D",
+        R700: "#B03603",
+        R800: "#5E2108",
+      },
+      orange: {
+        O50: "#FFF9F0",
+        O100: "#FFF4E0",
+        O300: "#EEB068",
+        O700: "#815C31",
+        O800: "#553611",
+      },
+    },
+    dark: {
+      neutral: {
+        N000: "#FFFFFF",
+        N100: "#F7F8F8",
+        N200: "#F1F3F3",
+        N300: "#E6E9EA",
+        N400: "#D3D8D9",
+        N500: "#B5BEC0",
+        N600: "#8C9597",
+        N700: "#666F71",
+        N800: "#394446",
+        N900: "#22292A",
+      },
+      cyan: {
+        C50: "#F4FAFB",
+        C100: "#E9F4F7",
+        C400: "#65CADF",
+        C700: "#317481",
+        C800: "#114954",
+      },
+      blue: {
+        B50: "#F0F8FE",
+        B100: "#EAF0F6",
+        B500: "#5887B1",
+        B700: "#315A81",
+        B800: "#143452",
+      },
+      lime: {
+        L50: "#F9FFF0",
+        L100: "#F7FFE0",
+        L400: "#D4FF26",
+        L700: "#5F6F2A",
+        L800: "#34400D",
+      },
+      red: {
+        R50: "#FBF6F4",
+        R100: "#FAF2ED",
+        R200: "#FDAF8D",
+        R700: "#B03603",
+        R800: "#5E2108",
+      },
+      orange: {
+        O50: "#FFF9F0",
+        O100: "#FFF4E0",
+        O300: "#EEB068",
+        O700: "#815C31",
+        O800: "#553611",
+      },
+    },
+  },
+};
+
 /**
  * Color utilities
  */
@@ -65,19 +168,19 @@ export const opacities: MappedKey<Opacities, number> = {
   none: 1,
 };
 
-const brandAccent = "#31B8DA";
+const brandAccent = options.color.light.cyan.C800;
 
 const baseGreys = {
-  grey0: "#ffffff",
-  grey1: "#fcfcfc",
-  grey2: "#f9f9f9",
-  grey3: "#e9e9e9",
-  grey4: "#d9d9d9",
-  grey5: "#cdcdcd",
-  grey6: "#9b9b9b",
-  grey7: "#797979",
-  grey8: "#383838",
-  grey9: "#1d1d1d",
+  grey0: options.color.light.neutral.N000,
+  grey1: options.color.light.neutral.N100,
+  grey2: options.color.light.neutral.N200,
+  grey3: options.color.light.neutral.N300,
+  grey4: options.color.light.neutral.N400,
+  grey5: options.color.light.neutral.N500,
+  grey6: options.color.light.neutral.N600,
+  grey7: options.color.light.neutral.N700,
+  grey8: options.color.light.neutral.N800,
+  grey9: options.color.light.neutral.N900,
 };
 
 export const generateColors = ({
@@ -86,42 +189,155 @@ export const generateColors = ({
 }: ColorArguments = {}): Colors => {
   const accentMix = mix(accent);
 
+  const isGo1Accent = accent === options.color.light.cyan.C800;
+
+  const complementary = isGo1Accent
+    ? options.color.light.lime.L400
+    : options.color.light.neutral.N000;
+
   const accentGreys = {
     light: {
-      contrast: accentMix(baseGreys.grey9, 0.05),
-      default: accentMix(baseGreys.grey8, 0.15),
-      subtle: accentMix(baseGreys.grey7, 0.2),
-      muted: accentMix(baseGreys.grey5, 0.25),
-      divide: accentMix(baseGreys.grey2, 0.07),
-      faded: accentMix(baseGreys.grey3, 0.15),
-      soft: accentMix(baseGreys.grey2, 0.07),
-      faint: accentMix(baseGreys.grey1, 0.02),
-      background: baseGreys.grey0,
+      contrast: isGo1Accent
+        ? options.color.light.neutral.N900
+        : accentMix(baseGreys.grey9, 0.05),
+      default: isGo1Accent
+        ? options.color.light.neutral.N800
+        : accentMix(baseGreys.grey8, 0.25),
+      subtle: isGo1Accent
+        ? options.color.light.neutral.N700
+        : accentMix(baseGreys.grey7, 0.2),
+      thin: isGo1Accent
+        ? options.color.light.neutral.N600
+        : accentMix(baseGreys.grey6, 0.2),
+      muted: isGo1Accent
+        ? options.color.light.neutral.N500
+        : accentMix(baseGreys.grey5, 0.25),
+      faded: isGo1Accent
+        ? options.color.light.neutral.N400
+        : accentMix(baseGreys.grey4, 0.15),
+      delicate: isGo1Accent
+        ? options.color.light.neutral.N300
+        : accentMix(baseGreys.grey3, 0.08),
+      soft: isGo1Accent
+        ? options.color.light.neutral.N200
+        : accentMix(baseGreys.grey2, 0.07),
+      divide: isGo1Accent
+        ? options.color.light.neutral.N200
+        : accentMix(baseGreys.grey2, 0.07),
+      faint: isGo1Accent
+        ? options.color.light.neutral.N100
+        : accentMix(baseGreys.grey1, 0.02),
+      background: isGo1Accent
+        ? options.color.light.neutral.N000
+        : baseGreys.grey0,
       transparent: "transparent",
     },
     dark: {
       contrast: baseGreys.grey0,
-      default: accentMix(baseGreys.grey4, 0.15),
-      subtle: accentMix(baseGreys.grey6, 0.25),
-      muted: accentMix(baseGreys.grey8, 0.35),
-      divide: accentMix(baseGreys.grey9, 0.17),
-      faded: accentMix(baseGreys.grey8, 0.14),
-      soft: accentMix(baseGreys.grey9, 0.17),
-      faint: accentMix(baseGreys.grey9, 0.11),
-      background: accentMix(baseGreys.grey9, 0.05),
+      default: isGo1Accent
+        ? accentMix(options.color.dark.neutral.N200, 0.1)
+        : accentMix(baseGreys.grey4, 0.15),
+      subtle: isGo1Accent
+        ? accentMix(options.color.dark.neutral.N300, 0.27)
+        : accentMix(baseGreys.grey6, 0.2),
+      thin: isGo1Accent
+        ? accentMix(options.color.dark.neutral.N400, 0.35)
+        : accentMix(baseGreys.grey7, 0.25),
+      muted: isGo1Accent
+        ? accentMix(options.color.dark.neutral.N500, 0.55)
+        : accentMix(baseGreys.grey8, 0.35),
+      faded: isGo1Accent
+        ? accentMix(options.color.dark.neutral.N600, 0.55)
+        : accentMix(baseGreys.grey8, 0.14),
+      delicate: isGo1Accent
+        ? accentMix(options.color.dark.neutral.N700, 0.45)
+        : accentMix(baseGreys.grey8, 0.14),
+      soft: isGo1Accent
+        ? accentMix(options.color.dark.neutral.N800, 0.35)
+        : accentMix(baseGreys.grey9, 0.17),
+      divide: isGo1Accent
+        ? accentMix(options.color.dark.neutral.N800, 0.35)
+        : accentMix(baseGreys.grey9, 0.17),
+      faint: isGo1Accent
+        ? accentMix(options.color.dark.neutral.N900, 0.22)
+        : accentMix(baseGreys.grey9, 0.12),
+      background: isGo1Accent
+        ? accentMix(options.color.dark.neutral.N900, 0.05)
+        : accentMix(baseGreys.grey9, 0.05),
       transparent: "transparent",
     },
   };
 
   const themedGreys = accentGreys[mode];
 
-  const statusColors = {
-    highlight: opacify(accent, opacities.highlight),
-    success: "#51C133",
-    note: "#FFDE00",
-    warning: "#F6941D",
-    danger: "#DA3131",
+  const statusColorsPerMode = {
+    light: {
+      highlight: opacify(accent, opacities.highlight),
+      success: options.color.light.cyan.C400,
+      successHighest: options.color.light.cyan.C50,
+      successHigh: options.color.light.cyan.C100,
+      successMid: options.color.light.cyan.C400,
+      successLow: options.color.light.cyan.C700,
+      successLowest: options.color.light.cyan.C800,
+      note: options.color.light.blue.B500,
+      noteHighest: options.color.light.blue.B50,
+      noteHigh: options.color.light.blue.B100,
+      noteMid: options.color.light.blue.B500,
+      noteLow: options.color.light.blue.B700,
+      noteLowest: options.color.light.blue.B800,
+      warning: options.color.light.orange.O300,
+      warningHighest: options.color.light.orange.O50,
+      warningHigh: options.color.light.orange.O100,
+      warningMid: options.color.light.orange.O300,
+      warningLow: options.color.light.orange.O700,
+      warningLowest: options.color.light.orange.O800,
+      danger: options.color.light.red.R700,
+      dangerHighest: options.color.light.red.R50,
+      dangerHigh: options.color.light.red.R100,
+      dangerMid: options.color.light.red.R200,
+      dangerLow: options.color.light.red.R700,
+      dangerLowest: options.color.light.red.R800,
+      vividHighest: options.color.light.lime.L50,
+      vividHigh: options.color.light.lime.L100,
+      vividMid: options.color.light.lime.L400,
+      vividLow: options.color.light.lime.L700,
+      vividLowest: options.color.light.lime.L800,
+    },
+    dark: {
+      highlight: opacify(accent, opacities.highlight),
+      success: options.color.dark.cyan.C400,
+      successHighest: options.color.dark.cyan.C800,
+      successHigh: options.color.dark.cyan.C700,
+      successMid: options.color.dark.cyan.C400,
+      successLow: options.color.dark.cyan.C100,
+      successLowest: options.color.dark.cyan.C50,
+      note: options.color.dark.blue.B500,
+      noteHighest: options.color.dark.blue.B800,
+      noteHigh: options.color.dark.blue.B700,
+      noteMid: options.color.dark.blue.B500,
+      noteLow: options.color.dark.blue.B100,
+      noteLowest: options.color.dark.blue.B50,
+      warning: options.color.dark.orange.O300,
+      warningHighest: options.color.dark.orange.O800,
+      warningHigh: options.color.dark.orange.O700,
+      warningMid: options.color.dark.orange.O300,
+      warningLow: options.color.dark.orange.O100,
+      warningLowest: options.color.dark.orange.O50,
+      danger: options.color.dark.red.R700,
+      dangerHighest: options.color.dark.red.R800,
+      dangerHigh: options.color.dark.red.R700,
+      dangerMid: options.color.dark.red.R200,
+      dangerLow: options.color.dark.red.R100,
+      dangerLowest: options.color.dark.red.R50,
+      vividHighest: options.color.dark.lime.L50,
+      vividHigh: options.color.dark.lime.L100,
+      vividMid: options.color.dark.lime.L400,
+      vividLow: options.color.dark.lime.L700,
+      vividLowest: options.color.dark.lime.L800,
+    },
   };
+
+  const statusColors = statusColorsPerMode[mode];
 
   const gradients: MappedKey<Gradients, string> = {
     warmOverlay:
@@ -134,6 +350,7 @@ export const generateColors = ({
 
   return {
     accent,
+    complementary,
     ...themedGreys,
     ...statusColors,
     gradients,
@@ -187,8 +404,11 @@ export const shadows: MappedKey<Shadows, string> = {
  */
 
 const defaultFontFamily: string =
-  "-apple-system,BlinkMacSystemFont,helvetica,'helvetica neue',ubuntu,roboto,noto,'segoe ui',arial,sans-serif";
-const sansSerif: string = "'Muli', " + defaultFontFamily;
+  "-apple-system, BlinkMacSystemFont, 'avenir next', avenir, 'helvetica neue', helvetica, Ubuntu, roboto, noto, 'segoe ui', arial, ui-sans-serif, sans-serif";
+const defaultSerifFontFamily: string =
+  "'Iowan Old Style', 'Apple Garamond', Baskerville, 'Times New Roman', 'Droid Serif', Times, 'Source Serif Pro', ui-serif, serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'";
+const sansSerif: string = "'Obelisc', " + defaultFontFamily;
+const serif: string = "'Victor Serif', " + defaultSerifFontFamily;
 const monospace: string = "'Source Code Pro', 'Menlo', monospace";
 
 export const type: ThemeType = {
@@ -199,6 +419,7 @@ export const type: ThemeType = {
   },
   family: {
     sansSerif,
+    serif,
     title: sansSerif,
     paragraph: sansSerif,
     ui: sansSerif,
@@ -209,7 +430,7 @@ export const type: ThemeType = {
     normal: 400,
     medium: 500,
     semibold: 600,
-    bold: 800,
+    bold: 700,
   },
   leading: {
     display: 1.2,
@@ -228,6 +449,12 @@ export const type: ThemeType = {
     full: "100%",
   },
 };
+
+/**
+ * Corner Radius
+ */
+
+export const radius = [0, 4, 8, 12, 16, 32, 48, 64, 128];
 
 /**
  * Spacing
@@ -286,6 +513,7 @@ export const generateTheme = ({
 }: GenerateThemeInput = {}): Theme => ({
   colors: generateColors({ accent, mode }),
   type,
+  radius,
   spacing,
   shadows,
   hoverStyle,

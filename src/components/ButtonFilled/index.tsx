@@ -14,6 +14,16 @@ const customModes = {
   background: "light",
 };
 
+const textColor = (color, accentColor) => {
+  if (color === "background") {
+    return "subtle";
+  } else if (color === "accent") {
+    return isDark(accentColor) ? "complementary" : "background";
+  } else {
+    return "contrast";
+  }
+};
+
 const ButtonFilled: React.SFC<ButtonFilledProps> = ({
   color = "background",
   children,
@@ -31,22 +41,29 @@ const ButtonFilled: React.SFC<ButtonFilledProps> = ({
         <Button
           mode={mode}
           backgroundColor={color}
-          color={color === "background" ? "subtle" : "contrast"}
-          iconColor={color === "background" ? "muted" : "contrast"}
+          border={1}
+          color={textColor(color, colors.accent)}
+          iconColor={textColor(color, colors.accent)}
           fontWeight="bold"
           css={[
             {
               background: `${colors.gradients.warmOverlay}, ${colors[color]}`,
-              boxShadow: shadows.soft,
+              borderColor: `${
+                color === "background" ? colors.faded : colors[color]
+              }`,
               textShadow: mode === "dark" && shadows.text,
               "&:hover, &:focus": {
                 background: `${colors.gradients.lightWarmOverlay}, ${colors[color]}`,
-                boxShadow: shadows.strong,
+                borderColor: `${
+                  color === "background" ? colors.thin : colors[color]
+                }`,
                 transform: "translateY(-1px)",
               },
               "&:active": {
                 background: `${colors.gradients.darkWarmOverlay}, ${colors[color]}`,
-                boxShadow: shadows.crisp,
+                borderColor: `${
+                  color === "background" ? colors.subtle : colors[color]
+                }`,
                 transform: "translateY(1px)",
               },
             },

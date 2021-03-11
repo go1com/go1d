@@ -121,7 +121,7 @@ class View extends React.Component<ViewProps> {
       <Provider mode={mode}>
         <Theme.Consumer>
           {({
-            spacing: s,
+            radius: br,
             colors,
             shadows,
             transitions,
@@ -158,7 +158,7 @@ class View extends React.Component<ViewProps> {
                           opacities[backgroundOpacity]
                         )
                       : applyArray(backgroundColor, colors),
-                  borderRadius: applyArray(borderRadius, s),
+                  borderRadius: applyArray(borderRadius, br),
                   borderStyle: "solid",
                   borderTopWidth: borderTop,
                   borderRightWidth: borderRight,

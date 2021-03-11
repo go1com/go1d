@@ -1,7 +1,7 @@
 {
   "name": "@go1d/go1d",
-  "version": "0.16.0",
-  "description": "GO1 Design System",
+  "version": "2.1.0",
+  "description": "Go1 Design System",
   "main": "build/index.js",
   "homepage": "https://go1d.go1.com",
   "author": "Luke Brooker <mail@lukebrooker.com> (https://lukebrooker.com/)",
@@ -40,7 +40,6 @@
   "dependencies": {
     "@tweenjs/tween.js": "^17.2.0",
     "@types/events": "^1.2.0",
-    "@types/fontfaceobserver": "^0.0.6",
     "@types/react-virtualized": "^9.18.7",
     "@types/slate": "^0.44.0",
     "@types/slate-react": "^0.21.0",
@@ -50,7 +49,6 @@
     "downshift": "^3.2.7",
     "element-resize-detector": "^1.2.0",
     "emotion": "^9.2.4",
-    "fontfaceobserver": "^2.0.13",
     "formik": "^1.5.4",
     "invariant": "^2.2.4",
     "is-hotkey": "^0.1.4",

@@ -3,7 +3,13 @@
  */
 import { Emotion } from "create-emotion";
 
-export type FontFamily = "sansSerif" | "title" | "paragraph" | "ui" | "mono";
+export type FontFamily =
+  | "sansSerif"
+  | "serif"
+  | "title"
+  | "paragraph"
+  | "ui"
+  | "mono";
 
 export type FontWeight = "light" | "normal" | "medium" | "semibold" | "bold";
 
@@ -75,6 +81,33 @@ export interface Colors {
   faint: string;
   background: string;
   transparent: string;
+  delicate?: string;
+  thin?: string;
+  successHighest?: string;
+  successHigh?: string;
+  successMid?: string;
+  successLow?: string;
+  successLowest?: string;
+  noteHighest?: string;
+  noteHigh?: string;
+  noteMid?: string;
+  noteLow?: string;
+  noteLowest?: string;
+  warningHighest?: string;
+  warningHigh?: string;
+  warningMid?: string;
+  warningLow?: string;
+  warningLowest?: string;
+  dangerHighest?: string;
+  dangerHigh?: string;
+  dangerMid?: string;
+  dangerLow?: string;
+  dangerLowest?: string;
+  vividHighest?: string;
+  vividHigh?: string;
+  vividMid?: string;
+  vividLow?: string;
+  vividLowest?: string;
 }
 
 export type ZIndex =
@@ -98,6 +131,7 @@ export interface ThemeType {
 export interface Theme {
   colors: Colors;
   type: ThemeType;
+  radius: number[];
   spacing: number[];
   shadows: MappedKey<Shadows, string>;
   transitions: MappedKey<Transitions, string>;

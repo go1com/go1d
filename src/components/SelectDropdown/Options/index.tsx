@@ -88,6 +88,8 @@ class Options extends React.PureComponent<OptionProps, {}> {
         backgroundColor="background"
         boxShadow="strong"
         borderRadius={3}
+        border={1}
+        borderColor="delicate"
         maxHeight={350}
         innerRef={innerRef}
         transition="none"

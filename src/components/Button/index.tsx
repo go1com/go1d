@@ -76,6 +76,7 @@ const Button: React.SFC<ButtonProps> = ({
       height: 48,
       paddingY: 3,
       paddingX: 5,
+      radiusScale: 4,
       typeScale: 3,
       iconOnlyScale: 4,
       iconMargin: 4,
@@ -84,6 +85,7 @@ const Button: React.SFC<ButtonProps> = ({
       height: 40,
       paddingY: 3,
       paddingX: 4,
+      radiusScale: 3,
       typeScale: 2,
       iconOnlyScale: 3,
       iconMargin: 3,
@@ -92,6 +94,7 @@ const Button: React.SFC<ButtonProps> = ({
       height: 32,
       paddingY: 2,
       paddingX: 4,
+      radiusScale: 3,
       typeScale: 1,
       iconOnlyScale: 1,
       iconMargin: 3,
@@ -103,6 +106,7 @@ const Button: React.SFC<ButtonProps> = ({
     padding,
     paddingY = padding,
     paddingX = padding,
+    radiusScale,
     typeScale,
     iconSize,
     iconOnlyScale,
@@ -129,7 +133,7 @@ const Button: React.SFC<ButtonProps> = ({
       paddingY={paddingY}
       paddingX={children && paddingX}
       backgroundColor={backgroundColor}
-      borderRadius={round ? 8 : 2}
+      borderRadius={round ? 8 : radiusScale}
       transition={transition}
       onClick={onClick}
       href={href}

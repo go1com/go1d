@@ -133,7 +133,7 @@ class OverviewCtaCard extends React.Component<OverviewCtaCardProps, any> {
         backgroundColor="background"
         maxWidth={430}
         width="100%"
-        borderRadius={2}
+        borderRadius={5}
         flexGrow={1}
         zIndex={1}
         css={{
@@ -222,7 +222,7 @@ class OverviewCtaCard extends React.Component<OverviewCtaCardProps, any> {
               backgroundColor="soft"
               height={230}
               css={{
-                borderRadius: `${foundations.spacing[2]}px ${foundations.spacing[2]}px 0 0`,
+                borderRadius: `${foundations.radius[5]}px ${foundations.radius[5]}px 0 0`,
                 backgroundImage: backgroundImage
                   ? `url(${backgroundImage})`
                   : undefined,
@@ -313,7 +313,7 @@ class OverviewCtaCard extends React.Component<OverviewCtaCardProps, any> {
               <View marginLeft="auto">
                 <Dropdown
                   itemToString={itemToString}
-                  borderRadius={2}
+                  borderRadius={5}
                   renderFunction={renderFunction}
                   itemList={actions}
                   placement="bottom-end"
@@ -442,7 +442,7 @@ class OverviewCtaCard extends React.Component<OverviewCtaCardProps, any> {
           <View marginLeft="auto">
             <Dropdown
               itemToString={itemToString}
-              borderRadius={2}
+              borderRadius={5}
               renderFunction={renderFunction}
               itemList={actions}
               placement="bottom-end"

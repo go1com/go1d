@@ -1,6 +1,6 @@
 import * as React from "react";
 
-import { tint } from "../../foundations";
+import * as Color from "color";
 import ButtonMinimal from "../ButtonFilled";
 import Theme from "../Theme";
 import View, { ViewProps } from "../View";
@@ -24,6 +24,37 @@ const IconMap = {
   success: IconSuccess,
 };
 
+const getBackgroundColor = (colors, customColor, floating = false) => {
+  let cssColor = colors.background;
+
+  if (floating) {
+    return cssColor;
+  }
+
+  switch (customColor) {
+    case "success":
+      cssColor = colors.successHigh;
+      break;
+    case "warning":
+      cssColor = colors.warningHigh;
+      break;
+    case "danger":
+      cssColor = colors.dangerHigh;
+      break;
+    case "note":
+      cssColor = colors.noteHigh;
+      break;
+    default:
+      cssColor = Color(colors[customColor])
+        .lightness(93)
+        .rgb()
+        .string();
+      break;
+  }
+
+  return cssColor;
+};
+
 const Banner: React.SFC<BannerProps> = ({
   type,
   children,
@@ -33,7 +64,6 @@ const Banner: React.SFC<BannerProps> = ({
   ...props
 }: BannerProps) => {
   const IconElement = IconMap[type];
-  const tintLevel = type === "success" ? 0.1 : type === "note" ? 0.1 : 0.2;
   return (
     <Theme.Consumer>
       {({ colors }) => (
@@ -47,11 +77,11 @@ const Banner: React.SFC<BannerProps> = ({
           data-testid="banner"
           maxWidth="100%"
           css={{
-            backgroundColor: `${
+            backgroundColor: `${getBackgroundColor(
+              colors,
+              customColor,
               floating
-                ? colors.background
-                : tint(colors[customColor], tintLevel)
-            }`,
+            )}`,
             borderLeft: `4px solid ${colors[customColor]}`,
             transition: "all 0.2s linear",
           }}
@@ -74,8 +104,32 @@ const Banner: React.SFC<BannerProps> = ({
           </View>
           {close && (
             <ButtonMinimal
-              borderRadius={10}
+              borderRadius={3}
               boxShadow="none"
+              css={{
+                borderColor: `${getBackgroundColor(
+                  colors,
+                  customColor,
+                  floating
+                )}`,
+                backgroundColor: `${getBackgroundColor(
+                  colors,
+                  customColor,
+                  floating
+                )}`,
+                "&:hover, &:focus, &:active": {
+                  backgroundColor: `${getBackgroundColor(
+                    colors,
+                    customColor,
+                    floating
+                  )}`,
+                  borderColor: `${getBackgroundColor(
+                    colors,
+                    customColor,
+                    floating
+                  )}`,
+                },
+              }}
               size="sm"
               height="1.05rem"
               onClick={close}

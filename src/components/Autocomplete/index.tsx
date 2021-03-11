@@ -97,7 +97,7 @@ class Autocomplete extends React.Component<AutocompleteProps, any> {
       return colors.danger;
     }
 
-    return selected ? colors.accent : borderColor ? borderColor : colors.soft;
+    return selected ? colors.accent : borderColor ? borderColor : colors.faded;
   }
 
   public render() {
@@ -147,7 +147,7 @@ class Autocomplete extends React.Component<AutocompleteProps, any> {
               viewCss={{
                 backgroundColor: selected ? colors.accent : colors.background,
                 borderColor: this.getBorderColor(colors),
-                boxShadow: selected ? "none" : shadows.inner,
+                boxShadow: "none",
                 ...(inputProps && inputProps.css),
               }}
               suffixNode={

@@ -5,7 +5,7 @@ import hideInheritedProps from '../.storybook/hideInheritedProps.js'
 let argTypes = hideInheritedProps({}, ToggleSwitch);
 
 export default {
-  title: "Original Go1d/ToggleSwitch",
+  title: "Athletic/ToggleSwitch",
   argTypes: argTypes,
   component: ToggleSwitch,
 };

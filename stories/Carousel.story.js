@@ -5,7 +5,7 @@ import hideInheritedProps from '../.storybook/hideInheritedProps.js'
 let argTypes = hideInheritedProps({}, Carousel);
 
 export default {
-  title: "Original Go1d/Carousel",
+  title: "Athletic/Carousel",
   argTypes: argTypes,
   component: Carousel, // FIXME: Storybook wants `ExportCarousel`
   subcomponents: { View, Text },

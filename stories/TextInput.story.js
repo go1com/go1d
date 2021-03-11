@@ -6,7 +6,7 @@ import { IconCross, IconSearch } from "../src/components/Icons";
 let argTypes = hideInheritedProps({}, TextInput);
 
 export default {
-  title: "Original Go1d/TextInput",
+  title: "Athletic/TextInput",
   argTypes: argTypes,
   component: TextInput,
 };

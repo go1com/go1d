@@ -1,32 +1,63 @@
 /* istanbul ignore file */
 import { injectGlobal as defaultInjectGlobal } from "emotion";
-import * as FontFaceObserver from "fontfaceobserver";
 import { type } from "./index";
 
-const isServer =
-  typeof window === "undefined" || typeof document === "undefined";
-
 const globalCSS = (injectGlobal = defaultInjectGlobal) => {
-  fontCSS();
+  fontCSS(injectGlobal);
   resetCSS(injectGlobal);
 };
 
 export default globalCSS;
 
-export function fontCSS() {
-  if (isServer) {
-    return;
+export function fontCSS(injectGlobal = defaultInjectGlobal) {
+  // tslint:disable-next-line:no-unused-expression
+  injectGlobal`
+  @font-face {
+    font-family: 'Victor Serif';
+    font-weight: 600;
+    font-style: semibold;
+    src:
+      url('https://cdn.go1static.com/assets/fonts/VictorSerif-Semibold.woff2') format('woff2'), /* Super Modern Browsers */
+      url('https://cdn.go1static.com/assets/fonts/VictorSerif-Semibold.woff') format('woff'); /* Pretty Modern Browsers */
   }
 
-  const link = document.createElement("link");
-  link.href =
-    "https://fonts.googleapis.com/css?family=Muli:300,400,400i,600,800&display=swap";
-  link.rel = "stylesheet";
+  @font-face {
+    font-family: 'Obelisc';
+    font-weight: 400;
+    font-style: normal;
+    src:
+      url('https://cdn.go1static.com/assets/fonts/Obelisc-Regular.woff2') format('woff2'), /* Super Modern Browsers */
+      url('https://cdn.go1static.com/assets/fonts/Obelisc-Regular.woff') format('woff'); /* Pretty Modern Browsers */
+  }
 
-  document.head.appendChild(link);
+  @font-face {
+    font-family: 'Obelisc';
+    font-weight: 500;
+    font-style: semibold;
+    src:
+      url('https://cdn.go1static.com/assets/fonts/Obelisc-Medium.woff2') format('woff2'), /* Super Modern Browsers */
+      url('https://cdn.go1static.com/assets/fonts/Obelisc-Medium.woff') format('woff'); /* Pretty Modern Browsers */
+  }
 
-  const muli = new FontFaceObserver("Muli");
-  return muli.load();
+  /* Ensures text at 600 weight appears in Obelisc-Medium instead of Obelisc-Bold */
+  @font-face {
+    font-family: 'Obelisc';
+    font-weight: 600;
+    font-style: semibold;
+    src:
+      url('https://cdn.go1static.com/assets/fonts/Obelisc-Medium.woff2') format('woff2'), /* Super Modern Browsers */
+      url('https://cdn.go1static.com/assets/fonts/Obelisc-Medium.woff') format('woff'); /* Pretty Modern Browsers */
+  }
+
+  @font-face {
+    font-family: 'Obelisc';
+    font-weight: 700;
+    font-style: bold;
+    src:
+      url('https://cdn.go1static.com/assets/fonts/Obelisc-Bold.woff2') format('woff2'), /* Super Modern Browsers */
+      url('https://cdn.go1static.com/assets/fonts/Obelisc-Bold.woff') format('woff'); /* Pretty Modern Browsers */
+  }
+`;
 }
 
 export function resetCSS(injectGlobal = defaultInjectGlobal) {
@@ -219,13 +250,13 @@ sup {
  */
 
 ::-moz-selection {
-	background-color: #78D6FC; /* 1 */
+	background-color: #65CADF; /* 1 */
 	color: currentColor; /* 1 */
 	text-shadow: none;
 }
 
 ::selection {
-	background-color: #78D6FC; /* 1 */
+	background-color: #65CADF; /* 1 */
 	color: currentColor; /* 1 */
 	text-shadow: none;
 }

@@ -5,7 +5,7 @@ import hideInheritedProps from '../.storybook/hideInheritedProps.js'
 let argTypes = hideInheritedProps({}, SpotIcon);
 
 export default {
-  title: "Original Go1d/SpotIcon",
+  title: "Athletic/SpotIcon",
   argTypes: argTypes,
   component: SpotIcon,
 };

@@ -80,10 +80,10 @@ const CourseCard: React.SFC<CourseCardProps> = ({
 
   return (
     <Theme.Consumer>
-      {({ spacing, colors }) => {
+      {({ radius, colors }) => {
         return (
           <View
-            borderRadius={2}
+            borderRadius={5}
             boxShadow="crisp"
             color="default"
             height="100%"
@@ -103,7 +103,7 @@ const CourseCard: React.SFC<CourseCardProps> = ({
               backgroundColor="default"
               backgroundOpacity={courseImage ? "none" : "emptyBackground"}
               css={{
-                borderRadius: `${spacing[2]}px ${spacing[2]}px 0 0`,
+                borderRadius: `${radius[5]}px ${radius[5]}px 0 0`,
                 overflow: "hidden",
                 backgroundImage: courseImage
                   ? `url(${courseImage})`

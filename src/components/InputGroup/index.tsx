@@ -4,18 +4,20 @@ import View from "../View";
 
 const InputGroup = ({ children }) => (
   <Theme.Consumer>
-    {({ spacing }) => {
+    {({ radius }) => {
       const css = {
         "> *": {
           borderRadius: 0,
         },
         "> :first-child": {
-          borderTopLeftRadius: spacing[2],
-          borderBottomLeftRadius: spacing[2],
+          marginRight: "-1px",
+          borderTopLeftRadius: radius[3],
+          borderBottomLeftRadius: radius[3],
         },
         "> :last-child": {
-          borderTopRightRadius: spacing[2],
-          borderBottomRightRadius: spacing[2],
+          marginLeft: "-1px",
+          borderTopRightRadius: radius[3],
+          borderBottomRightRadius: radius[3],
         },
       };
       return (
