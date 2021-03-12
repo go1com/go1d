@@ -4,7 +4,7 @@ import View from "../View";
 
 export default () => (
   <View
-    borderRadius={2}
+    borderRadius={4}
     boxShadow="crisp"
     flexDirection={["column", "row"]}
     marginBottom={4}

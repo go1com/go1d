@@ -208,7 +208,7 @@ const CourseSlat: React.SFC<CourseSlatProps> = ({
       {({ spacing, breakpoints, colors }) => {
         return (
           <View
-            borderRadius={2}
+            borderRadius={4}
             boxShadow="crisp"
             flexDirection={["column", "row"]}
             marginBottom={4}
