@@ -7,7 +7,7 @@ export default () => (
   <Theme.Consumer>
     {({ radius }) => (
       <View
-        borderRadius={5}
+        borderRadius={4}
         boxShadow="crisp"
         color="default"
         height="100%"
@@ -22,7 +22,7 @@ export default () => (
           height={128}
           width={221}
           css={{
-            borderRadius: `${radius[5]}px ${radius[5]}px 0 0`,
+            borderRadius: `${radius[4]}px ${radius[4]}px 0 0`,
           }}
         />
         <View padding={4}>
