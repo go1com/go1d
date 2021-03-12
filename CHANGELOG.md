@@ -1,5 +1,11 @@
 # @go1d/go1d
 
+## 3.0.2
+
+### Patch Changes
+
+- c7c42962: change border radius to 16px for CourseSlat & CourseCard-Skeleton
+
 ## 3.0.1
 
 ### Patch Changes
