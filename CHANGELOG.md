@@ -1,5 +1,11 @@
 # @go1d/go1d
 
+## 3.0.1
+
+### Patch Changes
+
+- 82af00d1: change CourseCard border radius to be 16px
+
 ## 3.0.0
 
 ### Major Changes
