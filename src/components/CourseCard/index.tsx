@@ -83,7 +83,7 @@ const CourseCard: React.SFC<CourseCardProps> = ({
       {({ radius, colors }) => {
         return (
           <View
-            borderRadius={5}
+            borderRadius={4}
             boxShadow="crisp"
             color="default"
             height="100%"
@@ -103,7 +103,7 @@ const CourseCard: React.SFC<CourseCardProps> = ({
               backgroundColor="default"
               backgroundOpacity={courseImage ? "none" : "emptyBackground"}
               css={{
-                borderRadius: `${radius[5]}px ${radius[5]}px 0 0`,
+                borderRadius: `${radius[4]}px ${radius[4]}px 0 0`,
                 overflow: "hidden",
                 backgroundImage: courseImage
                   ? `url(${courseImage})`
