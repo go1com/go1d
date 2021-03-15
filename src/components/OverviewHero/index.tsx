@@ -6,6 +6,7 @@ import Container from "../Container";
 import Text from "../Text";
 import View, { ViewProps } from "../View";
 
+import Heading from "../Heading";
 import IconChevronLeft from "../Icons/ChevronLeft";
 import IconClock from "../Icons/Clock";
 
@@ -134,9 +135,9 @@ const OverviewHero: React.SFC<OverviewHeroProps> = ({
           )}
           <View marginY={2}>
             {typeof title === "string" ? (
-              <Text element="h1" fontSize={6} fontWeight="bold">
+              <Heading semanticElement="h1" visualHeadingLevel="Heading 1">
                 {title}
-              </Text>
+              </Heading>
             ) : (
               title
             )}
