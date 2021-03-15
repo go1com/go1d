@@ -1,5 +1,11 @@
 # @go1d/go1d
 
+## 3.0.3
+
+### Patch Changes
+
+- b20c5972: update title in OverviewHero to be Heading 1
+
 ## 3.0.2
 
 ### Patch Changes
