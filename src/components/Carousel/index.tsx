@@ -12,12 +12,20 @@ import ButtonMinimal from "../ButtonMinimal";
 import IconChevronLeft from "../Icons/ChevronLeft";
 import IconChevronRight from "../Icons/ChevronRight";
 
+export interface CustomControlsParam {
+  scrollToIndex: (index: number) => void;
+  currentSlide: number;
+}
+
 interface StandardProps extends ViewProps {
   children?: React.ReactNode;
   slidesToShow?: number;
   gutter?: number;
   clickScrollAmount?: number; // Number of slides that move on next click
   slideAnimationDuration?: number;
+
+  customControlsRenderer?: (params: CustomControlsParam) => React.ReactElement;
+  onSlideChange?: (currentSlide: number) => void;
 }
 
 interface BreakpointProps {
@@ -113,9 +121,7 @@ class Carousel extends React.Component<CarouselProps, any> {
     if (this.sliderContainerRef) {
       const Element: any = this.sliderContainerRef.current;
       Element.addEventListener("scroll", this.handleScrollTimer, false);
-      Element.addEventListener("touchstart", this.dragStart, false);
-      Element.addEventListener("touchmove", this.dragAction, false);
-      Element.addEventListener("touchend", this.dragEnd, false);
+      Element.addEventListener("touchmove", this.handleScrollTimer, false);
 
       Element.addEventListener("mousedown", this.dragStart, false);
     }
@@ -167,9 +173,7 @@ class Carousel extends React.Component<CarouselProps, any> {
 
         if (React.Children.toArray(children).length <= currentSlide) {
           // Incase some caroursel children update
-          this.setState({
-            currentSlide: React.Children.toArray(children).length - 1,
-          });
+          this.handleSlideChange(React.Children.toArray(children).length - 1);
         }
       }
     }
@@ -214,7 +218,7 @@ class Carousel extends React.Component<CarouselProps, any> {
       const Slider: any = this.sliderContainerRef.current;
       const SliderScroll = Slider.scrollLeft;
 
-      let Selected = this.slideRefs.findIndex(Ref => {
+      let selected = this.slideRefs.findIndex(Ref => {
         const CurrentRef = Ref.current;
 
         if (
@@ -227,12 +231,12 @@ class Carousel extends React.Component<CarouselProps, any> {
         return false;
       });
 
-      if (Selected < 0) {
-        Selected = 0;
+      if (selected < 0) {
+        selected = 0;
       }
 
       const FinishedScrolling = this.hasReachedRightEdge();
-      const CurrentSlide = this.slideRefs[Selected].current;
+      const CurrentSlide = this.slideRefs[selected].current;
 
       if (CurrentSlide.offsetLeft < SliderScroll && !FinishedScrolling) {
         // Snap to a start position
@@ -240,37 +244,38 @@ class Carousel extends React.Component<CarouselProps, any> {
           CurrentSlide.offsetLeft + CurrentSlide.offsetWidth / 2 <
           SliderScroll
         ) {
-          Selected = Selected + 1;
-          this.scrollToIndex(Selected)();
+          selected = selected + 1;
+          this.scrollToIndex(selected)();
         } else {
-          this.scrollToIndex(Selected)();
+          this.scrollToIndex(selected)();
         }
       }
 
       this.initialSliderOffset = null;
 
       this.setState({
-        currentSlide: Selected,
+        currentSlide: selected,
         finishedScrolling: FinishedScrolling,
       });
+      this.handleSlideChange(selected);
     }
   };
 
-  public scrollToIndex = Index => () => {
+  public scrollToIndex = index => () => {
     const { children, slideAnimationDuration } = this.props;
-    let ScrollIndex = Index;
+    let scrollIndex = index;
 
-    if (ScrollIndex < 0) {
-      ScrollIndex = 0;
+    if (scrollIndex < 0) {
+      scrollIndex = 0;
     }
 
-    if (ScrollIndex >= React.Children.toArray(children).length - 1) {
-      ScrollIndex = React.Children.toArray(children).length - 1;
+    if (scrollIndex >= React.Children.toArray(children).length - 1) {
+      scrollIndex = React.Children.toArray(children).length - 1;
     }
 
-    if (ScrollIndex < React.Children.toArray(children).length) {
+    if (scrollIndex < React.Children.toArray(children).length) {
       const Slider: any = this.sliderContainerRef.current;
-      const ElementOffset = this.slideRefs[ScrollIndex].current.offsetLeft;
+      const ElementOffset = this.slideRefs[scrollIndex].current.offsetLeft;
 
       const coords = { x: Slider.scrollLeft, y: 0 }; // Start at (0, 0)
       let allowAnimationPropogation = true;
@@ -296,10 +301,7 @@ class Carousel extends React.Component<CarouselProps, any> {
         })
         .start();
     }
-
-    this.setState({
-      currentSlide: Index,
-    });
+    this.handleSlideChange(index);
   };
 
   public render() {
@@ -336,68 +338,75 @@ class Carousel extends React.Component<CarouselProps, any> {
         width="100%"
         {...props}
       >
-        <View display="flex" flexDirection="row" marginBottom={5}>
-          <View
-            display="flex"
-            flexGrow={1}
-            alignItems="flex-start"
-            justifyContent="center"
-          >
-            {title}
-          </View>
-          {numberOfSlides > slidesToShow && (
+        {this.props.customControlsRenderer ? (
+          this.props.customControlsRenderer({
+            scrollToIndex: (index: number) => this.scrollToIndex(index)(),
+            currentSlide: this.state.currentSlide,
+          })
+        ) : (
+          <View display="flex" flexDirection="row" marginBottom={5}>
             <View
               display="flex"
-              flexDirection="row"
-              alignItems="flex-end"
+              flexGrow={1}
+              alignItems="flex-start"
               justifyContent="center"
             >
-              {currentSlide > 0 ? (
-                <ButtonMinimal
-                  onClick={this.scrollToIndex(
-                    this.state.currentSlide - clickScrollAmount
-                  )}
-                  aria-label="Navigate Carousel Left"
-                  data-testid="leftNavigationButton"
-                  round={true}
-                  icon={IconChevronLeft}
-                />
-              ) : (
-                <ButtonMinimal
-                  aria-label="Disabled Navigate Carousel Left"
-                  data-testid="leftNavigationButton"
-                  round={true}
-                  icon={IconChevronLeft}
-                  disabled={true}
-                />
-              )}
-              {!finishedScrolling &&
-              currentSlide < this.slideRefs.length - 1 ? (
-                <ButtonMinimal
-                  onClick={this.scrollToIndex(
-                    this.state.currentSlide + clickScrollAmount
-                  )}
-                  aria-label="Navigate Carousel Right"
-                  data-testid="rightNavigationButton"
-                  round={true}
-                  icon={IconChevronRight}
-                  disabled={
-                    finishedScrolling ||
-                    currentSlide > this.slideRefs.length - 1
-                  }
-                />
-              ) : (
-                <ButtonMinimal
-                  aria-label="Navigate Carousel Right"
-                  data-testid="rightNavigationButton"
-                  round={true}
-                  icon={IconChevronRight}
-                  disabled={true}
-                />
-              )}
+              {title}
             </View>
-          )}
-        </View>
+            {numberOfSlides > slidesToShow && (
+              <View
+                display="flex"
+                flexDirection="row"
+                alignItems="flex-end"
+                justifyContent="center"
+              >
+                {currentSlide > 0 ? (
+                  <ButtonMinimal
+                    onClick={this.scrollToIndex(
+                      this.state.currentSlide - clickScrollAmount
+                    )}
+                    aria-label="Navigate Carousel Left"
+                    data-testid="leftNavigationButton"
+                    round={true}
+                    icon={IconChevronLeft}
+                  />
+                ) : (
+                  <ButtonMinimal
+                    aria-label="Disabled Navigate Carousel Left"
+                    data-testid="leftNavigationButton"
+                    round={true}
+                    icon={IconChevronLeft}
+                    disabled={true}
+                  />
+                )}
+                {!finishedScrolling &&
+                currentSlide < this.slideRefs.length - 1 ? (
+                  <ButtonMinimal
+                    onClick={this.scrollToIndex(
+                      this.state.currentSlide + clickScrollAmount
+                    )}
+                    aria-label="Navigate Carousel Right"
+                    data-testid="rightNavigationButton"
+                    round={true}
+                    icon={IconChevronRight}
+                    disabled={
+                      finishedScrolling ||
+                      currentSlide > this.slideRefs.length - 1
+                    }
+                  />
+                ) : (
+                  <ButtonMinimal
+                    aria-label="Navigate Carousel Right"
+                    data-testid="rightNavigationButton"
+                    round={true}
+                    icon={IconChevronRight}
+                    disabled={true}
+                  />
+                )}
+              </View>
+            )}
+          </View>
+        )}
         <PureWrapper
           innerRef={this.sliderContainerRef}
           flexDirection="row"
@@ -478,6 +487,16 @@ class Carousel extends React.Component<CarouselProps, any> {
     this.handleScrollFinished();
     document.onmouseup = null;
     document.onmousemove = null;
+  };
+
+  private handleSlideChange = (slideNumber: number) => {
+    this.setState({
+      currentSlide: slideNumber,
+    });
+
+    if (this.props.onSlideChange) {
+      this.props.onSlideChange(slideNumber);
+    }
   };
 }
 
