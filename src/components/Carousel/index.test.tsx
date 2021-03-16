@@ -105,3 +105,37 @@ it("Can click next", async () => {
   const Element = getByTestId("rightNavigationButton");
   fireEvent.click(Element);
 });
+
+it("should show custom controls", () => {
+  const customControls = () => {
+    return <div>Custom header</div>;
+  };
+  const { getByText } = render(
+    <Carousel size="md" customControlsRenderer={customControls}>
+      <DummyChild />
+      <DummyChild />
+      <DummyChild />
+      <DummyChild />
+      <DummyChild />
+      <DummyChild />
+    </Carousel>
+  );
+
+  expect(getByText("Custom header")).toBeTruthy();
+});
+
+it("should show default control", () => {
+  const { getByTestId } = render(
+    <Carousel size="md">
+      <DummyChild />
+      <DummyChild />
+      <DummyChild />
+      <DummyChild />
+      <DummyChild />
+      <DummyChild />
+    </Carousel>
+  );
+
+  expect(getByTestId("leftNavigationButton")).toBeTruthy();
+  expect(getByTestId("rightNavigationButton")).toBeTruthy();
+});
