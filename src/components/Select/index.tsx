@@ -279,7 +279,7 @@ class Select extends React.PureComponent<SelectProps, any> {
                               <View
                                 backgroundColor="background"
                                 boxShadow="strong"
-                                borderRadius={2}
+                                borderRadius={4}
                                 border={1}
                                 borderColor="delicate"
                                 overflow="hidden"

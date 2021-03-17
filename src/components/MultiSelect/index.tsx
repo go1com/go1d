@@ -409,7 +409,7 @@ class MultiSelect extends React.PureComponent<MultiSelectProps, any> {
                                   boxShadow="strong"
                                   border={1}
                                   borderColor="delicate"
-                                  borderRadius={2}
+                                  borderRadius={4}
                                   overflow="hidden"
                                   style={style}
                                   innerRef={ref}
