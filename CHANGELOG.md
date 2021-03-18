@@ -1,5 +1,11 @@
 # @go1d/go1d
 
+## 3.0.4
+
+### Patch Changes
+
+- f33b026d: set default border radius 16px to Select and Multiselect component
+
 ## 3.0.3
 
 ### Patch Changes
