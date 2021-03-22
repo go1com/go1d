@@ -1,5 +1,11 @@
 # @go1d/go1d
 
+## 3.0.5
+
+### Patch Changes
+
+- 8806d2d8: Course card and Feature tag small changes
+
 ## 3.0.4
 
 ### Patch Changes
