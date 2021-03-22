@@ -83,8 +83,9 @@ const CourseCard: React.SFC<CourseCardProps> = ({
       {({ radius, colors }) => {
         return (
           <View
+            border={1}
+            borderColor="delicate"
             borderRadius={4}
-            boxShadow="crisp"
             color="default"
             height="100%"
             width={221}
