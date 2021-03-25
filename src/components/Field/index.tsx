@@ -1,4 +1,4 @@
-import { connect, FieldAttributes, FormikContext, getIn } from "formik";
+import { connect, FormikContext, getIn } from "formik";
 import { get } from "lodash";
 import * as React from "react";
 import { autobind } from "../../utils/decorators";
@@ -43,20 +43,18 @@ export interface FieldProps extends ViewProps {
   component?: string | React.ComponentType<any> | React.ComponentType<void>;
 }
 
-class Field extends React.Component<
-  FieldProps & {
-    formik: FormikContext<any>;
-  }
-> {
+type Props = FieldProps & {
+  formik: FormikContext<any>;
+};
+
+class Field extends React.Component<Props> {
   public componentDidMount() {
     // Register the Field with the parent Formik. Parent will cycle through
     // registered Field's validate fns right prior to submit
     this.props.formik.registerField(this.props.name, this);
   }
 
-  public componentDidUpdate(
-    prevProps: FieldAttributes<FieldProps> & { formik: FormikContext<any[]> }
-  ) {
+  public componentDidUpdate(prevProps: Props) {
     if (this.props.name !== prevProps.name) {
       this.props.formik.unregisterField(prevProps.name);
       this.props.formik.registerField(this.props.name, this);

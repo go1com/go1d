@@ -1,4 +1,7 @@
-import Downshift, * as DownshiftType from "downshift";
+import Downshift, {
+  DownshiftProps as DownshiftPropsOriginal,
+  GetItemPropsOptions,
+} from "downshift";
 import * as React from "react";
 import { Manager, Popper, Reference, RefHandler } from "react-popper";
 import { IconProps } from "../IconBase";
@@ -6,7 +9,7 @@ import Portal from "../Portal";
 import View, { ViewProps } from "../View";
 import DropdownItem from "./DropdownItem";
 
-type GetItemProps<T> = (options: DownshiftType.GetItemPropsOptions<T>) => any;
+type GetItemProps<T> = (options: GetItemPropsOptions<T>) => any;
 
 type OnInputValueChange = (inputValue: string, stateAndHelpers: object) => void;
 
@@ -32,6 +35,7 @@ export interface DropdownProps extends ViewProps {
   initialInputValue?: string;
   onInputValueChange?: OnInputValueChange;
   onOuterClick?: () => void;
+  onStateChange?: DownshiftPropsOriginal<any>["onStateChange"];
   itemToString: (item: any) => string;
   placement?:
     | "auto-start"
@@ -75,6 +79,7 @@ const Dropdown: React.SFC<DropdownProps> = ({
   initialInputValue,
   onInputValueChange,
   onOuterClick,
+  onStateChange,
   css,
   itemToString,
   placement,
@@ -92,6 +97,7 @@ const Dropdown: React.SFC<DropdownProps> = ({
     onOuterClick={onOuterClick}
     isOpen={isOpen}
     labelId={labelId}
+    onStateChange={onStateChange}
   >
     {({
       getItemProps,
