@@ -16,6 +16,7 @@ export function fontCSS(injectGlobal = defaultInjectGlobal) {
     font-family: 'Victor Serif';
     font-weight: 600;
     font-style: semibold;
+    font-display: swap;
     src:
       url('https://cdn.go1static.com/assets/fonts/VictorSerif-Semibold.woff2') format('woff2'), /* Super Modern Browsers */
       url('https://cdn.go1static.com/assets/fonts/VictorSerif-Semibold.woff') format('woff'); /* Pretty Modern Browsers */
@@ -25,6 +26,7 @@ export function fontCSS(injectGlobal = defaultInjectGlobal) {
     font-family: 'Obelisc';
     font-weight: 400;
     font-style: normal;
+    font-display: swap;
     src:
       url('https://cdn.go1static.com/assets/fonts/Obelisc-Regular.woff2') format('woff2'), /* Super Modern Browsers */
       url('https://cdn.go1static.com/assets/fonts/Obelisc-Regular.woff') format('woff'); /* Pretty Modern Browsers */
@@ -34,6 +36,7 @@ export function fontCSS(injectGlobal = defaultInjectGlobal) {
     font-family: 'Obelisc';
     font-weight: 500;
     font-style: semibold;
+    font-display: swap;
     src:
       url('https://cdn.go1static.com/assets/fonts/Obelisc-Medium.woff2') format('woff2'), /* Super Modern Browsers */
       url('https://cdn.go1static.com/assets/fonts/Obelisc-Medium.woff') format('woff'); /* Pretty Modern Browsers */
@@ -44,6 +47,7 @@ export function fontCSS(injectGlobal = defaultInjectGlobal) {
     font-family: 'Obelisc';
     font-weight: 600;
     font-style: semibold;
+    font-display: swap;
     src:
       url('https://cdn.go1static.com/assets/fonts/Obelisc-Medium.woff2') format('woff2'), /* Super Modern Browsers */
       url('https://cdn.go1static.com/assets/fonts/Obelisc-Medium.woff') format('woff'); /* Pretty Modern Browsers */
@@ -53,6 +57,7 @@ export function fontCSS(injectGlobal = defaultInjectGlobal) {
     font-family: 'Obelisc';
     font-weight: 700;
     font-style: bold;
+    font-display: swap;
     src:
       url('https://cdn.go1static.com/assets/fonts/Obelisc-Bold.woff2') format('woff2'), /* Super Modern Browsers */
       url('https://cdn.go1static.com/assets/fonts/Obelisc-Bold.woff') format('woff'); /* Pretty Modern Browsers */
