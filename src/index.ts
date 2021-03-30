@@ -29,9 +29,7 @@ export {
   default as ToggleSwitch,
   ToggleSwitchProps,
 } from "./components/ToggleSwitch";
-export {
-  default as ToggleButtonFeature,
-} from "./components/ToggleButtonFeature";
+export { default as ToggleButtonFeature } from "./components/ToggleButtonFeature";
 export { default as Pill, PillProps } from "./components/Pill";
 export { default as PageBody, PageBodyProps } from "./components/PageBody";
 export { IconProps } from "./components/IconBase";
@@ -218,6 +216,10 @@ export { default as Popover } from "./components/Popover";
 export { default as Stepper, StepperProps } from "./components/Stepper";
 
 export { default as Rating, RatingProps } from "./components/Rating";
+export {
+  default as ColorPicker,
+  Props as ColorPickerProps,
+} from "./components/ColorPicker";
 
 export { default as Null } from "./components/Null"; // DO NOT USE
 
