@@ -1,7 +1,6 @@
 import React from "react";
 import { View, Text } from "../src";
 import hideInheritedProps from '../.storybook/hideInheritedProps.js'
-
 let argTypes = hideInheritedProps({}, View);
 
 export default {
@@ -18,7 +17,7 @@ export const BasicUsage = args => (
 
 export const ResponsiveExamples = args => (
   <React.Fragment>
-    <View flexDirection="row" flexWrap="wrap">
+    <View flexDirection="row" flexWrap="wrap" {...args}>
       <View width={[1 / 3, 1 / 6, 1 / 12]}>
         <Text>A</Text>
       </View>

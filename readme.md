@@ -38,3 +38,16 @@ See the [CONTRIBUTING.md](./CONTRIBUTING.md) guide to learn:
 * Luke Brooker (luke.brooker@go1.com)
 * Diana MacDonald (diana.macdonald@go1.com)
 
+# Known Issues
+
+## #1
+We have some import like this:
+
+```javascript
+import merge = require("lodash/merge");
+```
+
+which doesn't work with `babel` specifically `@babel/preset-typescript`. This piece of code should only work with `tsc` compiler.
+While in our `tsconfig.json`, we leave `{ "allowSyntheticDefaultImports": true }` this means allow to import default export `import x from "y"`, howerver,
+above option should come with `{ esModuleInterop: true }`. I think this is why we had a `require` like issue #1.
+
