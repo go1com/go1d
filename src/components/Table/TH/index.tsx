@@ -55,7 +55,11 @@ const TableHeaderCell: React.SFC<TableHeaderCellProps> = ({
     >
       <HeaderWrapper sort={sort} onClick={sortAction}>
         <View flexDirection="row" alignItems="center">
-          <Text textTransform="uppercase" color="subtle">
+          <Text
+            textTransform="uppercase"
+            color="subtle"
+            css={{ maxWidth: "100%" }}
+          >
             {text}
           </Text>
           {sort && sort === currentSort && (
