@@ -1,5 +1,17 @@
 # @go1d/go1d
 
+## 3.1.0
+
+### Minor Changes
+
+- 096e3333: Add ColorPicker component
+  Use fix option for tslint in lint-staged + Update typescript and some dev packages to latest version
+
+### Patch Changes
+
+- 427a0be8: Exclude all tests file from building stories
+- aad7133f: Remove the doc of component contains hook
+
 ## 3.0.5
 
 ### Patch Changes
