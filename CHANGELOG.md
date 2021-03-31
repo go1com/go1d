@@ -1,5 +1,11 @@
 # @go1d/go1d
 
+## 3.1.1
+
+### Patch Changes
+
+- dd642697: Improvement for Carousel component, make this component be able to custom controls which control scroll item in carousel.
+
 ## 3.1.0
 
 ### Minor Changes
