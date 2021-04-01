@@ -1,5 +1,11 @@
 # @go1d/go1d
 
+## 3.1.4
+
+### Patch Changes
+
+- 309616d9: Fix the pattern to exclude inherited node_modules props in Storybook
+
 ## 3.1.3
 
 ### Patch Changes
