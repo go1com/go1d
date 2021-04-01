@@ -1,5 +1,11 @@
 # @go1d/go1d
 
+## 3.1.3
+
+### Patch Changes
+
+- 98f915fb: Uses built-in doc generation for Storybook
+
 ## 3.1.2
 
 ### Patch Changes
