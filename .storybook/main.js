@@ -9,12 +9,13 @@ module.exports = {
     reactDocgen: 'react-docgen-typescript',
     reactDocgenTypescriptOptions: {
       shouldExtractLiteralValuesFromEnum: true,
+      savePropValueAsString: false,
       propFilter: (prop, component) => {
         if (prop.parent) {
-          const re = new RegExp(`/components/${component.name}/`);
+          const re = new RegExp(`src/components/${component.name}/`);
           const isOwnProp = re.test(prop.parent.fileName);
 
-          return isOwnProp || /node_modules/.test(prop.parent.fileName);
+          return isOwnProp || !/(node_modules|src\/components)/.test(prop.parent.fileName);
         }
 
         return true;
