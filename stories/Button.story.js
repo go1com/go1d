@@ -1,7 +1,6 @@
 import React from "react";
 import { Button, SubmitButton } from "../src";
 import hideInheritedProps from '../.storybook/hideInheritedProps.js'
-
 let argTypes = hideInheritedProps({}, Button);
 
 export default {
@@ -19,9 +18,9 @@ export default {
 
 export const UnstyledButtons = args => (
   <React.Fragment>
-    <Button>Default</Button>
-    <Button color="accent">Accent</Button>
-    <Button color="danger">Danger</Button>
+    <Button {...args}>Default</Button>
+    <Button color="accent" {...args}>Accent</Button>
+    <Button color="danger" {...args}>Danger</Button>
   </React.Fragment>
 );
 

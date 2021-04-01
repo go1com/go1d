@@ -3,6 +3,24 @@ module.exports = {
     "../stories/**/*.stories.mdx",
     "../stories/**/*.story.@(js|jsx|ts|tsx)"
   ],
+  typescript: {
+    check: false,
+    checkOptions: {},
+    reactDocgen: 'react-docgen-typescript',
+    reactDocgenTypescriptOptions: {
+      shouldExtractLiteralValuesFromEnum: true,
+      propFilter: (prop, component) => {
+        if (prop.parent) {
+          const re = new RegExp(`/components/${component.name}/`);
+          const isOwnProp = re.test(prop.parent.fileName);
+
+          return isOwnProp || /node_modules/.test(prop.parent.fileName);
+        }
+
+        return true;
+      },
+    },
+  },
   "addons": [
     {
       name: '@storybook/addon-essentials',
@@ -15,11 +33,19 @@ module.exports = {
   "webpackFinal": async config => {
     config.module.rules.push({
       test: /\.(ts|tsx)$/,
-      use: [{
-        loader: require.resolve('ts-loader'),
-      },],
+      use: [
+        {
+          loader: 'ts-loader',
+          options: {
+            // we don't need a declaration here
+            transpileOnly: true,
+          }
+        }
+      ],
     });
+
     config.resolve.extensions.push('.ts', '.tsx');
+
     return config;
   }
 }
