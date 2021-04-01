@@ -1,5 +1,11 @@
 # @go1d/go1d
 
+## 3.1.2
+
+### Patch Changes
+
+- 1f78a21d: Fixes overlapping text in table headers by adding maxWidth 100% to TH inner Text cell
+
 ## 3.1.1
 
 ### Patch Changes
