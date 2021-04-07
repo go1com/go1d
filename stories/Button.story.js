@@ -19,8 +19,6 @@ export default {
 export const UnstyledButtons = args => (
   <React.Fragment>
     <Button {...args}>Default</Button>
-    <Button color="accent" {...args}>Accent</Button>
-    <Button color="danger" {...args}>Danger</Button>
   </React.Fragment>
 );
 
