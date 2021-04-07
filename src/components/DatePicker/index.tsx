@@ -25,6 +25,7 @@ export interface DatePickerProps extends ViewProps {
   value?: Date | number;
   time?: boolean;
   allowBlank?: boolean;
+  displayFormat?: string;
 }
 
 export interface DatePickerState {
@@ -251,6 +252,7 @@ class DatePicker extends React.Component<DatePickerProps, DatePickerState> {
       defaultValue,
       value,
       allowBlank,
+      displayFormat = "DD/MM/YYYY",
       ...remainingProps
     } = this.props;
 
@@ -341,7 +343,7 @@ class DatePicker extends React.Component<DatePickerProps, DatePickerState> {
               hideKeyboardShortcutsPanel={true}
               weekDayFormat="dd"
               inputIconPosition="after"
-              displayFormat="DD/MM/YYYY"
+              displayFormat={displayFormat}
               navNext={<IconChevronRight size={2} color="subtle" />}
               navPrev={<IconChevronLeft size={2} color="subtle" />}
               verticalSpacing={5}
