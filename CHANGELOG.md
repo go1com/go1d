@@ -1,5 +1,11 @@
 # @go1d/go1d
 
+## 3.1.7
+
+### Patch Changes
+
+- b975995d: TagSelector: add maxSelectedValues property
+
 ## 3.1.6
 
 ### Patch Changes
