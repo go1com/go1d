@@ -60,6 +60,7 @@ export interface TagSelectorProps extends ViewProps {
   ) => React.ReactNode;
   placeholder?: string;
   createableText?: string;
+  maxSelectedValues?: number;
 }
 
 class TagSelector extends React.PureComponent<TagSelectorProps, State> {
@@ -254,6 +255,7 @@ class TagSelector extends React.PureComponent<TagSelectorProps, State> {
       placeholder,
       createableText,
       selectedValuesRenderer,
+      maxSelectedValues = Number.MAX_SAFE_INTEGER,
       ...props
     } = this.props;
 
@@ -341,7 +343,7 @@ class TagSelector extends React.PureComponent<TagSelectorProps, State> {
                 value={this.state.search}
                 onChange={this.inputChange}
                 borderColor="transparent"
-                disabled={disabled}
+                disabled={disabled || value.length >= maxSelectedValues}
                 viewCss={this.viewCss}
                 {...props}
               />
