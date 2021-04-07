@@ -1,5 +1,11 @@
 # @go1d/go1d
 
+## 3.1.5
+
+### Patch Changes
+
+- c856956b: Update storybook to version 6.2.1
+
 ## 3.1.4
 
 ### Patch Changes
