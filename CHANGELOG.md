@@ -1,5 +1,11 @@
 # @go1d/go1d
 
+## 3.1.6
+
+### Patch Changes
+
+- 5db39424: DatePicker - support customizing display format
+
 ## 3.1.5
 
 ### Patch Changes
