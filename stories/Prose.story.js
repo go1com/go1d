@@ -5,8 +5,8 @@ import hideInheritedProps from '../.storybook/hideInheritedProps.js'
 let argTypes = hideInheritedProps({}, Prose);
 
 export default {
-  title: "Original Go1d/Prose",
   argTypes: argTypes,
+  title: "Athletic/Prose",
   component: Prose,
 };
 
