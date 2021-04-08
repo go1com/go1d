@@ -1,5 +1,11 @@
 # @go1d/go1d
 
+## 3.1.8
+
+### Patch Changes
+
+- cfde0418: TagSelector: close dropdown when number of selected values reaches maximum
+
 ## 3.1.7
 
 ### Patch Changes
