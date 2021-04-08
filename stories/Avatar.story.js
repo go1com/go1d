@@ -1,14 +1,17 @@
 import React from "react";
 import { Avatar } from "../src";
-import hideInheritedProps from '../.storybook/hideInheritedProps.js'
 import IconMultipleUsers from "../src/components/Icons/MultipleUsers";
 
-let argTypes = hideInheritedProps({}, Avatar);
 const IconElement = IconMultipleUsers;
 
 export default {
   title: "Athletic/Avatar",
-  argTypes: argTypes,
+  argTypes: {
+    avatarType: {
+      options: ['circle', 'square'],
+      defaultValue: "square",
+    },
+  },
   component: Avatar,
 };
 
