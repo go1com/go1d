@@ -1,5 +1,11 @@
 # @go1d/go1d
 
+## 3.1.9
+
+### Patch Changes
+
+- 97d0fb1e: Fix padding for ImageUploadSlat component on mobile
+
 ## 3.1.8
 
 ### Patch Changes
