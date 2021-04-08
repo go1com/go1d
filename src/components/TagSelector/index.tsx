@@ -114,9 +114,11 @@ class TagSelector extends React.PureComponent<TagSelectorProps, State> {
 
   @autobind
   public onChange(evt) {
+    const { maxSelectedValues } = this.props;
     this.setState({
       value: evt.target.value,
       search: "",
+      isFocused: evt.target.value.length < maxSelectedValues,
     });
 
     safeInvoke(this.props.onChange, evt);
