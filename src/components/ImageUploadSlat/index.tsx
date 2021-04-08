@@ -189,7 +189,6 @@ class ImageUploadSlat extends React.Component<ImageUploadSlatProps, State> {
           justifyContent="center"
           height="100%"
           width={this.imageWidth}
-          marginRight={5}
           padding={5}
         >
           <IconCamera color="muted" size={4} marginBottom={2} />
@@ -197,15 +196,14 @@ class ImageUploadSlat extends React.Component<ImageUploadSlatProps, State> {
             {this.props.dragDropText}
           </Text>
         </View>
-        <View justifyContent="center">
-          <View flexDirection="row">
-            <IconUpload
-              marginTop={2}
-              color="muted"
-              size={2}
-              marginRight={4}
-              marginBottom={3}
-            />
+        <View justifyContent="center" padding={5}>
+          <View
+            flexDirection="row"
+            alignItems="center"
+            marginTop={2}
+            marginBottom={3}
+          >
+            <IconUpload color="muted" size={2} marginRight={4} />
             <Text fontWeight="semibold" color="default" fontSize={2}>
               {this.props.chooseAFileText}
             </Text>
@@ -299,18 +297,25 @@ class ImageUploadSlat extends React.Component<ImageUploadSlatProps, State> {
           paddingRight={4}
           height={this.height}
           flexGrow={1}
+          flexShrink={1}
           justifyContent="center"
         >
           <View marginLeft={4} marginBottom={3} flexDirection="row">
-            <Text>{fileName}</Text>
+            <Text ellipsis={true}>{fileName}</Text>
           </View>
-          <View flexDirection="row">
-            <ButtonMinimal icon={IconCamera} iconColor="subtle" onClick={open}>
+          <View flexDirection="row" flexWrap="wrap">
+            <ButtonMinimal
+              icon={IconCamera}
+              iconColor="subtle"
+              justifyContent="start"
+              onClick={open}
+            >
               {this.props.replaceImageText}
             </ButtonMinimal>
             <ButtonMinimal
               icon={IconTrash}
               iconColor="subtle"
+              justifyContent="start"
               onClick={this.removeImage}
             >
               {this.props.deleteText}
@@ -358,11 +363,7 @@ class ImageUploadSlat extends React.Component<ImageUploadSlatProps, State> {
     }
 
     return (
-      <View
-        {...props}
-        width="100%"
-        height={[this.props.value ? this.height * 2 : this.height, this.height]}
-      >
+      <View {...props} width="100%" height={["auto", this.height]}>
         <BaseUploader
           fileType="image/*"
           disabled={!!disabled}
@@ -386,16 +387,16 @@ class ImageUploadSlat extends React.Component<ImageUploadSlatProps, State> {
                 >
                   <View
                     height="100%"
-                    marginRight={5}
-                    width={this.imageWidth}
+                    width={["auto", this.imageWidth]}
                     justifyContent="center"
                     alignItems="center"
                     borderColor="accent"
                     borderRight={1}
+                    padding={5}
                   >
                     <IconPlusCircle color="accent" size={3} />
                   </View>
-                  <View>
+                  <View padding={5} flexShrink={1}>
                     <Text fontWeight="semibold">
                       {this.props.dropImageText}
                     </Text>
@@ -415,7 +416,7 @@ class ImageUploadSlat extends React.Component<ImageUploadSlatProps, State> {
             return (
               <View
                 {...rootProps}
-                height={this.height}
+                height={["auto", this.height]}
                 onClick={allowOpen && !disabledClick ? open : null}
                 innerRef={ref}
               >
