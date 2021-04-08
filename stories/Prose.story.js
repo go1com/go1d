@@ -22,3 +22,9 @@ export const Javascript = args => (
 export const Link = args => (
   <Prose HTML="Hello from the world of <a href='#Test' target='_blank' norel='badtag'>Hello World!</a>" />
 );
+
+export const Expandable = () => (
+  <Prose lineClamp={3} expandable HTML="“The <strong>empathetic explorer</strong> thinking habit can help you explore the experiences people have with compliance in their daily work. You can also hear first hand about their attitudes towards compliance. This approach can help you uncover what is important to individuals in their work and how to make compliance programs more engaging and memorable.” — Michelle Ockers" />
+);
+Expandable.storyName = "Expandable prose";
+
