@@ -17,22 +17,26 @@ export const AvatarWithAnImage = args => (
 );
 AvatarWithAnImage.storyName = "Avatar with an image";
 
-export const AvatarWithoutAnImage = args => <Avatar fullName="Leslie Knope" />;
+export const AvatarWithCircleShape = () => <Avatar avatarType="circle" />;
+AvatarWithCircleShape.storyName = "Avatar with circle shape";
+
+export const AvatarWithoutAnImage = () => <Avatar fullName="Leslie Knope" avatarType="square" />;
 AvatarWithoutAnImage.storyName = "Avatar without an image";
 
-export const AvatarWithoutAnImageAndName = args => <Avatar />;
+export const AvatarWithoutAnImageAndName = () => <Avatar avatarType="square" />;
 AvatarWithoutAnImage.storyName = "Avatar without an image";
 
-export const AvatarWithMultipleUsersIcon = args => <Avatar icon={IconElement} />;
+export const AvatarWithMultipleUsersIcon = () => <Avatar icon={IconElement} avatarType="square" />;
 AvatarWithMultipleUsersIcon.storyName = "Avatar with multiple users icon";
 
-export const AvatarWithADifferentSize = args => (
-  <Avatar fullName="Willy Wonka" size={4} />
+export const AvatarWithADifferentSize = () => (
+  <Avatar fullName="Willy Wonka" size={4} avatarType="square" />
 );
 AvatarWithADifferentSize.storyName = "Avatar with a different size";
 
-export const AvatarWithDifferentColors = args => (
+export const AvatarWithDifferentColors = () => (
   <Avatar
+    avatarType="square"
     fullName="Leslie Knope"
     backgroundColor="subtle"
     color="background"
