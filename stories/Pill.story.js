@@ -16,12 +16,27 @@ export default {
 export const Main = args => <Pill {...args}>Default</Pill>;
 
 export const Accent = () => <Pill fontWeight="medium" color='accent'>Accent</Pill>;
+Accent.parameters = {
+  controls: { hideNoControlsWarning: true },
+};
 
 export const Success = () => <Pill fontWeight="medium" color='success'>Success</Pill>;
+Success.parameters = {
+  controls: { hideNoControlsWarning: true },
+};
 
 export const Note = () => <Pill fontWeight="medium" color='note'>Note</Pill>;
+Note.parameters = {
+  controls: { hideNoControlsWarning: true },
+};
 
 export const Warning = () => <Pill fontWeight="medium" color='warning'>Warning</Pill>;
+Warning.parameters = {
+  controls: { hideNoControlsWarning: true },
+};
 
 export const Danger = () => <Pill fontWeight="medium" color='danger'>Danger</Pill>;
+Danger.parameters = {
+  controls: { hideNoControlsWarning: true },
+};
 
