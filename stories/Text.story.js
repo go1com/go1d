@@ -2,33 +2,19 @@ import React from "react";
 import { Text } from "../src/";
 
 const defaultElementValue = 'p';
-const exampleText = "“Upskill your workforce today to overcome the challenges of tomorrow. Go1 helps millions of people in thousands of organizations engage in learning that is relevant, effective and inspiring.”";
+const sharedExampleText = "“Upskill your workforce today to overcome the challenges of tomorrow. Go1 helps millions of people in thousands of organizations engage in learning that is relevant, effective and inspiring.”";
 
 export default {
   title: "Athletic/Text",
   component: Text,
-  argTypes: {
-    element: {
-      name: 'element',
-      type: { name: 'string', required: false },
-      defaultValue: 'p',
-      description: 'semantic HTML element',
-      table: {
-        type: { summary: 'string' },
-        defaultValue: { summary: 'span' },
-      },
-      control: {
-        type: 'text'
-      }
-    }
-  },
   parameters: {
     docs: {
       description: {
         component: 'While this component will let you do anything you need with text, for headings you probably want the convenience of using the Heading component instead.'
       }
     },
-  }
+    controls: { hideNoControlsWarning: true },
+  },
 };
 
 export const UnstyledText = ({ exampleText, ...args }) => (
@@ -37,15 +23,30 @@ export const UnstyledText = ({ exampleText, ...args }) => (
       element={defaultElementValue}
       {...args}
     >
-      Unstyled text. You can change all the arguments. {exampleText}
+      {exampleText}
     </Text>
   </React.Fragment>
 );
 UnstyledText.args = {
-  exampleText: exampleText
-}
+  exampleText: "Unstyled text. You can change all the arguments. " + sharedExampleText
+};
+UnstyledText.argTypes = {
+  element: {
+    name: 'element',
+    type: { name: 'string', required: false },
+    defaultValue: 'p',
+    description: 'semantic HTML element',
+    table: {
+      type: { summary: 'string' },
+      defaultValue: { summary: 'span' },
+    },
+    control: {
+      type: 'text'
+    }
+  }
+};
 
-export const ParagraphLarge = ({ exampleText, ...args }) => (
+export const ParagraphLarge = () => (
   <React.Fragment>
     <Text
       element="p"
@@ -55,15 +56,12 @@ export const ParagraphLarge = ({ exampleText, ...args }) => (
       fontFamily="sansSerif"
       lineHeight="paragraph"
     >
-      Paragraph large. {exampleText}
+      Paragraph large. {sharedExampleText}
     </Text>
   </React.Fragment>
 );
-ParagraphLarge.args = {
-  exampleText: exampleText
-}
 
-export const ParagraphMedium = ({ exampleText, ...args }) => (
+export const ParagraphMedium = () => (
   <React.Fragment>
     <Text
       color="default"
@@ -73,15 +71,12 @@ export const ParagraphMedium = ({ exampleText, ...args }) => (
       fontFamily="sansSerif"
       lineHeight="paragraph"
     >
-      Paragraph Medium. “Upskill your workforce today to overcome the challenges of tomorrow. Go1 helps millions of people in thousands of organizations engage in learning that is relevant, effective and inspiring.”
+      Paragraph Medium. {sharedExampleText}
     </Text>
   </React.Fragment>
 );
-ParagraphMedium.args = {
-  exampleText: exampleText
-}
 
-export const ParagraphSmall = ({ exampleText, ...args }) => (
+export const ParagraphSmall = () => (
   <React.Fragment>
     <Text
       color="default"
@@ -91,13 +86,10 @@ export const ParagraphSmall = ({ exampleText, ...args }) => (
       fontFamily="sansSerif"
       lineHeight="paragraph"
     >
-      Paragraph Small. “Upskill your workforce today to overcome the challenges of tomorrow. Go1 helps millions of people in thousands of organizations engage in learning that is relevant, effective and inspiring.”
+      Paragraph Small. {sharedExampleText}
     </Text>
   </React.Fragment>
 );
-ParagraphSmall.args = {
-  exampleText: exampleText
-}
 
 export const UILarge = () => (
   <React.Fragment>
