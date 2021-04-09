@@ -2,6 +2,7 @@ import React from "react";
 import { Text } from "../src/";
 
 const defaultElementValue = 'p';
+const exampleText = "“Upskill your workforce today to overcome the challenges of tomorrow. Go1 helps millions of people in thousands of organizations engage in learning that is relevant, effective and inspiring.”";
 
 export default {
   title: "Athletic/Text",
@@ -30,18 +31,21 @@ export default {
   }
 };
 
-export const UnstyledText = args => (
+export const UnstyledText = ({ exampleText, ...args }) => (
   <React.Fragment>
     <Text
       element={defaultElementValue}
       {...args}
     >
-      Unstyled text. You can change all the arguments. “Upskill your workforce today to overcome the challenges of tomorrow. Go1 helps millions of people in thousands of organizations engage in learning that is relevant, effective and inspiring.”
+      Unstyled text. You can change all the arguments. {exampleText}
     </Text>
   </React.Fragment>
 );
+UnstyledText.args = {
+  exampleText: exampleText
+}
 
-export const ParagraphLarge = () => (
+export const ParagraphLarge = ({ exampleText, ...args }) => (
   <React.Fragment>
     <Text
       element="p"
@@ -51,12 +55,15 @@ export const ParagraphLarge = () => (
       fontFamily="sansSerif"
       lineHeight="paragraph"
     >
-      Paragraph Large. “Upskill your workforce today to overcome the challenges of tomorrow. Go1 helps millions of people in thousands of organizations engage in learning that is relevant, effective and inspiring.”
+      Paragraph large. {exampleText}
     </Text>
   </React.Fragment>
 );
+ParagraphLarge.args = {
+  exampleText: exampleText
+}
 
-export const ParagraphMedium = () => (
+export const ParagraphMedium = ({ exampleText, ...args }) => (
   <React.Fragment>
     <Text
       color="default"
@@ -70,8 +77,11 @@ export const ParagraphMedium = () => (
     </Text>
   </React.Fragment>
 );
+ParagraphMedium.args = {
+  exampleText: exampleText
+}
 
-export const ParagraphSmall = () => (
+export const ParagraphSmall = ({ exampleText, ...args }) => (
   <React.Fragment>
     <Text
       color="default"
@@ -85,6 +95,9 @@ export const ParagraphSmall = () => (
     </Text>
   </React.Fragment>
 );
+ParagraphSmall.args = {
+  exampleText: exampleText
+}
 
 export const UILarge = () => (
   <React.Fragment>
