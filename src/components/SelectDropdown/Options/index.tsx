@@ -63,6 +63,10 @@ class Options extends React.PureComponent<OptionProps, {}> {
     this.elementResizeDetector.uninstall(this.parentNode);
   }
 
+  public componentDidUpdate() {
+    safeInvoke(this.props.scheduleUpdate);
+  }
+
   public render() {
     const {
       options,
