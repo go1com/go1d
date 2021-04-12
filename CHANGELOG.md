@@ -1,5 +1,11 @@
 # @go1d/go1d
 
+## 3.1.10
+
+### Patch Changes
+
+- 9ebaa428: SelectDropdown > update menu position when input element's height changed
+
 ## 3.1.9
 
 ### Patch Changes
