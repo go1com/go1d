@@ -1,12 +1,8 @@
 import React from "react";
 import { Label } from "../src";
-import hideInheritedProps from '../.storybook/hideInheritedProps.js'
-
-let argTypes = hideInheritedProps({}, Label);
 
 export default {
   title: "Athletic/Label",
-  argTypes: argTypes,
   component: Label,
 };
 
