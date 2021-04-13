@@ -4,10 +4,14 @@ import { IconPlus } from "../src/components/Icons";
 import { IconTrash } from "../src/components/Icons";
 import { Flipflop } from "libreact/lib/Flipflop";
 
-
 export default {
   title: "Athletic/Modal",
   component: Modal,
+  argTypes: {
+    isOpen: { control: { disable: true } },
+    headerIcon: { control: { disable: true } },
+    moreMenu: { control: { disable: true } },
+  }
 };
 
 export const Main = args => (
