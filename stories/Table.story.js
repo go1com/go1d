@@ -12,6 +12,10 @@ const matchesSmallScreen = window.matchMedia(breakpoints.sm.replace("@media","")
 export default {
   title: "Original Go1d/Table",
   component: Table,
+  argTypes: {
+    header: { control: { disable: true } },
+    rows: { control: { disable: true } },
+  }
 };
 
 export const BasicTableWithAHeader = args => (
