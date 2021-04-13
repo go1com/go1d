@@ -1,9 +1,6 @@
 import React from "react";
 import { Table, TR, TD, Text, TH, Link } from "../src";
-import hideInheritedProps from '../.storybook/hideInheritedProps.js'
 import { breakpoints } from '../src/foundations/'
-
-let argTypes = hideInheritedProps({}, Table);
 
 const hideOnSmallScreens = {
   [breakpoints.sm]: {
@@ -14,7 +11,6 @@ const matchesSmallScreen = window.matchMedia(breakpoints.sm.replace("@media","")
 
 export default {
   title: "Original Go1d/Table",
-  argTypes: argTypes,
   component: Table,
 };
 
