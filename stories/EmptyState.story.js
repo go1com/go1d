@@ -1,12 +1,8 @@
 import React from "react";
 import { EmptyState } from "../src";
-import hideInheritedProps from '../.storybook/hideInheritedProps.js'
-
-let argTypes = hideInheritedProps({}, EmptyState);
 
 export default {
   title: "Original Go1d/EmptyState",
-  argTypes: argTypes,
   component: EmptyState,
 };
 
