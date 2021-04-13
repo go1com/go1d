@@ -3,13 +3,10 @@ import { Modal, ButtonFilled, MoreMenu, Text, View } from "../src";
 import { IconPlus } from "../src/components/Icons";
 import { IconTrash } from "../src/components/Icons";
 import { Flipflop } from "libreact/lib/Flipflop";
-import hideInheritedProps from '../.storybook/hideInheritedProps.js'
 
-let argTypes = hideInheritedProps({}, Modal);
 
 export default {
   title: "Athletic/Modal",
-  argTypes: argTypes,
   component: Modal,
 };
 
