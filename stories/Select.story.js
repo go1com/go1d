@@ -1,12 +1,8 @@
 import React from "react";
 import { Select } from "../src";
-import hideInheritedProps from '../.storybook/hideInheritedProps.js'
-
-let argTypes = hideInheritedProps({}, Select);
 
 export default {
   title: "Original Go1d/Select",
-  argTypes: argTypes,
   component: Select,
 };
 
@@ -20,7 +16,6 @@ export const ACustomSelectComponent = args => (
     ]}
   />
 );
-
 ACustomSelectComponent.storyName = "A custom select component";
 
 export const DisabledSelectField = args => (
@@ -80,7 +75,6 @@ export const SelectFilledWithOptgroups = args => (
     ]}
   />
 );
-
 SelectFilledWithOptgroups.storyName = "Select filled with optgroups";
 
 export const SelectFilledWithLabelLessOptgroups = args => (
@@ -107,7 +101,6 @@ export const SelectFilledWithLabelLessOptgroups = args => (
     ]}
   />
 );
-
 SelectFilledWithLabelLessOptgroups.storyName = "Select filled with label-less optgroups";
 
 export const ControlledSelectValue = args => (
