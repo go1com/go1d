@@ -8,17 +8,19 @@ export default {
 
 export const ACustomMultiSelectComponent = args => (
   <MultiSelect
-    options={[
-      { value: "chocolate", label: "Chocolate" },
-      { value: "strawberry", label: "Strawberry" },
-      { value: "vanilla", label: "Vanilla" },
-    ]}
+    {...args}
   />
 );
-
 ACustomMultiSelectComponent.storyName = "A custom Multi Select component";
+ACustomMultiSelectComponent.argTypes = {
+  options: { defaultValue: [
+    { value: "chocolate", label: "Chocolate" },
+    { value: "strawberry", label: "Strawberry" },
+    { value: "vanilla", label: "Vanilla" },
+  ]},
+};
 
-export const DisabledMultiSelectField = args => (
+export const DisabledMultiSelectField = () => (
   <MultiSelect
     label="Disabled"
     options={[
@@ -29,8 +31,9 @@ export const DisabledMultiSelectField = args => (
     disabled={true}
   />
 );
+DisabledMultiSelectField.parameters = { controls: { hideNoControlsWarning: true } };
 
-export const SearchableMultiSelectField = args => (
+export const SearchableMultiSelectField = () => (
   <MultiSelect
     label="Favourite"
     options={[
@@ -41,8 +44,9 @@ export const SearchableMultiSelectField = args => (
     searchable={true}
   />
 );
+SearchableMultiSelectField.parameters = { controls: { hideNoControlsWarning: true } };
 
-export const InitialIsOpenWhenInitialized = args => (
+export const InitialIsOpenWhenInitialized = () => (
   <MultiSelect
     label="Favourite"
     options={[
@@ -53,10 +57,10 @@ export const InitialIsOpenWhenInitialized = args => (
     initialIsOpen={true}
   />
 );
-
 InitialIsOpenWhenInitialized.storyName = "Initial is open when initialized";
+InitialIsOpenWhenInitialized.parameters = { controls: { hideNoControlsWarning: true } };
 
-export const MultiSelectWithExtraStyleProps = args => (
+export const MultiSelectWithExtraStyleProps = () => (
   <MultiSelect
     label="Favourite"
     searchable={true}
@@ -72,5 +76,6 @@ export const MultiSelectWithExtraStyleProps = args => (
     ]}
   />
 );
-
 MultiSelectWithExtraStyleProps.storyName = "Multi Select with extra style props";
+MultiSelectWithExtraStyleProps.parameters = { controls: { hideNoControlsWarning: true } };
+
