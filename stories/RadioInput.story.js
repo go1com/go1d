@@ -1,12 +1,8 @@
 import React from "react";
-import { RadioInput, RadioGroup } from "../src";
-import hideInheritedProps from '../.storybook/hideInheritedProps.js'
-
-let argTypes = hideInheritedProps({}, RadioInput);
+import { RadioGroup } from "../src";
 
 export default {
   title: "Athletic/RadioGroup",
-  argTypes: argTypes,
   component: RadioGroup,
 };
 
