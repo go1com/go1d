@@ -8,7 +8,7 @@ export default {
 };
 
 export const LightmodePageBody = args => (
-  <Container {...args} backgroundColor="soft" contain="full" paddingX={8} paddingY={6}>
+  <Container {...args} backgroundColor="soft" paddingX={8} paddingY={6}>
     <View marginBottom={5}>
       <Text element="h2" fontSize={4} fontWeight="semibold">
         Reports
@@ -19,5 +19,8 @@ export const LightmodePageBody = args => (
     </View>
   </Container>
 );
-
 LightmodePageBody.storyName = "Lightmode page body";
+LightmodePageBody.argTypes = {
+  contain: { defaultValue: "full" },
+};
+
