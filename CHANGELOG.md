@@ -1,5 +1,11 @@
 # @go1d/go1d
 
+## 3.2.1
+
+### Patch Changes
+
+- 77d0f549: Fix the unnecessary space on Modal title
+
 ## 3.2.0
 
 ### Minor Changes
