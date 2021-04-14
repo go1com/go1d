@@ -1,12 +1,8 @@
 import React from "react";
 import { Rating } from "../src";
-import hideInheritedProps from '../.storybook/hideInheritedProps.js'
-
-let argTypes = hideInheritedProps({}, Rating);
 
 export default {
   title: "Athletic/Rating",
-  argTypes: argTypes,
   component: Rating,
 };
 
