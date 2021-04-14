@@ -4,6 +4,9 @@ import { Autocomplete } from "../src";
 export default {
   title: "Athletic/Autocomplete",
   component: Autocomplete,
+  decorators: [
+    (Story) => <div style={{ minHeight: '214px' }}><Story/></div>
+  ],
 };
 
 export const Base = args => (
@@ -21,7 +24,11 @@ export const Base = args => (
     }}
     // this would come from the implementation-level state
     // eg. this.state.options
-    options={[]}
+    options={[
+      { label: "foo1", value: "foo1" },
+      { label: "foo2", value: "foo2" },
+      { label: "foo3", value: "foo3" },
+    ]}
     onSelectOption={() => {
       console.log("this method fires when user makes a selection");
     }}
@@ -35,3 +42,4 @@ export const Base = args => (
     {...args}
   />
 );
+
