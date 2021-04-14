@@ -1,12 +1,8 @@
 import React from "react";
 import { RichTextInput, Form, Field, ButtonFilled } from "../src";
-import hideInheritedProps from '../.storybook/hideInheritedProps.js'
-
-let argTypes = hideInheritedProps({}, RichTextInput);
 
 export default {
   title: "Original Go1d/RichTextInput",
-  argTypes: argTypes,
   component: RichTextInput,
 };
 
