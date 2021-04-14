@@ -4,35 +4,42 @@ import { IconCalendar, IconPlusCircle } from "../src/components/Icons";
 
 export default {
   title: "Athletic/SlatMini",
-  component: SlatMini
+  component: SlatMini,
+  argTypes: {
+    skeleton: {
+      defaultValue: false,
+      control: { type: 'boolean' }
+    },
+  },
 };
 
 export const WithDropdownActions = args => (
   <SlatMini
     {...args}
-    id={123}
-    title="This is an online content"
-    bottomMeta={["Provider", "29 mins"]}
-    image="http://res.cloudinary.com/go1/image/upload/v1557388417/l7jhug2k9n1s4qzw3ai8.png"
-    type="Course"
-    dropdownItems={[
-      {
-        icon: IconCalendar,
-        title: "fake item #01",
-        onClick: () => console.log("You have clicked on `fake item #01`"),
-      },
-      {
-        icon: IconCalendar,
-        title: "fake item #02",
-        onClick: () => console.log("You have clicked on `fake item #02`"),
-      },
-    ]}
   />
 );
-
 WithDropdownActions.storyName = "With dropdown actions";
+WithDropdownActions.argTypes = {
+  id: { defaultValue: 123 },
+  title: { defaultValue: "This is online content" },
+  bottomMeta: { defaultValue: ["Provider", "29 mins"] },
+  image: { defaultValue: "http://res.cloudinary.com/go1/image/upload/v1557388417/l7jhug2k9n1s4qzw3ai8.png" },
+  type: { defaultValue: "Course" },
+  dropdownItems: { defaultValue: [
+    {
+      icon: IconCalendar,
+      title: "fake item #01",
+      onClick: () => console.log("You have clicked on `fake item #01`"),
+    },
+    {
+      icon: IconCalendar,
+      title: "fake item #02",
+      onClick: () => console.log("You have clicked on `fake item #02`"),
+    },
+  ]},
+};
 
-export const WithActionRender = args => (
+export const WithActionRender = () => (
   <SlatMini
     id={123}
     title="This is an offline content"
@@ -45,10 +52,10 @@ export const WithActionRender = args => (
     )}
   />
 );
-
 WithActionRender.storyName = "With actionRender";
+WithActionRender.parameters = { controls: { hideNoControlsWarning: true } };
 
-export const WithLink = args => (
+export const WithLink = () => (
   <SlatMini
     id={123}
     title="This is an offline content"
@@ -59,7 +66,8 @@ export const WithLink = args => (
     typeBackground="accent"
   />
 );
-
 WithLink.storyName = "With link";
+WithLink.parameters = { controls: { hideNoControlsWarning: true } };
 
-export const Skeleton = args => <SlatMini skeleton={true} />;
+export const Skeleton = () => <SlatMini skeleton={true} />;
+Skeleton.parameters = { controls: { hideNoControlsWarning: true } };
