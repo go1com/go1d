@@ -7,26 +7,34 @@ export default {
   subcomponents: { View },
 };
 
-export const _ContentType = args => (
+export const ContentTypeStory = args => (
   <View flexDirection="row">
-    <ContentType {...args} type="Course" />
+    <ContentType {...args} />
   </View>
 );
-
-_ContentType.storyName = "ContentType";
+ContentTypeStory.storyName = "ContentType";
+ContentTypeStory.argTypes = {
+  type: {
+    defaultValue: 'Course',
+    description: 'Course or Event',
+  }
+};
 
 export const ContentTypeWithText = args => (
   <View flexDirection="row">
-    <ContentType {...args} type="Course" text="Course" />
+    <ContentType text="Course" {...args} />
   </View>
 );
-
 ContentTypeWithText.storyName = "ContentType with text";
+ContentTypeWithText.argTypes = {
+  type: { defaultValue: 'Course' },
+};
 
-export const ContentTypeWithBackground = args => (
+export const ContentTypeWithBackground = () => (
   <View flexDirection="row">
-    <ContentType {...args} type="Event" text="Event" background="default" width={70} />
+    <ContentType type="Event" text="Event" background="default" width={70} />
   </View>
 );
-
 ContentTypeWithBackground.storyName = "ContentType with background";
+ContentTypeWithBackground.parameters = { controls: { hideNoControlsWarning: true } };
+
