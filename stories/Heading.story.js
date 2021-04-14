@@ -1,13 +1,9 @@
 import React from "react";
 import { Heading } from "../src/";
 import { Text } from "../src/";
-import hideInheritedProps from '../.storybook/hideInheritedProps.js'
-
-let argTypes = hideInheritedProps({}, Heading);
 
 export default {
   title: "Athletic/Heading",
-  argTypes: argTypes,
   component: Heading,
   parameters: {
     docs: {
