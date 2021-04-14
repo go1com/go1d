@@ -7,5 +7,10 @@ export default {
 };
 
 export const BasicLesson = args => (
-  <Lesson {...args} title="Design Thinking" type="video" duration={80} />
+  <Lesson {...args} />
 );
+BasicLesson.argTypes = {
+  title: { defaultValue: "Design Thinking" },
+  type: { defaultValue: "video" },
+  duration: { defaultValue: 80 },
+}
