@@ -1,13 +1,9 @@
 import React from "react";
 import { TextInput, ButtonMinimal } from "../src";
-import hideInheritedProps from '../.storybook/hideInheritedProps.js'
 import { IconCross, IconSearch } from "../src/components/Icons";
-
-let argTypes = hideInheritedProps({}, TextInput);
 
 export default {
   title: "Athletic/TextInput",
-  argTypes: argTypes,
   component: TextInput,
 };
 
