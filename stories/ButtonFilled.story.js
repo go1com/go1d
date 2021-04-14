@@ -1,13 +1,9 @@
 import React from "react";
 import { ButtonFilled } from "../src";
-import hideInheritedProps from '../.storybook/hideInheritedProps.js'
 import { IconCheck, IconPlus } from "../src/components/Icons";
-
-let argTypes = hideInheritedProps({}, ButtonFilled);
 
 export default {
   title: "Athletic/Buttons/ButtonFilled (Accent)",
-  argTypes: argTypes,
   component: ButtonFilled,
 };
 
