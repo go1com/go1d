@@ -11,36 +11,40 @@ import {
 export default {
   title: "Athletic/Checkbox",
   component: Checkbox,
+  argTypes: {
+    size: {
+      defaultValue: 'md',
+    }
+  }
 };
 
 export const Label = args => <Checkbox {...args} name="Test" label="Test" />;
-export const LabelSizeSm = args => (
-  <Checkbox {...args} size="sm" name="Test" label="Test" />
+export const LabelSizeSm = () => (
+  <Checkbox size="sm" name="Test" label="Test" />
 );
-
 LabelSizeSm.storyName = "Label size sm";
+LabelSizeSm.parameters = { controls: { hideNoControlsWarning: true } };
 
-export const LabelSizeLg = args => (
-  <Checkbox {...args} size="lg" name="Test" label="Test" />
+export const LabelSizeLg = () => (
+  <Checkbox size="lg" name="Test" label="Test" />
 );
-
 LabelSizeLg.storyName = "Label size lg";
+LabelSizeLg.parameters = { controls: { hideNoControlsWarning: true } };
 
 export const ChildLabel = args => (
-  <Checkbox {...args} name="Test">
+  <Checkbox name="Test" {...args}>
     <Text fontWeight="bold">Test</Text>
   </Checkbox>
 );
-
 ChildLabel.storyName = "Child label";
 
-export const DisabledAndChecked = args => (
-  <Checkbox {...args} disabled name="Test" value={true} label="Test" />
+export const DisabledAndChecked = () => (
+  <Checkbox disabled name="Test" value={true} label="Test" />
 );
+DisabledAndChecked.parameters = { controls: { hideNoControlsWarning: true } };
 
-export const Disabled = args => (
+export const Disabled = () => (
   <CheckboxGroup
-    {...args}
     disabled
     name="TestInput"
     options={[
@@ -55,8 +59,9 @@ export const Disabled = args => (
     ]}
   />
 );
+Disabled.parameters = { controls: { hideNoControlsWarning: true } };
 
-export const CheckboxInField = args => (
+export const CheckboxInField = () => (
   <Form
     initialValues={{ portalName: true }}
     onSubmit={(values, actions) => console.log(values, actions)}
@@ -72,12 +77,11 @@ export const CheckboxInField = args => (
     </ButtonFilled>
   </Form>
 );
-
 CheckboxInField.storyName = "Checkbox in Field";
+CheckboxInField.parameters = { controls: { hideNoControlsWarning: true } };
 
-export const UsageInACheckboxGroup = args => (
+export const UsageInACheckboxGroup = () => (
   <CheckboxGroup
-    {...args}
     name="TestInput"
     options={[
       {
@@ -91,12 +95,11 @@ export const UsageInACheckboxGroup = args => (
     ]}
   />
 );
-
 UsageInACheckboxGroup.storyName = "Usage in a CheckboxGroup";
+UsageInACheckboxGroup.parameters = { controls: { hideNoControlsWarning: true } };
 
-export const InitialValues = args => (
+export const InitialValues = () => (
   <CheckboxGroup
-    {...args}
     name="TestInput"
     value={["testValue"]}
     options={[
@@ -111,5 +114,6 @@ export const InitialValues = args => (
     ]}
   />
 );
-
 InitialValues.storyName = "Initial values";
+InitialValues.parameters = { controls: { hideNoControlsWarning: true } };
+
