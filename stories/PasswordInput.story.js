@@ -15,21 +15,18 @@ export const BasicPasswordInput = args => (
 );
 
 export const PasswordInputSizes = args => (
-  <React.Fragment>
-    <PasswordInput id="Small" size="sm" value="Small" />
-    <br />
-    <PasswordInput id="Medium" size="md" value="Medium" />
-    <br />
-    <PasswordInput id="Large" size="lg" value="Large" />
-  </React.Fragment>
+  <PasswordInput {...args} id="PasswordInputSizes" size="sm" value="Small" />
 );
 
 export const PasswordInputWithNoToggle = args => (
   <PasswordInput id="noToggle" toggleableDisplay={false} />
 );
-
 PasswordInputWithNoToggle.storyName = "Password Input with no toggle";
 
 export const DisabledPasswordInput = args => (
   <PasswordInput id="Disabled" disabled={true} />
+);
+
+export const PasswordInputWithVisibilityIcon = args => (
+  <PasswordInput id="PasswordInputWithVisibilityIcon" toggleableDisplay={true} useIconVisibility={true} />
 );

@@ -17,73 +17,101 @@ export const BasicTextInput = args => (
 
 BasicTextInput.storyName = "Basic TextInput";
 
+// Small size
 export const TextInputWithSmallSize = args => (
-  <TextInput id="Small" size="sm" value="Small" />
+  <TextInput id="TextInputWithSmallSize" size="sm" placeholder="Small" />
 );
 
 TextInputWithSmallSize.storyName = "TextInput with Small Size";
 
 export const TextInputWithSmallSizeAndFloatingLabel = args => (
   <TextInput
-    id="Small"
+    id="TextInputWithSmallSizeAndFloatingLabel"
     size="sm"
     floating={true}
     label="Small"
-    value="Small Size"
+  />
+);
+TextInputWithSmallSizeAndFloatingLabel.storyName = "TextInput with Small Size and floating label";
+
+export const TextInputSmallSizeWithFloatingLabelAndPlaceholder = args => (
+  <TextInput
+    id="TextInputSmallSizeWithFloatingLabelAndPlaceholder"
+    size="sm"
+    floating={true}
+    label="Small"
+    defaultValue=""
+    placeholder="small size"
   />
 );
 
-TextInputWithSmallSizeAndFloatingLabel.storyName = "TextInput with Small Size and floating label";
-
+// Medium size
 export const TextInputMediumSize = args => (
-  <TextInput id="Medium" size="md" value="Medium" />
+  <TextInput size="md" placeholder="medium size" />
 );
-
 TextInputMediumSize.storyName = "TextInput Medium Size";
 
 export const TextInputWithMediumSizeAndFloatingLabel = args => (
   <TextInput
-    id="Medium"
+    id="TextInputWithMediumSizeAndFloatingLabel"
     size="md"
     floating={true}
-    placeholder="Medium"
-    value="Medium Size"
+    label="Medium"
+  />
+);
+TextInputWithMediumSizeAndFloatingLabel.storyName = "TextInput with Medium Size and floating label";
+
+export const TextInputMediumSizeWithFloatingLabelAndPlaceholder = args => (
+  <TextInput
+    id="TextInputMediumSizeWithFloatingLabelAndPlaceholder"
+    size="md"
+    floating={true}
+    label="Medium"
+    placeholder="medium size"
   />
 );
 
-TextInputWithMediumSizeAndFloatingLabel.storyName = "TextInput with Medium Size and floating label";
 
+// Large size
 export const TextInputLargeSize = args => (
-  <TextInput id="Large" size="lg" value="Large" />
+  <TextInput size="lg" placeholder="Large" />
 );
-
 TextInputLargeSize.storyName = "TextInput Large Size";
 
 export const TextInputWithLargeSizeAndFloatingLabel = args => (
   <TextInput
-    id="Large"
+    id="TextInputWithLargeSizeAndFloatingLabel"
     size="lg"
     floating={true}
     label="Large"
-    value="Large Size"
+  />
+);
+TextInputWithLargeSizeAndFloatingLabel.storyName = "TextInput with Large Size and floating label";
+
+export const TextInputLargeSizeWithFloatingLabelAndPlaceholder = args => (
+  <TextInput
+    id="TextInputLargeSizeWithFloatingLabelAndPlaceholder"
+    size="lg"
+    floating={true}
+    label="Large"
+    placeholder="large size"
   />
 );
 
-TextInputWithLargeSizeAndFloatingLabel.storyName = "TextInput with Large Size and floating label";
-
+// with Icons
 export const TextInputWithIcon = args => (
-  <TextInput id="search" icon={IconSearch} placeholder="Type here to Search" />
+  <TextInput id="textInputWithIcon" icon={IconSearch} placeholder="Type here to Search" defaultValue="" />
 );
 
 TextInputWithIcon.storyName = "TextInput with Icon";
 
 export const TextInputWithIconAndFloatingLabel = args => (
   <TextInput
-    id="search"
+    id="textInputWithIconAndFloatingLabel"
     icon={IconSearch}
     floating={true}
-    label="Medium"
-    value="Medium Size"
+    label="Medium with icon"
+    placeholder="Medium Size"
   />
 );
 
@@ -91,23 +119,19 @@ TextInputWithIconAndFloatingLabel.storyName = "TextInput with Icon and floating 
 
 export const TextInputWithRightNode = args => (
   <TextInput
-    id="clear"
-    value="Type here to Search"
+    id="textInputWithRightNode"
+    placeholder="Type here to Search"
     suffixNode={<ButtonMinimal icon={IconCross} color="accent" />}
   />
 );
-
 TextInputWithRightNode.storyName = "TextInput with RightNode";
 
 export const TextInputWithRightNodeAndFloatingLabel = args => (
   <TextInput
-    id="clear"
+    id="textInputWithRightNodeAndFloatingLabel"
     size="lg"
     floating={true}
     label="Large"
-    value="Large Size"
     suffixNode={<ButtonMinimal size="lg" icon={IconCross} color="accent" />}
   />
 );
-
-TextInputWithRightNodeAndFloatingLabel.storyName = "TextInput with RightNode and floating label";

@@ -38,9 +38,31 @@ export interface TextInputProps extends TextProps {
 }
 
 interface TextInputState {
+  value: string;
   isFocused: boolean;
   valueLength?: number;
 }
+
+const sizeStyles = {
+  lg: {
+    height: 64,
+    paddingY: 3,
+    paddingX: 4,
+    typeScale: 3,
+  },
+  md: {
+    height: 48,
+    paddingY: 3,
+    paddingX: 4,
+    typeScale: 2,
+  },
+  sm: {
+    height: 40,
+    paddingY: 2,
+    paddingX: 3,
+    typeScale: 1,
+  },
+};
 
 class TextInput extends React.PureComponent<TextInputProps, TextInputState> {
   public static displayName = "TextInput";
@@ -51,10 +73,15 @@ class TextInput extends React.PureComponent<TextInputProps, TextInputState> {
     inputType: "text",
   };
 
-  constructor(props) {
+  constructor(props: TextInputProps) {
     super(props);
 
+    const value =
+      typeof props.defaultValue === "undefined"
+        ? props.value
+        : props.defaultValue;
     this.state = {
+      value,
       isFocused: false,
     };
   }
@@ -92,11 +119,23 @@ class TextInput extends React.PureComponent<TextInputProps, TextInputState> {
     return borderColor ? borderColor : "faded";
   }
 
+  public handleChange = (
+    event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    const { onChange } = this.props;
+    const { value } = event.target;
+
+    this.setState({
+      value,
+    });
+    onChange?.(event);
+  };
+
   public render() {
     const {
       id,
       size,
-      value,
+      defaultValue,
       icon: IconElement,
       label,
       floating,
@@ -116,64 +155,21 @@ class TextInput extends React.PureComponent<TextInputProps, TextInputState> {
       ...props
     } = this.props;
 
+    // Controlled or uncontrolled based on the default value
+    const value =
+      typeof this.props.value !== "undefined"
+        ? this.props.value
+        : this.state.value;
     const valueLength = (value && value.length) || 0;
-
-    const sizeStyles = {
-      lg: {
-        height: 48,
-        paddingY: 3,
-        paddingX: 4,
-        typeScale: 3,
-        floatingLabelTop: 4,
-        floatingLabelSize: 13,
-        floatingLineHeight: "20px",
-        floatingPaddingTop: "16px",
-        floatingPaddingBottom: 0,
-      },
-      md: {
-        height: 40,
-        paddingY: 3,
-        paddingX: 3,
-        typeScale: 2,
-        floatingLabelTop: 3,
-        floatingLabelSize: 12,
-        floatingLineHeight: "16px",
-        floatingPaddingTop: "12px",
-        floatingPaddingBottom: 0,
-      },
-      sm: {
-        height: 32,
-        paddingY: 2,
-        paddingX: 3,
-        typeScale: 1,
-        floatingLabelTop: 2,
-        floatingLabelSize: 10,
-        floatingLineHeight: "16px",
-        floatingPaddingTop: "12px",
-        floatingPaddingBottom: 0,
-      },
-    };
-
-    const {
-      height,
-      paddingY,
-      paddingX,
-      typeScale,
-      floatingLabelTop,
-      floatingLabelSize,
-      floatingLineHeight,
-      floatingPaddingTop,
-      floatingPaddingBottom,
-    } = sizeStyles[size];
+    const { height, paddingY, paddingX, typeScale } = sizeStyles[size];
 
     const { isFocused } = this.state;
     const isFloatingEnabled = floating && label;
     const isFloating = isFloatingEnabled && (!!value || isFocused);
-    const isShowPlaceholder = isFloating || !isFloatingEnabled;
 
     return (
       <Theme.Consumer>
-        {({ animation }) => (
+        {({ animation, colors, type }) => (
           <View
             borderRadius={borderRadius}
             backgroundColor="background"
@@ -187,6 +183,7 @@ class TextInput extends React.PureComponent<TextInputProps, TextInputState> {
               position: "relative",
               ...viewCss,
             }}
+            minHeight={height}
           >
             {IconElement && (
               <View
@@ -206,40 +203,39 @@ class TextInput extends React.PureComponent<TextInputProps, TextInputState> {
             <Transition in={isFloating} timeout={animation.subtle}>
               <Text
                 id={id}
-                value={value}
                 element={multiline ? "textarea" : "input"}
                 type={inputType}
                 rows={multiline}
                 lineHeight="ui"
-                placeholder={isShowPlaceholder ? placeholder : null}
+                placeholder={placeholder}
                 fontSize={typeScale}
                 paddingX={paddingX}
                 paddingY={paddingY}
                 color="inherit"
-                onFocus={this.handleFocus}
-                onBlur={this.handleBlur}
                 disabled={disabled}
                 data-testid="inputElement"
                 maxLength={maxLength}
                 {...props}
+                value={value}
+                onFocus={this.handleFocus}
+                onBlur={this.handleBlur}
+                onChange={this.handleChange}
                 css={[
                   {
-                    // get rid of default styles
                     width: "100%",
-                    minHeight: height,
+                    maxHeight: height - 2,
                     paddingLeft: IconElement && height,
                     background: 0,
                     border: 0,
                     flexGrow: 1,
                     "::placeholder": {
-                      color: "inherit",
-                      opacity: 0.5,
+                      color: colors.subtle,
+                      opacity: 1,
+                      fontWeight: type.weight.normal,
                     },
-                  },
-                  isFloating && {
-                    paddingBottom: floatingPaddingBottom,
-                    lineHeight: floatingLineHeight,
-                    paddingTop: floatingPaddingTop,
+                    ...(isFloatingEnabled && {
+                      paddingTop: `${height / 2 + 1}px`,
+                    }),
                   },
                   css,
                 ]}
@@ -250,24 +246,31 @@ class TextInput extends React.PureComponent<TextInputProps, TextInputState> {
               <Transition in={isFloating} timeout={animation.subtle}>
                 <Text
                   element="label"
-                  color={error ? "danger" : "inherit"}
+                  color={error ? "danger" : "subtle"}
                   lineHeight="ui"
                   htmlFor={id}
                   paddingX={!IconElement ? paddingX : 0}
-                  fontSize={isFloating ? floatingLabelSize : typeScale}
+                  fontSize={typeScale}
+                  fontWeight="normal"
                   css={[
                     {
                       position: "absolute",
-                      top: "50%",
+                      height: `${height / 2}px`,
+                      display: "flex",
+                      alignItems: "center",
+                      top: !placeholder && !isFloating ? "50%" : 0,
                       left: IconElement ? height : 0,
-                      transform: "translate(0, -50%)",
+                      transform:
+                        !placeholder && !isFloating
+                          ? `translate(0, -50%)`
+                          : "unset",
                     },
-                    isFloating && {
-                      fontSize: floatingLabelSize,
-                      top: floatingLabelTop,
-                      left: IconElement ? height : 0,
-                      transform: "none",
-                    },
+                    !placeholder &&
+                      isFloating && {
+                        top: 0,
+                        left: IconElement ? height : 0,
+                        transform: "none",
+                      },
                   ]}
                 >
                   {label}

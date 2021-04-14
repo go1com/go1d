@@ -1,34 +1,41 @@
 import * as React from "react";
 import ButtonMinimal from "../ButtonMinimal";
+import Eye from "../Icons/Eye";
+import EyeOff from "../Icons/Eyeoff";
 import Text from "../Text";
 import TextInput, { TextInputProps } from "../TextInput";
 
 export interface PasswordInputProps extends TextInputProps {
+  useIconVisibility?: boolean;
   toggleableDisplay?: boolean;
 }
 
-class PasswordInput extends React.Component<PasswordInputProps, any> {
+interface State {
+  maskedInput: boolean;
+}
+
+class PasswordInput extends React.Component<PasswordInputProps, State> {
   public static displayName = "PasswordInput";
   public static defaultProps = {
     toggleableDisplay: true,
   };
 
   public state = {
-    MaskedInput: true,
+    maskedInput: true,
   };
 
   public toggleMaskState = () =>
     this.setState(prevState => ({
-      MaskedInput: !prevState.MaskedInput,
+      maskedInput: !prevState.maskedInput,
     }));
 
   public render() {
-    const { toggleableDisplay, ...props } = this.props;
-    const { MaskedInput } = this.state;
+    const { toggleableDisplay, useIconVisibility, ...props } = this.props;
+    const { maskedInput } = this.state;
 
     return (
       <TextInput
-        type={MaskedInput ? "password" : "text"}
+        type={maskedInput ? "password" : "text"}
         suffixNode={
           toggleableDisplay && (
             <ButtonMinimal
@@ -37,7 +44,15 @@ class PasswordInput extends React.Component<PasswordInputProps, any> {
               data-testid="ToggleButton"
               backgroundColor="transparent"
             >
-              <Text fontSize={1}>{MaskedInput ? "SHOW" : "HIDE"}</Text>
+              {useIconVisibility ? (
+                maskedInput ? (
+                  <Eye />
+                ) : (
+                  <EyeOff />
+                )
+              ) : (
+                <Text fontSize={1}>{maskedInput ? "SHOW" : "HIDE"}</Text>
+              )}
             </ButtonMinimal>
           )
         }
