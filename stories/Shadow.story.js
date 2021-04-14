@@ -2,7 +2,6 @@ import React from "react";
 import { View, Text } from "../src/";
 import { options, isDark } from "../src/foundations/";
 import { generateTheme } from "../src/foundations";
-import hideInheritedProps from '../.storybook/hideInheritedProps.js'
 
 export default {
   title: "Athletic/Foundations/Shadows",
