@@ -1,10 +1,7 @@
 import React from "react";
 import { View, Text } from "../src/";
 import { IconGo1Logo, IconSuccess } from '../src/components/Icons';
-import hideInheritedProps from '../.storybook/hideInheritedProps.js'
 import AllIcons from '../docs/_src/components/AllIcons.js';
-
-let argTypes = hideInheritedProps({}, IconSuccess);
 
 export default {
   title: "Athletic/Icons",
@@ -15,7 +12,6 @@ export default {
       }
     }
   },
-  argTypes: argTypes,
   component: IconSuccess,
 };
 
