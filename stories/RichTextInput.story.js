@@ -6,7 +6,7 @@ export default {
   component: RichTextInput,
 };
 
-export const RichTextInputInField = args => (
+export const RichTextInputInField = () => (
   <Form
     initialValues={{}}
     onSubmit={(values, actions) => console.log(values, actions)}
@@ -22,5 +22,5 @@ export const RichTextInputInField = args => (
     </ButtonFilled>
   </Form>
 );
-
 RichTextInputInField.storyName = "Rich Text Input in Field";
+RichTextInputInField.parameters = { controls: { hideNoControlsWarning: true } }
