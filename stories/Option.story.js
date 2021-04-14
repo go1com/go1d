@@ -1,12 +1,8 @@
 import React from "react";
 import { Option } from "../src";
-import hideInheritedProps from '../.storybook/hideInheritedProps.js'
-
-let argTypes = hideInheritedProps({}, Option);
 
 export default {
   title: "Original Go1d/Option",
-  argTypes: argTypes,
   component: Option,
 };
 
