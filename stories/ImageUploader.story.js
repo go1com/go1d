@@ -1,12 +1,8 @@
 import React from "react";
 import { ImageUploader, Form, Field, ButtonFilled } from "../src";
-import hideInheritedProps from '../.storybook/hideInheritedProps.js'
-
-let argTypes = hideInheritedProps({}, ImageUploader);
 
 export default {
   title: "Original Go1d/ImageUploader",
-  argTypes: argTypes,
   component: ImageUploader,
 };
 
