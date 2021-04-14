@@ -1,13 +1,9 @@
 import React from "react";
 import moment from "moment";
 import { DateRange } from "../src";
-import hideInheritedProps from '../.storybook/hideInheritedProps.js'
-
-let argTypes = hideInheritedProps({}, DateRange);
 
 export default {
   title: "Athletic/DateRange",
-  argTypes: argTypes,
   parameters: {
     // Skip DateRange picker for Happo since we are not able to achieve consistent screenshots for it for following reasons:
     // 1. A Focus into the date range, causes a blinking cursor
@@ -19,9 +15,9 @@ export default {
   ],
 };
 
-export const BasicDateRange = args => <DateRange />;
+export const BasicDateRange = () => <DateRange />;
 
-export const DefaultValue = args => (
+export const DefaultValue = () => (
   <DateRange
     defaultValue={{
       startDate: new moment("2019-12-05"),
@@ -30,7 +26,7 @@ export const DefaultValue = args => (
   />
 );
 
-export const ControlledValue = args => (
+export const ControlledValue = () => (
   <DateRange
     value={{
       startDate: new moment("2019-12-05"),
