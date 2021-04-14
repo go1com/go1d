@@ -1,12 +1,8 @@
 import React from "react";
 import { DatePicker } from "../src";
-import hideInheritedProps from '../.storybook/hideInheritedProps.js'
-
-let argTypes = hideInheritedProps({}, DatePicker);
 
 export default {
   title: "Athletic/DatePicker",
-  argTypes: argTypes,
   component: DatePicker,
   decorators: [
     (Story) => <div style={{ minHeight: '380px' }}><Story/></div>
