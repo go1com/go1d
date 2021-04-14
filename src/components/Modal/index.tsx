@@ -1,7 +1,6 @@
 import * as React from "react";
 
 import { css } from "emotion";
-import foundations from "../../foundations";
 import { autobind } from "../../utils/decorators";
 import ButtonFilled from "../ButtonFilled";
 import ButtonMinimal from "../ButtonMinimal";
@@ -217,12 +216,7 @@ class Modal extends React.Component<ModalProps, any> {
                     fontSize={3}
                     paddingX={5}
                     ellipsis={true}
-                    css={{
-                      wordWrap: "break-word",
-                      maxWidth: onRequestClose
-                        ? `calc(100% - ${foundations.spacing[5] * 2 + 18}px)`
-                        : "100%",
-                    }}
+                    css={{ wordWrap: "break-word" }}
                   >
                     {title}
                   </Text>
