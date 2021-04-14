@@ -1,23 +1,17 @@
 import React from "react";
 import { ToggleSwitch, View } from "../src";
-import hideInheritedProps from '../.storybook/hideInheritedProps.js'
-
-let argTypes = hideInheritedProps({}, ToggleSwitch);
 
 export default {
   title: "Athletic/ToggleSwitch",
-  argTypes: argTypes,
   component: ToggleSwitch,
 };
 
 export const ToggleWithNoProps = args => <ToggleSwitch />;
-
 ToggleWithNoProps.storyName = "Toggle with no props";
 
 export const ToggleWithDefaultValueProps = args => (
   <ToggleSwitch defaultValue={true} />
 );
-
 ToggleWithDefaultValueProps.storyName = "Toggle with default value props";
 
 export const ToggleWithADifferentSize = args => (
@@ -27,7 +21,6 @@ export const ToggleWithADifferentSize = args => (
     <ToggleSwitch defaultValue={true} size="lg" marginRight={2} />
   </View>
 );
-
 ToggleWithADifferentSize.storyName = "Toggle with a different size";
 
 export const ToggleWithDisabledProps = args => (
@@ -46,7 +39,6 @@ export const ToggleWithDisabledProps = args => (
     />
   </View>
 );
-
 ToggleWithDisabledProps.storyName = "Toggle with disabled props";
 
 export const ToggleWithALabelProps = args => (
@@ -71,7 +63,6 @@ export const ToggleWithALabelProps = args => (
     />
   </View>
 );
-
 ToggleWithALabelProps.storyName = "Toggle with a label props";
 
 export const ToggleWithALabelAndDescriptionProps = args => (
@@ -99,7 +90,6 @@ export const ToggleWithALabelAndDescriptionProps = args => (
     />
   </>
 );
-
 ToggleWithALabelAndDescriptionProps.storyName = "Toggle with a label and description props";
 
 export const ToggleWithALabelDescriptionReverseProps = args => (
@@ -130,7 +120,6 @@ export const ToggleWithALabelDescriptionReverseProps = args => (
     />
   </View>
 );
-
 ToggleWithALabelDescriptionReverseProps.storyName = "Toggle with a label, description, reverse props";
 
 export const ToggleWithALabelInlineProps = args => (
@@ -158,7 +147,6 @@ export const ToggleWithALabelInlineProps = args => (
     />
   </>
 );
-
 ToggleWithALabelInlineProps.storyName = "Toggle with a label, inline props";
 
 export const ToggleWithAllProps = args => (
@@ -192,5 +180,5 @@ export const ToggleWithAllProps = args => (
     />
   </>
 );
-
 ToggleWithAllProps.storyName = "Toggle with all props";
+
