@@ -1,12 +1,8 @@
 import React from "react";
 import { Popover, ButtonFilled, View } from "../src";
-import hideInheritedProps from '../.storybook/hideInheritedProps.js'
-
-let argTypes = hideInheritedProps({}, Popover);
 
 export default {
   title: "Original Go1d/Popover",
-  argTypes: argTypes,
   component: Popover,
 };
 
