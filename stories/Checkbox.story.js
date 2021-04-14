@@ -7,13 +7,9 @@ import {
   ButtonFilled,
   CheckboxGroup,
 } from "../src";
-import hideInheritedProps from '../.storybook/hideInheritedProps.js'
-
-let argTypes = hideInheritedProps({}, Checkbox);
 
 export default {
   title: "Athletic/Checkbox",
-  argTypes: argTypes,
   component: Checkbox,
 };
 
