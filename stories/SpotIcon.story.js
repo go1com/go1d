@@ -7,19 +7,24 @@ export default {
 };
 
 export const Business = args => <SpotIcon {...args} name="BusinessSkills" />;
+Business.storyName = "Business Skills";
+Business.parameters = { controls: { hideNoControlsWarning: true } };
+
 export const PersonalDevelopment = args => (
   <SpotIcon name="PersonalDevelopment" />
 );
-
-PersonalDevelopment.storyName = "PersonalDevelopment";
+PersonalDevelopment.storyName = "Personal Development";
+PersonalDevelopment.parameters = { controls: { hideNoControlsWarning: true } };
 
 export const SectorSpecific = args => <SpotIcon name="SectorSpecific" />;
-
-SectorSpecific.storyName = "SectorSpecific";
+SectorSpecific.storyName = "Sector Specific";
+SectorSpecific.parameters = { controls: { hideNoControlsWarning: true } };
 
 export const Technology = args => <SpotIcon name="TechnologySkills" />;
+Technology.storyName = "Technology Skills";
+Technology.parameters = { controls: { hideNoControlsWarning: true } };
 
-export const SpotIcons = args => (
+export const SpotIcons = () => (
   <View flexDirection="row">
     <SpotIcon
       name="SafetyAndCompliance"
@@ -54,5 +59,6 @@ export const SpotIcons = args => (
     <SpotIcon name="Recommendation" background="red" />
   </View>
 );
-
 SpotIcons.storyName = "SpotIcons";
+SpotIcons.parameters = { controls: { hideNoControlsWarning: true } };
+
