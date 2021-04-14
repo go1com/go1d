@@ -10,14 +10,18 @@ export const BasicSearchInput = args => (
   <SearchInput
     {...args}
     id="blank"
-    placeholder="Search for courses, videos, interactive lessons, and more..."
     onSubmit={() => {}}
   />
 );
-
 BasicSearchInput.storyName = "Basic SearchInput";
+BasicSearchInput.argTypes = {
+  placeholder: {
+    defaultValue: "Search for courses, videos, interactive lessons, and more...",
+    control: { type: 'text' }
+  },
+};
 
-export const SearchInputSizes = args => (
+export const SearchInputSizes = () => (
   <React.Fragment>
     <SearchInput
       id="blank"
@@ -44,10 +48,10 @@ export const SearchInputSizes = args => (
     />
   </React.Fragment>
 );
-
 SearchInputSizes.storyName = "SearchInput Sizes";
+SearchInputSizes.parameters = { controls: { hideNoControlsWarning: true } };
 
-export const SearchInputNotClearable = args => (
+export const SearchInputNotClearable = () => (
   <SearchInput
     id="blank"
     placeholder="Search for courses, videos, interactive lessons, and more..."
@@ -57,10 +61,10 @@ export const SearchInputNotClearable = args => (
     clearable={false}
   />
 );
-
 SearchInputNotClearable.storyName = "SearchInput not clearable";
+SearchInputNotClearable.parameters = { controls: { hideNoControlsWarning: true } };
 
-export const SearchInputWithBehaviourOnClearAndOnSubmit = args => (
+export const SearchInputWithBehaviourOnClearAndOnSubmit = () => (
   <SearchInput
     id="blank"
     value="Hold me Thrill me Submit me Clear me"
@@ -73,5 +77,6 @@ export const SearchInputWithBehaviourOnClearAndOnSubmit = args => (
     }}
   />
 );
-
 SearchInputWithBehaviourOnClearAndOnSubmit.storyName = "SearchInput with behaviour on clear and on submit";
+SearchInputWithBehaviourOnClearAndOnSubmit.parameters = { controls: { hideNoControlsWarning: true } };
+
