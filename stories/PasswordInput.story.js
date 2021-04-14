@@ -1,12 +1,8 @@
 import React from "react";
 import { PasswordInput } from "../src";
-import hideInheritedProps from '../.storybook/hideInheritedProps.js'
-
-let argTypes = hideInheritedProps({}, PasswordInput);
 
 export default {
   title: "Athletic/PasswordInput",
-  argTypes: argTypes,
   component: PasswordInput,
 };
 
