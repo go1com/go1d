@@ -145,4 +145,3 @@ export const TextInputWithRightNodeAndFloatingLabel = () => (
 );
 TextInputWithRightNodeAndFloatingLabel.storyName = "TextInput with RightNode and floating label";
 TextInputWithRightNodeAndFloatingLabel.parameters = { controls: { hideNoControlsWarning: true } };
-
