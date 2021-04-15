@@ -1,12 +1,8 @@
 import React from "react";
 import { TagToggle, View } from "../src";
-import hideInheritedProps from '../.storybook/hideInheritedProps.js'
-
-let argTypes = hideInheritedProps({}, TagToggle);
 
 export default {
   title: "Athletic/TagToggle",
-  argTypes: argTypes,
   component: TagToggle,
 };
 

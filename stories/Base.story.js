@@ -1,12 +1,8 @@
 import React from "react";
 import { Base } from "../src";
-import hideInheritedProps from '../.storybook/hideInheritedProps.js'
-
-let argTypes = hideInheritedProps({}, Base);
 
 export default {
   title: "Athletic/Base",
-  argTypes: argTypes,
   component: Base,
   parameters: {
     docs: {

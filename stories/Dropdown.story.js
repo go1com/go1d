@@ -1,13 +1,9 @@
 import React from "react";
 import { Dropdown, ButtonFilled, ButtonMinimal, Text, View } from "../src";
-import hideInheritedProps from '../.storybook/hideInheritedProps.js'
 import { IconPlus, IconTrash } from "../src/components/Icons";
-
-let argTypes = hideInheritedProps({}, Dropdown);
 
 export default {
   title: "Original Go1d/Dropdown",
-  argTypes: argTypes,
   component: Dropdown,
   subcomponents: { ButtonFilled, ButtonMinimal, View, Text }
 };

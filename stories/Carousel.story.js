@@ -1,12 +1,8 @@
 import React from "react";
 import { Carousel, View, Text } from "../src";
-import hideInheritedProps from '../.storybook/hideInheritedProps.js'
-
-let argTypes = hideInheritedProps({}, Carousel);
 
 export default {
   title: "Athletic/Carousel",
-  argTypes: argTypes,
   component: Carousel, // FIXME: Storybook wants `ExportCarousel`
   subcomponents: { View, Text },
 };
@@ -92,7 +88,6 @@ export const FullWidthOnes = args => (
     />
   </Carousel>
 );
-
 FullWidthOnes.storyName = "Full Width ones";
 
 export const MoreProps = args => (
@@ -274,5 +269,5 @@ export const WithTitle = args => {
     </Carousel>
   );
 };
-
 WithTitle.storyName = "With title";
+

@@ -1,11 +1,8 @@
 import React from "react";
 import { View, Text } from "../src";
-import hideInheritedProps from '../.storybook/hideInheritedProps.js'
-let argTypes = hideInheritedProps({}, View);
 
 export default {
   title: "Athletic/View",
-  argTypes: argTypes,
   component: View,
 };
 

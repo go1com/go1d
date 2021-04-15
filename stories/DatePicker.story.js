@@ -1,12 +1,8 @@
 import React from "react";
 import { DatePicker } from "../src";
-import hideInheritedProps from '../.storybook/hideInheritedProps.js'
-
-let argTypes = hideInheritedProps({}, DatePicker);
 
 export default {
   title: "Athletic/DatePicker",
-  argTypes: argTypes,
   component: DatePicker,
   decorators: [
     (Story) => <div style={{ minHeight: '380px' }}><Story/></div>
@@ -14,32 +10,40 @@ export default {
 };
 
 export const BasicDatepicker = args => (
-  <DatePicker {...args} id="id1" allowBlank defaultValue={new Date("2019-06-07")} />
+  <DatePicker {...args} />
 );
-export const DateSupplied = args => (
-  <DatePicker {...args} id="id2" defaultValue={new Date("2019-06-07")} />
-);
-export const DisabledDatepicker = args => (
-  <DatePicker {...args} id="id3" disabled defaultValue={new Date("2019-06-07")} />
-);
+BasicDatepicker.argTypes = {
+  id: { defaultValue: "id1" },
+  allowBlank: { defaultValue: true },
+  defaultValue: { defaultValue: new Date("2019-06-07") },
+};
 
-export const Sizes = args => (
+export const DateSupplied = () => (
+  <DatePicker id="id2" defaultValue={new Date("2019-06-07")} />
+);
+DateSupplied.parameters = { controls: { hideNoControlsWarning: true } };
+
+export const DisabledDatepicker = () => (
+  <DatePicker id="id3" disabled defaultValue={new Date("2019-06-07")} />
+);
+DisabledDatepicker.parameters = { controls: { hideNoControlsWarning: true } };
+
+export const Sizes = () => (
   <React.Fragment>
-    <DatePicker {...args} id="id4" size="sm" defaultValue={new Date("2019-06-07")} />
+    <DatePicker id="id4" size="sm" defaultValue={new Date("2019-06-07")} />
     <br />
-    <DatePicker {...args} id="id4" size="md" defaultValue={new Date("2019-06-07")} />
+    <DatePicker id="id4" size="md" defaultValue={new Date("2019-06-07")} />
     <br />
-    <DatePicker {...args} id="id4" size="lg" defaultValue={new Date("2019-06-07")} />
+    <DatePicker id="id4" size="lg" defaultValue={new Date("2019-06-07")} />
   </React.Fragment>
 );
+Sizes.parameters = { controls: { hideNoControlsWarning: true } };
 
-export const BasicDatepickerWithTime = args => (
-  <DatePicker
-    {...args}
-    id="id5"
-    time={true}
-    defaultValue={new Date("2019-06-07 10:00")}
-  />
-);
-
+export const BasicDatepickerWithTime = args => (<DatePicker {...args} />);
 BasicDatepickerWithTime.storyName = "Basic Datepicker with Time";
+BasicDatepickerWithTime.argTypes = {
+  id: { defaultValue: "id5" },
+  time: { defaultValue: true },
+  defaultValue: { defaultValue: new Date("2019-06-07 10:00") },
+};
+

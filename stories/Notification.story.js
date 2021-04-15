@@ -6,13 +6,9 @@ import {
   Text,
   Link,
 } from "../src";
-import hideInheritedProps from '../.storybook/hideInheritedProps.js'
-
-let argTypes = hideInheritedProps({}, Notification);
 
 export default {
   title: "Athletic/Notification",
-  argTypes: argTypes,
 };
 
 export const Base = args => (

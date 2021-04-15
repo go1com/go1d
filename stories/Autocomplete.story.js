@@ -1,13 +1,12 @@
 import React from "react";
 import { Autocomplete } from "../src";
-import hideInheritedProps from '../.storybook/hideInheritedProps.js'
-
-let argTypes = hideInheritedProps({}, Autocomplete);
 
 export default {
   title: "Athletic/Autocomplete",
-  argTypes: argTypes,
   component: Autocomplete,
+  decorators: [
+    (Story) => <div style={{ minHeight: '214px' }}><Story/></div>
+  ],
 };
 
 export const Base = args => (
@@ -25,7 +24,11 @@ export const Base = args => (
     }}
     // this would come from the implementation-level state
     // eg. this.state.options
-    options={[]}
+    options={[
+      { label: "foo1", value: "foo1" },
+      { label: "foo2", value: "foo2" },
+      { label: "foo3", value: "foo3" },
+    ]}
     onSelectOption={() => {
       console.log("this method fires when user makes a selection");
     }}
@@ -39,3 +42,4 @@ export const Base = args => (
     {...args}
   />
 );
+

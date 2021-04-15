@@ -1,14 +1,9 @@
 import React from "react";
 import { Collapse, ButtonFilled, View, Text } from "../src";
-import hideInheritedProps from '../.storybook/hideInheritedProps.js'
 import { Flipflop } from "libreact/lib/Flipflop";
-
-let argTypes = hideInheritedProps({}, Collapse);
-// console.log(argTypes);
 
 export default {
   title: "Athletic/Collapse",
-  argTypes: argTypes,
   component: Collapse,
   subcomponents: { ButtonFilled, View, Text },
 };
@@ -89,7 +84,6 @@ export const WithHeaderString = args => (
     </Flipflop>
   </div>
 );
-
 WithHeaderString.storyName = "with header string";
 
 export const WithHeaderComponent = args => (
@@ -273,5 +267,4 @@ export const WithReverseCollapse = args => (
     </Flipflop>
   </div>
 );
-
 WithReverseCollapse.storyName = "with reverseCollapse";

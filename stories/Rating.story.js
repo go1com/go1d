@@ -1,31 +1,41 @@
 import React from "react";
 import { Rating } from "../src";
-import hideInheritedProps from '../.storybook/hideInheritedProps.js'
-
-let argTypes = hideInheritedProps({}, Rating);
 
 export default {
   title: "Athletic/Rating",
-  argTypes: argTypes,
   component: Rating,
+  argTypes: {
+    unselectedIconName: {
+      control: { disable: true },
+    },
+  },
 };
 
-export const BasicRating = args => <Rating {...args} name="rating" />;
+export const BasicRating = args => <Rating {...args} />;
+BasicRating.argTypes = {
+  name: { defaultValue: "rating", },
+};
 
-export const RatingWithDefaultValue = args => (
-  <Rating {...args} name="rating" defaultValue={3} />
-);
-
+export const RatingWithDefaultValue = args => (<Rating {...args} />);
 RatingWithDefaultValue.storyName = "Rating with default value";
+RatingWithDefaultValue.argTypes = {
+  name: { defaultValue: "rating", },
+  defaultValue: { defaultValue: 3, },
+};
 
-export const RatingWithLargeCount = args => (
-  <Rating {...args} name="rating" defaultValue={3} count={37} />
-);
-
+export const RatingWithLargeCount = args => (<Rating {...args} />);
 RatingWithLargeCount.storyName = "Rating with large count";
+RatingWithLargeCount.argTypes = {
+  name: { defaultValue: "rating", },
+  defaultValue: { defaultValue: 3, },
+  count: { defaultValue: 37, },
+};
 
 export const RatingWithControlledValue = args => (
-  <Rating {...args} name="rating" value={3} />
+  <Rating {...args} />
 );
-
 RatingWithControlledValue.storyName = "Rating with controlled value";
+RatingWithControlledValue.argTypes = {
+  name: { defaultValue: "rating", },
+  value: { defaultValue: 3, },
+};

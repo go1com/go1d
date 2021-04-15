@@ -1,15 +1,17 @@
 import React from "react";
 import { CourseSlat, View, Text, ButtonFilled } from "../src";
-import hideInheritedProps from '../.storybook/hideInheritedProps.js'
 import IconImport from "../src/components/Icons/Import";
-
-let argTypes = hideInheritedProps({}, CourseSlat);
 
 export default {
   title: "Original Go1d/CourseSlat",
-  argTypes: argTypes,
   component: CourseSlat,
   subcomponents: { View, Text, ButtonFilled },
+  argTypes: {
+    skeleton: {
+      defaultValue: false,
+      control: { type: 'boolean' }
+    },
+  },
 };
 
 export const WithAvatar = args => (
@@ -25,12 +27,20 @@ export const WithAvatar = args => (
     typeIcon="Course"
   />
 );
-
 WithAvatar.storyName = "With avatar";
+WithAvatar.argTypes = {
+  courseImage: { control: { disable: true } },
+  title: { control: { disable: true } },
+  description: { control: { disable: true } },
+  author: { control: { disable: true } },
+  authorAvatar: { control: { disable: true } },
+  duration: { control: { disable: true } },
+  type: { control: { disable: true } },
+  typeIcon: { control: { disable: true } },
+};
 
-export const WithImportAction = args => (
+export const WithImportAction = () => (
   <CourseSlat
-    {...args}
     courseImage="https://images.pexels.com/photos/257360/pexels-photo-257360.jpeg?h=400"
     title="Master sourdough in a week"
     description="Despite general improvements in workplace health and safety over the past the risk of sourdough related injuries are still insurmountable for most"
@@ -46,12 +56,11 @@ export const WithImportAction = args => (
     typeIcon="Course"
   />
 );
-
 WithImportAction.storyName = "With Import action";
+WithImportAction.parameters = { controls: { hideNoControlsWarning: true } };
 
-export const WithEnrollmentStatus = args => (
+export const WithEnrollmentStatus = () => (
   <CourseSlat
-    {...args}
     courseImage="https://images.pexels.com/photos/257360/pexels-photo-257360.jpeg?h=400"
     title="Master sourdough in a week"
     description="Despite general improvements in workplace health and safety over the past the risk of sourdough related injuries are still insurmountable for most"
@@ -70,12 +79,11 @@ export const WithEnrollmentStatus = args => (
     }}
   />
 );
-
 WithEnrollmentStatus.storyName = "With enrollment status";
+WithEnrollmentStatus.parameters = { controls: { hideNoControlsWarning: true } };
 
-export const WithPriceAndDuration = args => (
+export const WithPriceAndDuration = () => (
   <CourseSlat
-    {...args}
     courseImage="https://images.pexels.com/photos/814499/pexels-photo-814499.jpeg?h=400"
     title="Master sourdough in a week"
     description="Despite general improvements in workplace health and safety over the past the risk of sourdough related injuries are still insurmountable for most"
@@ -87,8 +95,8 @@ export const WithPriceAndDuration = args => (
     typeIcon="Course"
   />
 );
-
 WithPriceAndDuration.storyName = "With price and duration";
+WithPriceAndDuration.parameters = { controls: { hideNoControlsWarning: true } };
 
 export const WithPopoverOnInteraction = args => (
   <CourseSlat
@@ -117,7 +125,20 @@ export const WithPopoverOnInteraction = args => (
     )}
   />
 );
-
 WithPopoverOnInteraction.storyName = "With popover on interaction";
+WithPopoverOnInteraction.argTypes = {
+  courseImage: { control: { disable: true } },
+  title: { control: { disable: true } },
+  description: { control: { disable: true } },
+  author: { control: { disable: true } },
+  duration: { control: { disable: true } },
+  type: { control: { disable: true } },
+  typeIcon: { control: { disable: true } },
+};
 
-export const Skeleton = args => <CourseSlat {...args} skeleton={true} />;
+export const Skeleton = args => <CourseSlat {...args} />;
+Skeleton.argTypes = {
+  skeleton: {
+    defaultValue: 'true',
+  },
+};

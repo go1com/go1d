@@ -7,13 +7,9 @@ import {
   Text,
 } from "../src";
 import { IconCourse } from "../src/components/Icons";
-import hideInheritedProps from '../.storybook/hideInheritedProps.js'
-
-let argTypes = hideInheritedProps({}, OverviewCtaCard);
 
 export default {
   title: "Original Go1d/OverviewCtaCard",
-  argTypes: argTypes,
 };
 
 export const OverviewCtaCardWithNoProps = args => (

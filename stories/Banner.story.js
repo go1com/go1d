@@ -1,12 +1,8 @@
 import React from "react";
 import { Banner, Text, Link } from "../src";
-import hideInheritedProps from '../.storybook/hideInheritedProps.js'
-
-let argTypes = hideInheritedProps({}, Banner);
 
 export default {
   title: "Athletic/Banner",
-  argTypes: argTypes,
   component: Banner,
 };
 

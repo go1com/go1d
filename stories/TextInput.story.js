@@ -1,30 +1,29 @@
 import React from "react";
 import { TextInput, ButtonMinimal } from "../src";
-import hideInheritedProps from '../.storybook/hideInheritedProps.js'
 import { IconCross, IconSearch } from "../src/components/Icons";
-
-let argTypes = hideInheritedProps({}, TextInput);
 
 export default {
   title: "Athletic/TextInput",
-  argTypes: argTypes,
   component: TextInput,
 };
 
 export const BasicTextInput = args => (
-  <TextInput {...args} id="blank" placeholder="Blank" />
+  <TextInput {...args} />
 );
-
+BasicTextInput.argTypes = {
+  id: { defaultValue: "blank" },
+  placeholder: { defaultValue: "Blank" },
+};
 BasicTextInput.storyName = "Basic TextInput";
 
 // Small size
-export const TextInputWithSmallSize = args => (
+export const TextInputWithSmallSize = () => (
   <TextInput id="TextInputWithSmallSize" size="sm" placeholder="Small" />
 );
-
 TextInputWithSmallSize.storyName = "TextInput with Small Size";
+TextInputWithSmallSize.parameters = { controls: { hideNoControlsWarning: true } };
 
-export const TextInputWithSmallSizeAndFloatingLabel = args => (
+export const TextInputWithSmallSizeAndFloatingLabel = () => (
   <TextInput
     id="TextInputWithSmallSizeAndFloatingLabel"
     size="sm"
@@ -33,6 +32,7 @@ export const TextInputWithSmallSizeAndFloatingLabel = args => (
   />
 );
 TextInputWithSmallSizeAndFloatingLabel.storyName = "TextInput with Small Size and floating label";
+TextInputWithSmallSizeAndFloatingLabel.parameters = { controls: { hideNoControlsWarning: true } };
 
 export const TextInputSmallSizeWithFloatingLabelAndPlaceholder = args => (
   <TextInput
@@ -46,12 +46,13 @@ export const TextInputSmallSizeWithFloatingLabelAndPlaceholder = args => (
 );
 
 // Medium size
-export const TextInputMediumSize = args => (
+export const TextInputMediumSize = () => (
   <TextInput size="md" placeholder="medium size" />
 );
 TextInputMediumSize.storyName = "TextInput Medium Size";
+TextInputMediumSize.parameters = { controls: { hideNoControlsWarning: true } };
 
-export const TextInputWithMediumSizeAndFloatingLabel = args => (
+export const TextInputWithMediumSizeAndFloatingLabel = () => (
   <TextInput
     id="TextInputWithMediumSizeAndFloatingLabel"
     size="md"
@@ -60,8 +61,9 @@ export const TextInputWithMediumSizeAndFloatingLabel = args => (
   />
 );
 TextInputWithMediumSizeAndFloatingLabel.storyName = "TextInput with Medium Size and floating label";
+TextInputWithMediumSizeAndFloatingLabel.parameters = { controls: { hideNoControlsWarning: true } };
 
-export const TextInputMediumSizeWithFloatingLabelAndPlaceholder = args => (
+export const TextInputMediumSizeWithFloatingLabelAndPlaceholder = () => (
   <TextInput
     id="TextInputMediumSizeWithFloatingLabelAndPlaceholder"
     size="md"
@@ -70,15 +72,17 @@ export const TextInputMediumSizeWithFloatingLabelAndPlaceholder = args => (
     placeholder="medium size"
   />
 );
-
+TextInputMediumSizeWithFloatingLabelAndPlaceholder.storyName = "TextInput with Medium Size and floating label and placeholder";
+TextInputMediumSizeWithFloatingLabelAndPlaceholder.parameters = { controls: { hideNoControlsWarning: true } };
 
 // Large size
 export const TextInputLargeSize = args => (
   <TextInput size="lg" placeholder="Large" />
 );
 TextInputLargeSize.storyName = "TextInput Large Size";
+TextInputLargeSize.parameters = { controls: { hideNoControlsWarning: true } };
 
-export const TextInputWithLargeSizeAndFloatingLabel = args => (
+export const TextInputWithLargeSizeAndFloatingLabel = () => (
   <TextInput
     id="TextInputWithLargeSizeAndFloatingLabel"
     size="lg"
@@ -87,6 +91,7 @@ export const TextInputWithLargeSizeAndFloatingLabel = args => (
   />
 );
 TextInputWithLargeSizeAndFloatingLabel.storyName = "TextInput with Large Size and floating label";
+TextInputWithLargeSizeAndFloatingLabel.parameters = { controls: { hideNoControlsWarning: true } };
 
 export const TextInputLargeSizeWithFloatingLabelAndPlaceholder = args => (
   <TextInput
@@ -97,15 +102,17 @@ export const TextInputLargeSizeWithFloatingLabelAndPlaceholder = args => (
     placeholder="large size"
   />
 );
+TextInputLargeSizeWithFloatingLabelAndPlaceholder.storyName = "TextInput with Large Size and floating label and placeholder";
+TextInputLargeSizeWithFloatingLabelAndPlaceholder.parameters = { controls: { hideNoControlsWarning: true } };
 
 // with Icons
 export const TextInputWithIcon = args => (
   <TextInput id="textInputWithIcon" icon={IconSearch} placeholder="Type here to Search" defaultValue="" />
 );
-
 TextInputWithIcon.storyName = "TextInput with Icon";
+TextInputWithIcon.parameters = { controls: { hideNoControlsWarning: true } };
 
-export const TextInputWithIconAndFloatingLabel = args => (
+export const TextInputWithIconAndFloatingLabel = () => (
   <TextInput
     id="textInputWithIconAndFloatingLabel"
     icon={IconSearch}
@@ -114,10 +121,10 @@ export const TextInputWithIconAndFloatingLabel = args => (
     placeholder="Medium Size"
   />
 );
-
 TextInputWithIconAndFloatingLabel.storyName = "TextInput with Icon and floating label";
+TextInputWithIconAndFloatingLabel.parameters = { controls: { hideNoControlsWarning: true } };
 
-export const TextInputWithRightNode = args => (
+export const TextInputWithRightNode = () => (
   <TextInput
     id="textInputWithRightNode"
     placeholder="Type here to Search"
@@ -125,8 +132,9 @@ export const TextInputWithRightNode = args => (
   />
 );
 TextInputWithRightNode.storyName = "TextInput with RightNode";
+TextInputWithRightNode.parameters = { controls: { hideNoControlsWarning: true } };
 
-export const TextInputWithRightNodeAndFloatingLabel = args => (
+export const TextInputWithRightNodeAndFloatingLabel = () => (
   <TextInput
     id="textInputWithRightNodeAndFloatingLabel"
     size="lg"
@@ -135,3 +143,6 @@ export const TextInputWithRightNodeAndFloatingLabel = args => (
     suffixNode={<ButtonMinimal size="lg" icon={IconCross} color="accent" />}
   />
 );
+TextInputWithRightNodeAndFloatingLabel.storyName = "TextInput with RightNode and floating label";
+TextInputWithRightNodeAndFloatingLabel.parameters = { controls: { hideNoControlsWarning: true } };
+

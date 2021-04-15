@@ -1,13 +1,16 @@
 import React from "react";
 import { InputSuffix } from "../src";
-import hideInheritedProps from '../.storybook/hideInheritedProps.js'
-
-let argTypes = hideInheritedProps({}, InputSuffix);
 
 export default {
   title: "Original Go1d/InputSuffix",
-  argTypes: argTypes,
   component: InputSuffix,
+  parameters: {
+    docs: {
+      description: {
+        component: 'While this component will let you use a suffix, you probably want the InputGroup component instead.'
+      }
+    },
+  },
 };
 
 export const BasicInputSuffix = args => (

@@ -1,18 +1,14 @@
 import React from "react";
 import { LeftMenu, MenuItem } from "../src";
-import hideInheritedProps from '../.storybook/hideInheritedProps.js'
 import { IconHome, IconBriefcase } from "../src/components/Icons";
-
-let argTypes = hideInheritedProps({}, LeftMenu);
 
 export default {
   title: "Original Go1d/LeftMenu",
-  argTypes: argTypes,
   component: LeftMenu,
 };
 
 export const CollapsibleExpanded = args => (
-  <LeftMenu {...args} title="Content" showMenuButton={true}>
+  <LeftMenu {...args}>
     <MenuItem icon={IconHome} href="#testing" collapsed={true}>
       Overview
     </MenuItem>
@@ -21,9 +17,13 @@ export const CollapsibleExpanded = args => (
     </MenuItem>
   </LeftMenu>
 );
+CollapsibleExpanded.argTypes = {
+  title: { defaultValue: 'Content', },
+  showMenuButton: { defaultValue: true, },
+};
 
 export const CollapsibleCollapsed = args => (
-  <LeftMenu {...args} title="Content">
+  <LeftMenu {...args}>
     <MenuItem icon={IconHome} href="#testing">
       Overview
     </MenuItem>
@@ -32,3 +32,6 @@ export const CollapsibleCollapsed = args => (
     </MenuItem>
   </LeftMenu>
 );
+CollapsibleCollapsed.argTypes = {
+  title: { defaultValue: 'Content', },
+};

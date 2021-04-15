@@ -1,13 +1,9 @@
 import React from "react";
 import { Tooltip, Text, ButtonFilled } from "../src";
-import hideInheritedProps from '../.storybook/hideInheritedProps.js'
 import { IconEye } from "../src/components/Icons";
-
-let argTypes = hideInheritedProps({}, Tooltip);
 
 export default {
   title: "Athletic/Tooltip",
-  argTypes: argTypes,
   component: Tooltip,
 };
 
@@ -16,8 +12,11 @@ export const BasicUsage = args => (
     My large <Tooltip {...args} tip="Really Bold">bold</Tooltip> grey text
   </Text>
 );
+BasicUsage.argTypes = {
+  tip: { control: { disable: true } },
+};
 
-export const ClickMode = args => (
+export const ClickMode = () => (
   <Text>
     <Tooltip
       tip={
@@ -32,6 +31,7 @@ export const ClickMode = args => (
     </Tooltip>
   </Text>
 );
+ClickMode.parameters = { controls: { hideNoControlsWarning: true } };
 
 export const AdvancedUsage = args => (
   <Tooltip tip="This is a tooltip">
@@ -42,3 +42,4 @@ export const AdvancedUsage = args => (
     )}
   </Tooltip>
 );
+AdvancedUsage.parameters = { controls: { hideNoControlsWarning: true } };

@@ -1,13 +1,9 @@
 import React from "react";
 import { Heading } from "../src/";
 import { Text } from "../src/";
-import hideInheritedProps from '../.storybook/hideInheritedProps.js'
-
-let argTypes = hideInheritedProps({}, Heading);
 
 export default {
   title: "Athletic/Heading",
-  argTypes: argTypes,
   component: Heading,
   parameters: {
     docs: {
@@ -42,6 +38,7 @@ export const Heading1 = () => (
     </Heading>
   </React.Fragment>
 );
+Heading1.parameters = { controls: { hideNoControlsWarning: true } };
 
 export const Heading2 = () => (
   <React.Fragment>
@@ -54,6 +51,7 @@ export const Heading2 = () => (
     </Heading>
   </React.Fragment>
 );
+Heading2.parameters = { controls: { hideNoControlsWarning: true } };
 
 export const Heading3 = () => (
   <React.Fragment>
@@ -66,6 +64,7 @@ export const Heading3 = () => (
     </Heading>
   </React.Fragment>
 );
+Heading3.parameters = { controls: { hideNoControlsWarning: true } };
 
 export const Heading4 = () => (
   <React.Fragment>
@@ -78,6 +77,7 @@ export const Heading4 = () => (
     </Heading>
   </React.Fragment>
 );
+Heading4.parameters = { controls: { hideNoControlsWarning: true } };
 
 export const Heading5 = () => (
   <React.Fragment>
@@ -90,6 +90,7 @@ export const Heading5 = () => (
     </Heading>
   </React.Fragment>
 );
+Heading5.parameters = { controls: { hideNoControlsWarning: true } };
 
 export const Heading6 = () => (
   <React.Fragment>
@@ -102,6 +103,7 @@ export const Heading6 = () => (
     </Heading>
   </React.Fragment>
 );
+Heading6.parameters = { controls: { hideNoControlsWarning: true } };
 
 export const UnmatchedSemanticAndVisualLevels = () => (
   <React.Fragment>
@@ -114,4 +116,5 @@ export const UnmatchedSemanticAndVisualLevels = () => (
     </Heading>
   </React.Fragment>
 );
+UnmatchedSemanticAndVisualLevels.parameters = { controls: { hideNoControlsWarning: true } };
 

@@ -1,13 +1,9 @@
 import React from "react";
 import { FeaturedTag, View, Carousel } from "../src";
-import hideInheritedProps from '../.storybook/hideInheritedProps.js'
 import { IconCheck, IconStar, IconCourse } from "../src/components/Icons";
-
-let argTypes = hideInheritedProps({}, FeaturedTag);
 
 export default {
   title: "Original Go1d/FeaturedTag",
-  argTypes: argTypes,
   component: FeaturedTag,
 };
 

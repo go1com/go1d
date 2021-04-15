@@ -1,12 +1,8 @@
 import React from "react";
 import { CourseCard, View, Carousel } from "../src";
-import hideInheritedProps from '../.storybook/hideInheritedProps.js'
-
-let argTypes = hideInheritedProps({}, CourseCard);
 
 export default {
   title: "Original Go1d/CourseCard",
-  argTypes: argTypes,
   component: CourseCard,
   subcomponents: { View },
 };
@@ -32,7 +28,6 @@ export const AlmostAllTheProps = args => (
     passive={false}
   />
 );
-
 AlmostAllTheProps.storyName = "Almost all the Props";
 
 export const CarouselWithLotsOfCombinationsOfCards = args => (
@@ -88,5 +83,4 @@ export const CarouselWithLotsOfCombinationsOfCards = args => (
 );
 
 CarouselWithLotsOfCombinationsOfCards.storyName = "Carousel with lots of combinations of Cards";
-
 export const Skeleton = args => <CourseCard skeleton={true} />;

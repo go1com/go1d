@@ -1,12 +1,8 @@
 import React from "react";
 import { CourseModule, Lesson } from "../src";
-import hideInheritedProps from '../.storybook/hideInheritedProps.js'
-
-let argTypes = hideInheritedProps({}, CourseModule);
 
 export default {
   title: "Original Go1d/CourseModule",
-  argTypes: argTypes,
   component: CourseModule,
   subcomponents: { Lesson },
 };

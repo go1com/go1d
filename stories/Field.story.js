@@ -1,12 +1,11 @@
 import React from "react";
 import { TextInput, Field, Banner, Form, ButtonFilled } from "../src";
-import hideInheritedProps from '../.storybook/hideInheritedProps.js'
-
-let argTypes = hideInheritedProps({}, Field);
 
 export default {
   title: "Original Go1d/Field",
-  argTypes: argTypes,
+  parameters: {
+    controls: { hideNoControlsWarning: true },
+  }
 };
 
 export const Base = () => (
@@ -16,7 +15,7 @@ export const Base = () => (
   </Banner>
 );
 
-export const ExampleFieldAndForm = args => (
+export const ExampleFieldAndForm = () => (
   <Form
     initialValues={{ portalName: "A portal" }}
     onSubmit={(values, actions) => console.log(values, actions)}
@@ -35,7 +34,7 @@ export const ExampleFieldAndForm = args => (
 
 ExampleFieldAndForm.storyName = "Example field and Form";
 
-export const ExampleRequiredField = args => (
+export const ExampleRequiredField = () => (
   <Form
     initialValues={{ portalName: "A portal" }}
     onSubmit={(values, actions) => actions.submit()}

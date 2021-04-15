@@ -1,51 +1,56 @@
 import React from "react";
-import { ButtonFilled } from "../src";
-import hideInheritedProps from '../.storybook/hideInheritedProps.js'
-import { IconCheck, IconPlus } from "../src/components/Icons";
-
-let argTypes = hideInheritedProps({}, ButtonFilled);
+import { ButtonFilled, Button } from "../src";
+import { IconCheck } from "../src/components/Icons";
 
 export default {
-  title: "Athletic/Buttons/ButtonFilled (Accent)",
-  argTypes: argTypes,
+  title: "Athletic/Buttons/ButtonFilled (Accent and Subtle)",
   component: ButtonFilled,
+  subcomponents: { Button },
 };
 
 export const FilledButtonInAccentColour = args => (
-  <ButtonFilled {...args} color="accent">Call to action</ButtonFilled>
+  <ButtonFilled {...args}>Call to action</ButtonFilled>
 );
-
 FilledButtonInAccentColour.storyName = "Filled button in accent colour";
+FilledButtonInAccentColour.argTypes = {
+  color: { defaultValue: 'accent' },
+};
 
 export const FilledButtonInSubtleColour = args => (
-  <React.Fragment>
-    <ButtonFilled {...args}>I'm a button</ButtonFilled>
-    <br />
-    <ButtonFilled {...args} size="sm">I'm a button</ButtonFilled>
-    <br />
-    <ButtonFilled {...args} size="lg">I'm a button</ButtonFilled>
-  </React.Fragment>
+  <ButtonFilled {...args}>I'm a button</ButtonFilled>
 );
-
-FilledButtonInSubtleColour.storyName = "Filled button in subtle colour";
+FilledButtonInSubtleColour.storyName = "Filled button in subtle style";
 
 export const FilledIconOnlyButtonInSuccessColourAndRound = args => (
-  <ButtonFilled {...args} round={true} color="success" icon={IconCheck} />
+  <ButtonFilled round={true} icon={IconCheck} {...args} />
 );
-
 FilledIconOnlyButtonInSuccessColourAndRound.storyName = "Filled Icon only button in success colour and round";
+FilledIconOnlyButtonInSuccessColourAndRound.argTypes = {
+  color: { defaultValue: 'success' },
+};
 
-export const FilledButtonInDangerColour = args => (
-  <ButtonFilled {...args} color="danger">Danger zone</ButtonFilled>
+export const FilledButtonInDangerColour = () => (
+  <ButtonFilled color="danger">Danger zone</ButtonFilled>
 );
-
 FilledButtonInDangerColour.storyName = "Filled button in danger colour";
+FilledButtonInDangerColour.parameters = { controls: { hideNoControlsWarning: true } };
 
 export const WithText = args => (
   <ButtonFilled {...args}>This is a filled button</ButtonFilled>
 );
+WithText.storyName = "Filled button with text";
 
-WithText.storyName = "ButtonFilled with text";
+export const FilledButtonSizes = () => (
+  <React.Fragment>
+    <ButtonFilled size="sm">I'm a button</ButtonFilled>
+    <br />
+    <ButtonFilled size="md">I'm a button</ButtonFilled>
+    <br />
+    <ButtonFilled size="lg">I'm a button</ButtonFilled>
+  </React.Fragment>
+);
+FilledButtonSizes.storyName = "Filled button sizes";
+FilledButtonSizes.parameters = { controls: { hideNoControlsWarning: true } };
 
 export const WithSomeEmoji = args => (
   <ButtonFilled {...args}>
@@ -54,6 +59,5 @@ export const WithSomeEmoji = args => (
     </span>
   </ButtonFilled>
 );
-
-WithSomeEmoji.storyName = "ButtonFilled with some emoji";
+WithSomeEmoji.storyName = "Filled button with some emoji";
 

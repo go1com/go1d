@@ -1,16 +1,12 @@
 import React from "react";
 import { RichTextInput, Form, Field, ButtonFilled } from "../src";
-import hideInheritedProps from '../.storybook/hideInheritedProps.js'
-
-let argTypes = hideInheritedProps({}, RichTextInput);
 
 export default {
   title: "Original Go1d/RichTextInput",
-  argTypes: argTypes,
   component: RichTextInput,
 };
 
-export const RichTextInputInField = args => (
+export const RichTextInputInField = () => (
   <Form
     initialValues={{}}
     onSubmit={(values, actions) => console.log(values, actions)}
@@ -26,5 +22,5 @@ export const RichTextInputInField = args => (
     </ButtonFilled>
   </Form>
 );
-
 RichTextInputInField.storyName = "Rich Text Input in Field";
+RichTextInputInField.parameters = { controls: { hideNoControlsWarning: true } }

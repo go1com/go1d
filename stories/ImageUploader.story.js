@@ -1,24 +1,23 @@
 import React from "react";
 import { ImageUploader, Form, Field, ButtonFilled } from "../src";
-import hideInheritedProps from '../.storybook/hideInheritedProps.js'
-
-let argTypes = hideInheritedProps({}, ImageUploader);
 
 export default {
   title: "Original Go1d/ImageUploader",
-  argTypes: argTypes,
   component: ImageUploader,
 };
 
 export const ExampleUsageWithoutCrop = args => (
-  <ImageUploader {...args} name="uploader" onChange={console.log} height="300px" />
+  <ImageUploader {...args} />
 );
-
 ExampleUsageWithoutCrop.storyName = "Example usage without crop";
+ExampleUsageWithoutCrop.argTypes = {
+  name: { defaultValue: 'uploader' },
+  onChange: { defaultValue: console.log },
+  height: { defaultValue: "300px" },
+};
 
-export const ExampleUsageWithCropAndCustomConfig = args => (
+export const ExampleUsageWithCropAndCustomConfig = () => (
   <ImageUploader
-    {...args}
     allowCrop
     cropConfig={{ aspect: 20 / 3 }}
     name="uploader"
@@ -26,10 +25,10 @@ export const ExampleUsageWithCropAndCustomConfig = args => (
     height="300px"
   />
 );
-
 ExampleUsageWithCropAndCustomConfig.storyName = "Example usage with crop and custom config";
+ExampleUsageWithCropAndCustomConfig.parameters = { controls: { hideNoControlsWarning: true } };
 
-export const InsideAForm = args => (
+export const InsideAForm = () => (
   <Form onSubmit={(values, actions) => console.log(values, actions)}>
     <Field
       hideLabel
@@ -43,5 +42,5 @@ export const InsideAForm = args => (
     </ButtonFilled>
   </Form>
 );
-
 InsideAForm.storyName = "Inside a form";
+InsideAForm.parameters = { controls: { hideNoControlsWarning: true } };

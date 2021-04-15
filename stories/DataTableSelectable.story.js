@@ -1,18 +1,13 @@
 import React from "react";
 import { DataTableSelectable, TR, TD, TH } from "../src";
-import hideInheritedProps from '../.storybook/hideInheritedProps.js'
-
-let argTypes = hideInheritedProps({}, DataTableSelectable);
 
 export default {
   title: "Original Go1d/DataTableSelectable",
-  argTypes: argTypes,
   component: DataTableSelectable,
 };
 
-export const BasicTableUsingARowRenderer = args => (
+export const BasicTableUsingARowRenderer = () => (
   <DataTableSelectable
-    {...args}
     rowHeight={55}
     mainAction={(resp) =>
       alert(
@@ -44,5 +39,6 @@ export const BasicTableUsingARowRenderer = args => (
     header={[<TH key="0" text="Index Number" />, <TH key="1" text="Key" />]}
   />
 );
-
 BasicTableUsingARowRenderer.storyName = "Basic Table using a row renderer";
+BasicTableUsingARowRenderer.parameters = { controls: { hideNoControlsWarning: true } };
+

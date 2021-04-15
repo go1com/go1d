@@ -1,12 +1,8 @@
 import React from "react";
 import { LineProgress } from "../src";
-import hideInheritedProps from '../.storybook/hideInheritedProps.js'
-
-let argTypes = hideInheritedProps({}, LineProgress);
 
 export default {
   title: "Original Go1d/Line Progress Bar",
-  argTypes: argTypes,
   component: LineProgress,
 };
 
