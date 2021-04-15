@@ -1,5 +1,11 @@
 # @go1d/go1d
 
+## 3.2.3
+
+### Patch Changes
+
+- a320a699: set medium input size for color picker and change input typescale for large
+
 ## 3.2.2
 
 ### Patch Changes
