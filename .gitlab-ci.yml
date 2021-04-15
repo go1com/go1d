@@ -1,5 +1,8 @@
 image: go1com/ci-nodejs:node10
 
+variables:
+  AZURE_STORAGE_ACCOUNT: go1review
+
 stages:
   - build
   - test
@@ -9,12 +12,6 @@ stages:
 
 build:
   stage: build
-  cache:
-    key:
-      files:
-        - yarn.lock
-    paths:
-      - node_modules/
   script:
     - yarn config set no-progress
     - yarn install --silent
@@ -33,27 +30,33 @@ build:
     expire_in: 6h
   except:
     - "tags"
-  only:
+  only: ["branches"]
+
+review:
+  image: mcr.microsoft.com/azure-cli
+  stage: test
+  script:
+    - az storage blob upload-batch -s ./dist_storybook -d '$web' --destination-path $CI_ENVIRONMENT_SLUG
+  environment:
+    name: go1d/$CI_COMMIT_REF_NAME
+    url: https://go1review.z8.web.core.windows.net/$CI_ENVIRONMENT_SLUG/
+    on_stop: stop_review
+  only: ["branches"]
+  except:
     - master
 
-build-dev:
-  stage: build
-  cache:
-    key:
-      files:
-        - yarn.lock
-    paths:
-      - node_modules/
+stop_review:
+  image: mcr.microsoft.com/azure-cli
+  stage: test
   script:
-    - yarn config set no-progress
-    - yarn install --frozen-lockfile
-    - yarn "npm:build"
-  artifacts:
-    paths:
-      - node_modules
-      - build
-      - dist
-    expire_in: 6h
+    - az storage blob delete-batch -s '$web' --pattern ${CI_ENVIRONMENT_SLUG}/*
+  variables:
+    GIT_STRATEGY: none
+  dependencies: []
+  when: manual
+  environment:
+    name: go1d/$CI_COMMIT_REF_NAME
+    action: stop
   only: ["branches"]
   except:
     - master
