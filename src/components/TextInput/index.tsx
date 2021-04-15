@@ -48,7 +48,7 @@ const sizeStyles = {
     height: 64,
     paddingY: 3,
     paddingX: 4,
-    typeScale: 3,
+    typeScale: 2,
   },
   md: {
     height: 48,
@@ -179,6 +179,7 @@ class TextInput extends React.PureComponent<TextInputProps, TextInputState> {
             alignItems="center"
             htmlFor={id}
             opacity={disabled ? "disabled" : null}
+            overflow="hidden"
             css={{
               position: "relative",
               ...viewCss,
