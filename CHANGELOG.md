@@ -1,5 +1,11 @@
 # @go1d/go1d
 
+## 3.2.2
+
+### Patch Changes
+
+- 783cc93e: Improves Storybook story controls usability
+
 ## 3.2.1
 
 ### Patch Changes
