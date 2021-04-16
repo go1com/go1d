@@ -1,5 +1,11 @@
 # @go1d/go1d
 
+## 3.2.4
+
+### Patch Changes
+
+- 33938626: Update color picker text color to match design
+
 ## 3.2.3
 
 ### Patch Changes
