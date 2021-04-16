@@ -1,5 +1,11 @@
 # @go1d/go1d
 
+## 3.2.5
+
+### Patch Changes
+
+- 2a3bdf5b: AVG-287: fix issue carousel doesn't change currentSlide when slide reach right edge
+
 ## 3.2.4
 
 ### Patch Changes
