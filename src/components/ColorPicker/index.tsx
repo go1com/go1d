@@ -167,6 +167,7 @@ const ColorPicker: React.FunctionComponent<Props> = ({
             onChange={handleInputChange}
             onBlur={handleBlur}
             icon={prefixIcon}
+            color="default"
             {...inputProps}
           />
         </View>
