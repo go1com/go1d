@@ -120,8 +120,20 @@ class Carousel extends React.Component<CarouselProps, any> {
 
     if (this.sliderContainerRef) {
       const Element: any = this.sliderContainerRef.current;
-      Element.addEventListener("scroll", this.handleScrollTimer, false);
-      Element.addEventListener("touchmove", this.handleScrollTimer, false);
+      Element.addEventListener(
+        "scroll",
+        () => {
+          this.handleScrollTimer();
+        },
+        false
+      );
+      Element.addEventListener(
+        "touchmove",
+        () => {
+          this.handleScrollTimer();
+        },
+        false
+      );
 
       Element.addEventListener("mousedown", this.dragStart, false);
     }
@@ -205,7 +217,6 @@ class Carousel extends React.Component<CarouselProps, any> {
         const Slider: any = this.sliderContainerRef.current;
         this.initialSliderOffset = Slider.scrollLeft;
       }
-
       this.timer = setTimeout(this.handleScrollFinished, 150);
     } else {
       this.ignoreScroll = false;
@@ -237,8 +248,7 @@ class Carousel extends React.Component<CarouselProps, any> {
 
       const FinishedScrolling = this.hasReachedRightEdge();
       const CurrentSlide = this.slideRefs[selected].current;
-
-      if (CurrentSlide.offsetLeft < SliderScroll && !FinishedScrolling) {
+      if (CurrentSlide.offsetLeft < SliderScroll) {
         // Snap to a start position
         if (
           CurrentSlide.offsetLeft + CurrentSlide.offsetWidth / 2 <
