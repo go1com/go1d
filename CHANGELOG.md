@@ -1,5 +1,11 @@
 # @go1d/go1d
 
+## 3.2.6
+
+### Patch Changes
+
+- e84d575f: Select > add size lg + update height to fit with new design
+
 ## 3.2.5
 
 ### Patch Changes
