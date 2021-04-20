@@ -1,5 +1,5 @@
 import React from "react";
-import { SpotIcon, View } from "../src";
+import { SpotIcon, Text, View } from "../src";
 
 export default {
   title: "Athletic/SpotIcon",
@@ -59,6 +59,40 @@ export const SpotIcons = () => (
     <SpotIcon name="Recommendation" background="red" />
   </View>
 );
+
 SpotIcons.storyName = "SpotIcons";
 SpotIcons.parameters = { controls: { hideNoControlsWarning: true } };
+
+export const LearningTypeIcon = ({name, ...restProps}) => (
+  <View flexDirection="row" flexWrap="wrap">
+    {[
+      "Video",
+      "Event",
+      "Course",
+      "Text",
+      "Document",
+      "LTI",
+      "Integration",
+      "Playlist",
+      "Package",
+      "Link",
+      "Interactive",
+      "Quiz",
+      "WebLink",
+      "FillInBlankQuestion",
+      "Award",
+      "MatchingQuestion",
+      "Audio",
+      "MultiChoiceQuestion",
+    ].map(type => (
+      <View flexDirection="row" alignItems="center" marginBottom={7} width={0.5}>
+        <SpotIcon name={type} {...restProps} />
+        <Text fontSize={1} color="subtle" marginLeft={6}>{type}</Text>
+      </View>
+    ))}
+  </View>
+);
+
+LearningTypeIcon.storyName = "Learning Type Icon";
+LearningTypeIcon.parameters = { controls: { hideNoControlsWarning: true } };
 
