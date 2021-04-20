@@ -29,7 +29,7 @@ export interface SelectProps extends ViewProps {
   value?: any;
   onChange?: ({ target }) => void;
   name?: string;
-  size?: "sm" | "md";
+  size?: "sm" | "md" | "lg";
   fontWeight?: FontWeight;
   clearable?: boolean;
   popperModifiers?: any;
@@ -37,14 +37,17 @@ export interface SelectProps extends ViewProps {
 }
 
 const Sizes = {
-  sm: {
-    fontSize: 1,
+  lg: {
+    fontSize: 3,
+    height: 64,
   },
   md: {
     fontSize: 2,
+    height: 48,
   },
-  lg: {
-    fontSize: 3,
+  sm: {
+    fontSize: 1,
+    height: 40,
   },
 };
 
@@ -217,6 +220,8 @@ class Select extends React.PureComponent<SelectProps, any> {
                             backgroundColor="background"
                             flexDirection="row"
                             justifyContent="space-between"
+                            alignItems="center"
+                            height={Sizes[size].height}
                             {...remainingProps}
                           >
                             <View
