@@ -8,6 +8,7 @@ import {
   Gradients,
   MappedKey,
   Opacities,
+  Scale,
   Shadows,
   Theme,
   ThemeType,
@@ -504,6 +505,16 @@ export const breakpoints = {
   lg: "@media(min-width: 1100px)",
 };
 
+/**
+ * Input Sizes
+ */
+
+export const inputSizes: MappedKey<Scale, number> = {
+  sm: 40,
+  md: 48,
+  lg: 64,
+};
+
 export const generateTheme = ({
   accent = brandAccent,
   mode,
@@ -526,6 +537,7 @@ export const generateTheme = ({
   mode,
   logo,
   emotion: emotion || defaultEmotion,
+  inputSizes,
   ...theme,
 });
 
