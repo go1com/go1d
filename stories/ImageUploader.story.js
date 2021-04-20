@@ -19,7 +19,7 @@ ExampleUsageWithoutCrop.argTypes = {
 export const ExampleUsageWithCropAndCustomConfig = () => (
   <ImageUploader
     allowCrop
-    cropConfig={{ aspect: 20 / 3 }}
+    cropConfig={{ aspect: 16/9, onCrop: console.log }}
     name="uploader"
     onChange={console.log}
     height="300px"
@@ -27,6 +27,17 @@ export const ExampleUsageWithCropAndCustomConfig = () => (
 );
 ExampleUsageWithCropAndCustomConfig.storyName = "Example usage with crop and custom config";
 ExampleUsageWithCropAndCustomConfig.parameters = { controls: { hideNoControlsWarning: true } };
+
+
+export const ImageUploaderHasValueWithCropFunction = () => (
+  <ImageUploader
+    allowCrop
+    value="https://img.huffingtonpost.com/asset/5ab4d4ac2000007d06eb2c56.jpeg?cache=sih0jwle4e&ops=1910_1000"
+    cropConfig={{ aspect: 16/9, onCrop: console.log }}
+    name="uploader"
+    height="400px"
+  />
+);
 
 export const InsideAForm = () => (
   <Form onSubmit={(values, actions) => console.log(values, actions)}>

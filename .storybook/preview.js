@@ -30,7 +30,8 @@ export const parameters = {
       },
     ],
   },
-  layout: 'centered',
+  // this layout somehow creates an problem which makes child scale down which means it no longer displays as 100% width
+  // layout: 'centered',
   docs: { page: DocsPage },
   options: {
     storySort: {

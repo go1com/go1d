@@ -1,12 +1,12 @@
 import { isEqual } from "lodash";
 import * as React from "react";
 import * as CropperClass from "react-easy-crop/index";
-import ICropper from "react-easy-crop/index";
+import ICropper, { CropperProps } from "react-easy-crop/index";
 import { autobind } from "../../utils/decorators";
 import safeInvoke from "../../utils/safeInvoke";
 import BaseUploader from "../BaseUploader";
 import ButtonFilled from "../ButtonFilled";
-import Stepper from "../Stepper";
+import Stepper, { StepperProps } from "../Stepper";
 import Text from "../Text";
 import Theme from "../Theme";
 import View, { ViewProps } from "../View";
@@ -17,7 +17,6 @@ import IconCamera from "../Icons/Camera";
 import IconTrash from "../Icons/Trash";
 
 const Cropper: typeof ICropper = CropperClass as any;
-
 const isDev = process.env.NODE_ENV !== "production";
 // tslint:disable
 const logError = console.error;
@@ -35,20 +34,20 @@ interface CropAreaPixels {
 }
 
 const DEFAULT_IMAGE_ZOOM = 1;
-const MIN_ZOOM = 0.5;
+const MIN_ZOOM = 1;
 const MAX_ZOOM = 3;
+const STEP_INCREMENT = 0.1;
 const DEFAULT_ASPECT_RATIO = 16 / 9;
 
 export interface ImageUploaderProps extends ViewProps {
   onChange?: (evt: { target: { name: string; value: string | File } }) => void;
   value?: File | string;
   name?: string;
-  uploadText?: string;
-  supportedFormatText?: string;
+  uploadText?: React.ReactNode | string;
+  supportedFormatText?: React.ReactNode | string;
   allowCrop?: boolean;
-  cropConfig?: Partial<
-    ICropper["props"] & Record<"onCrop", (file: Blob) => void>
-  >;
+  cropConfig?: Partial<CropperProps & Record<"onCrop", (file: Blob) => void>>;
+  stepperProps?: Partial<StepperProps>;
 }
 
 interface State {
@@ -57,6 +56,7 @@ interface State {
   preview?: string;
   crop: Crop;
   zoom: number;
+  stepper: number;
   croppedAreaPixels?: CropAreaPixels;
 }
 
@@ -66,6 +66,7 @@ class ImageUploader extends React.Component<ImageUploaderProps, State> {
     uploadText: "Upload an image",
     supportedFormatText: "jpg, png, and gif are supported",
     allowCrop: false,
+    stepperProps: {},
     cropConfig: {},
   };
 
@@ -103,8 +104,11 @@ class ImageUploader extends React.Component<ImageUploaderProps, State> {
     return null;
   }
 
-  private defaultCropState = {
+  public timerId: number;
+
+  private defaultCropState: State = {
     zoom: DEFAULT_IMAGE_ZOOM,
+    stepper: DEFAULT_IMAGE_ZOOM,
     crop: {
       x: 0,
       y: 0,
@@ -125,27 +129,44 @@ class ImageUploader extends React.Component<ImageUploaderProps, State> {
   };
 
   public setZoom = (evt: React.ChangeEvent<Record<"value", number>>) => {
+    const newValue = this.roundNumber(evt.target.value);
+
     this.setState({
-      zoom: evt.target.value,
+      zoom: newValue,
+      stepper: newValue,
     });
   };
 
-  public setCroppedAreaPixels = async (
+  public handleZoomChange = (zoom: number) => {
+    this.setState({
+      zoom,
+      stepper: this.roundNumber(zoom),
+    });
+  };
+
+  public roundNumber(value: number) {
+    return Number(value.toFixed(1));
+  }
+
+  public setCroppedAreaPixels = (
     croppedArea: unknown,
     croppedAreaPixels: CropAreaPixels
   ) => {
-    const { onCrop } = this.props.cropConfig;
+    clearTimeout(this.timerId);
+    this.timerId = window.setTimeout(async () => {
+      const { onCrop } = this.props.cropConfig;
 
-    if (onCrop) {
-      const croppedImage = await this.doCrop(
-        this.state.preview,
-        croppedAreaPixels
-      );
+      if (onCrop) {
+        const croppedImage = await this.doCrop(
+          this.state.preview,
+          croppedAreaPixels
+        );
 
-      if (croppedImage) {
-        onCrop(croppedImage);
+        if (croppedImage) {
+          onCrop(croppedImage);
+        }
       }
-    }
+    }, 250);
   };
 
   public componentDidMount() {
@@ -206,6 +227,7 @@ class ImageUploader extends React.Component<ImageUploaderProps, State> {
       supportedFormatText,
       allowCrop,
       cropConfig,
+      stepperProps,
       ...props
     } = this.props;
 
@@ -281,13 +303,14 @@ class ImageUploader extends React.Component<ImageUploaderProps, State> {
 
   @autobind
   public renderImage(open: () => void, isDragActive: boolean) {
-    const { file, preview, crop, zoom } = this.state;
+    const { file, preview, crop, zoom, stepper } = this.state;
     const {
       disabled,
       uploadText,
       supportedFormatText,
       allowCrop,
       cropConfig,
+      stepperProps,
     } = this.props;
 
     return file || preview ? (
@@ -335,14 +358,16 @@ class ImageUploader extends React.Component<ImageUploaderProps, State> {
           </View>
 
           {allowCrop && (
-            <View maxWidth={120} flexDirection="row">
+            // IE doesn't seem to set 120px if `maxWidth` is set `100%`
+            <View width={120} maxWidth="none">
               <Stepper
                 data-testid="cropZoom"
                 id="zoomImage"
-                value={zoom}
-                stepIncrement={0.5}
+                value={stepper}
+                stepIncrement={STEP_INCREMENT}
                 minNumber={MIN_ZOOM}
                 maxNumber={MAX_ZOOM}
+                {...stepperProps}
                 onChange={this.setZoom}
               />
             </View>
@@ -355,8 +380,11 @@ class ImageUploader extends React.Component<ImageUploaderProps, State> {
             aspect={DEFAULT_ASPECT_RATIO}
             crop={crop}
             zoom={zoom}
+            maxZoom={MAX_ZOOM}
+            minZoom={MIN_ZOOM}
             onCropChange={this.setCrop}
             onCropComplete={this.setCroppedAreaPixels}
+            onZoomChange={this.handleZoomChange}
             {...cropConfig}
           />
         ) : (
