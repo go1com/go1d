@@ -1,0 +1,69 @@
+import { Meta, Canvas } from '@storybook/addon-docs/blocks';
+import { Heading, Text } from "../src/";
+
+<Meta title="Athletic/Foundations/Typography" parameters={{ previewTabs: { 'canvas': { hidden: true }}}} />
+
+# Typography
+
+Our brand uses two typefaces — a headline typeface called Victor Serif and a custom designed body typeface called Obelisc. The purpose of our type is to communicate clearly and effectively, while also remaining distinct and sophisticated.
+
+## Brand fonts
+
+- Our headline typeface is Victor Serif. We only use one weight for our headlines—semibold (600).
+- Obelisc is a body copy typeface designed to work harmoniously with Victor serif across all platforms. Obelisc was inspired by mid century geometric typefaces, the notable angles and circular shapes in Obelisc visually reference the connecting shapes.
+
+<Canvas>
+  <Heading
+    semanticElement="h1"
+    visualHeadingLevel="Heading 1"
+    color="default"
+  >
+    Victor Serif title heading
+  </Heading>
+</Canvas>
+
+<Canvas>
+  <Text
+    element="p"
+    color="default"
+    fontSize={2}
+    fontWeight="normal"
+    fontFamily="sansSerif"
+    lineHeight="paragraph"
+  >
+    Obelisc paragraph text.
+  </Text>
+</Canvas>
+
+## Type styles
+
+We have three primary type styles: title, UI and a paragraph.
+
+### Title
+
+Title is meant to create hierarchy for the user. It is the “call out” for most pieces of content. We use it on page titles, headers, sub headers and all other pieces of components that require an introduction.
+
+### UI
+
+We use the UI type style for all pieces of text that are not titles and are not large pieces of readable content (i.e. a blog post). It can be used for everything from course meta data to times and locations of events. We use it for labels in most components including button text, form labels, and slats.
+
+### Paragraph
+
+This is the type style used for all long pieces of text such as a blog post entry or a course description. This style has been specifically created to allow easy absorption of large blocks of text by the user. We use it in the prose component.
+
+## Importing typefaces
+
+Most GO1D components require you to call the `globalCSS` function to add the required CSS rules and fonts to the project.
+
+The easiest way to do this is to include the following code in the root JavaScript file of the project:
+
+```javascript
+import { globalCSS } from "@go1d/go1d";
+globalCSS();
+```
+
+## Typography components
+
+- [Heading](/docs/heading--main)
+- [Text](/docs/text--unstyled-text) — used for paragraph and UI text
+

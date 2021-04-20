@@ -4,6 +4,7 @@ import { Text } from "../src/";
 
 export default {
   title: "Athletic/Heading",
+  id: 'Heading', // id permalink becomes ?path=/story/heading--main
   component: Heading,
   parameters: {
     docs: {
@@ -14,6 +15,7 @@ export default {
   }
 };
 
+// If you change this story's key name (const Main), update link to it in Typography story
 export const Main = args => (
   <React.Fragment>
     <Heading

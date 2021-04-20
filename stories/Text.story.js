@@ -7,6 +7,7 @@ const sharedExampleText = "“Upskill your workforce today to overcome the chall
 export default {
   title: "Athletic/Text",
   component: Text,
+  id: 'Text', // id permalink becomes ?path=/story/text--unstyled-text
   parameters: {
     docs: {
       description: {
@@ -17,6 +18,7 @@ export default {
   },
 };
 
+// If you change this story's key name (const UnstyledText), update link to it in Typography story
 export const UnstyledText = ({ exampleText, ...args }) => (
   <React.Fragment>
     <Text
