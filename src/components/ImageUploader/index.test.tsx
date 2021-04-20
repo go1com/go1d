@@ -80,6 +80,8 @@ it("renders the provided placeholder", () => {
 });
 
 it("renders with crop and call onCrop properly after uploaded", async () => {
+  jest.useFakeTimers();
+
   const file = new File(["(⌐□_□)"], "chucknorris.png", {
     type: "image/png",
   });
@@ -104,7 +106,7 @@ it("renders with crop and call onCrop properly after uploaded", async () => {
 
   const instance = ref.current;
 
-  await instance.setCroppedAreaPixels(
+  instance.setCroppedAreaPixels(
     {},
     {
       width: 16,
@@ -114,5 +116,11 @@ it("renders with crop and call onCrop properly after uploaded", async () => {
     }
   );
 
+  jest.advanceTimersByTime(250);
+
+  await jest.requireActual('promise').resolve();
+
   expect(onCrop).toHaveBeenCalledWith(file);
+
+  jest.useRealTimers();
 });

@@ -58,7 +58,7 @@
     "react-colorful": "^5.0.1",
     "react-dates": "^19.0.3",
     "react-dropzone": "^8.2.0",
-    "react-easy-crop": "^2.1.1",
+    "react-easy-crop": "^3.3.2",
     "react-iframe": "^1.8.0",
     "react-popper": "^1.3.3",
     "react-transition-group": "^2.4.0",
