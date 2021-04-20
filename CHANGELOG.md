@@ -1,5 +1,11 @@
 # @go1d/go1d
 
+## 3.3.0
+
+### Minor Changes
+
+- 94f54ee8: ImageUploader: Allow crop function as scroll and upgrade crop library
+
 ## 3.2.6
 
 ### Patch Changes
