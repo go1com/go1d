@@ -1,5 +1,11 @@
 # @go1d/go1d
 
+## 3.3.2
+
+### Patch Changes
+
+- ed164c12: ImageUploader: Fix issue npm throwing require index file directly for react-easy-crop
+
 ## 3.3.1
 
 ### Patch Changes
