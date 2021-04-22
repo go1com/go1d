@@ -144,6 +144,7 @@ export interface Theme {
   mode?: string;
   logo?: string;
   emotion: Emotion;
+  inputSizes: MappedKey<Scale, number>;
 }
 
 export interface GenerateThemeInput {

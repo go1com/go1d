@@ -39,15 +39,12 @@ export interface SelectProps extends ViewProps {
 const Sizes = {
   lg: {
     fontSize: 3,
-    height: 64,
   },
   md: {
     fontSize: 2,
-    height: 48,
   },
   sm: {
     fontSize: 1,
-    height: 40,
   },
 };
 
@@ -169,7 +166,7 @@ class Select extends React.PureComponent<SelectProps, any> {
 
     return (
       <Theme.Consumer>
-        {({ colors }) => (
+        {({ colors, inputSizes }) => (
           <Downshift
             stateReducer={this.stateReducer}
             initialInputValue=""
@@ -221,7 +218,7 @@ class Select extends React.PureComponent<SelectProps, any> {
                             flexDirection="row"
                             justifyContent="space-between"
                             alignItems="center"
-                            height={Sizes[size].height}
+                            height={inputSizes[size]}
                             {...remainingProps}
                           >
                             <View
