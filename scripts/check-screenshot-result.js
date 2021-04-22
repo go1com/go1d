@@ -22,12 +22,19 @@ const post_req = https.request(options, (resp) => {
   // The whole response has been received. Print out the result.
   resp.on('end', () => {
     if (data) {
-      if (JSON.parse(data).status === "success") {
-        console.log("accept");
-      } else {
-        console.log("reject");
+      try {
+        let result = JSON.parse(data);
+        if (result.status === "success") {
+          console.log("accept");
+        } else {
+          console.log("reject");
+        }
       }
-    } else {
+      catch (error) {
+        console.log("Unable to parse Happo response data as JSON");
+      }
+    }
+    else {
       console.log("run_compare");
     }
   });
