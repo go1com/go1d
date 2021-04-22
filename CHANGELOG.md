@@ -1,5 +1,11 @@
 # @go1d/go1d
 
+## 3.4.0
+
+### Minor Changes
+
+- 72893871: AVG-331: add new learning type spot icons
+
 ## 3.3.2
 
 ### Patch Changes
