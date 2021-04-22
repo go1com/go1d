@@ -45,19 +45,16 @@ interface TextInputState {
 
 const sizeStyles = {
   lg: {
-    height: 64,
     paddingY: 3,
     paddingX: 4,
     typeScale: 2,
   },
   md: {
-    height: 48,
     paddingY: 3,
     paddingX: 4,
     typeScale: 2,
   },
   sm: {
-    height: 40,
     paddingY: 2,
     paddingX: 3,
     typeScale: 1,
@@ -161,7 +158,7 @@ class TextInput extends React.PureComponent<TextInputProps, TextInputState> {
         ? this.props.value
         : this.state.value;
     const valueLength = (value && value.length) || 0;
-    const { height, paddingY, paddingX, typeScale } = sizeStyles[size];
+    const { paddingY, paddingX, typeScale } = sizeStyles[size];
 
     const { isFocused } = this.state;
     const isFloatingEnabled = floating && label;
@@ -169,7 +166,7 @@ class TextInput extends React.PureComponent<TextInputProps, TextInputState> {
 
     return (
       <Theme.Consumer>
-        {({ animation, colors, type }) => (
+        {({ animation, colors, type, inputSizes }) => (
           <View
             borderRadius={borderRadius}
             backgroundColor="background"
@@ -184,13 +181,13 @@ class TextInput extends React.PureComponent<TextInputProps, TextInputState> {
               position: "relative",
               ...viewCss,
             }}
-            minHeight={height}
+            minHeight={inputSizes[size]}
           >
             {IconElement && (
               <View
                 position="absolute"
-                height={height}
-                width={height}
+                height={inputSizes[size]}
+                width={inputSizes[size]}
                 alignItems="center"
                 justifyContent="center"
                 css={{
@@ -224,8 +221,8 @@ class TextInput extends React.PureComponent<TextInputProps, TextInputState> {
                 css={[
                   {
                     width: "100%",
-                    maxHeight: height - 2,
-                    paddingLeft: IconElement && height,
+                    maxHeight: inputSizes[size] - 2,
+                    paddingLeft: IconElement && inputSizes[size],
                     background: 0,
                     border: 0,
                     flexGrow: 1,
@@ -235,7 +232,7 @@ class TextInput extends React.PureComponent<TextInputProps, TextInputState> {
                       fontWeight: type.weight.normal,
                     },
                     ...(isFloatingEnabled && {
-                      paddingTop: `${height / 2 + 1}px`,
+                      paddingTop: `${inputSizes[size] / 2 + 1}px`,
                     }),
                   },
                   css,
@@ -256,11 +253,11 @@ class TextInput extends React.PureComponent<TextInputProps, TextInputState> {
                   css={[
                     {
                       position: "absolute",
-                      height: `${height / 2}px`,
+                      height: `${inputSizes[size] / 2}px`,
                       display: "flex",
                       alignItems: "center",
                       top: !placeholder && !isFloating ? "50%" : 0,
-                      left: IconElement ? height : 0,
+                      left: IconElement ? inputSizes[size] : 0,
                       transform:
                         !placeholder && !isFloating
                           ? `translate(0, -50%)`
@@ -269,7 +266,7 @@ class TextInput extends React.PureComponent<TextInputProps, TextInputState> {
                     !placeholder &&
                       isFloating && {
                         top: 0,
-                        left: IconElement ? height : 0,
+                        left: IconElement ? inputSizes[size] : 0,
                         transform: "none",
                       },
                   ]}
