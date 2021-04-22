@@ -1,7 +1,6 @@
 import { isEqual } from "lodash";
 import * as React from "react";
-import * as CropperClass from "react-easy-crop/index";
-import ICropper, { CropperProps } from "react-easy-crop/index";
+import CropperInternal, { CropperProps } from "react-easy-crop";
 import { autobind } from "../../utils/decorators";
 import safeInvoke from "../../utils/safeInvoke";
 import BaseUploader from "../BaseUploader";
@@ -16,7 +15,17 @@ import IconAddItem from "../Icons/AddItem";
 import IconCamera from "../Icons/Camera";
 import IconTrash from "../Icons/Trash";
 
-const Cropper: typeof ICropper = CropperClass as any;
+// `react-easy-crop` is exported which many module types (cjs/esm)
+// Unfortunately it won't work properly if we build code with `tsc` without `esModuleInterop`
+// then is built with `webpack` by using: `import * as Cropper from "react-easy-crop"`
+// I have a article talking about this issue: https://dev.to/tmhao2005/understand-esmoduleinterop-option-in-typescript-5589
+// the solution for this one is to either enable `esModuleInterop` option for `tsc` or use babel instead
+const importDefault = (mod: any) => {
+  return mod && mod.__esModule ? mod : { default: mod };
+}
+// tslint:disable
+const Cropper: typeof CropperInternal = importDefault(require("react-easy-crop")).default;
+
 const isDev = process.env.NODE_ENV !== "production";
 // tslint:disable
 const logError = console.error;
