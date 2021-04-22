@@ -234,6 +234,16 @@ class TextInput extends React.PureComponent<TextInputProps, TextInputState> {
                     ...(isFloatingEnabled && {
                       paddingTop: `${inputSizes[size] / 2 + 1}px`,
                     }),
+
+                    // Keep label on the top in case of autofill
+                    // In theory we can just set to 0 but somehow it isn't related to its parent with relative position (Chrome)
+                    // it's likely an issue with Chrome
+                    ":-webkit-autofill + label": {
+                      ...(isFloatingEnabled &&
+                        !isFloating && {
+                          top: `${Math.round(inputSizes[size] / 4)}px`,
+                        }),
+                    },
                   },
                   css,
                 ]}
