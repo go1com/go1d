@@ -1,5 +1,11 @@
 # @go1d/go1d
 
+## 3.3.1
+
+### Patch Changes
+
+- f873911f: DatePicker > update height to fit new design
+
 ## 3.3.0
 
 ### Minor Changes
