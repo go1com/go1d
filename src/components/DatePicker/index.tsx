@@ -324,7 +324,7 @@ class DatePicker extends React.Component<DatePickerProps, DatePickerState> {
                     spacing[get({ lg: 4, md: 3, sm: 1 }, size)]
                   }px`,
                   "padding-right": 0,
-                  height: `${inputSizes[size]}px`,
+                  height: `${inputSizes[size] - 2}px`,
                 },
                 ".CalendarDay, .DateInput_input, .DayPicker_weekHeader_li": {
                   "font-size": `${
