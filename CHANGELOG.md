@@ -1,5 +1,11 @@
 # @go1d/go1d
 
+## 3.4.1
+
+### Patch Changes
+
+- cbc00c9d: TextInput: Keep floating label on the top as Chrome autofill input
+
 ## 3.4.0
 
 ### Minor Changes
