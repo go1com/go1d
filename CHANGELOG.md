@@ -1,5 +1,11 @@
 # @go1d/go1d
 
+## 3.4.2
+
+### Patch Changes
+
+- b512cbf9: DatePicker > take border width into account for height
+
 ## 3.4.1
 
 ### Patch Changes
