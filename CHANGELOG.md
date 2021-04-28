@@ -1,5 +1,11 @@
 # @go1d/go1d
 
+## 3.4.3
+
+### Patch Changes
+
+- b7e8573e: add prop to ignore cache in Carousel
+
 ## 3.4.2
 
 ### Patch Changes
