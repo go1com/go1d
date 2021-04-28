@@ -26,6 +26,7 @@ interface StandardProps extends ViewProps {
 
   customControlsRenderer?: (params: CustomControlsParam) => React.ReactElement;
   onSlideChange?: (currentSlide: number) => void;
+  isIgnoreCache?: boolean;
 }
 
 interface BreakpointProps {
@@ -63,40 +64,10 @@ class Carousel extends React.Component<CarouselProps, any> {
   private posX2 = 0;
   private posInitial = 0;
 
-  private slideItems = memoize(
-    (children, slidesToShow, gutter, viewAllElement = null, maxSlides = null) =>
-      React.Children.map(children, (Slide, Index) => {
-        if (maxSlides && Index + 1 > maxSlides) {
-          return null;
-        }
-        let slideToShow = Slide;
-        if (maxSlides && viewAllElement && Index + 1 === maxSlides) {
-          slideToShow = viewAllElement;
-        }
-        const SlideRef = React.createRef();
-        this.slideRefs[Index] = SlideRef;
-        return (
-          <View
-            innerRef={SlideRef}
-            width={`${100 / slidesToShow}%`}
-            marginY={1}
-            css={{
-              paddingLeft: foundations.spacing[gutter] / 2,
-              paddingRight: foundations.spacing[gutter] / 2,
-              ":first-child": {
-                paddingLeft: 0,
-              },
-              ":last-child": {
-                paddingRight: 0,
-              },
-            }}
-          >
-            {slideToShow}
-          </View>
-        );
-      }),
-    (_, slidesToShow) => slidesToShow
-  );
+  private getSlideItemsWithCache = this.props.isIgnoreCache
+    ? this.getSlideItems
+    : memoize(this.getSlideItems, (_, slidesToShow) => slidesToShow);
+
   private wrapperCSS = memoize(css => {
     return [
       {
@@ -327,10 +298,11 @@ class Carousel extends React.Component<CarouselProps, any> {
       title,
       size,
       containerMaxWidth,
+      isIgnoreCache = false,
       ...props
     } = this.props;
     const { currentSlide, finishedScrolling } = this.state;
-    const slideItems = this.slideItems(
+    const slideItems = this.getSlideItemsWithCache(
       children,
       slidesToShow,
       gutter,
@@ -464,6 +436,45 @@ class Carousel extends React.Component<CarouselProps, any> {
       finishedScrolling: this.hasReachedRightEdge(),
     });
   };
+
+  private getSlideItems(
+    children,
+    slidesToShow,
+    gutter,
+    viewAllElement = null,
+    maxSlides = null
+  ) {
+    return React.Children.map(children, (Slide, Index) => {
+      if (maxSlides && Index + 1 > maxSlides) {
+        return null;
+      }
+      let slideToShow = Slide;
+      if (maxSlides && viewAllElement && Index + 1 === maxSlides) {
+        slideToShow = viewAllElement;
+      }
+      const SlideRef = React.createRef();
+      this.slideRefs[Index] = SlideRef;
+      return (
+        <View
+          innerRef={SlideRef}
+          width={`${100 / slidesToShow}%`}
+          marginY={1}
+          css={{
+            paddingLeft: foundations.spacing[gutter] / 2,
+            paddingRight: foundations.spacing[gutter] / 2,
+            ":first-child": {
+              paddingLeft: 0,
+            },
+            ":last-child": {
+              paddingRight: 0,
+            },
+          }}
+        >
+          {slideToShow}
+        </View>
+      );
+    });
+  }
 
   private dragStart = (e: MouseEvent | TouchEvent) => {
     e.preventDefault();
