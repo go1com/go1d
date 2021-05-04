@@ -8,7 +8,7 @@ export default {
     // Skip DateRange picker for Happo since we are not able to achieve consistent screenshots for it for following reasons:
     // 1. A Focus into the date range, causes a blinking cursor
     // 2. The Picker displays the current month, which can't be influenced in the current implementation
-    happo: false, // this will disable all `Original Go1d/DateRange` stories
+    happo: false, // this will disable all `Athletic/DateRange` stories
   },
   decorators: [
     (Story) => <div style={{ minHeight: '380px' }}><Story/></div>
