@@ -15,26 +15,26 @@ export const BasicDatepicker = args => (
 BasicDatepicker.argTypes = {
   id: { defaultValue: "id1" },
   allowBlank: { defaultValue: true },
-  defaultValue: { defaultValue: new Date("2019-06-07T00:00:00.000+08:00") },
+  defaultValue: { defaultValue: new Date("2019-06-07T00:00:00.000Z") },
 };
 
 export const DateSupplied = () => (
-  <DatePicker id="id2" defaultValue={new Date("2019-06-07T00:00:00.000+08:00")} />
+  <DatePicker id="id2" defaultValue={new Date("2019-06-07T00:00:00.000Z")} />
 );
 DateSupplied.parameters = { controls: { hideNoControlsWarning: true } };
 
 export const DisabledDatepicker = () => (
-  <DatePicker id="id3" disabled defaultValue={new Date("2019-06-07T00:00:00.000+08:00")} />
+  <DatePicker id="id3" disabled defaultValue={new Date("2019-06-07T00:00:00.000Z")} />
 );
 DisabledDatepicker.parameters = { controls: { hideNoControlsWarning: true } };
 
 export const Sizes = () => (
   <React.Fragment>
-    <DatePicker id="id4" size="sm" defaultValue={new Date("2019-06-07T00:00:00.000+08:00")} />
+    <DatePicker id="id4" size="sm" defaultValue={new Date("2019-06-07T00:00:00.000Z")} />
     <br />
-    <DatePicker id="id5" size="md" defaultValue={new Date("2019-06-07T00:00:00.000+08:00")} />
+    <DatePicker id="id5" size="md" defaultValue={new Date("2019-06-07T00:00:00.000Z")} />
     <br />
-    <DatePicker id="id6" size="lg" defaultValue={new Date("2019-06-07T00:00:00.000+08:00")} />
+    <DatePicker id="id6" size="lg" defaultValue={new Date("2019-06-07T00:00:00.000Z")} />
   </React.Fragment>
 );
 Sizes.parameters = { controls: { hideNoControlsWarning: true } };
