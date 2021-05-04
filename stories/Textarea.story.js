@@ -15,3 +15,19 @@ export const FloatingLabel = () => (
     floating
   />
 )
+
+export const FloatingLabelWithInput = () => (
+  <TextArea
+    label='weee'
+    hideLabel
+    floating
+    value={`bla bla bla bla bla bla bla bla
+      bla bla bla bla
+      bla bla bla bla
+      bla bla bla bla
+      bla bla bla bla
+      bla bla bla bla
+      bla bla bla bla`
+    }
+  />
+)
