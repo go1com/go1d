@@ -224,6 +224,7 @@ class TextInput extends React.PureComponent<TextInputProps, TextInputState> {
                     maxHeight: inputSizes[size] - 2,
                     paddingLeft: IconElement && inputSizes[size],
                     background: 0,
+                    backgroundColor: colors.background,
                     border: 0,
                     flexGrow: 1,
                     "::placeholder": {
@@ -264,8 +265,10 @@ class TextInput extends React.PureComponent<TextInputProps, TextInputState> {
                     {
                       position: "absolute",
                       height: `${inputSizes[size] / 2}px`,
+                      width: "calc(100% - 16px)",
                       display: "flex",
                       alignItems: "center",
+                      backgroundColor: colors.background,
                       top: !placeholder && !isFloating ? "50%" : 0,
                       left: IconElement ? inputSizes[size] : 0,
                       transform:

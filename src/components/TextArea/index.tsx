@@ -20,6 +20,7 @@ class TextArea extends React.Component<TextAreaProps, any> {
         css={[
           {
             resize: "vertical",
+            maxHeight: "none",
           },
           css,
         ]}

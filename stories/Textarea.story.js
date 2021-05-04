@@ -7,3 +7,11 @@ export default {
 };
 
 export const Label = args => <TextArea {...args} id="Testing" />;
+
+export const FloatingLabel = () => (
+  <TextArea
+    label='weee'
+    hideLabel
+    floating
+  />
+)
