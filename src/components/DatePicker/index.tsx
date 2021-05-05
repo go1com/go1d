@@ -328,9 +328,9 @@ class DatePicker extends React.Component<DatePickerProps, DatePickerState> {
                   "box-shadow": shadows.strong,
                 },
                 ".DateInput_input, .DateInput_input__focused": {
-                  "padding-top": `${
-                    spacing[get({ lg: 4, md: 3, sm: 1 }, size)]
-                  }px`,
+                  "padding-top": isFloatingEnabled
+                    ? `${spacing[get({ lg: 6, md: 5, sm: 4 }, size)]}px`
+                    : `${spacing[get({ lg: 4, md: 3, sm: 1 }, size)]}px`,
                   "padding-bottom": `${
                     spacing[get({ lg: 4, md: 3, sm: 1 }, size)]
                   }px`,
@@ -394,7 +394,7 @@ class DatePicker extends React.Component<DatePickerProps, DatePickerState> {
                   css={[
                     {
                       position: "absolute",
-                      top: 2,
+                      top: size === "lg" ? 12 : size === "md" ? 10 : 8,
                       left: 27,
                       display: "flex",
                       alignItems: "center",
