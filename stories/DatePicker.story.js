@@ -47,3 +47,23 @@ BasicDatepickerWithTime.argTypes = {
   defaultValue: { defaultValue: new Date("2019-06-07 10:00") },
 };
 
+export const BasicDatepickerWithLabel = () => (
+  <>
+    <DatePicker
+      floating
+      label='Time today'
+      size='sm'
+    />
+    <br />
+    <DatePicker
+      floating  
+      label='Time today'
+    />
+    <br />
+    <DatePicker
+      floating  
+      label='Time today'
+      size='lg'
+    />
+  </>
+)

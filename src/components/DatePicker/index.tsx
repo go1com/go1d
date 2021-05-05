@@ -14,6 +14,7 @@ import IconCalendar from "../Icons/Calendar";
 import IconChevronLeft from "../Icons/ChevronLeft";
 import IconChevronRight from "../Icons/ChevronRight";
 
+import { Transition } from "react-transition-group";
 import "./css";
 
 export interface DatePickerProps extends ViewProps {
@@ -26,6 +27,8 @@ export interface DatePickerProps extends ViewProps {
   time?: boolean;
   allowBlank?: boolean;
   displayFormat?: string;
+  label?: string;
+  floating?: boolean;
 }
 
 export interface DatePickerState {
@@ -253,8 +256,14 @@ class DatePicker extends React.Component<DatePickerProps, DatePickerState> {
       value,
       allowBlank,
       displayFormat = "DD/MM/YYYY",
+      label,
+      floating,
       ...remainingProps
     } = this.props;
+
+    const { timeFocused } = this.state;
+    const isFloatingEnabled = floating && label;
+    const isFloating = isFloatingEnabled && (!!value || timeFocused);
 
     return (
       <Theme.Consumer>
@@ -266,10 +275,12 @@ class DatePicker extends React.Component<DatePickerProps, DatePickerState> {
           transitions,
           type,
           inputSizes,
+          animation,
         }) => (
           <View
             flexDirection="row"
             display="flex"
+            position="relative"
             css={[
               {
                 ".SingleDatePicker": {
@@ -324,7 +335,9 @@ class DatePicker extends React.Component<DatePickerProps, DatePickerState> {
                     spacing[get({ lg: 4, md: 3, sm: 1 }, size)]
                   }px`,
                   "padding-right": 0,
-                  height: `${inputSizes[size] - 2}px`,
+                  height: `${inputSizes[size] -
+                    2 +
+                    (isFloatingEnabled ? 10 : 0)}px`,
                 },
                 ".CalendarDay, .DateInput_input, .DayPicker_weekHeader_li": {
                   "font-size": `${
@@ -367,6 +380,34 @@ class DatePicker extends React.Component<DatePickerProps, DatePickerState> {
               disabled={disabled}
               {...remainingProps}
             />
+
+            {isFloatingEnabled && (
+              <Transition in={isFloating} timeout={animation.subtle}>
+                <Text
+                  element="label"
+                  lineHeight="ui"
+                  htmlFor={id}
+                  style={{
+                    fontSize: size === "sm" ? "12px" : "14px",
+                  }}
+                  fontWeight="normal"
+                  css={[
+                    {
+                      position: "absolute",
+                      top: 2,
+                      left: 27,
+                      display: "flex",
+                      alignItems: "center",
+                      backgroundColor: colors.background,
+                      color: isFloating ? colors.subtle : colors.default,
+                    },
+                  ]}
+                >
+                  {label}
+                </Text>
+              </Transition>
+            )}
+
             {this.props.time && (
               <View
                 element="label"
