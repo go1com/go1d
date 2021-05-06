@@ -151,6 +151,12 @@
         "name": "twitter:card",
         "content": "Go1 Design System"
       }
+    ],
+    "links": [
+      {
+        "rel": "icon",
+        "href": "https://www.go1.com/static/favicon-32x32.png"
+      }
     ]
   },
   "jest": {
