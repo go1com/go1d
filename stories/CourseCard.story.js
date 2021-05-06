@@ -1,5 +1,5 @@
 import React from "react";
-import { CourseCard, View, Carousel } from "../src";
+import { DEPRECATED_CourseCard as CourseCard, View, Carousel } from "../src";
 
 export default {
   title: "Original Go1d/CourseCard",
