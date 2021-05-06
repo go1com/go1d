@@ -143,13 +143,13 @@
     }
   },
   "x0": {
-    "title": "GO1D - GO1 Design System",
+    "title": "Go1D - Go1 Design System",
     "basename": "",
     "outDir": "./dist",
     "meta": [
       {
         "name": "twitter:card",
-        "content": "GO1 Design System"
+        "content": "Go1 Design System"
       }
     ]
   },
