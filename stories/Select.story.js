@@ -113,3 +113,37 @@ export const ControlledSelectValue = args => (
     ]}
   />
 );
+
+export const Label = args => (
+  <>
+    <Select
+      size='lg'
+      label='Label'
+      options={[
+        { value: "chocolate", label: "Chocolate" },
+        { value: "stawberry", label: "Strawberry" },
+        { value: "vanilla", label: "Vanilla" },
+      ]}
+    />
+    <br />
+    <Select
+      size='md'
+      label='Label'
+      options={[
+        { value: "chocolate", label: "Chocolate" },
+        { value: "stawberry", label: "Strawberry" },
+        { value: "vanilla", label: "Vanilla" },
+      ]}
+    />
+    <br />
+    <Select
+      size='sm'
+      label='Label'
+      options={[
+        { value: "chocolate", label: "Chocolate" },
+        { value: "stawberry", label: "Strawberry" },
+        { value: "vanilla", label: "Vanilla" },
+      ]}
+    />
+  </>
+);

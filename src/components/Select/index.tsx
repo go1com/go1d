@@ -22,6 +22,7 @@ interface SelectOptionItem {
 }
 
 export interface SelectProps extends ViewProps {
+  label?: string;
   options?: SelectOptionItem[];
   disabled?: boolean;
   placeholder?: string;
@@ -38,12 +39,15 @@ export interface SelectProps extends ViewProps {
 
 const Sizes = {
   lg: {
-    fontSize: 3,
+    label: "14px",
+    fontSize: 2,
   },
   md: {
+    label: "12px",
     fontSize: 2,
   },
   sm: {
+    label: "12px",
     fontSize: 1,
   },
 };
@@ -128,6 +132,7 @@ class Select extends React.PureComponent<SelectProps, any> {
 
   public render() {
     const {
+      label,
       clearable,
       options,
       size,
@@ -221,16 +226,42 @@ class Select extends React.PureComponent<SelectProps, any> {
                             height={inputSizes[size]}
                             {...remainingProps}
                           >
+                            {label && (
+                              <Text
+                                element="label"
+                                lineHeight="ui"
+                                htmlFor={id}
+                                fontWeight="normal"
+                                color="subtle"
+                                style={{
+                                  fontSize: Sizes[this.props.size].label,
+                                }}
+                                css={[
+                                  {
+                                    position: "absolute",
+                                    height: `${inputSizes[size] / 2}px`,
+                                    display: "flex",
+                                    alignItems: "center",
+                                    top: 0,
+                                    left: 16,
+                                  },
+                                ]}
+                              >
+                                {label}
+                              </Text>
+                            )}
                             <View
                               flexGrow={1}
                               flexShrink={1}
-                              paddingY={3}
+                              paddingTop={label ? 4 : 3}
+                              paddingBottom={3}
                               overflow="hidden"
                             >
                               <Text
                                 ellipsis={true}
                                 fontSize={Sizes[size].fontSize}
                                 fontWeight={fontWeight ? fontWeight : "normal"}
+                                color={selectedItem ? "default" : "muted"}
                                 css={{
                                   whiteSpace: "nowrap",
                                 }}
