@@ -1,5 +1,11 @@
 # @go1d/go1d
 
+## 3.5.0
+
+### Minor Changes
+
+- 336e8f6a: add label for select input
+
 ## 3.4.3
 
 ### Patch Changes
