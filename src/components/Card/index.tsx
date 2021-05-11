@@ -1,13 +1,14 @@
 import * as React from "react";
 import MoreMenu from "../MoreMenu";
 import Text from "../Text";
+import Theme from "../Theme";
 import View, { ViewProps } from "../View";
 import Skeleton from "./components/Skeleton";
 import mapTypeToIcon from "./mapTypeToIcon";
 
 export interface Props extends ViewProps {
   title?: string;
-  supportingText?: string;
+  providerName?: string;
   type?: string;
   skeleton?: boolean;
   thumbnail?: string;
@@ -18,7 +19,7 @@ export interface Props extends ViewProps {
 
 const Card = ({
   title,
-  supportingText,
+  providerName,
   type,
   skeleton,
   css,
@@ -28,25 +29,31 @@ const Card = ({
   moreMenuItems = [],
   ...props
 }: Props) => {
+  const { colors } = React.useContext(Theme);
+  const [showAction, setShowAction] = React.useState(false);
+  const onMouseEnterCard = () => {
+    setShowAction(true);
+  };
+  const onMouseLeaveCard = () => {
+    setShowAction(false);
+  };
+
+  const onStateMoreMenuChange = (showMoreMenu: boolean) => {
+    if (showMoreMenu) {
+      setShowAction(true);
+    }
+  };
+
   if (skeleton) {
-    return <Skeleton />;
+    return <Skeleton data-testId="skeleton" />;
   }
 
   return (
     <View
       height="100%"
       width="100%"
-      css={[
-        css,
-        {
-          textDecoration: "none",
-          "&:hover, &:focus": {
-            "[data-role='action']": {
-              display: "flex",
-            },
-          },
-        },
-      ]}
+      onMouseEnter={onMouseEnterCard}
+      onMouseLeave={onMouseLeaveCard}
       {...props}
     >
       <View
@@ -57,7 +64,7 @@ const Card = ({
         width="100%"
         css={{
           overflow: "hidden",
-          backgroundImage: thumbnail ? `url(${thumbnail})` : undefined,
+          backgroundImage: thumbnail ? `url(${thumbnail})` : "none",
           backgroundSize: "cover",
           backgroundPosition: "center",
           position: "relative",
@@ -76,7 +83,11 @@ const Card = ({
             })}
         </View>
         <View
-          display={["flex", "none", "none"]}
+          display={[
+            "flex",
+            showAction ? "flex" : "none",
+            showAction ? "flex" : "none",
+          ]}
           flexDirection="row"
           position="absolute"
           data-role="action"
@@ -89,7 +100,11 @@ const Card = ({
             customActionItems &&
             customActionItems.map(e => e)}
           {moreMenuItems && moreMenuItems.length > 0 && (
-            <MoreMenu itemList={moreMenuItems} marginLeft={3} />
+            <MoreMenu
+              itemList={moreMenuItems}
+              marginLeft={3}
+              onStateChange={onStateMoreMenuChange}
+            />
           )}
         </View>
       </View>
@@ -100,23 +115,43 @@ const Card = ({
           fontSize={2}
           color="contrast"
           lineClamp={2}
+          css={{
+            "&:hover, &:focus": {
+              color: colors.contrast,
+            },
+          }}
         >
           {title}
         </Text>
       )}
-      {supportingText && (
+      {providerName && (
         <Text
           fontWeight="normal"
           marginTop={3}
           fontSize={1}
           color="default"
           lineClamp={1}
+          css={{
+            "&:hover, &:focus": {
+              color: colors.default,
+            },
+          }}
         >
-          {supportingText}
+          {providerName}
         </Text>
       )}
       {metadata && (
-        <Text fontWeight="normal" marginTop={3} fontSize={0} color="thin">
+        <Text
+          fontWeight="normal"
+          marginTop={3}
+          fontSize={0}
+          color="thin"
+          css={{
+            "&:hover, &:focus": {
+              color: colors.thin,
+            },
+          }}
+        >
           {metadata.join(" ⋅ ")}
         </Text>
       )}

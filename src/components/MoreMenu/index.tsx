@@ -1,4 +1,4 @@
-import { ControllerStateAndHelpers } from "downshift";
+import { ControllerStateAndHelpers, StateChangeOptions } from "downshift";
 import * as React from "react";
 import { autobind } from "../../utils/decorators";
 import safeInvoke from "../../utils/safeInvoke";
@@ -17,22 +17,17 @@ export interface MoreMenuProps extends ButtonProps {
   loading?: boolean;
   loader?: React.ReactElement<any>;
   isButtonFilled?: boolean;
-}
-
-interface State {
-  showMenu: boolean;
+  onStateChange?: (showMenu: boolean) => void;
 }
 
 const itemToString = (item: DropdownItem) => (item ? item.title : "");
-
-class MoreMenu extends React.Component<MoreMenuProps, State> {
+class MoreMenu extends React.Component<MoreMenuProps> {
   public static defaultProps = {
     isButtonFilled: true,
   };
 
   constructor(props: any) {
     super(props);
-    this.state = { showMenu: false };
   }
 
   @autobind
@@ -46,6 +41,14 @@ class MoreMenu extends React.Component<MoreMenuProps, State> {
     }
   }
 
+  @autobind
+  public handleStateChange(
+    options: StateChangeOptions<any>,
+    _: ControllerStateAndHelpers<any>
+  ) {
+    safeInvoke(this.props.onStateChange, options.isOpen);
+  }
+
   public render() {
     const {
       loading = false,
@@ -54,6 +57,7 @@ class MoreMenu extends React.Component<MoreMenuProps, State> {
       itemList,
       size,
       onSelect,
+      onStateChange,
       ...props
     } = this.props;
 
@@ -78,6 +82,7 @@ class MoreMenu extends React.Component<MoreMenuProps, State> {
             itemToString={itemToString}
             placement="bottom-end"
             offset={`0, ${spacing[2]}, 0, 0`}
+            onStateChange={this.handleStateChange}
             onSelect={this.onSelect}
           >
             {({ ref, getToggleButtonProps }) => {

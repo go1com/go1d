@@ -2,7 +2,7 @@ import React from "react";
 import { DEPRECATED_CourseCard as CourseCard, View, Carousel } from "../src";
 
 export default {
-  title: "Original Go1d/CourseCard",
+  title: "Original Go1d/DEPRECATED_CourseCard",
   component: CourseCard,
   subcomponents: { View },
 };

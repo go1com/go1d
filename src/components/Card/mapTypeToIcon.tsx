@@ -24,6 +24,8 @@ const mapTypeToIcon = (type: string, params?: any): React.ReactElement => {
       return <SpotIcon name="Link" {...options} />;
     case "text":
       return <SpotIcon name="Text" {...options} />;
+    case "resource":
+      return <SpotIcon name="Text" {...options} />;
     case "video":
       return <SpotIcon name="Video" {...options} />;
     default:

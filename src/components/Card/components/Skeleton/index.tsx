@@ -4,7 +4,7 @@ import View, { ViewProps } from "../../../View";
 
 const CardSkeleton = (props: ViewProps) => (
   <View height="100%" width="100%" css={{ textDecoration: "none" }} {...props}>
-    <View
+    <Skeleton
       alignItems="center"
       justifyContent="center"
       backgroundColor="delicate"
