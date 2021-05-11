@@ -24,5 +24,11 @@ export const DisabledPasswordInput = args => (
 );
 
 export const PasswordInputWithVisibilityIcon = args => (
-  <PasswordInput id="PasswordInputWithVisibilityIcon" toggleableDisplay={true} useIconVisibility={true} />
+  <PasswordInput
+    id="PasswordInputWithVisibilityIcon"
+    label="Password"
+    floating
+    toggleableDisplay={true}
+    useIconVisibility={true}
+  />
 );
