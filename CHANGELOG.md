@@ -1,5 +1,13 @@
 # @go1d/go1d
 
+## 3.6.0
+
+### Minor Changes
+
+- 58f325c3: Fix TextArea component always stayed at a fixed size that doesn't respect the multiline and can't scale up, the floating label get mess up with the user input
+
+  Add floating label for DatePicker component
+
 ## 3.5.0
 
 ### Minor Changes
