@@ -267,7 +267,6 @@ class TextInput extends React.PureComponent<TextInputProps, TextInputState> {
                     {
                       position: "absolute",
                       height: `${inputSizes[size] / 2}px`,
-
                       display: "flex",
                       alignItems: "center",
                       backgroundColor: colors.background,
