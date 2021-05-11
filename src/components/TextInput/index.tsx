@@ -35,6 +35,7 @@ export interface TextInputProps extends TextProps {
   viewCss?: any;
   borderColor?: string;
   tid?: string;
+  labelCss?: any;
 }
 
 interface TextInputState {
@@ -143,6 +144,7 @@ class TextInput extends React.PureComponent<TextInputProps, TextInputState> {
       onBlur,
       borderRadius,
       viewCss,
+      labelCss,
       multiline,
       inputType,
       error, // do not pass
@@ -265,7 +267,7 @@ class TextInput extends React.PureComponent<TextInputProps, TextInputState> {
                     {
                       position: "absolute",
                       height: `${inputSizes[size] / 2}px`,
-                      width: `calc(100% - ${paddingX * 4}px)`,
+
                       display: "flex",
                       alignItems: "center",
                       backgroundColor: colors.background,
@@ -275,6 +277,7 @@ class TextInput extends React.PureComponent<TextInputProps, TextInputState> {
                         !placeholder && !isFloating
                           ? `translate(0, -50%)`
                           : "unset",
+                      ...labelCss,
                     },
                     !placeholder &&
                       isFloating && {

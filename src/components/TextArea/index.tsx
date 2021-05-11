@@ -24,6 +24,9 @@ class TextArea extends React.Component<TextAreaProps, any> {
           },
           css,
         ]}
+        labelCss={{
+          width: `calc(100% - 16px)`,
+        }}
         {...props}
       />
     );
