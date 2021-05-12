@@ -29,7 +29,7 @@ const Card = ({
   moreMenuItems = [],
   ...props
 }: Props) => {
-  const { colors } = React.useContext(Theme);
+  const { colors, spacing } = React.useContext(Theme);
   const [showAction, setShowAction] = React.useState(false);
   const onMouseEnterCard = () => {
     setShowAction(true);
@@ -92,13 +92,11 @@ const Card = ({
           position="absolute"
           data-role="action"
           css={{
-            top: "16px",
-            right: "16px",
+            top: spacing[4],
+            right: spacing[4],
           }}
         >
-          {customActionItems &&
-            customActionItems &&
-            customActionItems.map(e => e)}
+          {customActionItems}
           {moreMenuItems && moreMenuItems.length > 0 && (
             <MoreMenu
               itemList={moreMenuItems}

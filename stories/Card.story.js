@@ -50,7 +50,7 @@ export const AlmostAllTheProps = args => (
 );
 AlmostAllTheProps.storyName = "Almost all the Props with the link";
 
-export const EmptyThumnailCard = () => (
+export const EmptyThumbnailCard = () => (
   <View flexDirection="row" flexWrap="wrap">
     <View width={213} padding={3}>
       <Card
@@ -127,8 +127,8 @@ export const EmptyThumnailCard = () => (
   </View>
 );
 
-EmptyThumnailCard.storyName = "Empty thumnail card";
-EmptyThumnailCard.parameters = { controls: { hideNoControlsWarning: true } };
+EmptyThumbnailCard.storyName = "Empty thumbnail card";
+EmptyThumbnailCard.parameters = { controls: { hideNoControlsWarning: true } };
 
 export const MultipleCard = () => (
   <View flexDirection="row" justifyContent="space-between">

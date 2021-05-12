@@ -3,7 +3,7 @@ import Skeleton from "../../../Skeleton";
 import View, { ViewProps } from "../../../View";
 
 const CardSkeleton = (props: ViewProps) => (
-  <View height="100%" width="100%" css={{ textDecoration: "none" }} {...props}>
+  <View height="100%" width="100%" {...props}>
     <Skeleton
       alignItems="center"
       justifyContent="center"
