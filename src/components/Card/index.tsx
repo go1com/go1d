@@ -8,7 +8,7 @@ import mapTypeToIcon from "./mapTypeToIcon";
 
 export interface Props extends ViewProps {
   title?: string;
-  providerName?: string;
+  subTitle?: string;
   type?: string;
   skeleton?: boolean;
   thumbnail?: string;
@@ -19,7 +19,7 @@ export interface Props extends ViewProps {
 
 const Card = ({
   title,
-  providerName,
+  subTitle,
   type,
   skeleton,
   css,
@@ -38,7 +38,7 @@ const Card = ({
     setShowAction(false);
   };
 
-  const onStateMoreMenuChange = (showMoreMenu: boolean) => {
+  const onMoreMenuVisibilityChange = (showMoreMenu: boolean) => {
     if (showMoreMenu) {
       setShowAction(true);
     }
@@ -101,7 +101,7 @@ const Card = ({
             <MoreMenu
               itemList={moreMenuItems}
               marginLeft={3}
-              onStateChange={onStateMoreMenuChange}
+              onStateChange={onMoreMenuVisibilityChange}
             />
           )}
         </View>
@@ -122,7 +122,7 @@ const Card = ({
           {title}
         </Text>
       )}
-      {providerName && (
+      {subTitle && (
         <Text
           fontWeight="normal"
           marginTop={3}
@@ -135,7 +135,7 @@ const Card = ({
             },
           }}
         >
-          {providerName}
+          {subTitle}
         </Text>
       )}
       {metadata && (

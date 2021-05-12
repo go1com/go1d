@@ -24,7 +24,7 @@ export const AlmostAllTheProps = args => (
         {...args}
         title="Learning item title"
         type="course"
-        providerName="Go1 Learning"
+        subTitle="Go1 Learning"
         metadata={["Course", "45 mins"]}
         thumbnail="https://res.cloudinary.com/go1/image/fetch/w_1024,h_300,c_thumb,g_auto/https://udemy-images.udemy.com/course/750x422/435262_c617.jpg"
         customActionItems={[<ButtonFilled icon={IconSave} />]}
@@ -56,7 +56,7 @@ export const EmptyThumbnailCard = () => (
       <Card
         title="Audio item title"
         type="audio"
-        providerName="Go1 Learning"
+        subTitle="Go1 Learning"
         metadata={["Audio", "45 mins"]}
       />
     </View>
@@ -64,7 +64,7 @@ export const EmptyThumbnailCard = () => (
       <Card
         title="Award item title"
         type="award"
-        providerName="Go1 Learning"
+        subTitle="Go1 Learning"
         metadata={["Award", "45 mins"]}
       />
     </View>
@@ -72,7 +72,7 @@ export const EmptyThumbnailCard = () => (
       <Card
         title="Course item title"
         type="course"
-        providerName="Go1 Learning"
+        subTitle="Go1 Learning"
         metadata={["Course", "45 mins"]}
       />
     </View>
@@ -80,7 +80,7 @@ export const EmptyThumbnailCard = () => (
       <Card
         title="Document item title"
         type="document"
-        providerName="Go1 Learning"
+        subTitle="Go1 Learning"
         metadata={["Document", "45 mins"]}
       />
     </View>
@@ -88,7 +88,7 @@ export const EmptyThumbnailCard = () => (
       <Card
         title="Integration item title"
         type="integration"
-        providerName="Go1 Learning"
+        subTitle="Go1 Learning"
         metadata={["Integration", "45 mins"]}
       />
     </View>
@@ -96,7 +96,7 @@ export const EmptyThumbnailCard = () => (
       <Card
         title="Interactive item title"
         type="interactive"
-        providerName="Go1 Learning"
+        subTitle="Go1 Learning"
         metadata={["Interactive", "45 mins"]}
       />
     </View>
@@ -104,7 +104,7 @@ export const EmptyThumbnailCard = () => (
       <Card
         title="Link item title"
         type="link"
-        providerName="Go1 Learning"
+        subTitle="Go1 Learning"
         metadata={["Link", "45 mins"]}
       />
     </View>
@@ -112,7 +112,7 @@ export const EmptyThumbnailCard = () => (
       <Card
         title="Text item title"
         type="text"
-        providerName="Go1 Learning"
+        subTitle="Go1 Learning"
         metadata={["Text", "45 mins"]}
       />
     </View>
@@ -120,7 +120,7 @@ export const EmptyThumbnailCard = () => (
       <Card
         title="Video item title"
         type="video"
-        providerName="Go1 Learning"
+        subTitle="Go1 Learning"
         metadata={["Video", "45 mins"]}
       />
     </View>
@@ -136,7 +136,7 @@ export const MultipleCard = () => (
     <Card
       title="Learning item title"
       type="course"
-      providerName="Go1 Learning"
+      subTitle="Go1 Learning"
       metadata={["Course", "45 mins"]}
       thumbnail="https://res.cloudinary.com/go1/image/fetch/w_1024,h_300,c_thumb,g_auto/https://udemy-images.udemy.com/course/750x422/435262_c617.jpg"
       customActionItems={[<ButtonFilled icon={IconSave} />]}
@@ -162,7 +162,7 @@ export const MultipleCard = () => (
     <Card
       title="Donec rutrum congue leo eget malesuada. Sed porttitor lectus nibh. Donec rutrum congue leo eget malesuada. Sed porttitor lectus nibh."
       type="video"
-      providerName="Donec rutrum congue leo eget malesuada. Sed porttitor lectus nibh."
+      subTitle="Donec rutrum congue leo eget malesuada. Sed porttitor lectus nibh."
       metadata={["Video", "45 mins"]}
       customActionItems={[<ButtonFilled icon={IconSave} />]}
       moreMenuItems={[
@@ -187,7 +187,7 @@ export const MultipleCard = () => (
     <Card
       title="Document title"
       type="document"
-      providerName="Go1 Learning"
+      subTitle="Go1 Learning"
       metadata={["Document", "45 mins"]}
       customActionItems={[<ButtonFilled icon={IconSave} />]}
       moreMenuItems={[
@@ -219,7 +219,7 @@ export const MultipleCard1 = () => (
     <Card
       title="Learning item title"
       type="course"
-      providerName="Go1 Learning"
+      subTitle="Go1 Learning"
       metadata={["Course", "45 mins"]}
       thumbnail="https://res.cloudinary.com/go1/image/fetch/w_1024,h_300,c_thumb,g_auto/https://udemy-images.udemy.com/course/750x422/435262_c617.jpg"
       customActionItems={[<ButtonFilled icon={IconSave} />]}
@@ -245,7 +245,7 @@ export const MultipleCard1 = () => (
     <Card
       title="Donec rutrum congue leo eget malesuada. Sed porttitor lectus nibh. Donec rutrum congue leo eget malesuada. Sed porttitor lectus nibh."
       type="video"
-      providerName="Donec rutrum congue leo eget malesuada. Sed porttitor lectus nibh."
+      subTitle="Donec rutrum congue leo eget malesuada. Sed porttitor lectus nibh."
       metadata={["Video", "45 mins"]}
       customActionItems={[<ButtonFilled icon={IconSave} />]}
       moreMenuItems={[
@@ -270,7 +270,7 @@ export const MultipleCard1 = () => (
     <Card
       title="Document title"
       type="document"
-      providerName="Go1 Learning"
+      subTitle="Go1 Learning"
       metadata={["Document", "45 mins"]}
       customActionItems={[<ButtonFilled icon={IconSave} />]}
       moreMenuItems={[
