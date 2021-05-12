@@ -5,7 +5,7 @@ import IconPlus from '../src/components/Icons/Plus';
 import IconTrash from '../src/components/Icons/Trash';
 
 export default {
-  title: "Athletic/Card",
+  title: "Athletic/Card/DefaultCard",
   component: Card,
 };
 

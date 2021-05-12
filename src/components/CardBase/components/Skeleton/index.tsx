@@ -26,7 +26,7 @@ const CardSkeleton = (props: ViewProps) => (
       backgroundColor="delicate"
       borderRadius={3}
       height={24}
-      marginTop={3}
+      marginTop={4}
     />
   </View>
 );
