@@ -51,19 +51,23 @@ export const BasicDatepickerWithLabel = () => (
   <>
     <DatePicker
       floating
-      label='Time today'
+      label='Start date'
       size='sm'
     />
     <br />
     <DatePicker
-      floating  
-      label='Time today'
+      floating
+      label='Start date'
     />
     <br />
     <DatePicker
-      floating  
-      label='Time today'
+      floating
+      label='Start date'
       size='lg'
     />
   </>
 )
+BasicDatepickerWithLabel.argTypes = {
+  id: { defaultValue: "id8" },
+  defaultValue: { defaultValue: new Date("2021-05-14T00:00:00.000Z") },
+};
