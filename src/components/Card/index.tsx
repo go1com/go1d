@@ -29,7 +29,7 @@ const Card = ({
   moreMenuItems = [],
   ...props
 }: Props) => {
-  const { colors, spacing } = React.useContext(Theme);
+  const { spacing } = React.useContext(Theme);
   const [showAction, setShowAction] = React.useState(false);
   const onMouseEnterCard = () => {
     setShowAction(true);
@@ -113,11 +113,6 @@ const Card = ({
           fontSize={2}
           color="contrast"
           lineClamp={2}
-          css={{
-            "&:hover, &:focus": {
-              color: colors.contrast,
-            },
-          }}
         >
           {title}
         </Text>
@@ -129,27 +124,12 @@ const Card = ({
           fontSize={1}
           color="default"
           lineClamp={1}
-          css={{
-            "&:hover, &:focus": {
-              color: colors.default,
-            },
-          }}
         >
           {subTitle}
         </Text>
       )}
       {metadata && (
-        <Text
-          fontWeight="normal"
-          marginTop={3}
-          fontSize={0}
-          color="thin"
-          css={{
-            "&:hover, &:focus": {
-              color: colors.thin,
-            },
-          }}
-        >
+        <Text fontWeight="normal" marginTop={3} fontSize={0} color="subtle">
           {metadata.join(" ⋅ ")}
         </Text>
       )}
