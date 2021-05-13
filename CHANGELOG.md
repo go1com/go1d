@@ -1,5 +1,11 @@
 # @go1d/go1d
 
+## 4.0.1
+
+### Patch Changes
+
+- 31ff4ca8: AVG-330 fix error path spot icons
+
 ## 4.0.0
 
 ### Major Changes
