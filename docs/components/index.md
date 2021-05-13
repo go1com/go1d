@@ -10,6 +10,16 @@ lead: A collection of interface elements that can be reused across Go1 to effici
 
 To add Go1d to a project, run `yarn add @go1d/go1d` or `npm install -s @go1d/go1d` to install go1d into the NPM package of the project you are working on.
 
+To transform Go1d imports and allow tree-shaking instead of pulling in the entire Go1d library, you can also run `yarn add -D @go1d/babel-plugin-transform-go1d-imports` or `npm install --save-dev @go1d/babel-plugin-transform-go1d-imports` to install [@go1d/babel-plugin-transform-go1d-imports](https://www.npmjs.com/package/@go1d/babel-plugin-transform-go1d-imports). Then add something like this to your `.babelrc` file:
+
+```
+{
+  "plugins": [
+    "@go1d/babel-plugin-transform-go1d-imports"
+  ]
+}
+```
+
 ### Global CSS Reset & Fonts
 
 The easiest way to set up the CSS reset and fonts is to include the following code in the root JavaScript file of the project:
