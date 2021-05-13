@@ -1,10 +1,10 @@
 import * as React from "react";
+import mapTypeToIcon from "../../utils/mapTypeToIcon";
 import MoreMenu from "../MoreMenu";
 import Text from "../Text";
 import Theme from "../Theme";
 import View, { ViewProps } from "../View";
 import Skeleton from "./components/Skeleton";
-import mapTypeToIcon from "./mapTypeToIcon";
 
 export interface Props extends ViewProps {
   title?: string;
