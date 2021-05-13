@@ -51,7 +51,7 @@ class Color extends React.Component {
         {({ colors }) => (
           <View
             borderRadius={2}
-            width="144"
+            width="140"
             boxShadow={hover ? "strong" : "soft"}
             overflow="hidden"
             onMouseOver={this.mouseOver}
