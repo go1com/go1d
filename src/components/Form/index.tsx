@@ -20,9 +20,13 @@ export interface FormProps extends FormikConfig<any> {
   formikRef?: any;
   onChange?: (data: any) => void;
   flexGrow?: number;
+  formProps?: React.FormHTMLAttributes<HTMLFormElement>;
 }
 
-export class InternalForm extends React.Component<InnerFormProps, any> {
+export class InternalForm extends React.Component<
+  InnerFormProps & React.FormHTMLAttributes<HTMLFormElement>,
+  any
+> {
   public componentDidUpdate(prevProps: InnerFormProps) {
     const { status, setStatus, disabled } = this.props;
 
@@ -104,6 +108,7 @@ const Form: React.SFC<FormProps> = ({
   onChange,
   formikRef,
   flexGrow,
+  formProps,
   ...props
 }: FormProps) => {
   return (
@@ -127,6 +132,7 @@ const Form: React.SFC<FormProps> = ({
           onChange={onChange}
           values={values}
           errors={errors}
+          {...formProps}
         >
           {children}
         </InternalForm>

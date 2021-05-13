@@ -48,6 +48,21 @@ it("renders without crashing with disabled null", () => {
   );
 });
 
+it("renders custom form method", () => {
+  const { container } = render(
+    <Form
+      initialValues={{ name: "" }}
+      onSubmit={test}
+      formProps={{ method: "post" }}
+    >
+      <Field label="name" name="name" />
+    </Form>
+  );
+
+  const formMethod = container.querySelector("form").getAttribute("method");
+  expect(formMethod).toEqual("post");
+});
+
 it("renders without crashing with internalForm", () => {
   const { container } = render(
     <Formik onReset={onReset} initialValues={{ name: "jared" }} onSubmit={test}>
