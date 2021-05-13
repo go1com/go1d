@@ -1,5 +1,11 @@
 # @go1d/go1d
 
+## 3.7.1
+
+### Patch Changes
+
+- 78a11e7a: Allow setting custom <form/> attributes
+
 ## 3.7.0
 
 ### Minor Changes
