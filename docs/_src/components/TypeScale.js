@@ -5,10 +5,10 @@ export const TypeScale = ({ colors = [], ...props }) => (
   <Theme.Consumer>
     {({ type }) => (
       <Table
-        rows={type.scale.lg.filter((val, key) => key !== 0).map((val, key) => (
+        rows={type.scale.lg.map((val, key) => (
           <TR key={key}>
             <TD>
-              <Text>{key + 1}</Text>
+              <Text>{key}</Text>
             </TD>
             <TD>
               <Text>
@@ -18,23 +18,23 @@ export const TypeScale = ({ colors = [], ...props }) => (
             </TD>
             <TD>
               <Text>
-                {type.scale.md[key + 1]}
+                {type.scale.md[key]}
                 px
               </Text>
             </TD>
             <TD>
               <Text>
-                {type.scale.sm[key + 1]}
+                {type.scale.sm[key]}
                 px
               </Text>
             </TD>
           </TR>
         ))}
         header={[
-          <TH key="0" text="Typescale" />,
-          <TH key="0" text="Large screen" />,
-          <TH key="0" text="Medium screen" />,
-          <TH key="0" text="Small screen" />,
+          <TH key="a" text="Typescale" />,
+          <TH key="b" text="Large screen" />,
+          <TH key="c" text="Medium screen" />,
+          <TH key="d" text="Small screen" />,
         ]}
       />
     )}
