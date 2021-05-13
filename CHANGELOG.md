@@ -1,5 +1,11 @@
 # @go1d/go1d
 
+## 4.0.0
+
+### Major Changes
+
+- 273263e9: AVG-330 Adds Athletic Card as `<Card />` and renames the original Go1d CourseCard to `<DEPRECATED_CourseCard />`.
+
 ## 3.7.1
 
 ### Patch Changes
