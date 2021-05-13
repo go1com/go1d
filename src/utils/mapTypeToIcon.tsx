@@ -1,5 +1,5 @@
 import * as React from "react";
-import SpotIcon from "../../src/components/SpotIcon";
+import SpotIcon from "../components/SpotIcon";
 
 const mapTypeToIcon = (type: string, params?: any): React.ReactElement => {
   const options = {
