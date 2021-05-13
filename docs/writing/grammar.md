@@ -117,7 +117,7 @@ Sentence case is when the first word and any proper nouns begin with a capital l
 
 **For example**
 
-> Browse Go1 Premium
+> Browse Go1 Content Hub
 > Enrol in online courses
 > Partner with Go1
 

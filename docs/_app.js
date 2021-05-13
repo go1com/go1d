@@ -76,7 +76,7 @@ const App = ({ routes, ...props }) => (
             },
           }}
         >
-          <SidebarLayout routes={createNav(routes)} {...props} title="GO1D" />
+          <SidebarLayout routes={createNav(routes)} {...props} title="Go1d" />
         </RebassProvider>
       </ScopeProvider>
     </RoutesContext.Provider>
