@@ -428,6 +428,9 @@ textarea {
 [type="number"]::-webkit-outer-spin-button {
   display: none;
 }
+input[type=number] {
+  -moz-appearance: textfield;
+}
 
 /**
  * 1. Correct the odd appearance in Chrome and Safari.

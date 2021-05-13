@@ -292,7 +292,7 @@ class DatePicker extends React.Component<DatePickerProps, DatePickerState> {
                   background: "transparent",
                   position: "relative",
                   display: "inline-block",
-                  width: get({ lg: "120px", md: "100px", sm: "90px" }, size),
+                  width: get({ lg: "130px", md: "110px", sm: "100px" }, size),
                   verticalAlign: "middle",
                 },
                 "td.CalendarDay, td.CalendarDay__selected": {
