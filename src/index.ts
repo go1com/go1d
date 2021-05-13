@@ -136,8 +136,11 @@ export {
 } from "./components/DataTableSelectable";
 export {
   CourseCardProps,
-  default as CourseCard,
+  default as DEPRECATED_CourseCard,
 } from "./components/CourseCard";
+
+export { Props as CardProps, default as Card } from "./components/Card";
+
 export {
   FeaturedTagProps,
   default as FeaturedTag,
