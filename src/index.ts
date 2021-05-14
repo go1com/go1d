@@ -77,6 +77,10 @@ export {
   default as CourseSlat,
   CourseSlatProps,
 } from "./components/CourseSlat";
+export {
+  default as DEPRECATED_Slat,
+  SlatProps as DEPRECATED_SlatProps,
+} from "./components/DEPRECATED_Slat";
 export { default as Slat, SlatProps } from "./components/Slat";
 export { default as SlatMini, SlatMiniProps } from "./components/SlatMini";
 export { default as Banner, BannerProps } from "./components/Banner";

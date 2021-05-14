@@ -4,40 +4,55 @@ import View from "../View";
 
 export default () => (
   <View
-    borderRadius={4}
-    boxShadow="crisp"
-    flexDirection={["column", "row"]}
-    marginBottom={4}
-    color="default"
+    flexDirection="row"
     backgroundColor="background"
     width="100%"
     overflow="hidden"
   >
-    <Skeleton padding={3} height={[130, 142, 142]} width={["100%", 221, 221]} />
-    <View padding={5} flexGrow={1}>
+    <View paddingRight={3} flexGrow={1} flexShrink={1}>
       <Skeleton
-        borderRadius={1}
-        fontSize={3}
-        maxWidth={450}
-        width="70%"
+        borderRadius={2}
+        height={24}
+        width="100%"
         marginBottom={4}
+        backgroundColor="delicate"
       />
       <Skeleton
-        borderRadius={1}
-        backgroundColor="faded"
-        fontSize={1}
-        maxWidth={250}
-        width="50%"
-        marginBottom={3}
-        display={["none", "flex"]}
+        borderRadius={2}
+        backgroundColor="delicate"
+        width="100%"
+        marginBottom={4}
+        height={24}
       />
-      <Skeleton
-        borderRadius={1}
-        backgroundColor="faded"
-        fontSize={1}
-        maxWidth={215}
-        width="45%"
-      />
+      <View width="40%" flexDirection="row" alignItems="center">
+        <Skeleton
+          borderRadius={1}
+          backgroundColor="delicate"
+          height={48}
+          width={48}
+        />
+        <View paddingLeft={3}>
+          <Skeleton
+            borderRadius={1}
+            backgroundColor="delicate"
+            width={100}
+            height={20}
+            marginBottom={3}
+          />
+          <Skeleton
+            borderRadius={1}
+            backgroundColor="delicate"
+            width={100}
+            height={20}
+          />
+        </View>
+      </View>
     </View>
+    <Skeleton
+      backgroundColor="delicate"
+      borderRadius={[4, 5, 5]}
+      height={[80, 128, 128]}
+      width={[80, 128, 128]}
+    />
   </View>
 );

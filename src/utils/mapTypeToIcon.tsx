@@ -9,6 +9,7 @@ const mapTypeToIcon = (type: string, params?: any): React.ReactElement => {
   };
 
   const iconTypeNames = {
+    "web-content": "WebLink",
     audio: "Audio",
     award: "Award",
     course: "Course",
