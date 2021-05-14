@@ -4,7 +4,7 @@ status: ready
 releaseVersion: 0.0.25
 ---
 
-The table component takes in two props, rows and headers and then automatically applies styling. There is a number of defined Table components listed that should be used with GO1D.
+The table component takes in two props, rows and headers and then automatically applies styling. There is a number of defined Table components listed that should be used with Go1d.
 
 ## Examples
 
@@ -122,7 +122,7 @@ The Table Header Cell (TH) is a component that provides the styling for the tabl
 
 # Table Row
 
-The Table Row (TR) wraps a set of table cells provided by GO1D. At the moment it supports TD.
+The Table Row (TR) wraps a set of table cells provided by Go1d. At the moment it supports TD.
 
 ## Examples
 

@@ -1,34 +1,49 @@
 ---
-title: GO1D Principles
+title: Go1d Principles
 menuTitle: Principles
-status: in-progress
-lead: We base all GO1D design decisions on these principles. They keep our user experience easy, lean and digestible.
+status: ready
+lead: We base all Go1d design decisions on these principles. They keep our user experience easy, lean and digestible.
 ---
 
-## Be holistic
+Principles help us make decisions when faced with new scenarios.
 
-Create components with the larger picture in mind. Components should be reused as a rule and never designed with only one page or flow in mind.
+## Alive
 
-## Be accessible
+It reacts to the users every move or intent. It’s malleable and adaptive.
 
-Create an experience that everyone can use and appreciate regardless of vision, hearing, cognitive or motor impairments.
+It feels connected. To the communities that use it, and the content and data that power it.
 
-## Make it themable
+We aim for alive even over steady.
 
-Create experiences that can be themed. When used by our partners (or enthusiastic users), they can seamlessly be in their GO1 location while adhering to their own branding guidelines.
+**For example**
 
-## Record record record
+Connecting Shapes illustrate the many pathways of the learning journey and the Go1’s ability to adaptively respond to content, new partnerships and platform integration. They do this by connecting relevant pieces of content and highlighting key information in our communications.
 
-Document as much as possible - but don’t go overboard. If you didn’t make it to work tomorrow, would others be able to pick up where you left off?
 
-## Keep it simple
 
-Exactly.
+## Essential
 
-## Consistency
+It’s focused on what is needed right now
 
-Create components that are consistent as in, they are inline with our brand/styles and ensure a seamless user experience.
+It’s the 20%, that 80% of users need – Pareto principle / Progressive disclosure
 
-## Don’t think, just be
+We aim for essential even over comprehensive.
 
-Ensure that our user experince doesn’t require thought. Our users should ONLY be focused on their content and at ease with how to navigate and use our system. No rage clicks.
+**For example**
+
+The Collapse component is used to collapse and expand content inline on a page. This lets users progressively disclose information when they want.
+
+
+
+## Smart
+
+It’s refined and elegant, not overt or gaudy.
+
+It anticipates the next move. It’s personalised, not customised.
+
+We aim for smart even over striking.
+
+**For example**
+
+Buttons indicate what actions are possible to users. Subtle buttons reduce visual noise when there are many action of equal importance on the page. Minimal button is a tertiary button that can be used in conjunction and support accent and subtle buttons, but still easily discoverable by the user.
+

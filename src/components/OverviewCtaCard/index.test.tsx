@@ -37,7 +37,7 @@ it("renders without crashing with all available props", () => {
       ctaAlt={
         <React.Fragment>
           <Text fontSize={3} fontWeight="semibold">
-            Included in GO1 Premium
+            Included in Go1 Content Hub
           </Text>
           <Text fontWeight="semibold" color="subtle">
             Starting from $12 per user for teams

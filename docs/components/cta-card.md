@@ -6,7 +6,7 @@ releaseVersion: 0.2.18
 
 ## Examples
 ### With Price
-An example use case of the GO1 Price Packaging on the website
+An example use case of the Go1 Price Packaging on the website
 
 ```.jsx
 <View padding={5} backgroundColor="soft">
@@ -23,7 +23,7 @@ An example use case of the GO1 Price Packaging on the website
 </View>
 ```
 ### With content provider card
-An example use case is Content provider Card on the GO1 Website
+An example use case is Content provider Card on the Go1 Website
 
 ```.jsx
 <View padding={5} backgroundColor="background">
@@ -31,7 +31,7 @@ An example use case is Content provider Card on the GO1 Website
     iconImage="https://res.cloudinary.com/go1/image/upload/v1542240162/ojaevw3frdaiji5zzmf3.png"
     title="Pay per use"
     backgroundColor="soft"
-    description="Sell your courses through the GO1 course marketplace directly to consumers.<br/><br/>You receive 70% of the purchase price from all sales."
+    description="Sell your courses through the Go1 course marketplace directly to consumers.<br/><br/>You receive 70% of the purchase price from all sales."
     buttonText="Button"
     button={(
       <ButtonFilled size="lg" justifyContent="center">

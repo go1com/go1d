@@ -46,7 +46,7 @@ releaseVersion: 0.0.41
     )}
       ctaAlt={(
     <>
-        <Text fontSize={3} fontWeight="semibold">Included in GO1 Premium</Text>
+        <Text fontSize={3} fontWeight="semibold">Included in Go1 Content Hub</Text>
         <Text fontWeight="semibold" color="subtle">Starting from $12 per user for teams</Text>
         <Button marginBottom={4} paddingTop={0} icon={IconChevronRight} flexDirection="row-reverse" justifyContent="flex-end" paddingLeft={0} color="accent" href="google.com">Learn more</Button>
         <ButtonFilled>Try it free</ButtonFilled>
@@ -78,7 +78,7 @@ Different properties are displayed in different positions and shown/hidden based
     backgroundImage="https://images.unsplash.com/photo-1539512110726-6d89c892f117?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=10cd46d36ba78d30891de50e25907fe6&auto=format&fit=crop&w=2089&q=80"
   ctaAlt={(
     <>
-        <Text fontSize={3} fontWeight="semibold">Included in GO1 Premium</Text>
+        <Text fontSize={3} fontWeight="semibold">Included in Go1 Content Hub</Text>
         <Text fontWeight="semibold" color="subtle">Starting from $12 per user for teams</Text>
         <Button marginBottom={4} paddingTop={0} icon={IconChevronRight} flexDirection="row-reverse" justifyContent="flex-end" paddingLeft={0} color="accent" href="google.com">Learn more</Button>
         <ButtonFilled>Try it free</ButtonFilled>
@@ -129,7 +129,7 @@ Different properties are displayed in different positions and shown/hidden based
     position="relative"
     ctaAlt={(
       <>
-        <Text fontSize={3} fontWeight="semibold">Included in GO1 Premium</Text>
+        <Text fontSize={3} fontWeight="semibold">Included in Go1 Content Hub</Text>
         <Text fontWeight="semibold" color="subtle">Starting from $12 per user for teams</Text>
         <Button marginBottom={4} paddingTop={0} icon={IconChevronRight} flexDirection="row-reverse" justifyContent="flex-end" paddingLeft={0} color="accent" href="google.com">Learn more</Button>
         <ButtonFilled>Try it free</ButtonFilled>
