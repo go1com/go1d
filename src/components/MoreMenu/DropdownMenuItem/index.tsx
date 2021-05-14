@@ -34,6 +34,8 @@ const DropdownMenu = (item: Item, index: number, getItemProps) => {
       paddingBottom={3}
       paddingLeft={4}
       borderRadius={0}
+      role="combobox"
+      aria-label="combobox"
       {...props}
     >
       <Text>{item.title}</Text>

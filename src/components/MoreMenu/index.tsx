@@ -93,6 +93,8 @@ class MoreMenu extends React.Component<MoreMenuProps> {
               });
               return isButtonFilled ? (
                 <ButtonFilled
+                  role="combobox"
+                  aria-label="combobox"
                   icon={IconEllipsis}
                   {...buttonProps}
                   {...toggleButtonProps}
@@ -101,6 +103,8 @@ class MoreMenu extends React.Component<MoreMenuProps> {
                 />
               ) : (
                 <ButtonMinimal
+                  role="combobox"
+                  aria-label="combobox"
                   data-testid="toggle"
                   icon={IconEllipsis}
                   innerRef={ref}

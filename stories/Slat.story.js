@@ -1,110 +1,116 @@
 import React from "react";
-import { Slat, View, Text } from "../src";
-import { IconCalendar, IconMapPin, IconImport } from "../src/components/Icons";
+import { Link, Slat, View } from "../src";
+import { IconSave } from "../src/components/Icons";
+
+const thumbnailUrl = "https://res.cloudinary.com/go1/image/fetch/w_300,h_300,f_auto,c_fill/https://res.cloudinary.com/go1/image/upload/v1616042815/fgvrr5m0cqvt4nnalxus.jpg";
+
+const metaThumbnailUrl = "https://images.prismic.io/go1prod/0b791d6f-c4ff-4a0c-b36c-2a5a99edca3c_Screen+Shot+2020-07-23+at+10.25.55+am.png?auto=compress,format&rect=0,1,390,390&w=30&h=30";
 
 export default {
   title: "Athletic/Slat",
   component: Slat,
 };
 
-export const WithDropdownActions = args => (
+export const WithActions = args => (
   <Slat
     {...args}
-    id={123}
-    topMeta={["one", "two"]}
-    title="This is test title"
-    description="This is the test description"
-    currency="AUD"
-    price={100}
-    bottomMeta={[
-      {
-        icon: "Calendar",
-        text: "1.30pm - 2.30pm",
-      },
-      {
-        icon: "MapPin",
-        text: "Underwood, QLD, Australia",
-      },
-    ]}
-    image="https://res.cloudinary.com/go1vn/image/upload/v1537851944/ckvawokvc4k70fd9t1oj.jpg"
-    type="Event"
-    typeBackground="background"
-    dropdownItems={[
-      {
-        icon: IconCalendar,
-        title: "fake item",
-        onClick: () => console.log("foo"),
-      },
-      {
-        icon: IconCalendar,
-        title: "fake item2",
-        onClick: () => console.log("foo2"),
-      },
-    ]}
   />
 );
 
-WithDropdownActions.storyName = "With dropdown actions";
+WithActions.storyName = "WithActions";
+WithActions.argTypes = {
+  id: { defaultValue: 123 },
+  title: { defaultValue: "This is test title" },
+  supportingText: { defaultValue: "This is the test description" },
+  thumbnail: { defaultValue: thumbnailUrl },
+  meta: { defaultValue: {
+      image: metaThumbnailUrl,
+      subtitle: ["Catalyst Education", "abc"],
+      data: ["Meta Text", "Learning Type"],
+  }},
+  primaryActionItems: { defaultValue: [
+    {
+      icon: IconSave,
+      onClick: () => alert("fake item 1"),
+    },
+  ]},
+  secondaryActionItems: { defaultValue: [
+    {
+      icon: IconSave,
+      title: "fake item 2",
+      onClick: () => alert("fake item 2"),
+    },
+  ]},
+};
 
-export const WithActionRenderer = args => (
+export const EmptyThumbnail = () => (
   <Slat
     id={123}
-    topMeta={["one", "two"]}
+    type="web-content"
     title="This is test title"
-    description="This is the test description"
-    currency="AUD"
-    price={100}
-    bottomMeta={[
-      {
-        icon: IconCalendar,
-        text: "1.30pm - 2.30pm",
-      },
-      {
-        icon: IconMapPin,
-        text: "Underwood, QLD, Australia",
-      },
-    ]}
-    image="https://res.cloudinary.com/go1vn/image/upload/v1537851944/ckvawokvc4k70fd9t1oj.jpg"
-    type="Event"
-    typeBackground="background"
-    actionRenderer={() => (
-      <View flexDirection="row">
-        <IconImport marginRight={3} color="accent" />
-        <Text color="accent">Import</Text>
-      </View>
-    )}
+    supportingText="This is the test description"
   />
 );
 
-WithActionRenderer.storyName = "With actionRenderer";
+EmptyThumbnail.storyName = "EmptyThumbnail";
 
-export const WithImpliedLinkWrapperAndActiveHoverStates = args => (
+export const MultipleItems = () => (
+  <>
+    <View marginBottom={6}>
+      <Slat
+        id={123}
+        type="playlist"
+        title="This is a playlist"
+        supportingText="This is the test description"
+        thumbnail={thumbnailUrl}
+        meta={{
+          image: metaThumbnailUrl,
+          subtitle: ["Catalyst Education", "abc", "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s"],
+          data: ["Meta Text", "Learning Type"],
+        }}
+        primaryActionItems={[
+          {
+            icon: IconSave,
+            onClick: () => alert("fake item 1"),
+          },
+        ]}
+        secondaryActionItems={[
+          {
+            icon: IconSave,
+            title: "fake item 2",
+            onClick: () => alert("fake item 2"),
+          },
+        ]}
+      />
+    </View>
+    <View>
+      <Slat
+        id={456}
+        type="course"
+        title="This is a course"
+        supportingText="This is the test description"
+      />
+    </View>
+  </>
+);
+
+MultipleItems.storyName = "MultipleItems";
+
+export const WithLink = () => (
   <Slat
+    href="https://go1.com"
     id={123}
-    topMeta={[
-      "one",
-      "two try to get top meta Truncate String with Ellipsis with a very very very very very very very very very long text",
-    ]}
-    title="This is test title try to get title to Truncate String with Ellipsis with a very very very very very very very very very long text"
-    description="This is the test description try to get description to Truncate String with Ellipsis with a very very very very very very very very very long text"
-    currency="AUD"
-    price={100}
-    bottomMeta={[
-      {
-        icon: IconCalendar,
-        text: "1.30pm - 2.30pm",
-      },
-      {
-        icon: IconMapPin,
-        text: "Underwood, QLD, Australia",
-      },
-    ]}
-    image="https://res.cloudinary.com/go1vn/image/upload/v1537851944/ckvawokvc4k70fd9t1oj.jpg"
-    type="Event"
-    typeBackground="background"
+    type="web-content"
+    title="This is test title"
+    supportingText="This is the test description"
   />
 );
 
-WithImpliedLinkWrapperAndActiveHoverStates.storyName = "With implied link wrapper and active/hover states";
+WithLink.storyName = "WithLink";
 
-export const Skeleton = args => <Slat skeleton={true} />;
+export const Skeleton = () => (
+  <Slat skeleton={true} />
+);
+
+Skeleton.storyName = "skeleton";
+Skeleton.parameters = { controls: { hideNoControlsWarning: true } };
