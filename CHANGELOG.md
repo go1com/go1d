@@ -1,5 +1,11 @@
 # @go1d/go1d
 
+## 5.0.0
+
+### Major Changes
+
+- d8d0e6c1: AVG-339 Adds Athletic Slat as `<Slat />` and renames the original Go1d Slat to `<DEPRECATED_Slat />`.
+
 ## 4.0.2
 
 ### Patch Changes
