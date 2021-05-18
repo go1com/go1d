@@ -65,7 +65,7 @@ const Slat: React.SFC<SlatProps> = ({
   }
 
   const ItemTypeBadge = getItemTypeBadge(type);
-  const ItemEmptyIcon = mapTypeToIcon(type, { color: "thin" });
+  const ItemEmptyIcon = mapTypeToIcon(type, { color: "subtle" });
 
   const onClickPrimaryAction = onItemClick => (e: React.SyntheticEvent) => {
     safeInvoke(onItemClick);
