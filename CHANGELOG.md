@@ -1,5 +1,11 @@
 # @go1d/go1d
 
+## 5.0.1
+
+### Patch Changes
+
+- 3d7e60b5: Updates Node to v12 because Node 10 has reached End Of Life
+
 ## 5.0.0
 
 ### Major Changes
