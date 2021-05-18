@@ -1,4 +1,4 @@
-image: go1com/ci-nodejs:node10
+image: go1com/ci-nodejs:node12
 
 variables:
   AZURE_STORAGE_ACCOUNT: go1review
