@@ -1,5 +1,11 @@
 # @go1d/go1d
 
+## 5.0.2
+
+### Patch Changes
+
+- 5ee3a5bc: Change empty icon color in Slat
+
 ## 5.0.1
 
 ### Patch Changes
