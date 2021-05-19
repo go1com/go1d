@@ -1,5 +1,11 @@
 # @go1d/go1d
 
+## 6.0.2
+
+### Patch Changes
+
+- 089105f5: Fix Avatar display when rendering with border
+
 ## 6.0.1
 
 ### Patch Changes
