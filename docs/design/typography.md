@@ -12,11 +12,11 @@ Our brand uses two typefaces – a headline typeface called Victor Serif and a c
 
 ### Brand fonts
 
-Our headline typeface is Victor Serif. We only use one weight for our headlines—semibold (600).
+Our headline typeface is Victor Serif. We only use one weight for our headlines – semibold (600).
 
 ```!jsx
 <View marginTop={6} marginBottom={8}>
-  <Heading semanticElement="p" visualHeadingLevel="Heading 3" color="default">
+  <Heading semanticElement="p" visualHeadingLevel="Heading 2" color="default">
     Victor Serif<br/>
     ABCDEFGHIJKLMNOPQRSTUVWXYZ<br/>
     abcdefghijklmnopqrstuvwxyz<br/>

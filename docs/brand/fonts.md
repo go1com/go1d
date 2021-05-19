@@ -6,7 +6,7 @@ menuOrder: 3
 
 Our brand uses two typefaces – a headline typeface called Victor Serif and a custom designed body typeface called Obelisc. The purpose of our type is to communicate clearly and effectively, while also remaining distinct and sophisticated.
 
-Our headline typeface is Victor Serif. We only use one weight for our headlines—semibold.
+Our headline typeface is Victor Serif. We only use one weight for our headlines – semibold.
 
 Obelisc is a custom designed body copy typeface made for the Go1 brand. It is designed to work harmoniously with Victor serif across all platforms. Obelisc was inspired by mid century geometric typefaces, the notable angles and circular shapes in Obelisc visually reference the connecting shapes.
 
