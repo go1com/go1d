@@ -201,10 +201,8 @@ const Slat: React.SFC<SlatProps> = ({
                   <View flexDirection="row" alignItems="center" flexBasis="50%">
                     <Avatar
                       fullName={meta.subtitle[0]}
-                      size={[5, 4, 3]}
+                      scaleSize={1}
                       backgroundColor="faded"
-                      avatarType="square"
-                      borderRadius={2}
                       src={meta.image}
                     />
                     <View paddingLeft={3}>

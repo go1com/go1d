@@ -5,26 +5,44 @@ import Text from "../Text";
 import Theme from "../Theme";
 import View, { ViewProps } from "../View";
 
+export type ScaleSizeType = 1 | 2 | 3;
+
 export interface AvatarProps extends ViewProps {
   fullName?: string;
-  size?: number | number[];
-  scaleSize?: number;
+  scaleSize?: ScaleSizeType;
   src?: string;
   icon?: React.ComponentType<IconProps>;
-  iconName?: never; // Removed
-  avatarType?: "circle" | "square";
   skeleton?: boolean;
 }
+
+const MAXIMUM_SCALE_SIZE: ScaleSizeType = 3;
+const DEFAULT_SCALE_SIZE: ScaleSizeType = MAXIMUM_SCALE_SIZE;
+
+const scaleDownRatio: Record<ScaleSizeType, object> = {
+  1: {
+    sm: { size: 0, font: 0 },
+    md: { size: 0, font: 0 },
+    lg: { size: 0, font: 0 },
+  },
+  2: {
+    sm: { size: 1, font: 1 },
+    md: { size: 1, font: 1 },
+    lg: { size: 0, font: 0 },
+  },
+  3: {
+    sm: { size: 2, font: 3 },
+    md: { size: 1, font: 1 },
+    lg: { size: 0, font: 0 },
+  },
+};
 
 const Avatar: React.SFC<AvatarProps> = ({
   src,
   fullName,
-  size = 6,
-  scaleSize = 1,
+  scaleSize = DEFAULT_SCALE_SIZE,
   icon,
-  avatarType = "circle",
   skeleton = false,
-  borderRadius = 4,
+  placeHolderVisibilityType = "text",
   ...props
 }: AvatarProps) => {
   const names = `${fullName}`.split(" ");
@@ -35,78 +53,93 @@ const Avatar: React.SFC<AvatarProps> = ({
   const IconElement = icon || IconUser;
 
   const constrainSize = Size => {
-    let constrained = Math.abs(Math.trunc(Size)) || 6;
+    let constrained = Math.abs(Math.trunc(Size)) || DEFAULT_SCALE_SIZE;
 
-    if (constrained > 6) {
-      constrained = 6;
+    if (constrained > MAXIMUM_SCALE_SIZE) {
+      constrained = MAXIMUM_SCALE_SIZE;
     }
 
-    return constrained + 2;
+    return constrained + 1;
   };
 
-  const getBreakPointSizeStyles = (breakPoints, typeScale) =>
-    Object.keys(breakPoints).reduce((acc, bpKey, Index) => {
-      const SizeKey = size[Index]
-        ? constrainSize(size[Index])
-        : constrainSize(size);
-      const Size =
-        scaleSize *
-        (typeScale.scale[bpKey][SizeKey] || typeScale.scale[bpKey][1]);
+  const getBreakPointSizeStyles = breakPoints =>
+    Object.keys(breakPoints).reduce((acc, bpKey) => {
+      const SizeKey = constrainSize(scaleSize);
+      const BorderRadius =
+        (SizeKey - scaleDownRatio[scaleSize][bpKey].size) * 4;
+      const Size = (SizeKey - scaleDownRatio[scaleSize][bpKey].size) * 16;
 
       return {
         ...acc,
         [breakPoints[bpKey]]: {
           width: Size,
           height: Size,
+          borderRadius: BorderRadius,
         },
       };
     }, {});
 
-  const constrainText = fontSize =>
-    constrainSize(size) <= 3 ? 1 : fontSize - 2;
+  const getBreakPointFontSizeStyles = (breakPoints, typeScale) =>
+    Object.keys(breakPoints).reduce((acc, bpKey) => {
+      const SizeKey = constrainSize(scaleSize);
+      const FontSize =
+        (SizeKey <= 2 ? SizeKey - 1 : SizeKey) -
+        scaleDownRatio[scaleSize][bpKey].font;
 
-  const constrainIcon = iconSize =>
-    constrainSize(iconSize) <= 2 ? 1 : constrainSize(iconSize) - 3;
+      return {
+        ...acc,
+        [breakPoints[bpKey]]: {
+          fontSize: typeScale[bpKey][FontSize],
+        },
+      };
+    }, {});
+
+  const getBreakPointIconSizeStyles = breakPoints =>
+    Object.keys(breakPoints).reduce((acc, bpKey) => {
+      const SizeKey = constrainSize(scaleSize);
+      const IconSize = (SizeKey - scaleDownRatio[scaleSize][bpKey].size) * 8;
+
+      return {
+        ...acc,
+        [breakPoints[bpKey]]: {
+          width: IconSize,
+          height: IconSize,
+        },
+      };
+    }, {});
 
   return (
     <Theme.Consumer>
-      {({ type, breakpoints }) => (
+      {({ breakpoints, type }) => (
         <View
-          borderRadius={borderRadius}
           css={{
             verticalAlign: "middle",
-            borderRadius: avatarType === "circle" ? "50%" : undefined,
             textAlign: "center",
             position: "relative",
-            ...getBreakPointSizeStyles(breakpoints, type),
+            ...getBreakPointSizeStyles(breakpoints),
           }}
           position="relative"
           justifyContent="center"
-          backgroundColor={skeleton ? "muted" : "contrast"}
+          backgroundColor="delicate"
           {...props}
         >
           {!skeleton && (
             <React.Fragment>
               {fullName ? (
                 <Text
+                  fontWeight="bold"
                   color={props.color || "subtle"}
-                  css={{ textTransform: "uppercase" }}
-                  fontSize={
-                    Array.isArray(size)
-                      ? size.map(constrainText)
-                      : constrainText(size)
-                  }
+                  css={{
+                    textTransform: "uppercase",
+                    ...getBreakPointFontSizeStyles(breakpoints, type.scale),
+                  }}
                 >
                   {displayName}
                 </Text>
               ) : (
                 <View alignItems="center">
                   <IconElement
-                    size={
-                      Array.isArray(size)
-                        ? size.map(constrainIcon)
-                        : constrainIcon(size)
-                    }
+                    css={{ ...getBreakPointIconSizeStyles(breakpoints) }}
                     color="subtle"
                   />
                 </View>
@@ -115,7 +148,6 @@ const Avatar: React.SFC<AvatarProps> = ({
               {src && (
                 <View
                   position="absolute"
-                  borderRadius={borderRadius}
                   css={{
                     top: 0,
                     left: 0,
@@ -123,8 +155,7 @@ const Avatar: React.SFC<AvatarProps> = ({
                     backgroundSize: "cover",
                     backgroundImage: `url('${src}')`,
                     backgroundPosition: "center",
-                    borderRadius: avatarType === "circle" ? "50%" : undefined,
-                    ...getBreakPointSizeStyles(breakpoints, type),
+                    ...getBreakPointSizeStyles(breakpoints),
                   }}
                 />
               )}

@@ -1,8 +1,8 @@
 import * as React from "react";
 import { autobind } from "../../utils/decorators";
 import safeInvoke from "../../utils/safeInvoke";
-import Avatar from "../Avatar";
 import ButtonMinimal from "../ButtonMinimal";
+import Avatar from "../DEPRECATED_Avatar";
 import SelectDropdown, { SelectDropdownItemProps } from "../SelectDropdown";
 import Text from "../Text";
 import TextInput from "../TextInput";
