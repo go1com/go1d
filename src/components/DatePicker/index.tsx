@@ -17,8 +17,16 @@ import IconChevronRight from "../Icons/ChevronRight";
 import { Transition } from "react-transition-group";
 import "./css";
 
+export interface DatePickerChangeEvent {
+  target: {
+    name: string;
+    id: string;
+    value: Moment.Moment;
+  };
+}
+
 export interface DatePickerProps extends ViewProps {
-  onChange?: ({ startDate, endDate }) => void;
+  onChange?: (event: DatePickerChangeEvent) => void;
   children?: any;
   id: string;
   size?: "lg" | "md" | "sm";
