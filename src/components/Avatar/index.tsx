@@ -1,3 +1,4 @@
+import merge = require("lodash/merge");
 import * as React from "react";
 import { IconProps } from "../IconBase";
 import IconUser from "../Icons/User";
@@ -65,8 +66,6 @@ const Avatar: React.SFC<AvatarProps> = ({
   const getBreakPointSizeStyles = breakPoints =>
     Object.keys(breakPoints).reduce((acc, bpKey) => {
       const SizeKey = constrainSize(scaleSize);
-      const BorderRadius =
-        (SizeKey - scaleDownRatio[scaleSize][bpKey].size) * 4;
       const Size = (SizeKey - scaleDownRatio[scaleSize][bpKey].size) * 16;
 
       return {
@@ -74,6 +73,19 @@ const Avatar: React.SFC<AvatarProps> = ({
         [breakPoints[bpKey]]: {
           width: Size,
           height: Size,
+        },
+      };
+    }, {});
+
+  const getBreakPointBorderRadiusStyles = breakPoints =>
+    Object.keys(breakPoints).reduce((acc, bpKey) => {
+      const SizeKey = constrainSize(scaleSize);
+      const BorderRadius =
+        (SizeKey - scaleDownRatio[scaleSize][bpKey].size) * 4;
+
+      return {
+        ...acc,
+        [breakPoints[bpKey]]: {
           borderRadius: BorderRadius,
         },
       };
@@ -116,7 +128,10 @@ const Avatar: React.SFC<AvatarProps> = ({
             verticalAlign: "middle",
             textAlign: "center",
             position: "relative",
-            ...getBreakPointSizeStyles(breakpoints),
+            ...merge(
+              getBreakPointBorderRadiusStyles(breakpoints),
+              getBreakPointSizeStyles(breakpoints)
+            ),
           }}
           position="relative"
           justifyContent="center"
@@ -155,7 +170,9 @@ const Avatar: React.SFC<AvatarProps> = ({
                     backgroundSize: "cover",
                     backgroundImage: `url('${src}')`,
                     backgroundPosition: "center",
-                    ...getBreakPointSizeStyles(breakpoints),
+                    width: "100%",
+                    height: "100%",
+                    ...getBreakPointBorderRadiusStyles(breakpoints),
                   }}
                 />
               )}
