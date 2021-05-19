@@ -1,5 +1,13 @@
 # @go1d/go1d
 
+## 6.0.0
+
+### Major Changes
+
+- 3426e9d7: Adds Athletic Avatar as `<Avatar />` and renames the original Go1d Slat to `<DEPRECATED_Avatar />`
+
+  Update `CourseSlat`, `Slat` and `EditFocusModeHeader` to use new `Avatar`
+
 ## 5.0.2
 
 ### Patch Changes
