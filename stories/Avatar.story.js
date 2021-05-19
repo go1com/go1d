@@ -1,49 +1,58 @@
 import React from "react";
-import { Avatar } from "../src";
-import IconMultipleUsers from "../src/components/Icons/MultipleUsers";
-
-const IconElement = IconMultipleUsers;
+import { Avatar, Link } from "../src";
+import { IconAudio } from "../src/components/Icons";
 
 export default {
   title: "Athletic/Avatar",
+  component: Avatar,
   argTypes: {
-    avatarType: {
-      options: ['circle', 'square'],
-      defaultValue: "square",
+    scaleSize: {
+      defaultValue: 3,
+      control: { type: 'range', min: 1, max: 3 }
     },
   },
-  component: Avatar,
+
 };
 
-export const AvatarWithAnImage = args => (
-  <Avatar {...args} src="https://i.imgur.com/Ee55uvc.jpg" fullName="Leslie Knope" />
+export const Basic = args => (
+  <Avatar {...args} />
 );
-AvatarWithAnImage.storyName = "Avatar with an image";
 
-export const AvatarWithCircleShape = () => <Avatar avatarType="circle" />;
-AvatarWithCircleShape.storyName = "Avatar with circle shape";
+Basic.argTypes = {
+  src: { defaultValue: "https://i.imgur.com/Ee55uvc.jpg" },
+  fullName: { defaultValue: "Leslie Knope" },
+  icon: { defaultValue: null },
+  skeleton: { defaultValue: false },
+  placeHolderVisibilityType: { defaultValue: 'text' },
+};
 
-export const AvatarWithoutAnImage = () => <Avatar fullName="Leslie Knope" avatarType="square" />;
-AvatarWithoutAnImage.storyName = "Avatar without an image";
-
-export const AvatarWithoutAnImageAndName = () => <Avatar avatarType="square" />;
-AvatarWithoutAnImage.storyName = "Avatar without an image";
-
-export const AvatarWithMultipleUsersIcon = () => <Avatar icon={IconElement} avatarType="square" />;
-AvatarWithMultipleUsersIcon.storyName = "Avatar with multiple users icon";
-
-export const AvatarWithADifferentSize = () => (
-  <Avatar fullName="Willy Wonka" size={4} avatarType="square" />
+export const AvatarSingleWithOutImageUrl = args => (
+  <Avatar {...args} fullName="Leslie Knope" />
 );
-AvatarWithADifferentSize.storyName = "Avatar with a different size";
 
-export const AvatarWithDifferentColors = () => (
-  <Avatar
-    avatarType="square"
-    fullName="Leslie Knope"
-    backgroundColor="subtle"
-    color="background"
-    size={4}
-  />
+AvatarSingleWithOutImageUrl.storyName = "Without thumbnail url";
+AvatarSingleWithOutImageUrl.parameters = { controls: { hideNoControlsWarning: true } };
+
+export const AvatarIconPlaceHolder = args => (
+  <Avatar {...args} icon={IconAudio} />
 );
-AvatarWithDifferentColors.storyName = "Avatar with different colors";
+
+AvatarIconPlaceHolder.storyName = "Icon placeholder type";
+AvatarIconPlaceHolder.parameters = { controls: { hideNoControlsWarning: true } };
+
+export const AvatarWithLink = args => (
+  <Link href="https://go1.com">
+    <Avatar {...args} fullName="Leslie Knope" />
+  </Link>
+);
+
+AvatarWithLink.storyName = "With link";
+AvatarWithLink.parameters = { controls: { hideNoControlsWarning: true } };
+
+export const AvatarSkeleton = args => (
+  <Avatar {...args} skeleton />
+);
+
+AvatarSkeleton.storyName = "Skeleton";
+AvatarSkeleton.parameters = { controls: { hideNoControlsWarning: true } };
+

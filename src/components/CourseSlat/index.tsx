@@ -306,10 +306,15 @@ const CourseSlat: React.SFC<CourseSlatProps> = ({
                     />
                   )}
                   {(duration || author) && (
-                    <View flexDirection="row" marginY={3} flexWrap="wrap">
+                    <View
+                      flexDirection="row"
+                      marginY={3}
+                      flexWrap="wrap"
+                      alignItems="center"
+                    >
                       {authorAvatar && (
                         <View paddingRight={3}>
-                          <Avatar src={authorAvatar} size={1} />
+                          <Avatar src={authorAvatar} scaleSize={1} />
                         </View>
                       )}
                       {author && (

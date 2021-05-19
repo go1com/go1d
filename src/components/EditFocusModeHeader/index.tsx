@@ -22,7 +22,6 @@ export interface EditFocusModeHeaderProps {
   title: string;
   subtitle?: string | React.ReactNode;
   avatar?: string;
-  avatarType?: "square" | "circle";
   tabs?: React.ReactNode;
 }
 const hideOnMobile = ["none", "flex", "flex"];
@@ -35,7 +34,6 @@ const EditFocusModeHeader = ({
   subtitle,
   title,
   avatar,
-  avatarType = "square",
   tabs,
 }: EditFocusModeHeaderProps) => {
   const ReturnIconElement = returnIcon || IconCross;
@@ -69,12 +67,7 @@ const EditFocusModeHeader = ({
               marginRight={4}
               display={hideOnMobile}
             >
-              <Avatar
-                icon={IconDocument}
-                src={avatar}
-                size={3}
-                avatarType={avatarType}
-              />
+              <Avatar icon={IconDocument} src={avatar} scaleSize={1} />
             </View>
           )}
           <View flexShrink={1}>
