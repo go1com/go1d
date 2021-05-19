@@ -1,5 +1,11 @@
 # @go1d/go1d
 
+## 6.0.1
+
+### Patch Changes
+
+- 82062f4b: DatePicker > fix incorrect onChange signature
+
 ## 6.0.0
 
 ### Major Changes
