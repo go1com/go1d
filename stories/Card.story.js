@@ -19,33 +19,34 @@ Skeleton.parameters = { controls: { hideNoControlsWarning: true } };
 
 export const AlmostAllTheProps = args => (
   <View width={213}>
-    <Link href="https://go1.com">
-      <Card
-        {...args}
-        title="Learning item title"
-        type="course"
-        subTitle="Go1 Learning"
-        metadata={["Course", "45 mins"]}
-        thumbnail="https://res.cloudinary.com/go1/image/fetch/w_1024,h_300,c_thumb,g_auto/https://udemy-images.udemy.com/course/750x422/435262_c617.jpg"
-        customActionItems={[<ButtonFilled icon={IconSave} />]}
-        moreMenuItems={[
-          {
-            title: "Add",
-            href: "#testing",
-            icon: IconPlus,
-            iconColor: "muted"
-          },
-          {
-            title: "Delete",
-            href: "#testing",
-            color: "danger",
-            icon: IconTrash,
-            target:"_blank",
-            rel:"noopener noreferrer",
-          },
-        ]}
-      />
-    </Link>
+    <Card
+      element={Link}
+      href="https://go1.com"
+      title="Learning item title"
+      type="course"
+      subTitle="Go1 Learning"
+      metadata={["Course", "45 mins"]}
+      thumbnail="https://res.cloudinary.com/go1/image/fetch/w_1024,h_300,c_thumb,g_auto/https://udemy-images.udemy.com/course/750x422/435262_c617.jpg"
+      hasFocusState
+      hasHoverState
+      moreMenuItems={[
+        {
+          title: "Add",
+          href: "#testing",
+          icon: IconPlus,
+          iconColor: "muted"
+        },
+        {
+          title: "Delete",
+          href: "#testing",
+          color: "danger",
+          icon: IconTrash,
+          target:"_blank",
+          rel:"noopener noreferrer",
+        },
+      ]}
+      {...args}
+    />
   </View>
 );
 AlmostAllTheProps.storyName = "Almost all the Props with the link";
@@ -139,7 +140,9 @@ export const MultipleCard = () => (
       subTitle="Go1 Learning"
       metadata={["Course", "45 mins"]}
       thumbnail="https://res.cloudinary.com/go1/image/fetch/w_1024,h_300,c_thumb,g_auto/https://udemy-images.udemy.com/course/750x422/435262_c617.jpg"
-      customActionItems={[<ButtonFilled icon={IconSave} />]}
+      customActionItemsRenderer={actionProps => <ButtonFilled icon={IconSave} onClick={(e) => { e.preventDefault(); console.log("action!"); }} {...actionProps} />}
+      hasFO
+      hasHoverState
       moreMenuItems={[
         {
           title: "Add",
@@ -164,7 +167,7 @@ export const MultipleCard = () => (
       type="video"
       subTitle="Donec rutrum congue leo eget malesuada. Sed porttitor lectus nibh."
       metadata={["Video", "45 mins"]}
-      customActionItems={[<ButtonFilled icon={IconSave} />]}
+      customActionItemsRenderer={actionProps => <ButtonFilled icon={IconSave} onClick={(e) => { e.preventDefault(); console.log("action!"); }} {...actionProps} />}
       moreMenuItems={[
         {
           title: "Add",
@@ -189,7 +192,7 @@ export const MultipleCard = () => (
       type="document"
       subTitle="Go1 Learning"
       metadata={["Document", "45 mins"]}
-      customActionItems={[<ButtonFilled icon={IconSave} />]}
+      customActionItemsRenderer={actionProps => <ButtonFilled icon={IconSave} onClick={(e) => { e.preventDefault(); console.log("action!"); }} {...actionProps} />}
       moreMenuItems={[
         {
           title: "Add",
@@ -222,7 +225,7 @@ export const MultipleCard1 = () => (
       subTitle="Go1 Learning"
       metadata={["Course", "45 mins"]}
       thumbnail="https://res.cloudinary.com/go1/image/fetch/w_1024,h_300,c_thumb,g_auto/https://udemy-images.udemy.com/course/750x422/435262_c617.jpg"
-      customActionItems={[<ButtonFilled icon={IconSave} />]}
+      customActionItemsRenderer={actionProps => <ButtonFilled icon={IconSave} onClick={(e) => { e.preventDefault(); console.log("action!"); }} {...actionProps} />}
       moreMenuItems={[
         {
           title: "Add",
@@ -247,7 +250,7 @@ export const MultipleCard1 = () => (
       type="video"
       subTitle="Donec rutrum congue leo eget malesuada. Sed porttitor lectus nibh."
       metadata={["Video", "45 mins"]}
-      customActionItems={[<ButtonFilled icon={IconSave} />]}
+      customActionItemsRenderer={actionProps => <ButtonFilled icon={IconSave} onClick={(e) => { e.preventDefault(); console.log("action!"); }} {...actionProps} />}
       moreMenuItems={[
         {
           title: "Add",
@@ -272,7 +275,7 @@ export const MultipleCard1 = () => (
       type="document"
       subTitle="Go1 Learning"
       metadata={["Document", "45 mins"]}
-      customActionItems={[<ButtonFilled icon={IconSave} />]}
+      customActionItemsRenderer={actionProps => <ButtonFilled icon={IconSave} onClick={(e) => { e.preventDefault(); console.log("action!"); }} {...actionProps} />}
       moreMenuItems={[
         {
           title: "Add",

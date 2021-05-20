@@ -5,8 +5,8 @@ import CardListIndex from "./index";
 const setup = (props = {}) => {
   return render(
     <CardListIndex
-      title="Title goes here even it’s super super long and took two lines only"
-      subTitle="Supporting text include text like an article summary or a restaurant description."
+      title="Sed porttitor lectus nibh."
+      subTitle="Vivamus magna justo, lacinia eget consectetur sed, convallis at tellus."
       thumbnail="http://res.cloudinary.com/go1/image/upload/v1565766636/f4e8fqv5zayyjve2ovms.jpg"
       {...props}
     />

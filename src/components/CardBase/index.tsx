@@ -7,6 +7,11 @@ import Theme from "../Theme";
 import View, { ViewProps } from "../View";
 import Skeleton from "./components/Skeleton";
 
+export interface ActionProps {
+  ref: any;
+  onFocus: () => void;
+  onBlur: () => void;
+}
 export interface Props extends ViewProps {
   title?: string;
   subTitle?: string;
@@ -15,16 +20,16 @@ export interface Props extends ViewProps {
   thumbnail?: string;
   ratioThumbnail?: number;
   metadata?: string[];
-  customActionItems?: React.ReactNode[];
   moreMenuItems?: any[];
-
-  thumbnailStyle?: object;
+  hasHoverState?: boolean;
+  hasFocusState?: boolean;
 
   subTitleStyle?: TextProps;
 
   badgeIcon?: React.ComponentType<IconProps>;
   badgeIconProps?: IconProps;
   badgeIconContainer?: ViewProps;
+  customActionItemsRenderer?: (actionProps: ActionProps) => React.ReactNode;
 }
 
 const Card = ({
@@ -36,20 +41,23 @@ const Card = ({
   thumbnail,
   ratioThumbnail = 1,
   metadata,
-  customActionItems = [],
+  customActionItemsRenderer,
   moreMenuItems = [],
+  hasHoverState,
+  hasFocusState,
   subTitleStyle,
   badgeIcon: BadgeIcon,
   badgeIconProps,
   badgeIconContainer,
-  ...props
+  ...restProps
 }: Props) => {
-  const { spacing } = React.useContext(Theme);
+  const { spacing, colors } = React.useContext(Theme);
   const [showAction, setShowAction] = React.useState(false);
-  const onMouseEnterCard = () => {
+  const actionRef = React.useRef(null);
+  const handleShowAction = () => {
     setShowAction(true);
   };
-  const onMouseLeaveCard = () => {
+  const handleHideAction = () => {
     setShowAction(false);
   };
 
@@ -63,31 +71,53 @@ const Card = ({
     return <Skeleton data-testId="skeleton" />;
   }
 
+  const focusProps = hasFocusState && { tabIndex: 0 };
+
   return (
     <View
       height="100%"
       width="100%"
-      onMouseEnter={onMouseEnterCard}
-      onMouseLeave={onMouseLeaveCard}
-      {...props}
+      onMouseEnter={handleShowAction}
+      onMouseLeave={handleHideAction}
+      onFocus={handleShowAction}
+      onBlur={handleHideAction}
+      padding={4}
+      borderRadius={5}
+      border={2}
+      borderColor="transparent"
+      css={{
+        "&:hover": hasHoverState && {
+          backgroundColor: colors.soft,
+          borderColor: colors.soft,
+        },
+        "&:focus": hasFocusState && {
+          borderColor: colors.successLow,
+        },
+        "&:active": hasFocusState && {
+          borderColor: colors.successLow,
+        },
+        ...css,
+      }}
+      {...focusProps}
+      {...restProps}
     >
       <View
+        position="relative"
+        width="100%"
         alignItems="center"
         justifyContent="center"
         backgroundColor="delicate"
         borderRadius={5}
-        width="100%"
+        transition="subtle"
         css={{
-          overflow: "hidden",
           backgroundImage: thumbnail ? `url(${thumbnail})` : "none",
           backgroundSize: "cover",
           backgroundPosition: "center",
-          position: "relative",
           maxWidth: "100%",
           paddingTop: `${ratioThumbnail * 100}%`,
         }}
       >
-        <View style={{ position: "absolute", top: "50%", left: "50%" }}>
+        <View position="absolute" style={{ top: "50%", left: "50%" }}>
           {!thumbnail &&
             mapTypeToIcon(type, {
               size: 7,
@@ -98,20 +128,23 @@ const Card = ({
             })}
         </View>
         <View
-          display={[
-            "flex",
-            showAction ? "flex" : "none",
-            showAction ? "flex" : "none",
-          ]}
+          display="flex"
           flexDirection="row"
           position="absolute"
+          transition="subtle"
           data-role="action"
           css={{
             top: spacing[4],
             right: spacing[4],
+            visibility: showAction ? "visible" : "hidden",
+            opacity: showAction ? 1 : 0,
           }}
         >
-          {customActionItems}
+          {customActionItemsRenderer?.({
+            ref: actionRef,
+            onFocus: handleShowAction,
+            onBlur: handleHideAction,
+          })}
           {moreMenuItems && moreMenuItems.length > 0 && (
             <MoreMenu
               itemList={moreMenuItems}
@@ -122,13 +155,13 @@ const Card = ({
         </View>
         {BadgeIcon && (
           <View
+            position="absolute"
             alignItems="center"
             justifyContent="center"
             width={56}
             height={56}
             {...badgeIconContainer}
             css={{
-              position: "absolute",
               left: 0,
               bottom: 0,
               borderBottomLeftRadius: spacing[6],

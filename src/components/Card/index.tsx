@@ -1,5 +1,5 @@
 import * as React from "react";
-import CardBase from "../CardBase";
+import CardBase, { ActionProps } from "../CardBase";
 import { ViewProps } from "../View";
 
 export interface Props extends ViewProps {
@@ -9,8 +9,8 @@ export interface Props extends ViewProps {
   skeleton?: boolean;
   thumbnail?: string;
   metadata?: string[];
-  customActionItems?: React.ReactNode[];
   moreMenuItems?: any[];
+  customActionItemsRenderer?: (actionProps: ActionProps) => React.ReactNode;
 }
 
 const Card = (props: Props) => {

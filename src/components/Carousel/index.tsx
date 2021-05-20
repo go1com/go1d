@@ -326,7 +326,12 @@ class Carousel extends React.Component<CarouselProps, any> {
             currentSlide: this.state.currentSlide,
           })
         ) : (
-          <View display="flex" flexDirection="row" marginBottom={5}>
+          <View
+            data-testid="HeaderCarousel"
+            display="flex"
+            flexDirection="row"
+            marginBottom={5}
+          >
             <View
               display="flex"
               flexGrow={1}
