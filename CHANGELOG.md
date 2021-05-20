@@ -1,5 +1,11 @@
 # @go1d/go1d
 
+## 6.0.3
+
+### Patch Changes
+
+- 420529c8: AVG-329: improve connectingShapes to support JSXElement
+
 ## 6.0.2
 
 ### Patch Changes
