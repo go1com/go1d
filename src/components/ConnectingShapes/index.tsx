@@ -1,21 +1,30 @@
 import * as React from "react";
+import { generateUuid } from "../../utils/generateUuid";
 import Text from "../Text";
-import View from "../View";
-import Connector from "./Connector";
+import View, { ViewProps } from "../View";
+import Connector, { Props as ConnectorProps } from "./Connector";
 
-interface ConnectingShapesProps {
+export interface ConnectingShapesProps {
   content: any[];
   colorBorderShape?: string | null;
   colorShape?: string;
   colorText?: string;
+  borderShape?: number;
+  containerProps?: ViewProps;
+  connectorProps?: ConnectorProps;
 }
 
 const ConnectingShapes = ({
-  content,
+  content = [],
   colorText,
   colorShape,
   colorBorderShape,
+  borderShape = 2,
+  containerProps,
+  connectorProps,
 }: ConnectingShapesProps) => {
+  const [connectorId, setConnectorId] = React.useState<string>("");
+  React.useEffect(() => setConnectorId(generateUuid()), []);
   const shapeWords = [];
   content.forEach((item, index) => {
     if (shapeWords.length > 0) {
@@ -29,9 +38,12 @@ const ConnectingShapes = ({
             key={`Shape_${index}`}
             fillColor={colorShape}
             strokeColor={colorBorderShape}
+            borderShape={borderShape}
+            isVertical={true}
             size={2}
             space={6}
-            idCustom={`mask_id_${index}`}
+            idCustom={`mask_id_${connectorId}`}
+            {...connectorProps}
           />
         </View>
       );
@@ -45,17 +57,22 @@ const ConnectingShapes = ({
         alignItems="center"
         borderColor={colorBorderShape || colorShape}
         backgroundColor={colorShape}
-        border={2}
+        border={borderShape}
         minWidth="96px" // ensures short words like "a" are wider than connector
+        {...containerProps}
       >
-        <Text
-          fontFamily="serif"
-          fontWeight="semibold"
-          fontSize={7}
-          color={colorText}
-        >
-          {item}
-        </Text>
+        {typeof item === "string" ? (
+          <Text
+            fontFamily="serif"
+            fontWeight="semibold"
+            fontSize={7}
+            color={colorText}
+          >
+            {item}
+          </Text>
+        ) : (
+          item
+        )}
       </View>
     );
   });

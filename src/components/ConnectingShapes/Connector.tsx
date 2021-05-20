@@ -2,35 +2,38 @@ import * as React from "react";
 import { spacing } from "../../foundations";
 import Theme from "../Theme";
 
-interface Props {
+export interface Props {
   space?: number;
   size?: number;
   fillColor?: string;
   strokeColor?: string;
   isVertical?: boolean;
   idCustom?: string;
+  borderShape?: number;
 }
 
-const ConnectingShapes = ({
+const ConnectorShapes = ({
   space = 5,
   size = 4,
   fillColor = "transparent",
   strokeColor = fillColor,
   isVertical = true,
   idCustom = "standard",
+  borderShape = 2,
 }: Props) => {
   const actualSpace = spacing[space];
   const actualSize = spacing[size] + spacing[space];
   const width = isVertical ? actualSize : actualSpace;
   const height = isVertical ? actualSpace : actualSize;
   const radius = actualSpace / 2;
+  const strokeWidth = borderShape * 2;
   const connectorType =
     (isVertical ? "connector_" : "connector_reverse_") + idCustom;
   return (
     <Theme.Consumer>
       {({ colors }) => (
         <svg
-          style={{ margin: "-2px", zIndex: 200 }}
+          style={{ margin: `-${borderShape}px`, zIndex: 200 }}
           width={width}
           height={height}
           viewBox={`0 0 ${width} ${height}`}
@@ -54,7 +57,7 @@ const ConnectingShapes = ({
             r={radius}
             fill="none"
             stroke={colors[strokeColor]}
-            strokeWidth="4"
+            strokeWidth={strokeWidth}
           />
           <circle
             cx={isVertical ? 0 : radius}
@@ -62,7 +65,7 @@ const ConnectingShapes = ({
             r={radius}
             fill="none"
             stroke={colors[strokeColor]}
-            strokeWidth="4"
+            strokeWidth={strokeWidth}
           />
           <rect
             x="0"
@@ -78,4 +81,4 @@ const ConnectingShapes = ({
   );
 };
 
-export default ConnectingShapes;
+export default ConnectorShapes;
