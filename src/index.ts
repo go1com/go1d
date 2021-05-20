@@ -19,7 +19,14 @@ export {
   default as ButtonFilled,
   ButtonFilledProps,
 } from "./components/ButtonFilled";
-export { default as ConnectingShapes } from "./components/ConnectingShapes";
+export {
+  default as ConnectingShapes,
+  ConnectingShapesProps,
+} from "./components/ConnectingShapes";
+export {
+  default as ConnectorShapes,
+  Props as ConnectorShapesProps,
+} from "./components/ConnectingShapes/Connector";
 export {
   default as ContentType,
   ContentTypeProps,
