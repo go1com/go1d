@@ -250,3 +250,8 @@ export { default as VisuallyHidden } from "./components/VisuallyHidden";
 /* Utils */
 export { default as priceFormatterUtil } from "./utils/priceFormatter";
 export { default as durationFormatterUtil } from "./utils/durationFormatter";
+
+export {
+  Props as CardListIndexProps,
+  default as CardListIndex,
+} from "./components/CardListIndex";

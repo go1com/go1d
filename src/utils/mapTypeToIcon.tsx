@@ -19,6 +19,7 @@ const mapTypeToIcon = (type: string, params?: any): React.ReactElement => {
     text: "Text",
     resource: "Text",
     video: "Video",
+    playlist: "Playlist",
   };
 
   return <SpotIcon name={iconTypeNames[type] || "Course"} {...options} />;
