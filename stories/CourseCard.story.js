@@ -15,8 +15,8 @@ export const AlmostAllTheProps = args => (
     typeIcon="Course"
     type="Course"
     duration={74}
-    author="GO1"
-    title="Test Title"
+    author="Lorem Ipsum is simply dummy text of the printing and typesetting industry"
+    title="Lorem Ipsum is simply dummy text of the printing and typesetting industry"
     price="123"
     currency="AUD"
     courseImage="https://res.cloudinary.com/go1/image/fetch/w_1024,h_300,c_thumb,g_auto/https://udemy-images.udemy.com/course/750x422/435262_c617.jpg"
