@@ -1,5 +1,11 @@
 # @go1d/go1d
 
+## 6.1.0
+
+### Minor Changes
+
+- 23e29af5: AVG-362: Add new CardListIndex component
+
 ## 6.0.3
 
 ### Patch Changes
