@@ -1,5 +1,11 @@
 # @go1d/go1d
 
+## 6.1.1
+
+### Patch Changes
+
+- febeef64: fix long text for Course Card on IE
+
 ## 6.1.0
 
 ### Minor Changes
