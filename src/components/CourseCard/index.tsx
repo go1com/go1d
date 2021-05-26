@@ -161,7 +161,7 @@ const CourseCard: React.SFC<CourseCardProps> = ({
                 paddingBottom={2}
               >
                 {author && (
-                  <View paddingBottom={2} flexShrink={1}>
+                  <View flexDirection="row" paddingBottom={2} flexShrink={1}>
                     <Text fontSize={1} color="subtle" lineClamp={1}>
                       {author}
                     </Text>
