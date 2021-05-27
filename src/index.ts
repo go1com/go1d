@@ -10,6 +10,8 @@ export { default as Base, BaseProps } from "./components/Base";
 export { default as Text, TextProps } from "./components/Text";
 export { default as Heading, HeadingProps } from "./components/Heading";
 export { default as View, ViewProps } from "./components/View";
+export { default as Column } from "./components/Column";
+export { default as Row } from "./components/Row";
 export { default as Button, ButtonProps } from "./components/Button";
 export {
   default as ButtonMinimal,

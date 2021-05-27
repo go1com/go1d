@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text } from "../src";
+import { View, Text, Column, Row } from "../src";
 
 export default {
   title: "Athletic/View",
@@ -10,6 +10,34 @@ export const BasicUsage = args => (
   <View {...args}>
     <Text>My View</Text>
   </View>
+);
+
+export const ColumnLayout = args => (
+  <Column {...args}>
+    <View backgroundColor="successMid" padding={3}>
+      <Text>Apple</Text>
+    </View>
+    <View backgroundColor="successMid" padding={3} marginTop={3}>
+      <Text>Banana</Text>
+    </View>
+    <View backgroundColor="successMid" padding={3} marginTop={3}>
+      <Text>Pineapple</Text>
+    </View>
+  </Column>
+);
+
+export const RowLayout = args => (
+  <Row {...args}>
+    <View backgroundColor="successMid" padding={3}>
+      <Text>Apple</Text>
+    </View>
+    <View backgroundColor="successMid" padding={3} marginLeft={3}>
+      <Text>Banana</Text>
+    </View>
+    <View backgroundColor="successMid" padding={3} marginLeft={3}>
+      <Text>Pineapple</Text>
+    </View>
+  </Row>
 );
 
 export const ResponsiveExamples = args => (
