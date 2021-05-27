@@ -1,5 +1,11 @@
 # @go1d/go1d
 
+## 6.2.1
+
+### Patch Changes
+
+- d57a0068: AVG-339 restore DEPRECATED_SlatSkeleton for CourseSlat & DEPRECATED_Slat
+
 ## 6.2.0
 
 ### Minor Changes
