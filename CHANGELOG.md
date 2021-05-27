@@ -1,5 +1,11 @@
 # @go1d/go1d
 
+## 6.2.0
+
+### Minor Changes
+
+- 3a601d16: Add Column and Row components
+
 ## 6.1.1
 
 ### Patch Changes
