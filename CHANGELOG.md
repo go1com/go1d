@@ -1,5 +1,11 @@
 # @go1d/go1d
 
+## 6.2.2
+
+### Patch Changes
+
+- 95a0a81d: Remove SlatSkeleton background color
+
 ## 6.2.1
 
 ### Patch Changes
