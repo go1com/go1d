@@ -3,12 +3,7 @@ import Skeleton from "../Skeleton";
 import View from "../View";
 
 export default () => (
-  <View
-    flexDirection="row"
-    backgroundColor="background"
-    width="100%"
-    overflow="hidden"
-  >
+  <View flexDirection="row" width="100%" overflow="hidden">
     <View paddingRight={3} flexGrow={1} flexShrink={1}>
       <Skeleton
         borderRadius={2}
