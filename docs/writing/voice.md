@@ -1,5 +1,5 @@
 ---
-title: Writing in the Go1 voice
+title: Tone of voice
 status: ready
 menuOrder: 1
 ---
@@ -60,7 +60,7 @@ We are clear in our communication. We take the time to choose the right words to
 
 ✅ Clear is: direct, accessible, transparent.
 
-🚫 Clear is not: wishy washy, overly erudite, abrupt.
+🚫 Clear is not: wishy washy, complicated, abrupt.
 
 Follow these guidelines next time you’re creating an ad, writing a blog article, drafting an email, or pulling together a presentation.
 
