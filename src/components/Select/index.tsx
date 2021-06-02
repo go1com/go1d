@@ -3,6 +3,7 @@ import * as React from "react";
 import { Manager, Popper, Reference } from "react-popper";
 import { List } from "react-virtualized";
 import { FontWeight } from "../../foundations/foundation-types";
+import { autobind } from "../../utils/decorators";
 import safeInvoke from "../../utils/safeInvoke";
 import IconChevronDown from "../Icons/ChevronDown";
 import IconCross from "../Icons/Cross";
@@ -28,36 +29,46 @@ export interface SelectProps extends ViewProps {
   placeholder?: string;
   defaultValue?: any;
   value?: any;
-  onChange?: ({ target }) => void;
   name?: string;
   size?: "sm" | "md" | "lg";
   fontWeight?: FontWeight;
   clearable?: boolean;
   popperModifiers?: any;
+  widthOptionContainer?: number;
   onClear?: () => void;
+  onChange?: ({ target }) => void;
 }
 
 const Sizes = {
   lg: {
-    label: "14px",
+    labelSize: 1,
     fontSize: 2,
   },
   md: {
-    label: "12px",
+    labelSize: 0,
     fontSize: 2,
   },
   sm: {
-    label: "12px",
+    labelSize: 0,
     fontSize: 1,
   },
 };
 
-class Select extends React.PureComponent<SelectProps, any> {
+interface State {
+  selectElement: HTMLElement;
+  isFocused: boolean;
+}
+
+class Select extends React.PureComponent<SelectProps, State> {
   public static defaultProps = {
     size: "md",
     options: [],
   };
   public static displayName = "Select";
+  public state = {
+    selectElement: null,
+    isFocused: false,
+  };
   public OptionToString(Option) {
     if (Option) {
       return Option.value;
@@ -108,7 +119,7 @@ class Select extends React.PureComponent<SelectProps, any> {
                   selectedItem === Option
                     ? colors.accent
                     : highlightedIndex === Option.selectableIndex
-                    ? colors.highlight
+                    ? colors.noteHighest
                     : colors.background,
               },
             })}
@@ -128,6 +139,38 @@ class Select extends React.PureComponent<SelectProps, any> {
         </View>
       );
     };
+  }
+
+  @autobind
+  public handleFocus(evt: React.FocusEvent<any>) {
+    this.setState({
+      isFocused: true,
+    });
+  }
+
+  @autobind
+  public handleBlur(evt: React.FocusEvent<any>) {
+    this.setState({
+      isFocused: false,
+    });
+  }
+
+  @autobind
+  public getBorderColor(isOpen: boolean) {
+    const { isFocused } = this.state;
+    const { error, borderColor } = this.props;
+
+    if (isOpen) {
+      return "accent";
+    }
+    if (error) {
+      return "dangerLow";
+    }
+    if (isFocused) {
+      return "accent";
+    }
+
+    return borderColor ? borderColor : "faded";
   }
 
   public render() {
@@ -169,9 +212,11 @@ class Select extends React.PureComponent<SelectProps, any> {
           : null
         : undefined;
 
+    const { labelSize, fontSize } = Sizes[size];
+
     return (
       <Theme.Consumer>
-        {({ colors, inputSizes }) => (
+        {({ colors, inputSizes, spacing }) => (
           <Downshift
             stateReducer={this.stateReducer}
             initialInputValue=""
@@ -196,106 +241,138 @@ class Select extends React.PureComponent<SelectProps, any> {
               const filteredOptions = searchable
                 ? this.filterOptions(flattenedOptions, inputValue)
                 : flattenedOptions;
+
+              const elementHeight = inputSizes[size];
               return (
                 <View flexGrow={1} {...getRootProps({ refKey: "innerRef" })}>
                   <Manager>
-                    <Reference>
-                      {({ ref }) => (
-                        <button
-                          ref={ref}
-                          type="button"
-                          {...getToggleButtonProps({
-                            disabled,
-                          })}
-                          data-testid="primarySection"
-                          style={{
-                            cursor: disabled ? "initial" : "pointer",
-                          }}
-                        >
+                    <Reference innerRef={this.setSelectElementRef}>
+                      {({ ref }) => {
+                        const isFloatingLabel =
+                          label && (isOpen || selectedItem);
+
+                        const shouldShowPlaceholder = !label || isFloatingLabel;
+
+                        return (
                           <View
-                            borderRadius={2}
-                            paddingX={4}
-                            border={1}
-                            opacity={disabled && "disabled"}
-                            borderColor={isOpen ? "accent" : "delicate"}
-                            position="relative"
-                            backgroundColor="background"
+                            id={id}
+                            element="button"
+                            innerRef={ref}
+                            type="button"
+                            width="100%"
                             flexDirection="row"
-                            justifyContent="space-between"
-                            alignItems="center"
-                            height={inputSizes[size]}
-                            {...remainingProps}
+                            {...getToggleButtonProps({
+                              disabled,
+                            })}
+                            data-testid="primarySection"
+                            aria-label={label}
+                            onFocus={this.handleFocus}
+                            onBlur={this.handleBlur}
+                            css={{
+                              cursor: disabled ? "initial" : "pointer",
+                            }}
                           >
-                            {label && (
-                              <Text
-                                element="label"
-                                lineHeight="ui"
-                                htmlFor={id}
-                                fontWeight="normal"
-                                color="subtle"
-                                style={{
-                                  fontSize: Sizes[this.props.size].label,
-                                }}
-                                css={[
-                                  {
-                                    position: "absolute",
-                                    height: `${inputSizes[size] / 2}px`,
-                                    display: "flex",
+                            <View
+                              data-testid="select-container"
+                              width="100%"
+                              borderRadius={2}
+                              paddingX={4}
+                              border={1}
+                              opacity={disabled && "disabled"}
+                              borderColor={this.getBorderColor(isOpen)}
+                              position="relative"
+                              backgroundColor="background"
+                              flexDirection="row"
+                              justifyContent="space-between"
+                              alignItems="center"
+                              height={elementHeight}
+                              css={{
+                                paddingTop:
+                                  isFloatingLabel &&
+                                  `${elementHeight / 2 + 1}px`,
+                                paddingBottom:
+                                  isFloatingLabel && `${spacing[3]}px`,
+                              }}
+                              {...remainingProps}
+                            >
+                              {label && (
+                                <Text
+                                  element="label"
+                                  lineHeight="ui"
+                                  htmlFor={id}
+                                  display="flex"
+                                  fontWeight="normal"
+                                  color="subtle"
+                                  marginRight={4} // make sure Icon doesn't overlap label
+                                  fontSize={
+                                    isFloatingLabel ? labelSize : fontSize
+                                  }
+                                  css={{
+                                    position: isFloatingLabel
+                                      ? "absolute"
+                                      : undefined,
                                     alignItems: "center",
+                                    height: `${elementHeight /
+                                      (isFloatingLabel ? 2 : 1)}px`,
                                     top: 0,
                                     left: 16,
-                                  },
-                                ]}
+                                  }}
+                                >
+                                  {label}
+                                </Text>
+                              )}
+                              <View
+                                flexGrow={1}
+                                flexShrink={1}
+                                overflow="hidden"
                               >
-                                {label}
-                              </Text>
-                            )}
-                            <View
-                              flexGrow={1}
-                              flexShrink={1}
-                              paddingTop={label ? 4 : 3}
-                              paddingBottom={3}
-                              overflow="hidden"
-                            >
-                              <Text
-                                ellipsis={true}
-                                fontSize={Sizes[size].fontSize}
-                                fontWeight={fontWeight ? fontWeight : "normal"}
-                                color={selectedItem ? "default" : "muted"}
+                                <Text
+                                  ellipsis={true}
+                                  fontSize={fontSize}
+                                  fontWeight={
+                                    fontWeight ? fontWeight : "normal"
+                                  }
+                                  color={selectedItem ? "default" : "muted"}
+                                  css={{
+                                    whiteSpace: "nowrap",
+                                  }}
+                                >
+                                  {selectedItem
+                                    ? selectedItem.labelSelected ||
+                                      selectedItem.label
+                                    : shouldShowPlaceholder
+                                    ? placeholder || defaultText
+                                    : ""}
+                                </Text>
+                              </View>
+                              <View
+                                position="absolute"
+                                alignItems="center"
+                                justifyContent="center"
+                                height={elementHeight}
                                 css={{
-                                  whiteSpace: "nowrap",
+                                  top: 0,
+                                  right: spacing[4],
+                                  pointerEvents:
+                                    selectedItem && clearable ? "auto" : "none",
                                 }}
                               >
-                                {selectedItem
-                                  ? selectedItem.labelSelected ||
-                                    selectedItem.label
-                                  : placeholder || defaultText}
-                              </Text>
-                            </View>
-                            <View
-                              alignItems="center"
-                              justifyContent="center"
-                              paddingLeft={3}
-                              css={{
-                                pointerEvents:
-                                  selectedItem && clearable ? "auto" : "none",
-                              }}
-                            >
-                              {selectedItem && clearable ? (
-                                <IconCross
-                                  color="muted"
-                                  size={2}
-                                  onClick={this.handleSelectionClear(
-                                    clearSelection
-                                  )}
-                                />
-                              ) : (
-                                <IconChevronDown color="muted" size={2} />
-                              )}
+                                {selectedItem && clearable ? (
+                                  <IconCross
+                                    color="muted"
+                                    size={2}
+                                    onClick={this.handleSelectionClear(
+                                      clearSelection
+                                    )}
+                                  />
+                                ) : (
+                                  <IconChevronDown color="muted" size={2} />
+                                )}
+                              </View>
                             </View>
                           </View>
-                        </button>
-                      )}
+                        );
+                      }}
                     </Reference>
                     {isOpen && (
                       <Portal>
@@ -321,6 +398,10 @@ class Select extends React.PureComponent<SelectProps, any> {
                                 transition="none"
                                 zIndex="dropdown"
                                 marginTop={2}
+                                width={
+                                  this.props.widthOptionContainer ||
+                                  this.state.selectElement.offsetWidth
+                                }
                               >
                                 {searchable && (
                                   <View paddingX={4} paddingY={3}>
@@ -339,9 +420,10 @@ class Select extends React.PureComponent<SelectProps, any> {
                                 )}
                                 <List
                                   data-testid="resultsList"
-                                  width={this.calculateListWidth(
-                                    filteredOptions
-                                  )}
+                                  width={
+                                    this.props.widthOptionContainer ||
+                                    this.state.selectElement.offsetWidth
+                                  }
                                   height={this.calculateDropDownHeight(
                                     filteredOptions
                                   )}
@@ -372,6 +454,12 @@ class Select extends React.PureComponent<SelectProps, any> {
       </Theme.Consumer>
     );
   }
+
+  private setSelectElementRef = element => {
+    this.setState({
+      selectElement: element,
+    });
+  };
 
   private handleOnChange = event => {
     const { onChange, name } = this.props;
@@ -460,29 +548,6 @@ class Select extends React.PureComponent<SelectProps, any> {
       });
     }
     return Options;
-  }
-
-  private calculateListWidth(Options) {
-    const { searchable } = this.props;
-    const minWidth = searchable ? 275 : 200;
-    const averageCharacterPX = 10;
-    const longestString = Options.reduce((largest, Entry) => {
-      if (Entry.label.length > largest) {
-        return Entry.label.length;
-      }
-
-      return largest;
-    }, 0);
-
-    if (longestString * averageCharacterPX > 350) {
-      return 350;
-    }
-
-    if (longestString * averageCharacterPX < minWidth) {
-      return minWidth;
-    }
-
-    return longestString * averageCharacterPX;
   }
 
   private calculateDropDownHeight(Options) {

@@ -49,16 +49,19 @@ const sizeStyles = {
     paddingY: 3,
     paddingX: 4,
     typeScale: 2,
+    labelSize: 1,
   },
   md: {
     paddingY: 3,
     paddingX: 4,
     typeScale: 2,
+    labelSize: 0,
   },
   sm: {
     paddingY: 2,
     paddingX: 3,
     typeScale: 1,
+    labelSize: 0,
   },
 };
 
@@ -160,7 +163,7 @@ class TextInput extends React.PureComponent<TextInputProps, TextInputState> {
         ? this.props.value
         : this.state.value;
     const valueLength = (value && value.length) || 0;
-    const { paddingY, paddingX, typeScale } = sizeStyles[size];
+    const { paddingY, paddingX, typeScale, labelSize } = sizeStyles[size];
 
     const { isFocused } = this.state;
     const isFloatingEnabled = floating && label;
@@ -261,7 +264,7 @@ class TextInput extends React.PureComponent<TextInputProps, TextInputState> {
                   lineHeight="ui"
                   htmlFor={id}
                   paddingX={!IconElement ? paddingX : 0}
-                  fontSize={typeScale}
+                  fontSize={isFloating ? labelSize : typeScale}
                   fontWeight="normal"
                   css={[
                     {
