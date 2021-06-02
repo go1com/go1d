@@ -1,5 +1,11 @@
 # @go1d/go1d
 
+## 6.2.4
+
+### Patch Changes
+
+- 36a534a8: DNI-179: Improve Select component by new UI
+
 ## 6.2.3
 
 ### Patch Changes
