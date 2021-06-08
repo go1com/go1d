@@ -352,7 +352,7 @@ class ImageUploader extends React.Component<ImageUploaderProps, State> {
           }}
           padding={4}
           justifyContent="space-between"
-          zIndex="popover"
+          zIndex="sticky"
         >
           <View
             display="flex"
