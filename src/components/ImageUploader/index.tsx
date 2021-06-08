@@ -57,6 +57,7 @@ export interface ImageUploaderProps extends ViewProps {
   allowCrop?: boolean;
   cropConfig?: Partial<CropperProps & Record<"onCrop", (file: Blob) => void>>;
   stepperProps?: Partial<StepperProps>;
+  imageBackgroundSize?: React.CSSProperties['backgroundSize']
 }
 
 interface State {
@@ -74,6 +75,7 @@ class ImageUploader extends React.Component<ImageUploaderProps, State> {
     height: "200px",
     uploadText: "Upload an image",
     supportedFormatText: "jpg, png, and gif are supported",
+    imageBackgroundSize: 'cover',
     allowCrop: false,
     stepperProps: {},
     cropConfig: {},
@@ -223,6 +225,19 @@ class ImageUploader extends React.Component<ImageUploaderProps, State> {
         },
       });
     }
+
+    this.onBlur();
+  }
+
+  @autobind
+  public onBlur() {
+    const { onBlur, name } = this.props;
+
+    safeInvoke(onBlur, {
+      target: {
+        name,
+      },
+    });
   }
 
   public render() {
@@ -248,12 +263,14 @@ class ImageUploader extends React.Component<ImageUploaderProps, State> {
           overflow="hidden"
           position="relative"
           boxShadow="inner"
+          border={1}
+          borderColor={error ? 'danger' : 'transparent'}
         >
           <BaseUploader
             fileType="image/*"
             disabled={!!disabled}
             multiple={false}
-            onBlur={this.props.onBlur}
+            onBlur={this.onBlur}
             onChange={this.onChange}
           >
             {({ open, getRootProps, isDragActive }) => {
@@ -308,6 +325,7 @@ class ImageUploader extends React.Component<ImageUploaderProps, State> {
     });
 
     safeInvoke(onChange, { target: { name, value: "" } });
+    this.onBlur();
   }
 
   @autobind
@@ -320,6 +338,7 @@ class ImageUploader extends React.Component<ImageUploaderProps, State> {
       allowCrop,
       cropConfig,
       stepperProps,
+      imageBackgroundSize,
     } = this.props;
 
     return file || preview ? (
@@ -400,7 +419,8 @@ class ImageUploader extends React.Component<ImageUploaderProps, State> {
           <View
             css={{
               backgroundImage: `url("${preview}")`,
-              backgroundSize: "cover",
+              backgroundRepeat: 'no-repeat',
+              backgroundSize: imageBackgroundSize,
               backgroundPosition: "center",
             }}
             width="100%"
@@ -419,6 +439,7 @@ class ImageUploader extends React.Component<ImageUploaderProps, State> {
           display="flex"
           alignItems="center"
           flexDirection="column"
+          textAlign="center"
           css={{ opacity: isDragActive ? 0 : 1 }}
         >
           <IconCamera color="muted" size={8} />
