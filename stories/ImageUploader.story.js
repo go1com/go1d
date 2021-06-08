@@ -55,3 +55,17 @@ export const InsideAForm = () => (
 );
 InsideAForm.storyName = "Inside a form";
 InsideAForm.parameters = { controls: { hideNoControlsWarning: true } };
+
+export const ErrorState = () => (
+  <Form onSubmit={(values, actions) => console.log(values, actions)}>
+    <Field
+      errorMessage="Error message"
+      hideStatus
+      component={ImageUploader}
+      name="portalImage"
+      label="Portal Image"
+    />
+  </Form>
+);
+ErrorState.storyName = "Error state";
+InsideAForm.parameters = { controls: { hideNoControlsWarning: true } };
