@@ -1,5 +1,11 @@
 # @go1d/go1d
 
+## 6.2.5
+
+### Patch Changes
+
+- b5053d62: ImageUploader add error state, fix onBlur event trigger.
+
 ## 6.2.4
 
 ### Patch Changes
