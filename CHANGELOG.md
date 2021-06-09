@@ -1,5 +1,11 @@
 # @go1d/go1d
 
+## 6.2.6
+
+### Patch Changes
+
+- bf9df55c: Set lower zIndex for imageUploader buttons
+
 ## 6.2.5
 
 ### Patch Changes
