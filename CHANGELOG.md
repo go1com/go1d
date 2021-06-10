@@ -1,5 +1,11 @@
 # @go1d/go1d
 
+## 6.3.0
+
+### Minor Changes
+
+- 110cdc41: Checkbox > add indeterminate state
+
 ## 6.2.6
 
 ### Patch Changes
