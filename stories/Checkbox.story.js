@@ -61,6 +61,11 @@ export const Disabled = () => (
 );
 Disabled.parameters = { controls: { hideNoControlsWarning: true } };
 
+export const IndeterminateState = () => (
+  <Checkbox name="IndeterminateCheckbox" label="Indeterminate" indeterminate />
+);
+IndeterminateState.parameters = { controls: { hideNoControlsWarning: true } };
+
 export const CheckboxInField = () => (
   <Form
     initialValues={{ portalName: true }}

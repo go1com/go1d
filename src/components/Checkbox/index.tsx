@@ -6,6 +6,7 @@ import Text, { TextProps } from "../Text";
 import View from "../View";
 
 import IconCheck from "../Icons/Check";
+import IconMinus from "../Icons/Minus";
 
 export interface CheckboxProps extends TextProps {
   id?: string;
@@ -15,6 +16,7 @@ export interface CheckboxProps extends TextProps {
   disabled?: boolean;
   error?: boolean;
   isStatic?: boolean; // If true onChange will stop working. It'll be just the markup of a Checkbox
+  indeterminate?: boolean;
   size?: "lg" | "md" | "sm";
 }
 
@@ -95,6 +97,7 @@ class Checkbox extends React.Component<
       name,
       id = randomId,
       value: propValue,
+      indeterminate,
       children,
       label,
       error, // Do not pass
@@ -149,7 +152,10 @@ class Checkbox extends React.Component<
               borderWidth: 1,
             }}
           >
-            {value && <IconCheck size={iconSize} color="accent" />}
+            {!indeterminate && value && (
+              <IconCheck size={iconSize} color="accent" />
+            )}
+            {indeterminate && <IconMinus size={iconSize} color="accent" />}
           </View>
           <Text
             color={color}
