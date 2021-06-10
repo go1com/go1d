@@ -29,7 +29,8 @@ module.exports = {
         actions: false,
       }
     },
-    "@storybook/addon-a11y"
+    "@storybook/addon-a11y",
+    "@storybook/addon-storysource",
   ],
   "webpackFinal": async config => {
     config.module.rules.push({
