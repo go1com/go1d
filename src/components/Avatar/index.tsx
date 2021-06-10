@@ -37,6 +37,9 @@ const scaleDownRatio: Record<ScaleSizeType, object> = {
   },
 };
 
+/**
+ * A component that displays an avatar.
+ */
 const Avatar: React.SFC<AvatarProps> = ({
   src,
   fullName,
