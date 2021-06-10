@@ -5,6 +5,13 @@ export default {
   title: "Athletic/Carousel",
   component: Carousel, // FIXME: Storybook wants `ExportCarousel`
   subcomponents: { View, Text },
+  parameters: {
+    docs: {
+      description: {
+        component: 'Carousels are used to show a fixed number of slides at a number that overflows horizontally (is hidden after X number of slides). This lets users “progressively disclose” as much content as they want, in small chunks at a time. Note: Breakpoints are controlled by the width of their parent component not by the page width.'
+      }
+    }
+  }
 };
 
 export const Base = (args) => (
