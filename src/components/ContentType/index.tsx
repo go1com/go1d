@@ -11,6 +11,9 @@ export interface ContentTypeProps extends ViewProps {
   background?: string;
 }
 
+/**
+ * A generic component to display content type, such as course or event.
+ */
 const ContentType: React.SFC<ContentTypeProps> = ({
   background = "background",
   type = "Course",
