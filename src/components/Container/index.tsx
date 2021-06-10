@@ -7,6 +7,9 @@ export interface ContainerProps extends ViewProps {
   contain?: "narrow" | "normal" | "wide" | "full";
 }
 
+/**
+ * Containers are used to handle width and padding for components.
+ */
 const Container: React.SFC<ContainerProps> = ({
   contain = "full",
   children,
