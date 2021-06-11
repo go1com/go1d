@@ -4,6 +4,9 @@ import { EventDate } from '../src';
 export default {
   title: 'Original Go1d/EventDate',
   component: EventDate,
+  parameters: {
+    happo: false,
+  },
 };
 
 const Template = (args) => (
