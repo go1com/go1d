@@ -102,6 +102,19 @@ export class InternalForm extends React.Component<
   }
 }
 
+/**
+ * Form is an extension of Formik's Formik Component https://jaredpalmer.com/formik/docs/api/formik
+ *
+ * Form keeps track of your form's state and then exposes it plus a few reusable methods and event handlers (handleChange, handleBlur, and handleSubmit) to your form via props. handleChange and handleBlur work exactly as expected--they use a name or id attribute to figure out which field to update. If you are using the Form and Field components from Go1d, these methods are even mapped automatically.
+ *
+ * The form component renders a <form> dom node with no styling
+ *
+ * Helpful Resources
+ *
+ * - [Validation](https://jaredpalmer.com/formik/docs/guides/validation)
+ * - [Nested Objects & Arrays](https://jaredpalmer.com/formik/docs/guides/arrays)
+ * - [Form Submission](https://jaredpalmer.com/formik/docs/guides/form-submission)
+ */
 const Form: React.SFC<FormProps> = ({
   children,
   disabled,
