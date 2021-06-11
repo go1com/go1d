@@ -33,6 +33,13 @@ WithPrice.argTypes = {
   description: { defaultValue: "<center><b>$25 flat</b> / month</center>", },
   button: { control: { disable: true, }, },
 };
+WithPrice.parameters = {
+  docs: {
+    description: {
+      story: 'An example use case of the Go1 Price Packaging on the website',
+    },
+  },
+};
 
 export const WithContentProviderCard = ({buttonText, ...args}) => (
   <View padding={5} backgroundColor="background">
@@ -53,5 +60,12 @@ WithContentProviderCard.argTypes = {
   iconImage: { defaultValue: 'https://res.cloudinary.com/go1/image/upload/v1542240162/ojaevw3frdaiji5zzmf3.png', },
   description: { defaultValue: "Sell your courses through the GO1 course marketplace directly to consumers.<br/><br/>You receive 70% of the purchase price from all sales.", },
   button: { control: { disable: true, }, },
+};
+WithContentProviderCard.parameters = {
+  docs: {
+    description: {
+      story: 'An example use case is Content provider Card on the Go1 Website',
+    },
+  },
 };
 
