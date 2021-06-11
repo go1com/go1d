@@ -27,14 +27,15 @@ class AllIcons extends Component {
           placeholder="Type to filter icons"
         />
         <table style={{ width: "100%" }}>
-          <tr>
-            <th style={{ "text-align": "left", padding: "0 0 1rem 0" }}>
-              Name
-            </th>
-            <th style={{ "text-align": "left", padding: "0 0 1rem 0" }}>
-              Icon
-            </th>
-          </tr>
+          <tbody>
+            <tr>
+              <th style={{ "textAlign": "left", padding: "0 0 1rem 0" }}>
+                Name
+              </th>
+              <th style={{ "textAlign": "left", padding: "0 0 1rem 0" }}>
+                Icon
+              </th>
+            </tr>
           {Object.entries(Icons)
             .map(([Key, Component]) => {
               if (Key.substr(0, 4).toLowerCase() === "icon") {
@@ -57,6 +58,7 @@ class AllIcons extends Component {
                 </td>
               </tr>
             ))}
+          </tbody>
         </table>
       </Fragment>
     );
