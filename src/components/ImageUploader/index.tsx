@@ -49,6 +49,8 @@ const STEP_INCREMENT = 0.1;
 const DEFAULT_ASPECT_RATIO = 16 / 9;
 
 export interface ImageUploaderProps extends ViewProps {
+  /** The component will fire onChange when an image is selected or deleted where File is the File object of the selected image, which will be null if the image was deleted
+   * */
   onChange?: (evt: { target: { name: string; value: string | File } }) => void;
   value?: File | string;
   name?: string;
@@ -73,6 +75,9 @@ interface State {
   croppedAreaPixels?: CropAreaPixels;
 }
 
+/**
+ * A component to standardize the uploading of images. This component is used to select images only. Actual uploading is left to the discretion of the implementing code. A file object is provided onChange, and this is the object that should be used by the implementing code to upload to whatever image hosting service is required.
+ */
 class ImageUploader extends React.Component<ImageUploaderProps, State> {
   public static defaultProps: Partial<ImageUploaderProps> = {
     height: "200px",
