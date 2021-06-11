@@ -90,6 +90,11 @@ class Checkbox extends React.Component<
     return "faded";
   }
 
+  public getBackgroundColor() {
+    const { indeterminate, value } = this.props;
+    return indeterminate || value ? "accent" : "background";
+  }
+
   public render() {
     const { randomId, checkedState } = this.state;
 
@@ -141,7 +146,7 @@ class Checkbox extends React.Component<
         >
           <View
             borderColor={this.getBorderColor(value)}
-            backgroundColor="background"
+            backgroundColor={this.getBackgroundColor()}
             borderRadius={checkboxRadius}
             alignItems="center"
             justifyContent="center"
@@ -153,9 +158,9 @@ class Checkbox extends React.Component<
             }}
           >
             {!indeterminate && value && (
-              <IconCheck size={iconSize} color="accent" />
+              <IconCheck size={iconSize} color="background" />
             )}
-            {indeterminate && <IconMinus size={iconSize} color="accent" />}
+            {indeterminate && <IconMinus size={iconSize} color="background" />}
           </View>
           <Text
             color={color}
