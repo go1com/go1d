@@ -11,6 +11,7 @@ import { globalCSS } from "../src";
 globalCSS();
 
 export const parameters = {
+  controls: { expanded: true },
   actions: { argTypesRegex: "^on[A-Z].*" },
   viewMode: 'docs',
   backgrounds: {
