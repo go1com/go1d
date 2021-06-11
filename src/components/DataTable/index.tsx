@@ -21,7 +21,7 @@ import View, { ViewProps } from "../View";
 export interface DataTableProps extends ViewProps {
   /** Component shown if there is no results */
   emptyState?: React.ReactNode;
-  /** The hieght of a row. When using autoRowHeight, you can supply this for a more accurate initial estimate */
+  /** The height of a row. When using autoRowHeight, you can supply this for a more accurate initial estimate */
   rowHeight?: number;
   /** The total number of rows that can be loaded. Used for autoloading. */
   rowCount: number;
@@ -90,6 +90,9 @@ export interface DataTableColumn {
   headerRenderer: any;
 }
 
+/**
+ * This component renders a table. It can do this in one of two ways. Either by supplying columns (which each include a header and cell renderer), or by supplying a function to render each row out and an array of headers. This uses the TR and TH components from the Table component.
+ */
 class DataTable extends React.Component<DataTableProps, any> {
   public listEl: List;
   public header: HTMLElement;
