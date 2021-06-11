@@ -13,6 +13,13 @@ export default {
     },
   },
   component: Avatar,
+  parameters: {
+    docs: {
+      description: {
+        component: "Upgrade to Avatar component instead."
+      }
+    }
+  }
 };
 
 export const AvatarWithAnImage = args => (

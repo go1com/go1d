@@ -5,6 +5,13 @@ import { IconCalendar, IconMapPin, IconImport } from "../src/components/Icons";
 export default {
   title: "Athletic/DEPRECATED_Slat",
   component: Slat,
+  parameters: {
+    docs: {
+      description: {
+        component: "Upgrade to Slat component instead."
+      }
+    }
+  }
 };
 
 export const WithDropdownActions = args => (
