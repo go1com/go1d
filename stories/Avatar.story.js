@@ -24,23 +24,23 @@ Basic.argTypes = {
   placeHolderVisibilityType: { defaultValue: 'text' },
 };
 
-export const AvatarSingleWithOutImageUrl = args => (
+export const AvatarSingleWithoutImageUrl = args => (
   <Avatar {...args} fullName="Leslie Knope" />
 );
-AvatarSingleWithOutImageUrl.storyName = "Without thumbnail url";
-AvatarSingleWithOutImageUrl.parameters = { controls: { hideNoControlsWarning: true } };
+AvatarSingleWithoutImageUrl.storyName = "Without thumbnail url";
+AvatarSingleWithoutImageUrl.parameters = { controls: { hideNoControlsWarning: true } };
 
-export const AvatarSingleWithOutImageOrName = args => (
+export const AvatarSingleWithoutImageOrName = args => (
   <Avatar {...args} />
 );
-AvatarSingleWithOutImageOrName.storyName = "Without image or name";
-AvatarSingleWithOutImageOrName.parameters = { controls: { hideNoControlsWarning: true } };
+AvatarSingleWithoutImageOrName.storyName = "Without image or name";
+AvatarSingleWithoutImageOrName.parameters = { controls: { hideNoControlsWarning: true } };
 
-export const AvatarIconPlaceHolder = args => (
+export const AvatarIconPlaceholder = args => (
   <Avatar {...args} icon={IconAudio} />
 );
-AvatarIconPlaceHolder.storyName = "Icon placeholder type";
-AvatarIconPlaceHolder.parameters = { controls: { hideNoControlsWarning: true } };
+AvatarIconPlaceholder.storyName = "Icon placeholder type";
+AvatarIconPlaceholder.parameters = { controls: { hideNoControlsWarning: true } };
 
 export const AvatarWithLink = args => (
   <Link href="https://go1.com">
