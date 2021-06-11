@@ -58,6 +58,9 @@ export interface ImageUploaderProps extends ViewProps {
   cropConfig?: Partial<CropperProps & Record<"onCrop", (file: Blob) => void>>;
   stepperProps?: Partial<StepperProps>;
   imageBackgroundSize?: React.CSSProperties['backgroundSize']
+
+  zoomValue?: number
+  onZoomChange?: (value: number) => void;
 }
 
 interface State {
@@ -153,6 +156,7 @@ class ImageUploader extends React.Component<ImageUploaderProps, State> {
       zoom,
       stepper: this.roundNumber(zoom),
     });
+    this.props.onZoomChange?.(zoom);
   };
 
   public roundNumber(value: number) {
@@ -339,6 +343,7 @@ class ImageUploader extends React.Component<ImageUploaderProps, State> {
       cropConfig,
       stepperProps,
       imageBackgroundSize,
+      zoomValue,
     } = this.props;
 
     return file || preview ? (
@@ -407,11 +412,11 @@ class ImageUploader extends React.Component<ImageUploaderProps, State> {
             image={preview}
             aspect={DEFAULT_ASPECT_RATIO}
             crop={crop}
-            zoom={zoom}
-            maxZoom={MAX_ZOOM}
-            minZoom={MIN_ZOOM}
             onCropChange={this.setCrop}
             onCropComplete={this.setCroppedAreaPixels}
+            maxZoom={MAX_ZOOM}
+            minZoom={MIN_ZOOM}
+            zoom={zoomValue !== undefined ? zoomValue : zoom}
             onZoomChange={this.handleZoomChange}
             {...cropConfig}
           />
