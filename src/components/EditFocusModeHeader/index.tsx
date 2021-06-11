@@ -26,6 +26,9 @@ export interface EditFocusModeHeaderProps {
 }
 const hideOnMobile = ["none", "flex", "flex"];
 
+/**
+ * Focus Mode Header is a minimalistic header designed to allow the content of the screen to take up as much space as possible.
+ */
 const EditFocusModeHeader = ({
   returnHref,
   returnOnClick,
