@@ -69,3 +69,22 @@ export const ErrorState = () => (
 );
 ErrorState.storyName = "Error state";
 InsideAForm.parameters = { controls: { hideNoControlsWarning: true } };
+
+export const ControlledZoom = () => {
+  const [zoomValue, setZoomValue] = React.useState(1.3)
+
+  return (
+    <>
+      <ImageUploader
+        value="https://img.huffingtonpost.com/asset/5ab4d4ac2000007d06eb2c56.jpeg?cache=sih0jwle4e&ops=1910_1000"
+        allowCrop
+        cropConfig={{ aspect: 16/9, onCrop: console.log }}
+        name="uploader"
+        onChange={console.log}
+        height="300px"
+        zoomValue={zoomValue}
+        onZoomChange={value => setZoomValue(value)}
+      />
+    </>
+  )
+}

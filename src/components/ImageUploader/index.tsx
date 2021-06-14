@@ -144,11 +144,12 @@ class ImageUploader extends React.Component<ImageUploaderProps, State> {
 
   public setZoom = (evt: React.ChangeEvent<Record<"value", number>>) => {
     const newValue = this.roundNumber(evt.target.value);
-
+    
     this.setState({
       zoom: newValue,
       stepper: newValue,
     });
+    this.props.onZoomChange?.(newValue);
   };
 
   public handleZoomChange = (zoom: number) => {
@@ -346,6 +347,9 @@ class ImageUploader extends React.Component<ImageUploaderProps, State> {
       zoomValue,
     } = this.props;
 
+    const cleanedZoomValue = zoomValue !== undefined ? zoomValue : zoom
+    const cleanedStepperValue = zoomValue !== undefined ? this.roundNumber(zoomValue) : stepper
+
     return file || preview ? (
       <View height="100%">
         <View
@@ -396,7 +400,7 @@ class ImageUploader extends React.Component<ImageUploaderProps, State> {
               <Stepper
                 data-testid="cropZoom"
                 id="zoomImage"
-                value={stepper}
+                value={cleanedStepperValue}
                 stepIncrement={STEP_INCREMENT}
                 minNumber={MIN_ZOOM}
                 maxNumber={MAX_ZOOM}
@@ -416,7 +420,7 @@ class ImageUploader extends React.Component<ImageUploaderProps, State> {
             onCropComplete={this.setCroppedAreaPixels}
             maxZoom={MAX_ZOOM}
             minZoom={MIN_ZOOM}
-            zoom={zoomValue !== undefined ? zoomValue : zoom}
+            zoom={cleanedZoomValue}
             onZoomChange={this.handleZoomChange}
             {...cropConfig}
           />
