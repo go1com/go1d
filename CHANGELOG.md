@@ -1,5 +1,17 @@
 # @go1d/go1d
 
+## 6.4.0
+
+### Minor Changes
+
+- 914eb75a: allow ImageUploader zoom value to be controlled value
+
+## 6.3.1
+
+### Patch Changes
+
+- ef647ce3: Checkbox > update style
+
 ## 6.3.0
 
 ### Minor Changes
