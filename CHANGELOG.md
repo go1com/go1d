@@ -1,5 +1,13 @@
 # @go1d/go1d
 
+## 6.4.1
+
+### Patch Changes
+
+- 37ac6d8f: ImageUploader controlled value zoom
+  - fix controlled value for zoom and stepper
+  - add story to test and show
+
 ## 6.4.0
 
 ### Minor Changes
