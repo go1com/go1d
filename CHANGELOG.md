@@ -1,5 +1,11 @@
 # @go1d/go1d
 
+## 6.4.3
+
+### Patch Changes
+
+- 57bb3378: Banner > fix padding when there are no button close
+
 ## 6.4.2
 
 ### Patch Changes
