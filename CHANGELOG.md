@@ -1,5 +1,11 @@
 # @go1d/go1d
 
+## 6.4.2
+
+### Patch Changes
+
+- 67e9ba1d: Adds TSdocs to code and expands Storybook documentation
+
 ## 6.4.1
 
 ### Patch Changes
