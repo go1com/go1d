@@ -9,6 +9,7 @@ import IconCross from "../Icons/Cross";
 import IconDanger from "../Icons/Danger";
 import IconSuccess from "../Icons/Success";
 import IconWarning from "../Icons/Warning";
+import Row from "../Row";
 
 export interface BannerProps extends ViewProps {
   type: "success" | "warning" | "danger" | "note";
@@ -67,7 +68,7 @@ const Banner: React.SFC<BannerProps> = ({
   return (
     <Theme.Consumer>
       {({ colors }) => (
-        <View
+        <Row
           padding={4}
           marginY={3}
           borderRadius={2}
@@ -91,8 +92,8 @@ const Banner: React.SFC<BannerProps> = ({
           <View
             flexWrap="wrap"
             flexGrow={1}
-            paddingX={5}
-            maxWidth="95%"
+            flexShrink={1}
+            paddingLeft={[4, 5]}
             alignItems={floating ? "center" : "left"}
             css={{
               "*": {
@@ -103,44 +104,46 @@ const Banner: React.SFC<BannerProps> = ({
             {children}
           </View>
           {close && (
-            <ButtonMinimal
-              borderRadius={3}
-              boxShadow="none"
-              css={{
-                borderColor: `${getBackgroundColor(
-                  colors,
-                  customColor,
-                  floating
-                )}`,
-                backgroundColor: `${getBackgroundColor(
-                  colors,
-                  customColor,
-                  floating
-                )}`,
-                "&:hover, &:focus, &:active": {
-                  backgroundColor: `${getBackgroundColor(
-                    colors,
-                    customColor,
-                    floating
-                  )}`,
+            <View paddingLeft={[4, 5]}>
+              <ButtonMinimal
+                borderRadius={3}
+                boxShadow="none"
+                css={{
                   borderColor: `${getBackgroundColor(
                     colors,
                     customColor,
                     floating
                   )}`,
-                },
-              }}
-              size="sm"
-              height="1.05rem"
-              onClick={close}
-              data-testid="close"
-              paddingX={1}
-              paddingY={1}
-            >
-              <IconCross color={customColor} />
-            </ButtonMinimal>
+                  backgroundColor: `${getBackgroundColor(
+                    colors,
+                    customColor,
+                    floating
+                  )}`,
+                  "&:hover, &:focus, &:active": {
+                    backgroundColor: `${getBackgroundColor(
+                      colors,
+                      customColor,
+                      floating
+                    )}`,
+                    borderColor: `${getBackgroundColor(
+                      colors,
+                      customColor,
+                      floating
+                    )}`,
+                  },
+                }}
+                size="sm"
+                height="1.05rem"
+                onClick={close}
+                data-testid="close"
+                paddingX={1}
+                paddingY={1}
+              >
+                <IconCross color={customColor} />
+              </ButtonMinimal>
+            </View>
           )}
-        </View>
+        </Row>
       )}
     </Theme.Consumer>
   );
