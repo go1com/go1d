@@ -77,6 +77,9 @@ const filterAndMap = (options, search, value, mapEmailToAuthor) =>
       };
     });
 
+/**
+ * A component to allow the selection of multiple authors.
+ */
 class AuthorSelector extends React.PureComponent<AuthorSelectorProps, State> {
   public static defaultProps = {
     placeholder: "Type to select an Author",

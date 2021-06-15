@@ -3,7 +3,9 @@ import Theme from "../Theme";
 import View, { ViewProps } from "../View";
 
 export interface IconProps extends ViewProps {
+  /** Supply a color by the color prop. The available colors can be found in the Colors section. */
   color?: string;
+  /** Define size with the size prop. This uses font sizing to determine the size, so the value is the index on the font size array that you require. */
   size?: number | number[];
 }
 

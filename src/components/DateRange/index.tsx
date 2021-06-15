@@ -12,6 +12,9 @@ import IconCross from "../Icons/Cross";
 
 import "../DatePicker/css";
 
+/**
+ * A component that displays a date range picker. A Date Range lets the user select a start and end date range.
+ */
 class DateRange extends React.Component<any, any> {
   public static defaultProps = {
     borderRadius: 3,

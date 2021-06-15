@@ -25,6 +25,9 @@ interface AutocompleteProps extends ViewProps {
   statusRenderer?: () => React.ReactNode;
 }
 
+/**
+ * A generic autocomplete component. For a realistic implementation, see https://code.go1.com.au/apps/search-provider/blob/GO1P-21911/src/search-provider/components/LocationFilter/index.tsx
+ */
 class Autocomplete extends React.Component<AutocompleteProps, any> {
   constructor(props) {
     super(props);

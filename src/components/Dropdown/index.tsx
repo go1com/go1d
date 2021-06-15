@@ -28,9 +28,11 @@ type RenderItem<T> = (
 ) => React.ReactNode;
 
 export interface DropdownProps extends ViewProps {
+  /** Children needs to be a function that returns React elements that are meant to open the dropdown, taking in a reference and adding it as a prop. Note that the ref is required, if you do not have it the dropdown will not render. */
   children: (params: any) => React.ReactNode;
   itemList?: any[];
   renderMenu?: RenderMenu<any>;
+  /** The render function takes in an item, and index value and the getItemProps found in Downshift. This will return a React elements. Each React element needs to also have the result from getItemProps destructured onto it, with getItemProps having the key, item and index passed to it. */
   renderFunction?: RenderItem<any>;
   initialInputValue?: string;
   onInputValueChange?: OnInputValueChange;
@@ -53,6 +55,7 @@ export interface DropdownProps extends ViewProps {
     | "left-end"
     | "left"
     | "left-start";
+  /** Offset can be used to customize the placement of the dropdown, for the syntax please see the popper.js docs */
   offset?: string | number;
   labelId?: string;
 }
@@ -71,6 +74,9 @@ function defaultRenderFunction(
   return <DropdownItem item={item} getItemProps={getItemProps} index={index} />;
 }
 
+/**
+ * This component renders a dropdown list of items, which can be used with multiple other components. It can be used with menus, searches and selects. The child is the element that triggers the dropdown (e.g. button or text input), with the renderFunction taking in the list of items and displaying them as defined.
+ */
 const Dropdown: React.SFC<DropdownProps> = ({
   children,
   itemList,

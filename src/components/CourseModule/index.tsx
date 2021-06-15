@@ -15,6 +15,9 @@ export interface CourseModuleProps extends ViewProps {
   defaultOpen?: boolean;
 }
 
+/**
+ * A component that wraps lessons.
+ */
 class CourseModule extends React.Component<CourseModuleProps, any> {
   public static defaultProps = {
     defaultOpen: true,

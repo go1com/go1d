@@ -44,6 +44,9 @@ function getValueFromState(state: State) {
   );
 }
 
+/**
+ * An element which takes a value in the form of a total time in minutes and renders an input with hours, minutes and days. This component renders three inputs all controlled by the same value prop, which is the total time in minutes. The change event returns the updated value of the total time in minutes.
+ */
 export class DurationInput extends React.Component<DurationInputProps, State> {
   public static defaultProps = {
     dayText: "Days",

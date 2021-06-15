@@ -7,7 +7,7 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: 'The base of every component. It should only be used to build out GO1D components.'
+        component: 'The base of every component. It should only be used to build out Go1d components.'
       }
     },
   }

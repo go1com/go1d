@@ -50,6 +50,10 @@ export interface DatePickerState {
 safeInvoke(Moment.updateLocale, "en", {
   weekdaysMin: "S_M_T_W_T_F_S".split("_"),
 });
+
+/**
+ * A component that displays a datepicker. A Date Picker lets the user select a single date and, optionally, time.
+ */
 class DatePicker extends React.Component<DatePickerProps, DatePickerState> {
   public static defaultProps = {
     size: "md",

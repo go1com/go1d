@@ -60,6 +60,9 @@ interface State {
   unselectedItems: Set<number>;
 }
 
+/**
+ * This component extends the Data Table component to add the ability to select rows.
+ */
 class DataTableSelectable extends React.Component<
   DataTableSelectableProps,
   State
