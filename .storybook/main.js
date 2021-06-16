@@ -31,6 +31,7 @@ module.exports = {
     },
     "@storybook/addon-a11y",
     "@storybook/addon-storysource",
+    "storybook-addon-designs",
   ],
   "webpackFinal": async config => {
     config.module.rules.push({
