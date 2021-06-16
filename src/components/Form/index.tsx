@@ -58,8 +58,9 @@ export class InternalForm extends React.Component<
 
   @autobind
   public handleSubmit(evt) {
+    evt.preventDefault();
+
     if (this.props.disabled) {
-      evt.preventDefault();
       return false;
     }
 
@@ -68,8 +69,9 @@ export class InternalForm extends React.Component<
 
   @autobind
   public handleReset(evt) {
+    evt.preventDefault();
+
     if (this.props.disabled) {
-      evt.preventDefault();
       return false;
     }
 
@@ -146,6 +148,7 @@ const Form: React.SFC<FormProps> = ({
           values={values}
           errors={errors}
           {...formProps}
+          method={formProps?.method || "post"}
         >
           {children}
         </InternalForm>
