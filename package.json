@@ -128,6 +128,7 @@
     "react-testing-library": "^6.1.2",
     "recompose": "^0.27.1",
     "slate-plain-serializer": "^0.6.34",
+    "storybook-addon-designs": "^6.0.0",
     "ts-jest": "^26.5.4",
     "ts-loader": "^8.1.0",
     "tslint": "^5.11.0",
