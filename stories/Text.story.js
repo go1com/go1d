@@ -15,7 +15,15 @@ export default {
       }
     },
     controls: { hideNoControlsWarning: true },
-  },
+    design: [
+      {
+        name: 'Guidelines',
+        type: 'link',
+        url: 'https://www.figma.com/file/BxQA6qbzRwjSA2AXWnO0f9/Components?node-id=3105%3A14386',
+        label: 'We need your help! Please add a page in Figma using the template and update this link.',
+      },
+    ],
+  }
 };
 
 // If you change this story's key name (const UnstyledText), update link to it in Typography story

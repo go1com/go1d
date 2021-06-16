@@ -1,11 +1,23 @@
 import React from "react";
 import { ButtonFilled, Button } from "../src";
 import { IconCheck } from "../src/components/Icons";
+import { withDesign } from 'storybook-addon-designs'
 
 export default {
   title: "Athletic/Buttons/ButtonFilled (Accent and Subtle)",
   component: ButtonFilled,
   subcomponents: { Button },
+  decorators: [withDesign],
+  parameters: {
+    design: [
+      {
+        name: 'Guidelines',
+        type: 'link',
+        url: 'https://www.figma.com/file/BxQA6qbzRwjSA2AXWnO0f9/Components?node-id=2691%3A62',
+        label: 'See Button designs in Figma',
+      },
+    ],
+  }
 };
 
 export const FilledButtonInAccentColour = args => (
