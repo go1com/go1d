@@ -1,5 +1,11 @@
 # @go1d/go1d
 
+## 6.4.4
+
+### Patch Changes
+
+- cfaa947d: change form default method to post, always preventDefault
+
 ## 6.4.3
 
 ### Patch Changes
