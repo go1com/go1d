@@ -5,6 +5,16 @@ import IconSave from "../src/components/Icons/Save";
 export default {
   title: "Athletic/Card/CardListIndex",
   component: CardListIndex,
+  parameters: {
+    design: [
+      {
+        name: 'Guidelines',
+        type: 'link',
+        url: 'https://www.figma.com/file/BxQA6qbzRwjSA2AXWnO0f9/Components?node-id=4178%3A0',
+        label: 'See Card designs in Figma',
+      },
+    ],
+  }
 };
 
 export const Base = args => <View width={215}><CardListIndex {...args} /></View>;

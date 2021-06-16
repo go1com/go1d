@@ -9,6 +9,16 @@ import {
 
 export default {
   title: "Athletic/Notification",
+  parameters: {
+    design: [
+      {
+        name: 'Guidelines',
+        type: 'link',
+        url: 'https://www.figma.com/file/BxQA6qbzRwjSA2AXWnO0f9/Components?node-id=5987%3A2516',
+        label: 'See Notification designs in Figma',
+      },
+    ],
+  }
 };
 
 export const Base = args => (

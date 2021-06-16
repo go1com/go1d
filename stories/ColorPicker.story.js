@@ -14,8 +14,8 @@ export default {
       {
         name: 'Guidelines',
         type: 'link',
-        url: 'https://www.figma.com/file/BxQA6qbzRwjSA2AXWnO0f9/Components?node-id=3105%3A14386',
-        label: 'We need your help! Please add a page in Figma using the template and update this link.',
+        url: 'https://www.figma.com/file/BxQA6qbzRwjSA2AXWnO0f9/Components?node-id=4070%3A3',
+        label: 'See Color Picker designs in Figma',
       },
     ],
   }

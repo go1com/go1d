@@ -4,6 +4,16 @@ import { ImageUploader, Form, Field, ButtonFilled } from "../src";
 export default {
   title: "Original Go1d/ImageUploader",
   component: ImageUploader,
+  parameters: {
+    design: [
+      {
+        name: 'Guidelines',
+        type: 'link',
+        url: 'https://www.figma.com/file/BxQA6qbzRwjSA2AXWnO0f9/Components?node-id=6326%3A1',
+        label: 'See Image Uploader designs in Figma',
+      },
+    ],
+  }
 };
 
 export const ExampleUsageWithoutCrop = args => (

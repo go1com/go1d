@@ -2,7 +2,7 @@ import React from "react";
 import { Spinner } from "../src";
 
 export default {
-  title: "Athletic/Spinner",
+  title: "Athletic/Loading Spinner",
   argTypes: {
     size: {
       defaultValue: '2',
@@ -15,8 +15,8 @@ export default {
       {
         name: 'Guidelines',
         type: 'link',
-        url: 'https://www.figma.com/file/BxQA6qbzRwjSA2AXWnO0f9/Components?node-id=3105%3A14386',
-        label: 'We need your help! Please add a page in Figma using the template and update this link.',
+        url: 'https://www.figma.com/file/BxQA6qbzRwjSA2AXWnO0f9/Components?node-id=6631%3A52150',
+        label: 'See Loading Spinner designs in Figma',
       },
     ],
   }
