@@ -30,6 +30,11 @@ const RootContextWrapper = ({ rootComponent, children }) =>
     children
   );
 
+/**
+ * The Provider is an extension of the `Theme` component that allows for custom links to be passed in as well as setting the color mode.
+ *
+ * The `Provider` component lets you specify custom `LinkComponent` attributes and whether the child components are either light or dark mode. It should be used when you do not just want to return an anchor tags when using Link components, such as use with `ReactRouter`.
+ */
 class Provider extends React.PureComponent<ProviderProps> {
   public render() {
     const {
