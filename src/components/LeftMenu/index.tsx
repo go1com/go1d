@@ -15,14 +15,14 @@ export interface LeftMenuProps extends ViewProps {
   allowCollapsable?: boolean;
 }
 
-/**
- * Menu
- */
 const menuTransition = {
   closedMenu: "80px",
   openedMenu: "242px",
 };
 
+/**
+ * A collapsible menu for navigation.
+ */
 const LeftMenu: React.SFC<LeftMenuProps> = ({
   showMenuButton = false,
   allowCollapsable = true,
