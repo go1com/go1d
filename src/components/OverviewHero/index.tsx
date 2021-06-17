@@ -25,6 +25,9 @@ export interface OverviewHeroProps extends ViewProps {
 
 const MobileDisplayBreak = "@media(max-width: 1023px)";
 
+/**
+ * An overview container for a hero page
+ */
 const OverviewHero: React.SFC<OverviewHeroProps> = ({
   children,
   backgroundImage,
