@@ -104,6 +104,11 @@ const filter = (list, filterText) =>
       return index === self.findIndex(t => t.value === thing.value);
     });
 
+/**
+ * A SelectDropdown lets the user choose from 4 or more options from a list where the selected item will NOT be shown when the select dropdown is closed.
+ *
+ * Any children can be used to trigger the select dropdown, such as a button.
+ */
 class SelectDropdown extends React.PureComponent<SelectDropdownProps, State> {
   public static defaultProps = {
     createable: true,
