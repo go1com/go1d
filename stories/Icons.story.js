@@ -19,7 +19,7 @@ export default {
         label: 'See Icon designs in Figma',
       },
     ],
-  }
+  },
   component: IconSuccess,
   argTypes: {
     size: {
