@@ -11,7 +11,7 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: 'While this component will let you do anything you need with text, for headings you probably want the convenience of using the Heading component instead.'
+        component: 'All text in our apps should be wrapped in a Text component. `Text` uses our responsive type scale under the hood and connects props with all our type foundations. While this component will let you do anything you need with text, for headings you probably want the convenience of using the `Heading` component instead.'
       }
     },
     controls: { hideNoControlsWarning: true },
@@ -145,4 +145,51 @@ export const UISmall = () => (
     </Text>
   </React.Fragment>
 );
+
+export const ParagraphWithEllipsis = () => (
+  <React.Fragment>
+    <Text
+      color="default"
+      element="p"
+      fontSize={2}
+      fontWeight="normal"
+      fontFamily="sansSerif"
+      lineHeight="paragraph"
+      ellipsis={true}
+    >
+      Paragraph Medium with Ellipsis. {sharedExampleText}
+    </Text>
+  </React.Fragment>
+);
+ParagraphWithEllipsis.parameters = {
+  docs: {
+    description: {
+      story: 'You need to show the full text *somewhere*.',
+    },
+  },
+};
+
+
+export const ParagraphWithLineClamp = () => (
+  <React.Fragment>
+    <Text
+      color="default"
+      element="p"
+      fontSize={2}
+      fontWeight="normal"
+      fontFamily="sansSerif"
+      lineHeight="paragraph"
+      lineClamp={2}
+    >
+      Paragraph Medium with LineClamp. {sharedExampleText} {sharedExampleText}
+    </Text>
+  </React.Fragment>
+);
+ParagraphWithLineClamp.parameters = {
+  docs: {
+    description: {
+      story: 'You need to show the full text *somewhere*. If you need a show more/less button, consider using the `Prose` component with expandable prop.',
+    },
+  },
+};
 
