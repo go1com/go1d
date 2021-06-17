@@ -78,5 +78,5 @@ export const ToggleButtonFeatureInCustomSizes = args => (
     <ToggleButtonFeature sizeStyles={customSizeStyles} icon={IconTooHard}>Too hard</ToggleButtonFeature>
   </View>
 );
-ToggleButtonFeatureInCustomSizes.storyName = "Toggle Button Feature in sizes";
+ToggleButtonFeatureInCustomSizes.storyName = "Toggle Button Feature in custom sizes";
 
