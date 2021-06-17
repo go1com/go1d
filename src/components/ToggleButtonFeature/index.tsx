@@ -3,6 +3,9 @@ import * as React from "react";
 import { ButtonFilledProps } from "../ButtonFilled";
 import ButtonFilled from "../ButtonFilled";
 
+/**
+ * This component is almost always used in a list, such as a list of feedback options.
+ */
 const ToggleButtonFeature: React.SFC<ButtonFilledProps> = ({
   size = "md",
   sizeStyles,
