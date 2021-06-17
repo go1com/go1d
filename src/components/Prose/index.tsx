@@ -45,6 +45,9 @@ interface State {
   currentLineClamp: number;
 }
 
+/**
+ * Prose sanitizes HTML and wraps it into a Text component. All text in our apps should be wrapped in a Text component.
+ */
 class Prose extends React.Component<ProseProps, State> {
   public static displayName = "Prose";
 
