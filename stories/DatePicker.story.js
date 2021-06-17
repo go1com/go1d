@@ -81,3 +81,14 @@ BasicDatepickerWithLabel.argTypes = {
   id: { defaultValue: "id8" },
   defaultValue: { defaultValue: new Date("2021-05-14T00:00:00.000Z") },
 };
+
+export const WithPastDate = () => (
+  <DatePicker
+    floating
+    label='past date'
+    enablePastDate
+  />
+)
+BasicDatepickerWithLabel.argTypes = {
+  id: { defaultValue: "past_date" },
+};

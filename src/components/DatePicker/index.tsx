@@ -37,6 +37,7 @@ export interface DatePickerProps extends ViewProps {
   displayFormat?: string;
   label?: string;
   floating?: boolean;
+  enablePastDate?: boolean;
 }
 
 export interface DatePickerState {
@@ -270,6 +271,7 @@ class DatePicker extends React.Component<DatePickerProps, DatePickerState> {
       displayFormat = "DD/MM/YYYY",
       label,
       floating,
+      enablePastDate,
       ...remainingProps
     } = this.props;
 
@@ -364,32 +366,33 @@ class DatePicker extends React.Component<DatePickerProps, DatePickerState> {
             ]}
           >
             <SingleDatePicker
+              id={id}
+              focused={this.state.focused}
+              disabled={disabled}
               date={
                 !this.state.selectedDate && this.props.allowBlank
                   ? null
                   : this.state.date
               }
               onDateChange={this.onDateChange}
-              focused={this.state.focused}
               onFocusChange={this.onFocusChange}
-              id={id}
-              numberOfMonths={1}
-              hideKeyboardShortcutsPanel={true}
-              weekDayFormat="dd"
-              inputIconPosition="after"
-              displayFormat={displayFormat}
-              navNext={<IconChevronRight size={2} color="subtle" />}
-              navPrev={<IconChevronLeft size={2} color="subtle" />}
               verticalSpacing={5}
               verticalHeight={7}
               horizontalMonthPadding={0}
+              navNext={<IconChevronRight size={2} color="subtle" />}
+              navPrev={<IconChevronLeft size={2} color="subtle" />}
               customInputIcon={
                 <IconCalendar
                   size={get({ lg: 3, md: 2, sm: 1 }, size)}
                   color="subtle"
                 />
               }
-              disabled={disabled}
+              numberOfMonths={1}
+              hideKeyboardShortcutsPanel={true}
+              weekDayFormat="dd"
+              inputIconPosition="after"
+              displayFormat={displayFormat}
+              isOutsideRange={enablePastDate ? () => false : undefined}
               {...remainingProps}
             />
 
