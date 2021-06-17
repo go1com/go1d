@@ -5,6 +5,9 @@ export interface VisuallyHiddenProps {
   children?: React.ReactNode;
 }
 
+/**
+ * The Visually Hidden component visually hides content so that you may provide screen readers with meaningful text.
+ */
 const VisuallyHidden: React.SFC<VisuallyHiddenProps> = ({
   children = "Loading",
 }: VisuallyHiddenProps) => (
@@ -20,7 +23,6 @@ const VisuallyHidden: React.SFC<VisuallyHiddenProps> = ({
     {children}
   </View>
 );
-
 VisuallyHidden.displayName = "VisuallyHidden";
 
 export default VisuallyHidden;
