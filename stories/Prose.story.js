@@ -12,6 +12,16 @@ export default {
     },
     expandable: { table: { disable: true } }
   },
+  parameters: {
+    design: [
+      {
+        name: 'Guidelines',
+        type: 'link',
+        url: 'https://www.figma.com/file/BxQA6qbzRwjSA2AXWnO0f9/Components?node-id=5834%3A1',
+        label: 'See Prose designs in Figma',
+      },
+    ],
+  }
 };
 
 export const PlainHtml = args => (

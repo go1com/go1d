@@ -4,6 +4,16 @@ import { Popover, ButtonFilled, View } from "../src";
 export default {
   title: "Original Go1d/Popover",
   component: Popover,
+  parameters: {
+    design: [
+      {
+        name: 'Guidelines',
+        type: 'link',
+        url: 'https://www.figma.com/file/BxQA6qbzRwjSA2AXWnO0f9/Components?node-id=6636%3A3',
+        label: 'See Popover designs in Figma',
+      },
+    ],
+  }
 };
 
 export const BasicUsage = args => (

@@ -4,6 +4,16 @@ import { TagToggle, View } from "../src";
 export default {
   title: "Athletic/TagToggle",
   component: TagToggle,
+  parameters: {
+    design: [
+      {
+        name: 'Guidelines',
+        type: 'link',
+        url: 'https://www.figma.com/file/BxQA6qbzRwjSA2AXWnO0f9/Components?node-id=4474%3A135',
+        label: 'See Tag Toggle designs in Figma',
+      },
+    ],
+  }
 };
 
 export const _TagToggle = args => (

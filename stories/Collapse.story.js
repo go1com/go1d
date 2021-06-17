@@ -6,6 +6,16 @@ export default {
   title: "Athletic/Collapse",
   component: Collapse,
   subcomponents: { ButtonFilled, View, Text },
+  parameters: {
+    design: [
+      {
+        name: 'Guidelines',
+        type: 'link',
+        url: 'https://www.figma.com/file/BxQA6qbzRwjSA2AXWnO0f9/Components?node-id=3896%3A18350',
+        label: 'See Collapse designs in Figma',
+      },
+    ],
+  }
 };
 
 export const Main = args => (

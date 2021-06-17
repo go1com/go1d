@@ -10,6 +10,16 @@ export default {
       control: { type: 'boolean' }
     },
   },
+  parameters: {
+    design: [
+      {
+        name: 'Guidelines',
+        type: 'link',
+        url: 'https://www.figma.com/file/BxQA6qbzRwjSA2AXWnO0f9/Components?node-id=4724%3A0',
+        label: 'See Toggle Switch designs in Figma',
+      },
+    ],
+  }
 };
 
 export const ToggleWithNoProps = args => <ToggleSwitch {...args} />;

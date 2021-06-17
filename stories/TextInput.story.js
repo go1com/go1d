@@ -5,6 +5,16 @@ import { IconCross, IconSearch } from "../src/components/Icons";
 export default {
   title: "Athletic/TextInput",
   component: TextInput,
+  parameters: {
+    design: [
+      {
+        name: 'Guidelines',
+        type: 'link',
+        url: 'https://www.figma.com/file/BxQA6qbzRwjSA2AXWnO0f9/Components?node-id=6388%3A1288',
+        label: 'See Text Input designs in Figma',
+      },
+    ],
+  }
 };
 
 export const BasicTextInput = args => (

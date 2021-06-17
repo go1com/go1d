@@ -5,6 +5,16 @@ import { generateTheme } from "../src/foundations";
 
 export default {
   title: "Athletic/Foundations/Shadows",
+  parameters: {
+    design: [
+      {
+        name: 'Guidelines',
+        type: 'link',
+        url: 'https://www.figma.com/file/8WVqZs5ZzY8wzf7gmRRaAS/Foundations?node-id=3034%3A5',
+        label: 'See Shadow designs in Figma',
+      },
+    ],
+  }
 };
 
 const shadowSwatch = (themeShadowName, cssShadow) => (

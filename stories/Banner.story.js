@@ -4,6 +4,16 @@ import { Banner, Text, Link } from "../src";
 export default {
   title: "Athletic/Banner",
   component: Banner,
+  parameters: {
+    design: [
+      {
+        name: 'Guidelines',
+        type: 'link',
+        url: 'https://www.figma.com/file/BxQA6qbzRwjSA2AXWnO0f9/Components?node-id=3142%3A0',
+        label: 'See Banner designs in Figma',
+      },
+    ],
+  }
 };
 
 export const TypeSuccess = () => (

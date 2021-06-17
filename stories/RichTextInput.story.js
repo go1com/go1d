@@ -4,6 +4,16 @@ import { RichTextInput, Form, Field, ButtonFilled } from "../src";
 export default {
   title: "Original Go1d/RichTextInput",
   component: RichTextInput,
+  parameters: {
+    design: [
+      {
+        name: 'Guidelines',
+        type: 'link',
+        url: 'https://www.figma.com/file/BxQA6qbzRwjSA2AXWnO0f9/Components?node-id=6122%3A43990',
+        label: 'See Rich Text Editor designs in Figma',
+      },
+    ],
+  }
 };
 
 export const RichTextInputInField = () => (

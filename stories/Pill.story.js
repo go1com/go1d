@@ -11,6 +11,16 @@ export default {
       options: ["light", "normal", "medium", "semibold", "bold"],
     }
   },
+  parameters: {
+    design: [
+      {
+        name: 'Guidelines',
+        type: 'link',
+        url: 'https://www.figma.com/file/BxQA6qbzRwjSA2AXWnO0f9/Components?node-id=6637%3A51880',
+        label: 'See Pill designs in Figma',
+      },
+    ],
+  }
 };
 
 export const Main = args => <Pill {...args}>Default</Pill>;

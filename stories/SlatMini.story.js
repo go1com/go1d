@@ -11,6 +11,16 @@ export default {
       control: { type: 'boolean' }
     },
   },
+  parameters: {
+    design: [
+      {
+        name: 'Guidelines',
+        type: 'link',
+        url: 'https://www.figma.com/file/BxQA6qbzRwjSA2AXWnO0f9/Components?node-id=3091%3A21',
+        label: 'See Slat Mini designs in Figma',
+      },
+    ],
+  }
 };
 
 export const WithDropdownActions = args => (

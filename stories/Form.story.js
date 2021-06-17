@@ -4,6 +4,16 @@ import { TextInput, Form, Field, SubmitButton } from "../src";
 export default {
   title: "Original Go1d/Form",
   component: Form,
+  parameters: {
+    design: [
+      {
+        name: 'Guidelines',
+        type: 'link',
+        url: 'https://www.figma.com/file/BxQA6qbzRwjSA2AXWnO0f9/Components?node-id=4361%3A20568',
+        label: 'See Form designs in Figma',
+      },
+    ],
+  }
 };
 
 export const ExampleFormWithField = args => (

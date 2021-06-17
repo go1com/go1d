@@ -12,6 +12,16 @@ import { IconChevronDown } from "../src/components/Icons";
 
 export default {
   title: "Athletic/InputGroup",
+  parameters: {
+    design: [
+      {
+        name: 'Guidelines',
+        type: 'link',
+        url: 'https://www.figma.com/file/BxQA6qbzRwjSA2AXWnO0f9/Components?node-id=4043%3A313',
+        label: 'See Input Group designs in Figma',
+      },
+    ],
+  }
 };
 
 export const Base = args => (

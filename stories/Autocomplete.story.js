@@ -10,6 +10,16 @@ export default {
   decorators: [
     (Story) => <div style={{ minHeight: '214px' }}><Story/></div>
   ],
+  parameters: {
+    design: [
+      {
+        name: 'Guidelines',
+        type: 'link',
+        url: 'https://www.figma.com/file/BxQA6qbzRwjSA2AXWnO0f9/Components?node-id=3628%3A444',
+        label: 'See Autocomplete designs in Figma',
+      },
+    ],
+  }
 };
 
 export const BaseAutocomplete = args => (

@@ -9,6 +9,16 @@ import Carousel from "../src/components/Carousel";
 export default {
   title: "Athletic/ConnectingShapes",
   component: ConnectingShapes,
+  parameters: {
+    design: [
+      {
+        name: 'Guidelines',
+        type: 'link',
+        url: 'https://www.figma.com/file/8WVqZs5ZzY8wzf7gmRRaAS/Foundations?node-id=5547%3A0',
+        label: 'See Connecting Shapes designs in Figma',
+      },
+    ],
+  }
 };
 
 export const Main = (args, { globals: { accent } }) => (

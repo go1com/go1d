@@ -4,6 +4,16 @@ import { Link, Text, Provider } from "../src";
 export default {
   title: "Athletic/Link",
   component: Link,
+  parameters: {
+    design: [
+      {
+        name: 'Guidelines',
+        type: 'link',
+        url: 'https://www.figma.com/file/BxQA6qbzRwjSA2AXWnO0f9/Components?node-id=5987%3A2253',
+        label: 'See Link designs in Figma',
+      },
+    ],
+  }
 };
 
 export const DefaultLink = args => <Link href="#testing">Link text</Link>;

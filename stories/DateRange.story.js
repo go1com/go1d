@@ -10,6 +10,14 @@ export default {
     // 1. A Focus into the date range, causes a blinking cursor
     // 2. The Picker displays the current month, which can't be influenced in the current implementation
     happo: false, // this will disable all `Athletic/DateRange` stories
+    design: [
+      {
+        name: 'Guidelines',
+        type: 'link',
+        url: 'https://www.figma.com/file/BxQA6qbzRwjSA2AXWnO0f9/Components?node-id=4751%3A30075',
+        label: 'See Date Range designs in Figma',
+      },
+    ],
   },
   decorators: [
     (Story) => <div style={{ minHeight: '380px' }}><Story/></div>

@@ -11,6 +11,16 @@ export default {
     isOpen: { control: { disable: true } },
     headerIcon: { control: { disable: true } },
     moreMenu: { control: { disable: true } },
+  },
+  parameters: {
+    design: [
+      {
+        name: 'Guidelines',
+        type: 'link',
+        url: 'https://www.figma.com/file/BxQA6qbzRwjSA2AXWnO0f9/Components?node-id=3371%3A1072',
+        label: 'See Modal designs in Figma',
+      },
+    ],
   }
 };
 

@@ -23,6 +23,14 @@ export default {
         component: 'This is the base Button component used by ButtonFilled and ButtonMinimal.'
       }
     },
+    design: [
+      {
+        name: 'Guidelines',
+        type: 'link',
+        url: 'https://www.figma.com/file/BxQA6qbzRwjSA2AXWnO0f9/Components?node-id=2691%3A62',
+        label: 'See Button designs in Figma',
+      },
+    ],
   }
 };
 

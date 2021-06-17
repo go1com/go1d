@@ -10,6 +10,14 @@ export default {
         component: 'This is a color picker'
       }
     },
+    design: [
+      {
+        name: 'Guidelines',
+        type: 'link',
+        url: 'https://www.figma.com/file/BxQA6qbzRwjSA2AXWnO0f9/Components?node-id=4070%3A3',
+        label: 'See Color Picker designs in Figma',
+      },
+    ],
   }
 };
 

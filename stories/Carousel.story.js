@@ -10,7 +10,15 @@ export default {
       description: {
         component: 'Carousels are used to show a fixed number of slides at a number that overflows horizontally (is hidden after X number of slides). This lets users “progressively disclose” as much content as they want, in small chunks at a time. Note: Breakpoints are controlled by the width of their parent component not by the page width.'
       }
-    }
+    },
+    design: [
+      {
+        name: 'Guidelines',
+        type: 'link',
+        url: 'https://www.figma.com/file/BxQA6qbzRwjSA2AXWnO0f9/Components?node-id=3348%3A31',
+        label: 'See Carousel designs in Figma',
+      },
+    ],
   }
 };
 

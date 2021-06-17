@@ -4,6 +4,16 @@ import { TextArea } from "../src";
 export default {
   title: "Athletic/TextArea",
   component: TextArea,
+  parameters: {
+    design: [
+      {
+        name: 'Guidelines',
+        type: 'link',
+        url: 'https://www.figma.com/file/BxQA6qbzRwjSA2AXWnO0f9/Components?node-id=4361%3A22323',
+        label: 'See Text Area designs in Figma',
+      },
+    ],
+  }
 };
 
 export const Label = args => <TextArea {...args} id="Testing" />;

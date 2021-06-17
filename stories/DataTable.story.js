@@ -4,6 +4,16 @@ import { DataTable, TR, TD, TH, ButtonFilled } from "../src";
 export default {
   title: "Original Go1d/DataTable",
   component: DataTable,
+  parameters: {
+    design: [
+      {
+        name: 'Guidelines',
+        type: 'link',
+        url: 'https://www.figma.com/file/BxQA6qbzRwjSA2AXWnO0f9/Components?node-id=5892%3A37607',
+        label: 'See Table designs in Figma',
+      },
+    ],
+  }
 };
 
 export const BasicTable = args => (

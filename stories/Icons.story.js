@@ -10,8 +10,16 @@ export default {
       description: {
         component: 'Each `<Icon* />` component uses the `<IconBase />` component.'
       }
-    }
-  },
+    },
+    design: [
+      {
+        name: 'Guidelines',
+        type: 'link',
+        url: 'https://www.figma.com/file/8WVqZs5ZzY8wzf7gmRRaAS/Foundations?node-id=5519%3A1330',
+        label: 'See Icon designs in Figma',
+      },
+    ],
+  }
   component: IconSuccess,
   argTypes: {
     size: {

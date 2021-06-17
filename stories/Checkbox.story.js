@@ -15,6 +15,16 @@ export default {
     size: {
       defaultValue: 'md',
     }
+  },
+  parameters: {
+    design: [
+      {
+        name: 'Guidelines',
+        type: 'link',
+        url: 'https://www.figma.com/file/BxQA6qbzRwjSA2AXWnO0f9/Components?node-id=3348%3A1678',
+        label: 'See Checkbox designs in Figma',
+      },
+    ],
   }
 };
 

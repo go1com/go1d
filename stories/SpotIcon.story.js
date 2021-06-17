@@ -4,6 +4,16 @@ import { SpotIcon, Text, View } from "../src";
 export default {
   title: "Athletic/SpotIcon",
   component: SpotIcon,
+  parameters: {
+    design: [
+      {
+        name: 'Guidelines',
+        type: 'link',
+        url: 'https://www.figma.com/file/8WVqZs5ZzY8wzf7gmRRaAS/Foundations?node-id=5519%3A1330',
+        label: 'See Spot Icon designs in Figma',
+      },
+    ],
+  }
 };
 
 export const Business = args => <SpotIcon {...args} name="BusinessSkills" />;

@@ -9,6 +9,16 @@ export default {
       control: { disable: true },
     },
   },
+  parameters: {
+    design: [
+      {
+        name: 'Guidelines',
+        type: 'link',
+        url: 'https://www.figma.com/file/BxQA6qbzRwjSA2AXWnO0f9/Components?node-id=3894%3A922',
+        label: 'See Rating designs in Figma',
+      },
+    ],
+  }
 };
 
 export const BasicRating = args => <Rating {...args} />;

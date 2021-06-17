@@ -5,7 +5,7 @@ import { IconPlus, IconTrash } from "../src/components/Icons";
 export default {
   title: "Original Go1d/Dropdown",
   component: Dropdown,
-  subcomponents: { ButtonFilled, ButtonMinimal, View, Text }
+  subcomponents: { ButtonFilled, ButtonMinimal, View, Text },
 };
 
 export const BasicDropdown = args => (

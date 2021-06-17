@@ -9,6 +9,16 @@ const metaThumbnailUrl = "https://images.prismic.io/go1prod/0b791d6f-c4ff-4a0c-b
 export default {
   title: "Athletic/Slat",
   component: Slat,
+  parameters: {
+    design: [
+      {
+        name: 'Guidelines',
+        type: 'link',
+        url: 'https://www.figma.com/file/BxQA6qbzRwjSA2AXWnO0f9/Components?node-id=3091%3A21',
+        label: 'See Slat designs in Figma',
+      },
+    ],
+  }
 };
 
 export const WithActions = args => (

@@ -5,6 +5,16 @@ import { IconEye } from "../src/components/Icons";
 export default {
   title: "Athletic/Tooltip",
   component: Tooltip,
+  parameters: {
+    design: [
+      {
+        name: 'Guidelines',
+        type: 'link',
+        url: 'https://www.figma.com/file/BxQA6qbzRwjSA2AXWnO0f9/Components?node-id=3894%3A452',
+        label: 'See Tooltip designs in Figma',
+      },
+    ],
+  }
 };
 
 export const BasicUsage = args => (

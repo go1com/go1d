@@ -11,7 +11,15 @@ export default {
         component: 'This shows all the colors produced from the applied theme using the Athletic theme generator, which results in Athletic status colors.'
       }
     },
-  },
+    design: [
+      {
+        name: 'Guidelines',
+        type: 'link',
+        url: 'https://www.figma.com/file/8WVqZs5ZzY8wzf7gmRRaAS/Foundations?node-id=5525%3A6896',
+        label: 'See Color designs in Figma',
+      },
+    ],
+  }
 };
 
 const colorSwatch = (themeColorName, cssColor, mode) => (

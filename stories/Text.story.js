@@ -15,7 +15,15 @@ export default {
       }
     },
     controls: { hideNoControlsWarning: true },
-  },
+    design: [
+      {
+        name: 'Guidelines',
+        type: 'link',
+        url: 'https://www.figma.com/file/8WVqZs5ZzY8wzf7gmRRaAS/Foundations?node-id=5525%3A9517',
+        label: 'See Typography designs in Figma',
+      },
+    ],
+  }
 };
 
 // If you change this story's key name (const UnstyledText), update link to it in Typography story

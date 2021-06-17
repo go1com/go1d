@@ -4,6 +4,16 @@ import { SelectDropdown, View, ButtonFilled } from "../src";
 export default {
   title: "Original Go1d/SelectDropdown",
   component: SelectDropdown,
+  parameters: {
+    design: [
+      {
+        name: 'Guidelines',
+        type: 'link',
+        url: 'https://www.figma.com/file/BxQA6qbzRwjSA2AXWnO0f9/Components?node-id=4982%3A1',
+        label: 'See Select designs in Figma',
+      },
+    ],
+  }
 };
 
 export const Base = args => (

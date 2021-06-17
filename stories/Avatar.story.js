@@ -11,6 +11,16 @@ export default {
       control: { type: 'range', min: 1, max: 3 }
     },
   },
+  parameters: {
+    design: [
+      {
+        name: 'Guidelines',
+        type: 'link',
+        url: 'https://www.figma.com/file/BxQA6qbzRwjSA2AXWnO0f9/Components?node-id=5736%3A0',
+        label: 'See Avatar designs in Figma',
+      },
+    ],
+  }
 };
 
 export const Basic = args => (
