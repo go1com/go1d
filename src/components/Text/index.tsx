@@ -25,6 +25,9 @@ export interface TextProps extends BaseProps {
   textDecoration?: string | string[];
 }
 
+/**
+ * All text in our apps should be wrapped in a Text component. `Text` uses our responsive type scale under the hood and connects props with all our type foundations.
+ */
 const Text: React.SFC<TextProps> = ({
   element = "span",
   display,
