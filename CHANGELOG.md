@@ -1,5 +1,11 @@
 # @go1d/go1d
 
+## 6.5.0
+
+### Minor Changes
+
+- 1765952e: allow DatePicker to select date from the past with enablePastDate props
+
 ## 6.4.4
 
 ### Patch Changes
