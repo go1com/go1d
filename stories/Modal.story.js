@@ -60,3 +60,20 @@ export const Main = args => (
   </React.Fragment>}</Flipflop>
 );
 
+export const ModalWithNoHeader = args => (
+  <Flipflop>{({on, flip, flop}) => <React.Fragment>
+    <ButtonFilled color='accent' onClick={flip}>Open modal</ButtonFilled>
+    <Modal
+      onRequestClose={flop}
+      isOpen={on}
+      {...args}
+    >
+      <View flexGrow={1} borderRadius={2} css={{ backgroundImage: "url(https://res.cloudinary.com/go1/image/fetch/w_1024,h_300,c_thumb,g_auto/https://udemy-images.udemy.com/course/750x422/435262_c617.jpg)" }} />
+    </Modal>
+  </React.Fragment>}</Flipflop>
+);
+ModalWithNoHeader.storyName = "Modal with no Header";
+ModalWithNoHeader.argTypes = {
+  contentPadding: { defaultValue: 0 },
+};
+
