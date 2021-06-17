@@ -19,6 +19,9 @@ export interface RatingProps extends ButtonProps {
   count?: number;
 }
 
+/**
+ * The Rating component lets users apply a rating to an item and shows their evaluation.
+ */
 class Rating extends React.PureComponent<RatingProps> {
   public state = {
     value: this.props.defaultValue,
