@@ -70,6 +70,9 @@ const renderFunction = (item, index, getItemProps) => (
 
 const itemToString = item => (item ? item.title : "");
 
+/**
+ * A card view for highlighting a call-to-action
+ */
 class OverviewCtaCard extends React.Component<OverviewCtaCardProps, any> {
   public static defaultProps = {
     dislikes: 0,
