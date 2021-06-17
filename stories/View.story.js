@@ -4,6 +4,7 @@ import { View, Text, Column, Row } from "../src";
 export default {
   title: "Athletic/View",
   component: View,
+  id: 'View', // id permalink becomes ?path=/story/view--basic-usage
 };
 
 export const BasicUsage = args => (
