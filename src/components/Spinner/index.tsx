@@ -11,6 +11,9 @@ const clip = keyframes`
   100% {transform: rotate(360deg) scale(1)}
 `;
 
+/**
+ * The loading `Spinner` is an animated element that hints something is in process for pending actions.
+ */
 class Spinner extends React.Component<ViewProps> {
   public static defaultProps = {
     color: "accent",
