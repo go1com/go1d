@@ -73,6 +73,11 @@ function applySize(n) {
   return n;
 }
 
+/**
+ * The `View` component is the most fundamental component for building a user interface with Go1d. The `View` component uses flex box via props to define the layout. Read [A Guide to Flexbox](https://css-tricks.com/snippets/css/a-guide-to-flexbox/).
+ *
+ * All Go1d components except `Text` should be built using `View`. It uses styling props connected to our foundations. You can use it where you would usually use a `div`.
+ */
 class View extends React.Component<ViewProps> {
   public static displayName = "View";
 
