@@ -1,5 +1,11 @@
 # @go1d/go1d
 
+## 6.5.1
+
+### Patch Changes
+
+- 25016adb: Adds TSdocs to code and expands Storybook documentation
+
 ## 6.5.0
 
 ### Minor Changes
