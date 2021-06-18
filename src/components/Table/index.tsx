@@ -8,6 +8,9 @@ export interface TableProps extends ViewProps {
   rows: React.ReactNodeArray;
 }
 
+/**
+ * The `table` component takes in two props, rows, and headers, and then automatically applies styling. There are a number of defined table components listed, such as `TH`, `TR`, and `TD`, that should be used with Go1d.
+ */
 const Table: React.SFC<TableProps> = ({
   header,
   rows,

@@ -63,6 +63,9 @@ export interface TagSelectorProps extends ViewProps {
   maxSelectedValues?: number;
 }
 
+/**
+ * A component to allow the selection of multiple single string type values (e.g. LO Tags)
+ */
 class TagSelector extends React.PureComponent<TagSelectorProps, State> {
   public static defaultProps = {
     createable: true,

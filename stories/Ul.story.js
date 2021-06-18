@@ -13,7 +13,7 @@ import {
 } from "../src/components/Icons";
 
 export default {
-  title: "Original Go1d/Ul",
+  title: "Original Go1d/UL",
   component: UL,
   parameters: {
     design: [
@@ -27,7 +27,7 @@ export default {
   }
 };
 
-export const BasicUl = args => (
+export const BasicUL = args => (
   <UL {...args}>
     <LI>List Item 1</LI>
     <LI>
@@ -44,7 +44,7 @@ export const BasicUl = args => (
   </UL>
 );
 
-BasicUl.storyName = "Basic Unordered List";
+BasicUL.storyName = "Basic Unordered List";
 
 export const UlWithSpecificIconAndColorAndFontSize = args => (
   <UL icon={IconSuccess} fontSize="3" color="subtle">

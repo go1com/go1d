@@ -47,6 +47,9 @@ const getItemTypeBadge = (type: string) => {
   }
 };
 
+/**
+ * Slats represent specific objects within a collection, such as people or learning resources. They provide contextual information (metadata) on the resource type and link to the object’s detail page.
+ */
 const Slat: React.SFC<SlatProps> = ({
   id,
   meta,

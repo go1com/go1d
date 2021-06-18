@@ -51,6 +51,9 @@ const isBoldHotkey = isKeyHotkey("mod+b");
 const isItalicHotkey = isKeyHotkey("mod+i");
 const isUnderlinedHotkey = isKeyHotkey("mod+u");
 
+/**
+ * The Rich Text Editor lets people input formatted text. It supports character formatting, such as bold text, paragraph formatting, such as headings and lists, and inserting content, such as links and images.
+ */
 class RichTextInput extends React.Component<Props, State> {
   public static defaultProps = {
     size: "md",

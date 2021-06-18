@@ -21,6 +21,10 @@ export interface MoreMenuProps extends ButtonProps {
 }
 
 const itemToString = (item: DropdownItem) => (item ? item.title : "");
+
+/**
+ * The more menu is a dropdown for more actions, typically accessed in a bar of actions and always by a more button. It helps keep secondary actions accessible while reducing visual clutter.
+ */
 class MoreMenu extends React.Component<MoreMenuProps> {
   public static defaultProps = {
     isButtonFilled: true,

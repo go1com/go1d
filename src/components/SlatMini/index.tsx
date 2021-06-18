@@ -23,6 +23,9 @@ export interface SlatMiniProps extends ViewProps {
   imageOverlayRenderer?: () => React.ReactNode;
 }
 
+/**
+ * SlatMini represents specific objects within a collection, such as people or learning resources, in a smaller format with fewer details than the Slat. They provide contextual information (metadata) on the resource type and link to the object’s detail page.
+ */
 const SlatMini: React.SFC<SlatMiniProps> = ({
   id,
   title,

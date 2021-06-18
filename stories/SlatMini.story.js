@@ -3,7 +3,7 @@ import { SlatMini } from "../src";
 import { IconCalendar, IconPlusCircle } from "../src/components/Icons";
 
 export default {
-  title: "Athletic/SlatMini",
+  title: "Athletic/Slat/SlatMini",
   component: SlatMini,
   argTypes: {
     skeleton: {

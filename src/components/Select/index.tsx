@@ -59,6 +59,9 @@ interface State {
   isFocused: boolean;
 }
 
+/**
+ * A Select lets the user choose from 4 or more options from a list. The selected item will then be shown.
+ */
 class Select extends React.PureComponent<SelectProps, State> {
   public static defaultProps = {
     size: "md",

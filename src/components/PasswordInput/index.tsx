@@ -14,6 +14,9 @@ interface State {
   maskedInput: boolean;
 }
 
+/**
+ * The PasswordInput uses the TextInput component and adds password masking
+ */
 class PasswordInput extends React.Component<PasswordInputProps, State> {
   public static displayName = "PasswordInput";
   public static defaultProps = {

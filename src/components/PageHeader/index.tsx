@@ -20,6 +20,9 @@ export interface PageHeaderProps extends ViewProps {
   breadcrumbTitle?: string;
 }
 
+/**
+ * A container for the header of a page, it contains the menu open button and then displays the children passed in
+ */
 const PageHeader: React.SFC<PageHeaderProps> = ({
   children,
   padding,

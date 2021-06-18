@@ -6,6 +6,9 @@ import {
   IconUser,
   IconStar,
   IconVideo,
+  IconTooEasy,
+  IconSuitable,
+  IconTooHard,
 } from "../src/components/Icons";
 
 
@@ -24,7 +27,7 @@ export default {
   }
 };
 
-export const _ToggleButtonFeature = args => (
+export const Main = args => (
   <View flexDirection="row">
     <ToggleButtonFeature {...args} color="danger" icon={IconDanger} marginRight={3}>
       Oh
@@ -51,5 +54,29 @@ export const ToggleButtonFeatureInSizes = args => (
     </ToggleButtonFeature>
   </View>
 );
-
 ToggleButtonFeatureInSizes.storyName = "Toggle Button Feature in sizes";
+
+const customSizeStyles = {
+  sm: {
+    iconSize: 5,
+    iconMargin: 0,
+  },
+  md: {
+    iconSize: 6,
+    iconMargin: 0,
+  },
+  lg: {
+    iconSize: 7,
+    iconMargin: 0,
+  }
+};
+
+export const ToggleButtonFeatureInCustomSizes = args => (
+  <View flexDirection="row" alignItems="center">
+    <ToggleButtonFeature sizeStyles={customSizeStyles} icon={IconTooEasy} marginRight={3}>Too easy</ToggleButtonFeature>
+    <ToggleButtonFeature sizeStyles={customSizeStyles} icon={IconSuitable} marginRight={3}>Suitable</ToggleButtonFeature>
+    <ToggleButtonFeature sizeStyles={customSizeStyles} icon={IconTooHard}>Too hard</ToggleButtonFeature>
+  </View>
+);
+ToggleButtonFeatureInCustomSizes.storyName = "Toggle Button Feature in custom sizes";
+

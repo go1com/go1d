@@ -10,6 +10,9 @@ export interface PillProps extends ViewProps {
   fontWeight?: FontWeight;
 }
 
+/**
+ * The Pill represents a status or label with no interactions, no links, and no hover/focus style.
+ */
 const Pill: React.SFC<PillProps> = ({
   color = "faded",
   textColor = "default",

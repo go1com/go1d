@@ -7,6 +7,9 @@ export interface PageTitleProps extends ViewProps {
   title: string;
 }
 
+/**
+ * A page title for use in standard content.
+ */
 const PageTitle: React.SFC<PageTitleProps> = ({
   title,
   children,

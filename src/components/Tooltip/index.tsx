@@ -80,6 +80,9 @@ function generateArrowCSS(p, s, colors): Interpolation {
   };
 }
 
+/**
+ * This is a tooltip component. In the basic usage it will wrap the tooltip's children with a `<span>` and the tooltip will appear off that node.
+ */
 class Tooltip extends React.Component<TooltipProps, any> {
   public static defaultProps = {
     placement: "top",

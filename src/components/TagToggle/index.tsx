@@ -48,6 +48,9 @@ export interface TagToggleProps extends TextProps {
   inactiveIcon?: React.ComponentType<IconProps>;
 }
 
+/**
+ * The Tag Toggle is used for showing a list of tags or topics where a user can select many.
+ */
 class TagToggle extends React.Component<
   TagToggleProps,
   { randomId: string; checkedState: boolean }

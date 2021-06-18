@@ -69,6 +69,9 @@ export interface ToggleSwitchProps extends ViewProps {
   onChange?: (evt: React.ChangeEvent<any>) => void;
 }
 
+/**
+ * The Toggle Switch turns a setting on or off immediately.
+ */
 class ToggleSwitch extends React.Component<
   ToggleSwitchProps,
   { randomId: string; checkedState: boolean }
