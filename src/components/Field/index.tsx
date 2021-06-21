@@ -52,6 +52,8 @@ type Props = FieldProps & {
  * Field is an extension of Formik's Field component https://jaredpalmer.com/formik/docs/api/field
  */
 class Field extends React.Component<Props> {
+  public static displayName = "Field";
+
   public componentDidMount() {
     // Register the Field with the parent Formik. Parent will cycle through
     // registered Field's validate fns right prior to submit
