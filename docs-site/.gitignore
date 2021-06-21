@@ -1,0 +1,18 @@
+/node_modules/
+.DS_Store
+.idea/
+.vscode/
+.npmrc
+package-lock.json
+
+# next.js docs-site
+/.next/
+/out/
+/build
+
+# local env files
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
