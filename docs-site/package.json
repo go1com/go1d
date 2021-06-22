@@ -9,6 +9,7 @@
     "next:start": "next start"
   },
   "dependencies": {
+    "@go1d/go1d": "^6.5.1",
     "@mdx-js/loader": "^1.5.1",
     "@mdx-js/react": "^1.6.18",
     "@next/mdx": "^9.1.1",

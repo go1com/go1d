@@ -18,3 +18,9 @@ To create a deployment build of docs-site:
 cd docs-site; yarn next:build
 ```
 
+To add dependencies for the Next.js docs-site:
+
+```sh
+cd docs-site; yarn add <THE_DEPENDENCY>
+```
+
