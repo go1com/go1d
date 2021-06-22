@@ -5,3 +5,30 @@ import Button from '../components/button.js'
 Look, a button! 👇
 
 <Button>👋 Hello</Button>
+
+## Installing Go1d
+
+To add Go1d to the project you are working on, run:
+
+```js
+npm install -s @go1d/go1d
+```
+
+Install Go1d using one of these:
+
+```js
+yarn add @go1d/go1d
+```
+
+## Tree shaking
+
+To transform Go1d imports and allow tree-shaking instead of pulling in the entire Go1d library, you can also run `yarn add -D @go1d/babel-plugin-transform-go1d-imports` or `npm install --save-dev @go1d/babel-plugin-transform-go1d-imports` to install [`@go1d/babel-plugin-transform-go1d-imports`](https://www.npmjs.com/package/@go1d/babel-plugin-transform-go1d-imports). Then add something like this to your `.babelrc` file:
+
+```json
+{
+  "plugins": [
+    "@go1d/babel-plugin-transform-go1d-imports"
+  ]
+}
+```
+
