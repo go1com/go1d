@@ -9,6 +9,7 @@ const components = {
       color="accent"
       semanticElement="h1"
       visualHeadingLevel="Heading 1"
+      marginTop={5}
       >{children}</Heading>;
   },
   h2({ children }) {
@@ -16,6 +17,7 @@ const components = {
       color="default"
       semanticElement="h2"
       visualHeadingLevel="Heading 2"
+      marginTop={5}
       >{children}</Heading>;
   },
   h3({ children }) {
@@ -23,6 +25,7 @@ const components = {
       color="default"
       semanticElement="h3"
       visualHeadingLevel="Heading 3"
+      marginTop={5}
       >{children}</Heading>;
   },
   h4({ children }) {
@@ -30,6 +33,7 @@ const components = {
       color="default"
       semanticElement="h4"
       visualHeadingLevel="Heading 4"
+      marginTop={5}
       >{children}</Heading>;
   },
   h5({ children }) {
@@ -37,6 +41,7 @@ const components = {
       color="default"
       semanticElement="h5"
       visualHeadingLevel="Heading 5"
+      marginTop={5}
       >{children}</Heading>;
   },
   h6({ children }) {
@@ -44,12 +49,14 @@ const components = {
       color="default"
       semanticElement="h6"
       visualHeadingLevel="Heading 6"
+      marginTop={5}
       >{children}</Heading>;
   },
   p({ children }) {
     return <Text
       color="default"
       element="p"
+      marginY={5}
       fontSize={2}
       fontWeight="normal"
       fontFamily="sansSerif"
@@ -59,18 +66,28 @@ const components = {
   pre({ children }) {
     return (
       <View
-        marginY={5}
+        marginY={2}
         padding={5}
-        backgroundColor="noteHigh"
+        backgroundColor="background"
+        borderRadius={2}
+        borderColor="delicate"
+        border={1}
         element="pre"
       >
         <Text
           color="noteLow"
-          element="code"
+          element="div"
           fontSize={2}
           fontWeight="normal"
           fontFamily="mono"
           lineHeight="paragraph"
+          css={{
+            code: {
+              whiteSpace: "pre-wrap",
+              overflowWrap: "break-word",
+              wordBreak: "break-word",
+            }
+          }}
         >{children}</Text>
       </View>
     );
