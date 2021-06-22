@@ -9,8 +9,10 @@ class SiteDocsDocument extends Document {
   render() {
     return (
       <Html lang="en">
-        <Head />
         <body>
+        <Head>
+          <meta charSet="utf-8" />
+        </Head>
           <Main />
           <NextScript />
         </body>
