@@ -1,7 +1,9 @@
 # files we don't want to go to npm
 
 dist/
+dist_storybook/
 docs/
+docs-site/
 src/
 tsconfig.json
 tslint.json
