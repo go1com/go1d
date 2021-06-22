@@ -12,6 +12,7 @@ class SiteDocsDocument extends Document {
         <body>
         <Head>
           <meta charSet="utf-8" />
+          <link rel="icon" href="https://www.go1.com/static/favicon-32x32.png" />
         </Head>
           <Main />
           <NextScript />
