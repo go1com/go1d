@@ -5,6 +5,7 @@ import { generateTheme } from "../src/foundations";
 
 export default {
   title: "Athletic/Foundations/Colors",
+  id: 'color', // id permalink becomes ?path=/story/color--main
   parameters: {
     docs: {
       description: {
