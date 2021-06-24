@@ -1,5 +1,11 @@
 # @go1d/go1d
 
+## 6.5.2
+
+### Patch Changes
+
+- fa24ee31: Modal > hide button close if onRequestClose is not specified
+
 ## 6.5.1
 
 ### Patch Changes
