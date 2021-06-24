@@ -83,6 +83,10 @@ The most fundamental component for building a UI is the [View](https://go1d.go1.
 All Text should be wrapped in a [Text](https://go1d.go1.com/storybook/?path=/docs/text--unstyled-text) Component or a specific typography component, such as the Heading component. The [Text](https://go1d.go1.com/storybook/?path=/docs/text--unstyled-text) component handles font and includes some responsive capabilities out of the box.
 
 ```react-inline
+<Heading color="default">This is an editable Heading</Heading>
+```
+
+```react-inline
 <Text
   element="p"
   color="default"
@@ -95,15 +99,33 @@ This is an editable paragraph using Text component
 </Text>
 ```
 
-```react-inline
-<Heading color="default">This is an editable Heading</Heading>
-```
+#### Colors
 
-#### [Colors](foundations/colors)
-
-When specifying colors in Go1d components, use the names listed on the Colors page.
+When specifying colors in Go1d components, use the names listed on the [Colors](https://go1d.go1.com/storybook/?path=/docs/color) page.
 
 This will ensure all colors are consistent across Go1 applications as well as any tweaks or changes update everywhere.
+
+## Playground
+
+You can play with any of the Go1d components here.
+
+```react-inline
+<>
+  <View mode="light" color="noteLow">
+    <Heading visualHeadingLevel="Heading 3">Come play!</Heading>
+    <Text
+      element="p"
+      fontSize={3}
+      fontWeight="normal"
+      fontFamily="sansSerif"
+      lineHeight="paragraph"
+    >
+      Use ALL the components!
+    </Text>
+  </View>
+</>
+```
+
 
 ## Storybook
 
@@ -142,4 +164,3 @@ Create components that are consistent as in, they are inline with our brand/styl
 
 Ensure that our user experience doesn’t require thought. Our users should ONLY be focused on their content and at ease with how to navigate and use our system. No rage clicks.
 
----

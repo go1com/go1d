@@ -2,6 +2,8 @@ import Heading from '@go1d/go1d/build/components/Heading'
 import Text from '@go1d/go1d/build/components/Text'
 import Link from "@go1d/go1d/build/components/Link";
 import View from "@go1d/go1d/build/components/View";
+import UL from "@go1d/go1d/build/components/UL";
+import LI from "@go1d/go1d/build/components/UL/LI";
 import LiveEdit from './LiveEdit';
 import CodeBlock from './CodeBlock';
 
@@ -12,6 +14,7 @@ const components = {
       semanticElement="h1"
       visualHeadingLevel="Heading 1"
       marginTop={5}
+      marginBottom={2}
       >{children}</Heading>;
   },
   h2({ children }) {
@@ -20,6 +23,7 @@ const components = {
       semanticElement="h2"
       visualHeadingLevel="Heading 2"
       marginTop={5}
+      marginBottom={2}
       >{children}</Heading>;
   },
   h3({ children }) {
@@ -28,6 +32,7 @@ const components = {
       semanticElement="h3"
       visualHeadingLevel="Heading 3"
       marginTop={5}
+      marginBottom={2}
       >{children}</Heading>;
   },
   h4({ children }) {
@@ -44,6 +49,7 @@ const components = {
       semanticElement="h5"
       visualHeadingLevel="Heading 5"
       marginTop={5}
+      marginBottom={2}
       >{children}</Heading>;
   },
   h6({ children }) {
@@ -52,45 +58,62 @@ const components = {
       semanticElement="h6"
       visualHeadingLevel="Heading 6"
       marginTop={5}
+      marginBottom={2}
       >{children}</Heading>;
   },
   p({ children }) {
     return <Text
       color="default"
       element="p"
-      marginY={5}
+      marginY={3}
       fontSize={2}
       fontWeight="normal"
       fontFamily="sansSerif"
       lineHeight="paragraph"
       >{children}</Text>;
   },
-  pre({ children }) {
+  a({ href, children }) {
+    return (
+      <Link href={href}>
+        <Text
+        color="successLow"
+        css={{
+          textDecoration: "underline"
+        }}
+        >{children}</Text>
+      </Link>
+    )
+  },
+  ul({children}) {
+    return (
+      <UL css={{ padding: 0}}>{children}</UL>
+    )
+  },
+  li({ children }) {
+    return (
+      <LI><Text color="default" lineHeight="paragraph">{children}</Text></LI>
+    )
+  },
+  em({ children }) {
+    return (
+      <Text element="em" lineHeight="paragraph">{children}</Text>
+    )
+  },
+  strong({ children }) {
+    return (
+      <Text element="strong" fontWeight="semibold" lineHeight="paragraph">{children}</Text>
+    )
+  },
+  blockquote({ children }) {
     return (
       <View
-        marginY={2}
+        backgroundColor="noteHigh"
         padding={5}
-        backgroundColor="background"
-        borderRadius={2}
-        borderColor="delicate"
-        border={1}
-        element="pre"
+        borderLeft={4}
+        borderColor="noteMid"
+        marginY={5}
       >
-        <Text
-          color="noteLow"
-          element="div"
-          fontSize={2}
-          fontWeight="normal"
-          fontFamily="mono"
-          lineHeight="paragraph"
-          css={{
-            code: {
-              whiteSpace: "pre-wrap",
-              overflowWrap: "break-word",
-              wordBreak: "break-word",
-            }
-          }}
-        >{children}</Text>
+        {children}
       </View>
     );
   },
