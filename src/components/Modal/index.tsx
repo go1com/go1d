@@ -224,7 +224,7 @@ class Modal extends React.Component<ModalProps, any> {
                 <View marginRight={4}>{moreMenu}</View>
               </View>
             )}
-            {!title && (
+            {!title && !!onRequestClose && (
               <View
                 mode="dark"
                 position="absolute"
