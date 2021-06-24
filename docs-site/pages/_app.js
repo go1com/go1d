@@ -3,7 +3,7 @@ import globalCSS from '@go1d/go1d/build/foundations/globalCSS';
 import Head from 'next/head'
 import { MDXProvider } from '@mdx-js/react'
 import Layout from '../components/Layout'
-import mdxComponents from '../components/mdx-components'
+import mdxComponents from '../utils/mdx-components'
 import '../styles/global.css'
 
 globalCSS();

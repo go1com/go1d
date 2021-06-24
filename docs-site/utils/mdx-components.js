@@ -4,8 +4,8 @@ import Link from "@go1d/go1d/build/components/Link";
 import View from "@go1d/go1d/build/components/View";
 import UL from "@go1d/go1d/build/components/UL";
 import LI from "@go1d/go1d/build/components/UL/LI";
-import LiveEdit from './LiveEdit';
-import CodeBlock from './CodeBlock';
+import LiveEdit from '../components/LiveEdit';
+import CodeBlock from '../components/CodeBlock';
 
 const components = {
   h1({ children }) {
