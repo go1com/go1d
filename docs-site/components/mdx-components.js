@@ -2,6 +2,8 @@ import Heading from '@go1d/go1d/build/components/Heading'
 import Text from '@go1d/go1d/build/components/Text'
 import Link from "@go1d/go1d/build/components/Link";
 import View from "@go1d/go1d/build/components/View";
+import LiveEdit from './LiveEdit';
+import CodeBlock from './CodeBlock';
 
 const components = {
   h1({ children }) {
@@ -103,6 +105,21 @@ const components = {
         lineHeight="paragraph"
       >{children}</Text>
     );
+  },
+  code({ children, className = '' }) {
+    const language = className.replace(/language-/, '');
+
+    if (language === 'react') {
+      return <LiveEdit code={children.trim()} noInline />;
+    }
+    else if (language === 'react-inline') {
+      return <LiveEdit code={children.trim()} />;
+    }
+    else if (language === 'sh') {
+      return <CodeBlock code={children.trim()} language="bash" />;
+    }
+
+    return <CodeBlock code={children.trim()} language={language} />;
   },
 };
 
