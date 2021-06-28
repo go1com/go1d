@@ -40,8 +40,6 @@ The component will fire onChange when an image is selected or deleted with the f
     }
 }
 ```
-The File object of the selected image, will be null if the image was deleted. Unless the prop defaultImage is set which will allow a selected image to be the empty state of the field without any rendering delays. 
-
 This allows it to be used with formik fields like so: 
 
 ```.jsx
@@ -52,11 +50,31 @@ This allows it to be used with formik fields like so:
     name="portalImage"
     label="Portal Image"
     description="The image for your portal"
+   
     />
     <ButtonFilled type="submit" color="accent">Submit</ButtonFilled>
 </Form>
 ```
 
+## Inside a form with default image on delete
+
+The File object of the selected image, will be null if the image was deleted. Unless the prop defaultImage is set which will allow a selected image to be the empty state of the field without any rendering delays.
+
+
+```.jsx
+<Form onSubmit={(values, actions) => console.log(values, actions)} initialValues={{portalImage: "https://images.pexels.com/photos/257361/pexels-photo-257361.jpeg?h=400"}}>
+    <Field
+    hideLabel
+    component={ImageUploader}
+    name="portalImage"
+    label="Portal Image"
+    description="The image for your portal"
+    defaultImage="https://images.pexels.com/photos/257360/pexels-photo-257360.jpeg?h=400"
+    />
+    <ButtonFilled type="submit" color="accent">Submit</ButtonFilled>
+</Form>
+```
+ 
 ```!jsx
 <ComponentDoc component="ImageUploaderProps" />
 ```

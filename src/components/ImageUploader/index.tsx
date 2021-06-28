@@ -49,7 +49,9 @@ const STEP_INCREMENT = 0.1;
 const DEFAULT_ASPECT_RATIO = 16 / 9;
 
 export interface ImageUploaderProps extends ViewProps {
-  /** The component will fire onChange when an image is selected or deleted where File is the File object of the selected image, which will be null if the image was deleted
+  /** The component will fire onChange when an image is selected or deleted;
+   *  File is the File object of the selected image, which will be null if the image was deleted
+   *  Unless the defaultImage prop is set
    * */
   onChange?: (evt: { target: { name: string; value: string | File } }) => void;
   value?: File | string;
