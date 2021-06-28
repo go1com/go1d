@@ -35,11 +35,12 @@ The component will fire onChange when an image is selected or deleted with the f
 ```
 {
     target: {
-        value: File // the File object of the selected image, will be null if the image was deleted
+        value: File,
         name: props.name,
     }
 }
 ```
+The File object of the selected image, will be null if the image was deleted. Unless the prop defaultImage is set which will allow a selected image to be the empty state of the field without any rendering delays. 
 
 This allows it to be used with formik fields like so: 
 
