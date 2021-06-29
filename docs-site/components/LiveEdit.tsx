@@ -9,7 +9,9 @@ import Text from "@go1d/go1d/build/components/Text";
 import Theme from "@go1d/go1d/build/components/Theme";
 import View from "@go1d/go1d/build/components/View";
 
-const liveEditorStyle = (type, colors) => ({
+import { ThemeType, Colors } from "../../src/foundations/foundation-types";
+
+const liveEditorStyle = (type : ThemeType, colors: Colors) => ({
   backgroundColor: colors.soft,
   border: `1px solid ${colors.delicate}`,
   fontFamily: type.family.mono,
