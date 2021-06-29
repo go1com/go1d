@@ -12,10 +12,10 @@ To develop docs-site locally:
 cd docs-site; yarn next:dev
 ```
 
-To create a deployment build of docs-site:
+To create a deployment build of docs-site and analyze bundle size using [next-bundle-analyzer](https://github.com/vercel/next.js/tree/canary/packages/next-bundle-analyzer):
 
 ```sh
-cd docs-site; yarn next:build
+cd docs-site; ANALYZE=true yarn next:build
 ```
 
 To add dependencies for the Next.js docs-site:
