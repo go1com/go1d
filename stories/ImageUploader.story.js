@@ -66,6 +66,24 @@ export const InsideAForm = () => (
 InsideAForm.storyName = "Inside a form";
 InsideAForm.parameters = { controls: { hideNoControlsWarning: true } };
 
+export const InsideAFormWithDefaultImageOnDelete = () => (
+  <Form onSubmit={(values, actions) => console.log(values, actions)} initialValues={{ portalImage: "https://img.huffingtonpost.com/asset/5ab4d4ac2000007d06eb2c56.jpeg?cache=sih0jwle4e&ops=1910_1000"}}>
+    <Field
+      hideLabel
+      component={ImageUploader}
+      name="portalImage"
+      label="Portal Image"
+      description="The image for your portal"
+      defaultImage="https://images.pexels.com/photos/257361/pexels-photo-25736.jpeg"
+    />
+    <ButtonFilled type="submit" color="accent">
+      Submit
+    </ButtonFilled>
+  </Form>
+);
+InsideAFormWithDefaultImageOnDelete.storyName = "Inside a form with default image on delete";
+InsideAFormWithDefaultImageOnDelete.parameters = { controls: { hideNoControlsWarning: true } };
+
 export const ErrorState = () => (
   <Form onSubmit={(values, actions) => console.log(values, actions)}>
     <Field

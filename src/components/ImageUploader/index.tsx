@@ -49,7 +49,9 @@ const STEP_INCREMENT = 0.1;
 const DEFAULT_ASPECT_RATIO = 16 / 9;
 
 export interface ImageUploaderProps extends ViewProps {
-  /** The component will fire onChange when an image is selected or deleted where File is the File object of the selected image, which will be null if the image was deleted
+  /** The component will fire onChange when an image is selected or deleted;
+   *  File is the File object of the selected image, which will be null if the image was deleted
+   *  Unless the defaultImage prop is set
    * */
   onChange?: (evt: { target: { name: string; value: string | File } }) => void;
   value?: File | string;
@@ -57,9 +59,11 @@ export interface ImageUploaderProps extends ViewProps {
   uploadText?: React.ReactNode | string;
   supportedFormatText?: React.ReactNode | string;
   allowCrop?: boolean;
+  disableDelete?: boolean;
   cropConfig?: Partial<CropperProps & Record<"onCrop", (file: Blob) => void>>;
   stepperProps?: Partial<StepperProps>;
   imageBackgroundSize?: React.CSSProperties['backgroundSize']
+  defaultImage?: string;
 
   zoomValue?: number
   onZoomChange?: (value: number) => void;
@@ -87,6 +91,7 @@ class ImageUploader extends React.Component<ImageUploaderProps, State> {
     allowCrop: false,
     stepperProps: {},
     cropConfig: {},
+    disableDelete: false,
   };
 
   public static getDerivedStateFromProps(
@@ -320,7 +325,7 @@ class ImageUploader extends React.Component<ImageUploaderProps, State> {
 
   @autobind
   public removeImage() {
-    const { onChange, name } = this.props;
+    const { onChange, name, defaultImage } = this.props;
     const { preview } = this.state;
 
     if (preview) {
@@ -334,7 +339,7 @@ class ImageUploader extends React.Component<ImageUploaderProps, State> {
       zoom: DEFAULT_IMAGE_ZOOM,
     });
 
-    safeInvoke(onChange, { target: { name, value: "" } });
+    safeInvoke(onChange, { target: { name, value: defaultImage || "" } });
     this.onBlur();
   }
 
@@ -350,6 +355,7 @@ class ImageUploader extends React.Component<ImageUploaderProps, State> {
       stepperProps,
       imageBackgroundSize,
       zoomValue,
+      disableDelete,
     } = this.props;
 
     const cleanedZoomValue = zoomValue !== undefined ? zoomValue : zoom
@@ -379,7 +385,7 @@ class ImageUploader extends React.Component<ImageUploaderProps, State> {
               icon={IconTrash}
               iconColor="subtle"
               onClick={this.removeImage}
-              disabled={disabled}
+              disabled={disableDelete || disabled}
               mode="light"
               css={{
                 borderTopRightRadius: 0,
