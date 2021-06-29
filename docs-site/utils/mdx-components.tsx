@@ -1,76 +1,90 @@
-import Heading from '@go1d/go1d/build/components/Heading'
-import Text from '@go1d/go1d/build/components/Text'
+import Heading from "@go1d/go1d/build/components/Heading"
+import Text from "@go1d/go1d/build/components/Text"
 import Link from "@go1d/go1d/build/components/Link";
 import View from "@go1d/go1d/build/components/View";
 import UL from "@go1d/go1d/build/components/UL";
 import LI from "@go1d/go1d/build/components/UL/LI";
-import LiveEdit from '../components/LiveEdit';
-import CodeBlock from '../components/CodeBlock';
+import LiveEdit from "../components/LiveEdit";
+import CodeBlock from "../components/CodeBlock";
 
 const components = {
   h1({ children }) {
-    return <Heading
-      color="accent"
-      semanticElement="h1"
-      visualHeadingLevel="Heading 1"
-      marginTop={5}
-      marginBottom={2}
-      >{children}</Heading>;
+    return (
+      <Heading
+        color="accent"
+        semanticElement="h1"
+        visualHeadingLevel="Heading 1"
+        marginTop={5}
+        marginBottom={2}
+      >{children}</Heading>
+    );
   },
   h2({ children }) {
-    return <Heading
-      color="default"
-      semanticElement="h2"
-      visualHeadingLevel="Heading 2"
-      marginTop={5}
-      marginBottom={2}
-      >{children}</Heading>;
+    return (
+      <Heading
+        color="default"
+        semanticElement="h2"
+        visualHeadingLevel="Heading 2"
+        marginTop={5}
+        marginBottom={2}
+      >{children}</Heading>
+    );
   },
   h3({ children }) {
-    return <Heading
-      color="default"
-      semanticElement="h3"
-      visualHeadingLevel="Heading 3"
-      marginTop={5}
-      marginBottom={2}
-      >{children}</Heading>;
+    return (
+      <Heading
+        color="default"
+        semanticElement="h3"
+        visualHeadingLevel="Heading 3"
+        marginTop={5}
+        marginBottom={2}
+      >{children}</Heading>
+    );
   },
   h4({ children }) {
-    return <Heading
-      color="default"
-      semanticElement="h4"
-      visualHeadingLevel="Heading 4"
-      marginTop={5}
-      >{children}</Heading>;
+    return (
+      <Heading
+        color="default"
+        semanticElement="h4"
+        visualHeadingLevel="Heading 4"
+        marginTop={5}
+        >{children}</Heading>
+    );
   },
   h5({ children }) {
-    return <Heading
-      color="default"
-      semanticElement="h5"
-      visualHeadingLevel="Heading 5"
-      marginTop={5}
-      marginBottom={2}
-      >{children}</Heading>;
+    return (
+      <Heading
+        color="default"
+        semanticElement="h5"
+        visualHeadingLevel="Heading 5"
+        marginTop={5}
+        marginBottom={2}
+      >{children}</Heading>
+    );
   },
   h6({ children }) {
-    return <Heading
-      color="default"
-      semanticElement="h6"
-      visualHeadingLevel="Heading 6"
-      marginTop={5}
-      marginBottom={2}
-      >{children}</Heading>;
+    return (
+      <Heading
+        color="default"
+        semanticElement="h6"
+        visualHeadingLevel="Heading 6"
+        marginTop={5}
+        marginBottom={2}
+      >{children}</Heading>
+    );
   },
   p({ children }) {
-    return <Text
-      color="default"
-      element="p"
-      marginY={3}
-      fontSize={2}
-      fontWeight="normal"
-      fontFamily="sansSerif"
-      lineHeight="paragraph"
-      >{children}</Text>;
+    return (
+      <Text
+        color="default"
+        element="p"
+        marginY={3}
+        fontSize={2}
+        fontWeight="normal"
+        fontFamily="sansSerif"
+        lineHeight="paragraph"
+      >{children}</Text>
+    );
   },
   a({ href, children }) {
     return (
