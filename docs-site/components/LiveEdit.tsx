@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { LiveProvider, LiveEditor, LiveError, LivePreview } from 'react-live';
-import theme from "prism-react-renderer/themes/nightOwlLight"
+import prismTheme from "prism-react-renderer/themes/nightOwlLight"
 
 import * as Go1dComponents from '@go1d/go1d'
 
@@ -29,7 +29,7 @@ const LiveEdit = ({ noInline, code, scope = {} }) => {
           noInline={noInline}
           mountStylesheet={false}
           scope={{ ...scope, ...Go1dComponents}}
-          theme={theme}
+          theme={prismTheme}
         >
           <Column>
             <View

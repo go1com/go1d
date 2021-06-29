@@ -1,6 +1,6 @@
 import React from 'react';
 import { Editor } from 'react-live';
-import theme from "prism-react-renderer/themes/ultramin"
+import prismTheme from "prism-react-renderer/themes/ultramin"
 import Theme from "@go1d/go1d/build/components/Theme";
 import View from "@go1d/go1d/build/components/View";
 
@@ -19,7 +19,7 @@ const CodeBlock = (props) => {
     >
       <Theme.Consumer>
         {({ type, colors }) => (
-          <Editor {...props} theme={theme} style={codeBlockStyle(type, colors)} disabled language={language} />
+          <Editor {...props} theme={prismTheme} style={codeBlockStyle(type, colors)} disabled language={language} />
         )}
       </Theme.Consumer>
     </View>
