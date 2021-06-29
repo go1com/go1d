@@ -150,7 +150,7 @@ const components = {
       return <LiveEdit code={children.trim()} noInline />;
     }
     else if (language === 'react-inline') {
-      return <LiveEdit code={children.trim()} />;
+      return <LiveEdit code={children.trim()} noInline={false} />;
     }
     else if (language === 'sh') {
       return <CodeBlock code={children.trim()} language="bash" />;
