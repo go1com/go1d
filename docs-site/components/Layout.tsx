@@ -2,9 +2,11 @@ import * as React from 'react'
 import View from '@go1d/go1d/build/components/View'
 import { foundations } from '@go1d/go1d';
 
-// const Layout: React.FC = ({ children }) => {
-const Layout = ({ children }) => {
+type Props = {
+  children?: React.ReactNode
+}
 
+const Layout = ({ children }: Props) => {
   return (
     <React.Fragment>
       <View
