@@ -11,7 +11,7 @@ const codeBlockStyle = (type: ThemeType, colors: Colors) => ({
   fontFamily: type.family.mono,
 });
 
-const CodeBlock = (props) => {
+const CodeBlock = (props: any) => {
   const language = (props.language || 'js').toLowerCase().trim();
 
   return (
