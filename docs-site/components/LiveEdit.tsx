@@ -29,7 +29,6 @@ const LiveEdit = ({ noInline, code, scope = {} }) => {
         <LiveProvider
           code={code}
           noInline={noInline}
-          mountStylesheet={false}
           scope={{ ...scope, ...Go1dComponents}}
           theme={prismTheme}
         >
