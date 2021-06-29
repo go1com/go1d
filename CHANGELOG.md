@@ -1,5 +1,11 @@
 # @go1d/go1d
 
+## 6.6.0
+
+### Minor Changes
+
+- 9bf1d170: Added defaultImage on delete, disable delete button for imageUploader
+
 ## 6.5.2
 
 ### Patch Changes
