@@ -3,7 +3,7 @@ import { Editor } from 'react-live';
 import prismTheme from "prism-react-renderer/themes/ultramin"
 import Theme from "@go1d/go1d/build/components/Theme";
 import View from "@go1d/go1d/build/components/View";
-import { ThemeType, Colors } from "../../src/foundations/foundation-types";
+import { ThemeType, Colors } from '@go1d/go1d/build/foundations/foundation-types';
 
 const codeBlockStyle = (type: ThemeType, colors: Colors) => ({
   backgroundColor: colors.soft,
