@@ -1,5 +1,11 @@
 # @go1d/go1d
 
+## 6.6.1
+
+### Patch Changes
+
+- 8f84d5e5: Use displayName for Field component
+
 ## 6.6.0
 
 ### Minor Changes
