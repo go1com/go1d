@@ -1,3 +1,7 @@
+import Card from '@go1d/go1d/build/components/Card'
+import Link from '@go1d/go1d/build/components/Link'
+import View from '@go1d/go1d/build/components/View'
+
 # Go1d docs-site
 
 To learn about using components, see the [Playground](./playground).
@@ -8,6 +12,31 @@ We use Storybook for our design system to make component-driven development, tes
 
 - [Go1d storybook](https://go1d.go1.com/storybook/?path=/docs/overview--page) for our open-source presentational components
 - [Mine storybook](https://go1d.pages.go1.co/mine/) for our stateful components
+
+<View flexDirection="row" justifyContent="start" marginY="1em" flexWrap="wrap">
+  <View width={235}>
+    <Card
+      element={Link}
+      href="https://go1d.go1.com/storybook/?path=/docs/overview--page"
+      title="Go1d Storybook"
+      subTitle="Button, Avatar, etc."
+      thumbnail="https://via.placeholder.com/235.png/65CADF/114954?text=Go1d+Storybook"
+      hasFocusState
+      hasHoverState
+    />
+  </View>
+  <View width={235}>
+    <Card
+      element={Link}
+      href="https://go1d.pages.go1.co/mine/"
+      title="Mine Storybook"
+      subTitle="TopMenu, ModalAssign, etc."
+      thumbnail="https://via.placeholder.com/235.png/FAF2ED/114954?text=Mine+Storybook"
+      hasFocusState
+      hasHoverState
+    />
+  </View>
+</View>
 
 ### Go1d storybook
 
@@ -30,6 +59,83 @@ You can view the standalone [Mine storybook](https://go1d.pages.go1.co/mine/) on
 ></iframe>
 
 ## Figma
+
+### Design system Figma files
+
+<View flexDirection="row" justifyContent="start" marginY="1em" flexWrap="wrap">
+  <View width={235}>
+    <Card
+      element={Link}
+      href="https://www.figma.com/file/8WVqZs5ZzY8wzf7gmRRaAS/Foundations?node-id=925%3A864"
+      title="Foundations"
+      subTitle="Brand, Typography, Colors, Writing, etc."
+      thumbnail="https://via.placeholder.com/235.png/D4FF26/114954?text=Go1d+Foundations"
+      hasFocusState
+      hasHoverState
+    />
+  </View>
+  <View width={235}>
+    <Card
+      element={Link}
+      href="https://www.figma.com/file/BxQA6qbzRwjSA2AXWnO0f9/Components?node-id=2145%3A3"
+      title="Components"
+      subTitle="Buttons, Charts, Tooltips, etc."
+      thumbnail="https://via.placeholder.com/235.png/114954/D4FF26?text=Go1d+Components"
+      hasFocusState
+      hasHoverState
+    />
+  </View>
+  <View width={235}>
+    <Card
+      element={Link}
+      href="https://www.figma.com/file/MUCfack705PWBduMBfz2mN/Illustrations?node-id=471%3A52"
+      title="Illustrations"
+      subTitle="Illustrations"
+      thumbnail="https://via.placeholder.com/235.png/EEB068/114954?text=Go1d+Illustrations"
+      hasFocusState
+      hasHoverState
+    />
+  </View>
+</View>
+
+#### Good to know sections
+
+<View flexDirection="row" justifyContent="start" marginY="1em" flexWrap="wrap">
+  <View width={235}>
+    <Card
+      element={Link}
+      href="https://www.figma.com/file/8WVqZs5ZzY8wzf7gmRRaAS/Foundations?node-id=5519%3A18"
+      title="Brand"
+      subTitle="Photography, Logos, media kit, etc."
+      thumbnail="https://via.placeholder.com/235.png/65CADF/114954?text=Brand+strategy"
+      hasFocusState
+      hasHoverState
+    />
+  </View>
+  <View width={235}>
+    <Card
+      element={Link}
+      href="https://www.figma.com/file/8WVqZs5ZzY8wzf7gmRRaAS/Foundations?node-id=5631%3A5718"
+      title="Common words"
+      subTitle="To help with writing"
+      thumbnail="https://via.placeholder.com/235.png/FDAF8D/114954?text=Common+words"
+      hasFocusState
+      hasHoverState
+    />
+  </View>
+  <View width={235}>
+    <Card
+      element={Link}
+      href="https://www.figma.com/file/8WVqZs5ZzY8wzf7gmRRaAS/Foundations?node-id=5631%3A5742"
+      title="Writing error messages"
+      subTitle="For validation feedback"
+      thumbnail="https://via.placeholder.com/235.png/FAF2ED/114954?text=Error+messages"
+      hasFocusState
+      hasHoverState
+    />
+  </View>
+</View>
+
 
 ### Foundations
 
@@ -146,6 +252,8 @@ A Link in Go1d expects the same props as a DOM anchor tag. So if you are using R
 ```
 ReactDOM.render(<Provider linkComponent={Link}><App /></Provider>, domNode);
 ```
+
+### Using components
 
 To learn about using components, see the [Playground](./playground).
 
