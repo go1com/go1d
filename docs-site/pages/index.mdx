@@ -61,6 +61,22 @@ You can view the standalone [Illustrations Figma file](https://www.figma.com/fil
   style={{border: "1px solid #E6E9EA"}}
 ></iframe>
 
+## Overview
+
+The Go1d design system is primarily made of 2 component libraries: Go1d and Mine.
+
+- “Go1d” is our main design system component library. Its source code lives in [Gitlab go1d/GO1D](https://code.go1.com.au/go1d/GO1D) and we use [a mirror on GitHub](https://github.com/go1com) to make the code open source. It contains things like buttons, avatars, data tables, modals, cards, tabs, tooltips, etc.
+- “Mine” is for our stateful components code and its source code lives in [Gitlab go1d/mine](https://code.go1.com.au/go1d/mine). The clearest example is the TopMenu navigation that contains business logic, such as user permissions and menu items for a logged in user.
+
+These are supported by:
+
+- [`@go1d/babel-plugin-transform-go1d-imports`](https://www.npmjs.com/package/@go1d/babel-plugin-transform-go1d-imports) (more on that below)
+
+We also maintain related front-end projects:
+
+- “Go1d Exchange” is for all our API calls. It includes models, such as Portal and Enrolment, and no UI or React views. It doesn't strictly belong to the design system because it has no design, but instead houses shared front-end resources.
+- “Retriever” contains business React Components for Explore page, including UI and API calls to make for the Explore UI work using 1Query
+
 ## Installing Go1d
 
 To add Go1d to the project you are working on, run:
@@ -101,6 +117,8 @@ Most Go1d components require you to call the `globalCSS` function to add the req
 If Go1d components look different to the documentation website this is the most likely cause.
 
 ## Preparing a project for Go1d
+
+After you've installed Go1d, configured Babel, and imported the globalCSS, set up the provider and link components.
 
 ### Provider
 

@@ -1,4 +1,4 @@
-## Playground
+# Playground
 
 You can play with any of the Go1d components here (but not Mine components). Return to [home](./).
 
@@ -19,15 +19,92 @@ You can play with any of the Go1d components here (but not Mine components). Ret
 </>
 ```
 
-### Using components
+## Using components
 
-With Go1d you won't need to write much CSS if any at all as all the customization is controlled via props on the components.
+Go1d uses [Emotion CSS-in-JS](https://emotion.sh/docs/introduction). With Go1d you won't need to write much CSS if any at all as all the customization is controlled via props on the components.
 
-The props on the components will ensure consistent spacing, sizing, and colors across all Go1 applications.
+The props on the components ensure consistent spacing, sizing, and colors across all Go1 applications.
 
-#### View component
+### Styling props
 
-The most fundamental component for building a UI is the [View](https://go1d.go1.com/storybook/?path=/docs/view--basic-usage) Component. The View component uses flex box to define the layout.
+Instead of using CSS, you can use props like this:
+
+```react-inline
+<Text
+  color="default"
+  display="block"
+  paddingY="1em"
+  textAlign="center"
+>
+This example shows styling props in action on the Text component.
+</Text>
+```
+
+Many Go1d components are built using View:
+
+```react-inline
+<View
+  mode="light"
+  alignItems="center"
+  backgroundColor="successHighest"
+  borderColor="transparent"
+  borderRadius="8"
+  color="successLowest"
+  display="flex"
+  flexWrap="wrap"
+  justifyContent="center"
+  maxWidth="67%"
+  minHeight="8em"
+  opacity="1"
+  overflow="hidden"
+  position="relative"
+  textAlign="center"
+  zIndex="1"
+>
+This example shows common styling props from the View component.
+</View>
+```
+
+### CSS prop
+
+If you really need to customize some styling without using props, don't use CSS files. Instead, use the `css` prop:
+
+```react-inline
+<Text
+  display="block"
+  css={{
+    maxWidth: "15em",
+    overflow: "hidden",
+    textOverflow: "ellipsis",
+    whiteSpace: "nowrap",
+    "&:hover": {
+      transform: "translateY(2px)",
+    },
+  }}
+>
+The CSS prop uses camelCase property names.
+</Text>
+```
+
+### Inherited props
+
+Under the hood, all Go1d components use the [Base](https://go1d.go1.com/storybook/?path=/docs/athletic-base--base-story) component so if you're not sure what props are available, that's a good place to look. We use CSS prop types from [CSSType](https://github.com/frenic/csstype#readme), which uses the MDN data that powers [MDN web docs](https://developer.mozilla.org/en-US/) so you can look there to learn more about CSS styling options.
+
+```react-inline
+<View
+  paddingY="2em"
+  marginLeft="2em"
+  css={{
+    outline: "1px solid red"
+  }}
+>
+This example shows props inherited from the Base component.
+</View>
+```
+
+### View component
+
+The most fundamental component for building a user interface using Go1d is the [View](https://go1d.go1.com/storybook/?path=/docs/view--basic-usage) Component. The View component uses flex box to define the layout.
 
 ```react-inline
 <View mode="light" color="noteLow">
@@ -35,7 +112,7 @@ The most fundamental component for building a UI is the [View](https://go1d.go1.
 </View>
 ```
 
-#### Text component
+### Text component
 
 All Text should be wrapped in a [Text](https://go1d.go1.com/storybook/?path=/docs/text--unstyled-text) Component or a specific typography component, such as the Heading component. The [Text](https://go1d.go1.com/storybook/?path=/docs/text--unstyled-text) component handles font and includes some responsive capabilities out of the box.
 
@@ -56,7 +133,7 @@ Edit the code snippet to edit this paragraph using the Text component.
 </Text>
 ```
 
-#### Colors
+### Colors
 
 When specifying colors in Go1d components, use the names listed on the [Colors](https://go1d.go1.com/storybook/?path=/docs/color) page.
 
