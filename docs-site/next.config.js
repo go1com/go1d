@@ -14,7 +14,7 @@ module.exports = withPlugins(
     [withBundleAnalyzer, {}],
   ],
   {
-    // global nextConfiguration
+    trailingSlash: true
   },
 );
 
