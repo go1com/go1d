@@ -6,6 +6,7 @@ import UL from "@go1d/go1d/build/components/UL";
 import LI from "@go1d/go1d/build/components/UL/LI";
 import LiveEdit from "../components/LiveEdit";
 import CodeBlock from "../components/CodeBlock";
+import { useRouter } from 'next/router';
 
 const components = {
   h1({ children }) {
@@ -87,8 +88,10 @@ const components = {
     );
   },
   a({ href, children }) {
+    const router = useRouter();
+    const newHref = href && href.match(/^https?:\/\//) ? href : router.basePath + href;
     return (
-      <Link href={href}>
+      <Link href={newHref}>
         <Text
         color="successLow"
         css={{

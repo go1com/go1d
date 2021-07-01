@@ -14,6 +14,7 @@ module.exports = withPlugins(
     [withBundleAnalyzer, {}],
   ],
   {
+    basePath: '/docs-site',
     trailingSlash: true
   },
 );
