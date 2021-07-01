@@ -20,16 +20,20 @@ function DocsSite({ Component, pageProps }) {
       </Head>
       <Layout>
         <MDXProvider components={mdxComponents}>
-          <Component {...pageProps} />
+          <main>
+            <Component {...pageProps} />
+          </main>
         </MDXProvider>
-        <View flexDirection="row" justifyContent="center" marginY="1em" flexWrap="wrap">
-          <Link href="https://www.go1.com/" marginRight="1em">
-            <Text color="successLow" element="p">© Go1</Text>
-          </Link>
-          <Link href="https://www.go1.com/en-au/terms/privacy-policy">
-            <Text color="successLow" element="p">Privacy</Text>
-          </Link>
-        </View>
+        <footer>
+          <View flexDirection="row" justifyContent="center" marginY="1em" flexWrap="wrap">
+            <Link href="https://www.go1.com/" marginRight="1em">
+              <Text color="successLow" element="p">© Go1</Text>
+            </Link>
+            <Link href="https://www.go1.com/en-au/terms/privacy-policy">
+              <Text color="successLow" element="p">Privacy</Text>
+            </Link>
+          </View>
+        </footer>
       </Layout>
     </Provider>
   )
