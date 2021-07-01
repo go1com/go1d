@@ -6,9 +6,10 @@
   "license": "MIT",
   "scripts": {
     "next:dev": "next",
-    "next:start": "next start"
     "next:build": "next build && next export",
     "next:build:ci": "next build && next export",
+    "next:start": "next start",
+    "next:analyze": "ANALYZE=true next build"
   },
   "dependencies": {
     "@go1d/go1d": "^6.5.1",
