@@ -1,5 +1,5 @@
 import React from "react";
-import { DatePicker } from "../src";
+import { DatePicker, View } from "../src";
 
 export default {
   title: "Athletic/DatePicker",
@@ -78,6 +78,38 @@ export const BasicDatepickerWithLabel = () => (
   </>
 )
 BasicDatepickerWithLabel.argTypes = {
+  id: { defaultValue: "id8" },
+  defaultValue: { defaultValue: new Date("2021-05-14T00:00:00.000Z") },
+};
+
+export const BasicDatepickerWithLongLabel = () => (
+  <>
+    <DatePicker
+      floating
+      label='This is a very very very very very very very long label'
+      size='sm'
+    />
+    <br />
+    <DatePicker
+      floating
+      label='This is a very very very very very very very long label'
+    />
+    <br />
+    <DatePicker
+      floating
+      label='This is a very very very very very very very long label'
+      size='lg'
+    />
+    <br />
+    <View maxWidth={320} padding={6} backgroundColor="delicate">
+      <DatePicker
+        floating
+        label='This is a very very very very very very very long label within a very small container'
+      />
+    </View>
+  </>
+)
+BasicDatepickerWithLongLabel.argTypes = {
   id: { defaultValue: "id8" },
   defaultValue: { defaultValue: new Date("2021-05-14T00:00:00.000Z") },
 };

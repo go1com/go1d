@@ -52,6 +52,12 @@ safeInvoke(Moment.updateLocale, "en", {
   weekdaysMin: "S_M_T_W_T_F_S".split("_"),
 });
 
+const calendarIconSize = (spacing: any, size: DatePickerProps["size"]) =>
+  spacing[6] + get({ lg: 8, md: 4, sm: 2 }, size);
+
+const labelMarginTop = (size: DatePickerProps["size"]) =>
+  size === "lg" ? 12 : size === "md" ? 10 : 8;
+
 /**
  * A component that displays a datepicker. A Date Picker lets the user select a single date and, optionally, time.
  */
@@ -306,7 +312,9 @@ class DatePicker extends React.Component<DatePickerProps, DatePickerState> {
                   background: "transparent",
                   position: "relative",
                   display: "inline-block",
-                  width: get({ lg: "130px", md: "110px", sm: "100px" }, size),
+                  width: isFloatingEnabled
+                    ? "initial"
+                    : get({ lg: "130px", md: "110px", sm: "100px" }, size),
                   verticalAlign: "middle",
                 },
                 "td.CalendarDay, td.CalendarDay__selected": {
@@ -337,21 +345,41 @@ class DatePicker extends React.Component<DatePickerProps, DatePickerState> {
                   "&:hover, &:focus": {
                     "border-color": colors.accent,
                   },
+                  display: "flex",
+                },
+                ".SingleDatePickerInput_calendarIcon": {
+                  width: calendarIconSize(spacing, size),
+                  height: calendarIconSize(spacing, size),
+                  display: "flex",
+                  alignItems: "center",
+                  alignSelf: "center",
+                  flexShrink: 0,
+                },
+                // force input to expand by creating a hidden label
+                // with the same font size & spacing as floating label
+                ".DateInput::before": {
+                  display: "block",
+                  content: isFloatingEnabled ? `"${label}"` : " ",
+                  lineHeight: type.leading.ui,
+                  fontSize: size === "sm" ? "12px" : "14px",
+                  marginTop: labelMarginTop(size),
+                  marginLeft: 11,
+                  color: "transparent",
                 },
                 ".SingleDatePicker_picker": {
                   "box-shadow": shadows.strong,
                 },
                 ".DateInput_input, .DateInput_input__focused": {
                   "padding-top": isFloatingEnabled
-                    ? `${spacing[get({ lg: 6, md: 5, sm: 4 }, size)]}px`
+                    ? 0
                     : `${spacing[get({ lg: 4, md: 3, sm: 1 }, size)]}px`,
                   "padding-bottom": `${
                     spacing[get({ lg: 4, md: 3, sm: 1 }, size)]
                   }px`,
                   "padding-right": 0,
-                  height: `${inputSizes[size] -
-                    2 +
-                    (isFloatingEnabled ? 10 : 0)}px`,
+                  height: isFloatingEnabled
+                    ? "initial"
+                    : `${inputSizes[size] - 2}px`,
                 },
                 ".CalendarDay, .DateInput_input, .DayPicker_weekHeader_li": {
                   "font-size": `${
@@ -409,11 +437,13 @@ class DatePicker extends React.Component<DatePickerProps, DatePickerState> {
                   css={[
                     {
                       position: "absolute",
-                      top: size === "lg" ? 12 : size === "md" ? 10 : 8,
+                      top: labelMarginTop(size),
                       left: 27,
+                      marginRight: `${spacing[4] +
+                        calendarIconSize(spacing, size)}`,
                       display: "flex",
                       alignItems: "center",
-                      backgroundColor: colors.background,
+                      backgroundColor: "transparent",
                       color: isFloating ? colors.subtle : colors.default,
                     },
                   ]}
