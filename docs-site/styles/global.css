@@ -1,3 +1,6 @@
 .token {
   font-style: normal !important;
 }
+.token.string {
+  color: #6e6e6e !important;
+}
