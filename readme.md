@@ -22,6 +22,7 @@ npm install @go1d/go1d
 
 - Design documentation can be found at [https://go1d.go1.com/](https://go1d.go1.com/)
 - Component story documentation can be found at [https://go1d.go1.com/storybook](https://go1d.go1.com/storybook)
+- We have a new docs site project in `./docs-site` that has its own dependencies. See [docs-site/README.md](docs-site/README.md)
 
 ## Contributing
 

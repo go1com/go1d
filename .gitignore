@@ -1,14 +1,36 @@
 /node_modules/
-/dist/
-/dist_storybook/
-/.out/
-/build/
 .DS_Store
 .idea/
-/coverage/
 .vscode/
+.npmrc
+package-lock.json
+
+# component library
+/.out/
+
+# component library dev
+/coverage/
+.jest.json
+
+# component library production
+/build/
+
+# storybook
+/dist_storybook/
 react-docs.json
 react-docs-for-storybook.json
-.jest.json
-package-lock.json
-.npmrc
+
+# documentalist x0 docs
+/dist/
+
+# next.js docs-site
+/.next/
+/out/
+/build
+
+# local env files
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+

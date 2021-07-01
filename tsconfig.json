@@ -16,6 +16,7 @@
       "**/*.test.ts",
       "**/*.spec.tsx",
       "**/*.spec.ts",
-      "build"
+      "build",
+      "docs-site"
     ]
   }
