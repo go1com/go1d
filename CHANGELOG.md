@@ -1,5 +1,11 @@
 # @go1d/go1d
 
+## 6.6.2
+
+### Patch Changes
+
+- 10dbc521: Allow datepicker to expand with label
+
 ## 6.6.1
 
 ### Patch Changes
