@@ -18,6 +18,9 @@ build:
     - yarn "react:docs"
     # Use concurrently to run job, also yarn react:docs was duplicated
     - yarn "ci:build"
+    - cd "docs-site"
+    - yarn install --frozen-lockfile
+    - yarn "next:build:ci"
     # - yarn "npm:build"
     # - yarn "docs:build"
     # - yarn "storybook:build"
@@ -26,6 +29,7 @@ build:
       - node_modules
       - build
       - dist
+      - docs-site/out
       - dist_storybook
     expire_in: 6h
   except:
@@ -115,7 +119,10 @@ pages: # NEVER rename this. I must apparently be exactly this to work
     - mkdir public
     - rm -rf public/storybook
     - mkdir public/storybook
+    - rm -rf public/docs-site
+    - mkdir public/docs-site
     - cp -r dist/* public/
+    - cp -r docs-site/out/* public/docs-site/
     - cp -r dist_storybook/* public/storybook/
 
   artifacts:
