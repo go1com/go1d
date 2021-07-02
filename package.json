@@ -9,22 +9,17 @@
   "private": false,
   "scripts": {
     "happo": "happo",
-    "docs:build": "yarn react:docs && x0 build docs -d ./dist && cp -r docs/static/ dist",
-    "docs:build:ci": "node --max_old_space_size=4096 node_modules/.bin/x0 build docs -d ./dist --quiet && cp -r docs/static/ dist",
     "npm:build": "rm -rf ./build && node --max_old_space_size=4096 node_modules/.bin/tsc --jsx react --outDir ./build",
     "npm:dev": "rm -rf ./build && mkdir build && cp package.json build/ && tsc -w --jsx react --outDir ./build",
-    "docs:dev": "yarn react:docs && x0 docs -p 8008 -o",
-    "react:docs": "documentalist \"src/components/**/index.tsx\" --no-md > docs/react-docs.json",
-    "ci:build": "yarn npm:build && yarn docs:build:ci && yarn storybook:build:ci",
+    "ci:build": "yarn npm:build && yarn storybook:build:ci",
     "storybook:build": "rm -rf ./dist_storybook && build-storybook -c ./.storybook -o ./dist_storybook",
     "storybook:build:ci": "rm -rf ./dist_storybook && node --max_old_space_size=4096 node_modules/.bin/build-storybook --quiet -c ./.storybook -o ./dist_storybook",
     "storybook": "start-storybook -p 9001 -c ./.storybook",
     "icons": "rm -rf src/components/Icons && svgr --config-file svgr.config.js --ext tsx -d src/components/Icons src/icons/svgs && node --max_old_space_size=4096 scripts/build-Icons.index.js",
-    "lint": "prettier --write ./docs/**/*.js",
     "size": "bundlesize",
-    "test": "yarn lint && jest",
+    "test": "jest",
     "test:watch": "jest --watch",
-    "test:debug": "yarn lint && node --max_old_space_size=4096 --inspect-brk ./node_modules/.bin/jest --runInBand",
+    "test:debug": "node --max_old_space_size=4096 --inspect-brk ./node_modules/.bin/jest --runInBand",
     "tslint": "tslint -c tslint.json \"./src/**/*.{ts,tsx}\"",
     "tslint:fix": "tslint -c tslint.json \"./src/**/*.{ts,tsx}\" --fix",
     "type-check": "tsc --noEmit"
@@ -35,9 +30,6 @@
   "lint-staged": {
     "./src/**/*.{ts,tsx}": [
       "tslint -c tslint.json --fix"
-    ],
-    "./docs/_src/**/*.js": [
-      "prettier"
     ]
   },
   "dependencies": {
@@ -148,23 +140,6 @@
       "pre-commit": "lint-staged",
       "pre-push": "yarn changeset status || echo \"🦋 Your code won't be published to NPM if you don't add a changeset. See CONTRIBUTING guide\""
     }
-  },
-  "x0": {
-    "title": "Go1d - Go1 Design System",
-    "basename": "",
-    "outDir": "./dist",
-    "meta": [
-      {
-        "name": "twitter:card",
-        "content": "Go1 Design System"
-      }
-    ],
-    "links": [
-      {
-        "rel": "icon",
-        "href": "https://www.go1.com/static/favicon-32x32.png"
-      }
-    ]
   },
   "jest": {
     "roots": [
