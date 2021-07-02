@@ -34,3 +34,5 @@ cd docs-site; yarn add <THE_DEPENDENCY>
 
 Note: no changesets are required for updating docs-site because we aren't publishing packages to NPM
 
+To add static assets, such as example images and fonts, upload the assets to [go1d-static-assets](https://code.go1.com.au/go1d/go1d-static-assets) and use the resulting CDN URL in this repo.
+

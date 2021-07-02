@@ -30,6 +30,8 @@ yarn run storybook:build
 yarn run npm:build
 ```
 
+To add static assets, such as example images and fonts, upload the assets to [go1d-static-assets](https://code.go1.com.au/go1d/go1d-static-assets) and use the resulting CDN URL in this repo.
+
 ## Testing
 
 ```sh
