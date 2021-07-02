@@ -1,8 +1,8 @@
-# GO1D
+# Go1d
 
 ## Overview
 
-GO1D (Spoken Gold) stands for GO1 Design System and is a library of mostly static components for building interfaces. This repo should contain minimal components with more stateful components being in `GO1D/Mine` module.
+Go1D (Spoken Gold) stands for Go1 Design System and is a library of mostly static components for building interfaces. This repo should contain minimal components with more stateful components being in `GO1D/Mine` module.
 
 ## Installation
 
