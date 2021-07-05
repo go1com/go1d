@@ -58,6 +58,8 @@ const calendarIconSize = (spacing: any, size: DatePickerProps["size"]) =>
 const labelMarginTop = (size: DatePickerProps["size"]) =>
   size === "lg" ? 12 : size === "md" ? 10 : 8;
 
+const smallMobileMediaQuery = "@media(max-width: 400px)";
+
 /**
  * A component that displays a datepicker. A Date Picker lets the user select a single date and, optionally, time.
  */
@@ -390,6 +392,12 @@ class DatePicker extends React.Component<DatePickerProps, DatePickerState> {
                   padding: `${spacing[5]}px`,
                   "padding-bottom": `${spacing[7]}px`,
                 },
+                [smallMobileMediaQuery]: isFloatingEnabled
+                  ? {
+                      "flex-direction": "column",
+                      "align-items": "flex-start",
+                    }
+                  : {},
               },
             ]}
           >
@@ -464,7 +472,17 @@ class DatePicker extends React.Component<DatePickerProps, DatePickerState> {
                 flexDirection="row"
                 alignItems="center"
                 htmlFor={id}
-                css={[{ "border-radius": `${radius[3]}px` }]}
+                css={[
+                  {
+                    "border-radius": `${radius[3]}px`,
+                    [smallMobileMediaQuery]: isFloatingEnabled
+                      ? {
+                          "margin-left": 0,
+                          "margin-top": spacing[2],
+                        }
+                      : {},
+                  },
+                ]}
                 opacity={disabled ? "disabled" : null}
               >
                 <Text
