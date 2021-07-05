@@ -101,7 +101,6 @@
     "chalk": "2.4.0",
     "concurrently": "^4.1.0",
     "create-emotion": "^10.0.27",
-    "documentalist": "^1.5.0",
     "happo-plugin-storybook": "^2.7.0",
     "happo-plugin-typescript": "^1.0.0",
     "happo.io": "^3.12.0",
