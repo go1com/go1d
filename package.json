@@ -76,7 +76,6 @@
     "@babel/preset-react": "^7.0.0",
     "@changesets/cli": "^2.13.1",
     "@compositor/kit": "^1.0.43",
-    "@compositor/kit-snapshot": "^1.0.24",
     "@mdx-js/mdx": "^0.20.3",
     "@storybook/addon-a11y": "^6.2.1",
     "@storybook/addon-actions": "^6.2.1",
