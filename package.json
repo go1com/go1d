@@ -77,7 +77,6 @@
     "@changesets/cli": "^2.13.1",
     "@compositor/kit": "^1.0.43",
     "@compositor/kit-snapshot": "^1.0.24",
-    "@compositor/x0": "github:chrisdwheatley/x0#babel-upgrade",
     "@mdx-js/mdx": "^0.20.3",
     "@storybook/addon-a11y": "^6.2.1",
     "@storybook/addon-actions": "^6.2.1",
