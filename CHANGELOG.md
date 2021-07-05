@@ -1,5 +1,11 @@
 # @go1d/go1d
 
+## 6.6.3
+
+### Patch Changes
+
+- a2634b71: Fix display issue for datetime picker with long label on mobile
+
 ## 6.6.2
 
 ### Patch Changes
