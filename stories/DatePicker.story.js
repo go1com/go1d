@@ -110,8 +110,18 @@ export const BasicDatepickerWithLongLabel = () => (
   </>
 )
 BasicDatepickerWithLongLabel.argTypes = {
-  id: { defaultValue: "id8" },
+  id: { defaultValue: "id9" },
   defaultValue: { defaultValue: new Date("2021-05-14T00:00:00.000Z") },
+};
+
+export const BasicDatepickerWithTimeAndLabel = args => (<DatePicker {...args} />);
+BasicDatepickerWithTimeAndLabel.storyName = "Basic Datepicker with Time and Label";
+BasicDatepickerWithTimeAndLabel.argTypes = {
+  id: { defaultValue: "id10" },
+  time: { defaultValue: true },
+  label: { defaultValue: "This is a long test label" },
+  floating: { defaultValue: true },
+  defaultValue: { defaultValue: new Date("2019-06-07 10:00") },
 };
 
 export const WithPastDate = () => (
