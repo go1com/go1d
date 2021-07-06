@@ -1515,28 +1515,6 @@
   dependencies:
     "@figspec/components" "^0.1.1"
 
-"@hapi/address@2.x.x":
-  version "2.0.0"
-  resolved "https://registry.npmjs.org/@hapi/address/-/address-2.0.0.tgz"
-
-"@hapi/hoek@6.x.x":
-  version "6.2.4"
-  resolved "https://registry.npmjs.org/@hapi/hoek/-/hoek-6.2.4.tgz"
-
-"@hapi/joi@^15.0.0":
-  version "15.0.3"
-  resolved "https://registry.npmjs.org/@hapi/joi/-/joi-15.0.3.tgz"
-  dependencies:
-    "@hapi/address" "2.x.x"
-    "@hapi/hoek" "6.x.x"
-    "@hapi/topo" "3.x.x"
-
-"@hapi/topo@3.x.x":
-  version "3.1.0"
-  resolved "https://registry.npmjs.org/@hapi/topo/-/topo-3.1.0.tgz"
-  dependencies:
-    "@hapi/hoek" "6.x.x"
-
 "@istanbuljs/load-nyc-config@^1.0.0":
   version "1.1.0"
   resolved "https://registry.npmjs.org/@istanbuljs/load-nyc-config/-/load-nyc-config-1.1.0.tgz"
@@ -3353,17 +3331,6 @@
     "@webassemblyjs/wast-parser" "1.9.0"
     "@xtuc/long" "4.2.2"
 
-"@webpack-contrib/schema-utils@^1.0.0-beta.0":
-  version "1.0.0-beta.0"
-  resolved "https://registry.npmjs.org/@webpack-contrib/schema-utils/-/schema-utils-1.0.0-beta.0.tgz"
-  dependencies:
-    ajv "^6.1.0"
-    ajv-keywords "^3.1.0"
-    chalk "^2.3.2"
-    strip-ansi "^4.0.0"
-    text-table "^0.2.0"
-    webpack-log "^1.1.2"
-
 "@xtuc/ieee754@^1.2.0":
   version "1.2.0"
   resolved "https://registry.npmjs.org/@xtuc/ieee754/-/ieee754-1.2.0.tgz"
@@ -3617,10 +3584,6 @@ app-root-dir@^1.0.2:
   resolved "https://registry.npmjs.org/app-root-dir/-/app-root-dir-1.0.2.tgz"
   integrity sha1-OBh+wt6nV3//Az/8sSFyaS/24Rg=
 
-app-root-path@^2.0.1:
-  version "2.2.1"
-  resolved "https://registry.npmjs.org/app-root-path/-/app-root-path-2.2.1.tgz"
-
 aproba@^1.0.3, aproba@^1.1.1:
   version "1.2.0"
   resolved "https://registry.npmjs.org/aproba/-/aproba-1.2.0.tgz"
@@ -3682,10 +3645,6 @@ arr-union@^3.1.0:
 array-equal@^1.0.0:
   version "1.0.0"
   resolved "https://registry.npmjs.org/array-equal/-/array-equal-1.0.0.tgz"
-
-array-find-index@^1.0.1:
-  version "1.0.2"
-  resolved "https://registry.npmjs.org/array-find-index/-/array-find-index-1.0.2.tgz"
 
 array-flatten@1.1.1:
   version "1.1.1"
@@ -4734,7 +4693,7 @@ chalk@2.4.0, chalk@^2.0.0, chalk@^2.1.0:
     escape-string-regexp "^1.0.5"
     supports-color "^5.3.0"
 
-chalk@2.4.2, chalk@^2.0.1, chalk@^2.3.0, chalk@^2.3.2, chalk@^2.4.1, chalk@^2.4.2:
+chalk@2.4.2, chalk@^2.0.1, chalk@^2.3.0, chalk@^2.4.1, chalk@^2.4.2:
   version "2.4.2"
   resolved "https://registry.npmjs.org/chalk/-/chalk-2.4.2.tgz"
   dependencies:
@@ -5580,22 +5539,10 @@ csv@^5.3.1:
     csv-stringify "^5.6.2"
     stream-transform "^2.0.4"
 
-currently-unhandled@^0.4.1:
-  version "0.4.1"
-  resolved "https://registry.npmjs.org/currently-unhandled/-/currently-unhandled-0.4.1.tgz"
-  dependencies:
-    array-find-index "^1.0.1"
-
 cyclist@^1.0.1:
   version "1.0.1"
   resolved "https://registry.npmjs.org/cyclist/-/cyclist-1.0.1.tgz"
   integrity sha1-WW6WmP0MgOEgOMK4LW6xs1tiJNk=
-
-d@1:
-  version "1.0.0"
-  resolved "https://registry.npmjs.org/d/-/d-1.0.0.tgz"
-  dependencies:
-    es5-ext "^0.10.9"
 
 dashdash@^1.12.0:
   version "1.14.1"
@@ -6243,38 +6190,15 @@ es-to-primitive@^1.2.1:
     is-date-object "^1.0.1"
     is-symbol "^1.0.2"
 
-es5-ext@^0.10.35, es5-ext@^0.10.9, es5-ext@~0.10.14:
-  version "0.10.50"
-  resolved "https://registry.npmjs.org/es5-ext/-/es5-ext-0.10.50.tgz"
-  dependencies:
-    es6-iterator "~2.0.3"
-    es6-symbol "~3.1.1"
-    next-tick "^1.0.0"
-
 es5-shim@^4.5.13:
   version "4.5.15"
   resolved "https://registry.npmjs.org/es5-shim/-/es5-shim-4.5.15.tgz"
   integrity sha512-FYpuxEjMeDvU4rulKqFdukQyZSTpzhg4ScQHrAosrlVpR6GFyaw14f74yn2+4BugniIS0Frpg7TvwZocU4ZMTw==
 
-es6-iterator@~2.0.3:
-  version "2.0.3"
-  resolved "https://registry.npmjs.org/es6-iterator/-/es6-iterator-2.0.3.tgz"
-  dependencies:
-    d "1"
-    es5-ext "^0.10.35"
-    es6-symbol "^3.1.1"
-
 es6-shim@^0.35.5:
   version "0.35.6"
   resolved "https://registry.npmjs.org/es6-shim/-/es6-shim-0.35.6.tgz"
   integrity sha512-EmTr31wppcaIAgblChZiuN/l9Y7DPyw8Xtbg7fIVngn6zMW+IEBJDJngeKC3x6wr0V/vcA2wqeFnaw1bFJbDdA==
-
-es6-symbol@^3.1.1, es6-symbol@~3.1.1:
-  version "3.1.1"
-  resolved "https://registry.npmjs.org/es6-symbol/-/es6-symbol-3.1.1.tgz"
-  dependencies:
-    d "1"
-    es5-ext "~0.10.14"
 
 escalade@^3.0.2, escalade@^3.1.1:
   version "3.1.1"
@@ -8197,7 +8121,7 @@ is-object@^1.0.1:
   version "1.0.1"
   resolved "https://registry.npmjs.org/is-object/-/is-object-1.0.1.tgz"
 
-is-plain-obj@^1.1, is-plain-obj@^1.1.0:
+is-plain-obj@^1.1.0:
   version "1.1.0"
   resolved "https://registry.npmjs.org/is-plain-obj/-/is-plain-obj-1.1.0.tgz"
 
@@ -8935,7 +8859,7 @@ json-schema@0.2.3:
   version "0.2.3"
   resolved "https://registry.npmjs.org/json-schema/-/json-schema-0.2.3.tgz"
 
-json-stringify-safe@^5.0.1, json-stringify-safe@~5.0.1:
+json-stringify-safe@~5.0.1:
   version "5.0.1"
   resolved "https://registry.npmjs.org/json-stringify-safe/-/json-stringify-safe-5.0.1.tgz"
 
@@ -9066,18 +8990,6 @@ klona@^2.0.4:
   version "2.0.4"
   resolved "https://registry.yarnpkg.com/klona/-/klona-2.0.4.tgz#7bb1e3affb0cb8624547ef7e8f6708ea2e39dfc0"
   integrity sha512-ZRbnvdg/NxqzC7L9Uyqzf4psi1OM4Cuc+sJAkQPjO6XkQIJTNbfK2Rsmbw8fx1p2mkZdp2FZYo2+LwXYY/uwIA==
-
-koa-webpack@^5.2.2:
-  version "5.2.3"
-  resolved "https://registry.npmjs.org/koa-webpack/-/koa-webpack-5.2.3.tgz"
-  dependencies:
-    "@hapi/joi" "^15.0.0"
-    app-root-path "^2.0.1"
-    chalk "^2.4.2"
-    loud-rejection "^2.1.0"
-    merge-options "^1.0.0"
-    webpack-dev-middleware "^3.0.0"
-    webpack-hot-client "^4.1.0"
 
 lazy-cache@^0.2.3:
   version "0.2.7"
@@ -9353,12 +9265,6 @@ lodash@4.x, lodash@^4.1.1, lodash@^4.17.10, lodash@^4.17.11, lodash@^4.17.15, lo
   resolved "https://registry.npmjs.org/lodash/-/lodash-4.17.21.tgz"
   integrity sha512-v2kDEe57lecTulaDIuNTPy3Ry4gLGJ6Z1O3vE1krgXZNrsQ+LFTGHVxVjcXPs17LhbZVGedAJv8XZ1tvj5FvSg==
 
-log-symbols@^2.1.0:
-  version "2.2.0"
-  resolved "https://registry.npmjs.org/log-symbols/-/log-symbols-2.2.0.tgz"
-  dependencies:
-    chalk "^2.0.1"
-
 log-symbols@^4.0.0:
   version "4.1.0"
   resolved "https://registry.yarnpkg.com/log-symbols/-/log-symbols-4.1.0.tgz#3fbdbb95b4683ac9fc785111e792e558d4abd503"
@@ -9377,25 +9283,11 @@ log-update@^4.0.0:
     slice-ansi "^4.0.0"
     wrap-ansi "^6.2.0"
 
-loglevelnext@^1.0.1, loglevelnext@^1.0.2:
-  version "1.0.5"
-  resolved "https://registry.npmjs.org/loglevelnext/-/loglevelnext-1.0.5.tgz"
-  dependencies:
-    es6-symbol "^3.1.1"
-    object.assign "^4.1.0"
-
 loose-envify@^1.0.0, loose-envify@^1.1.0, loose-envify@^1.2.0, loose-envify@^1.3.0, loose-envify@^1.3.1, loose-envify@^1.4.0:
   version "1.4.0"
   resolved "https://registry.npmjs.org/loose-envify/-/loose-envify-1.4.0.tgz"
   dependencies:
     js-tokens "^3.0.0 || ^4.0.0"
-
-loud-rejection@^2.1.0:
-  version "2.1.0"
-  resolved "https://registry.npmjs.org/loud-rejection/-/loud-rejection-2.1.0.tgz"
-  dependencies:
-    currently-unhandled "^0.4.1"
-    signal-exit "^3.0.2"
 
 lower-case-first@^1.0.0:
   version "1.0.2"
@@ -9665,12 +9557,6 @@ merge-descriptors@1.0.1:
   version "1.0.1"
   resolved "https://registry.npmjs.org/merge-descriptors/-/merge-descriptors-1.0.1.tgz"
 
-merge-options@^1.0.0, merge-options@^1.0.1:
-  version "1.0.1"
-  resolved "https://registry.npmjs.org/merge-options/-/merge-options-1.0.1.tgz"
-  dependencies:
-    is-plain-obj "^1.1"
-
 merge-stream@^2.0.0:
   version "2.0.0"
   resolved "https://registry.npmjs.org/merge-stream/-/merge-stream-2.0.0.tgz"
@@ -9740,10 +9626,6 @@ mime-types@^2.1.12, mime-types@^2.1.27, mime-types@~2.1.19, mime-types@~2.1.24:
 mime@1.6.0:
   version "1.6.0"
   resolved "https://registry.npmjs.org/mime/-/mime-1.6.0.tgz"
-
-mime@^2.4.2:
-  version "2.4.4"
-  resolved "https://registry.npmjs.org/mime/-/mime-2.4.4.tgz"
 
 mime@^2.4.4:
   version "2.5.2"
@@ -9978,10 +9860,6 @@ nested-error-stacks@^2.0.0, nested-error-stacks@^2.1.0:
   version "2.1.0"
   resolved "https://registry.npmjs.org/nested-error-stacks/-/nested-error-stacks-2.1.0.tgz"
   integrity sha512-AO81vsIO1k1sM4Zrd6Hu7regmJN1NSiAja10gc4bX3F0wd+9rQmcuHQaHVQCYIEC8iFXnE+mavh23GOt7wBgug==
-
-next-tick@^1.0.0:
-  version "1.0.0"
-  resolved "https://registry.npmjs.org/next-tick/-/next-tick-1.0.0.tgz"
 
 nice-try@^1.0.4:
   version "1.0.5"
@@ -13156,7 +13034,7 @@ test-exclude@^6.0.0:
     glob "^7.1.4"
     minimatch "^3.0.4"
 
-text-table@0.2.0, text-table@^0.2.0:
+text-table@0.2.0:
   version "0.2.0"
   resolved "https://registry.npmjs.org/text-table/-/text-table-0.2.0.tgz"
 
@@ -13872,7 +13750,7 @@ uuid-browser@^3.1.0:
   resolved "https://registry.yarnpkg.com/uuid-browser/-/uuid-browser-3.1.0.tgz#0f05a40aef74f9e5951e20efbf44b11871e56410"
   integrity sha1-DwWkCu90+eWVHiDvv0SxGHHlZBA=
 
-uuid@^3.1.0, uuid@^3.3.2:
+uuid@^3.3.2:
   version "3.3.2"
   resolved "https://registry.npmjs.org/uuid/-/uuid-3.3.2.tgz"
 
@@ -14054,15 +13932,6 @@ webidl-conversions@^6.1.0:
   resolved "https://registry.yarnpkg.com/webidl-conversions/-/webidl-conversions-6.1.0.tgz#9111b4d7ea80acd40f5270d666621afa78b69514"
   integrity sha512-qBIvFLGiBpLjfwmYAaHPXsn+ho5xZnGvyGvsarywGNc8VyQJUMHJ8OBKGGrPER0okBeMDaan4mNBlgBROxuI8w==
 
-webpack-dev-middleware@^3.0.0:
-  version "3.7.0"
-  resolved "https://registry.npmjs.org/webpack-dev-middleware/-/webpack-dev-middleware-3.7.0.tgz"
-  dependencies:
-    memory-fs "^0.4.1"
-    mime "^2.4.2"
-    range-parser "^1.2.1"
-    webpack-log "^2.0.0"
-
 webpack-dev-middleware@^3.7.3:
   version "3.7.3"
   resolved "https://registry.yarnpkg.com/webpack-dev-middleware/-/webpack-dev-middleware-3.7.3.tgz#0639372b143262e2b84ab95d3b91a7597061c2c5"
@@ -14079,19 +13948,6 @@ webpack-filter-warnings-plugin@^1.2.1:
   resolved "https://registry.npmjs.org/webpack-filter-warnings-plugin/-/webpack-filter-warnings-plugin-1.2.1.tgz"
   integrity sha512-Ez6ytc9IseDMLPo0qCuNNYzgtUl8NovOqjIq4uAU8LTD4uoa1w1KpZyyzFtLTEMZpkkOkLfL9eN+KGYdk1Qtwg==
 
-webpack-hot-client@^4.1.0:
-  version "4.1.1"
-  resolved "https://registry.npmjs.org/webpack-hot-client/-/webpack-hot-client-4.1.1.tgz"
-  dependencies:
-    "@webpack-contrib/schema-utils" "^1.0.0-beta.0"
-    json-stringify-safe "^5.0.1"
-    loglevelnext "^1.0.2"
-    merge-options "^1.0.1"
-    strip-ansi "^4.0.0"
-    uuid "^3.1.0"
-    webpack-log "^1.1.1"
-    ws "^4.0.0"
-
 webpack-hot-middleware@^2.25.0:
   version "2.25.0"
   resolved "https://registry.npmjs.org/webpack-hot-middleware/-/webpack-hot-middleware-2.25.0.tgz"
@@ -14101,15 +13957,6 @@ webpack-hot-middleware@^2.25.0:
     html-entities "^1.2.0"
     querystring "^0.2.0"
     strip-ansi "^3.0.0"
-
-webpack-log@^1.1.1, webpack-log@^1.1.2:
-  version "1.2.0"
-  resolved "https://registry.npmjs.org/webpack-log/-/webpack-log-1.2.0.tgz"
-  dependencies:
-    chalk "^2.1.0"
-    log-symbols "^2.1.0"
-    loglevelnext "^1.0.1"
-    uuid "^3.1.0"
 
 webpack-log@^2.0.0:
   version "2.0.0"
@@ -14308,13 +14155,6 @@ write-file-atomic@^3.0.0:
     is-typedarray "^1.0.0"
     signal-exit "^3.0.2"
     typedarray-to-buffer "^3.1.5"
-
-ws@^4.0.0:
-  version "4.1.0"
-  resolved "https://registry.npmjs.org/ws/-/ws-4.1.0.tgz"
-  dependencies:
-    async-limiter "~1.0.0"
-    safe-buffer "~5.1.0"
 
 ws@^6.1.0:
   version "6.2.1"
