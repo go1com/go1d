@@ -113,7 +113,6 @@
     "react-dom": "^16.8.6",
     "react-router-dom": "^5.0.1",
     "react-testing-library": "^6.1.2",
-    "recompose": "^0.27.1",
     "slate-plain-serializer": "^0.6.34",
     "storybook-addon-designs": "^6.0.0",
     "ts-jest": "^26.5.4",
