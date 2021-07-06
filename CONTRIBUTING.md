@@ -61,6 +61,11 @@ Once you've pushed your code and created a Merge Request (MR), you can continue 
 
 When your MR is merged to master, changesets will version the packages (Go1d), updating the `package.json` file and gather up all the changeset files (deleting them in the process) and add their details to the CHANGELOG file. It will then create a version commit, and finally changesets will publish the version change to NPM and create a git tag before pushing back to the repo.
 
+### After publishing
+
+- Create a Merge Request to update [Mine](https://code.go1.com.au/go1d/mine) to use the latest version of Go1d.
+- Create a Merge Request to update [Go1d’s docs-site](https://code.go1.com.au/go1d/GO1D/-/blob/master/docs-site/README.md) to use the latest published version of Go1d.
+
 ## Happo.io cross-browser screenshot testing
 
 This feature currently is still experimental, please contact shangzhi.pan@go1.com for further information if you want to use it.
