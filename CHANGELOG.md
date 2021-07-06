@@ -1,5 +1,11 @@
 # @go1d/go1d
 
+## 6.7.0
+
+### Minor Changes
+
+- a509c7fa: Removes previous documentation site along with devDependencies and webpack config that it used, and moves docs-site to live at https://go1d.go1.com/
+
 ## 6.6.3
 
 ### Patch Changes
