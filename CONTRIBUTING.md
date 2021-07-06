@@ -17,7 +17,6 @@ yarn install
 To run locally, choose which method you want to use:
 
 ```sh
-yarn run docs:dev # documentation site and generate props table
 yarn run storybook # storybook for component development
 yarn run npm:dev # build design system
 ```
@@ -25,12 +24,19 @@ yarn run npm:dev # build design system
 To create a deployment build, choose which method you want to use:
 
 ```sh
-yarn run docs:build
 yarn run storybook:build
 yarn run npm:build
 ```
 
 To add static assets, such as example images and fonts, upload the assets to [go1d-static-assets](https://code.go1.com.au/go1d/go1d-static-assets) and use the resulting CDN URL in this repo.
+
+## docs-site
+
+For everything about the docs-site, change directory into `docs-site` and then do everything like `yarn install` from there:
+
+`cd docs-site && less README.md`
+
+See [docs-site/README.md](https://code.go1.com.au/go1d/GO1D/-/blob/master/docs-site/README.md)
 
 ## Testing
 
@@ -54,6 +60,11 @@ Your workflow should look like:
 Once you've pushed your code and created a Merge Request (MR), you can continue to make changes and amend that changeset file to add more information or change the bump type. If you push a branch without a changeset file, you'll be asked to add a changeset. If needed, you can run `yarn changeset add --empty` to add an empty changeset. You can read more about changesets in the guide to [Adding a changeset](https://github.com/atlassian/changesets/blob/master/docs/adding-a-changeset.md).
 
 When your MR is merged to master, changesets will version the packages (Go1d), updating the `package.json` file and gather up all the changeset files (deleting them in the process) and add their details to the CHANGELOG file. It will then create a version commit, and finally changesets will publish the version change to NPM and create a git tag before pushing back to the repo.
+
+### After publishing
+
+- Create a Merge Request to update [Mine](https://code.go1.com.au/go1d/mine) to use the latest version of Go1d.
+- Create a Merge Request to update [Go1d’s docs-site](https://code.go1.com.au/go1d/GO1D/-/blob/master/docs-site/README.md) to use the latest published version of Go1d.
 
 ## Happo.io cross-browser screenshot testing
 
@@ -82,13 +93,10 @@ If you want to test a component change before publishing to NPM, you can use [`n
 
 ## Contribute
 
-Components should be documented in docs/components with at least:
+Components should be documented in [TSDocs](https://tsdoc.org/) and Storybook with at least:
 
-* A one or two line description of the component with it’s use case
-* Major use cases of the component
-* It’s current development status & release version
-
-Component should have at least one story with all props in the "stories" folder. You can find a tutorial on how to add stories for storybook [here](https://storybook.js.org/docs/guides/guide-react/). 
+* A one or two line description of the component with its use case in TSDocs
+* Major use cases of the component as stories in Storybook with all the props as args: [How to write stories](https://storybook.js.org/docs/react/writing-stories/introduction)
 
 ## Developer Guide
 
@@ -102,7 +110,7 @@ Component should have at least one story with all props in the "stories" folder.
 
 ### Don'ts
 
-- Avoid imports of other GO1D components into your component through the /components/index.ts file.
+- Avoid imports of other Go1d components into your component through the `/components/index.ts` file.
     - Avoid `import {View} from "../index"` or `import {View} from "../"`   or `import {View} from "../../"`
     - Instead use `import View, {ViewProps} from "../View"`
 - Do not add icons with opacity if they are not intended. Double-check if the Icon Path is included twice in the SVG file.

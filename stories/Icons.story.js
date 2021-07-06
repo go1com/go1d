@@ -1,7 +1,7 @@
 import React from "react";
 import { View, Text } from "../src/";
 import { IconGo1Logo, IconSuccess } from '../src/components/Icons';
-import AllIcons from '../docs/_src/components/AllIcons.js';
+import AllIcons from '../stories/story-components/AllIcons.js';
 
 export default {
   title: "Athletic/Icons",

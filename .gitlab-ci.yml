@@ -15,20 +15,15 @@ build:
   script:
     - yarn config set no-progress
     - yarn install --silent
-    - yarn "react:docs"
-    # Use concurrently to run job, also yarn react:docs was duplicated
+    # Use concurrently to run job
     - yarn "ci:build"
     - cd "docs-site"
     - yarn install --frozen-lockfile
     - yarn "next:build:ci"
-    # - yarn "npm:build"
-    # - yarn "docs:build"
-    # - yarn "storybook:build"
   artifacts:
     paths:
       - node_modules
       - build
-      - dist
       - docs-site/out
       - dist_storybook
     expire_in: 6h
@@ -100,7 +95,6 @@ visual-test:happo:
     - if [ "$DIFF_REVIEW" != "accept" ]; then
     - yarn config set no-progress
     - yarn install --silent
-    - yarn react:docs && node ./.storybook/generate-props-file.js
     - yarn run happo-ci
     # Check for EXIT_CODE env
     - NPM_BIN=$(yarn bin)
@@ -117,12 +111,8 @@ pages: # NEVER rename this. I must apparently be exactly this to work
   script:
     - rm -rf public
     - mkdir public
-    - rm -rf public/storybook
     - mkdir public/storybook
-    - rm -rf public/docs-site
-    - mkdir public/docs-site
-    - cp -r dist/* public/
-    - cp -r docs-site/out/* public/docs-site/
+    - cp -r docs-site/out/* public/
     - cp -r dist_storybook/* public/storybook/
 
   artifacts:
@@ -168,7 +158,6 @@ release:npm:
     - NPM_BIN=$(yarn bin)
     - MASTER_SHA=$(git rev-parse origin/master)
     - if ! "$NPM_BIN"/happo has-report "$MASTER_SHA"; then
-    - yarn react:docs && node ./.storybook/generate-props-file.js
     - yarn happo run $MASTER_SHA; fi
   artifacts:
     paths:

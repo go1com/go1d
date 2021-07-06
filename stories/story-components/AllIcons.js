@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from "react";
-import * as Icons from "../../../src/components/Icons";
-import SearchInput from "../../../src/components/SearchInput";
+import * as Icons from "../../src/components/Icons";
+import SearchInput from "../../src/components/SearchInput";
 
 class AllIcons extends Component {
   constructor(props) {

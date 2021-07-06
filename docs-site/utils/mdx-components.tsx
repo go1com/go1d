@@ -84,6 +84,7 @@ const components = {
         fontWeight="normal"
         fontFamily="sansSerif"
         lineHeight="paragraph"
+        css={{maxWidth: "645px"}}
       >{children}</Text>
     );
   },
@@ -103,7 +104,10 @@ const components = {
   },
   ul({children}) {
     return (
-      <UL css={{ padding: 0}}>{children}</UL>
+      <UL css={{
+        maxWidth: "645px",
+        padding: 0
+      }}>{children}</UL>
     )
   },
   li({ children }) {

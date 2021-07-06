@@ -17,6 +17,7 @@
       "**/*.spec.tsx",
       "**/*.spec.ts",
       "build",
-      "docs-site"
+      "docs-site",
+      "stories/story-components"
     ]
   }
