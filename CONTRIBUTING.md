@@ -36,6 +36,8 @@ For everything about the docs-site, change directory into `docs-site` and then d
 
 `cd docs-site && less README.md`
 
+See [docs-site/README.md](https://code.go1.com.au/go1d/GO1D/-/blob/master/docs-site/README.md)
+
 ## Testing
 
 ```sh

@@ -22,7 +22,6 @@ npm install @go1d/go1d
 
 - Design documentation can be found at [https://go1d.go1.com/](https://go1d.go1.com/)
 - Component story documentation can be found at [https://go1d.go1.com/storybook](https://go1d.go1.com/storybook)
-- We have a new docs site project in `./docs-site` that has its own dependencies. See [docs-site/README.md](docs-site/README.md)
 
 ## Contributing
 
@@ -31,8 +30,8 @@ See the [CONTRIBUTING.md](./CONTRIBUTING.md) guide to learn:
 - How to develop Go1d locally and add changesets
 - How to link across repos
 - How to run tests
-- How to develop component stories
-- How to develop design documentation
+- How to develop component stories in Storybook
+- How to develop the docs-site in the subdirectory project `./docs-site` with its own dependencies. See [docs-site/README.md](https://code.go1.com.au/go1d/GO1D/-/blob/master/docs-site/README.md)
 
 ## Maintainers
 
