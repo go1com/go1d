@@ -299,10 +299,10 @@
   resolved "https://registry.yarnpkg.com/@emotion/utils/-/utils-0.8.2.tgz#576ff7fb1230185b619a75d258cbc98f0867a8dc"
   integrity sha512-rLu3wcBWH4P5q1CGoSSH/i9hrXs7SlbRLkoq9IGuoPYNGQvDJ3pt/wmOM+XgYjIDRMVIdkUWt0RsfzF50JfnCw==
 
-"@go1d/go1d@^6.5.1":
-  version "6.5.1"
-  resolved "https://registry.yarnpkg.com/@go1d/go1d/-/go1d-6.5.1.tgz#f7144595eab62b9ccb3ba8b27f164676f9d01d1b"
-  integrity sha512-ob7vybdSnwN4l3I5F067MOhdvzTBuxgDm5D+6CE+nFCCaZPj/e1qYBI7GLQ3zt5dMbTbEYX3NWykMvOSWTTRvQ==
+"@go1d/go1d@^6.7.0":
+  version "6.7.0"
+  resolved "https://registry.yarnpkg.com/@go1d/go1d/-/go1d-6.7.0.tgz#d94bc78623908de100a05c27295df6945f21707b"
+  integrity sha512-IxvPn+ETEsWis+qcfMX29xRF+wuV/19QLtuY6nNOBUSfIanb310u00dMKggtqyHF/U5+sqSFXUxzEKoL+14eWA==
   dependencies:
     "@tweenjs/tween.js" "^17.2.0"
     "@types/events" "^1.2.0"
@@ -515,7 +515,16 @@
     "@types/prop-types" "*"
     "@types/react" "*"
 
-"@types/react@*", "@types/react@^17.0.11":
+"@types/react@*":
+  version "17.0.13"
+  resolved "https://registry.yarnpkg.com/@types/react/-/react-17.0.13.tgz#6b7c9a8f2868586ad87d941c02337c6888fb874f"
+  integrity sha512-D/G3PiuqTfE3IMNjLn/DCp6umjVCSvtZTPdtAFy5+Ved6CsdRvivfKeCzw79W4AatShtU4nGqgvOv5Gro534vQ==
+  dependencies:
+    "@types/prop-types" "*"
+    "@types/scheduler" "*"
+    csstype "^3.0.2"
+
+"@types/react@^17.0.11":
   version "17.0.11"
   resolved "https://registry.yarnpkg.com/@types/react/-/react-17.0.11.tgz#67fcd0ddbf5a0b083a0f94e926c7d63f3b836451"
   integrity sha512-yFRQbD+whVonItSk7ZzP/L+gPTJVBkL/7shLEF+i9GC/1cV3JmUxEQz6+9ylhUpWSDuqo1N9qEvqS6vTj4USUA==
@@ -525,9 +534,9 @@
     csstype "^3.0.2"
 
 "@types/scheduler@*":
-  version "0.16.1"
-  resolved "https://registry.yarnpkg.com/@types/scheduler/-/scheduler-0.16.1.tgz#18845205e86ff0038517aab7a18a62a6b9f71275"
-  integrity sha512-EaCxbanVeyxDRTQBkdLb3Bvl/HK7PBK6UJjsSixB0iHKoWxE5uu2Q/DgtpOhPIojN0Zl1whvOd7PoHs2P0s5eA==
+  version "0.16.2"
+  resolved "https://registry.yarnpkg.com/@types/scheduler/-/scheduler-0.16.2.tgz#1a62f89525723dde24ba1b01b092bf5df8ad4d39"
+  integrity sha512-hppQEBDmlwhFAXKJX2KnWLYu5yMfi91yazPb2l+lbJiwW+wdo1gNeRA+3RgNSO39WYX2euey41KEwnqesU2Jew==
 
 "@types/slate-react@^0.21.0":
   version "0.21.2"
@@ -539,9 +548,9 @@
     immutable "^3.8.2"
 
 "@types/slate@*":
-  version "0.47.8"
-  resolved "https://registry.yarnpkg.com/@types/slate/-/slate-0.47.8.tgz#b7a3916a5c76c1487e1dca0b829e688c40a386fc"
-  integrity sha512-peyg1SKD+01ly3VNoWPcPWmlOS+ltSDzAMkCWmBNTaAJ2s+WY91RQxaqk/cl1m9HQ3wmS1nB/7tbRnOcN5Wr4Q==
+  version "0.47.9"
+  resolved "https://registry.yarnpkg.com/@types/slate/-/slate-0.47.9.tgz#ce212ba09bb2c0de470b59b496efeac739eff1b4"
+  integrity sha512-KzC0iNuZJkiKx0dMAC9PBF6TXZNd0l3hqVCF5/7GwCEnLDx6VsETAedAi4OjRpzObvL4x7n8ZS51+sgXHn/HvQ==
   dependencies:
     "@types/react" "*"
     immutable "^3.8.2"
@@ -560,9 +569,9 @@
   integrity sha512-FvUupuM3rlRsRtCN+fDudtmytGO6iHJuuRKS1Ss0pG5z8oX0diNEw94UEL7hgDbpN94rgaK5R7sWm6RrSkZuAQ==
 
 "@types/webfontloader@^1.6.29":
-  version "1.6.32"
-  resolved "https://registry.yarnpkg.com/@types/webfontloader/-/webfontloader-1.6.32.tgz#8a02698b7a07a9f2cc8e34d7223dc5d59ccff77a"
-  integrity sha512-l83V/2iHvBTIlKUM1+UlabS/Jd65HVfKmqS+zPhwDlgldPtd5ujPDt0Y1es19xLWcN8NC3wwSTd71Qxbst+Kpw==
+  version "1.6.33"
+  resolved "https://registry.yarnpkg.com/@types/webfontloader/-/webfontloader-1.6.33.tgz#cdef66b53341193ce1b4d4ad771703689db77708"
+  integrity sha512-2oOYQp0UBo/+NFsxdlF9ZwS1rq1q/wGnLsZMN7X+/xArRZoLPQhOGecesaRYJ2uhHyJ53TgitDORu2IV47FhHw==
 
 abbrev@1:
   version "1.1.1"
@@ -1407,9 +1416,9 @@ electron-to-chromium@^1.3.723:
   integrity sha512-LBJJ4qnuveWMqnwP0fP+bSl+QIxeToqBH8Bb0qVkz6YnfOZQpOW/FlkxuPn0u/zh+py6Y7x6L4qsl5aBjE9Djw==
 
 element-resize-detector@^1.2.0:
-  version "1.2.2"
-  resolved "https://registry.yarnpkg.com/element-resize-detector/-/element-resize-detector-1.2.2.tgz#bf7c3ff915957e4e62e86241ed2f9c86b078892b"
-  integrity sha512-+LOXRkCJc4I5WhEJxIDjhmE3raF8jtOMBDqSCgZTMz2TX3oXAX5pE2+MDeopJlGdXzP7KzPbBJaUGfNaP9HG4A==
+  version "1.2.3"
+  resolved "https://registry.yarnpkg.com/element-resize-detector/-/element-resize-detector-1.2.3.tgz#5078d9b99398fe4c589f8c8df94ff99e5d413ff3"
+  integrity sha512-+dhNzUgLpq9ol5tyhoG7YLoXL3ssjfFW+0gpszXPwRU6NjGr1fVHMEAF8fVzIiRJq57Nre0RFeIjJwI8Nh2NmQ==
   dependencies:
     batch-processor "1.0.0"
 
@@ -2895,9 +2904,9 @@ react-addons-shallow-compare@^15.6.2:
     object-assign "^4.1.0"
 
 react-colorful@^5.0.1:
-  version "5.2.2"
-  resolved "https://registry.yarnpkg.com/react-colorful/-/react-colorful-5.2.2.tgz#0a69d0648db47e51359d343854d83d250a742243"
-  integrity sha512-Xdb1Rl6lZ5SMdNBH59eE0lGqR1g2LVD8IgPlw0WeMDrOC65lYI8fgMEwj/0dDpVRVMh5qp73ciISDst/t2O2iQ==
+  version "5.2.3"
+  resolved "https://registry.yarnpkg.com/react-colorful/-/react-colorful-5.2.3.tgz#579faf42542e32645c5dee66c8530292b2d61646"
+  integrity sha512-lAge4syxosZg9SX8fJiwOLd9ZJSW3poPBtypnz1aMiFoHsRnK5G3+INGGx9DGtsrso4h5uFYbiFpjAfWyK3Kag==
 
 react-dates@^19.0.3:
   version "19.0.4"
@@ -2940,9 +2949,9 @@ react-dropzone@^8.2.0:
     prop-types-extra "^1.1.0"
 
 react-easy-crop@^3.3.2:
-  version "3.5.1"
-  resolved "https://registry.yarnpkg.com/react-easy-crop/-/react-easy-crop-3.5.1.tgz#d32113de9c87f9009d4ae0b223922ad60433ea69"
-  integrity sha512-VWTYAwRcapguZcYHTSKOcaO2QoNPA57KlS6J0DUrl6dPMV/KrmnPl++LSe/fjN/5vak2PJFKFA4js6Lkwwuy2g==
+  version "3.5.2"
+  resolved "https://registry.yarnpkg.com/react-easy-crop/-/react-easy-crop-3.5.2.tgz#1fc65249e82db407c8c875159589a8029a9b7a06"
+  integrity sha512-cwSGO/wk42XDpEyrdAcnQ6OJetVDZZO2ry1i19+kSGZQ750aN06RU9y9z95B5QI6sW3SnaWQRKv5r5GSqVV//g==
   dependencies:
     normalize-wheel "^1.0.1"
     tslib "2.0.1"
