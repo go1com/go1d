@@ -1,5 +1,11 @@
 # @go1d/go1d
 
+## 6.7.1
+
+### Patch Changes
+
+- fab7ec4f: Dynamic values drop down for RichTextInput
+
 ## 6.7.0
 
 ### Minor Changes
