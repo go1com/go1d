@@ -1,12 +1,10 @@
 import * as React from "react";
-import { Colors } from "../../../foundations/foundation-types";
-import Button from "../../Button";
-import { IconProps } from "../../IconBase";
 import Theme from "../../Theme";
 import View from "../../View";
 
 import IconBlockQuote from "../../Icons/BlockQuote";
 import IconBold from "../../Icons/Bold";
+import IconDynamicValues from "../../Icons/Braces";
 import IconHeadingThree from "../../Icons/HeadingThree";
 import IconHeadingTwo from "../../Icons/HeadingTwo";
 import IconItalic from "../../Icons/Italic";
@@ -15,11 +13,14 @@ import IconOlList from "../../Icons/OlList";
 import IconStrikethrough from "../../Icons/Strikethrough";
 import IconUlList from "../../Icons/UlList";
 import IconUnderline from "../../Icons/Underline";
+import { DynamicValue, DynamicValuesButton } from "./DynamicValuesButton";
+import { FormatButton } from "./FormatButton";
 
 export interface Props {
   onClickMarked: (event: React.SyntheticEvent<HTMLButtonElement>) => void;
   onClickBlock: (event: React.SyntheticEvent<HTMLButtonElement>) => void;
   onClickLink: (event: React.SyntheticEvent<HTMLButtonElement>) => void;
+  onInsertText: (text: string) => void;
   blockActive: (type: string) => boolean;
   markActive: (type: string) => boolean;
   linkActive: () => boolean;
@@ -33,65 +34,13 @@ export interface Props {
   linkFormatOption: boolean;
   numberedListFormatOption: boolean;
   bulletListFormatOption: boolean;
+  dynamicValues?: DynamicValue[];
 }
-
-interface FormatButtonProps {
-  icon: React.ComponentType<IconProps>;
-  type: string;
-  active: boolean;
-  colors: Colors;
-  onClick: (event: React.SyntheticEvent<HTMLButtonElement>) => void;
-}
-
-const FormatButton: React.FC<FormatButtonProps> = ({
-  type,
-  icon,
-  onClick,
-  active,
-  colors,
-  ...props
-}) => {
-  return (
-    <Button
-      color="accent"
-      data-value={type}
-      onClick={onClick}
-      active={active}
-      icon={icon}
-      css={[
-        {
-          svg: {
-            color: colors.subtle,
-          },
-          "&:hover": {
-            color: colors.contrast,
-            svg: {
-              color: colors.contrast,
-            },
-          },
-          "&:focus, &:active": {
-            color: colors.accent,
-            svg: {
-              color: colors.accent,
-            },
-          },
-        },
-        active
-          ? {
-              svg: {
-                color: colors.accent,
-              },
-            }
-          : {},
-      ]}
-      {...props}
-    />
-  );
-};
 
 const FormatOptions: React.SFC<Props> = ({
   onClickMarked,
   onClickBlock,
+  onInsertText,
   blockActive,
   markActive,
   linkActive,
@@ -106,6 +55,7 @@ const FormatOptions: React.SFC<Props> = ({
   linkFormatOption,
   numberedListFormatOption,
   bulletListFormatOption,
+  dynamicValues = [],
 }: Props) => (
   <Theme.Consumer>
     {({ colors }) => (
@@ -207,6 +157,17 @@ const FormatOptions: React.SFC<Props> = ({
             type="bulleted-list"
             icon={IconUlList}
             active={blockActive("bulleted-list")}
+            colors={colors}
+          />
+        )}
+        {dynamicValues.length > 0 && (
+          <DynamicValuesButton
+            data-testid="dynamicValuesButton"
+            onTextInsert={onInsertText}
+            dynamicValues={dynamicValues}
+            type="dynamic-value"
+            active={false}
+            icon={IconDynamicValues}
             colors={colors}
           />
         )}
