@@ -82,3 +82,39 @@ RichTextInputInFieldWithFormatOptions.args = {
   bulletListFormatOption: true,
 }
 
+export const RichTextInputWithDynamicValues = args => (
+  <Form initialValues={{}} onSubmit={(values, actions) => console.log(values, actions)}>
+    <Field
+      component={RichTextInput}
+      {...args}
+    />
+    <ButtonFilled type="submit" color="accent">Save course</ButtonFilled>
+</Form>
+);
+RichTextInputWithDynamicValues.storyName = "Rich Text Input with dynamic values";
+RichTextInputWithDynamicValues.args = {
+  name: "description",
+  label: "Course description",
+  placeholder: "e.g. How to manage…",
+  minHeight: 200,
+  boldFormatOption: false,
+  italicFormatOption: false,
+  underlineFormatOption: false,
+  strikethroughFormatOption: false,
+  h2FormatOption: true,
+  h3FormatOption: true,
+  blockquoteFormatOption: false,
+  linkFormatOption: false,
+  numberedListFormatOption: false,
+  bulletListFormatOption: false,
+  dynamicValues: [
+    {
+      label: 'First name',
+      value: '!first_name'
+    },
+    {
+      label: 'Portal name',
+      value: '!portal_name'
+    },
+  ]
+}

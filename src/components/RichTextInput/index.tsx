@@ -11,6 +11,7 @@ import safeInvoke from "../../utils/safeInvoke";
 import { getStyles } from "../Prose/style";
 import Theme from "../Theme";
 import View from "../View";
+import { DynamicValue } from "./components/DynamicValuesButton";
 import FormatOptions from "./components/FormatOptions";
 
 interface State {
@@ -43,6 +44,7 @@ export interface Props {
   linkFormatOption?: boolean;
   numberedListFormatOption?: boolean;
   bulletListFormatOption?: boolean;
+  dynamicValues?: DynamicValue[];
   onPaste?: any;
 }
 
@@ -81,7 +83,7 @@ class RichTextInput extends React.Component<Props, State> {
     return null;
   }
 
-  private editor: React.RefObject<any> = React.createRef();
+  private editor: React.RefObject<Editor> = React.createRef();
 
   constructor(props: Props) {
     super(props);
@@ -271,6 +273,11 @@ class RichTextInput extends React.Component<Props, State> {
   }
 
   @autobind
+  public onInsertText(text: string) {
+    this.editor.current.insertText(text).focus();
+  }
+
+  @autobind
   public onClickBlock(event: React.SyntheticEvent<HTMLButtonElement>) {
     event.preventDefault();
 
@@ -371,6 +378,7 @@ class RichTextInput extends React.Component<Props, State> {
       linkFormatOption,
       numberedListFormatOption,
       bulletListFormatOption,
+      dynamicValues,
       onPaste,
     } = this.props;
 
@@ -414,6 +422,7 @@ class RichTextInput extends React.Component<Props, State> {
               onClickBlock={this.onClickBlock}
               onClickMarked={this.onClickMarked}
               onClickLink={this.onClickLink}
+              onInsertText={this.onInsertText}
               blockActive={this.hasBlockCheck}
               markActive={this.hasMark}
               linkActive={this.hasLinks}
@@ -427,6 +436,7 @@ class RichTextInput extends React.Component<Props, State> {
               linkFormatOption={linkFormatOption}
               numberedListFormatOption={numberedListFormatOption}
               bulletListFormatOption={bulletListFormatOption}
+              dynamicValues={dynamicValues}
             />
           </View>
         )}

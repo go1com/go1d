@@ -12,6 +12,7 @@ it("renders without crashing without any optional props", () => {
       onClickBlock={fn}
       onClickMarked={fn}
       onClickLink={fn}
+      onInsertText={fn}
       blockActive={fn}
       markActive={fn}
       linkActive={fn}
@@ -25,6 +26,12 @@ it("renders without crashing without any optional props", () => {
       linkFormatOption={true}
       numberedListFormatOption={true}
       bulletListFormatOption={true}
+      dynamicValues={[
+        {
+          label: "First name",
+          value: "!first_name",
+        },
+      ]}
     />
   );
 
@@ -49,6 +56,8 @@ it("renders without crashing without any optional props", () => {
   expect(numberedListFormatOption).toBeDefined();
   const bulletListFormatOption = getByTestId("blockBulletedList");
   expect(bulletListFormatOption).toBeDefined();
+  const dynamicValuesButton = getByTestId("dynamicValuesButton");
+  expect(dynamicValuesButton).toBeDefined();
 });
 
 it("renders without crashing hiding all formatOptions", () => {
@@ -57,6 +66,7 @@ it("renders without crashing hiding all formatOptions", () => {
       onClickBlock={fn}
       onClickMarked={fn}
       onClickLink={fn}
+      onInsertText={fn}
       blockActive={fn}
       markActive={fn}
       linkActive={fn}
