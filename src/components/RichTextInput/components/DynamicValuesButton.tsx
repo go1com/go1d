@@ -1,7 +1,6 @@
 import * as React from "react";
 import ButtonMinimal from "../../ButtonMinimal";
-import Popover from "../../Popover";
-import View from "../../View";
+import Dropdown from "../../Dropdown";
 import { FormatButton, FormatButtonProps } from "./FormatButton";
 
 export interface DynamicValue {
@@ -23,48 +22,43 @@ export const DynamicValuesButton = ({
     onTextInsert?.(text);
   };
 
-  const handleRenderer: React.ComponentProps<
-    typeof Popover
-  >["handleRenderer"] = (ref, handleProps) => (
-    <FormatButton ref={ref} onClick={handleClick} {...props} {...handleProps} />
+  const itemToString = (item: DynamicValue) => (item ? item.label : "");
+
+  const buttonRenderer = ({ ref, getToggleButtonProps }) => (
+    <FormatButton {...getToggleButtonProps()} innerRef={ref} {...props} />
   );
 
-  const contentRenderer: React.ComponentProps<
-    typeof Popover
-  >["contentRenderer"] = (ref, contentProps, _) => {
+  const renderFunction: React.ComponentProps<
+    typeof Dropdown
+  >["renderFunction"] = (item, index, getItemProps) => {
     return (
-      <View
-        innerRef={ref}
-        {...contentProps}
-        border={1}
-        borderRadius={1}
-        borderColor="faded"
-        padding={3}
-        flexDirection="column"
-        backgroundColor="background"
+      <ButtonMinimal
+        key={index}
+        {...getItemProps({
+          key: index,
+          item,
+          index,
+        })}
+        height={30}
+        onClick={handleClick.bind(null, item.value)}
+        marginBottom={index !== dynamicValues.length - 1 ? 2 : 0}
+        marginX={3}
+        justifyContent="flex-start"
+        fontWeight="normal"
       >
-        {dynamicValues.map(({ label, value }, index) => (
-          <ButtonMinimal
-            key={`dynamic-value-${value}`}
-            height={30}
-            onClick={handleClick.bind(null, value)}
-            marginBottom={index !== dynamicValues.length - 1 ? 2 : 0}
-            justifyContent="flex-start"
-            fontWeight="normal"
-          >
-            {label}
-          </ButtonMinimal>
-        ))}
-      </View>
+        {item.label}
+      </ButtonMinimal>
     );
   };
 
   return (
-    <Popover
-      triggerEvent="onClick"
+    <Dropdown
+      itemToString={itemToString}
+      renderFunction={renderFunction}
+      itemList={dynamicValues}
       placement="bottom-start"
-      handleRenderer={handleRenderer}
-      contentRenderer={contentRenderer}
-    />
+    >
+      {buttonRenderer}
+    </Dropdown>
   );
 };
