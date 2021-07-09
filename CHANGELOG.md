@@ -1,5 +1,11 @@
 # @go1d/go1d
 
+## 6.7.2
+
+### Patch Changes
+
+- 38b6e06d: Fix RichTextEditor dynamic values not appearing
+
 ## 6.7.1
 
 ### Patch Changes
