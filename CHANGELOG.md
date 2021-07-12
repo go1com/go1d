@@ -1,5 +1,11 @@
 # @go1d/go1d
 
+## 6.7.3
+
+### Patch Changes
+
+- 57bd8a4a: Update DatePicker left padding to match other inputs
+
 ## 6.7.2
 
 ### Patch Changes
