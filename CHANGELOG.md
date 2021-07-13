@@ -1,5 +1,11 @@
 # @go1d/go1d
 
+## 6.7.4
+
+### Patch Changes
+
+- 1cef37ec: Update Datepicker's floating label position to match its padding
+
 ## 6.7.3
 
 ### Patch Changes
