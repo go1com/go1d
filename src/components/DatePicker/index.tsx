@@ -365,7 +365,7 @@ class DatePicker extends React.Component<DatePickerProps, DatePickerState> {
                   lineHeight: type.leading.ui,
                   fontSize: size === "sm" ? "12px" : "14px",
                   marginTop: labelMarginTop(size),
-                  marginLeft: 11,
+                  marginLeft: 0,
                   color: "transparent",
                 },
                 ".SingleDatePicker_picker": {
@@ -447,7 +447,8 @@ class DatePicker extends React.Component<DatePickerProps, DatePickerState> {
                     {
                       position: "absolute",
                       top: labelMarginTop(size),
-                      left: 27,
+                      left: 0,
+                      marginLeft: spacing[4],
                       marginRight: `${spacing[4] +
                         calendarIconSize(spacing, size)}`,
                       display: "flex",
