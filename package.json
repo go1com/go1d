@@ -51,7 +51,7 @@
     "lodash-decorators": "^6.0.0",
     "moment": "^2.24.0",
     "react-colorful": "^5.0.1",
-    "react-dates": "^19.0.3",
+    "react-dates": "^21.8.0",
     "react-dropzone": "^8.2.0",
     "react-easy-crop": "^3.3.2",
     "react-iframe": "^1.8.0",

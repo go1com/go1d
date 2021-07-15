@@ -19,8 +19,12 @@ export default {
   }
 };
 
+const onChange = ({ target: { value } }) => {
+  alert(`You picked ${value}`);
+}
+
 export const BasicDatepicker = args => (
-  <DatePicker {...args} />
+  <DatePicker {...args} onChange={onChange} />
 );
 BasicDatepicker.argTypes = {
   id: { defaultValue: "id1" },
