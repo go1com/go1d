@@ -1,5 +1,11 @@
 # @go1d/go1d
 
+## 6.8.0
+
+### Minor Changes
+
+- 5076018f: DatePicker > update react-dates to fix issue with IE11
+
 ## 6.7.4
 
 ### Patch Changes
