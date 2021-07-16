@@ -1,5 +1,11 @@
 # @go1d/go1d
 
+## 6.8.1
+
+### Patch Changes
+
+- 39254652: DNI-318: fix issue when passing value to SearchInput is blank text
+
 ## 6.8.0
 
 ### Minor Changes
