@@ -1,5 +1,11 @@
 # @go1d/go1d
 
+## 6.8.2
+
+### Patch Changes
+
+- c07e74b6: fixed default maxSelectedValues
+
 ## 6.8.1
 
 ### Patch Changes
