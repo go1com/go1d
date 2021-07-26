@@ -359,6 +359,9 @@ class MultiSelect extends React.PureComponent<MultiSelectProps, any> {
                 return sum;
               }, {});
 
+              const isDisabled =
+                this.props.disabled !== null ? this.props.disabled : false;
+
               return (
                 <View
                   {...remainingProps}
@@ -376,11 +379,12 @@ class MultiSelect extends React.PureComponent<MultiSelectProps, any> {
                         )}
                       </View>
                     )}
-                    {this.renderClearSelection({
-                      colors,
-                      clearSelection,
-                      selectedItems,
-                    })}
+                    {!isDisabled &&
+                      this.renderClearSelection({
+                        colors,
+                        clearSelection,
+                        selectedItems,
+                      })}
                   </View>
                   <View>
                     <Manager>

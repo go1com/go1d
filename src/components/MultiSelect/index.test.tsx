@@ -164,6 +164,46 @@ it("Calculates the Width of the dropdown correctly", () => {
   }
 });
 
+it("Renders clear selection button when disabled is not set", () => {
+  const { getByTestId } = render(
+    <MultiSelect options={Options} defaultValue={["test 1", "test"]} />
+  );
+
+  expect(getByTestId("clearSelectionButton")).toBeDefined();
+});
+
+it("Renders clear selection button when disabled is false", () => {
+  const { getByTestId } = render(
+    <MultiSelect
+      options={Options}
+      disabled={false}
+      defaultValue={["test 1", "test 2"]}
+    />
+  );
+
+  expect(getByTestId("clearSelectionButton")).toBeDefined();
+});
+
+it("Does not render clear selection when disabled is true", () => {
+  const { queryByTestId } = render(
+    <MultiSelect
+      options={Options}
+      disabled={true}
+      defaultValue={["test 1", "test 2"]}
+    />
+  );
+
+  expect(queryByTestId("clearSelectionButton")).toBeNull();
+});
+
+it("Does not render clear selection when no value is set", () => {
+  const { queryByTestId } = render(
+    <MultiSelect options={Options} defaultValue={[]} />
+  );
+
+  expect(queryByTestId("clearSelectionButton")).toBeNull();
+});
+
 describe("handleSelectionClear", () => {
   let onChangeMock;
   let onClearMock;
@@ -182,7 +222,7 @@ describe("handleSelectionClear", () => {
       <MultiSelect
         options={Options}
         label="Test"
-        disabled={true}
+        disabled={false}
         onChange={onChangeMock}
         name="Test"
         searchable={true}
@@ -203,7 +243,7 @@ describe("handleSelectionClear", () => {
       <MultiSelect
         options={Options}
         label="Test"
-        disabled={true}
+        disabled={false}
         onChange={onChangeMock}
         onClear={onClearMock}
         name="Test"
