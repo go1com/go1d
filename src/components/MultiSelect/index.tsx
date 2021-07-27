@@ -359,8 +359,7 @@ class MultiSelect extends React.PureComponent<MultiSelectProps, any> {
                 return sum;
               }, {});
 
-              const isDisabled =
-                this.props.disabled !== null ? this.props.disabled : false;
+              const isDisabled = this.props?.disabled || false;
 
               return (
                 <View
