@@ -97,6 +97,10 @@ export {
 export { default as Slat, SlatProps } from "./components/Slat";
 export { default as SlatMini, SlatMiniProps } from "./components/SlatMini";
 export { default as Banner, BannerProps } from "./components/Banner";
+export {
+  default as GlobalMessage,
+  GlobalMessageProps,
+} from "./components/GlobalMessage";
 export { default as Field, FieldProps } from "./components/Field";
 export { default as Form, FormProps } from "./components/Form";
 export { default as TextInput, TextInputProps } from "./components/TextInput";

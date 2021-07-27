@@ -16,6 +16,7 @@ export interface BannerProps extends ViewProps {
   close?: (evt: React.SyntheticEvent) => void;
   floating?: boolean;
   customColor?: string;
+  css?: any;
 }
 
 const IconMap = {
@@ -62,8 +63,9 @@ const Banner: React.SFC<BannerProps> = ({
   close,
   floating,
   customColor = type,
+  css,
   ...props
-}: BannerProps) => {
+}) => {
   const IconElement = IconMap[type];
   return (
     <Theme.Consumer>
@@ -85,6 +87,7 @@ const Banner: React.SFC<BannerProps> = ({
             )}`,
             borderLeft: `4px solid ${colors[customColor]}`,
             transition: "all 0.2s linear",
+            ...css,
           }}
           {...props}
         >
@@ -106,6 +109,7 @@ const Banner: React.SFC<BannerProps> = ({
           {close && (
             <View paddingLeft={[4, 5]}>
               <ButtonMinimal
+                aria-label="banner-close-button"
                 borderRadius={3}
                 boxShadow="none"
                 css={{
