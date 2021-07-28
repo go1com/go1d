@@ -46,3 +46,24 @@ Basic.argTypes = {
     options: ["success", "warning", "danger", "note"],
   },
 };
+
+export const LongText = () => (
+  <GlobalMessage status="success" close={() => alert("close event")}>
+    <Text>
+      Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been Lorem Ipsum is simply dummy text {" "}
+      <Text color="accent">
+        <Link
+          css={{
+            display: "inline",
+            textDecoration: "underline",
+          }}
+          href="https://foo.com"
+        >
+          read more
+        </Link>
+      </Text>
+      .
+    </Text>
+  </GlobalMessage>
+);
+LongText.storyName = "Long Text";

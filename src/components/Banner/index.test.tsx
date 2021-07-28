@@ -9,7 +9,7 @@ const closeMock = jest.fn();
 
 it("renders without crashing without any optional props (success type)", () => {
   render(
-    <Banner type="success">
+    <Banner status="success">
       <Text>This is a message</Text>
     </Banner>
   );
@@ -17,7 +17,7 @@ it("renders without crashing without any optional props (success type)", () => {
 
 it("renders without crashing without any optional props (warning)", () => {
   render(
-    <Banner type="warning">
+    <Banner status="warning">
       <Text>This is a message</Text>
     </Banner>
   );
@@ -25,7 +25,7 @@ it("renders without crashing without any optional props (warning)", () => {
 
 it("renders without crashing without any optional props (danger)", () => {
   render(
-    <Banner type="danger">
+    <Banner status="danger">
       <Text>This is a message</Text>
     </Banner>
   );
@@ -33,7 +33,7 @@ it("renders without crashing without any optional props (danger)", () => {
 
 it("accepts and passes close event", () => {
   const { getByTestId } = render(
-    <Banner type="success" close={closeMock}>
+    <Banner status="success" close={closeMock}>
       <Text>This is a message</Text>
     </Banner>
   );

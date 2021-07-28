@@ -1,24 +1,18 @@
 import * as React from "react";
-import Banner, { BannerProps } from "../Banner";
+import Banner, { BannerProps, getColors } from "../Banner";
 import Theme from "../Theme";
-import { ViewProps } from "../View";
 
-export interface GlobalMessageProps extends ViewProps {
-  status: BannerProps["type"];
-  close?: BannerProps["close"];
-}
-
-const GlobalMessage: React.SFC<GlobalMessageProps> = ({ status, ...props }) => {
+const GlobalMessage: React.SFC<BannerProps> = ({ status, ...props }) => {
   return (
     <Theme.Consumer>
       {({ colors }) => (
         <Banner
           borderRadius={0}
           marginY={0}
-          type={status}
+          status={status}
           css={{
             borderLeft: "none",
-            borderBottom: `4px solid ${colors[status]}`,
+            borderBottom: `4px solid ${getColors(colors, status).element}`,
           }}
           {...props}
         />
