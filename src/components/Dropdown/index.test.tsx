@@ -81,3 +81,35 @@ it("renders with defaul render function", () => {
   // Can click button
   container.querySelector("button")!.click();
 });
+
+it("renders with fullscreen", () => {
+  const { container } = render(
+    <Dropdown
+      isFullscreen={true}
+      itemList={[
+        {
+          title: "Add",
+          href: "#testing",
+          color: "accent",
+          icon: IconPlus,
+        },
+        {
+          title: "Delete",
+          href: "#testing",
+          color: "danger",
+          icon: IconTrash,
+        },
+      ]}
+      itemToString={jest.fn()}
+    >
+      {({ ref }) => (
+        <ButtonFilled innerRef={ref} marginLeft="auto">
+          Stuff
+        </ButtonFilled>
+      )}
+    </Dropdown>
+  );
+
+  // Can click button
+  container.querySelector("button")!.click();
+});
