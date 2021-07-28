@@ -1,5 +1,5 @@
 import React from "react";
-import { Dropdown, ButtonFilled, ButtonMinimal, Text, View } from "../src";
+import { Dropdown, ButtonFilled, ButtonMinimal, SearchInput, Text, View } from "../src";
 import { IconPlus, IconTrash } from "../src/components/Icons";
 
 export default {
@@ -107,3 +107,51 @@ export const DropdownWithComplexItems = args => (
 );
 
 DropdownWithComplexItems.storyName = "Dropdown with complex items";
+
+export const DropdownWithFullscreen = args => (
+  <Dropdown
+    isFullscreen={true}
+    placement="bottom"
+    renderFunction={(item, index, getItemProps) => (
+      <View
+        key={index}
+        {...getItemProps({
+          key: index,
+          item,
+          index,
+        })}
+        width={200}
+        paddingX={4}
+        paddingY={2}
+      >
+        <Text>{item.title}</Text>
+      </View>
+    )}
+    itemList={[
+      {
+        title: "Element 0",
+      },
+      {
+        title: "Element 1",
+      },
+      {
+        title: "Element 2",
+      },
+    ]}
+    itemToString={(e) => e && e.title}
+    css={{
+      top: "80px",
+    }}
+  >
+    {({ ref, getInputProps }) => (
+      <View width="100%">
+        <SearchInput
+          innerRef={ref}
+          {...getInputProps()}
+        />
+      </View>
+    )}
+  </Dropdown>
+);
+
+DropdownWithFullscreen.storyName = "Dropdown with fullscreen";

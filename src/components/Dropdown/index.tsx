@@ -1,9 +1,13 @@
 import Downshift, {
+  ControllerStateAndHelpers,
   DownshiftProps as DownshiftPropsOriginal,
   GetItemPropsOptions,
+  StateChangeOptions,
 } from "downshift";
+import { css } from "emotion";
 import * as React from "react";
 import { Manager, Popper, Reference, RefHandler } from "react-popper";
+import safeInvoke from "../../utils/safeInvoke";
 import { IconProps } from "../IconBase";
 import Portal from "../Portal";
 import View, { ViewProps } from "../View";
@@ -58,6 +62,8 @@ export interface DropdownProps extends ViewProps {
   /** Offset can be used to customize the placement of the dropdown, for the syntax please see the popper.js docs */
   offset?: string | number;
   labelId?: string;
+  /** isFullscreen drives things like showing the dropdown fullscreen */
+  isFullscreen?: boolean;
 }
 
 function defaultRenderFunction(
@@ -74,6 +80,21 @@ function defaultRenderFunction(
   return <DropdownItem item={item} getItemProps={getItemProps} index={index} />;
 }
 
+const dropdownOpenClasses = css`
+  position: relative;
+  overflow: hidden;
+  touch-action: none;
+  -ms-touch-action: none;
+`;
+
+const enableScrolling = (element: HTMLElement) => {
+  element.classList.remove(dropdownOpenClasses);
+};
+
+const disableScrolling = (element: HTMLElement) => {
+  element.classList.add(dropdownOpenClasses);
+};
+
 /**
  * This component renders a dropdown list of items, which can be used with multiple other components. It can be used with menus, searches and selects. The child is the element that triggers the dropdown (e.g. button or text input), with the renderFunction taking in the list of items and displaying them as defined.
  */
@@ -86,85 +107,168 @@ const Dropdown: React.SFC<DropdownProps> = ({
   onInputValueChange,
   onOuterClick,
   onStateChange,
-  css,
   itemToString,
+  css: cssProps,
   placement,
   offset,
   onSelect,
   isOpen,
   labelId,
+  isFullscreen = false,
   ...props
-}: DropdownProps) => (
-  <Downshift
-    itemToString={itemToString}
-    onSelect={onSelect}
-    initialInputValue={initialInputValue}
-    onInputValueChange={onInputValueChange}
-    onOuterClick={onOuterClick}
-    isOpen={isOpen}
-    labelId={labelId}
-    onStateChange={onStateChange}
-  >
-    {({
-      getItemProps,
-      getMenuProps,
-      getRootProps,
-      isOpen: isOpenInternal,
-      ...downshiftParams
-    }) => (
-      <View {...getRootProps({ refKey: "innerRef" })}>
-        <Manager>
-          <Reference>
-            {({ ref }) =>
-              children({
-                ref,
-                isOpen: isOpenInternal,
-                ...downshiftParams,
-              })
-            }
-          </Reference>
-          {isOpenInternal && (
-            <Portal>
-              <Popper
-                placement={placement}
-                modifiers={offset && { offset: { offset } }}
-              >
-                {({ ref, style }) => (
+}: DropdownProps) => {
+  const [isOpenState, setOpenState] = React.useState(isOpen);
+
+  React.useEffect(() => {
+    return () => {
+      if (isFullscreen) {
+        enableScrolling(document.body);
+      }
+    };
+  }, []);
+
+  React.useEffect(() => {
+    if (isFullscreen) {
+      if (isOpenState) {
+        disableScrolling(document.body);
+      } else {
+        enableScrolling(document.body);
+      }
+    }
+  }, [isOpenState]);
+
+  const handleStateChange = (
+    options: StateChangeOptions<any>,
+    stateAndHelpers: ControllerStateAndHelpers<any>
+  ) => {
+    if (typeof options.isOpen !== "undefined") {
+      setOpenState(options.isOpen);
+    }
+    safeInvoke(onStateChange, options, stateAndHelpers);
+  };
+
+  const cssFullscreen = {
+    position: "fixed",
+    height: "100vh",
+    width: "100vw",
+    top: 0,
+    left: 0,
+    overflow: "auto",
+  };
+
+  return (
+    <Downshift
+      itemToString={itemToString}
+      onSelect={onSelect}
+      initialInputValue={initialInputValue}
+      onInputValueChange={onInputValueChange}
+      onOuterClick={onOuterClick}
+      isOpen={isOpen}
+      labelId={labelId}
+      onStateChange={handleStateChange}
+    >
+      {({
+        getItemProps,
+        getMenuProps,
+        getRootProps,
+        isOpen: isOpenInternal,
+        ...downshiftParams
+      }) => (
+        <View {...getRootProps({ refKey: "innerRef" })}>
+          <Manager>
+            <Reference>
+              {({ ref }) =>
+                children({
+                  ref,
+                  isOpen: isOpenInternal,
+                  ...downshiftParams,
+                })
+              }
+            </Reference>
+            {isOpenInternal && (
+              <Portal>
+                {isFullscreen ? (
                   <View
                     {...getMenuProps({
                       refKey: "innerRef",
                     })}
                   >
-                    {renderMenu &&
-                      renderMenu(ref, style, getItemProps, downshiftParams)}
-                    {!renderMenu && (
+                    <View
+                      backgroundColor="background"
+                      transition="none"
+                      paddingY={3}
+                      zIndex="dropdown"
+                      css={{
+                        ...cssFullscreen,
+                        ...cssProps,
+                      }}
+                      {...props}
+                    >
+                      {renderMenu
+                        ? renderMenu(
+                            undefined,
+                            undefined,
+                            getItemProps,
+                            downshiftParams
+                          )
+                        : itemList.map((item, i) =>
+                            renderFunction(
+                              item,
+                              i,
+                              getItemProps,
+                              downshiftParams
+                            )
+                          )}
+                    </View>
+                  </View>
+                ) : (
+                  <Popper
+                    placement={placement}
+                    modifiers={offset && { offset: { offset } }}
+                  >
+                    {({ ref, style }) => (
                       <View
-                        backgroundColor="background"
-                        boxShadow="strong"
-                        borderRadius={2}
-                        border={1}
-                        borderColor="delicate"
-                        style={style}
-                        innerRef={ref}
-                        transition="none"
-                        paddingY={3}
-                        zIndex="dropdown"
-                        {...props}
+                        {...getMenuProps({
+                          refKey: "innerRef",
+                        })}
                       >
-                        {itemList.map((item, i) =>
-                          renderFunction(item, i, getItemProps, downshiftParams)
+                        {renderMenu &&
+                          renderMenu(ref, style, getItemProps, downshiftParams)}
+                        {!renderMenu && (
+                          <View
+                            backgroundColor="background"
+                            boxShadow="strong"
+                            borderRadius={2}
+                            border={1}
+                            borderColor="delicate"
+                            style={style}
+                            innerRef={ref}
+                            transition="none"
+                            paddingY={3}
+                            zIndex="dropdown"
+                            {...props}
+                          >
+                            {itemList.map((item, i) =>
+                              renderFunction(
+                                item,
+                                i,
+                                getItemProps,
+                                downshiftParams
+                              )
+                            )}
+                          </View>
                         )}
                       </View>
                     )}
-                  </View>
+                  </Popper>
                 )}
-              </Popper>
-            </Portal>
-          )}
-        </Manager>
-      </View>
-    )}
-  </Downshift>
-);
+              </Portal>
+            )}
+          </Manager>
+        </View>
+      )}
+    </Downshift>
+  );
+};
 
 export default Dropdown;
