@@ -1,5 +1,11 @@
 # @go1d/go1d
 
+## 6.8.4
+
+### Patch Changes
+
+- de1d5976: support fullscreen for dropdown
+
 ## 6.8.3
 
 ### Patch Changes
