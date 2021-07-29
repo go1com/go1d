@@ -18,7 +18,7 @@ export default {
 
 export const TypeSuccess = () => (
   <Banner status="success" close={() => alert("close event")}>
-    <Text fontWeight="semibold">Success! </Text>
+    <Text paddingBottom={3} fontWeight="semibold">Success! </Text>
     <Text>
       This is a message{" "}
       <Link
@@ -39,7 +39,7 @@ TypeSuccess.storyName = "Type success";
 
 export const TypeWarning = () => (
   <Banner status="warning" close={() => alert("close event")}>
-    <Text fontWeight="semibold">Warning! </Text>
+    <Text paddingBottom={3} fontWeight="semibold">Warning! </Text>
     <Text>
       This is a message{" "}
       <Link
@@ -60,7 +60,7 @@ TypeWarning.storyName = "Type warning";
 
 export const TypeDanger = () => (
   <Banner status="danger" close={() => alert("close event")}>
-    <Text fontWeight="semibold">Danger! </Text>
+    <Text paddingBottom={3} fontWeight="semibold">Danger! </Text>
     <Text>
       This is a message{" "}
       <Link
@@ -81,7 +81,7 @@ TypeDanger.storyName = "Type danger";
 
 export const TypeNote = () => (
   <Banner status="note" close={() => alert("close event")}>
-    <Text fontWeight="semibold">Note! </Text>
+    <Text paddingBottom={3} fontWeight="semibold">Note! </Text>
     <Text>
       This is a message{" "}
       <Link

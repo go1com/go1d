@@ -6,6 +6,7 @@ import View, { ViewProps } from "../View";
 
 import IconCross from "../Icons/Cross";
 import IconDanger from "../Icons/Danger";
+import IconInfo from "../Icons/Info";
 import IconSuccess from "../Icons/Success";
 import IconWarning from "../Icons/Warning";
 import Row from "../Row";
@@ -18,7 +19,7 @@ export interface BannerProps extends ViewProps {
 }
 
 const IconMap = {
-  note: IconDanger,
+  note: IconInfo,
   warning: IconWarning,
   danger: IconDanger,
   success: IconSuccess,
@@ -113,7 +114,7 @@ const Banner: React.SFC<BannerProps> = ({
             {close && (
               <View paddingLeft={[4, 5]} paddingTop={[1, 2, 2]}>
                 <ButtonMinimal
-                  aria-label="banner-close-button"
+                  aria-label="Close Banner"
                   borderRadius={3}
                   boxShadow="none"
                   css={{
@@ -131,7 +132,7 @@ const Banner: React.SFC<BannerProps> = ({
                   onClick={close}
                   data-testid="close"
                 >
-                  <IconCross size={4} color={status} />
+                  <IconCross size={4} color="subtle" />
                 </ButtonMinimal>
               </View>
             )}
