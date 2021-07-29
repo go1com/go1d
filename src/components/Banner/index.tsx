@@ -1,150 +1,144 @@
 import * as React from "react";
 
-import * as Color from "color";
 import ButtonMinimal from "../ButtonFilled";
 import Theme from "../Theme";
 import View, { ViewProps } from "../View";
 
 import IconCross from "../Icons/Cross";
 import IconDanger from "../Icons/Danger";
+import IconInfo from "../Icons/Info";
 import IconSuccess from "../Icons/Success";
 import IconWarning from "../Icons/Warning";
 import Row from "../Row";
 
 export interface BannerProps extends ViewProps {
-  type: "success" | "warning" | "danger" | "note";
+  status: "success" | "warning" | "danger" | "note";
   close?: (evt: React.SyntheticEvent) => void;
   floating?: boolean;
-  customColor?: string;
+  css?: any;
 }
 
 const IconMap = {
-  note: IconDanger,
+  note: IconInfo,
   warning: IconWarning,
   danger: IconDanger,
   success: IconSuccess,
 };
 
-const getBackgroundColor = (colors, customColor, floating = false) => {
-  let cssColor = colors.background;
+export const getColors = (colors, status, floating = false) => {
+  let cssColor;
 
-  if (floating) {
-    return cssColor;
-  }
-
-  switch (customColor) {
-    case "success":
-      cssColor = colors.successHigh;
-      break;
+  switch (status) {
     case "warning":
-      cssColor = colors.warningHigh;
+      cssColor = {
+        background: colors.warningHighest,
+        element: colors.warningMid,
+      };
       break;
     case "danger":
-      cssColor = colors.dangerHigh;
+      cssColor = {
+        background: colors.dangerHighest,
+        element: colors.dangerLow,
+      };
       break;
     case "note":
-      cssColor = colors.noteHigh;
+      cssColor = {
+        background: colors.noteHighest,
+        element: colors.noteMid,
+      };
       break;
     default:
-      cssColor = Color(colors[customColor])
-        .lightness(93)
-        .rgb()
-        .string();
+      cssColor = {
+        background: colors.successHighest,
+        element: colors.successMid,
+      };
       break;
+  }
+
+  if (floating) {
+    cssColor.background = colors.background;
   }
 
   return cssColor;
 };
 
 const Banner: React.SFC<BannerProps> = ({
-  type,
+  status,
   children,
   close,
   floating,
-  customColor = type,
+  css,
   ...props
-}: BannerProps) => {
-  const IconElement = IconMap[type];
+}) => {
+  const IconElement = IconMap[status];
   return (
     <Theme.Consumer>
-      {({ colors }) => (
-        <Row
-          padding={4}
-          marginY={3}
-          borderRadius={2}
-          boxShadow={floating && "distant"}
-          flexDirection="row"
-          justifyContent="flex-start"
-          data-testid="banner"
-          maxWidth="100%"
-          css={{
-            backgroundColor: `${getBackgroundColor(
-              colors,
-              customColor,
-              floating
-            )}`,
-            borderLeft: `4px solid ${colors[customColor]}`,
-            transition: "all 0.2s linear",
-          }}
-          {...props}
-        >
-          <IconElement color={customColor} marginTop={1} />
-          <View
-            flexWrap="wrap"
-            flexGrow={1}
-            flexShrink={1}
-            paddingLeft={[4, 5]}
-            alignItems={floating ? "center" : "left"}
+      {({ colors }) => {
+        const contentColors = getColors(colors, status, floating);
+        return (
+          <Row
+            padding={4}
+            marginY={3}
+            borderRadius={2}
+            boxShadow={floating && "distant"}
+            flexDirection="row"
+            justifyContent="flex-start"
+            data-testid="banner"
+            maxWidth="100%"
             css={{
-              "*": {
-                maxWidth: "100%", // IE11 fix
-              },
+              backgroundColor: `${contentColors.background}`,
+              borderLeft: `4px solid ${contentColors.element}`,
+              transition: "all 0.2s linear",
+              ...css,
             }}
+            {...props}
           >
-            {children}
-          </View>
-          {close && (
-            <View paddingLeft={[4, 5]}>
-              <ButtonMinimal
-                borderRadius={3}
-                boxShadow="none"
-                css={{
-                  borderColor: `${getBackgroundColor(
-                    colors,
-                    customColor,
-                    floating
-                  )}`,
-                  backgroundColor: `${getBackgroundColor(
-                    colors,
-                    customColor,
-                    floating
-                  )}`,
-                  "&:hover, &:focus, &:active": {
-                    backgroundColor: `${getBackgroundColor(
-                      colors,
-                      customColor,
-                      floating
-                    )}`,
-                    borderColor: `${getBackgroundColor(
-                      colors,
-                      customColor,
-                      floating
-                    )}`,
-                  },
-                }}
-                size="sm"
-                height="1.05rem"
-                onClick={close}
-                data-testid="close"
-                paddingX={1}
-                paddingY={1}
-              >
-                <IconCross color={customColor} />
-              </ButtonMinimal>
+            <View paddingTop={1}>
+              <IconElement size={4} color={status} />
             </View>
-          )}
-        </Row>
-      )}
+            <View
+              paddingTop={[1, 2, 2]}
+              flexWrap="wrap"
+              flexGrow={1}
+              flexShrink={1}
+              paddingLeft={3}
+              alignItems={floating ? "center" : "left"}
+              css={{
+                "*": {
+                  maxWidth: "100%", // IE11 fix
+                },
+              }}
+            >
+              {children}
+            </View>
+            {close && (
+              <View paddingLeft={[4, 5]} paddingTop={[1, 2, 2]}>
+                <ButtonMinimal
+                  aria-label="Close Banner"
+                  borderRadius={3}
+                  boxShadow="none"
+                  css={{
+                    borderColor: contentColors.background,
+                    backgroundColor: contentColors.background,
+                    "&:hover, &:focus, &:active": {
+                      backgroundColor: contentColors.background,
+                      borderColor: contentColors.background,
+                    },
+                  }}
+                  width={24}
+                  height={24}
+                  paddingX={0}
+                  paddingY={0}
+                  onClick={close}
+                  data-testid="close"
+                >
+                  <IconCross size={4} color="subtle" />
+                </ButtonMinimal>
+              </View>
+            )}
+          </Row>
+        );
+      }}
     </Theme.Consumer>
   );
 };

@@ -1,7 +1,7 @@
 import * as React from "react";
 import { cleanup, fireEvent, render } from "react-testing-library";
 import Text from "../Text";
-import Banner from "./index";
+import GlobalMessage from "./index";
 
 afterEach(cleanup);
 
@@ -9,33 +9,33 @@ const closeMock = jest.fn();
 
 it("renders without crashing without any optional props (success type)", () => {
   render(
-    <Banner status="success">
+    <GlobalMessage status="success">
       <Text>This is a message</Text>
-    </Banner>
+    </GlobalMessage>
   );
 });
 
 it("renders without crashing without any optional props (warning)", () => {
   render(
-    <Banner status="warning">
+    <GlobalMessage status="warning">
       <Text>This is a message</Text>
-    </Banner>
+    </GlobalMessage>
   );
 });
 
 it("renders without crashing without any optional props (danger)", () => {
   render(
-    <Banner status="danger">
+    <GlobalMessage status="danger">
       <Text>This is a message</Text>
-    </Banner>
+    </GlobalMessage>
   );
 });
 
 it("accepts and passes close event", () => {
   const { getByTestId } = render(
-    <Banner status="success" close={closeMock}>
+    <GlobalMessage status="success" close={closeMock}>
       <Text>This is a message</Text>
-    </Banner>
+    </GlobalMessage>
   );
 
   fireEvent.click(getByTestId("close"));
