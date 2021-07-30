@@ -328,6 +328,7 @@ class Select extends React.PureComponent<SelectProps, State> {
                                 flexGrow={1}
                                 flexShrink={1}
                                 overflow="hidden"
+                                paddingRight={5}
                               >
                                 <Text
                                   ellipsis={true}
@@ -479,7 +480,8 @@ class Select extends React.PureComponent<SelectProps, State> {
 
   private handleSelectionClear(clearFunction) {
     const { onClear } = this.props;
-    return () => {
+    return e => {
+      e.stopPropagation();
       clearFunction();
       if (onClear) {
         safeInvoke(onClear);
