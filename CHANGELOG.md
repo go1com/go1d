@@ -1,5 +1,12 @@
 # @go1d/go1d
 
+## 7.0.1
+
+### Patch Changes
+
+- a63a01c6: Fix shrink Select component and clearable Select component
+- a63a01c6: Fix Select Component when being maximum shrink causes Text and IconChevronDown overlap position
+
 ## 7.0.0
 
 ### Major Changes
