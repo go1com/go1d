@@ -12,7 +12,7 @@
     "next:analyze": "ANALYZE=true next build"
   },
   "dependencies": {
-    "@go1d/go1d": "^6.7.0",
+    "@go1d/go1d": "^7.1.0",
     "@mdx-js/loader": "^1.5.1",
     "@mdx-js/react": "^1.6.18",
     "@next/bundle-analyzer": "^11.0.1",
