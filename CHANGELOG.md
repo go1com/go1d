@@ -1,5 +1,11 @@
 # @go1d/go1d
 
+## 7.1.0
+
+### Minor Changes
+
+- bac977a7: Adds LineChart component and data viz colors
+
 ## 7.0.1
 
 ### Patch Changes
