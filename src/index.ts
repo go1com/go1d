@@ -56,6 +56,7 @@ export {
 } from "./components/DEPRECATED_Avatar";
 export { default as Avatar, AvatarProps } from "./components/Avatar";
 export { default as Provider, ProviderProps } from "./components/Provider";
+export { default as LineChart } from "./components/LineChart";
 export { default as Link, LinkProps } from "./components/Link";
 export {
   default as EmptyState,

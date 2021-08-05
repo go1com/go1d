@@ -22,9 +22,6 @@ module.exports = {
     'chrome-mobile': new RemoteBrowserTarget('chrome', {
       viewport: '320x640',
     }),
-    'internet-explorer-desktop': new RemoteBrowserTarget('internet explorer', {
-      viewport: '1024x768',
-    }),
     'edge-desktop': new RemoteBrowserTarget('edge', {
       viewport: '1024x768',
     }),
