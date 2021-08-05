@@ -103,7 +103,16 @@ export const Main = (args, { globals: { accent, mode }}) => {
         "warning", "warningHighest", "warningHigh", "warningMid", "warningLow", "warningLowest",
         "danger", "dangerHighest", "dangerHigh", "dangerMid", "dangerLow", "dangerLowest",
         "vivid", "vividHighest", "vividHigh", "vividMid", "vividLow", "vividLowest",
-        "highlight"
+        "highlight",
+      ])}
+      <Text element="h3" fontSize={4} fontWeight="bold">Data visualization colors</Text>
+      <Text element="p" marginBottom={4}>We have 5 categorical colors, 1 zero data color, and a reference color. Each has a shade available too for “active” or “selected” states and similar.</Text>
+      <Text element="p" marginBottom={4} fontWeight="bold">Only use categorical colors on white backgrounds.</Text>
+      <Text element="p" fontSize={1} marginBottom={1}>Use categorical colors for qualitative data, such as “assigned” or “self-directed” enrollments. Aim for only 1–4 colors. If you need 5 or more categories, there’s probably a better way to design the chart with fewer categories that will be clearer to interpret effectively. The 5th category should only be used in small doses. Try to avoid needing it!</Text>
+      {themeSwatches(theme, mode, [
+        "vizCategory1", "vizCategory2", "vizCategory3", "vizCategory4", "vizCategory5", "vizZeroData",
+        "vizCategory1Shade", "vizCategory2Shade", "vizCategory3Shade", "vizCategory4Shade", "vizCategory5Shade", "vizZeroDataShade",
+        "vizReference", "vizReferenceShade",
       ])}
     </View>
   );

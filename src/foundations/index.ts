@@ -67,6 +67,22 @@ const options = {
         O700: "#815C31",
         O800: "#553611",
       },
+      viz: {
+        category1: "#606AAC",
+        category2: "#279DDD",
+        category3: "#2B777D",
+        category4: "#E17575",
+        category5: "#493181",
+        category1Shade: "#465195",
+        category2Shade: "#1781BA",
+        category3Shade: "#1B555A",
+        category4Shade: "#D34545",
+        category5Shade: "#332060",
+        zeroData: "#949493",
+        zeroDataShade: "#6E6E6D",
+        reference: "#CD747D",
+        referenceShade: "#A44C54",
+      },
     },
     dark: {
       neutral: {
@@ -115,6 +131,22 @@ const options = {
         O300: "#EEB068",
         O700: "#815C31",
         O800: "#553611",
+      },
+      viz: {
+        category1: "#606AAC",
+        category2: "#279DDD",
+        category3: "#2B777D",
+        category4: "#E17575",
+        category5: "#493181",
+        category1Shade: "#465195",
+        category2Shade: "#1781BA",
+        category3Shade: "#1B555A",
+        category4Shade: "#D34545",
+        category5Shade: "#332060",
+        zeroData: "#949493",
+        zeroDataShade: "#6E6E6D",
+        reference: "#CD747D",
+        referenceShade: "#A44C54",
       },
     },
   },
@@ -340,6 +372,43 @@ export const generateColors = ({
 
   const statusColors = statusColorsPerMode[mode];
 
+  const vizColorsPerMode = {
+    light: {
+      vizCategory1: options.color.light.viz.category1,
+      vizCategory2: options.color.light.viz.category2,
+      vizCategory3: options.color.light.viz.category3,
+      vizCategory4: options.color.light.viz.category4,
+      vizCategory5: options.color.light.viz.category5,
+      vizCategory1Shade: options.color.light.viz.category1Shade,
+      vizCategory2Shade: options.color.light.viz.category2Shade,
+      vizCategory3Shade: options.color.light.viz.category3Shade,
+      vizCategory4Shade: options.color.light.viz.category4Shade,
+      vizCategory5Shade: options.color.light.viz.category5Shade,
+      vizZeroData: options.color.light.viz.zeroData,
+      vizZeroDataShade: options.color.light.viz.zeroDataShade,
+      vizReference: options.color.light.viz.reference,
+      vizReferenceShade: options.color.light.viz.referenceShade,
+    },
+    dark: {
+      vizCategory1: options.color.dark.viz.category1,
+      vizCategory2: options.color.dark.viz.category2,
+      vizCategory3: options.color.dark.viz.category3,
+      vizCategory4: options.color.dark.viz.category4,
+      vizCategory5: options.color.dark.viz.category5,
+      vizCategory1Shade: options.color.dark.viz.category1Shade,
+      vizCategory2Shade: options.color.dark.viz.category2Shade,
+      vizCategory3Shade: options.color.dark.viz.category3Shade,
+      vizCategory4Shade: options.color.dark.viz.category4Shade,
+      vizCategory5Shade: options.color.dark.viz.category5Shade,
+      vizZeroData: options.color.dark.viz.zeroData,
+      vizZeroDataShade: options.color.dark.viz.zeroDataShade,
+      vizReference: options.color.dark.viz.reference,
+      vizReferenceShade: options.color.dark.viz.referenceShade,
+    },
+  };
+
+  const vizColors = vizColorsPerMode[mode];
+
   const gradients: MappedKey<Gradients, string> = {
     warmOverlay:
       "linear-gradient(179.89deg, rgba(255, 255, 239, 0.05) -14.1%, rgba(255, 255, 191, 1e-05) 99.8%)",
@@ -354,6 +423,7 @@ export const generateColors = ({
     complementary,
     ...themedGreys,
     ...statusColors,
+    ...vizColors,
     gradients,
   };
 };

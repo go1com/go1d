@@ -62,6 +62,7 @@
     "slate-react": "^0.21.16",
     "smoothscroll-polyfill": "^0.4.3",
     "uuid": "^8.3.2",
+    "victory": "^35.9.3",
     "xss": "^1.0.6"
   },
   "peerDependencies": {

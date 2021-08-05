@@ -108,6 +108,20 @@ export interface Colors {
   vividMid?: string;
   vividLow?: string;
   vividLowest?: string;
+  vizCategory1?: string;
+  vizCategory2?: string;
+  vizCategory3?: string;
+  vizCategory4?: string;
+  vizCategory5?: string;
+  vizCategory1Shade?: string;
+  vizCategory2Shade?: string;
+  vizCategory3Shade?: string;
+  vizCategory4Shade?: string;
+  vizCategory5Shade?: string;
+  vizZeroData?: string;
+  vizZeroDataShade?: string;
+  vizReference?: string;
+  vizReferenceShade?: string;
 }
 
 export type ZIndex =
