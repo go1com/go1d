@@ -17,7 +17,7 @@ export default {
 };
 
 const richContentExample = (
-  <Text>
+  <>
     This is a global message{" "}
     <Text color="accent">
       <Link
@@ -31,12 +31,14 @@ const richContentExample = (
       </Link>
     </Text>
     .
-  </Text>
+  </>
 );
 
 export const Basic = ({ storyExampleText, ...args }) => (
   <GlobalMessage color="default" {...args} close={() => alert("close event")}>
-    {storyExampleText}
+    <Text>
+      {storyExampleText}
+    </Text>
   </GlobalMessage>
 );
 Basic.storyName = "Base";
